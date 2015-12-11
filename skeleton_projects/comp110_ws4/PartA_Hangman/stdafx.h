@@ -13,3 +13,10 @@
 
 
 // TODO: reference additional headers your program requires here
+
+#include <time.h>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <algorithm>
