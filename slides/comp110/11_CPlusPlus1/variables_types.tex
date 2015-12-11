@@ -1,0 +1,88 @@
+\part{Variables and types}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Variables}
+	\begin{columns}[onlytextwidth]
+		\begin{column}{0.45\textwidth}
+			In Python, variables exist the moment they are assigned to:
+			\begin{lstlisting}[language=Python]
+				a = 10
+				b = 20
+			\end{lstlisting}
+			\pause
+			Variables can hold values of any type:
+			\begin{lstlisting}[language=Python]
+				a = 10
+				a = 3.14159
+				a = "Hello"
+			\end{lstlisting}
+		\end{column}
+		\pause
+		\begin{column}{0.45\textwidth}
+			In C++, variables must be \textbf{declared} before use, and must be given a \textbf{type}:
+			\begin{lstlisting}
+				int a = 10;
+				int b = 20;
+			\end{lstlisting}
+			\pause
+			Variables can only hold values of the correct type:
+			\begin{lstlisting}
+				int a = 10;
+				a = 17;      // OK
+				a = "Hello"; // Error
+			\end{lstlisting}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Basic data types}
+	\begin{itemize}
+		\item \lstinline{int}: an integer (whole number)
+			\begin{center} \lstinline{7} \qquad \lstinline{136} \qquad \lstinline{-74965} \qquad \lstinline{0} \end{center}
+		\pause
+		\item \lstinline{double}: a floating point number
+			\begin{center} \lstinline{3.14159} \qquad \lstinline{136.0} \qquad \lstinline{-35.25825} \qquad \lstinline{.5} \end{center}
+		\pause
+		\item \lstinline{bool}: a boolean value
+			\begin{center} \lstinline{true} \qquad \lstinline{false} \end{center}
+		\pause
+		\item \lstinline{char}: an ASCII character
+			\begin{center} \lstinline{'Q'} \qquad \lstinline{'7'} \qquad \lstinline{'@'} \qquad \lstinline{' '} \qquad \lstinline{'\n'} \end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Vectors}
+	\begin{itemize}
+		\item \textbf{Vectors} are the C++ equivalent of lists in Python
+		\pause
+		\item Add \lstinline{#include <vector>} to \texttt{stdafx.h}
+		\pause
+		\item \lstinline{std::vector<T>} is a vector with elements of type \lstinline{T}
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		std::vector<int> numbers = { 1, 4, 9, 16 };
+		numbers.push_back(25);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Strings}
+	\begin{itemize}
+		\item C++ has two main data types for strings:
+		\begin{itemize}
+			\item \lstinline{char*} or \lstinline{char[]}: low-level array of \lstinline{char}s (more on arrays next week)
+			\item \lstinline{std::string}: high-level string class
+		\end{itemize}
+		\pause
+		\item Use \lstinline{std::string} unless you have a compelling reason not to
+		\pause
+		\item Add \lstinline{#include <string>} to \texttt{stdafx.h}
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		std::string name = "Ed";
+		std::string message = "Hello " + name + "!";
+		std::cout << message << std::endl;
+	\end{lstlisting}
+\end{frame}
+
