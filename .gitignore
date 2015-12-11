@@ -1,5 +1,13 @@
 .DS_Store
 
+## Visual Studio files
+.vs
+*.opensdf
+*.sdf
+ipch
+Debug
+Release
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
