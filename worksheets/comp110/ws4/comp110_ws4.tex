@@ -1,0 +1,111 @@
+\documentclass{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{varwidth}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	tabsize=4,
+	showstringspaces=false,
+	breaklines=true,
+	prebreak={\space\hbox{\textcolor{Gray}{$\hookleftarrow$}}},
+	language=C++
+}
+\usepackage{enumitem}
+
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother  
+
+\title{Worksheet 4}
+\subtitle{COMP110: Principles of Computing}
+\author{Ed Powley}
+\date{January 2016}
+
+\renewcommand\thepart{\Alph{part}}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+In this assignment, you will create three small C++ programs:
+\begin{enumerate}[label=\Alph*.]
+	\item A console application implementing the word guessing game Hangman;
+	\item A console application implementing the 2-player strategy game Connect~4;
+	\item A graphical application which generates and displays the Mandelbrot fractal.
+\end{enumerate}
+
+This worksheet tests your ability to translate various program notations (pseudocode, flowcharts,
+mathematics, narrative descriptions) into C++ code.
+
+\section*{Submission instructions}
+
+todo
+
+\section*{Marking}
+
+todo
+
+\clearpage
+\part{Hangman}
+
+\section{}
+Do a thing
+
+\section{}
+
+The following algorithm takes the current partially revealed word, the secret word, and a guessed letter.
+It returns a new partially revealed word, in which the guessed letter has been filled in where it appears in the string.
+
+\noindent\begin{algorithmic}
+	\Procedure{FillInLetter}{partialWord, secretWord, letter}
+		\State $\text{result} \gets \text{empty string}$
+		\For{$i = 0, 1, \dots, \text{secretWord.length} - 1$}
+			\If{$\text{secretWord}[i] = \text{letter}$}
+				\State append letter to result
+			\Else
+				\State append $\text{partialWord}[i]$ to result
+			\EndIf
+		\EndFor
+		\State \textbf{return} result
+	\EndProcedure
+\end{algorithmic}
+
+The following table gives some examples of possible input and output:
+
+\begin{center}
+\begin{tabular}{|ccc|c|}
+\hline
+partialWord & secretWord & letter & result \\ \hline
+\lstinline{"B-----"} & \lstinline{"BANANA"} & \lstinline{'A'} & \lstinline{"BA-A-A"} \\ \hline
+\lstinline{"B-----"} & \lstinline{"BANANA"} & \lstinline{'E'} & \lstinline{"B-----"} \\ \hline
+\lstinline{"-----"} & \lstinline{"APPLE"} & \lstinline{'L'} & \lstinline{"---L-"} \\ \hline
+\lstinline{"-----"} & \lstinline{"APPLE"} & \lstinline{'B'} & \lstinline{"-----"} \\ \hline
+\end{tabular}
+\end{center}
+
+Implement the $\Call{FillInLetter}$ algorithm as a C++ function with the following signature:
+
+\begin{lstlisting}
+std::string fillInLetter(std::string partialWord,
+                         std::string secretWord,
+                         char letter)
+\end{lstlisting}
+
+\clearpage
+\part{Connect 4}
+
+\section{}
+Do a thing
+
+\section{}
+Do another thing
+
+\clearpage
+\part{Mandelbrot}
+
+\end{document}
