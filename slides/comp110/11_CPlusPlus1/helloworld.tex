@@ -15,20 +15,25 @@
 
 \begin{frame}[fragile]
 	\frametitle{The code}
-	\begin{itemize}
-		\item Edit \texttt{$\langle$YourApplicationName$\rangle$.cpp} to match the following:
-	\end{itemize}
+%	\begin{itemize}
+%		\item Edit \texttt{$\langle$YourApplicationName$\rangle$.cpp} to match the following:
+%	\end{itemize}
 	\begin{lstlisting}
 // ConsoleApplication1.cpp : Defines the entry point for the console application.
 
 #include "stdafx.h"
-#include <iostream>
 
 int main()
 {
     std::cout << "Hello, world!" << std::endl;
     return 0;
 }
+	\end{lstlisting}
+	\begin{itemize}
+		\item Add the following line to the end of \texttt{stdafx.h}:
+	\end{itemize}
+	\begin{lstlisting}
+#include <iostream>
 	\end{lstlisting}
 	\begin{itemize}
 		\item Click \textbf{Debug $\to$ Start~Without~Debugging}, or press \textbf{Ctrl~+~F5}
@@ -52,6 +57,8 @@ int main()
 	\frametitle{The \#include directive}
 	\begin{lstlisting}
 #include "stdafx.h"
+	\end{lstlisting}
+	\begin{lstlisting}
 #include <iostream>
 	\end{lstlisting}
 	\begin{itemize}
@@ -59,6 +66,7 @@ int main()
 		\item Similar to \lstinline[language=Python]{import} in Python
 		\item \lstinline{#include "..."} (quotes) is used for headers in the current project
 		\item \lstinline{#include <...>} (angle brackets) is used for external libraries
+		\item \texttt{stdafx.h} is the \textbf{precompiled header} file --- for faster compilation, external library headers should be included here rather than in the main \texttt{.cpp} file
 	\end{itemize}
 \end{frame}
 
