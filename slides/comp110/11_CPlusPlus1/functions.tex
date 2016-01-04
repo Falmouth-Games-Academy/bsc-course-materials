@@ -1,0 +1,115 @@
+\part{Variables and types}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Function definitions}
+    \begin{itemize}
+        \item We have already seen an example of a function definition
+    \end{itemize}
+    \begin{lstlisting}
+int main()
+{
+    std::cout << "Hello, world!" << std::endl;
+    return 0;
+}
+    \end{lstlisting}
+    \begin{itemize}
+        \item The function \lstinline{main} takes no parameters, and returns a value of type \lstinline{int}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Function signatures}
+    \begin{itemize}
+        \item The \textbf{signature} of a function defines its return type, name, and parameters
+    \end{itemize}
+    \begin{lstlisting}
+double foo(std::string x, int y, bool z)
+    \end{lstlisting}
+    \pause
+    \begin{itemize}
+        \item This function takes three parameters: \pause
+        \lstinline{x} of type \lstinline{std::string}, \pause
+        \lstinline{y} of type \lstinline{int}, \pause
+        and \lstinline{z} of type \lstinline{bool} \pause
+        \item It returns a value of type \lstinline{double}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Functions without return values}
+    \begin{itemize}
+        \item It is possible to define a function which does not return a value, using the \lstinline{void} keyword
+        in place of its return type
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+void printNumber(int n)
+{
+    std::cout << n << std::endl;
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Pass by value}
+    \begin{itemize}
+        \item Function parameters are passed \textbf{by value}:
+        the function receives \textbf{copies} of the original variables
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+void changeName(std::string name)
+{
+    name = "Ed";
+}
+
+int main()
+{
+    std::string name = "Mike";
+    std::cout << name << std::endl;
+    changeName();
+    std::cout << name << std::endl;
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Pass by reference}
+    \begin{itemize}
+        \item Parameters can be passed \textbf{by reference} using the \lstinline{&}, allowing the function to modify them
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+void changeName(std::string& name)
+{
+    name = "Ed";
+}
+
+int main()
+{
+    std::string name = "Mike";
+    std::cout << name << std::endl;
+    changeName();
+    std::cout << name << std::endl;
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Constant references}
+    \begin{lstlisting}
+void greet(std::string name)
+{
+    std::cout << "Hi " << name << std::endl;
+}
+    \end{lstlisting}
+    \begin{itemize}
+        \item Pass by value --- the string will be copied in order to be passed in
+        \item More efficient to pass a reference, and mark it \lstinline{const} to prevent accidental modification
+    \end{itemize}
+    \begin{lstlisting}
+void greet(const std::string& name)
+{
+    std::cout << "Hi " << name << std::endl;
+}
+    \end{lstlisting}
+    \begin{itemize}
+        \item (this is only worthwhile for large data structures like strings and vectors, not for basic data types)
+    \end{itemize}
+\end{frame}
+
