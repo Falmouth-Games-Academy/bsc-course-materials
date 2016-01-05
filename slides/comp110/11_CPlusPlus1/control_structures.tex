@@ -16,9 +16,13 @@ else
     std::cout << "x is neither positive nor negative" << std::endl;
 }
 	\end{lstlisting}
-    \pause
+\end{frame}
+
+\begin{frame}[fragile]{If statement}
     \begin{itemize}
-        \item Condition is always in parentheses \lstinline{( )}
+        \item Works just like the \lstinline{if} statement in Python \pause
+        \item There can be zero, one or many \lstinline{else if} clauses \pause
+        \item The \lstinline{else} clause is optional, but if present then there can only be one
     \end{itemize}
 \end{frame}
 
@@ -26,13 +30,16 @@ else
     \begin{itemize}
         \item Numerical comparison operators work just like Python:
         \lstinline{==  !=  <  >  <=  >=}
+        \pause
         \item Boolean logic operators look a little different
     \end{itemize}
+    \pause
     Python uses \lstinline[language=Python]{and, or, not}
     \begin{lstlisting}[language=Python]
 if not (x < 0 or x > 100) and not (y < 0 or y > 100):
     print "Point is in rectangle"
     \end{lstlisting}
+    \pause
     C++ uses \lstinline{&&, ||, !}
     \begin{lstlisting}[language=Python]
 if (!(x < 0 || x > 100) && !(y < 0 || y > 100))
@@ -54,14 +61,30 @@ else if (x < 0)
 else
     std::cout << "x is neither positive nor negative" << std::endl;
     \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Single-statement blocks}
     \begin{itemize}
         \item Careful though! This can lead to obscure bugs
     \end{itemize}
     \begin{lstlisting}
-// This code is wrong!
 if (z == 0)
     x = 0; y = 0;
     \end{lstlisting}
+    \pause
+    \begin{itemize}
+        \item This is equivalent to
+    \end{itemize}
+    \begin{lstlisting}
+if (z == 0)
+{
+    x = 0;
+}
+y = 0;
+    \end{lstlisting}
+    \begin{itemize}
+        \item ... which is probably not what the programmer intended
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Switch statement}
@@ -92,6 +115,9 @@ while (x > 0)
     x--;
 }
 	\end{lstlisting}
+    \begin{itemize}
+        \item Same as Python
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Do-while loop}
@@ -147,6 +173,7 @@ for (int i = 0; i < 10; i++)
         \item The \textbf{loop statement} \lstinline{i++}
         \begin{itemize}
             \item This is executed at the end of each iteration of the loop
+            \item \lstinline{i++} means ``increment \lstinline{i}'' --- this is shorthand for \lstinline{i = i + 1}
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -179,6 +206,7 @@ for (int i = 0; i < 10; i++)
     std::cout << i << std::endl;
 }
 	\end{lstlisting}
+	\pause
     \begin{itemize}
         \item In Python, this would be written as a for-each loop, first using the \lstinline[language=Python]{range} function
         to construct the list of numbers $0, 1, 2, \dots, 9$:
@@ -187,5 +215,56 @@ for (int i = 0; i < 10; i++)
 for i in range(10):
     print i
 	\end{lstlisting}
+	\pause
+    \begin{itemize}
+        \item The C++ way doesn't require construction of a temporary list, so is more efficient
+    \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{Socrative \texttt{6E8NSW3IN}}
+    What would the first code fragment print?
+	\begin{lstlisting}
+for (int i = 0; i < 10; i++)
+    std::cout << i << " ";
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{6E8NSW3IN}}
+    What would the second code fragment print?
+	\begin{lstlisting}
+for (int i = 0; i <= 10; i++)
+    std::cout << i << " ";
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{6E8NSW3IN}}
+    What would the third code fragment print?
+	\begin{lstlisting}
+for (int i = 0; i < 10; i += 2)
+    std::cout << i << " ";
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{6E8NSW3IN}}
+    What would the fourth code fragment print?
+	\begin{lstlisting}
+for (int i = 10; i < 0; i++)
+    std::cout << i << " ";
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{6E8NSW3IN}}
+    What would the fifth code fragment print?
+	\begin{lstlisting}
+for (int i = 10; i > 0; i++)
+    std::cout << i << " ";
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{6E8NSW3IN}}
+    What would the sixth code fragment print?
+	\begin{lstlisting}
+for (int i = 10; i > 0; i--)
+    std::cout << i << " ";
+	\end{lstlisting}
+\end{frame}

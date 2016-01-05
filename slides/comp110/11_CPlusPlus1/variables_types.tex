@@ -35,20 +35,67 @@ a = "Hello"; // Error
 	\end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Basic data types}
+\begin{frame}[fragile]{Integers}
 	\begin{itemize}
-		\item \lstinline{int}: an integer (whole number)
-			\begin{center} \lstinline{7} \qquad \lstinline{136} \qquad \lstinline{-74965} \qquad \lstinline{0} \end{center}
-		\pause
-		\item \lstinline{double}: a floating point number
-			\begin{center} \lstinline{3.14159} \qquad \lstinline{136.0} \qquad \lstinline{-35.25825} \qquad \lstinline{.5} \end{center}
-		\pause
-		\item \lstinline{bool}: a boolean value
-			\begin{center} \lstinline{true} \qquad \lstinline{false} \end{center}
-		\pause
-		\item \lstinline{char}: an ASCII character
-			\begin{center} \lstinline{'Q'} \qquad \lstinline{'7'} \qquad \lstinline{'@'} \qquad \lstinline{' '} \qquad \lstinline{'\n'} \end{center}
+		\item \lstinline{int} is the basic data type for integers (whole numbers)
 	\end{itemize}
+	\begin{lstlisting}
+int a = 42;
+int b = -74965;
+int c = 0;
+int d = 0x19FD; // Hexadecimal
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item On Windows (32 and 64 bit), \lstinline{int} can store numbers from $-2^{31}$ to $2^{31}-1 \approx \pm 2$ billion \pause
+		\item \lstinline{unsigned int} stores \textbf{nonnegative} integers, from 0 to $2^{32} \approx 4$ billion \pause
+		\item Other integer types exist, for example \lstinline{long long} is a 64 bit integer
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Floating point numbers}
+	\begin{itemize}
+		\item \lstinline{float} and \lstinline{double} can store floating point numbers (numbers with a fractional part)
+	\end{itemize}
+	\begin{lstlisting}
+double a = 3.14159;
+double b = -42;
+double c = 3.0e8; // Scientific notation
+float d = 123.456f; // Note the 'f' suffix for float
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item \lstinline{float} uses less space, and can be slightly faster, but is less precise \pause
+		\item Generally \lstinline{double} is the better choice
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Characters}
+	\begin{itemize}
+		\item \lstinline{char} stores a single ASCII character
+	\end{itemize}
+	\begin{lstlisting}
+char foo = 'Q';
+char bar = '7';
+char baz = '@';
+char space = ' ';
+char newLine = '\n'; // Escape sequence
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item \lstinline{char} can also be thought of as an 8-bit integer, i.e. an integer between $-128$ and $127$ ---
+			C++ makes no distinction between ASCII characters and their numerical codes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Booleans}
+	\begin{itemize}
+		\item \lstinline{bool} stores a boolean (true or false) value
+	\end{itemize}
+	\begin{lstlisting}
+bool isAlive = true;
+bool isDead = false;
+	\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Vectors}
@@ -123,6 +170,7 @@ int i, j, k;
 bool isDead;
 std::string playerName;
 	\end{lstlisting}
+	\pause
 	\begin{itemize}
 		\item A variable declaration can optionally specify an \textbf{initial value}:
 	\end{itemize}

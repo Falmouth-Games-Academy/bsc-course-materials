@@ -10,7 +10,9 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=C++}
+\lstset{language=C++,
+		morekeywords={each,in}
+}
 
 \begin{document}
 \title{Transition to C++ I}   
@@ -19,11 +21,13 @@
 \frame{\titlepage} 
 
 \begin{frame}{Learning outcomes}
-	By the end of this session you will
+	In this session you will learn how to...
 	\begin{itemize}
-		\item Understand a thing
-		\item Understand another thing
-		\item Be convinced that \LaTeX\ makes better-looking slides than PowerPoint
+		\item Use Visual C++ 2015 to create, compile and run a C++ application
+		\item Declare variables in C++, and some of the basic types they can have
+		\item Use various control structures in C++, including \lstinline{if}, \lstinline{switch},
+			\lstinline{while}, \lstinline{for} and \lstinline{for each}
+		\item Define your own C++ functions
 	\end{itemize}
 \end{frame}
 
@@ -33,7 +37,11 @@
 
 \input{control_structures}
 
-\input{functions}
+% Move this to next week
+%\input{functions}
+
+\part{Live coding: Hangman}
+\frame{\partpage}
 
 % -------------------------------------------------------
 

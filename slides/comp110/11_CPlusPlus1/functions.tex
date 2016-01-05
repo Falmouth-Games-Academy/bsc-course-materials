@@ -1,4 +1,4 @@
-\part{Variables and types}
+\part{Functions}
 \frame{\partpage}
 
 \begin{frame}[fragile]{Function definitions}
@@ -63,16 +63,16 @@ void changeName(std::string name)
 int main()
 {
     std::string name = "Mike";
-    std::cout << name << std::endl;
+    std::cout << name << std::endl; // Mike
     changeName();
-    std::cout << name << std::endl;
+    std::cout << name << std::endl; // Mike
 }
     \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Pass by reference}
     \begin{itemize}
-        \item Parameters can be passed \textbf{by reference} using the \lstinline{&}, allowing the function to modify them
+        \item Parameters can be passed \textbf{by reference} using \lstinline{&}, allowing the function to modify them
     \end{itemize}
     \pause
     \begin{lstlisting}
@@ -84,11 +84,20 @@ void changeName(std::string& name)
 int main()
 {
     std::string name = "Mike";
-    std::cout << name << std::endl;
+    std::cout << name << std::endl; // Mike
     changeName();
-    std::cout << name << std::endl;
+    std::cout << name << std::endl; // Ed
 }
     \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{One area where C++ is ``simpler'' than Python!}
+    \begin{itemize}
+        \item Recall from COMP110 week 6: in Python, basic data types (numbers, booleans, strings etc)
+            are passed by value, and object types (lists, dictionaries, class instances) are passed by reference
+        \pause
+        \item In C++, everything is passed by value unless it is explicitly marked as a reference with \lstinline{&}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Constant references}
@@ -98,8 +107,9 @@ void greet(std::string name)
     std::cout << "Hi " << name << std::endl;
 }
     \end{lstlisting}
+    \pause
     \begin{itemize}
-        \item Pass by value --- the string will be copied in order to be passed in
+        \item The string will be copied in order to be passed in \pause
         \item More efficient to pass a reference, and mark it \lstinline{const} to prevent accidental modification
     \end{itemize}
     \begin{lstlisting}
@@ -108,6 +118,7 @@ void greet(const std::string& name)
     std::cout << "Hi " << name << std::endl;
 }
     \end{lstlisting}
+    \pause
     \begin{itemize}
         \item (this is only worthwhile for large data structures like strings and vectors, not for basic data types)
     \end{itemize}
