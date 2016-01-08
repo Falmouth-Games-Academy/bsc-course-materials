@@ -1,0 +1,54 @@
+% Uncomment this line for on-screen presentation
+\documentclass[xcolor={dvipsnames}]{beamer}\usepackage{etoolbox}\newtoggle{printable}\togglefalse{printable}
+
+% Uncomment this line for printable slides (disable animations and don't waste ink)
+%\documentclass[handout, xcolor={dvipsnames}]{beamer}\usepackage{etoolbox}\newtoggle{printable}\toggletrue{printable}
+
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+		morekeywords={each,in}
+}
+
+\begin{document}
+\title{Transition to C++ II}   
+\subtitle{COMP110: Principles of Computing}
+
+\frame{\titlepage} 
+
+\begin{frame}{Learning outcomes}
+	In this session you will learn how to...
+	\begin{itemize}
+		\item Split your program into multiple files, and understand the difference between
+		    \textbf{source files} and \textbf{header files}
+		\item Understand the C++ build pipeline, and the roles of the \textbf{preprocessor},
+		    \textbf{compiler} and \textbf{linker}
+		\item Use arrays, and the difference between creating them on the \textbf{stack}
+		    versus on the \textbf{heap}
+		\item Define C++ functions, and how passing \textbf{by reference} differs from passing \textbf{by value}
+	\end{itemize}
+\end{frame}
+
+\input{modular}
+\input{build_process}
+\input{pointers}
+\input{functions}
+
+\part{Live coding: Noughts and Crosses}
+\frame{\partpage}
+
+% -------------------------------------------------------
+
+%\part{The compiler}
+%\frame{\partpage}
+%
+%\begin{frame}
+%	\frametitle{The build process}
+%	\includegraphics[height=\textwidth,angle=90]{compiler_sketch}
+%\end{frame}
+
+\end{document}
