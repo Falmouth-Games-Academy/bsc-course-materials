@@ -3,12 +3,12 @@
 
 \begin{frame}{Executing programs}
     \begin{itemize}
-        \item CPUs execute \textbf{machine code}
-        \item Programs must be \textbf{translated} into machine code for execution
-        \item There are three main ways of doing this:
+        \item CPUs execute \textbf{machine code} \pause
+        \item Programs must be \textbf{translated} into machine code for execution \pause
+        \item There are three main ways of doing this: \pause
         \begin{itemize}
-            \item An \textbf{interpreter} is an application which reads the program source code and executes it directly
-            \item A \textbf{compiler} is an application which converts the program source code into executable machine code
+            \item An \textbf{interpreter} is an application which reads the program source code and executes it directly \pause
+            \item A \textbf{compiler} is an application which converts the program source code into executable machine code \pause
             \item A \textbf{just-in-time (JIT) compiler} is halfway between the two --- it compiles the program on-the-fly
                 at runtime
         \end{itemize}
@@ -24,7 +24,7 @@
 		        \item Lua
 		        \item Bespoke scripting languages
 		    \end{itemize}
-		\end{column}
+		\end{column} \pause
 		\begin{column}{0.3\textwidth}
 		    Compiled:
 		    \begin{itemize}
@@ -32,7 +32,7 @@
 		        \item C++
 		        \item Swift
 		    \end{itemize}
-		\end{column}
+		\end{column} \pause
 		\begin{column}{0.3\textwidth}
 		    JIT compiled:
 		    \begin{itemize}
@@ -47,31 +47,32 @@
 
 \begin{frame}{Interpreter vs compiler}
     \begin{itemize}
-        \item Run-time efficiency: compiler $>$ interpreter
+        \item Run-time efficiency: compiler $>$ interpreter \pause
         \begin{itemize}
-            \item The compiler translates the program \textbf{in advance}, on the developer's machine
-            \item The interpreter translates the program \textbf{at runtime}, on the user's machine
+            \item The compiler translates the program \textbf{in advance}, on the developer's machine \pause
+            \item The interpreter translates the program \textbf{at runtime}, on the user's machine \pause
         \end{itemize}
-        \item Portability: compiler $<$ interpreter
+        \item Portability: compiler $<$ interpreter \pause
         \begin{itemize}
-            \item A compiled program can only run on the operating system and CPU architecture it was compiled for
-            \item An interpreted program can run on any machine, as long as a suitable interpreter is available
+            \item A compiled program can only run on the operating system and CPU architecture it was compiled for \pause
+            \item An interpreted program can run on any machine, as long as a suitable interpreter is available \pause
         \end{itemize}
+        \item JIT compilers have similar pros/cons to interpreters \pause
         \item For games, run-time efficiency is usually much more important than portability
     \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{The C++ build process}
-    \textbf{Preprocessor}
+    \textbf{Preprocessor} \pause
     \begin{itemize}
-        \item Replaces \lstinline{#include} directives with the contents of the appropriate header files
-        \item Handles other preprocessor directives (\lstinline{#define}, \lstinline{#if} etc --- more on these another time)
+        \item Replaces \lstinline{#include} directives with the contents of the appropriate header files \pause
+        \item Handles other preprocessor directives (\lstinline{#define}, \lstinline{#if} etc --- more on these another time) \pause
     \end{itemize}
-    \textbf{Compiler}
+    \textbf{Compiler} \pause
     \begin{itemize}
-        \item Translates each source file into an \textbf{object file} containing machine code
+        \item Translates each source file into an \textbf{object file} containing machine code \pause
     \end{itemize}
-    \textbf{Linker}
+    \textbf{Linker} \pause
     \begin{itemize}
         \item Combines the object files together with any external libraries to produce an \textbf{executable}
             (on Windows, a .exe file)
@@ -82,25 +83,34 @@
     \includegraphics[width=\textwidth]{compiler_flowchart.pdf}
 \end{frame}
 
+\begin{frame}[fragile]{Modular design revisited}
+    \begin{itemize}
+        \item Your code can call any function for which there is a \textbf{declaration} in the current file
+            (in the file itself or \lstinline{#include}d) \pause
+        \item The \textbf{definition} of the function may be in another file \pause
+        \item The \textbf{linker} resolves the function call in this case
+    \end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{Incremental compilation}
     \begin{itemize}
-        \item Compilation takes time --- compiling a AAA game can take several hours
-        \item Visual C++ stores intermediate files (e.g.\ \texttt{.obj} files) on disk
+        \item Compilation takes time --- compiling a AAA game can take several hours \pause
+        \item Visual C++ stores intermediate files (e.g.\ \texttt{.obj} files) on disk \pause
         \item Only the changed files need to be run through the preprocessor and compiler again
-            $\implies$ faster re-compilation during development
-        \item \textbf{Build $\to$ Clean} removes all intermediate files
+            $\implies$ faster re-compilation during development \pause
+        \item \textbf{Build $\to$ Clean} removes all intermediate files \pause
         \item \textbf{Build $\to$ Rebuild} forces Visual C++ to recompile everything
     \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Precompiled headers}
     \begin{itemize}
-        \item Headers may need to be compiled multiple times if they are included in multiple source files
+        \item Headers may need to be compiled multiple times if they are included in multiple source files \pause
         \item Headers may be very large ---
-            e.g.\ \texttt{Windows.h} includes dozens of headers totalling many thousands of lines
-        \item In Visual C++ projects, \texttt{stdafx.h} is a \textbf{precompiled header}
+            e.g.\ \texttt{Windows.h} includes dozens of headers totalling many thousands of lines \pause
+        \item In Visual C++ projects, \texttt{stdafx.h} is a \textbf{precompiled header} \pause
         \item \lstinline{#include "stdafx.h"} doesn't work like copy and paste ---
-            instead, the compiler uses the precompiled header information
+            instead, the compiler uses the precompiled header information \pause
         \item Precompiled header only needs to be recompiled if \texttt{stdafx.h} (or something it includes)
             changes, which should be rare
     \end{itemize}
@@ -110,17 +120,18 @@
     \begin{center}
         \includegraphics[width=0.6\textwidth]{vcpp_build_toolbar.PNG}
     \end{center}
+     \pause
     \begin{itemize}
         \item Configuration:
         \begin{itemize}
-            \item \textbf{Debug} allows use of the Visual C++ debugger
-            \item \textbf{Release} produces optimised code --- usually 2--10 $\times$ faster than Debug
-            \item Generally use Debug for development, Release for optimisation and distributing the finished application
+            \item \textbf{Debug} allows use of the Visual C++ debugger \pause
+            \item \textbf{Release} produces optimised code --- usually 2--10 $\times$ faster than Debug \pause
+            \item Generally use Debug for development, Release for optimisation and distributing the finished application \pause
         \end{itemize}
         \item Platform:
         \begin{itemize}
-            \item \textbf{x86} runs on 32-bit and 64-bit versions of Windows
-            \item \textbf{x64} runs on 64-bit Windows only
+            \item \textbf{x86} runs on 32-bit and 64-bit versions of Windows \pause
+            \item \textbf{x64} runs on 64-bit Windows only \pause
             \item Generally use x86 for maximum compatibility, x64 for apps which need to use $>2$GB memory
                 or where a significant speed benefit is measured
         \end{itemize}

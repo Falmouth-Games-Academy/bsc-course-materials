@@ -37,8 +37,8 @@
 
 In this assignment, you will create three small C++ programs:
 \begin{enumerate}[label=\Alph*.]
-	\item A console application implementing the word guessing game Hangman;
-	\item A console application implementing the 2-player strategy game Connect~4;
+	\item A console application implementing the ``terminal hacking'' word-guessing game from the Fallout games;
+	\item A console application implementing the 2-player board game Connect~4;
 	\item A graphical application which generates and displays the Mandelbrot fractal.
 \end{enumerate}
 
@@ -95,76 +95,7 @@ The extra quality criteria for this worksheet are as follows:
 	demonstrating mastery of C++ programming concepts appropriate to the task at hand.
 \end{enumerate}
 
-\clearpage
-\part{Hangman}
-
-In this part, you will implement a basic Hangman\footnote{\url{https://en.wikipedia.org/wiki/Hangman_(game)}} game.
-The provided skeleton project contains code for reading a list of words from a text file, and choosing one at random.
-You will implement the rest of the game.
-
-\section{} \label{core-a-first}
-
-\textbf{Implement} a function \lstinline{char getLetter()} which does the following:
-\begin{enumerate}
-\item \label{hangman:step1} Prompt the user to enter a letter.
-\item Get a line of input from the console, and take the first character.
-\item If the character is a letter, convert it to upper case and return it.
-\item Otherwise, display an error and go to step~\ref{hangman:step1}.
-\end{enumerate}
-
-You may find the following functions useful: \lstinline{isalpha}, \lstinline{toupper}, and \lstinline{std::getline}.
-Look online for details of how to use them.
-
-\section{}
-
-\textbf{Implement} the following algorithm as a C++ function.
-The algorithm takes the current partially revealed word, the secret word, and a guessed letter.
-It returns a new partially revealed word, in which the guessed letter has been filled in where it appears in the string.
-
-\begin{algorithm}
-\begin{algorithmic}
-	\Procedure{FillInLetter}{partialWord, secretWord, letter}
-		\State $\text{result} \gets \text{empty string}$
-		\For{$i = 0, 1, \dots, \text{secretWord.length} - 1$}
-			\If{$\text{secretWord}[i] = \text{letter}$}
-				\State append letter to result
-			\Else
-				\State append $\text{partialWord}[i]$ to result
-			\EndIf
-		\EndFor
-		\State \textbf{return} result
-	\EndProcedure
-\end{algorithmic}
-\end{algorithm}
-
-The following table gives some examples of possible input and output:
-
-\begin{center}
-\begin{tabular}{|ccc|c|}
-\hline
-partialWord & secretWord & letter & result \\ \hline
-\lstinline{"B-----"} & \lstinline{"BANANA"} & \lstinline{'A'} & \lstinline{"BA-A-A"} \\ \hline
-\lstinline{"B-----"} & \lstinline{"BANANA"} & \lstinline{'E'} & \lstinline{"B-----"} \\ \hline
-\lstinline{"-----"} & \lstinline{"APPLE"} & \lstinline{'L'} & \lstinline{"---L-"} \\ \hline
-\lstinline{"-----"} & \lstinline{"APPLE"} & \lstinline{'B'} & \lstinline{"-----"} \\ \hline
-\end{tabular}
-\end{center}
-
-\section{} \label{core-a-last}
-
-\textbf{Implement} a playable Hangman game, using the functions implemented above and structured
-according to the following flowchart:
-
-\begin{center}
-\includegraphics[height=0.5\textheight]{hangman_flowchart.png}
-\end{center}
-
-\section{Stretch goal} \label{stretch-a}
-
-The game would be more interesting if the player had a limited number of lives in which to guess the word,
-and lost a life for guessing a letter which was not present in the word.
-
-\textbf{Modify} the flowchart above to make this change. \textbf{Modify} your C++ program to reflect your revised flowchart.
+\input{a_hacking}
 
 \clearpage
 \part{Connect 4}
