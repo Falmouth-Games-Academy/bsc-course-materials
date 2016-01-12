@@ -1,0 +1,39 @@
+\part{Mandelbrot}
+
+In this part, ...
+
+\section{} \label{core-c-first}
+
+\textbf{Implement} the following algorithm in C++. Use a \lstinline{switch} statement,
+taking advantage of the fact that casting a \lstinline{double} to an \lstinline{int} causes it to be rounded down.
+The \lstinline{abs} and \lstinline{fmod} functions are defined in \lstinline{<math.h>}.
+
+\begin{algorithm}
+\begin{algorithmic}
+	\Procedure{HSVtoRGB}{$h, s, v$}
+		\State $c \gets s \times v$
+		\State $h' = 6 \times h$
+		\State $x \gets c \times \left(1 - \operatorname{abs} \left( \operatorname{fmod} \left( h', 2 \right) - 1 \right) \right)$
+		\If{$0 \leq h' < 1$}     \State $r = c$; $g = x$; $b = 0$
+		\ElsIf{$1 \leq h' < 2$}  \State $r = x$; $g = c$; $b = 0$
+		\ElsIf{$2 \leq h' < 3$}  \State $r = 0$; $g = c$; $b = x$
+		\ElsIf{$3 \leq h' < 4$}  \State $r = 0$; $g = x$; $b = c$
+		\ElsIf{$4 \leq h' < 5$}  \State $r = x$; $g = 0$; $b = c$
+		\ElsIf{$5 \leq h' < 6$}  \State $r = c$; $g = 0$; $b = x$
+		\Else                    \State $r = 0$; $g = 0$; $b = 0$
+		\EndIf
+		\State \textbf{return} $(r+v-c,\ g+v-c,\ b+v-c)$
+	\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+This algorithm converts a colour in HSV space to the equivalent colour in RGB space;
+all of $r,g,b,h,s,v$ are assumed to be between $0$ and $1$.
+
+\section{} \label{core-c-last}
+
+TODO
+
+\section{Stretch goal} \label{stretch-c}
+
+TODO

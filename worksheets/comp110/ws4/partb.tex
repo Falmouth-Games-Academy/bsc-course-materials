@@ -1,0 +1,106 @@
+\part{Connect 4}
+
+In this part, ...
+
+\section{} \label{core-b-first}
+
+The following algorithm checks for a single row of $4$ counters on the board.
+The coordinates $s_x, s_y$ give the starting point of the line,
+and $d_x, d_y$ give the direction.
+
+\begin{algorithm}
+\begin{algorithmic}
+    \Procedure{CheckLine}{board, $s_x$, $s_y$, $d_x$, $d_y$}
+        \If{$\text{board}[s_x, s_y]$ is empty}
+            \State \textbf{return} false
+        \EndIf
+        \For{$i = 1, 2, 3$}
+            \State $t_x \gets s_x + d_x \times i$
+            \State $t_y \gets s_y + d_y \times i$
+            \If{$t_x, t_y$ is outside the bounds of the board}
+                \State \textbf{return} false
+            \ElsIf{$\text{board}[t_x, t_y] \neq \text{board}[s_x, s_y]$}
+                \State \textbf{return} false
+            \EndIf
+        \EndFor
+        \State \textbf{return} true
+    \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Implement} this algorithm as a C++ function.
+
+\section{}
+
+Given the above function, it is possible to check the entire board for a winning line as follows.
+Loop through each square on the board.
+For each square, use $\Call{CheckLine}$ to check for the following four lines:
+\begin{itemize}
+\item A horizontal line ($d_x=1, d_y=0$)
+\item A vertical line ($d_x=1, d_y=0$)
+\item A diagonal line ($d_x=1, d_y=1$)
+\item A diagonal line in the other direction ($d_x=1, d_y=-1$)
+\end{itemize}
+If $\Call{CheckLine}$ returns true for any of these, then the winner is the player who owns the square
+currently being considered.
+If $\Call{CheckLine}$ never returns true for any square on the board, then there is no winner.
+
+\textbf{Implement} a C++ function \texttt{checkWin}, based on the above description.
+It should take the game board as a parameter, and return an integer:
+$1$ or $2$ if the corresponding player is the winner,
+or $0$ if there is no winner.
+
+
+\begin{algorithm}
+\begin{algorithmic}
+    \For{each space on the board}
+        \State check if there is a horizontal ($d_x=1, d_y=0$) line starting at that space
+        \State check if there is a vertical ($d_x=0, d_y=1$) line starting at that space
+        \State check if there is a diagonal ($d_x=1, d_y=1$) line starting at that space
+        \State check if there is a diagonal ($d_x=1, d_y=-1$) line starting at that space
+        \If{any of the above lines exist}
+            \State the winner is the player who owns the current space
+        \EndIf
+    \EndFor
+    \If{no lines were found}
+        \State there is no winner
+    \EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\section{} \label{core-b-last}
+
+\textbf{Implement} the main loop of the game, structured
+according to the flowchart shown in Figure~\ref{fig:flowchart_b}.
+Note that ``switch current player'' means to set the current player to $2$ if it is currently $1$, or vice versa.
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm]
+\node (start) [startstop] {Start};
+\node (init) [process, below of=start] {Current player = 1};
+\node (displayboard) [io, below of=init] {Show board};
+\node (entermove) [io, below of=displayboard] {Enter move};
+\node (domove) [process, below of=entermove] {Perform move};
+\node (iswin) [decision, below of=domove, yshift=-0.5cm] {Is there a winner?};
+\node (youwin) [io, below of=iswin, yshift=-0.5cm] {Print winner};
+\node (stopwin) [startstop, below of=youwin] {Stop};
+\node (switchplayer) [process, right of=iswin, xshift=3cm] {Switch \mbox{current} player};
+\draw [arrow] (start) -- (init);
+\draw [arrow] (init) -- (displayboard);
+\draw [arrow] (displayboard) -- (entermove);
+\draw [arrow] (entermove) -- (domove);
+\draw [arrow] (domove) -- (iswin);
+\draw [arrow] (iswin) -- node[anchor=east] {yes} (youwin);
+\draw [arrow] (youwin) -- (stopwin);
+\draw [arrow] (iswin) -- node[anchor=south] {no} (switchplayer);
+\draw [arrow] (switchplayer) |- (displayboard);
+\end{tikzpicture}
+\end{center}
+\caption{Flowchart for the Connect 4 game}
+\label{fig:flowchart_b}
+\end{figure}
+
+\section{Stretch goal} \label{stretch-b}
+
+TODO

@@ -94,25 +94,11 @@
 
 \begin{frame}[fragile]{Incremental compilation}
     \begin{itemize}
-        \item Compilation takes time --- compiling a AAA game can take several hours \pause
-        \item Visual C++ stores intermediate files (e.g.\ \texttt{.obj} files) on disk \pause
-        \item Only the changed files need to be run through the preprocessor and compiler again
-            $\implies$ faster re-compilation during development \pause
-        \item \textbf{Build $\to$ Clean} removes all intermediate files \pause
-        \item \textbf{Build $\to$ Rebuild} forces Visual C++ to recompile everything
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Precompiled headers}
-    \begin{itemize}
-        \item Headers may need to be compiled multiple times if they are included in multiple source files \pause
-        \item Headers may be very large ---
-            e.g.\ \texttt{Windows.h} includes dozens of headers totalling many thousands of lines \pause
-        \item In Visual C++ projects, \texttt{stdafx.h} is a \textbf{precompiled header} \pause
-        \item \lstinline{#include "stdafx.h"} doesn't work like copy and paste ---
-            instead, the compiler uses the precompiled header information \pause
-        \item Precompiled header only needs to be recompiled if \texttt{stdafx.h} (or something it includes)
-            changes, which should be rare
+        \item Compilation can take a long time \pause
+        \item Visual C++ does \textbf{incremental compilation}: only recompiles source files that have changed \pause
+        \item Visual C++ uses \textbf{precompiled headers}: anything \lstinline{#include}d in \texttt{stdafx.h}
+            is only compiled when it changes \pause
+        \item Use \textbf{Build $\to$ Clean} or \textbf{Build $\to$ Rebuild} to force everything to be recompiled
     \end{itemize}
 \end{frame}
 
@@ -135,5 +121,21 @@
             \item Generally use x86 for maximum compatibility, x64 for apps which need to use $>2$GB memory
                 or where a significant speed benefit is measured
         \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Anatomy of a Visual C++ solution}
+    \begin{itemize}
+        \item A \textbf{project} (.vcxproj) is a collection of source files
+            which make up a single application or library \pause
+        \item A \textbf{solution} (.sln) is a collection of projects \pause
+        \item The following are intermediate files
+        \begin{itemize}
+            \item .sdf files (Visual C++ navigation info)
+            \item ipch folder (precompiled headers)
+            \item Debug and Release folders (compiled object code and executables) \pause
+        \end{itemize}
+        \item These files can be deleted to save space, and should be in your \texttt{.gitignore} file
+            to prevent them being uploaded to GitHub
     \end{itemize}
 \end{frame}
