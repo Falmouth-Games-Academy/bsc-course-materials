@@ -1,0 +1,114 @@
+\part{Object-oriented programming}
+\frame{\partpage}
+
+\begin{frame}[fragile]{OOP refresher}
+    \begin{itemize}
+        \item A \textbf{class} is a collection of \textbf{fields} (data) and \textbf{methods} (functions)
+        \item Fields and methods may be \textbf{public} (accessible everywhere), \textbf{protected} (accessible in the class and classes that inherit from it) or \textbf{private} (accessible in the class only)
+        \item Classes may \textbf{inherit} fields and methods from other classes
+        \item Subclasses may \textbf{override} methods which they inherit --- this gives rise to \textbf{polymorphism}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Class declarations}
+    \begin{columns}[onlytextwidth]
+		\begin{column}{0.48\textwidth}
+			In Python:
+            % NB: tab size = 2 to make it fit on the slide
+			\begin{lstlisting}[language=Python]
+class MyClass:
+  def __init__(self):
+    self.__field = 7
+    
+  def doMethod(self, x):
+    print x * self.__field
+            \end{lstlisting}
+		\end{column}
+		\pause
+		\begin{column}{0.48\textwidth}
+			In C++:
+            % NB: tab size = 2 to make it fit on the slide
+			\begin{lstlisting}
+class MyClass
+{
+public:
+  void doMethod(int x)
+  {
+    std::cout
+        << x * field
+        << std::endl;
+  }
+    
+private:
+  int field = 7;
+};
+			\end{lstlisting}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Fields}
+    \begin{itemize}
+        \item In Python, fields are declared by assigning values to them in the \lstinline[language=Python]{__init__} method
+        \item In C++, fields (and their types) are declared in the class declaration, just like variables
+        \item Unlike variables, the declaration can't include an initial value --- initial values are set in the constructor
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Methods}
+    \begin{itemize}
+        \item Methods are defined like functions
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Constructors and destructors}
+    \begin{itemize}
+        \item The \textbf{constructor} is executed when the class is instantiated
+        \item The \textbf{destructor} is executed when the instance is freed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Modular program design}
+    \begin{itemize}
+        \item Method \textbf{declarations} go in the class declaration
+        \item Method \textbf{definitions} look like function definitions, with the function name replaced with \lstinline{ClassName::methodName}
+        \item Good practice: put class declaration in \texttt{ClassName.h}, and method definitions in \texttt{ClassName.cpp}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example: Circle.h}
+    \begin{lstlisting}
+#pragma once
+
+class Circle
+{
+public:
+    Circle(double radius);
+    
+    double getArea();
+
+private:
+    double radius;
+};
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Example: Circle.cpp}
+    \begin{lstlisting}
+#include "stdafx.h"
+#include "Circle.h"
+
+Circle::Circle(double radius)
+    : radius(radius)
+{
+}
+
+double Circle::getArea()
+{
+    return M_PI * radius * radius;
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Inheritance}
+\end{frame}

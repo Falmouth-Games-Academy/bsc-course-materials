@@ -1,5 +1,9 @@
 .DS_Store
 
+## Misc junk
+Thumbs.db
+*.tps
+
 ## Visual Studio files
 .vs
 *.opensdf
