@@ -8,6 +8,7 @@ Thumbs.db
 .vs
 *.opensdf
 *.sdf
+*.VC.opendb
 ipch
 Debug
 Release

@@ -1,16 +1,31 @@
 \part{Terminal Hacking}
 
-In this part, you will implement a version of the ``terminal hacking'' minigame from \emph{Fallout~4} (Bethesda, 2015).
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{fallout_terminal.jpg}
+    \end{center}
+    \caption{A screenshot of the hacking minigame in \emph{Fallout~4}.
+    Image from \protect\url{http://fallout.wikia.com/wiki/Terminal}.}
+    \label{fig:fallout_terminal}
+\end{figure}
+
+In this part, you will implement a version of the ``terminal hacking'' minigame from \emph{Fallout~4} (Bethesda, 2015); see Figure~\ref{fig:fallout_terminal}.
 In this minigame you must guess a secret $n$-letter word, one of several options presented to you.
 On choosing an option, you are told the \emph{likeness}: the number of letters which match the secret word (i.e.\ the same letter in the same position).
 For example if the secret word is \texttt{HOUSE} and your guess is \texttt{MOUSE}, the likeness is $4$ out of $5$.
 If your guess is \texttt{HOPES}, the likeness is $2$ out of $5$ (the letters \texttt{S} and \texttt{E} do not count as they are in the wrong positions).
 
+The skeleton solution contains a project named \texttt{PartA\_TerminalHacking} for you to build upon.
+This contains code to read words from a file, and choose the secret word and other words.
+You will implement the rest of the game.
+
 \section{} \label{core-a-first}
 
-The following algorithm takes a guessed word and the secret word, and returns the likeness score as described above.
+Algorithm~\ref{alg:a_likeness} takes a guessed word and the secret word, and returns the likeness score as described above.
 
-\begin{algorithm}
+\textbf{Implement} the algorithm as a C++ function in \texttt{PartA\_TerminalHacking.cpp}, choosing appropriate data types for the parameters, return value, and any variables.
+
+\begin{algorithm}[t]
 \begin{algorithmic}
     \Procedure{GetLikeness}{guessedWord, secretWord}
         \State $\text{result} \gets 0$
@@ -22,9 +37,9 @@ The following algorithm takes a guessed word and the secret word, and returns th
         \State \textbf{return} result
     \EndProcedure
 \end{algorithmic}
+\caption{An algorithm for calculating the likeness score for the terminal hacking minigame.}
+\label{alg:a_likeness}
 \end{algorithm}
-
-\textbf{Implement} the algorithm as a C++ function, choosing appropriate data types for the parameters, return value, and any variables.
 
 \section{} \label{core-a-last}
 

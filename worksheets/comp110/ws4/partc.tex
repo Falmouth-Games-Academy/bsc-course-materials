@@ -1,39 +1,52 @@
 \part{Mandelbrot}
 
-In this part, ...
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{mandelbrot.png}
+    \end{center}
+    \caption{The Mandelbrot set fractal.}
+    \label{fig:mandelbrot}
+\end{figure}
+
+In this part, you will use the CImg library (\url{http://cimg.eu/}) to write a program to generate and display the \emph{Mandelbrot set} fractal; see Figure~\ref{fig:mandelbrot}.
+This fractal colours each pixel of the image according to an iterated mathematical formula, as described below.
 
 \section{} \label{core-c-first}
 
-\textbf{Implement} the following algorithm in C++. Use a \lstinline{switch} statement,
-taking advantage of the fact that casting a \lstinline{double} to an \lstinline{int} causes it to be rounded down.
-The \lstinline{abs} and \lstinline{fmod} functions are defined in \lstinline{<math.h>}.
+To generate an interesting fractal, the on-screen $x$ and $y$ coordinates must first be rescaled.
+In the skeleton project the pixel coordinates range from $0$ to $800$,
+whereas the Mandelbrot set fractal is most interesting in the region $-2 \leq x \leq 1$ and $-1.5 \leq y \leq 1.5$.
 
-\begin{algorithm}
-\begin{algorithmic}
-	\Procedure{HSVtoRGB}{$h, s, v$}
-		\State $c \gets s \times v$
-		\State $h' = 6 \times h$
-		\State $x \gets c \times \left(1 - \operatorname{abs} \left( \operatorname{fmod} \left( h', 2 \right) - 1 \right) \right)$
-		\If{$0 \leq h' < 1$}     \State $r = c$; $g = x$; $b = 0$
-		\ElsIf{$1 \leq h' < 2$}  \State $r = x$; $g = c$; $b = 0$
-		\ElsIf{$2 \leq h' < 3$}  \State $r = 0$; $g = c$; $b = x$
-		\ElsIf{$3 \leq h' < 4$}  \State $r = 0$; $g = x$; $b = c$
-		\ElsIf{$4 \leq h' < 5$}  \State $r = x$; $g = 0$; $b = c$
-		\ElsIf{$5 \leq h' < 6$}  \State $r = c$; $g = 0$; $b = x$
-		\Else                    \State $r = 0$; $g = 0$; $b = 0$
-		\EndIf
-		\State \textbf{return} $(r+v-c,\ g+v-c,\ b+v-c)$
-	\EndProcedure
-\end{algorithmic}
-\end{algorithm}
+Let $p_x$ be the $x$ coordinate of the pixel. This can be remapped into the range $x_{\text{min}}$ to $x_{\text{max}}$ using the following formula:
+\begin{equation*}
+    x_0 = \frac{p_x}{\text{image.width}} \times \left( x_{\text{max}} - x_{\text{min}} \right) + x_{\text{min}}
+\end{equation*}
+The $y$ coordinate can be remapped using a similar formula.
 
-This algorithm converts a colour in HSV space to the equivalent colour in RGB space;
-all of $r,g,b,h,s,v$ are assumed to be between $0$ and $1$.
+\textbf{Implement} the above calculations for the $x$ and $y$ coordinates, at the indicated parts of \texttt{PartC\_Mandelbrot.cpp}.
 
 \section{} \label{core-c-last}
 
-TODO
+The Mandelbrot set is based on the following sequence of numbers. Let $x_0$ and $y_0$ be the coordinates of a point in the image.
+Then the sequence $x_1, y_1, x_2, y_2, x_3, y_3, \dots$ is defined\footnote{%
+    If you are familiar with complex numbers, you may notice that this is equivalent to $z_{j+1} = z_j^2 + z_0$, where $z_j = x_j + y_j i$.
+} recursively for $i = 0, 1, 2, 3, \dots$ by:
+
+\begin{align*}
+    x_{i+1} &= (x_i)^2 - (y_i)^2 + x_0 \\
+    y_{i+1} &= (2 \times x_i \times y_i) + y_0 \\
+\end{align*}
+
+The points are coloured according to the \emph{smallest} value of $i$ for which $(x_i)^2 + (y_i)^2 \geq 4$.
+If such a value of $i$ is not found after a large number of iterations (for example $i=200$), the pixel is coloured black.
+
+\textbf{Implement} an algorithm which performs the above computation, determining the smallest value of $i$
+for which $(x_i)^2 + (y_i)^2 \geq 4$ and selecting the appropriate pixel colour.
+Implement the algorithm in \texttt{PartC\_Mandelbrot.cpp} so that the program generates the Mandelbrot set fractal (Figure~\ref{fig:mandelbrot}) when it is run.
 
 \section{Stretch goal} \label{stretch-c}
 
-TODO
+Mathematicians have discovered many other fractals besides the Mandelbrot set.
+
+\textbf{Implement} a new program, based on your Mandelbrot program,
+to generate a different type of fractal which you have found online or in the academic literature.

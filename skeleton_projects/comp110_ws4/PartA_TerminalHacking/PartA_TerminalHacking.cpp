@@ -2,61 +2,44 @@
 //
 
 #include "stdafx.h"
+#include "WordList.h"
 
-// Read all words of the specified length
-std::vector<std::string> readWords(int length)
-{
-	std::cout << "Reading word list" << std::endl;
-
-	std::vector<std::string> words;
-
-	std::ifstream wordFile("words.txt");
-	std::string word;
-
-	// Read past the copyright notice at the top of words.txt
-	while (std::getline(wordFile, word) && word != "---")
-	{
-		// do nothing
-	}
-
-	// Read each line in the file
-	while (std::getline(wordFile, word))
-	{
-		if (word.length() == length)
-		{
-			// Scan through the line, converting each character to upper case.
-			// If a non-alphabet character is encountered, reject the word.
-			bool isValid = true;
-			for (int i = 0; i < word.length(); i++)
-			{
-				if (isalpha(word[i]))
-				{
-					word[i] = toupper(word[i]);
-				}
-				else
-				{
-					isValid = false;
-					break;
-				}
-			}
-
-			// If it's a good word, add it to the list.
-			if (isValid)
-			{
-				words.push_back(word);
-			}
-		}
-	}
-
-	std::cout << "Found " << words.size() << " words" << std::endl;
-
-	return words;
-}
-
+const int wordLength = 5;
+const int numberOfWords = 15;
 
 int main()
 {
-	readWords(5);
+	// Seed the random number generator with the current time,
+	// to ensure different results each time the program is run
+	srand(static_cast<unsigned int>(time(nullptr)));
+
+	// Initialise word list
+	WordList words(wordLength);
+
+	// Choose secret word
+	std::string secret = words.getRandomWord();
+
+	// Create a set to hold the list of options
+	std::set<std::string> options;
+
+	// Put the secret word in the set
+	options.insert(secret);
+
+	// Fill the set with more words
+	// Using a set for options guarantees that the elements are all different
+	while (options.size() < numberOfWords)
+	{
+		std::string word = words.getRandomWord();
+		options.insert(word);
+	}
+
+	// Display all words
+	for each (std::string word in options)
+	{
+		std::cout << word << std::endl;
+	}
+
+	// TODO: implement the rest of the game
 
     return 0;
 }
