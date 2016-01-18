@@ -1,4 +1,4 @@
-\part{Object-oriented programming}
+\part{Object-oriented programming in C++}
 \frame{\partpage}
 
 \begin{frame}[fragile]{OOP refresher}
@@ -11,54 +11,43 @@
 \end{frame}
 
 \begin{frame}[fragile]{Class declarations}
-    \begin{columns}[onlytextwidth]
-		\begin{column}{0.48\textwidth}
-			In Python:
-            % NB: tab size = 2 to make it fit on the slide
-			\begin{lstlisting}[language=Python]
-class MyClass:
-  def __init__(self):
-    self.__field = 7
-    
-  def doMethod(self, x):
-    print x * self.__field
-            \end{lstlisting}
-		\end{column}
-		\pause
-		\begin{column}{0.48\textwidth}
-			In C++:
-            % NB: tab size = 2 to make it fit on the slide
-			\begin{lstlisting}
+    \begin{lstlisting}
 class MyClass
 {
 public:
-  void doMethod(int x)
-  {
-    std::cout
-        << x * field
-        << std::endl;
-  }
-    
+    void doMethod(int x)
+    {
+        std::cout << x << std::endl;
+    }
+
 private:
-  int field = 7;
+    int field = 7;
 };
-			\end{lstlisting}
-		\end{column}
-	\end{columns}
+    \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Fields}
+\begin{frame}[fragile]{Fields and methods}
     \begin{itemize}
-        \item In Python, fields are declared by assigning values to them in the \lstinline[language=Python]{__init__} method
-        \item In C++, fields (and their types) are declared in the class declaration, just like variables
-        \item Unlike variables, the declaration can't include an initial value --- initial values are set in the constructor
+        \item Fields and methods are declared in the class declaration, just like variables and functions
+        \item Class declaration is split into sections by access type (\textbf{public}, \textbf{protected}, \textbf{private})
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Methods}
+\begin{frame}[fragile]{Overloading}
     \begin{itemize}
-        \item Methods are defined like functions
+        \item Functions and methods can be defined with the \textbf{same name} but \textbf{different parameters}
     \end{itemize}
+    \begin{lstlisting}
+    double getVectorLength(double x, double y)
+    {
+        return sqrt(x * x + y * y);
+    }
+
+    double getVectorLength(Vector v)
+    {
+        return sqrt(v.x * v.x + v.y * v.y);
+    }
+    \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Constructors and destructors}
@@ -66,13 +55,57 @@ private:
         \item The \textbf{constructor} is executed when the class is instantiated
         \item The \textbf{destructor} is executed when the instance is freed
     \end{itemize}
+	\begin{lstlisting}
+class MyClass
+{
+public:
+    MyClass()
+    {
+    }
+    
+    ~MyClass()
+    {
+    }
+};
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Constructors}
+    \begin{itemize}
+        \item The constructor name matches the class name
+        \item Constructors can take parameters
+        \item The constructor can be overloaded, i.e.\ can have several constructors with different parameters
+    \end{itemize}
+	\begin{lstlisting}
+class MyClass
+{
+public:
+    // Parameterless constructor
+    MyClass() { }
+    
+    // Constructor with parameters
+    MyClass(int x, double y) { }
+};
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Destructors}
+    \begin{itemize}
+        \item The destructor name is the class name prefixed with $\sim$ (tilde)
+        \item Destructors \textbf{cannot} take parameters
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Modular program design}
     \begin{itemize}
         \item Method \textbf{declarations} go in the class declaration
-        \item Method \textbf{definitions} look like function definitions, with the function name replaced with \lstinline{ClassName::methodName}
-        \item Good practice: put class declaration in \texttt{ClassName.h}, and method definitions in \texttt{ClassName.cpp}
+        \item Method \textbf{definitions} look like function definitions,
+            with the function name replaced with \lstinline{ClassName::methodName}
+        \item Method definitions can also go inline into the class declaration
+        \begin{itemize}
+            \item Best used for short (1 or 2 line) methods
+        \end{itemize}
+        \item Good practice: Put class declaration in \texttt{ClassName.h}, and method definitions in \texttt{ClassName.cpp}
     \end{itemize}
 \end{frame}
 
@@ -111,4 +144,59 @@ double Circle::getArea()
 \end{frame}
 
 \begin{frame}[fragile]{Inheritance}
+    \begin{lstlisting}
+class Shape
+{
+public:
+    virtual double getArea();
+};
+
+class Circle : Shape
+{
+public:
+    virtual double getArea()
+    {
+        return M_PI * radius * radius;
+    }
+};
+    \end{lstlisting}
+    \begin{itemize}
+        \item Methods to be overridden must be marked \textbf{virtual}
+    \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]{Pure virtual methods}
+    \begin{itemize}
+        \item \textbf{Abstract classes} should never be instantiated --- they only exist to serve as a base class
+        \item \textbf{Abstract methods} are not defined in the base class, and must be overridden in the subclass
+        \item In C++, abstract methods are called \textbf{pure virtual}
+        \item Having at least one pure virtual method \textbf{automatically} makes the class abstract
+    \end{itemize}
+    \begin{lstlisting}
+class Shape
+{
+public:
+    virtual double getArea() = 0;
+};
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Instantiation}
+    \begin{itemize}
+        \item To instantiate with a \textbf{parameterless constructor}, just declare a variable
+    \end{itemize}
+    \begin{lstlisting}
+MyClass myInstance;
+    \end{lstlisting}
+    \begin{itemize}
+        \item To instantiate with a \textbf{constructor with parameters}, add the parameters in parentheses
+    \end{itemize}
+    \begin{lstlisting}
+MyClass myInstance(27);
+    \end{lstlisting}
+    \begin{itemize}
+        \item This allocates the instance on the \textbf{stack}
+        \item The instance is destroyed (and the destructor is called) when the variable goes \textbf{out of scope}
+    \end{itemize}
+\end{frame}
+
