@@ -1,16 +1,102 @@
 \part{Pointers}
 \frame{\partpage}
 
-\begin{frame}[fragile]{Arrays in C++}
+\begin{frame}[fragile]{Pointers}
     \begin{itemize}
-        \item An \textbf{array} is a fixed-length sequence of elements of a particular type \pause
-        \item Not to be confused with a \textbf{vector}, which is a variable length sequence \pause
+        \item A \textbf{pointer} is the address of a memory location
+        \item If \lstinline{T} is a type, \lstinline{T*} is the type ``pointer to \lstinline{T}''
+        \item \lstinline{&} is the \textbf{address-of} operator: gets a pointer to something
+        \item \lstinline{*} is the \textbf{dereference} operator: gets the thing the pointer points to
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Allocating objects on the heap}
+    \begin{itemize}
+        \item Objects can be allocated on the heap using the \lstinline{new} keyword
+        \item \lstinline{new} gives a pointer to the new instance
     \end{itemize}
     \begin{lstlisting}
-// Declare a 5-element array with initial values
-int myArray[] = { 1, 3, 5, 7, 9 };
+// To use a parameterless constructor
+MyClass* myInstance = new MyClass;
 
-// Declare a 10-element array without specifying initial values
-int myOtherArray[10];
+// To use a constructor with parameters
+MyClass* myOtherInstance = new MyClass(1, 2, 3);
     \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Deleting objects from the heap}
+    \begin{itemize}
+        \item Objects instantiated with \lstinline{new} must be deleted using \lstinline{delete}
+    \end{itemize}
+    \begin{lstlisting}
+delete myInstance;
+    \end{lstlisting}
+    \begin{itemize}
+        \item Forgetting to do this is a \textbf{memory leak}
+        \item Deleting something \textbf{twice} is bad
+        \item Trying to \textbf{dereference a deleted pointer} is bad
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Addressing and dereferencing}
+    \begin{lstlisting}
+int x = 7;
+
+// Address-of operator
+int* addressOfX = &x;
+
+// Dereferencing
+int valueOfX = *addressOfX;
+    \end{lstlisting}
+    \begin{itemize}
+        \item Suppose the OS allocates \lstinline{x} to memory address $1000$
+        \item \lstinline{addressOfX} will have the value $1000$
+        \item \lstinline{valueOfX} will have whatever integer value is in address $1000$, i.e.\ $7$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dereferencing for objects}
+    \begin{itemize}
+        \item This would work...
+    \end{itemize}
+    \begin{lstlisting}
+Circle* myCircle = new Circle(10);
+double area = (*myCircle).getArea();
+    \end{lstlisting}
+    \begin{itemize}
+        \item \lstinline{->} is a shorthand for dereferencing and accessing a member
+    \end{itemize}
+    \begin{lstlisting}
+Circle* myCircle = new Circle(10);
+double area = myCircle->getArea();
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Null pointer}
+    \begin{itemize}
+        \item Pointers can have a special value \lstinline{nullptr}
+        \item This signifies the pointer doesn't point to anything
+    \end{itemize}
+    \begin{lstlisting}
+MyClass* notAnInstance = nullptr;
+    \end{lstlisting}
+    \begin{itemize}
+        \item Similar to \lstinline[language=Python]{None} in Python
+        \item You may also see \lstinline{NULL} used instead of \lstinline{nullptr} ---
+            the meaning is the same
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dangling pointers}
+    \begin{lstlisting}
+delete myInstance;
+    \end{lstlisting}
+    \begin{itemize}
+        \item The instance that \lstinline{myInstance} pointed to has been deleted, but \lstinline{myInstance} still holds its old address
+        \item \lstinline{myInstance} is a \textbf{dangling pointer}, and dereferencing it would certainly be a bug
+        \item Get into the habit of setting pointers to \lstinline{nullptr} after deleting them
+        \begin{itemize}
+            \item Dereferencing a null pointer is still a bug, but will generally crash your program straight away rather than causing obscure errors
+        \end{itemize}
+    \end{itemize}
 \end{frame}
