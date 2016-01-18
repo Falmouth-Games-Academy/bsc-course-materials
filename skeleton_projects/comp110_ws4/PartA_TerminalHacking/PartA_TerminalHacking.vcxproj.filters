@@ -32,10 +32,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PartA_TerminalHacking.cpp">
+    <ClCompile Include="WordList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WordList.cpp">
+    <ClCompile Include="TerminalHacking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

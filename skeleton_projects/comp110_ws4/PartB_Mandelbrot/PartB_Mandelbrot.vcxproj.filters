@@ -32,10 +32,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PartC_Mandelbrot.cpp">
+    <ClCompile Include="colours.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="colours.cpp">
+    <ClCompile Include="Mandelbrot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
