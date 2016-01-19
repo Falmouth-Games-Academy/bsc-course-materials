@@ -1,0 +1,42 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+\begin{document}
+\title{Transition to C++ III}   
+\subtitle{COMP110: Principles of Computing}
+
+\frame{\titlepage} 
+
+\begin{frame}{Learning outcomes}
+    In this session you will learn how to...
+    \begin{itemize}
+        \item Define your own \textbf{classes} in C++
+        \item Use \textbf{pointers}, and allocate objects on the \textbf{heap}
+        \item Use \textbf{typecasting} to convert values from one type to another
+        \item Use the \textbf{CImg} library to write basic GUI applications and image processing algorithms
+    \end{itemize}
+\end{frame}
+
+\input{classes}
+\input{pointers}
+\input{casting}
+\input{cimg}
+
+% -------------------------------------------------------
+
+%\part{The compiler}
+%\frame{\partpage}
+%
+%\begin{frame}
+%	\frametitle{The build process}
+%	\includegraphics[height=\textwidth,angle=90]{compiler_sketch}
+%\end{frame}
+
+\end{document}

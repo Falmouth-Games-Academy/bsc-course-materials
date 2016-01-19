@@ -3,9 +3,11 @@
 
 \begin{frame}[fragile]{OOP refresher}
     \begin{itemize}
-        \item A \textbf{class} is a collection of \textbf{fields} (data) and \textbf{methods} (functions)
-        \item Fields and methods may be \textbf{public} (accessible everywhere), \textbf{protected} (accessible in the class and classes that inherit from it) or \textbf{private} (accessible in the class only)
-        \item Classes may \textbf{inherit} fields and methods from other classes
+        \item A \textbf{class} is a collection of \textbf{fields} (data) and \textbf{methods} (functions) \pause
+        \item Fields and methods may be \textbf{public} (accessible everywhere),
+            \textbf{protected} (accessible in the class and classes that inherit from it)
+            or \textbf{private} (accessible in the class only) \pause
+        \item Classes may \textbf{inherit} fields and methods from other classes \pause
         \item Subclasses may \textbf{override} methods which they inherit --- this gives rise to \textbf{polymorphism}
     \end{itemize}
 \end{frame}
@@ -28,7 +30,7 @@ private:
 
 \begin{frame}[fragile]{Fields and methods}
     \begin{itemize}
-        \item Fields and methods are declared in the class declaration, just like variables and functions
+        \item Fields and methods are declared in the class declaration, just like variables and functions \pause
         \item Class declaration is split into sections by access type (\textbf{public}, \textbf{protected}, \textbf{private})
     \end{itemize}
 \end{frame}
@@ -37,6 +39,7 @@ private:
     \begin{itemize}
         \item Functions and methods can be defined with the \textbf{same name} but \textbf{different parameters}
     \end{itemize}
+    \pause
     \begin{lstlisting}
     double getVectorLength(double x, double y)
     {
@@ -51,10 +54,6 @@ private:
 \end{frame}
 
 \begin{frame}[fragile]{Constructors and destructors}
-    \begin{itemize}
-        \item The \textbf{constructor} is executed when the class is instantiated
-        \item The \textbf{destructor} is executed when the instance is freed
-    \end{itemize}
 	\begin{lstlisting}
 class MyClass
 {
@@ -68,14 +67,19 @@ public:
     }
 };
 	\end{lstlisting}
+    \begin{itemize}
+        \item The \textbf{constructor} is executed when the class is instantiated
+        \item The \textbf{destructor} is executed when the instance is freed
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Constructors}
     \begin{itemize}
-        \item The constructor name matches the class name
-        \item Constructors can take parameters
+        \item The constructor name matches the class name \pause
+        \item Constructors can take parameters \pause
         \item The constructor can be overloaded, i.e.\ can have several constructors with different parameters
     \end{itemize}
+    \pause
 	\begin{lstlisting}
 class MyClass
 {
@@ -91,20 +95,21 @@ public:
 
 \begin{frame}[fragile]{Destructors}
     \begin{itemize}
-        \item The destructor name is the class name prefixed with $\sim$ (tilde)
+        \item The destructor name is the class name prefixed with $\sim$ (tilde) \pause
         \item Destructors \textbf{cannot} take parameters
     \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Modular program design}
     \begin{itemize}
-        \item Method \textbf{declarations} go in the class declaration
+        \item Method \textbf{declarations} go in the class declaration \pause
         \item Method \textbf{definitions} look like function definitions,
-            with the function name replaced with \lstinline{ClassName::methodName}
+            with the function name replaced with \lstinline{ClassName::methodName} \pause
         \item Method definitions can also go inline into the class declaration
         \begin{itemize}
             \item Best used for short (1 or 2 line) methods
         \end{itemize}
+        \pause
         \item Good practice: Put class declaration in \texttt{ClassName.h}, and method definitions in \texttt{ClassName.cpp}
     \end{itemize}
 \end{frame}
@@ -160,6 +165,7 @@ public:
     }
 };
     \end{lstlisting}
+    \pause
     \begin{itemize}
         \item Methods to be overridden must be marked \textbf{virtual}
     \end{itemize}
@@ -167,11 +173,12 @@ public:
 
 \begin{frame}[fragile]{Pure virtual methods}
     \begin{itemize}
-        \item \textbf{Abstract classes} should never be instantiated --- they only exist to serve as a base class
-        \item \textbf{Abstract methods} are not defined in the base class, and must be overridden in the subclass
-        \item In C++, abstract methods are called \textbf{pure virtual}
+        \item \textbf{Abstract classes} should never be instantiated --- they only exist to serve as a base class \pause
+        \item \textbf{Abstract methods} are not defined in the base class, and must be overridden in the subclass \pause
+        \item In C++, abstract methods are called \textbf{pure virtual} \pause
         \item Having at least one pure virtual method \textbf{automatically} makes the class abstract
     \end{itemize}
+    \pause
     \begin{lstlisting}
 class Shape
 {
@@ -181,6 +188,28 @@ public:
     \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]{Virtual destructors}
+    \begin{itemize}
+        \item If your class is intended to be subclassed, you should declare the \textbf{destructor} to be \lstinline{virtual}
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+class Shape
+{
+public:
+    virtual ~Shape();
+};
+    \end{lstlisting}
+    \pause
+    \begin{itemize}
+        \item Why?
+        \begin{itemize}
+            \item \footnotesize\url{http://stackoverflow.com/questions/461203/when-to-use-virtual-destructors}
+            \item \footnotesize\url{http://programmers.stackexchange.com/questions/284561/when-not-to-use-virtual-destructors}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{Instantiation}
     \begin{itemize}
         \item To instantiate with a \textbf{parameterless constructor}, just declare a variable
@@ -188,15 +217,42 @@ public:
     \begin{lstlisting}
 MyClass myInstance;
     \end{lstlisting}
+    \pause
     \begin{itemize}
         \item To instantiate with a \textbf{constructor with parameters}, add the parameters in parentheses
     \end{itemize}
     \begin{lstlisting}
 MyClass myInstance(27);
     \end{lstlisting}
+    \pause
     \begin{itemize}
-        \item This allocates the instance on the \textbf{stack}
+        \item This allocates the instance on the \textbf{stack} \pause
         \item The instance is destroyed (and the destructor is called) when the variable goes \textbf{out of scope}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Instantiation: C++ vs Python}
+    \pause
+    \begin{lstlisting}[language=Python]
+# Python
+myInstance = MyClass()
+myOtherInstance = myInstance
+    \end{lstlisting}
+    \pause
+    \begin{itemize}
+        \item \lstinline{myInstance} is a \textbf{reference} to an instance \pause
+        \item \lstinline{myOtherInstance} is a reference to the \textbf{same} instance \pause
+    \end{itemize}
+    \begin{lstlisting}
+// C++
+MyClass myInstance;
+MyClass myOtherInstance = myInstance;
+    \end{lstlisting}
+    \pause
+    \begin{itemize}
+        \item \lstinline{myInstance} \textbf{is} an instance \pause
+        \item \lstinline{myOtherInstance} is a \textbf{different} instance --- usually a \textbf{copy} of \lstinline{myInstance}
+            (but it depends on how \lstinline{MyClass} is defined)
     \end{itemize}
 \end{frame}
 
@@ -204,6 +260,7 @@ MyClass myInstance(27);
     \begin{itemize}
         \item Use dot (\lstinline{.}) notation, similar to Python
     \end{itemize}
+    \pause
     \begin{lstlisting}
 Circle myCircle(10);
 double area = myCircle.getArea();
