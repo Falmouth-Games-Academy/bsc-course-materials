@@ -29,7 +29,7 @@
 In this assignment, you are required to design and prototype a novel game controller device.
 Your prototype should function as an input device, either for the game you developed in COMP130 last semester,
 or for the game you are developing in COMP150 this semester.
-Your prototype should use the \emph{MaKey~MaKey} platform, which you will be provided with in class,
+Your prototype should use a hardware platform such as \emph{MaKey~MaKey}, \emph{Arduino}, \emph{Raspberry~Pi} etc,
 to convert user actions into game inputs.
 
 Computing for Games combines technical and creative skills in equal parts.
@@ -42,50 +42,67 @@ to produce a unique creative artefact.
 This assignment is formed of three parts:
 
 \begin{enumerate}[label=\Alph*.]
-    \item Prepare \textbf{at least five} weekly reports that must:
-        \begin{enumerate}[label=\roman*.]
-            \item Document your iterative design process
-            \item Document the stages of your prototyping efforts.
-                As well as text, you are strongly encouraged to make use of photographs and videos as appropriate.
-        \end{enumerate}
-    \item Do a thing
-    \item Integrate the controller into your game, and prepare a practical demonstration.
+    \item \textbf{Design} a novel game controller device.
+    \item \textbf{Build} a prototype of your game controller.
+        Prepare \textbf{at least five} weekly reports (one per sprint),
+        including images and short videos as appropriate, that document your iterative design and prototyping process.
+    \item \textbf{Integrate} the controller into your game, and prepare a practical demonstration.
 \end{enumerate}
 
 \section*{Submission Instructions}
 
-\subsection*{Part A}
+\subsection*{Part A (Formative)}
 
-Formative submission: fork the GitHub project at TODO, and write your weekly reports in the \texttt{readme.md} file.
-Images should be embedded in the markdown file.
-If you use videos, upload them to a video sharing site (e.g.\ YouTube, Vimeo, Vine) and add a link to them.
+On Trello, create a Task Board that defines the high concept and key requirements (in terms of components and user stories) of the controller. Arrange a meeting with your tutor and show the Trello Task Board to them.
 
-Summative submission: create a .zip archive containing the contents of your GitHub project.
-Upload the zip to LearningSpace.
-If you have used videos, compress them in .avi or .mp4 format and add them to the zip.
-\textbf{Images and videos that are not uploaded to LearningSpace will not be considered for marking.}
+\subsection*{Part A (Summative)}
 
-\subsection*{Part B}
+Take screenshots of your Trello Task Board, and include them in the summative submission
+of your weekly reports (Part~B).
 
-Blah
+\subsection*{Part B (Formative)}
 
-\subsection*{Part C}
+Fork the GitHub project at TODO, and write your weekly reports in the \texttt{readme.md} file.
+Also use this repository for any other digital materials you create
+(e.g.\ source code for firmware or software, illustration files, circuit diagrams etc.).
+
+You are strongly encouraged to make use of images (sketches, diagrams, photographs, screenshots),
+code snippets and short videos to document your design and prototyping process.
+Images and code snippets should be embedded directly in the \texttt{readme.md} file.
+Videos should be uploaded to a video sharing site (e.g.\ YouTube, Vimeo, Vine)
+and linked from the \texttt{readme.md} file.
+
+\subsection*{Part B (Summative)}
+
+Compress the contents of your GitHub repository as a zip file,
+and upload it to the appropriate submission queue on LearningSpace.
+If you have used images and videos, ensure that they are included in the zip file.
+Videos should be compressed in \texttt{avi} or \texttt{mp4} format.
+
+\textbf{Materials that are not included in the zip file will not be considered for marking.}
+In particular, please remember to add any videos to your zip file before submission,
+as otherwise they will not be marked.
+
+If you include video material, its \textbf{total combined length} must not exceed \textbf{three minutes}.
+Exceeding this limit will be subject to the same penalties as detailed in the course's word count policy,
+available on LearningSpace.
+There is \textbf{no limit} on words or static images for this assignment.
+
+\subsection*{Part C (Formative)}
 
 No formal submission is required.
-Please attend the demo session (date and time to be confirmed in class)
+Attend the demo session (date and time to be confirmed in class)
 with your prototype and an executable of your game,
 and be prepared to discuss it with your tutors and peers.
 
-\begin{marginquote}
-    ``Alive with new thinking, buzzing with opportunity, connected with the best in the business,
-    Falmouth University is the perfect place to start shaping your creative career.
-    Thousands of people from around the globe come to us every year,
-    graduating to become the brightest stars in art, design, media, performance and writing industries.
+\subsection*{Part C (Summative)}
 
-    ``Voted the number one institution worldwide across seven categories in the latest International Student Barometer poll,
-    Falmouth has forged its position as one of the most highly regarded creative arts institutions across the globe.''
+Physical submission?
+
+\begin{marginquote}
+    ``Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum orci arcu, vitae interdum odio accumsan sit amet. Proin sed leo in magna consequat semper. Vivamus nec consequat nulla, id dignissim orci. Integer est neque, efficitur at sodales eget, scelerisque non justo. Donec dictum lorem est, quis euismod nibh accumsan eu. Duis enim sem, dignissim in laoreet sed, volutpat aliquet justo.
     
-    --- Falmouth University website
+    ``In rhoncus elementum est dignissim volutpat. Quisque eget sem vehicula, placerat ipsum vel, posuere sem. Proin porta posuere facilisis. Nullam eu auctor nunc. Suspendisse potenti. Suspendisse at scelerisque eros, sodales interdum ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur consequat imperdiet libero, sed consectetur felis consectetur at. Nulla nec libero lacus.''
 \end{marginquote}
 \marginpicture{guitarhero}{
     Rhythm games such as \emph{Guitar Hero} and \emph{Rock Band} are excellent examples of games
@@ -124,11 +141,12 @@ You do not need to go to great expense for this: a ``Blue Peter'' style prototyp
 household items is fine, as is something made out of Play-Doh, Lego bricks, etc.
 However you should still choose your materials carefully, as overly flimsy construction will
 lose you marks for the functionality criterion.
-
-You have been issued with version 1.2 of the MaKey~MaKey kit.
-Earlier versions of the kit were based on the Arduino platform, and thus were easily reprogrammable at the firmware level
-(as you may discover in the course of your background research).
-Unfortunately this version is not.
+You may also wish to connect electronic components such as LEDs, buzzers, photoresistors etc to the MaKey~MaKey,
+or even use a different, more flexible hardware platform such as Arduino\footnote{
+Note that the MaKey~MaKey kits provided in class are version~1.2, which, unlike earlier versions, is not based on Arduino.
+Any tutorials you may find online for reprogramming the MaKey~MaKey firmware are unfortunately not applicable
+to this version.
+}.
 
 Do not be constrained by the fact that the layout of the MaKey~MaKey board is reminiscent of a
 classic NES-style game controller.
@@ -141,29 +159,41 @@ and remember that a further 12 inputs are available through the pins on the back
 
 \begin{markingrubric}
     \criterion{Design of the solution}{15\%}
-        \grade\fail F
+        \grade\fail User stories are not provided.
         \grade D
         \grade C
         \grade B
         \grade A
         \grade Astar
-    \criterion{Development journal}{10\%}
-        \grade\fail The development journal is incomplete or not submitted.
-        \grade D
-        \grade C
-        \grade B
-        \grade A
-        \grade A$^*$
+    \criterion{Weekly reports}{10\%}
+        \grade\fail Fewer than three weekly reports are submitted,
+            and/or the weekly reports are inappropriate.
+        \grade At least three weekly reports are submitted.
+            \par The reports document the design and prototyping process in a basic manner.
+            \par The reports do not use images or video.
+        \grade At least four weekly reports are submitted.
+            \par The reports document the design and prototyping process in a satisfactory manner.
+            \par At least one relevant image or video is included per report.
+        \grade At least five weekly reports are submitted.
+            \par TODO
+        \grade At least five weekly reports are submitted.
+            \par TODO
+        \grade At least five weekly reports are submitted.
+            \par The reports document the design and prototyping process in an exemplary manner.
+            \par The reports use images and video in an exemplary manner.
     \criterion{Innovation and creative flair}{30\%}
         \grade\fail Demonstrates no evidence of innovation and/or creativity.
-            \par The brief has not been followed, or the provided hardware has not been added to in any way.
+            \par The brief has not been followed.
         \grade Demonstrates evidence of emerging innovation and/or creativity.
-            \par The solution is purely derivative of existing devices on the market.
+            \par The solution is purely derivative of existing products, .
         \grade Demonstrates evidence of progressing innovation and/or creativity.
             \par The solution is mostly derivative, with some attempts at innovation.
         \grade Demonstrates evidence of partial mastery of innovative and creative practice.
+            \par The solution is an interesting and somewhat innovative product.
         \grade Demonstrates some evidence of mastery of innovative and creative practice.
+            \par The solution is a novel and innovative product.
         \grade Demonstrates much evidence of mastery of innovative and creative practice.
+            \par The solution is a unique and innovative product.
     \criterion{Functionality of physical prototype}{20\%}
         \grade\fail A physical prototype is not produced, or the prototype is completely non-functional.
         \grade The physical prototype is barely functional.
@@ -176,7 +206,7 @@ and remember that a further 12 inputs are available through the pins on the back
             \par There are superficial technical and/or constructional flaws.
         \grade The physical prototype is functional.
             \par The technical execution and physical construction are flawless.
-    \criterion{Sophistication: software, electronics, physical construction}{10\%}
+    \criterion{Sophistication: \par Software \par Electronics \par Physical construction}{10\%}
         \grade\fail The solution lacks even a basic level of sophistication in any of the three areas.
         \grade The solution is basic and unsophisticated in all three areas.
             \par Little insight has been demonstrated in any area.
@@ -190,21 +220,33 @@ and remember that a further 12 inputs are available through the pins on the back
             \par Exemplary insight has been demonstrated in all three areas.
     \criterion{Maintainability}{10\%}
         \grade\fail F
+            \par Source code is unmaintainable.
         \grade D
+            \par Source code is not well structured.
+                Names are unclear. Comments are not used.
         \grade C
+            \par Source code is not well structured.
+                Names are sometimes unclear. Comments are used.
         \grade B
+            \par Source code is reasonably well structured.
+                Names are mostly clear. Comments are reasonably effective.
         \grade A
+            \par Source code is well structured, in an attempt to achieve high cohesion and low coupling.
+                Names are clear. Comments are effective.
         \grade A$^*$
+            \par Source code is extremely well structured, with high cohesion and low coupling.
+                Names are very clear. Comments are exemplary.
     \criterion{Professional practice}{5\%}
         \grade\fail GitHub has not been used.
-        \grade Material has been checked into GitHub only a few times,
-            and only when required for formative or summative submission.
-        \grade Material has seldom been checked into GitHub.
-        \grade Material has quite regularly been checked into GitHub.
-        \grade Material has regularly been checked into GitHub.
-        \grade Material has regularly been checked into GitHub.
+        \grade Material has only been checked into GitHub when required for review or submission.
+        \grade Material has been checked into GitHub at least once per sprint.
+        \grade Material has been checked into GitHub several times per sprint.
+        \grade Material has been checked into GitHub several times per sprint.
+            \par Commit messages are clear and concise.
+        \grade Material has been checked into GitHub several times per sprint.
+            \par Commit messages are clear and concise.
             \par There is evidence of engagement (e.g.\ voluntarily reviewing peers' code)
-                within the Falmouth Games Academy
+                within the Academy.
 \end{markingrubric}
 
 \end{document}

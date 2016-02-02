@@ -113,7 +113,7 @@
 }
 
 % Commands inside the marking rubric
-\newcommand{\criterion}[2]{\tabularnewline\hline \raggedright #1 & \centering #2}
+\newcommand{\criterion}[2]{\tabularnewline\hline\setlength{\parskip}{0.5em}\raggedright #1 & \centering #2}
 \newcommand{\grade}{ & \setlength{\parskip}{0.5em}\raggedright}
 \newcommand{\fail}{\cellcolor{gray!50}}
 \newcommand{\gradespan}[2]{& \multicolumn{#1}{l|}{#2}}
