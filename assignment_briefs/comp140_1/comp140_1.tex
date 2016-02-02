@@ -2,6 +2,7 @@
 \graphicspath{ {../} }
 
 \usepackage{enumitem}
+\usepackage[T1]{fontenc} % http://tex.stackexchange.com/a/17858
 
 \title{Interface Hacking}
 \author{Dr Edward Powley}
@@ -53,11 +54,11 @@ This assignment is formed of three parts:
 
 \subsection*{Part A (Formative)}
 
-On Trello, create a Task Board that defines the high concept and key requirements (in terms of components and user stories) of the controller. Arrange a meeting with your tutor and show the Trello Task Board to them.
+On Trello, create a task board that defines the high concept and key requirements (in terms of components and user stories) of the controller. Arrange a meeting with your tutor to discuss your task board.
 
 \subsection*{Part A (Summative)}
 
-Take screenshots of your Trello Task Board, and include them in the summative submission
+Take screenshots of your Trello task board, and include them in the summative submission
 of your weekly reports (Part~B).
 
 \subsection*{Part B (Formative)}
@@ -66,8 +67,6 @@ Fork the GitHub project at TODO, and write your weekly reports in the \texttt{re
 Also use this repository for any other digital materials you create
 (e.g.\ source code for firmware or software, illustration files, circuit diagrams etc.).
 
-You are strongly encouraged to make use of images (sketches, diagrams, photographs, screenshots),
-code snippets and short videos to document your design and prototyping process.
 Images and code snippets should be embedded directly in the \texttt{readme.md} file.
 Videos should be uploaded to a video sharing site (e.g.\ YouTube, Vimeo, Vine)
 and linked from the \texttt{readme.md} file.
@@ -100,71 +99,116 @@ and be prepared to discuss it with your tutors and peers.
 Physical submission?
 
 \begin{marginquote}
-    ``Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum orci arcu, vitae interdum odio accumsan sit amet. Proin sed leo in magna consequat semper. Vivamus nec consequat nulla, id dignissim orci. Integer est neque, efficitur at sodales eget, scelerisque non justo. Donec dictum lorem est, quis euismod nibh accumsan eu. Duis enim sem, dignissim in laoreet sed, volutpat aliquet justo.
-    
-    ``In rhoncus elementum est dignissim volutpat. Quisque eget sem vehicula, placerat ipsum vel, posuere sem. Proin porta posuere facilisis. Nullam eu auctor nunc. Suspendisse potenti. Suspendisse at scelerisque eros, sodales interdum ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur consequat imperdiet libero, sed consectetur felis consectetur at. Nulla nec libero lacus.''
-\end{marginquote}
-\marginpicture{guitarhero}{
-    Rhythm games such as \emph{Guitar Hero} and \emph{Rock Band} are excellent examples of games
-    which make use of unique input devices to enhance gameplay.
-}
-\clearpage
-\begin{marginquote}
     ``Alive with new thinking, buzzing with opportunity, connected with the best in the business,
     Falmouth University is the perfect place to start shaping your creative career.
     Thousands of people from around the globe come to us every year,
     graduating to become the brightest stars in art, design, media, performance and writing industries.
 
-    ``Voted the number one institution worldwide across seven categories in the latest International Student Barometer poll,
+    ``[...]
     Falmouth has forged its position as one of the most highly regarded creative arts institutions across the globe.''
     
     --- Falmouth University website
 \end{marginquote}
-\marginpicture{fishing}{
-    The \emph{Dreamcast Fishing Controller}, released as a peripheral for the game \emph{Sega Bass Fishing}.
-    Even peripherals which appeal to only a small audience can enjoy moderate commercial success.
+\marginpicture{guitarhero}{
+    Rhythm games such as \emph{Guitar Hero} and \emph{Rock Band} are excellent examples of games
+    which make use of unique input devices to enhance gameplay.
 }
 \section*{Additional Guidance}
 
 Falmouth University is nationally and internationally renowned as an arts institution.
 Despite the fact that you are studying for a Bachelor of Science degree in a technical discipline,
-you are still expected to strive for the same level of innovation and creative flair
-as your fellow students on courses outside the Games Academy.
-This assignment is an opportunity to flex your creative muscles, without getting too bogged down
-in the technical aspects of writing functional and maintainable code.
+you are still expected to strive for the same level of \textbf{innovation and creative flair}
+as your fellow students in other departments.
+All assignments on this course involve a mix of technical and creative activities;
+this assignment is more heavily weighted towards the creative than the assignments you have completed thus far.
+On this assignment, a competent execution of an unimaginative idea is unlikely to achieve higher than a C grade overall,
+as opposed to an imperfect execution of a unique and ambitious concept
+--- bear this in mind when working on your design.
 
-
+Your \textbf{design} should be motivated by user stories.
+The history of video games is littered with failed peripherals which consumers simply did not want,
+which were perceived as expensive gimmicks rather than legitimate enhancements to gameplay.
+For higher marks you should demonstrate \textbf{commercial awareness}:
+your user stories and design should be informed by your research into products that have succeeded and failed
+in the past, and what unexplored niches exist in the present.
 
 We have given you some of the materials you need: a MaKey~MaKey kit, crocodile clip leads and conductive paint.
-You will need to add your own materials to produce a working physical prototype.
-You do not need to go to great expense for this: a ``Blue Peter'' style prototype made from
-household items is fine, as is something made out of Play-Doh, Lego bricks, etc.
-However you should still choose your materials carefully, as overly flimsy construction will
-lose you marks for the functionality criterion.
+You will need to add your own materials to produce a \textbf{functional} physical prototype.
+A ``Blue Peter'' style prototype made from household items is fine,
+as is something made out of modelling clay, construction toys etc.
+However you should still choose your materials carefully, as overly flimsy construction may
+lose you marks on the functionality criterion.
+
 You may also wish to connect electronic components such as LEDs, buzzers, photoresistors etc to the MaKey~MaKey,
-or even use a different, more flexible hardware platform such as Arduino\footnote{
-Note that the MaKey~MaKey kits provided in class are version~1.2, which, unlike earlier versions, is not based on Arduino.
-Any tutorials you may find online for reprogramming the MaKey~MaKey firmware are unfortunately not applicable
-to this version.
-}.
+or even use a different, more flexible hardware platform such as Arduino.
+However you are discouraged from spending large sums of money on extra hardware,
+and doing so is \textbf{not required} to achieve a high mark.
+If you choose to go down this route,
+it is possible to purchase an Arduino and a selection of electronic components online for 
+around the price of a textbook (\textsterling 20 -- \textsterling 30).\footnote{
+    Note that the MaKey~MaKey kits provided in class are version~1.2, which, unlike earlier versions, is not based on Arduino.
+    Any tutorials you may find online for reprogramming the MaKey~MaKey firmware using the Arduino IDE
+    are unfortunately not applicable to this version.
+}
 
-Do not be constrained by the fact that the layout of the MaKey~MaKey board is reminiscent of a
-classic NES-style game controller.
-Instead, treat the pads as six on-off inputs to be interpreted by your game in whatever way is appropriate,
-and remember that a further 12 inputs are available through the pins on the back of the MaKey~MaKey.
+You should aim to demonstrate a high level of \textbf{sophistication}
+in the technical execution of your prototype.
+An important part of sophistication is having the insight to choose the right tool for the job:
+if a simpler technique fulfils all the requirements, use it.
+The use of unnecessarily complicated techniques, serving only to showcase one's own cleverness,
+is a dangerous habit for a software developer.
 
+Your \textbf{weekly reports} should document the iterations you make on your design and prototyping.
+The emphasis in this assignment is on creativity and rapid iteration,
+so do not be afraid to ``go back to the drawing board'' if a prototyped idea does not work as well as anticipated.
+However it is important to document (and learn from) your failures, even more so than your successes.
+
+You are strongly encouraged to make use of sketches, diagrams, photographs, screenshots
+and short videos to document your design and prototyping process.
+Many indie game developers use such work-in-progress material as an important tool for promotion
+and community engagement; for example, search Twitter for the hashtag \texttt{\#screenshotsaturday}.
+Videos should ideally be short (5--30 second) demonstrations of functions of your prototype;
+you may narrate if you wish, but it is not required.
+
+\begin{marginquote}
+    ``The first 90 percent of the code accounts for the first 90 percent of the development time.
+    
+    ``The remaining 10 percent of the code accounts for the other 90 percent of the development time.''
+    
+    --- Tom Cargill
+    
+    \marginquoterule
+    
+    ``Hofstadter's Law:
+    
+    ``It always takes longer than you expect, even when you take into account Hofstadter's Law.''
+    
+    --- Douglas Hofstadter
+\end{marginquote}
+\marginpicture{fishing}{
+    The \emph{Dreamcast Fishing Controller}, released as a peripheral for the game \emph{Sega Bass Fishing}.
+    Even peripherals which appeal to only a small audience can enjoy moderate commercial success.
+}
 \section*{Additional Resources}
 
 
 
 \begin{markingrubric}
     \criterion{Design of the solution}{15\%}
-        \grade\fail User stories are not provided.
-        \grade D
-        \grade C
-        \grade B
-        \grade A
-        \grade Astar
+        \grade\fail User stories are not provided, or the design does not correspond to the user stories.
+        \grade Few user stories are distinguishable and easily measured.
+            \par The correspondence between design and user stories is tenuous.
+        \grade Some user stories are distinguishable and easily measured.
+            \par The design somewhat corresponds to the user stories.
+        \grade Most user stories are distinguishable and easily measured.
+            \par The design corresponds to the user stories.
+            \par The user stories and design demonstrate emerging commercial awareness.
+        \grade Nearly all user stories are distinguishable and easily measured.
+            \par The design clearly corresponds to the user stories.
+            \par The user stories and design demonstrate commercial awareness.
+        \grade All user stories are distinguishable and easily measured.
+            \par The design clearly and comprehensively corresponds to the user stories.
+            \par The user stories and design demonstrate extensive commercial awareness.
     \criterion{Weekly reports}{10\%}
         \grade\fail Fewer than three weekly reports are submitted,
             and/or the weekly reports are inappropriate.
@@ -185,7 +229,7 @@ and remember that a further 12 inputs are available through the pins on the back
         \grade\fail Demonstrates no evidence of innovation and/or creativity.
             \par The brief has not been followed.
         \grade Demonstrates evidence of emerging innovation and/or creativity.
-            \par The solution is purely derivative of existing products, .
+            \par The solution is purely derivative of existing products.
         \grade Demonstrates evidence of progressing innovation and/or creativity.
             \par The solution is mostly derivative, with some attempts at innovation.
         \grade Demonstrates evidence of partial mastery of innovative and creative practice.
@@ -242,9 +286,9 @@ and remember that a further 12 inputs are available through the pins on the back
         \grade Material has been checked into GitHub at least once per sprint.
         \grade Material has been checked into GitHub several times per sprint.
         \grade Material has been checked into GitHub several times per sprint.
-            \par Commit messages are clear and concise.
+            \par Commit messages are clear, concise and relevant.
         \grade Material has been checked into GitHub several times per sprint.
-            \par Commit messages are clear and concise.
+            \par Commit messages are clear, concise and relevant.
             \par There is evidence of engagement (e.g.\ voluntarily reviewing peers' code)
                 within the Academy.
 \end{markingrubric}

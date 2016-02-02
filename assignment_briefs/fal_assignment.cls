@@ -59,14 +59,16 @@
 }
 
 % Inspirational quote in the margin
+\newcommand{\marginquoterule}{{\color{black}\rule{4.5cm}{1pt}}}
+
 \NewEnviron{marginquote}{%
     \begin{tikzpicture}[remember picture, overlay]
         \node[anchor=west, xshift=1.5cm] at (current page.west) {
             \parbox[t]{4.5cm}{%
                 \setlength{\parskip}{1em}%
-                \rule{4.5cm}{1pt}\par%
+                \marginquoterule\par%
                 \small\centering\emph{\color{blue!50!black}\BODY}\par%
-                \rule{4.5cm}{1pt}%
+                \marginquoterule%
             }
         };
     \end{tikzpicture}
