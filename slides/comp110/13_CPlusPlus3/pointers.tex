@@ -135,7 +135,7 @@ MyClass* notAnInstance = nullptr;
     \end{itemize}
     \begin{lstlisting}
 class Shape { ... };
-class Circle : Shape { ... };
+class Circle : public Shape { ... };
 
 Shape* myShape = new Circle(10);
 std::cout << myShape.getArea() << std::endl;
