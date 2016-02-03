@@ -3,6 +3,8 @@
 
 \usepackage{enumitem}
 \usepackage[T1]{fontenc} % http://tex.stackexchange.com/a/17858
+\usepackage{url}
+\usepackage{todonotes}
 
 \title{Interface Hacking}
 \author{Dr Edward Powley}
@@ -63,11 +65,16 @@ of your weekly reports (Part~B).
 
 \subsection*{Part B (Formative)}
 
-Fork the GitHub project at TODO, and write your weekly reports in the \texttt{readme.md} file.
-Also use this repository for any other digital materials you create
-(e.g.\ source code for firmware or software, illustration files, circuit diagrams etc.).
+Fork the GitHub project at the following URL:
 
-Images and code snippets should be embedded directly in the \texttt{readme.md} file.
+\todo[inline]{TODO repository URL}
+
+Write your weekly reports in the \texttt{readme.md} file.
+Also use this repository for any other digital assets you create
+(e.g.\ source code for firmware or software, illustration files, circuit diagrams etc.),
+checking them in regularly as you work on the project.
+
+For the reports, images should be embedded directly in the \texttt{readme.md} file.
 Videos should be uploaded to a video sharing site (e.g.\ YouTube, Vimeo, Vine)
 and linked from the \texttt{readme.md} file.
 
@@ -96,7 +103,7 @@ and be prepared to discuss it with your tutors and peers.
 
 \subsection*{Part C (Summative)}
 
-Physical submission?
+\todo[inline]{TODO physical submission?}
 
 \begin{marginquote}
     ``Alive with new thinking, buzzing with opportunity, connected with the best in the business,
@@ -191,6 +198,16 @@ you may narrate if you wish, but it is not required.
 }
 \section*{Additional Resources}
 
+\begin{itemize}
+    \item Wilkinson, K. and Petrich, M. (2014) The Art of Tinkering: Meet 150 Markers Working at the Intersection of Art, Science \& Technology. Weldon Owen: London.
+    \item Alicia Gibb. Building Open Source Hardware: DIY Manufacturing for Hackers and Makers. Addison Wesley, 2014. 
+    \item Jeremy Blum. Exploring Arduino: Tools and Techniques for Engineering Wizardry. John Wiley, 2013. 
+    \item Kelly, K. (2014) Cool Tools: A Catalogue of Possibilities. Cool Tools.
+    \item Hatch, M. (2013) The Maker Movement Manifesto: Rules for Innovation in the New World of Creators, Hackers, and Tinkerers. McGraw Hill: New York.
+    \item \url{http://makeymakey.com/howto.php}
+\end{itemize}
+
+\todo[inline]{TODO more resources?}
 
 
 \begin{markingrubric}
@@ -202,29 +219,31 @@ you may narrate if you wish, but it is not required.
             \par The design somewhat corresponds to the user stories.
         \grade Most user stories are distinguishable and easily measured.
             \par The design corresponds to the user stories.
-            \par The user stories and design demonstrate emerging commercial awareness.
+            \par Some commercial awareness is demonstrated.
         \grade Nearly all user stories are distinguishable and easily measured.
             \par The design clearly corresponds to the user stories.
-            \par The user stories and design demonstrate commercial awareness.
+            \par Much commercial awareness is demonstrated.
         \grade All user stories are distinguishable and easily measured.
             \par The design clearly and comprehensively corresponds to the user stories.
-            \par The user stories and design demonstrate extensive commercial awareness.
-    \criterion{Weekly reports}{10\%}
+            \par Exemplary commercial awareness is demonstrated.
+    \criterion{Weekly reports}{20\%}
         \grade\fail Fewer than three weekly reports are submitted,
             and/or the weekly reports are inappropriate.
         \grade At least three weekly reports are submitted.
             \par The reports document the design and prototyping process in a basic manner.
-            \par The reports do not use images or video.
+            \par Images and/or videos are not used.
         \grade At least four weekly reports are submitted.
             \par The reports document the design and prototyping process in a satisfactory manner.
-            \par At least one relevant image or video is included per report.
+            \par Images and/or videos are used.
         \grade At least five weekly reports are submitted.
-            \par TODO
+            \par The reports document the design and prototyping process in an effective manner.
+            \par Images and/or videos are used in a satisfactory manner.
         \grade At least five weekly reports are submitted.
-            \par TODO
+            \par The reports document the design and prototyping process in a very effective manner.
+            \par Images and videos are used in an effective manner.
         \grade At least five weekly reports are submitted.
             \par The reports document the design and prototyping process in an exemplary manner.
-            \par The reports use images and video in an exemplary manner.
+            \par Images and videos are used in a highly effective and compelling manner.
     \criterion{Innovation and creative flair}{30\%}
         \grade\fail Demonstrates no evidence of innovation and/or creativity.
             \par The brief has not been followed.
@@ -238,7 +257,7 @@ you may narrate if you wish, but it is not required.
             \par The solution is a novel and innovative product.
         \grade Demonstrates much evidence of mastery of innovative and creative practice.
             \par The solution is a unique and innovative product.
-    \criterion{Functionality of physical prototype}{20\%}
+    \criterion{Functionality of physical prototype}{10\%}
         \grade\fail A physical prototype is not produced, or the prototype is completely non-functional.
         \grade The physical prototype is barely functional.
             \par There are serious technical and/or constructional flaws.
@@ -250,7 +269,7 @@ you may narrate if you wish, but it is not required.
             \par There are superficial technical and/or constructional flaws.
         \grade The physical prototype is functional.
             \par The technical execution and physical construction are flawless.
-    \criterion{Sophistication: \par Software \par Electronics \par Physical construction}{10\%}
+    \criterion{Sophistication: \par Software \par Electronics \par Physical construction}{20\%}
         \grade\fail The solution lacks even a basic level of sophistication in any of the three areas.
         \grade The solution is basic and unsophisticated in all three areas.
             \par Little insight has been demonstrated in any area.
@@ -262,24 +281,24 @@ you may narrate if you wish, but it is not required.
             \par Significant insight has been demonstrated in at least two of these areas.
         \grade The solution combines highly sophisticated software, electronics and physical construction.
             \par Exemplary insight has been demonstrated in all three areas.
-    \criterion{Maintainability}{10\%}
-        \grade\fail F
-            \par Source code is unmaintainable.
-        \grade D
-            \par Source code is not well structured.
-                Names are unclear. Comments are not used.
-        \grade C
-            \par Source code is not well structured.
-                Names are sometimes unclear. Comments are used.
-        \grade B
-            \par Source code is reasonably well structured.
-                Names are mostly clear. Comments are reasonably effective.
-        \grade A
-            \par Source code is well structured, in an attempt to achieve high cohesion and low coupling.
-                Names are clear. Comments are effective.
-        \grade A$^*$
-            \par Source code is extremely well structured, with high cohesion and low coupling.
-                Names are very clear. Comments are exemplary.
+%    \criterion{Maintainability}{10\%}
+%        \grade\fail The final design and construction are not documented, or documentation is inappropriate.
+%            \par Source code is unmaintainable.
+%        \grade The final design and construction are documented, but with major gaps that prevent reproduction.
+%            \par Source code is not well structured.
+%                Names are unclear. Comments are not used.
+%        \grade The final design and construction are documented, but would be difficult to reproduce.
+%            \par Source code is not well structured.
+%                Names are sometimes unclear. Comments are used.
+%        \grade The final design and construction are documented satisfactorily, and could be reproduced with much effort.
+%            \par Source code is reasonably well structured.
+%                Names are mostly clear. Comments are reasonably effective.
+%        \grade The final design and construction are documented effectively, and could be reproduced with some effort.
+%            \par Source code is well structured, in an attempt to achieve high cohesion and low coupling.
+%                Names are clear. Comments are effective.
+%        \grade The final design and construction are documented comprehensively, and could easily be reproduced.
+%            \par Source code is extremely well structured, with high cohesion and low coupling.
+%                Names are very clear. Comments are exemplary.
     \criterion{Professional practice}{5\%}
         \grade\fail GitHub has not been used.
         \grade Material has only been checked into GitHub when required for review or submission.
@@ -289,8 +308,7 @@ you may narrate if you wish, but it is not required.
             \par Commit messages are clear, concise and relevant.
         \grade Material has been checked into GitHub several times per sprint.
             \par Commit messages are clear, concise and relevant.
-            \par There is evidence of engagement (e.g.\ voluntarily reviewing peers' code)
-                within the Academy.
+            \par There is evidence of engagement with peers (e.g.\ voluntary code review).
 \end{markingrubric}
 
 \end{document}
