@@ -8,6 +8,7 @@
 \usepackage{xcolor}    % For colours
 \usepackage{environ}   % Required for NewEnviron definitions in this file
 \usepackage{pdflscape} % For landscape pages
+\usepackage{longtable} % For >1 page marking rubric
 \usepackage{colortbl}  % For colouring table cells
 \usepackage{microtype} % For improved hyphenation
 
@@ -93,28 +94,29 @@
     \newgeometry{margin=1cm}
     \begin{landscape}
         \section*{Marking Rubric}
-        \begin{table}[h]
-            \begingroup\scriptsize
-                \setlength{\extrarowheight}{2pt}
-                \begin{tabular}{|p{2.5cm}|p{1.5cm}|*{6}{p{3.4cm}|}}
-                    \hline
-                    \centering \textbf{\small Criterion} &
-                    \centering \textbf{\small Weight} &
-                    \centering \cellcolor{gray!50} \textbf{\small F (0 -- 39)} &
-                    \centering \textbf{\small D (40 -- 49)} &
-                    \centering \textbf{\small C (50 -- 59)} &
-                    \centering \textbf{\small B (60 -- 69)} &
-                    \centering \textbf{\small A (70 -- 79)} &
-                    \centering \textbf{\small A$^*$ (80 -- 100)}
+        \begingroup\scriptsize
+            \setlength{\extrarowheight}{2pt}
+            \begin{longtable}{|p{2.5cm}|p{1.5cm}|*{6}{p{3.4cm}|}}
+                \hline
+                \centering \textbf{\small Criterion} &
+                \centering \textbf{\small Weight} &
+                \centering \cellcolor{gray!50} \textbf{\small F (0 -- 39)} &
+                \centering \textbf{\small D (40 -- 49)} &
+                \centering \textbf{\small C (50 -- 59)} &
+                \centering \textbf{\small B (60 -- 69)} &
+                \centering \textbf{\small A (70 -- 79)} &
+                \centering \textbf{\small A$^*$ (80 -- 100)} \endhead\hline
 }{
-                    \tabularnewline\hline
-                \end{tabular}
-            \endgroup
-        \end{table}
+                \tabularnewline\hline
+            \end{longtable}
+        \endgroup
     \end{landscape}
 }
 
 % Commands inside the marking rubric
+% Use firstcriterion for the first criterion, and criterion for subsequent ones
+% The difference is that firstcriterion doesn't start a new table row, because \endhead did that already
+\newcommand{\firstcriterion}[2]{\setlength{\parskip}{0.5em}\raggedright #1 & \centering #2}
 \newcommand{\criterion}[2]{\tabularnewline\hline\setlength{\parskip}{0.5em}\raggedright #1 & \centering #2}
 \newcommand{\grade}{ & \setlength{\parskip}{0.5em}\raggedright}
 \newcommand{\fail}{\cellcolor{gray!50}}
