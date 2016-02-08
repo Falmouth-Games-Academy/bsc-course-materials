@@ -11,6 +11,7 @@
 \usepackage{longtable} % For >1 page marking rubric
 \usepackage{colortbl}  % For colouring table cells
 \usepackage{microtype} % For improved hyphenation
+\usepackage{calc}
 
 % Adjust margins
 \usepackage[margin=1.5cm, left=6.5cm]{geometry}
@@ -120,4 +121,5 @@
 \newcommand{\criterion}[2]{\tabularnewline\hline\setlength{\parskip}{0.5em}\raggedright #1 & \centering #2}
 \newcommand{\grade}{ & \setlength{\parskip}{0.5em}\raggedright}
 \newcommand{\fail}{\cellcolor{gray!50}}
-\newcommand{\gradespan}[2]{& \multicolumn{#1}{l|}{#2}}
+\newcommand{\gradespan}[2]{& \multicolumn{#1}{p{3.4cm * #1 + (\tabcolsep * 2 + \arrayrulewidth) * (#1 - 1)}|}%
+    {\setlength{\parskip}{0.5em}\raggedright #2}}
