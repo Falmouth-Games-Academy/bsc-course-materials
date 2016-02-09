@@ -35,6 +35,7 @@
 % Adjust section title spacing
 \usepackage{titlesec}
 \titlespacing{\section}{0cm}{\parskip}{0cm}
+\titlespacing{\subsection}{0cm}{\parskip}{0cm}
 
 % Allow document version to be specified, e.g. \version{1.1} in the preamble
 % Defaults to 1.0 if not specified
