@@ -6,6 +6,16 @@
 \usepackage{url}
 \usepackage{todonotes}
 
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily,
+	frame=single,
+	tabsize=4,
+	showstringspaces=false,
+	breaklines=true,
+    language=C++
+}
+
 \title{Group Desktop Game}
 \author{Dr Edward Powley}
 
@@ -24,9 +34,9 @@
 %    an open and sustained discourse is an excellent way to learn ---
 %    for both beginners and adepts!''
 %\end{marginquote}
-\marginpicture{MakeyMakey.jpg}{
-    The \emph{MaKey~MaKey} allows a multitude of materials to be used to create videogame controllers.
-}
+%\marginpicture{MakeyMakey.jpg}{
+    %The \emph{MaKey~MaKey} allows a multitude of materials to be used to create videogame controllers.
+%}
 \section*{Introduction}
 
 In this assignment, you are required to design and implement a 2D game for Windows PC.
@@ -40,157 +50,179 @@ You will work in small groups (3--4 students) to design, plan and develop your g
 %combined with your own creativity and innovation,
 %to produce a unique creative artefact.
 
-This assignment is formed of \textbf{three} parts.
-Begin by forking the GitHub project at the following URL:
+This assignment is formed of \textbf{four} parts.
+Summative submission is via LearningSpace.
+
+\subsection*{A. \emph{Pitch} your game design}
+
+As an \textbf{individual} effort, prepare and deliver a pitch for a game concept.
+You will be given creativity cards to aid in coming up with your concept.
+The only hard restriction on your concept is that it must use \textbf{2D graphics},
+i.e.\ it must be implementable in SDL without the use of OpenGL or other 3D graphics libraries.
+
+Your pitch should address the following questions:
+\begin{itemize}
+	\item What is the title and high concept of the game?
+	\item What are the core gameplay mechanics?
+    \item What will make the game fun?
+	\item Is there a market for this type of game?
+	\item What sets your concept apart from other games on the market?
+	\item How well does the scope of the game match the timeframe of this assignment?
+\end{itemize}
+
+Prepare a \textbf{ten minute} presentation.
+Visual aids (e.g.\ PowerPoint slides) are \textbf{neither required nor recommended},
+however you may use them if you feel it necessary.
+
+\textbf{Formative submission:} Participate in the pitch session in class.
+The quality of your pitch is \textbf{not formally assessed},
+however you will receive formative feedback from your tutors and peers.
+\textbf{Non-participation} will be penalised on a threshold basis.
+
+In the session, the class will vote on which concepts will be taken forwards to parts~B, C and~D.
+
+\subsection*{B. \emph{Plan} the game}
+
+As a \textbf{group} effort, break your game concept down into user stories.
+Create a Trello task board and populate it with your user stories.
+
+\textbf{Formative submission:} Discuss your task board with your tutor.
+
+\subsection*{C. \emph{Implement} the game}
+
+As a \textbf{group} effort, implement your assigned game concept.
+You will implement the game across \textbf{four} sprints;
+use your Trello board from part~B to plan your sprints.
+Each sprint will end with a sprint review, where you should aim to have a playable build of your game.
+
+One member of the group should fork the GitHub project at the following URL, and add the other members as contributors.
+Use this forked repository for all source code and other assets.
 \begin{center}
 \url{https://github.com/Falmouth-Games-Academy/comp150-desktop-game}
 \end{center}
 
-\subsection*{A. \emph{Prepare} a game design pitch}
+\textbf{Formative submission:} Participate in the sprint review sessions.
 
-On GitHub, create a Markdown file (or edit \texttt{readme.md})
-defining the high concept of your controller.
-Include details of any background research you have done to assess commercial viability.
+\subsection*{D. \emph{Demonstrate} the game}
 
-On Trello, create a task board that defines the key requirements
-(in terms of components and user stories) of the controller.
-
-\textbf{Formative submission:} Arrange a meeting with your tutor to discuss your concept and task board.
-
-\subsection*{B. \emph{Build} and  \emph{integrate} a prototype of your game controller}
-
-You will build your prototype controller over \textbf{two sprints}.
-You should aim to have a `potentially shippable' prototype at the end of each sprint;
-that is, a prototype which does not have any major flaws or half-finished features that prevent it from being tested,
-and that can be used (even if lacking some features) as a controller in the game.
-
-Use this forked repository to store any digital artefacts (including but not limited to
-design sketches, photographs, art assets, source code, electronic circuit designs).
-
-\textbf{Formative submission:} Participate in the two sprint review sessions in class.
-
-\subsection*{C. \emph{Demonstrate} your controller}
-
-Bring your prototype controller to the demo session in class,
+Bring your finished game to the demo session at the end of the semester,
 and be prepared to discuss it with tutors and peers.
 
-For submission, you must also prepare a short \textbf{video demonstration} of your controller.
-The maximum length of this video is \textbf{two minutes};
-longer videos will be subject to penalties in line with the course word count policy available on LearningSpace.
-In your video, briefly demonstrate the functionality of the controller.
-You may narrate if you wish, but it is not required.
-
 \textbf{Formative submission:} Participate in the demo session.
+    There is no formal submission for this part.
 
-\subsection*{Summative submission (electronic)}
+\subsection*{Summative submission}
 
-Create a zip file containing the following:
+Create a zip file containing screenshots of your Trello task board from part~B,
+and the source code and other assets for your game from part~C.
+The recommended way do this is using the ``Download Zip'' button on the GitHub website.
+Upload the zip file to the appropriate submission queue on LearningSpace.
 
-\begin{itemize}
-\item A markdown file named \texttt{readme.md} giving a high-level overview of the project,
-    including your concept and background research from part~A.
-\item Screenshots of your Trello task board from part~A.
-    As a minimum, include one from the beginning of each sprint,
-    one from the end of the project,
-    and screenshots documenting any checklists or other information within your cards.
-\item All source code and other digital artefacts created for part~B.
-    You should include source code files or snippets demonstrating the integration of your controller into the game,
-    but you do \textbf{not} need to provide the entire source code for the game.
-\item The video demonstration produced for part~C, compressed in AVI or MP4 format.
-\end{itemize}
+You do \textbf{not} need to include a compiled executable in your submission.
+Please ensure that the markers will be able to compile and run your code.
+In particular you are advised to include any third-party libraries within your repository,
+or provide clear and comprehensive instructions on how to set up an appropriate build environment.
+If in doubt, please ask your tutor to verify that they can compile your code before you submit it.
 
-The recommended way to produce this zip file is to check all of the above into your GitHub repository
-throughout the course of the project,
-and then use the ``Download Zip'' function on the GitHub website.
-
-\textbf{Material not included in the zip file will not be marked},
-even if it is available online, and even if tutors have seen it in class.
-Please ensure that all material you want the markers to consider is included in your submission.
-
-Upload your zip file to the appropriate submission queue on LearningSpace.
+\textbf{All students must make an individual submission of the group's work.}
+Late or non-submission will be subject to the usual penalties,
+even if the other members of your group have submitted on time.
+\todo[inline]{$\uparrow$ Mike --- I'm assuming this is the case?}
 
 \begin{marginquote}
-    ``Alive with new thinking, buzzing with opportunity, connected with the best in the business,
-    Falmouth University is the perfect place to start shaping your creative career.
-    Thousands of people from around the globe come to us every year,
-    graduating to become the brightest stars in art, design, media, performance and writing industries.
-
-    ``[...]
-    Falmouth has forged its position as one of the most highly regarded creative arts institutions across the globe.''
+    ``A game is a series of interesting choices.''
     
-    --- Falmouth University website
+    --- Sid Meier
+    
+    \marginquoterule
+    
+    ``It seems that perfection is attained not when there is nothing more to add,
+        but when there is nothing more to remove.''
+    
+    --- Antoine de Saint-Exup\'ery
 \end{marginquote}
-\marginpicture{guitarhero}{
-    Rhythm games such as \emph{Guitar Hero} and \emph{Rock Band} are excellent examples of games
-    which make use of unique input devices to enhance gameplay.
-}
+%\marginpicture{guitarhero}{
+    %Rhythm games such as \emph{Guitar Hero} and \emph{Rock Band} are excellent examples of games
+    %which make use of unique input devices to enhance gameplay.
+%}
 \section*{Additional Guidance}
 
-Falmouth University is nationally and internationally renowned as an arts institution.
-Despite the fact that you are studying for a Bachelor of Science degree in a technical discipline,
-you are still expected to strive for the same level of \textbf{innovation and creative flair}
-as your fellow students in other departments.
-All assignments on this course involve a mix of technical and creative activities;
-this assignment is more heavily weighted towards the creative than the assignments you have completed thus far.
-On this assignment, a competent execution of an unimaginative idea is unlikely to achieve higher than a C grade overall,
-as opposed to an imperfect execution of a unique and ambitious concept
---- bear this in mind when working on your design.
+A common mistake in this project is poor planning and poor time management.
+By now this will be a familiar phrase,
+but it is no less true of this project, and the usual guidance applies.
+It is particularly common for students to
+vastly underestimate the effort required to implement even a simple game,
+and thus vastly overscope their games.
+From the pitch stage, you should consider carefully what is feasible within the scope of this project.
+
+For the most part, your work will be marked as a group effort.
+However it is important for us to avoid the situation where students are able to ``coast'' through the assignment,
+and receive undue credit for their fellow group members' work.
+It is also important to avoid the reverse situation, where one member of the group takes it upon themselves
+to do the lion's share of the work and prevent the others from contributing.
+Marks will be weighted by a multiplier for \textbf{individual contribution},
+which aims to penalise both of these behaviours.
+We will assess this by several means, including sprint reviews, individual vivas, feedback from your peers,
+attribution in the source code, and GitHub commit logs.
+Any student who has contributed their \textbf{``fair share'' of effort} to the project will receive 100\% for this,
+so any student who is putting in the appropriate level of effort has no need to worry.
+Note that ``fair share'' is judged on effort rather than productivity,
+so for example do not worry that you cannot produce as much code as someone with more programming experience than you.
+
+The first step in planning your implementation should be to break your concept down into \textbf{user stories}. 
+Your user stories should be \textbf{distinguishable} (i.e.\ there should be little overlap between them)
+and \textbf{easily measured} (i.e.\ it should be easy to tell when each user story has been implemented).
+They should also be \textbf{comprehensive}, i.e.\ the user stories should completely capture the
+desired functionality of the game, with no gaps.
+Imagine giving your user stories to a developer who has never seen a game of your target genre.
+Would they be able to implement the game correctly, or would they miss key features?
+
+%Wherever possible, you should clearly \textbf{attribute} the author(s) of segments of your code.
+%The easiest way to do this is by inserting appropriate comments, for example:
+%\begin{lstlisting}
+%/* This function was written by student 1511111 */
+%\end{lstlisting}
+%\begin{lstlisting}
+%/* This function was pair-programmed by students 1522222 and 1533333 */
+%\end{lstlisting}
+%\begin{lstlisting}
+%/* This function was adapted by student 1544444 from an example at http://stackoverflow.com/a/1657490 */
+%\end{lstlisting}
+
+Your code will be assessed on \textbf{functional coherence}:
+how well the finished game corresponds to the user stories,
+and whether the game has any obvious bugs.
+Correspondence to user stories runs both ways:
+implementing features that were not present in the design (``feature creep'')
+is just as bad as neglecting to implement features.
+
+Your code will also be assessed on \textbf{sophistication}.
+To succeed on a project of this size and complexity,
+you will need to make use of appropriate algorithms, data structures, library features, and object oriented programming concepts.
+Appropriateness to the task at hand is key, however:
+you will \textbf{not} receive credit for shoehorning a complicated solution into your program
+where a simpler one would have sufficed.
+
+\textbf{Maintainability} is important in all programming projects,
+but doubly so when working in a team.
+Use \textbf{comments} liberally to improve comprehension of your code,
+and choose carefully the \textbf{names} for your files, classes, functions and variables.
+For high marks you should use a well-established commenting convention
+for \textbf{high-level documentation} of your files, classes and functions.
+The open-source tool Doxygen supports several such conventions,
+and can optionally be used to generate documentation from your source code in HTML and other formats.
+Also ensure that all code corresponds to a sensible and consistent \textbf{formatting style}:
+indentation, whitespace, placement of curly braces, etc.
+
+As with all assignments on this course, you are expected to display a level of
+\textbf{innovation and creative flair} befitting Falmouth University's reputation as a world-leading
+arts institution.
+We are particularly looking for creativity in the design of your \textbf{game mechanics};
+your game will \textbf{not} be judged on aesthetic criteria such as the quality of your art assets.
 One approach to promoting creativity is
 \textbf{divergent thinking}: generation of ideas by exploring many possible solutions.
-Often the most interesting ideas are \textbf{subversive}: they deliberately go against the
-accepted or most obvious solution
-
-The history of video games is littered with failed peripherals which consumers simply did not want,
-which were perceived as expensive gimmicks rather than legitimate enhancements to gameplay.
-Your creativity should be balanced by \textbf{commercial awareness}:
-your design should be informed by your research into products that have succeeded and failed
-in the past, and what underexploited niches exist in the present.
-An A$^*$ project would be a highly divergent idea, but one that has clear commercial viability.
-Do not be too discouraged if you fall short of this: this is a tall order even for the professionals!
-
-We have given you some of the materials you need: a MaKey~MaKey kit, crocodile clip leads and conductive paint.
-You will need to add your own materials to produce a \textbf{functional} physical prototype.
-A ``Blue Peter'' style prototype made from household items is fine,
-as is something made out of modelling clay, construction toys etc.
-However you should still choose your materials carefully, as overly flimsy construction may
-lose you marks on the functionality criterion.
-
-You may also wish to connect electronic components such as LEDs, buzzers, photoresistors etc to the MaKey~MaKey,
-or even use a different, more flexible hardware platform such as Arduino.
-However you are discouraged from spending large sums of money on extra hardware,
-and doing so is \textbf{not required} to achieve a high mark.
-If you choose to go down this route,
-it is possible to purchase an Arduino and a selection of electronic components online for 
-around the price of a textbook (\textsterling 20 -- \textsterling 30).\footnote{
-    Note that the MaKey~MaKey kits provided in class are version~1.2, which, unlike earlier versions, is not based on Arduino.
-    Any tutorials you may find online for reprogramming the MaKey~MaKey firmware using the Arduino IDE
-    are unfortunately not applicable to this version.
-}
-
-You should aim to demonstrate a high level of \textbf{sophistication}
-in the technical execution of your prototype.
-An important part of sophistication is having the insight to choose the right tool for the job:
-if a simpler technique fulfils all the requirements, use it.
-The use of unnecessarily complicated techniques, serving only to showcase one's own cleverness,
-is a dangerous habit for a software developer.
-
-The sole purpose of the \textbf{video demonstration} is to aid moderators and external examiners,
-who are not present for the demo session,
-in assessing your work.
-Your video does \textbf{not} need to be entertaining or highly polished:
-a smartphone or webcam video of you or someone else using the controller is sufficient.
-
-%Your \textbf{weekly reports} should document the iterations you make on your design and prototyping.
-%The emphasis in this assignment is on creativity and rapid iteration,
-%so do not be afraid to ``go back to the drawing board'' if a prototyped idea does not work as well as anticipated.
-%However it is important to document (and learn from) your failures, even more so than your successes.
-%
-%You are strongly encouraged to make use of sketches, diagrams, photographs, screenshots
-%and short videos to document your design and prototyping process.
-%Many indie game developers use such work-in-progress material as an important tool for promotion
-%and community engagement; for example, search Twitter for the hashtag \texttt{\#screenshotsaturday}.
-%Videos should ideally be short (5--30 second) demonstrations of functions of your prototype;
-%you may narrate if you wish, but it is not required.
+Often the most interesting ideas are \textbf{subversive}: they deliberately go against
+accepted conventions or obvious solutions.
 
 \begin{marginquote}
     ``The first 90 percent of the code accounts for the first 90 percent of the development time.
@@ -207,90 +239,147 @@ a smartphone or webcam video of you or someone else using the controller is suff
     
     --- Douglas Hofstadter
 \end{marginquote}
-\marginpicture{fishing}{
-    The \emph{Dreamcast Fishing Controller}, released as a peripheral for the game \emph{Sega Bass Fishing}.
-    Even peripherals which appeal to only a small audience can enjoy moderate commercial success.
-}
+%\marginpicture{fishing}{
+    %The \emph{Dreamcast Fishing Controller}, released as a peripheral for the game \emph{Sega Bass Fishing}.
+    %Even peripherals which appeal to only a small audience can enjoy moderate commercial success.
+%}
 \section*{Additional Resources}
 
 \begin{itemize}
-    \item Wilkinson, K. and Petrich, M. (2014) The Art of Tinkering: Meet 150 Markers Working at the Intersection of Art, Science \& Technology. Weldon Owen: London.
-    \item Alicia Gibb. Building Open Source Hardware: DIY Manufacturing for Hackers and Makers. Addison Wesley, 2014. 
-    \item Jeremy Blum. Exploring Arduino: Tools and Techniques for Engineering Wizardry. John Wiley, 2013. 
-    \item Kelly, K. (2014) Cool Tools: A Catalogue of Possibilities. Cool Tools.
-    \item Hatch, M. (2013) The Maker Movement Manifesto: Rules for Innovation in the New World of Creators, Hackers, and Tinkerers. McGraw Hill: New York.
-    \item \url{http://makeymakey.com/howto.php}
+    \item Mitchell, S. (2013) SDL Game Development. Packt Publishing.
+    \item Sims, C. and Johnson, H.L. (2012) SCRUM: A Breathtakingly Brief and Agile Introduction. Dymaxicon.
+    \item \url{https://www.mountaingoatsoftware.com/agile/user-stories}
+    \item \url{http://www.doxygen.org}
 \end{itemize}
 
 \begin{markingrubric}
-    \firstcriterion{Individual pitches}{10\%}
-        \grade\fail F
-        \grade D
-        \grade C
-        \grade B
-        \grade A
-        \grade A$^*$
-    \criterion{Individual contribution}{Multiplier for criteria below}
-        \gradespan{5}{\fail Bad}
-        \grade Good
-    \criterion{Sprint reviews}{Threshold \par 5\% + 5\%}
-        \gradespan{2}{\fail Neither the first nor second sprint are delivered, or no `reasonable' peer reviews are submitted.}
-        \gradespan{2}{A `potentially shippable' prototype is produced at the end of the first and/or second sprint.
-            \par A `reasonable' review of at least one peer's work is provided in one of the review sessions.}
-        \gradespan{2}{A `potentially shippable' prototype is produced at the end of both the first and second sprints.
-            \par A `reasonable' review of at least one peer's work is provided in each of the review sessions.}
-    \criterion{Appropriateness of requirements}{10\%}
-        \grade\fail F
-        \grade D
-        \grade C
-        \grade B
-        \grade A
-        \grade A$^*$
-    \criterion{Functional coherence}{10\%}
-        \grade\fail F
-        \grade D
-        \grade C
-        \grade B
-        \grade A
-        \grade A$^*$
-    \criterion{Sophistication}{10\%}
-        \grade\fail F
-        \grade D
-        \grade C
-        \grade B
-        \grade A
-        \grade A$^*$
-    \criterion{Maintainability}{10\%}
-        \grade\fail F
-        \grade D
-        \grade C
-        \grade B
-        \grade A
-        \grade A$^*$
-    \criterion{Innovation and creative flair}{10\%}
-        \grade\fail F
-        \grade D
-        \grade C
-        \grade B
-        \grade A
-        \grade A$^*$
-    \criterion{Appropriateness of sprint planning}{10\%}
-        \grade\fail F
-        \grade D
-        \grade C
-        \grade B
-        \grade A
-        \grade A$^*$
-    \criterion{Professional practice}{5\%}
+    \firstcriterion{Individual pitch}{Threshold \par 5\%}
+        \gradespan{5}{\fail No individual pitch is delivered, or the pitch is inappropriate.}
+        \grade An appropriate individual pitch is delivered.
+    \criterion{Sprint reviews}{Threshold \par 2.5\% + 2.5\%}
+        \gradespan{2}{\fail The student fails to participate in at least one sprint review.}
+        \gradespan{2}{The student participates in all four sprint reviews.
+             \par At least one sprint does not result in a playable build.}
+        \gradespan{2}{The student participates in all four sprint reviews.
+             \par A playable build is delivered at the end of every sprint.}
+    \criterion{Appropriateness of user stories and sprint planning}{15\% $\dagger$}
+        \grade\fail No user stories and/or sprint plans are provided.
+        \grade Few user stories are distinguishable and easily measured.
+            \par Sprint plans provide little support for the project.
+        \grade Some user stories are distinguishable and easily measured.
+            \par Sprint plans provide some support for the project.
+        \grade Most user stories are distinguishable and easily measured.
+            \par User stories correspond to the game design.
+            \par Sprint plans provide much support for the project.
+        \grade Nearly all user stories are distinguishable and easily measured.
+            \par User stories clearly correspond to the game design.
+            \par Sprint plans provide effective support for the project.
+        \grade All user stories are distinguishable and easily measured.
+            \par User stories clearly and comprehensively correspond to the game design.
+            \par Sprint plans provide exemplary support for the project.
+    \criterion{Functional coherence}{10\% $\dagger$}
+        \grade\fail No gameplay elements have been implemented and/or the code fails to compile or run.
+        \grade Few gameplay elements have been implemented.
+            \par There are many obvious and serious bugs.
+        \grade Some gameplay elements have been implemented.
+            \par There are some obvious bugs.
+        \grade Many gameplay elements have been implemented.
+            \par There is some evidence of feature creep.
+            \par There are few obvious bugs.
+        \grade Almost all gameplay elements have been implemented.
+            \par There is little evidence of feature creep.
+            \par There are some minor bugs.
+        \grade All gameplay elements have been implemented.
+            \par There is no evidence of feature creep.
+            \par Bugs, if any, are purely cosmetic and/or superficial.
+    \criterion{Sophistication}{20\% $\dagger$}
+        \grade\fail No insight into the appropriate use of programming constructs is evident from the source code.
+            \par The program is structured as one monolithic source file.
+        \grade Little insight into the appropriate use of programming constructs is evident from the source code.
+            \par The program structure is poor.
+        \grade Some insight into the appropriate use of programming constructs is evident from the source code.
+            \par The program structure is adequate.
+        \grade Much insight into the appropriate use of programming constructs is evident from the source code.
+            \par The program structure is appropriate.
+        \grade Significant insight into the appropriate use of programming constructs is evident from the source code.
+            \par The program structure is effective. There is high cohesion and low coupling.
+        \grade Exemplary insight into the appropriate use of programming constructs is evident from the source code.
+            \par The program structure is very effective. There is high cohesion and low coupling.
+    \criterion{Maintainability}{20\% $\dagger$}
+        \grade\fail There are no comments, or comments are misleading.
+            \par Most variable names are unclear or inappropriate.
+            \par Code formatting hinders readability.
+        \grade The code is only sporadically commented, or comments are unclear.
+            \par Some identifier names are unclear or inappropriate.
+            \par Code formatting is inconsistent or does not aid readability.
+        \grade The code is well commented.
+            \par Some identifier names are descriptive and appropriate.
+            \par An attempt has been made to adhere to a consistent formatting style.
+        \grade The code is reasonably well commented.
+            \par Most identifier names are descriptive and appropriate.
+            \par Most code adheres to a consistent formatting style.
+        \grade The code is reasonably well commented, with some Doxygen-compatible module documentation.
+            \par Almost all identifier names are descriptive and appropriate.
+            \par Almost all code adheres to a consistent formatting style.
+        \grade The code is very well commented, with comprehensive Doxygen-compatible module documentation.
+            \par All identifier names are descriptive and appropriate.
+            \par All code adheres to a consistent formatting style.
+    \criterion{Innovation and creative flair}{10\% $\dagger$}
+        \grade\fail No innovation and/or creativity.
+            \par The game concept is a clone of existing works with only cosmetic alterations.
+        \grade Little innovation and/or creativity.
+            \par The game concept is derivative of existing works, with only minor gameplay alterations.
+        \grade Some innovation and/or creativity.
+            \par The game concept is derivative of existing works, but shows emerging divergent and/or subversive thinking in terms of gameplay.
+        \grade Much innovation and/or creativity.
+            \par The game concept is somewhat original, with an attempt at divergent and/or subversive thinking in terms of gameplay.
+            \par The gameplay shows promise of fun and engagement.
+        \grade Significant innovation and/or creativity.
+            \par The game concept is original, with evidence of divergent and/or subversive thinking in terms of gameplay.
+            \par The gameplay is somewhat fun and engaging.
+        \grade Exemplary innovation and/or creativity.
+            \par The game concept is highly original, with strong evidence of divergent and/or subversive thinking in terms of gameplay.
+            \par The gameplay is fun and engaging.
+    \criterion{Professionalism}{10\% $\dagger$}
+        \grade\fail The group's professional conduct has been unacceptable,
+            and/or the group has failed to function at all as a team.
+            \par Agile working practices have not been used.
+        \grade The group has demonstrated an emerging level of professionalism.
+            \par Agile working practices have provided little support for the project.
+        \grade The group has demonstrated a progressing level of professionalism,
+            functioning adequately as a team.
+            \par Agile working practices have provided some support for the project.
+        \grade The group has demonstrated an appropriate level of professionalism,
+            functioning somewhat effectively as a team.
+            \par Agile working practices have provided much support for the project.
+        \grade The group has demonstrated a high level of professionalism,
+            functioning effectively as a cohesive team.
+            \par Agile working practices have provided significant support for the project.
+        \grade The group has demonstrated an exemplary level of professionalism,
+            functioning highly effectively as a cohesive team.
+            \par Agile working practices have provided exemplary support for the project.
+    \criterion{Use of version control}{5\% $\dagger$}
         \grade\fail GitHub has not been used.
-        \grade Material has only been checked into GitHub a few times before the deadline.
-        \grade Material has been checked into GitHub at least once per sprint.
-        \grade Material has been checked into GitHub several times per sprint.
-        \grade Material has been checked into GitHub several times per sprint.
+        \grade Material has been checked into GitHub less frequently than once per sprint.
+            \par All code has been checked into the Master branch.
+        \grade All group members have checked material into GitHub at least once per sprint.
+            \par An attempt has been made to use branches.
+        \grade All group members have checked material into GitHub several times per sprint.
             \par Commit messages are clear, concise and relevant.
-        \grade Material has been checked into GitHub several times per sprint.
+            \par Branches are used sensibly.
+        \grade All group members have checked material into GitHub several times per sprint.
             \par Commit messages are clear, concise and relevant.
-            \par There is evidence of engagement with peers (e.g.\ voluntary code review).
+            \par Branches are used somewhat effectively.
+            \par There is evidence of engagement with peers (e.g.\ code review).
+        \grade All group members have checked material into GitHub several times per sprint.
+            \par Commit messages are clear, concise and relevant.
+            \par Branches are used effectively.
+            \par There is significant evidence of engagement with peers (e.g.\ code review).
+    \criterion{Individual contribution}{Multiplier for criteria marked $\dagger$}
+        \gradespan{5}{\fail The student has failed to contribute their ``fair share'' to the project,
+            or has actively prevented others from doing so.}
+        \grade The student has contributed their ``fair share'' to the project,
+            and has facilitated others in doing so.
 \end{markingrubric}
 
 \end{document}
