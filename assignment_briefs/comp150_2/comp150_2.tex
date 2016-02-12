@@ -81,7 +81,7 @@ The quality of your pitch is \textbf{not formally assessed},
 however you will receive formative feedback from your tutors and peers.
 \textbf{Non-participation} will be penalised on a threshold basis.
 
-In the session, the class will vote on which concepts will be taken forwards to parts~B, C and~D.
+In the session, a selection process will determine which concepts will be taken forwards to parts~B, C and~D.
 
 \subsection*{B. \emph{Plan} the game}
 
@@ -214,19 +214,19 @@ The open-source tool Doxygen supports several such conventions.
 Also ensure that all code corresponds to a sensible and consistent \textbf{formatting style}:
 indentation, whitespace, placement of curly braces, etc.
 Hard-coded \textbf{literals} (numbers and strings) within the source should be avoided,
-with values instead defined as constants and collected together in a single place.
+with values instead defined as constants together in a single place.
 Consider allowing some literal values, where appropriate, to be ``tinkered'' without changing the source code,
-e.g.\ by defining them in a text file that is read by the game on startup.
+e.g.\ by defining them in an external file read by the game on startup.
 
 As with all assignments on this course, you are expected to display a level of
 \textbf{innovation and creative flair} befitting Falmouth University's reputation as a world-leading
 arts institution.
-We are particularly looking for creativity in the design of your \textbf{game mechanics};
-your game will \textbf{not} be judged on aesthetic criteria such as the quality of your art assets.
+We are looking for creativity in the design of your \textbf{game mechanics};
+you will \textbf{not} be judged on the quality of your art assets.
 One approach to promoting creativity is
-\textbf{divergent thinking}: generation of ideas by exploring many possible solutions.
+\textbf{divergent thinking}: generating ideas by exploring many possible solutions.
 Often the most interesting ideas are \textbf{subversive}: they deliberately go against
-accepted conventions or obvious solutions.
+convention or obvious solutions.
 
 \begin{marginquote}
     ``The first 90 percent of the code accounts for the first 90 percent of the development time.
@@ -255,6 +255,7 @@ accepted conventions or obvious solutions.
     \item Sims, C. and Johnson, H.L. (2012) SCRUM: A Breathtakingly Brief and Agile Introduction. Dymaxicon.
     \item \url{https://www.mountaingoatsoftware.com/agile/user-stories}
     \item \url{http://www.doxygen.org}
+    \item \url{https://travis-ci.org}
 \end{itemize}
 
 \begin{markingrubric}
@@ -367,7 +368,7 @@ accepted conventions or obvious solutions.
         \grade Almost no portability issues are present.
             \par The directory structure inside the submitted zip file is sensible.
             \par The provided template has been followed.
-    \criterion{Professionalism}{5\% $\dagger$}
+    \criterion{Professional Practice}{5\% $\dagger$}
         \grade\fail The group's professional conduct has been unacceptable,
             and/or the group has failed to function at all as a team.
             \par Agile working practices have not been used.
@@ -382,9 +383,11 @@ accepted conventions or obvious solutions.
         \grade The group has demonstrated a high level of professionalism,
             functioning effectively as a cohesive team.
             \par Agile working practices have provided significant support for the project.
+            \par There is evidence of some use of Travis CI to support a continuous integration approach.
         \grade The group has demonstrated an exemplary level of professionalism,
             functioning highly effectively as a cohesive team.
             \par Agile working practices have provided exemplary support for the project.
+            \par Travis CI has been used to effectively support a continuous integration approach.
     \criterion{Use of version control}{10\% $\dagger$}
         \grade\fail GitHub has not been used.
         \grade Material has been checked into GitHub less frequently than once per sprint.
