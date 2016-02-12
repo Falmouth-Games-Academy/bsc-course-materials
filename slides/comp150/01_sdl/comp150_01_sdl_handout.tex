@@ -1,0 +1,79 @@
+\documentclass[a4paper]{article}
+
+\usepackage{url}
+
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily,
+	frame=single,
+	tabsize=4,
+	showstringspaces=false,
+	breaklines=true,
+    language=C++
+}
+
+\title{SDL Project Setup}
+\author{Ed Powley}
+
+\begin{document}
+
+\maketitle
+
+\section{Creating the project}
+
+\begin{enumerate}
+    \item Open \textbf{Visual Studio Community 2015} and click \textbf{New Project}.
+    \item Choose \textbf{Templates $\to$ Visual C++ $\to$ Win32 $\to$ Win32 Project} and click \textbf{OK}.
+    \item Click \textbf{Finish}.
+    \item Add the following line to \texttt{stdafx.h}:
+    \begin{lstlisting}
+#include <SDL.h>
+    \end{lstlisting}
+    \item Delete all the code in the main \texttt{.cpp} file except for the two \texttt{\#include} statements.
+    \item Add the following code:
+    \begin{lstlisting}
+int main(int argc, char* args[])
+{
+	return 0;
+}
+    \end{lstlisting}
+\end{enumerate}
+
+\section{Downloading SDL}
+
+\begin{enumerate}
+    \item Go to \url{http://libsdl.org}, click on \textbf{Download SDL 2.0},
+        and download the \textbf{Development Libraries} for \textbf{Visual C++ 32/64 bit}.
+    \item Extract the downloaded zip to a convenient location, for example the folder for your new project.
+\end{enumerate}
+
+\section{Setting up the project}
+
+\begin{enumerate}
+    \item Right click your project in the Solution Explorer, and click \textbf{Properties}.
+    \item Ensure the boxes at the top are set to \textbf{All Configurations} and \textbf{All Platforms}.
+    \item Under \textbf{VC++ Directories}, click \textbf{Include Directories} and click \textbf{Edit}.
+    \item Add the path to the \texttt{include} directory extracted from the SDL zip.
+        \emph{Tip:} use relative paths rather than absolute, e.g.\ \verb!..\SDL2-2.0.4\include! instead of \verb!C:\Users\Ed\Documents\SDL2-2.0.4\include!.
+    \item Change the \textbf{Platform} to \textbf{Win32}. Edit the \textbf{Library Directories} entry, adding the path to \verb!lib\x86!.
+    \item Change the \textbf{Platform} to \textbf{x64}. Edit the \textbf{Library Directories} entry, adding the path to \verb!lib\x64!.
+    \item Change the \textbf{Platform} back to \textbf{All Platforms}.
+    \item Under \textbf{Linker $\to$ Input}, edit \textbf{Additional Dependencies} and add \texttt{SDL2.lib} and \texttt{SDL2main.lib}.
+    \item Click \textbf{OK}.
+\end{enumerate}
+
+\section{Running the project}
+
+\begin{enumerate}
+    \item Build and run the project as normal. You should receive an error message saying SDL2.dll cannot be found.
+    \item Find SDL2.dll in SDL's \verb!lib\x86! or \verb!lib\x64! directory (depending on which platform you are currently targeting).
+    \item \textbf{Copy} SDL2.dll into your project's \verb!Debug!, \verb!Release!, \verb!x64\Debug! or \verb!x64\Release! directory
+        (depending on which platform you are currently targeting).
+    \item Run the project again.
+\end{enumerate}
+
+\section{What now?}
+
+Write the code to make your game do something! Refer to the live coding examples from class, the SDL Game Development book, and online tutorials.
+
+\end{document}
