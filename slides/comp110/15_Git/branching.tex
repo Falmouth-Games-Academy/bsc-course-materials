@@ -1,0 +1,77 @@
+\part{Branching}
+\frame{\partpage}
+
+\begin{frame}{Forking vs branching}
+    \begin{itemize}
+        \item Both represent a set of changes based on, but separate from, the repository's ``main'' set of commits
+        \item A \textbf{fork} is a completely separate repository
+        \item A \textbf{branch} exists within the same repository
+        \item Which to use?
+            \begin{itemize}
+                \item We recommend you use branches ---
+                    they are easier to work with, and keep everything within the same repository
+                \item In industry, many (larger) teams use forks, many do not
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Branching}
+    \begin{itemize}
+        \item Every repository has one branch called \texttt{master}
+        \item New branches can be created at any time
+        \item Branches can be \textbf{merged}
+            \begin{itemize}
+                \item ``Merge A into B'':
+                    take the commits (remember: changes) from branch A, and apply them to branch B
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The golden rule}
+    \begin{itemize}
+        \item The \texttt{master} branch should always be \textbf{deployable}
+            \begin{itemize}
+                \item No half-finished features
+                \item No obvious bugs
+                \item \textbf{Definitely} no compile errors
+                \item If a VIP walked into the room and asked for a demo, \texttt{master} is what you'd show them
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Branching}
+    \includegraphics[width=\textwidth]{branching}
+\end{frame}
+
+\begin{frame}{GitHub flow}
+    \begin{center}
+        \url{https://guides.github.com/introduction/flow/}
+    \end{center}
+\end{frame}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{githubflow-online.pdf}
+}
+
+\begin{frame}{Git flow}
+    \begin{center}
+        \url{http://nvie.com/posts/a-successful-git-branching-model/}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north, yshift=0.5cm] at (current page.north) {%
+            \includegraphics[height=1.1\paperheight]{Git-branching-model}%
+        };
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Discussion}
+    \begin{center}
+        What are the pros and cons of \textbf{Git flow} vs \textbf{GitHub flow}?
+    \end{center}
+\end{frame}
+
+
