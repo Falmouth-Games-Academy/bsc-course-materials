@@ -1,0 +1,36 @@
+\part{Variables and types}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Variables}
+	\begin{columns}[onlytextwidth]
+		\begin{column}{0.45\textwidth}
+			In Python, variables exist the moment they are assigned to:
+			\begin{lstlisting}[language=Python]
+a = 10
+b = 20
+			\end{lstlisting}
+			\pause
+			Variables can hold values of any type:
+			\begin{lstlisting}[language=Python]
+a = 10
+a = 3.14159
+a = "Hello"
+			\end{lstlisting}
+		\end{column}
+		\pause
+		\begin{column}{0.45\textwidth}
+			In C++, variables must be \textbf{declared} before use, and must be given a \textbf{type}:
+			\begin{lstlisting}
+int a = 10;
+int b = 20;
+			\end{lstlisting}
+			\pause
+			Variables can only hold values of the correct type:
+			\begin{lstlisting}
+int a = 10;
+a = 17;      // OK
+a = "Hello"; // Error
+			\end{lstlisting}
+		\end{column}
+	\end{columns}
+\end{frame}
