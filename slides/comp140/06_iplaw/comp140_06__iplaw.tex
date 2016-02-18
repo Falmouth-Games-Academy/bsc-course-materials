@@ -1,0 +1,97 @@
+% Uncomment this line for on-screen presentation
+\documentclass[xcolor={dvipsnames}]{beamer}\usepackage{etoolbox}\newtoggle{printable}\togglefalse{printable}
+
+% Uncomment this line for printable slides (disable animations and don't waste ink)
+%\documentclass[handout, xcolor={dvipsnames}]{beamer}\usepackage{etoolbox}\newtoggle{printable}\toggletrue{printable}
+
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+		morekeywords={each,in}
+}
+
+\begin{document}
+\title{IP \& Open-Source Licencing Law}   
+\subtitle{COMP140: Creative Computing Hacking}
+
+\frame{\titlepage} 
+
+\begin{frame}{Lecture Objectives}
+	Today's lecture will introduce intellectual property law, focusing on:
+	
+	\begin{itemize}
+		\item Copyright
+		\item Trademark
+		\item Design Rights
+		\item Trade Secrets
+		\item Patents
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Lecture Objectives}
+	Today's lecture will also introduce open-source licensing, focusing on:
+	
+	\begin{itemize}
+		\item Creative Commons
+		\item MIT Licence
+		\item Apache Licence
+		\item GNU General Public License
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Important Notice}
+	This is the final week prior to the Easter break.
+\end{frame}
+
+\input{comp140_06_01_overview}
+
+% Move this to next week
+%\input{functions}
+
+\part{Practical Activity}
+\frame{\partpage}
+
+\begin{frame}{WAPI Proposal Review}
+	\begin{itemize}
+		\item \textbf{Hand-in} the hard-copy of your proposal.
+		\item These will be handed out shortly.
+		\item \textbf{Review} the proposal that you have received.
+		\item \textbf{Assess} the scope and feasibility of the proposal.
+		\item \textbf{Assess} the novely and potential utility of the proposed plugin.
+		\item \textbf{Assess} the commercial awareness demonstrated in the proposal.
+		\item \textbf{Complete} the review form.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Coursework Progress}
+You should, by now, have:
+
+	\begin{itemize}
+		\item \textbf{Identified} partners for the WAPI task, where appropriate.
+		\item \textbf{Developed} a proposal. 
+	\end{itemize}
+	
+You should, now:
+
+	\begin{itemize}
+		\item \textbf{Revise} the proposal.
+		\item \textbf{Make} a pull request by the end of the week for tutors to review. 
+		\item Once approved, \textbf{commence} plugin development. 
+	\end{itemize}
+\end{frame}
+
+% -------------------------------------------------------
+
+%\part{The compiler}
+%\frame{\partpage}
+%
+%\begin{frame}
+%	\frametitle{The build process}
+%	\includegraphics[height=\textwidth,angle=90]{compiler_sketch}
+%\end{frame}
+
+\end{document}
