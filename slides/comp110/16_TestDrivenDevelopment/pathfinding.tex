@@ -1,0 +1,76 @@
+\part{Pathfinding}
+\frame{\partpage}
+
+\begin{frame}{The problem}
+    \begin{itemize}
+        \item We have a \textbf{graph}
+            \begin{itemize}
+                \item \textbf{Nodes} (points)
+                \item \textbf{Edges} (lines between points, each with a \textbf{length})
+            \end{itemize}
+        \item E.g.\ a road map
+            \begin{itemize}
+                \item Nodes = addresses
+                \item Edges = roads
+            \end{itemize}
+        \item E.g.\ a tile-based 2D game
+            \begin{itemize}
+                \item Nodes = grid squares
+                \item Edges = connections between adjacent squares
+            \end{itemize}
+        \item Given two nodes $A$ and $B$, find the \textbf{shortest path} from $A$ to $B$
+            \begin{itemize}
+                \item ``Shortest'' in terms of edge lengths --- could be distance, time, fuel cost, ...
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Applications of pathfinding}
+    \begin{itemize}
+        \item Journey planning (sat-nav, Google Maps, TheTrainLine, ...)
+        \item Routing (utility pipes, circuit design, ...)
+        \item Many applications in game AI
+            \begin{itemize}
+                \item Non-player character AI
+                \item Mouse-based movement (e.g.\ strategy games)
+                \item Maze navigation
+                \item Puzzle solving
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{A$^*$ search}
+    Idea:
+    \begin{itemize}
+        \item Expand out from the start node
+        \item Let $g(n)$ be the length of the path currently found between the start and node $n$
+        \item Let $h(n)$ be an \textbf{estimate} of the distance from $n$ to the goal
+        \item Prioritise nodes for which $g(n) + h(n)$ is small
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Properties of A$^*$ search}
+    \begin{itemize}
+        \item A$^*$ is \textbf{guaranteed} to find the shortest path
+            if the distance estimate is \textbf{admissible}
+        \item Essentially, \textbf{admissible} means it must be an \textbf{underestimate}
+            \begin{itemize}
+                \item E.g.\ straight line Euclidean distance is clearly an underestimate
+                    for actual travel distance
+            \end{itemize}
+        \item A$^*$ is an example of \textbf{heuristic} search
+            \begin{itemize}
+                \item In AI, a heuristic is an estimate based on human intuition
+                \item Heuristics are often used to prioritise search,
+                    i.e.\ explore the most promising options first
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Implementing A$^*$}
+    \begin{itemize}
+        \item Worksheet 5 on LearningSpace
+        \item Deadline: \textbf{9th March at 6pm} (i.e.\ two weeks from today)
+    \end{itemize}
+\end{frame}
+
