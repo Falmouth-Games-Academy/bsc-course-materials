@@ -1,0 +1,302 @@
+\part{Composition in C++}
+\frame{\partpage}
+
+\begin{frame}{From COMP110 session 7}
+    OOP models three types of relationship: \pause
+    \begin{itemize}
+        \item \textbf{Is-a}: modelled by \textbf{instantiation} \pause
+        \item \textbf{Has-a}: modelled by \textbf{composition} \pause
+        \item \textbf{Is-a-type-of}: modelled by \textbf{inheritance}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Composition in Python}
+    \begin{itemize}
+        \item ``A duck has a bill'' $\to$
+            ``Each instance of class Duck contains a reference to an instance of class Bill'' \pause
+    \end{itemize}
+    \begin{lstlisting}[language=Python]
+class Bill:
+    ...
+
+class Duck:
+    def __init__(self):
+        self.bill = Bill()
+    \end{lstlisting} \pause
+    \begin{itemize}
+        \item Why a \textbf{reference}? \pause
+        \item Because that's your only option in Python!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Composition in C++}
+    \begin{center}
+        ``A duck has a bill''
+    \end{center}
+    \pause
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item ``Each instance of class Duck contains \textbf{an instance} of class Bill''
+            \end{itemize}
+            \begin{lstlisting}
+class Bill { ... };
+
+class Duck
+{
+private:
+    Bill bill;
+};
+            \end{lstlisting}
+        \end{column}
+        \pause
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item \textbf{Or} ``Each instance of class Duck contains \textbf{a pointer} to an instance of class Bill''
+            \end{itemize}
+            \begin{lstlisting}
+class Bill { ... };
+
+class Duck
+{
+private:
+    Bill* bill;
+};
+            \end{lstlisting}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Composition in C++}
+    \begin{columns}
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item The contained instance of \lstinline{Bill} is stored \textbf{inside} the
+                    instance of \lstinline{Duck} (literally, in memory) \pause
+                \item It is constructed when the \lstinline{Duck} instance is constructed,
+                    and destroyed when it is destroyed \pause
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item The contained instance of \lstinline{Bill} is stored \textbf{outside} the
+                    instance of \lstinline{Duck}, which only stores a \textbf{pointer} \pause
+                \item It is usually constructed manually using \lstinline{new},
+                    and so must be destroyed manually using \lstinline{delete}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{When to use each?}
+    \begin{itemize}
+        \item Pointers are more versatile \pause
+            \begin{itemize}
+                \item Allow several pointers to the same instance (e.g.\ several ducks might \textbf{have-a} single pond) \pause
+                \item Allow \textbf{circular references} (e.g.\ a duck \textbf{has-a} bill, and a bill \textbf{has-a} duck) \pause
+                \item Pointers allow \textbf{polymorphism} (e.g.\ a pointer to a ``duck'' might actually be a pointer to a mallard) \pause
+            \end{itemize}
+        \item \textbf{But} stored instances are easier to work with \pause
+            \begin{itemize}
+                \item Destruction is handled automatically \pause
+            \end{itemize}
+        \item They model slightly different types of \textbf{has-a} relationship \pause
+            \begin{itemize}
+                \item Instance: \textbf{has-a} in the sense of ``contains'' \pause
+                \item Pointer: \textbf{has-a} in the sense of ``is associated with''
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Circular references}
+    \begin{itemize}
+        \item The following code won't compile:
+    \end{itemize}
+    \begin{lstlisting}
+class Bill
+{
+private:
+    Duck* owner;   // Error here
+};
+
+class Duck
+{
+private:
+    Bill bill;
+};
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{What's the problem?}
+    \begin{itemize}
+        \item \textbf{Order} of definitions and declarations matters in C++ \pause
+        \item You \textbf{can't} use something \textbf{before} it's been declared \pause
+        \item The offending line is using \lstinline{Duck} before it's declared \pause
+        \item Does this make circular referencing impossible?
+            Need to declare \lstinline{Duck} before \lstinline{Bill},
+            but also need to declare \lstinline{Bill} before \lstinline{Duck} \pause
+            \begin{itemize}
+                \item No...
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Forward declarations}
+    \begin{itemize}
+        \item Solution: use a \textbf{forward declaration} \pause
+    \end{itemize}
+    \begin{lstlisting}
+class Duck;   // Forward declaration
+
+class Bill
+{
+private:
+    Duck* owner;   // This is OK now
+};
+
+class Duck
+{
+private:
+    Bill bill;
+};
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{6E8NSW3IN}}
+    \begin{itemize}
+        \item Different code, same problem:
+    \end{itemize}
+    
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            Bill.h
+            \begin{lstlisting}[numbers=left, numberstyle=\tiny\texttt]
+#pragma once
+
+#include "Duck.h"
+
+class Bill
+{
+private:
+    Duck* owner;
+};
+            \end{lstlisting}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            Duck.h
+            \begin{lstlisting}[numbers=left, numberstyle=\tiny\texttt]
+#pragma once
+
+#include "Bill.h"
+
+class Duck
+{
+private:
+    Bill bill;
+};
+            \end{lstlisting}
+        \end{column}
+    \end{columns}
+    \begin{itemize}
+        \item How to fix it?
+        \item Discuss \textbf{in pairs} for 2 minutes and post your answer
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Limitations of forward declarations}
+    \begin{itemize}
+        \item Basically all you can do with a forward declared class is declare a \textbf{pointer} to it \pause
+        \item E.g.\ this wouldn't work:
+    \end{itemize}
+    \begin{lstlisting}
+class Bill;
+
+class Duck
+{
+private:
+    Bill bill; // Error: undefined class 'Bill'
+};
+
+class Bill
+{
+private:
+    Duck* owner;
+};
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Limitations of forward declarations}
+    \begin{itemize}
+        \item The compiler needs to know \textbf{how big} (in bytes) an instance of \lstinline{Bill} is,
+            which the forward declaration doesn't tell it \pause
+        \item \textbf{All pointers have the same size}, so a forward declaration is enough in that case \pause
+        \item Circular references of contained instances are \textbf{impossible} \pause
+            \begin{itemize}
+                \item At least one of the links in the chain must be a \textbf{pointer} \pause
+                \item ``Contains-a'' relationships in real life can't be circular either \pause
+                \item Philosophical thought for the day: how big would something have to be,
+                    to be big enough to contain itself?
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Composition and containers}
+    \begin{lstlisting}
+std::vector<Duck> ducks;
+    \end{lstlisting}
+    \pause
+    \begin{itemize}
+        \item The instances are stored \textbf{consecutively} in memory \pause
+        \item What happens when the size of the \lstinline{vector} changes? \pause
+            \begin{itemize}
+                \item \textbf{Recall}: when the size of a \lstinline{vector} changes,
+                    a new array is allocated, the contents are \textbf{copied} into it
+                    and the old array is \textbf{destroyed} \pause
+            \end{itemize}
+        \item This can result in unexpected calls to your \textbf{copy constructor}
+            and \textbf{destructor} \pause
+        \item Can cause problems when using certain idioms (e.g.\ \textbf{RAII})
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Composition and containers}
+    \begin{lstlisting}
+std::vector<Duck*> ducks;
+    \end{lstlisting}
+    \pause
+    \begin{itemize}
+        \item This is a \lstinline{vector} of \textbf{pointers} \pause
+        \item When the \lstinline{vector} changes size,
+            the instances stay where they are ---
+            only the \textbf{pointers} are copied \pause
+        \item \textbf{However}, managing instances with \lstinline{new} and \lstinline{delete}
+            is now your responsibility
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Ownership}
+    \begin{itemize}
+        \item It is important to keep track of which module ``\textbf{owns}'' a particular instance \pause
+        \item The owner is responsible for \lstinline{delete}ing the instance when it is no longer
+            needed \pause
+        \item Code should \textbf{never} \lstinline{delete} an instance that it does not own \pause
+        \item Generally ownership stays with the module that created the instance,
+            \textbf{unless} it explicitly transfers it \pause
+            \begin{itemize}
+                \item In which case, \textbf{document this clearly} in the module documentation \pause
+                \item If you take ownership of a pointer, \lstinline{delete}ing it is now your responsibility \pause
+            \end{itemize}            
+        \item NB: C++ doesn't care about ownership --- it's a concept \textbf{we} use to write and understand programs
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item \textbf{Composition} models \textbf{has-a} relationships, which can include
+            \textbf{contains-a} and \textbf{is-associated-with-a}
+        \item \textbf{Circular references} can be set up using pointers,
+            but \textbf{forward declarations} are often needed to make the compiler understand them
+        \item \textbf{Ownership} is one way of keeping track of instances and understanding
+            when to \lstinline{delete} them
+    \end{itemize}
+\end{frame}
