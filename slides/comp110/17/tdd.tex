@@ -1,38 +1,171 @@
-\part{Test driven development}
+\part{Software testing}
 \frame{\partpage}
 
-\begin{frame}[fragile]{Unit testing}
+\begin{frame}{In this section}
+    In this section you will learn how to:
     \begin{itemize}
-        \item A \textbf{unit test} or \textbf{test case} is a piece of code that verifies a unit (e.g.\ a function or class) of a program \pause
+        \item \textbf{Discuss} the importance of software testing in game development
+        \item \textbf{Identify} the different types and levels of testing
+        \item \textbf{Apply} test-driven development practices to your own programming projects
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Further reading}
+    \begin{itemize}
+        \item Pressman, R.S. (2009) Software Engineering: A Practitioner's Approach. 7th Edition. McGraw-Hill.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Quality}
+    Last time: \pause
+    \begin{itemize}
+        \item There are many ways of measuring the \textbf{quality} of a game or piece of software \pause
+        \item \textbf{Quality assurance} is important to ensure that the software is of sufficiently high
+            quality to provide benefit to developers and end users
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Testing}
+    \begin{itemize}
+        \item Finding \textbf{inadvertent errors} in the design and implementation of software \pause
+        \item Often takes more time and effort than any other part of development \pause
+        \item ... but letting errors slip into the final product can be even more costly \pause
+        \item Testing $\neq$ quality assurance \pause
+            \begin{itemize}
+                \item Testing is an important part of QA, but \textbf{not the only part}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Who is responsible?}
+    \begin{itemize}
+        \item Last time, we discussed that \textbf{designers}, \textbf{developers},
+            \textbf{publishers}, and maybe even \textbf{players}
+            share the responsibility for software quality in games \pause
+        \item Who should take responsibility for \textbf{testing}? \pause
+            \begin{itemize}
+                \item ``\textbf{Developers} write the code, so they should make sure it works''? \pause
+                \item ``\textbf{Everyone} is responsible for quality, so everyone should pitch in''? \pause
+                \item ``Code should be tested by \textbf{someone other} than the developer who wrote it''?
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Socrative \texttt{6E8NSW3IN}}
+    So who should test game software?
+	\begin{itemize}
+		\item In pairs.
+		\item Discuss for 2-minutes.
+		\item \textbf{Suggest} which parties should take responsibility for testing \textbf{and justify} your answer. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Testing strategy}
+    \begin{center}
+        \includegraphics[width=\textwidth]{pressman_17_1}
+        
+        {\tiny [Pressman, 2009] Figure 17.1}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Testing strategy}
+    \begin{itemize}
+        \item Development starts with system engineering and works \textbf{inwards} \pause
+            \begin{itemize}
+                \item The \textbf{waterfall model} \pause
+                \item Agile doesn't quite work like this \pause
+            \end{itemize}
+        \item Testing starts with unit testing and works \textbf{outwards} \pause
+        \item \textbf{White box testing}: testing the software \textbf{with} knowledge of its internal workings \pause
+        \item \textbf{Black box testing}: testing the software \textbf{without} knowledge of its internal workings
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Unit testing}
+    \begin{itemize}
+        \item A \textbf{unit test} is a piece of code that verifies a \textbf{unit} (e.g.\ a function or class) of a program \pause
         \item E.g.\ verifies that a function called with a particular set of parameters returns the expected result \pause
-        \item The following might be unit tests for a \lstinline!factorial! function:
-        \begin{itemize}
-            \item \lstinline!factorial(1) == 1!
-            \item \lstinline!factorial(2) == 2!
-            \item \lstinline!factorial(3) == 6!
-            \item \lstinline!factorial(4) == 24!
-        \end{itemize}
+        \item E.g.\ verifies that a function called with invalid parameters throws the expected error
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Why do unit testing?}
+\begin{frame}{Designing user tests}
     \begin{itemize}
-        \item Can find problems that normal testing misses \pause
-        \item \textbf{Bottom-up} testing --- if the \textbf{parts} work properly, it's easier to make the \textbf{whole} work properly \pause
-        \item When code is \textbf{changed}, can verify that nothing was broken
+        \item Test the \textbf{edge cases} \pause
+            \begin{itemize}
+                \item Programming errors often occur at the \textbf{boundary} between valid and invalid input,
+                    or the boundary between one case and another \pause
+                \item E.g.\ for an $n$-element data structure, test accessing elements $n-1$, $n$, $n+1$ \pause
+            \end{itemize}
+        \item Aim for high \textbf{coverage} \pause
+            \begin{itemize}
+                \item Ideally, \textbf{every line of code} should be executed in \textbf{at least one} unit test
+            \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Caveats}
+\begin{frame}{Drivers and stubs}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \begin{center}
+                \includegraphics[width=\textwidth]{pressman_17_4}
+                
+                {\tiny [Pressman, 2009] Figure 17.4}
+            \end{center}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item Unit testing generally requires extra code to be written \pause
+                \item \textbf{Driver} --- to set up any required state and run the test \pause
+                \item \textbf{Stubs} --- to replace any modules upon which the module under test depends
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Integration testing}
     \begin{itemize}
-        \item Have to spend time writing tests \pause
-            \begin{itemize}
-                \item Not really a drawback --- good unit tests will probably \textbf{save} more time in debugging than it takes to write them \pause
-            \end{itemize}
-        \item Can give a false sense of security \pause
-            \begin{itemize}
-                \item Unit tests can't cover 100\% of a complex program --- \textbf{not a substitute} for other forms of testing
-            \end{itemize}
+        \item Verify that the individual units work \textbf{together} \pause
+        \item Can be done \textbf{top-down} or \textbf{bottom-up} \pause
+        \item Either way, the idea is to gradually replace stubs and drivers with actual units,
+            testing as you go \pause
+        \item \textbf{Regression testing} is important --- re-running tests to ensure that recent additions
+            have not broken anything
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Socrative \texttt{6E8NSW3IN}}
+	If the units have been thoroughly tested individually, why is integration testing needed?
+	\begin{itemize}
+		\item In pairs.
+		\item Discuss for 2-minutes.
+		\item Give an \textbf{example} of a problem that integration testing might uncover,
+            but that unit testing might miss. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Validation testing}
+    \begin{itemize}
+        \item Testing the complete software system from the user's point of view \pause
+        \item E.g.\ playtesting
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Socrative \texttt{6E8NSW3IN}}
+	If unit testing and integration testing have been done correctly, why is validation testing needed?
+	\begin{itemize}
+		\item In pairs.
+		\item Discuss for 2-minutes.
+		\item Give an \textbf{example} of a problem that validation testing might uncover,
+            but that unit and integration testing might miss. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{When is testing ``done''?}
+    \begin{itemize}
+        \item The aim of testing is to find bugs, so it's done when there are no bugs left to be found! \smiley{} \pause
+        \item When the software is (quantitatively or qualitatively) ``good enough'' \pause
+        \item Testing is never ``done'' --- the burden just shifts onto the users
     \end{itemize}
 \end{frame}
 
@@ -50,7 +183,6 @@
 
 \begin{frame}{Why TDD?}
     \begin{itemize}
-        \item All the benefits of \textbf{unit testing}, plus... \pause
         \item Often easier to convert a \textbf{user story} into test cases rather than directly into code \pause
         \item Writing the bare minimum of code to make the test ``green''
             lets you \textbf{focus on user stories}, not on \textbf{over-generalisation} or \textbf{non-essential functionality} \pause
@@ -103,5 +235,15 @@
             \end{itemize}
         \item Verify that \textbf{all} unit tests still succeed
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Socrative \texttt{6E8NSW3IN}}
+	How suitable is the test driven approach for game development?
+	\begin{itemize}
+		\item In pairs.
+		\item Discuss for 2-minutes.
+		\item Suggest \textbf{one advantage and one disadvantage} of test driven development
+            in the context of game development
+	\end{itemize}
 \end{frame}
 
