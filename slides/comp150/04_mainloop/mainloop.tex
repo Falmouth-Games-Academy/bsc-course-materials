@@ -1,0 +1,146 @@
+\part{The main loop}
+\frame{\partpage}
+
+\begin{frame}{Basic program architecture}
+    \begin{itemize}
+        \item CPUs execute sequences of instructions
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The basic main loop}
+    The most basic main game loop does \textbf{three} things:
+    \begin{enumerate}
+        \item Handle \textbf{input}
+            \begin{itemize}
+                \item Mouse, keyboard, joypad etc.
+                \item Operating system events (minimise, close, alt+tab etc.)
+            \end{itemize}
+        \item \textbf{Update} the state of the game
+            \begin{itemize}
+                \item Physics, collision detection, AI etc.
+            \end{itemize}
+        \item \textbf{Render} the game to the screen
+    \end{enumerate}
+    It does these \textbf{once per frame} (typically 30 or 60 times per second)
+\end{frame}
+
+\begin{frame}[fragile]{The basic main loop}
+    \begin{lstlisting}
+bool running = true;
+
+while (running)
+{
+    handleInput();
+    update();
+    render();
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Handling input}
+    There are two ways of handling input in a game:
+    \begin{itemize}
+        \item By handling events
+            \begin{itemize}
+                \item \lstinline{SDL_PollEvent}
+                \item See \url{https://wiki.libsdl.org/SDL_EventType} for a list of event types
+            \end{itemize}
+        \item By querying state
+            \begin{itemize}
+                \item \lstinline{SDL_GetKeyboardState}, \lstinline{SDL_GetMouseState},
+                    \lstinline{SDL_GameControllerGetAxis}, etc.
+            \end{itemize}
+    \end{itemize}
+    What's the difference?
+    \begin{itemize}
+        \item Event: ``The space bar was [pressed / released]''
+        \item State: ``The space bar is [down / up] right now''
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Updating the game state}
+    \begin{itemize}
+        \item Generally this is where your \textbf{game logic} is implemented
+        \item I.e.\ anything not directly related to input or graphics
+        \item What goes in here depends on the game...
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Rendering}
+    \begin{itemize}
+        \item This is where you draw the \textbf{current state of the game} to the screen
+        \item Also draw any \textbf{heads-up display (HUD)} elements, e.g.\ score, lives, mini-map, etc.
+        \item Graphical effects (animations, particles) may be handled \textbf{either} in the render step
+            \textbf{or} in the update step (but be consistent)
+        \item In frameworks like SDL, you generally \textbf{redraw everything} on every frame
+        \item Rendering in SDL is \textbf{double buffered}
+            \begin{itemize}
+                \item \lstinline{SDL_Render*} actually draws to an \textbf{off-screen buffer}
+                \item \lstinline{SDL_RenderPresent} displays the off-screen buffer on screen
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Screen refresh rate}
+    \begin{itemize}
+        \item Old CRT monitors worked by scanning an electron beam down the screen
+            \begin{itemize}
+                \item \url{https://www.youtube.com/watch?v=lRidfW_l4vs}
+            \end{itemize}
+        \item Hence the term \textbf{(vertical) refresh rate}
+        \item Refresh rate is measured in \textbf{cycles per second} i.e.\ \textbf{Hz}
+        \item Other monitor technologies work differently, but still refresh the screen at regular intervals
+        \item We generally want to sync it up so that
+    \end{itemize}
+    \begin{center}
+        \textbf{one display refresh = one main loop iteration}
+    \end{center}
+    \begin{itemize}
+        \item If the main loop runs too slowly, we get ``lag''
+        \item If the main loop runs too quickly, we waste resources on drawing things faster than the display can show them
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Limiting the frame rate}
+    \begin{itemize}
+        \item If the renderer was created with the \lstinline{SDL_RENDERER_PRESENTVSYNC} flag,
+            \lstinline{SDL_RenderPresent} waits for the next vertical blank
+        \item This limits the game's frame rate to the refresh rate of the device
+        \item However, refresh rates can vary
+            \begin{itemize}
+                \item Older TVs: $\sim$ 30Hz
+                \item HDTVs and standard monitors: 60Hz
+                \item High-end ``gaming'' monitors: 120Hz or higher
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Socrative \texttt{6E8NSW3IN}}
+    Why might updating the game state once per frame be undesirable?
+	\begin{itemize}
+		\item In pairs.
+		\item Discuss for 2-minutes.
+		\item \textbf{Suggest} an undesirable effect that might result from updating the game state exactly once per frame.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Measuring elapsed time}
+    \begin{lstlisting}
+bool running = true;
+Uint32 lastTime = SDL_GetTicks();
+
+while (running)
+{
+    Uint32 currentTime = SDL_GetTicks();
+    Uint32 deltaTime = currentTime - lastTime;
+    // deltaTime is the number of milliseconds since the last update
+    
+    handleInput();
+    update(deltaTime);
+    render(deltaTime);
+    
+    lastTime = currentTime;
+}
+    \end{lstlisting}
+\end{frame}
+
