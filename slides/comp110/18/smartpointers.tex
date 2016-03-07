@@ -1,5 +1,5 @@
-%\part{Smart pointers}
-%\frame{\partpage}
+\part{Smart pointers}
+\frame{\partpage}
 
 \begin{frame}{Motivation}
     \begin{itemize}
@@ -80,6 +80,19 @@ auto q = p;
     \includegraphics[width=\textwidth]{unique_ptr_error} \pause
     \begin{itemize}
         \item Translation: assigning one \lstinline{unique_ptr} from another is forbidden
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Aside: default and deleted functions}
+    \begin{itemize}
+        \item As standard, C++ classes come with constructors and methods for \textbf{copying} and \textbf{moving} instances \pause
+        \item You (the class developer) can \textbf{override} these methods, make them \textbf{protected} or \textbf{private},
+            or \textbf{delete} them entirely (e.g.\ to forbid copying) \pause
+        \item Further reading:
+            \begin{itemize}
+                \item \url{http://www.stroustrup.com/C++11FAQ.html#default}
+                \item \url{http://en.cppreference.com/w/cpp/language/classes}
+            \end{itemize}
     \end{itemize}
 \end{frame}
 
