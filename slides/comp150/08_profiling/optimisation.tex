@@ -25,7 +25,6 @@
 \end{frame}
 
 \begin{frame}
-	\pause
 	\begin{center}
 		``Rules of optimization:
 		
@@ -75,6 +74,30 @@
 	\begin{itemize}
 		\item Visual Studio 2015 includes extensive profiling tools \pause
 		\item Google ``Visual Studio 2015 diagnostic tools'' for more info
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Bottlenecks}
+	\begin{itemize}
+		\item Where does the software spend most of its time? \pause
+		\item Code optimisation is most useful if your program is \textbf{CPU-bound}
+			\begin{itemize}
+				\item Performing calculations or logical operations \pause
+			\end{itemize}
+		\item Programs can also be \textbf{GPU-bound}...
+			\begin{itemize}
+				\item Rendering graphics \pause
+			\end{itemize}
+		\item ... or \textbf{memory-bound}...
+			\begin{itemize}
+				\item Accessing data in memory \pause
+			\end{itemize}
+		\item ... or \textbf{IO-bound}
+			\begin{itemize}
+				\item Waiting for disk, network, or other external devices \pause
+			\end{itemize}
+		\item E.g.\ don't waste time optimising a part of the program that is already limited by
+			disk or network speed!
 	\end{itemize}
 \end{frame}
 
