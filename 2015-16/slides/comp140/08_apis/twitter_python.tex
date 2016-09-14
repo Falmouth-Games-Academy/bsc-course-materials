@@ -1,0 +1,103 @@
+\part{Your first Twitter bot}
+\frame{\partpage}
+
+\begin{frame}{Account set up}
+    \begin{itemize}
+        \item Go to \url{https://www.twitter.com} and \textbf{either}
+            \begin{itemize}
+                \item Create an account, \textbf{or}
+                \item Sign in to your existing account
+            \end{itemize}
+        \item NB: Twitter \textbf{requires} app developers to add a \textbf{mobile phone number} to their accounts
+            (don't ask me why...)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Application set up}
+    \begin{itemize}
+        \item Go to \url{https://apps.twitter.com}
+        \item Click on \textbf{Create New App}
+        \item Fill in the required details and agree to the license agreement
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Project set up}
+    \begin{itemize}
+        \item Open \textbf{PyCharm} and create a \textbf{new project}
+        \item Go to \textbf{File} $\to$ \textbf{Settings} $\to$ \textbf{Project} $\to$ \textbf{Project Interpreter}
+        \item Click the $+$ button next to the list of packages
+        \item Search for and install the \texttt{tweepy} package
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Your first bot}
+    \begin{itemize}
+        \item Enter the following code, but \textbf{don't} run it yet
+    \end{itemize}
+    \begin{lstlisting}[language=Python]
+import tweepy
+
+CONSUMER_KEY = '...'
+CONSUMER_SECRET = '...'
+ACCESS_KEY = '...'
+ACCESS_SECRET = '...'
+
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+
+api = tweepy.API(auth)
+api.update_status("Hello, world!")
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Adding your API keys}
+    \begin{itemize}
+        \item Go to \url{https://apps.twitter.com} and click on your app
+        \item Click on \textbf{Keys and Access Tokens}
+        \item Copy and paste the \textbf{Consumer Key} and \textbf{Consumer Secret} into the code,
+                replacing the \texttt{...}
+            \begin{itemize}
+                \item Do this \textbf{carefully} -- ensure there are no extraneous spaces or other characters between the \lstinline{'} quotes
+            \end{itemize}
+        \item Click on \textbf{Create my access token}
+        \item Copy and paste the \textbf{Access Token} and \textbf{Access Token Secret} into the code,
+            replacing the \texttt{...}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{API keys: best practices}
+    \begin{itemize}
+        \item Many web APIs require an \textbf{API key} \pause
+        \item This is like a \textbf{password} and should be kept \textbf{secret} \pause
+        \item Code in a world-readable GitHub repository is \textbf{not secret}! \pause
+        \item Easy solution: put your API keys in a separate source / header / configuration file,
+            and use \texttt{.gitignore} to keep that file out of the repository \pause
+                \begin{itemize}
+                    \item NB: For assignment submissions via LearningSpace,
+                        please \textbf{do} include your API keys so that we can test your code! \pause
+                \end{itemize}
+        \item Other solutions:
+            \url{http://programmers.stackexchange.com/q/205606}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Fin}
+    \begin{itemize}
+        \item Run the code
+        \item Open the twitter app or website and admire your bot's first tweet! \pause
+        \item You now know how to tweet any text string --- integrate this into your Python code as you see fit
+        \item Refer to the docs on \url{http://www.tweepy.org}
+            for how to do more interesting things, e.g.\ reading and replying to other people's tweets
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Further reading}
+    \begin{itemize}
+        \item Twitter, ``Automation rules and best practices''.
+            \url{https://support.twitter.com/articles/76915}
+        \item Darius Kazemi, ``Basic Twitter bot etiquette''.
+            \url{http://tinysubversions.com/2013/03/basic-twitter-bot-etiquette/}
+    \end{itemize}
+\end{frame}
+
+

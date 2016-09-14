@@ -1,0 +1,66 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\begin{document}
+\title{Code smells}
+\subtitle{COMP150: Game Development Practices}
+
+\frame{\titlepage} 
+
+\begin{frame}{Today's class}
+    \begin{itemize}
+        \item Compiler optimisation revisited
+        \item Code smells
+        \item Break
+        \item COMP150 sprint reviews
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Next week}
+    \begin{itemize}
+        \item No class on Monday (bank holiday)
+    \end{itemize}
+\end{frame}
+
+\part{Compiler optimisation revisited}
+\frame{\partpage}
+
+\part{Code smells}
+\frame{\partpage}
+
+\begin{frame}{Activity}
+    \begin{itemize}
+        \item Organise into your COMP150 groups
+        \item Read \url{http://blog.codinghorror.com/code-smells/}
+        \item As a group, identify \textbf{three} code smells that are present in your COMP150 game code
+        \item Discuss how you might go about refactoring to remove the smells
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Homework}
+    \begin{itemize}
+        \item Read \url{https://www.thc.org/root/phun/unmaintain.html}
+        \item Promise that you will never do any of these things!
+    \end{itemize}
+\end{frame}
+
+% -------------------------------------------------------
+
+\end{document}

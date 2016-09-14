@@ -1,0 +1,55 @@
+\part{User authentication with OAuth}
+\frame{\partpage}
+
+\begin{frame}[fragile]{User authentication}
+    \begin{lstlisting}[language=Python]
+ACCESS_KEY = '...'
+ACCESS_SECRET = '...'
+
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+    \end{lstlisting}\pause
+    \begin{itemize}
+        \item OK for creating a bot that only ever tweets on its own account \pause
+        \item Not suitable for writing a game component that allows users to use
+            their own Twitter accounts, i.e.\ tweets on the user's behalf
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{OAuth}
+    \begin{itemize}
+        \item Twitter (and many other web services) use \textbf{OAuth} \pause
+        \item Allows you (the user) to use a third-party app without giving it your account password \pause
+        \item OAuth is yet another API to get to grips with... \pause
+        \item Tweepy has a Twitter-specific wrapper for OAuth
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Using OAuth}
+    \begin{lstlisting}[language=Python]
+import tweepy
+import webbrowser
+
+CONSUMER_KEY = '...'
+CONSUMER_SECRET = '...'
+
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+
+print "Opening Twitter website -- please log in"
+webbrowser.open(auth.get_authorization_url())
+verifier = raw_input("Verification code:")
+auth.get_access_token(verifier)
+
+api = tweepy.API(auth)
+api.update_status("Hello, world!")
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Staying logged in}
+    \begin{itemize}
+        \item Store \lstinline{auth.access_token} and \lstinline{auth.access_token_secret} along with your
+            application's saved data \pause
+        \item Now these can be reloaded and passed to \lstinline{auth.set_access_token},
+            just like in our first bot example
+    \end{itemize}
+\end{frame}
