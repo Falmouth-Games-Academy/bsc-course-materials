@@ -2,6 +2,7 @@
 \usepackage{../../beamerthemeFalmouthGamesAcademy}
 \usepackage{multimedia}
 \usepackage{soul}
+\usepackage{tikz}
 \graphicspath{ {../../} }
 
 % Default language for code listings
@@ -21,14 +22,17 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Human-Centred Design}
+\title{\sessionnumber: \normalsize{Human-Centred Design for AR/VR}}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
 % LEARNING OUTCOMES
 \begin{frame}
-	\frametitle{Learning outcomes:}
+	\frametitle{Virtual and Augmented Reality Overview:}
+	
+	\textbf{Learning Outcomes:}
+	
 	\begin{itemize}
 		\item \textbf{explain} the importance of placing the user at the centre of the design process
 		\item \textbf{briefly} describe and compare different user-centred design techniques
@@ -60,7 +64,133 @@
 % Hands up who has had a go with....
 % run through some of the introduction from book.
 
+%REALITY SYSTEMS
+\begin{frame}
+	\frametitle{Reality Systems - Hardware}
+	
+	\begin{columns}
+		
+		\begin{column}{0.5\textwidth}
+			\textbf{Display Types:}
+			\begin{itemize}
+				\item Head-Mounted Displays
+				\item World-Fixed Displays
+				\item Hand-held Displays
+			\end{itemize}
+		\end{column}
+		
+		\begin{column}{0.5\textwidth}
 
+			\textbf{Audio:}
+			Spatialised Audio is preferred
+			\begin{itemize}
+				\item Headphones - more immersive.
+				\item surround sound speakers.
+			\end{itemize}
+			
+		\end{column}
+		
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Haptics}
+	Haptics are the artificial forces between virtual objects and the user.
+	\vspace{.2in}
+	
+	\textbf{Passive -}
+	real-world physical objects that match the shapes of a virtual objects. (Doors, ledges, pillars... )
+	\vspace{.2in}
+	
+	\textbf{Active -} Haptics can be dynamically controlled by the computer to provide a feeling of a wide range of simulated virtual objects.
+	
+\end{frame}
+
+\begin{frame}
+	\begin{figure}
+		\includegraphics[scale=0.25]{assets/thepit.png}
+		\caption{University of North Carolina - Pit Experiment}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	
+	\frametitle{Tactile Haptics}
+	
+	\begin{itemize}
+		\item Vibrotactile - vibration passed directly or indirectly to the skin
+		\item Electrotactile - electrodes passing current through the skin
+		\item Proprioceptive force - provides a sense of limb movement and muscular resistance
+	\end{itemize}	
+	
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Self-Grounded vs. World-Grounded Haptics}
+	\begin{figure}
+		\includegraphics[scale=0.3]{assets/self-world.png}
+		\caption{DexmoF2 \& Sensable's Phantom Haptic System}
+	\end{figure}
+	
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Motion Platforms}
+	A motion platform is a hardware device that moves the entire body resulting in a sense of physical motion and gravity. 
+	\vspace{.2in}
+	
+	
+	These systems can convey a sense of orientation, vibration, acceleration and jerking.	
+	\vspace{.2in}
+	
+	
+	[Examples]
+	
+\end{frame}
+
+{
+      \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{assets/virtuix}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+
+{
+      \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{assets/birdy}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+
+\begin{frame}
+	\frametitle{}
+	
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Human-Centred Design:}
+	
+	\textbf{Learning Outcomes:}
+	
+	\begin{itemize}
+		\item \textbf{explain} the importance of placing the user at the centre of the design process
+		\item \textbf{briefly} describe and compare different user-centred design techniques
+		\item \textbf{demonstrate} a knowledge o the principles of user-centred design.	
+	\end{itemize}
+\end{frame}
 
 % HUMAN CENTRED DESIGN
 \begin{frame}
@@ -89,7 +219,6 @@
 		\caption{The Iteration Cycle}
 	\end{figure}
 \end{frame}
-
 
 % DEFINE STAGE
 \begin{frame}
