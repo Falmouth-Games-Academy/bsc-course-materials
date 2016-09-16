@@ -1,0 +1,319 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\setbeamertemplate{navigation symbols}{}
+
+
+\newcommand{\fullbleed}[1]{
+\begin{frame}[plain]
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[at=(current page.center)] {
+			\includegraphics[width=\paperwidth]{#1}
+		};
+	\end{tikzpicture}
+\end{frame}
+}
+
+\newcommand{\picturepage}[2]{
+\begin{frame}[plain]
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[at=(current page.center)] {
+			\includegraphics[width=\paperwidth]{#1}
+		};
+		\draw<1>[draw=none, fill=black, opacity=0.9] (-1,-5.2) rectangle (current page.south east);
+		\node[draw=none,text width=0.96\paperwidth, align=right] at (5.5,-5.5) {\tiny{#2}};
+	\end{tikzpicture}
+\end{frame}
+}
+
+\newcommand{\notepicx}[5]{
+\begin{frame}[plain]
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[at=(current page.center)] {
+			\includegraphics[width=\paperwidth]{#1}
+		};
+		\node[draw=none, fill=black, text width=#5\paperwidth] at ([xshift=#3, yshift=#4] current page.center) {\small{#2}};
+	\end{tikzpicture}
+\end{frame}
+}
+
+\newcommand{\notepic}[4]{
+	\notepicx{#1}{#2}{#3}{#4}{0.4}
+}
+
+\begin{document}
+\title{\sessionnumber}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	
+	By the mid-session break, you should be able to:
+	
+	\begin{itemize}
+		\item \textbf{Recognise who} your tutors are
+		\item \textbf{Outline what} the Games Academy does
+		\item \textbf{Explore} some of the kinds of question that excite game scholars
+		\item \textbf{Explain} the key learning outcomes \textbf{and} career paths that the course caters to
+		\item \textbf{Recall} the structure of the course
+		\item \textbf{Describe} the first-year modules on which you are enrolled on
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	
+	Between the mid-session break and the end of the session, you should become able to:
+	
+	\begin{itemize}
+		\item \textbf{Recall} the assignments for the first semester
+		\item \textbf{Contrast} what is expected of students in the higher education context to the compulsory education context
+		\item \textbf{Analyse how} to invest sufficient time in both course activities \textbf{as well as} self-regulated deliberate practice to achieve key goals
+	\end{itemize}
+\end{frame}
+
+\part{Your Tutors}
+\frame{\partpage}
+
+\picturepage{mike_and_monica}{Michael Scott working with Monica McGill at an ACM Working Group in Peru}
+
+\picturepage{ed_powley}{Ed Powley presenting with Professor Cowling at The Royal Academy of Engineering's Summer Soir\'{e}e}
+
+\picturepage{al_parker}{Al Parker performing in front of 13 screens and 13 P2 cameras}
+
+\picturepage{games_academy_team}{Other Members of Staff in the Games Academy}
+
+\part{The Games Academy}
+\frame{\partpage}
+
+% Meta-Makers
+
+% EU Investment - AIR
+
+\notepic{cam01-fr0300}{\textbf{World-Leading} Research in \textbf{Digital Games} and \textbf{Digital Games Technology}}{2.5cm}{3cm}
+
+\notepicx{painting_fool_sadness}{Hold more than \textbf{2 million} of funds for research in \textbf{Artificial Intelligence}, \textbf{Procedural Content Generation}, and \textbf{Transmedial Aesthetics}}{-4.5cm}{-2cm}{0.25}
+
+\notepic{tanya}{Lead By \textbf{World-Renowned Researchers}}{-2.5cm}{-3.5cm}
+
+\notepic{simon}{Lead By \textbf{World-Renowned Researchers}}{-2.5cm}{-3.5cm}
+
+\notepic{launchpad}{Striving Towards a \textbf{First-Class Educational Provision} that Prepares Students for \textbf{Careers} in the \textbf{Creative Industries}}{-2.5cm}{3cm}
+
+\fullbleed{cornwall_technation_1}
+
+\fullbleed{cornwall_technation_2}
+
+\notepic{prospectus_alex_034}{Undergraduate Courses in \textbf{Digital Games}}{-2.5cm}{-3.5cm}
+
+\notepic{prospectus_alex_064}{Undergraduate Courses in \textbf{Computing for Games}}{-2.5cm}{-3.5cm}
+
+\notepic{1_studio_wide}{Postgraduate Courses in \textbf{Games Entrepreneurship}}{-2.5cm}{-3.5cm}
+
+\notepic{mike_filming_ma}{Distance-Learning Courses in \textbf{Creative App Development}}{-2.5cm}{-3.5cm}
+
+\notepicx{studio_games_showoff}{A Innovative \textbf{Interdisciplinary} Approach To Education}{2.5cm}{-3.5cm}{0.4}
+
+%\notepic{orange_helicopter}{Our Staff Are \textbf{Indie Game Developers}}{-2.5cm}{-3.5cm}
+
+\notepic{space_caves}{Our Staff Are \textbf{Indie Game Developers}}{-2.5cm}{-3.5cm}
+
+\notepic{warm_gun}{Our Staff Are \textbf{Indie Game Developers}}{-2.5cm}{-3.5cm}
+
+\notepicx{deal_with_the_devil}{We Work Closely with \textbf{Cornwall's Largest Game Studios}}{-4.5cm}{-2.25cm}{0.2}
+
+\notepicx{rising-storm-2}{We Work Closely with \textbf{Cornwall's Largest Game Studios}}{-4.5cm}{-2.25cm}{0.2}
+
+\notepic{legends}{We Attract \textbf{Industry Legends} as Visiting Lecturers}{3cm}{-2.5cm}
+
+\part{The Meta-Game}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{The Games Meta-Game}
+	
+	Instructions:
+	
+	\begin{itemize}
+		\item TBC.
+		\\~\\
+		\item Play for approximately 20 minutes
+	\end{itemize}
+\end{frame}
+   
+\part{Careers in the Games Industry}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Learning Objectives}
+	
+	The learning objectives of the course are:
+	
+	\begin{itemize}
+		\item \textbf{Technical Development Practice}: leverage professional practices and technical skills to craft creative software \pause
+		\item \textbf{Communication}: communicate effectively with stakeholders in writing, verbally, and through adherence to standards and conventions in documentation \pause
+		\item \textbf{Critical Evaluation}: reflect critically on, and evaluate, the quality of working methods and solutions
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Learning Objectives}
+	
+	The learning objectives of the course are:
+	
+	\begin{itemize}
+		\item \textbf{Research}: engage in activities that may create new knowledge, present that knowledge in an academic format, and apply it to practice\pause
+		\item \textbf{Enterprise \& Innovation}: provide opportunities for enterprise through innovation, invention, and creativity\pause
+		\item \textbf{Professionalism}: set goals, manage workloads to meet deadlines, work efficiently and effectively in teams, and accommodate change
+	\end{itemize}
+\end{frame}
+
+\part{Course Map}
+\frame{\partpage}
+
+\fullbleed{course_map_1}
+
+\fullbleed{course_map_2}
+
+\fullbleed{course_map_3}
+
+\part{First Year Modules}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{COMP110: Principles of Computing}
+	
+	Return at 5 minutes past the hour.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{COMP120: Tinkering}
+	
+	Return at 5 minutes past the hour.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{COMP150: Game Dev Practice}
+	
+	Return at 5 minutes past the hour.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{COMP130: Game Architecture}
+	
+	Return at 5 minutes past the hour.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{COMP140: Hacking}
+	
+	Return at 5 minutes past the hour.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{COMP160: Software Engineering}
+	
+	Return at 5 minutes past the hour.
+
+\end{frame}
+
+\part{Coffee Break}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Coffee Break}
+	
+	Please return at 5 minutes past the hour.
+
+\end{frame}
+
+\part{Assignments}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Assignment Structure}
+	
+	Each Semester, you will complete \textbf{six} assignment `tracks':
+	
+	\begin{itemize}
+		\item Collaborative Game Development Project
+		\item Academic Essay
+		\item 2x Small Programming Projects
+		\item Small Portfolio Pieces and/or Worksheets
+		\item Research Journal
+		\item Continuing Personal Development Tasks and Reflective Report
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Assignments}
+	
+	Live Demo
+	
+	\vspace{3em}
+	
+	All assignment briefs can be found on:
+	
+	\vspace{0.5em}
+	
+	\indent \url{learningspace.falmouth.ac.uk}
+	
+	\vspace{0.5em}
+	
+	Read them very carefully!
+	
+\end{frame}
+
+
+\part{Time Management}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Expectation}
+	
+	600-hours per semester. Including contact time.
+	
+	Only $1/3$ of is contact time.
+	
+	40 hours per week. Over 15 weeks. 
+	
+	12 weeks of sessions.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity: Planning Your Time}
+	
+	Each Semester, you will complete \textbf{six} assignment `tracks':
+
+\end{frame}
+
+
+\end{document}
