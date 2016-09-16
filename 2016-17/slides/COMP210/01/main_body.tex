@@ -3,6 +3,7 @@
 \usepackage{multimedia}
 \usepackage{soul}
 \usepackage{tikz}
+\usepackage{verbatim}
 \graphicspath{ {../../} }
 
 % Default language for code listings
@@ -42,7 +43,7 @@
 
 \begin{frame}
 	\frametitle{A Word of Warning}
-	AR/VR are both emerging technologies and thus they borrow language from other similar disciplines such as game development, film studies and 3D design. This appropriation of lexicons can be confusing and there will be some overlap in relation to key terms and definitions.
+	AR/VR are both emerging technologies and thus, they borrow language from other similar disciplines such as game development, film studies and 3D design. This appropriation of lexicons can be confusing and there will be some overlap in relation to key terms and definitions.
 \end{frame}
 
 \begin{frame}
@@ -94,6 +95,21 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Head-Mounted Displays (HMD)}
+	\begin{figure}
+		\includegraphics[scale=0.4]{assets/hmd.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{World-Fixed Display}
+	\begin{figure}
+		\includegraphics[scale=0.3]{assets/cave.jpg}
+		\caption{Cave VR environment: A lifelike visual display is created by projectors positioned outside the CAVE and controlled by physical movements from a user inside the CAVE.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Haptics}
 	Haptics are the artificial forces between virtual objects and the user.
 	\vspace{.2in}
@@ -124,9 +140,6 @@
 	\end{itemize}	
 	
 \end{frame}
-
-
-
 
 \begin{frame}
 	\frametitle{Self-Grounded vs. World-Grounded Haptics}
@@ -189,15 +202,11 @@
 		\item \textbf{explain} the importance of placing the user at the centre of the design process
 		\item \textbf{briefly} describe and compare different user-centred design techniques
 		\item \textbf{demonstrate} a knowledge o the principles of user-centred design.	
+		\item \textbf{acknowledge} that sophisticated/eloquent solutions are less important than great user experiences. 
 	\end{itemize}
 \end{frame}
 
-% HUMAN CENTRED DESIGN
-\begin{frame}
-	\frametitle{Human-Centred Design (HCD)}
-	
-	Sophisticated / eloquent technical solutions are less important than great user experiences.
-\end{frame}
+
 
 % CONTINUOUS DISCOVERY 
 \begin{frame}
@@ -222,7 +231,7 @@
 
 % DEFINE STAGE
 \begin{frame}
-	\frametitle{ \st{Design} Define Stage}
+	\frametitle{ Design/Define Stage}
 	This stage attempts to answer the question, `what do we want to make?' and includes everything from the high-level vision to listing requirements. All parts of the define stage should be described from the users point of view and easily understood by all. 
 	\pause
 	\begin{columns}
@@ -268,20 +277,65 @@
 % MAKE STAGE
 \begin{frame}
 	\frametitle{Make Stage}
-	This stage answers the question, `how do we make it?' and then proceeds to make it 
+	This stage answers the question, `how do we make it?' and then proceeds to make it. Each iteration of the make stage should take the project from basic sketches and minimal prototypes, closer and closer to the final product. 
+	
+\pause
+	\begin{itemize}
+		\item Use Cases
+		\item Block Diagrams 
+		\item Sketches				
+		\item Prototypes
+		\item Class Definitions
+		\item Hardware and Software implementation   		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Prototypes}
+	A prototype is a simplistic implementation of what is trying to be accomplished without being overly concerned with aesthetics or perfection.
+	
+	Types of prototype:
+	\begin{itemize}
+		\item Real-world Prototype
+		\item Wizard of Oz Prototype
+		\item Programmer Prototype
+		\item Team Prototype
+		\item Stake Holder Prototype
+		\item Representative Prototype
+		\item Marketing Prototype
+	\end{itemize}
+
+	%\tiny{Each stage in the list represents a higher level of fidelity in the development of the end product. }
 \end{frame}
 
 
 
+% JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK JUNK  ;P
+
+\begin{comment}
 \begin{frame}
 	\begin{itemize}
 		\item \textbf{Design Stage} - this stage attempts to answer the question, ?what do we make?? and includes everything from the high-level vision to listing requirements. 
 		\item \textbf{Make Stage} - This stage answers the question, ?how do we make it?? and then proceeds to make it. 
 		\item \textbf{Learn Stage} - This stage answers the question, ?what works and what does not work?? the answers are fed back into the define stage to refine what is to be made. 
 	\end{itemize}
+	
+	
 \end{frame}
 
-
+%
+\begin{column}{0.5\textwidth}  
+			\textbf{System Considerations}
+		
+			\begin{itemize}
+				\item Human Factors (covered next week)
+				\item Calibration 
+				\item Network Requirements	
+				\item Protocols
+				\item Story Boards
+			\end{itemize}
+		\end{column}
+\end{comment}
 
 	
 \end{document}
