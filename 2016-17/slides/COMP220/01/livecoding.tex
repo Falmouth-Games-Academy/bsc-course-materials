@@ -1,0 +1,59 @@
+\part{Your first OpenGL program}
+\frame{\partpage}
+
+\begin{frame}{SDL and OpenGL}
+	\begin{itemize}
+		\pause\item OpenGL only handles rendering of graphics
+		\pause\item We need something else to handle windows, events, audio etc
+		\pause\item We will use our old friend \textbf{SDL}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Live coding}
+	\begin{center}
+		\url{https://github.com/Falmouth-Games-Academy/bsc-live-coding}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Live coding}
+	\begin{itemize}
+		\pause\item Start with the basic SDL application
+		\pause\item Link with \texttt{opengl32.lib}
+		\pause\item \lstinline{#include <gl/GL.h>}
+		\pause\item Pass \lstinline{SDL_WINDOW_OPENGL} to \lstinline{SDL_CreateWindow}
+		\pause\item Set some attributes:
+	\end{itemize}
+	\begin{lstlisting}
+SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item We don't need \lstinline{SDL_CreateRenderer} any more...
+		\pause\item ... but we do need \lstinline{SDL_GLContext}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Clearing the screen}
+	\pause With SDL:
+	\begin{lstlisting}
+SDL_SetRenderDrawColor(renderer, 255, 128, 0, 255);
+SDL_RenderClear(renderer);
+SDL_RenderPresent(renderer);
+	\end{lstlisting}
+	
+	\pause With OpenGL:
+	\begin{lstlisting}
+glClearColor(1.0f, 0.5f, 0.0f, 1.0f);
+glClear(GL_COLOR_BUFFER_BIT);
+SDL_GL_SwapWindow(window);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Our first triangle}
+	\begin{center}
+		\url{http://www.opengl-tutorial.org/beginners-tutorials/tutorial-2-the-first-triangle/}
+	\end{center}
+\end{frame}
+
