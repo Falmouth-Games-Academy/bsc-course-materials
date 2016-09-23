@@ -1,3 +1,29 @@
+\newcommand{\socrative}{
+	\begin{center}
+		Socrative room code: \texttt{FALCOMPED}
+	\end{center}
+}
+
+\newcommand{\codeslide}[2]{
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\lstinputlisting{#1}
+		\end{column}
+		\pause
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{tabular}{|c|c|}
+					\hline
+					\textbf{Variable} & \textbf{Value} \\\hline
+					#2
+				\end{tabular}
+			\end{center}
+		\end{column}
+	\end{columns}
+}
+
+\newcommand{\trow}[1]{ & \\ \texttt{#1} & \\ & \\\hline}
+
 \part{Basic Python programs}
 \frame{\partpage}
 
@@ -10,17 +36,49 @@ print "Hello, world!"
 \begin{frame}[fragile]{Your second Python program}
 	\begin{lstlisting}
 print "This is a very long line of code which had to be split to fit on the slide, but you should type it as a single line."
+print "This is the second line of code."
 	\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Assigning to variables}
-	\begin{lstlisting}
-a = 7
-print a
-	\end{lstlisting}
+	\codeslide{assign0.py}{\trow{a}}
 \end{frame}
 
-% Assignment
+\begin{frame}{Remember!}
+	\begin{itemize}
+		\pause\item A program is a \textbf{sequence of instructions}
+		\pause\item The Python interpreter executes the \textbf{first line} of your program, then the \textbf{second line},
+			and so on
+		\pause\item When it reaches the end of the file, it \textbf{stops}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Reassigning variables (1)}
+	\socrative
+	\codeslide{assign1.py}{\trow{a}\trow{b}}
+\end{frame}
+
+\begin{frame}[fragile]{Reassigning variables (2)}
+	\socrative
+	\codeslide{assign2.py}{\trow{a}\trow{b}}
+\end{frame}
+
+\begin{frame}[fragile]{Reassigning variables (3)}
+	\socrative
+	\codeslide{assign3.py}{\trow{big}\trow{small}}
+\end{frame}
+
+\begin{frame}[fragile]{Reassigning variables (4)}
+	\socrative
+	\codeslide{assign4.py}{\trow{a}\trow{b}}
+\end{frame}
+
+\begin{frame}[fragile]{Reassigning variables (5)}
+	\socrative
+	\codeslide{assign5.py}{\trow{a}\trow{b}\trow{c}}
+\end{frame}
+
+% / Assignment
 % Conditional
 % For loop
 % While loop
