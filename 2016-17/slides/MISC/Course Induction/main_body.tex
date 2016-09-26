@@ -20,45 +20,9 @@
 
 \input{sessioninfo}
 
+\input{../../commands}
+
 \setbeamertemplate{navigation symbols}{}
-
-
-\newcommand{\fullbleed}[1]{
-\begin{frame}[plain]
-	\begin{tikzpicture}[remember picture, overlay]
-		\node[at=(current page.center)] {
-			\includegraphics[width=\paperwidth]{#1}
-		};
-	\end{tikzpicture}
-\end{frame}
-}
-
-\newcommand{\picturepage}[2]{
-\begin{frame}[plain]
-	\begin{tikzpicture}[remember picture, overlay]
-		\node[at=(current page.center)] {
-			\includegraphics[width=\paperwidth]{#1}
-		};
-		\draw<1>[draw=none, fill=black, opacity=0.9] (-1,-5.2) rectangle (current page.south east);
-		\node[draw=none,text width=0.96\paperwidth, align=right] at (5.5,-5.5) {\tiny{#2}};
-	\end{tikzpicture}
-\end{frame}
-}
-
-\newcommand{\notepicx}[5]{
-\begin{frame}[plain]
-	\begin{tikzpicture}[remember picture, overlay]
-		\node[at=(current page.center)] {
-			\includegraphics[width=\paperwidth]{#1}
-		};
-		\node[draw=none, fill=black, text width=#5\paperwidth] at ([xshift=#3, yshift=#4] current page.center) {\small{#2}};
-	\end{tikzpicture}
-\end{frame}
-}
-
-\newcommand{\notepic}[4]{
-	\notepicx{#1}{#2}{#3}{#4}{0.4}
-}
 
 \begin{document}
 \title{\sessionnumber}
