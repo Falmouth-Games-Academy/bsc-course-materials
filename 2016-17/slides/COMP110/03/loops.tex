@@ -1,0 +1,81 @@
+\newcommand{\socrative}{
+	\begin{center}
+		Socrative room code: \texttt{FALCOMPED}
+	\end{center}
+}
+
+\newcommand{\codeslide}[2]{
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\lstinputlisting{#1}
+		\end{column}
+		\pause
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\colorbox{white}{
+					\color{black}
+					\begin{tabular}{|c|c|}
+						\hline
+						\textbf{Variable} & \textbf{Value} \\\hline
+						#2
+					\end{tabular}
+				}
+			\end{center}
+		\end{column}
+	\end{columns}
+}
+
+\newcommand{\trow}[1]{ & \\ \texttt{#1} & \\ & \\\hline}
+
+\part{Loops (from last time)}
+\frame{\partpage}
+
+\begin{frame}{For loops and ranges}
+	\lstinputlisting{for0.py}
+	\begin{itemize}
+		\pause\item \lstinline{xrange(n)} is the \textbf{sequence}
+			$0, 1, 2, \dots, n-1$
+		\pause\item So \lstinline{xrange(5)} is the \textbf{sequence}
+			$0, 1, 2, 3, 4$
+		\pause\item Note: \lstinline{xrange(n)} \textbf{does not include} $n$
+		\pause\item The \lstinline{for} loop iterates through the items in a sequence \textbf{in order}
+		\pause\item Can also use \lstinline{range} instead of \lstinline{xrange},
+			but \lstinline{range} is less efficient
+			\begin{itemize}
+				\item Homework (advanced): what is the difference between \lstinline{range} and \lstinline{xrange}?
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{For loops (1)}
+	\socrative
+	\codeslide{for1.py}{\trow{a}\trow{b}\trow{i}}
+\end{frame}
+
+\begin{frame}{For loops (2)}
+	\socrative
+	\codeslide{for2.py}{\trow{a}\trow{b}\trow{i}}
+\end{frame}
+
+\begin{frame}{More ranges}
+	\begin{itemize}
+		\pause\item Can optionally specify \textbf{start point}
+		\pause\item \lstinline{xrange(3, 10)} $\to [3, 4, 5, 6, 7, 8, 9]$
+		\pause\item If start point is specified, can optionally specify \textbf{step}
+		\pause\item \lstinline{xrange(0, 20, 2)} $\to [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]$
+		\pause\item Step can be negative:
+		\pause\item \lstinline{xrange(10, 0, -1)} $\to [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{While loops}
+	\socrative
+	
+	The \lstinline{while} loop keeps executing while the condition is \textbf{true}
+	
+	\codeslide{while1.py}{\trow{a}}
+\end{frame}
+
+\begin{frame}{Looping forever}
+	\lstinputlisting{while2.py}
+\end{frame}
