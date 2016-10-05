@@ -11,18 +11,19 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{GLM}
-	We will use the \textbf{GLM} library to do matrix calculations for us
-	
-	\vspace{2ex}
-
-	\begin{center}
-		\url{http://glm.g-truc.net/}
-	\end{center}
-
-	\vspace{2ex}
-
-	GLM aims to mirror GLSL data types (\lstinline{vec4}, \lstinline{mat4} etc) in C++
+\begin{frame}[fragile]{GLM}
+	\begin{itemize}
+		\pause\item We will use the \textbf{GLM} library to do matrix calculations for us
+		\pause\item \url{http://glm.g-truc.net/}
+		\pause\item GLM aims to mirror GLSL data types (\lstinline{vec4}, \lstinline{mat4} etc) in C++
+		\pause\item Lets us perform calculations with vectors and matrices in C++
+		\pause\item GLM types can be passed into shaders as uniforms, e.g.
+			\begin{lstlisting}
+// transformLocation points to a uniform of type mat4
+glm::mat4 transform = ...;
+glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(transform));
+			\end{lstlisting}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Identity}
