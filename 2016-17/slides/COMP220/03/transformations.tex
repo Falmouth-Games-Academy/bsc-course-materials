@@ -1,0 +1,102 @@
+\part{Transformations}
+\frame{\partpage}
+
+\begin{frame}{Transformations and matrices}
+	\begin{itemize}
+		\pause\item A \textbf{transformation} is a \textbf{mathematical function} that \textbf{changes points in space}
+		\pause\item E.g.\ shifts them, rotates them, scales them, ...
+		\pause\item Many useful transformations can be \textbf{represented} by matrices
+		\pause\item Multiplying these matrices together \textbf{combines} the transformations
+		\pause\item Multiplying a vector by the matrix \textbf{applies} the transformation
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{GLM}
+	\begin{itemize}
+		\pause\item We will use the \textbf{GLM} library to do matrix calculations for us
+		\pause\item \url{http://glm.g-truc.net/}
+		\pause\item GLM aims to mirror GLSL data types (\lstinline{vec4}, \lstinline{mat4} etc) in C++
+		\pause\item Lets us perform calculations with vectors and matrices in C++
+		\pause\item GLM types can be passed into shaders as uniforms, e.g.
+			\begin{lstlisting}
+// transformLocation points to a uniform of type mat4
+glm::mat4 transform = ...;
+glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(transform));
+			\end{lstlisting}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Identity}
+	\pause The identity transformation does not change anything
+	\pause \begin{lstlisting}
+// Default constructor for glm::mat4 creates an identity matrix
+glm::mat4 transform;
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Translation}
+	\pause Translation shifts all points by the same vector offset
+	\pause \begin{lstlisting}
+transform = glm::translate(transform, glm::vec3(0.3f, 0.5f, 0.0f));
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Scaling}
+	\pause Scaling moves all points closer or further from the origin by the same factor
+	\pause \begin{lstlisting}
+transform = glm::scale(transform, glm::vec3(1.2f, 0.5f, 1.0f));
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Rotation}
+	\begin{itemize}
+		\pause\item How do we represent a rotation in 3 dimensions?
+		\pause\item One way is by specifying the \textbf{axis} (as a vector) and the \textbf{angle} (in radians)
+		\pause\item Axis always runs through the origin
+	\end{itemize}
+	\pause \begin{lstlisting}
+float angle = glm::pi<float>() * 0.5f;
+glm::vec3 axis(0, 0, 1);
+transform = glm::rotate(transform, angle, axis);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Combining transformations}
+	\pause \begin{lstlisting}
+transform = glm::translate(transform, glm::vec3(0.5f, 0.5f, 0.0f));
+transform = glm::rotate(transform, angle, axis);
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Transformations \textbf{do not commute} in general ---
+			changing the order will change the result
+		\pause\item The order they are applied is the \textbf{reverse} of what you might think ---
+			i.e.\ the above rotates \textbf{then} translates
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Euler angles}
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{itemize}
+				\pause\item Any orientation of an object in 3D space can be described by \textbf{three} rotations around:
+					\begin{itemize}
+						\pause\item The $x$-axis $(1, 0, 0)$
+						\pause\item The $y$-axis $(0, 1, 0)$
+						\pause\item The $z$-axis $(0, 0, 1)$
+					\end{itemize}
+				\pause\item These angles are sometimes called \textbf{roll}, \textbf{pitch} and \textbf{yaw}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\includegraphics[width=\textwidth]{euler_aeroplane}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Gimbal lock}
+	\begin{center}
+		\url{https://youtu.be/rrUCBOlJdt4?t=1m55s}
+	\end{center}
+\end{frame}
+
+
