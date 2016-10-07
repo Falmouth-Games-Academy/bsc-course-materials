@@ -7,105 +7,196 @@
 \newcommand{\OPand}{\OP{and}}
 \newcommand{\OPor}{\OP{or}}
 \newcommand{\OPxor}{\OP{xor}}
+\newcommand{\OPnand}{\OP{nand}}
+\newcommand{\OPnor}{\OP{nor}}
+\newcommand{\OPxnor}{\OP{xnor}}
 \newcommand{\OPnot}{\textsc{not}\ }
+
+\newcommand{\OPname}{}
+\newcommand{\OPenglishA}{}
+\newcommand{\OPenglishB}{}
+\newcommand{\OPtable}{}
+\newcommand{\OPdiagram}{}
+
+\newcommand{\OPframe}[5]{
+	\begin{frame}{#1}
+		\pause
+		\begin{center}
+			#2 \par if and only if \par #3
+		\end{center}
+		\pause
+		\begin{columns}
+			\begin{column}{0.48\textwidth}
+				\begin{center}
+					#4
+				\end{center}
+			\end{column}
+			\pause
+			\begin{column}{0.48\textwidth}
+				\begin{center}
+					\begin{circuitikz} \draw[color=\circuitcolour]
+						#5
+					\end{circuitikz}
+				\end{center}
+			\end{column}
+		\end{columns}
+	\end{frame}
+}
 
 \begin{frame}{Boolean logic}
 	\begin{itemize}
-		\item Works with two values: \TT\ and \FF
+		\pause\item Works with two values: \TT\ and \FF
+		\pause\item Foundation of the \textbf{digital computer}:
+			represented in circuits as \textbf{on} and \textbf{off}
+		\pause\item Representing as $1$ and $0$ leads to \textbf{binary notation}
+		\pause\item One boolean value = one \textbf{bit} of information
+		\pause\item Programmers use boolean logic for conditions in \lstinline{if} and \lstinline{while}
+			statements
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Not}
+\OPframe{Not}
+	{$\OPnot A$ is \TT}{$A$ is \FF}
+	{\begin{tabular}{|c||c|} \hline
+		$A$ & $\OPnot A$ \\\hline
+		\FF & \TT \\
+		\TT & \FF \\\hline
+	\end{tabular}}
+	{ (0,0) node[not port] (gate) {}
+	(gate.in)  node[anchor=east] {$A$}
+	(gate.out) node[anchor=west] {$\OPnot A$}
+	; }
+
+\OPframe{And}
+	{$A \OPand B$ is \TT}{\textbf{both $A$ and $B$} are \TT}
+	{\begin{tabular}{|c|c||c|}
+		\hline
+		$A$ & $B$ & $A \OPand B$ \\\hline
+		\FF & \FF & \FF \\
+		\FF & \TT & \FF \\
+		\TT & \FF & \FF \\
+		\TT & \TT & \TT \\\hline
+	\end{tabular}}
+	{ (0,0) node[and port] (gate) {}
+	(gate.in 1) node[anchor=east] {$A$}
+	(gate.in 2) node[anchor=east] {$B$}
+	(gate.out)  node[anchor=west] {$A \OPand B$}
+	; }
+
+\OPframe{Or}
+	{$A \OPor B$ is \TT}{\textbf{either $A$ or $B$, or both,} are \TT}
+	{\begin{tabular}{|c|c||c|}
+		\hline
+		$A$ & $B$ & $A \OPand B$ \\\hline
+		\FF & \FF & \FF \\
+		\FF & \TT & \TT \\
+		\TT & \FF & \TT \\
+		\TT & \TT & \TT \\\hline
+	\end{tabular}}
+	{ (0,0) node[or port] (gate) {}
+	(gate.in 1) node[anchor=east] {$A$}
+	(gate.in 2) node[anchor=east] {$B$}
+	(gate.out)  node[anchor=west] {$A \OPor B$}
+	; }
+
+\OPframe{Exclusive Or}
+	{$A \OPxor B$ is \TT}{\textbf{either $A$ or $B$, but not both,} are \TT
+		\par or equivalently \par $A \neq B$}
+	{\begin{tabular}{|c|c||c|}
+		\hline
+		$A$ & $B$ & $A \OPand B$ \\\hline
+		\FF & \FF & \FF \\
+		\FF & \TT & \TT \\
+		\TT & \FF & \TT \\
+		\TT & \TT & \FF \\\hline
+	\end{tabular}}
+	{ (0,0) node[xor port] (gate) {}
+	(gate.in 1) node[anchor=east] {$A$}
+	(gate.in 2) node[anchor=east] {$B$}
+	(gate.out)  node[anchor=west] {$A \OPxor B$}
+	; }
+
+\begin{frame}{Negative gates}
+	\pause
+	\begin{center}
+		$\OPnand, \OPnor, \OPxnor$ \par are the \textbf{negations} of \par $\OPand, \OPor, \OPxor$
+	\end{center}
+	\pause
 	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\centering
-			\begin{tabular}{|c||c|}
-				\hline
-				$A$ & $\OPnot A$ \\\hline
-				\FF & \TT \\
-				\TT & \FF \\\hline
-			\end{tabular}
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{align*}
+					A \OPnand B &= \OPnot (A \OPand B) \\
+					A \OPnor B &= \OPnot (A \OPor B) \\
+					A \OPxnor B &= \OPnot (A \OPxor B)
+				\end{align*}
+			\end{center}
 		\end{column}
-		\begin{column}{0.5\textwidth}
-			\centering
-			$\OPnot A$ is \TT
-			
-			if and only if
-			
-			\textbf{$A$} is \FF
+		\pause
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\begin{circuitikz} \draw[color=\circuitcolour]
+					(0,0) node[nand port] (gate) {}
+					(gate.in 1) node[anchor=east] {$A$}
+					(gate.in 2) node[anchor=east] {$B$}
+					(gate.out)  node[anchor=west] {$A \OPnand B$}
+					;
+				\end{circuitikz}
+				\begin{circuitikz} \draw[color=\circuitcolour]
+					(0,0) node[nor port] (gate) {}
+					(gate.in 1) node[anchor=east] {$A$}
+					(gate.in 2) node[anchor=east] {$B$}
+					(gate.out)  node[anchor=west] {$A \OPnor B$}
+					;
+				\end{circuitikz}
+				\begin{circuitikz} \draw[color=\circuitcolour]
+					(0,0) node[xnor port] (gate) {}
+					(gate.in 1) node[anchor=east] {$A$}
+					(gate.in 2) node[anchor=east] {$B$}
+					(gate.out)  node[anchor=west] {$A \OPxnor B$}
+					;
+				\end{circuitikz}
+			\end{center}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\begin{frame}{And}
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\centering
-			\begin{tabular}{|c|c||c|}
-				\hline
-				$A$ & $B$ & $A \OPand B$ \\\hline
-				\FF & \FF & \FF \\
-				\FF & \TT & \FF \\
-				\TT & \FF & \FF \\
-				\TT & \TT & \TT \\\hline
-			\end{tabular}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\centering
-			$A \OPand B$ is \TT
-			
-			if and only if
-			
-			\textbf{both $A$ and $B$} are \TT
-		\end{column}
-	\end{columns}
+\begin{frame}{Writing logical operations}
+	\pause
+	\centering
+	\begin{tabular}{|c||c|c|c|}
+		\hline
+		Operation & Python & C family & Mathematics \\\hline
+		$\OPnot A$
+			& \lstinline[language=Python]{not a}
+			& \lstinline[language=C++]{!a}
+			& $\neg A$ {\huge\phantom{$I$}} or {\huge\phantom{$I$}} $\overline{A}$
+			\pause\\
+		$A \OPand B$ 
+			& \lstinline[language=Python]{a and b}
+			& \lstinline[language=C++]{a && b}
+			& $A \wedge B$
+			\pause\\
+		$A \OPor B$ 
+			& \lstinline[language=Python]{a or b}
+			& \lstinline[language=C++]{a || b}
+			& $A \vee B$
+			\pause\\
+		$A \OPxor B$ 
+			& \lstinline[language=Python]{a != b}
+			& \lstinline[language=C++]{a != b}
+			& $A \oplus B$
+			\\\hline
+	\end{tabular}
+	\pause
+	\par\vspace{2ex}\par
+	NB: most programming languages do not have a dedicated \OPxor operator, but the
+	``not equals'' operator is equivalent (so long as both operands are booleans)
 \end{frame}
 
-\begin{frame}{Or}
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\centering
-			\begin{tabular}{|c|c||c|}
-				\hline
-				$A$ & $B$ & $A \OPor B$ \\\hline
-				\FF & \FF & \FF \\
-				\FF & \TT & \TT \\
-				\TT & \FF & \TT \\
-				\TT & \TT & \TT \\\hline
-			\end{tabular}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\centering
-			$A \OPor B$ is \TT
-			
-			if and only if
-			
-			\textbf{either $A$ or $B$ or both} are \TT
-		\end{column}
-	\end{columns}
+\begin{frame}{De Morgan's Laws}
+	\pause
+	$$ \OPnot (A \OPor B) = (\OPnot A) \OPand (\OPnot B) $$
+	\pause
+	$$ \OPnot (A \OPand B) = (\OPnot A) \OPor (\OPnot B) $$
 \end{frame}
-
-\begin{frame}{Exclusive-or}
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\centering
-			\begin{tabular}{|c|c||c|}
-				\hline
-				$A$ & $B$ & $A \OPxor B$ \\\hline
-				\FF & \FF & \FF \\
-				\FF & \TT & \TT \\
-				\TT & \FF & \TT \\
-				\TT & \TT & \FF \\\hline
-			\end{tabular}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\centering
-			$A \OPxor B$ is \TT
-			
-			if and only if
-			
-			\textbf{either $A$ or $B$, but not both} are \TT
-		\end{column}
-	\end{columns}
-\end{frame}
-

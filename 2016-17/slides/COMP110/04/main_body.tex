@@ -15,8 +15,17 @@
 
 \usepackage{pdfpages}
 
+\usepackage{circuitikz}
+
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
+\usetikzlibrary{calc}
+
+\iftoggle{printable}{
+    \newcommand{\circuitcolour}{black}
+}{ % else
+    \newcommand{\circuitcolour}{white}
+}
 
 \input{sessioninfo}
 
@@ -35,6 +44,8 @@
 	\end{itemize}
 \end{frame}
 
-\input{logicgates}
+%\input{logicgates}
+\input{binary}
+\input{memory}
 
 \end{document}
