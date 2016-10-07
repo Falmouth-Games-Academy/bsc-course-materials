@@ -1,0 +1,111 @@
+\part{Logic gates}
+\frame{\partpage}
+
+\newcommand{\TT}{\textsc{True}}
+\newcommand{\FF}{\textsc{False}}
+\newcommand{\OP}[1]{\ \textsc{#1}\ }
+\newcommand{\OPand}{\OP{and}}
+\newcommand{\OPor}{\OP{or}}
+\newcommand{\OPxor}{\OP{xor}}
+\newcommand{\OPnot}{\textsc{not}\ }
+
+\begin{frame}{Boolean logic}
+	\begin{itemize}
+		\item Works with two values: \TT\ and \FF
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Not}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\centering
+			\begin{tabular}{|c||c|}
+				\hline
+				$A$ & $\OPnot A$ \\\hline
+				\FF & \TT \\
+				\TT & \FF \\\hline
+			\end{tabular}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			$\OPnot A$ is \TT
+			
+			if and only if
+			
+			\textbf{$A$} is \FF
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{And}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\centering
+			\begin{tabular}{|c|c||c|}
+				\hline
+				$A$ & $B$ & $A \OPand B$ \\\hline
+				\FF & \FF & \FF \\
+				\FF & \TT & \FF \\
+				\TT & \FF & \FF \\
+				\TT & \TT & \TT \\\hline
+			\end{tabular}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			$A \OPand B$ is \TT
+			
+			if and only if
+			
+			\textbf{both $A$ and $B$} are \TT
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Or}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\centering
+			\begin{tabular}{|c|c||c|}
+				\hline
+				$A$ & $B$ & $A \OPor B$ \\\hline
+				\FF & \FF & \FF \\
+				\FF & \TT & \TT \\
+				\TT & \FF & \TT \\
+				\TT & \TT & \TT \\\hline
+			\end{tabular}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			$A \OPor B$ is \TT
+			
+			if and only if
+			
+			\textbf{either $A$ or $B$ or both} are \TT
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Exclusive-or}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\centering
+			\begin{tabular}{|c|c||c|}
+				\hline
+				$A$ & $B$ & $A \OPxor B$ \\\hline
+				\FF & \FF & \FF \\
+				\FF & \TT & \TT \\
+				\TT & \FF & \TT \\
+				\TT & \TT & \FF \\\hline
+			\end{tabular}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			$A \OPxor B$ is \TT
+			
+			if and only if
+			
+			\textbf{either $A$ or $B$, but not both} are \TT
+		\end{column}
+	\end{columns}
+\end{frame}
+
