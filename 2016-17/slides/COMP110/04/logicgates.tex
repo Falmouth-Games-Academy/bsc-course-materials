@@ -55,6 +55,11 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Simulating logic circuits}
+	\centering
+	\url{http://logic.ly/demo/}
+\end{frame}
+
 \OPframe{Not}
 	{$\OPnot A$ is \TT}{$A$ is \FF}
 	{\begin{tabular}{|c||c|} \hline
@@ -99,9 +104,117 @@
 	(gate.out)  node[anchor=west] {$A \OPor B$}
 	; }
 
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	What is the value of
+	$$ A \OPand (B \OPor C) $$
+	when
+	\begin{align*}
+		A &= \TT \\
+		B &= \FF \\
+		C &= \TT
+	\end{align*}
+	?
+\end{frame}
+
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	What is the value of
+	$$ (\OPnot A) \OPand (B \OPor C) $$
+	when
+	\begin{align*}
+		A &= \TT \\
+		B &= \FF \\
+		C &= \TT
+	\end{align*}
+	?
+\end{frame}
+
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	For what values of $A, B, C, D$ is
+	$$ A \OPand \OPnot B \OPand \OPnot (C \OPor D) = \TT $$
+	?
+\end{frame}
+
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	What is the value of
+	$$ A \OPor \OPnot A $$
+	?
+\end{frame}
+
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	What is the value of
+	$$ A \OPand \OPnot A $$
+	?
+\end{frame}
+
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	What is the value of
+	$$ A \OPor A $$
+	?
+\end{frame}
+
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	What is the value of
+	$$ A \OPand A $$
+	?
+\end{frame}
+
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	What expression is equivalent to this circuit?
+	\begin{center}
+		\begin{circuitikz} \draw[color=\circuitcolour]
+			(0,0) node[and port] (gateA) {}
+			(0,-2) node[or port] (gateB) {}
+			(1,0) node[not port] (gateC) {}
+			(4,-1) node[or port] (gateD) {}
+			(gateA.out) -- (gateC.in) {}
+			(gateC.out) -- (gateD.in 1) {}
+			(gateB.out) -- (gateD.in 2) {}
+			(gateD.out) node[anchor=west] {?}
+			(gateA.in 1) node[anchor=east] {$A$}
+			(gateA.in 2) node[anchor=east] {$B$}
+			(gateB.in 1) node[anchor=east] {$C$}
+			(gateB.in 2) node[anchor=east] {$D$}
+			;
+		\end{circuitikz}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Writing logical operations}
+	\pause
+	\centering
+	\begin{tabular}{|c||c|c|c|}
+		\hline
+		Operation & Python & C family & Mathematics \\\hline
+		$\OPnot A$
+			& \lstinline[language=Python]{not a}
+			& \lstinline[language=C++]{!a}
+			& $\neg A$ {\huge\phantom{$I$}} or {\huge\phantom{$I$}} $\overline{A}$
+			\pause\\
+		$A \OPand B$ 
+			& \lstinline[language=Python]{a and b}
+			& \lstinline[language=C++]{a && b}
+			& $A \wedge B$
+			\pause\\
+		$A \OPor B$ 
+			& \lstinline[language=Python]{a or b}
+			& \lstinline[language=C++]{a || b}
+			& $A \vee B$
+			\\\hline
+	\end{tabular}
+	\pause
+	\par\vspace{2ex}\par
+	Other operators can be expressed by combining these
+\end{frame}
+
+\begin{frame}{De Morgan's Laws}
+	\pause
+	$$ \OPnot (A \OPor B) = (\OPnot A) \OPand (\OPnot B) $$
+	\pause
+	$$ \OPnot (A \OPand B) = (\OPnot A) \OPor (\OPnot B) $$
+\end{frame}
+
 \OPframe{Exclusive Or}
-	{$A \OPxor B$ is \TT}{\textbf{either $A$ or $B$, but not both,} are \TT
-		\par or equivalently \par $A \neq B$}
+	{$A \OPxor B$ is \TT}{\textbf{either $A$ or $B$, but not both,} are \TT}
 	{\begin{tabular}{|c|c||c|}
 		\hline
 		$A$ & $B$ & $A \OPand B$ \\\hline
@@ -115,6 +228,10 @@
 	(gate.in 2) node[anchor=east] {$B$}
 	(gate.out)  node[anchor=west] {$A \OPxor B$}
 	; }
+
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	How can $A \OPxor B$ be written using the operations $\OPand, \OPor, \OPnot$?
+\end{frame}
 
 \begin{frame}{Negative gates}
 	\pause
@@ -159,44 +276,4 @@
 			\end{center}
 		\end{column}
 	\end{columns}
-\end{frame}
-
-\begin{frame}{Writing logical operations}
-	\pause
-	\centering
-	\begin{tabular}{|c||c|c|c|}
-		\hline
-		Operation & Python & C family & Mathematics \\\hline
-		$\OPnot A$
-			& \lstinline[language=Python]{not a}
-			& \lstinline[language=C++]{!a}
-			& $\neg A$ {\huge\phantom{$I$}} or {\huge\phantom{$I$}} $\overline{A}$
-			\pause\\
-		$A \OPand B$ 
-			& \lstinline[language=Python]{a and b}
-			& \lstinline[language=C++]{a && b}
-			& $A \wedge B$
-			\pause\\
-		$A \OPor B$ 
-			& \lstinline[language=Python]{a or b}
-			& \lstinline[language=C++]{a || b}
-			& $A \vee B$
-			\pause\\
-		$A \OPxor B$ 
-			& \lstinline[language=Python]{a != b}
-			& \lstinline[language=C++]{a != b}
-			& $A \oplus B$
-			\\\hline
-	\end{tabular}
-	\pause
-	\par\vspace{2ex}\par
-	NB: most programming languages do not have a dedicated \OPxor operator, but the
-	``not equals'' operator is equivalent (so long as both operands are booleans)
-\end{frame}
-
-\begin{frame}{De Morgan's Laws}
-	\pause
-	$$ \OPnot (A \OPor B) = (\OPnot A) \OPand (\OPnot B) $$
-	\pause
-	$$ \OPnot (A \OPand B) = (\OPnot A) \OPor (\OPnot B) $$
 \end{frame}
