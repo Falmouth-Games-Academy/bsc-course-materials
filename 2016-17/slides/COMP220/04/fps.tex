@@ -40,6 +40,18 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Addition in homogeneous coordinates}
+	\begin{itemize}
+		\pause\item Recall: homogeneous coordinates have an extra $w$ component, i.e.\ $(x,y,z,w)$
+		\pause\item $w=1$ for positions, $w=0$ for offsets
+	\end{itemize}
+	\begin{tabular}{rclclc}
+		\pause offset & + & offset & = & offset & $w = 0 + 0 = 0$ \\
+		\pause position & + & offset & = & position & $w = 1 + 0 = 1$ \\
+		\pause position & + & position & = & ??? & $w = 1 + 1 = 2$
+	\end{tabular}
+\end{frame}
+
 \begin{frame}{Unit vectors}
 	\begin{itemize}
 		\pause\item A \textbf{unit vector} is a vector of length 1
