@@ -1,3 +1,6 @@
+\part{Search}
+\frame{\partpage}
+
 \newcommand{\namesunsorted}{
 	\fbox{\parbox{0.9\textwidth}{\tiny
 		Anderson, Martha \par
@@ -369,7 +372,6 @@
 	\end{columns}
 \end{frame}
 
-\iffalse
 \begin{frame}{Hashing}
 	\begin{columns}
 		\begin{column}{0.66\textwidth}
@@ -445,67 +447,26 @@ $\vdots$ & $\vdots$
 		\end{column}
 	\end{columns}
 \end{frame}
-\fi
 
-\begin{frame}{More complexity classes}
-	\begin{center}
-		\includegraphics[width=\textwidth]{complexity_classes}
-	\end{center}
-\end{frame}
-
-\begin{frame}{Complexity in games}
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\only<3->{\includegraphics[width=\textwidth]{complete_graph}}
-		\end{column}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item Example: collision detection between $n$ objects \pause
-				\item The na\"ive way: check \textbf{each pair} of objects to see whether they have collided \pause
-				\item This is \textbf{quadratic} or $O(n^2)$ \pause
-				\item Doubling the number of objects would \textbf{quadruple} the time required! \pause
-				\item Cleverer methods exist that are more scalable \pause
-					\begin{itemize}
-						\item Further reading: spatial hashing, quadtrees, octrees, Verlet lists
-					\end{itemize}
-			\end{itemize}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Caveats}
+\begin{frame}[fragile]{Don't reinvent the wheel!}
 	\begin{itemize}
-		\item We've used search as an example, but don't reinvent the wheel! \pause
+		\pause\item We are using search as an \textbf{example}, to learn the \textbf{principles} --- in practice
+			you should hardly ever implement your own search
+		\pause\item Linear search in Python:
 			\begin{itemize}
-				\item Most languages have existing implementations of linear and binary search on arrays or lists \pause
-				\item Most languages have a \textbf{dictionary} data structure based on \textbf{hashing},
-					which is generally better for this kind of key $\to$ value look-up
+				\pause\item \lstinline{list.index()} method
+				\pause\item \textbf{List comprehension}, e.g.
+					\begin{lstlisting}
+[person for person in people if person.name == "Lopez, Jeffrey"]
+					\end{lstlisting}
 			\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Caveats}
-	\begin{itemize}
-		\item Time complexity only tells us how an algorithm \textbf{scales} with the size of the input \pause
+		\pause\item Binary search in Python:
 			\begin{itemize}
-				\item If we know the input will always be \textbf{small}, time complexity is not so important \pause
-				\item Linear search is quicker than binary search if you only ever have 3 elements \pause
-				\item Na\"ive collision detection is fine if your game only ever has 4 objects on screen \pause
-				\item Sometimes complexity in terms of other resources (e.g.\ space, bandwidth) are more important than time \pause
+				\pause\item The \lstinline{bisect} module
 			\end{itemize}
-		\item Software development is all about choosing \textbf{the right tool for the job} \pause
+		\pause\item Hash tables in Python:
 			\begin{itemize}
-				\item If you need scalability, choose a scalable algorithm \pause
-				\item Otherwise, choose simplicity
+				\pause\item The \lstinline{dict} (dictionary) data structure
 			\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Summary}
-	\begin{itemize}
-		\item Time complexity tells us how the running time of an algorithm \textbf{scales} with the size of the data
-			it is given \pause
-		\item Choice of data structures and algorithms can have a large impact on the efficiency of your software \pause
-		\item ... but only if scalability is actually a factor
 	\end{itemize}
 \end{frame}
