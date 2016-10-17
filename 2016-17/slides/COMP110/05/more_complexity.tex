@@ -3,15 +3,15 @@
 
 \begin{frame}{Common complexity classes}
 	\begin{center}
-		\begin{tabular}{lc}
-			\pause Constant & $O(1)$ \\
-			\pause Logarithmic & $O(\log n)$ \\
-			\pause Fractional power & $O(n^k)$, $k < 1$ \\
-			\pause Linear & $O(n)$ \\
-			\pause Quadratic & $O(n^2)$ \\
-			\pause Polynomial & $O(n^k)$, $k > 1$  \\
-			\pause Exponential & $O(e^n)$ \\
-			\pause Factorial & $O(n!)$
+		\begin{tabular}{clc}
+			\pause ``Faster'' & Constant & $O(1)$ \\
+			\pause $\uparrow$ & Logarithmic & $O(\log n)$ \\
+			\pause $|$ & Fractional power & $O(n^k)$, $k < 1$ \\
+			\pause $|$ & Linear & $O(n)$ \\
+			\pause $|$ & Quadratic & $O(n^2)$ \\
+			\pause $|$ & Polynomial & $O(n^k)$, $k > 1$  \\
+			\pause $\downarrow$ & Exponential & $O(e^n)$ \\
+			\pause ``Slower'' & Factorial & $O(n!)$
 		\end{tabular}
 	\end{center}
 \end{frame}
@@ -20,6 +20,29 @@
 	\begin{center}
 		\includegraphics[width=\textwidth]{complexity_classes}
 	\end{center}
+\end{frame}
+
+\begin{frame}{Working with big $O$ notation}
+	\begin{itemize}
+		\pause\item Can ignore \textbf{leading constants}
+			\begin{itemize}
+				\pause\item If one algorithm takes $n^2$ operations,
+					another takes $500n^2$
+					and a third takes $0.00000001n^2$,
+					all three are $O(n^2)$
+			\end{itemize}
+		\pause\item Take only the \textbf{dominant term}
+			\begin{itemize}
+				\pause\item The term that is largest when $n$ is large
+				\pause\item If an algorithm takes $0.1n^3 + 300n^2 + 7000$ operations,
+					it is $O(n^3)$
+			\end{itemize}
+		\pause\item Multiply \textbf{compound} algorithms
+			\begin{itemize}
+				\pause\item If an algorithm does $n$ ``things'' and each ``thing'' is $O(n)$,
+					then the overall algorithm is $O(n^2)$
+			\end{itemize}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Quadratic complexity}
@@ -40,6 +63,29 @@
 			\end{itemize}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+\begin{frame}{Exponential complexity}
+	\begin{itemize}
+		\pause\item A \text{prime number} is a number that is divisible only by $1$ and itself
+		\pause\item Given an $n$-bit number $m = pq$ that is a product of two primes $p$ and $q$, find $p$ and $q$.
+	\end{itemize}
+	\pause
+	\begin{algorithmic}
+		\For{$p = 2, 3, \dots, m$}
+			\State $q \gets m / p$
+			\If{$q$ is an integer}
+				\State \textbf{return} $p,q$
+			\EndIf
+		\EndFor
+	\end{algorithmic}
+	\begin{itemize}
+		\pause\item Since $m \leq 2^n-1$, in the worst case this is $O(2^n)$
+			\begin{itemize}
+				\pause\item Actually even slower because division is not $O(1)$
+			\end{itemize}
+		\pause\item Adding 1 to $n$ potentially \textbf{doubles} the running time!
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Aside: a famous unanswered question in computing}
