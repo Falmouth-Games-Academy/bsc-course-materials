@@ -9,6 +9,9 @@
         morekeywords={each,in,nullptr}
 }
 
+\input{../listings_GLSL}
+\input{../../commands}
+
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
@@ -21,7 +24,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Textures and models}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -29,10 +32,16 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\item \textbf{Explain} how a complex 3D model is represented in memory
+		\item \textbf{Explain} how a 2D texture image can be wrapped onto a 3D model
+		\item \textbf{Write} programs which draw textured meshes to the screen
 	\end{itemize}
 \end{frame}
+
+\input{basic_textures}
+
+\input{transparency}
+
+\input{meshes}
 
 \end{document}
