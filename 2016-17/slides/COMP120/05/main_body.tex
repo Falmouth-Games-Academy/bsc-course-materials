@@ -5,7 +5,7 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=C++,
+\lstset{language=Python,
         morekeywords={each,in,nullptr}
 }
 
@@ -20,18 +20,536 @@
 
 \input{sessioninfo}
 
+\setbeamertemplate{navigation symbols}{}
+
+\input{../../commands}
+
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Tinkering Graphics II}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
 \begin{frame}
-	\frametitle{Learning outcomes}
+	\frametitle{Learning Outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\item \textbf{Explain how} conditional logic can manipulate the output of a computer program
+		\item \textbf{Apply} mathematical knowledge to \textbf{write} computer programs that manipulate pixels in a surface
+		\item \textbf{Trace} existing computer programs to \textbf{predict} its output for a given input
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Less Red}
+	
+\begin{lstlisting}
+def decreaseRed(picture, amount):
+  pixelMatrix = getPixels(picture)
+  for pixel in pixelMatrix:
+    value = getRed(pixel)
+    setRedPixel(pixel, value * amount)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\fullbleed{big_ben}
+
+\begin{frame}{Socrative: Less Red}
+	Socrative room code: \texttt{FALCOMPMIKE}
+	
+	\vspace{2em}
+	
+	If `bb' is the original picture of Big Ben, which of the below function calls created the change:
+	
+	\begin{itemize}
+		\item changeRed(bb, 1.5)
+		\item changeRed(bb, 2.0)
+		\item changeRed(bb, 0)
+	\end{itemize}
+\end{frame}
+
+\part{Tinkering Graphics Activities}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Calculating Distance Between Colors}
+	
+	Sometimes we need to measure when something is `close enough':
+	
+	\begin{itemize}		
+		\item Distance between two points in the Cartesian coordinate system:
+		\item $\sqrt{(x_{1} - x_{2})^2 + (y_{1}1 - y_{2})^2}$
+		\item Distance between two colours in the RGB colour representation system:
+		\item $\sqrt{(red_{1} - red_{2})^2 + (green_{1}1 - green_{2})^2 + (blue_{1}1 - blue_{2})^2}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity: Color Distance}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Use the distance equation from the previous slide to write a function which accepts a two colours and returns the distance
+		\item Test your solution
+		\item Then, post your solution on Slack
+		\item 10 minutes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Output: Color Distance}
+	
+\begin{lstlisting}
+>>> print distance(WHITE, BLACK)
+441.6729559300637
+>>> print distance(WHITE, PINK)
+113.13708498984761
+>>> print distance(BLACK, PINK)
+355.3519382246282
+>>> print distance(MAGENTA, PINK)
+192.41881404893857
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Conditions and Return Values}
+	
+\begin{lstlisting}
+def closeEnoughToBrown(colour):
+    if distance(colour, BROWN) < 50.0:
+        return True
+    else:
+        return False
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Conditional Tolerance}
+	
+\begin{lstlisting}
+def turnRed():
+  brown = makeColor(42,25,15)
+  file="/Users/guzdial/Desktop/mediasources/katieFancy.jpg"
+  picture=loadPicture(file)
+  for pixel in getPixels(picture):
+    color = getColor(pixel)
+    if distance(color, BROWN) < 50.0:
+      red=getRed(pixel)*2
+      green=getGreen(pixel)
+      blue=getBlue(pixel)
+      setColor(pixel,makeColor(red,green,blue))
+  return picture
+
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity: Colour Tolerance}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Implement the function \texttt{closeEnough((colour, colour), tolerance)} that returns a boolean value
+		\item Test your solution
+		\item Then, post your solution on Slack
+		\item 10 minutes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Red Eye}
+	
+	\begin{itemize}		
+		\item When the flash of the camera catches the eye just right (especially with light colored eyes), we get bounce back from the back of the retina.
+		\item This results in `red eye'
+		\item We can replace the “red” with a color of our choosing
+		\item First, we figure out where the eyes are (x,y)
+	\end{itemize}
+\end{frame}
+
+\fullbleed{jenny}
+
+\begin{frame}
+	\frametitle{Activity: Red Eye}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation
+		\begin{itemize}
+			\item \url{http://www.pygame.org/docs/ref/rect.html}
+		\end{itemize}
+		\item Implement the function: \texttt{removeRedEye(picture, area, colour)}
+		\item Test your solution
+		\item Then, post your solution on Slack
+		\item 20 minutes
+	\end{itemize}
+\end{frame}
+
+\fullbleed{jenny_nored}
+
+\begin{frame}
+	\frametitle{Calculating Luminance in RGB}
+	
+	\begin{itemize}		
+		\item Luminance is the overall brightness of a pixel
+		\item In RGB, it is the \textit{mean} average value of each component:
+		\begin{itemize}
+			\item $lum = (red + green + blue) / 3$
+		\end{itemize}	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Posterization}
+	
+	\begin{itemize}		
+		\item Posterization is simply reducing the number of colours in an image
+		\item We look for a range of colours, then map them to a single colour:
+		\begin{itemize}
+			\item If red is between 63 and 128, set it to 95
+			\item If green is less than 64, set it to 31
+		\end{itemize}	
+		\item The end result is that a bunch of different colours, get set to a few colours
+		\item Beware of naive solutions with a large number of `if' statements
+	\end{itemize}
+\end{frame}
+
+\fullbleed{ben}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Black and White}
+	
+\begin{lstlisting}
+def blackAndWhitePosterize(picture):
+  for pixel in getPixels(picture):
+    red = getRed(pixel)
+    green = getGreen(pixel)
+    blue = getBlue(pixel)
+    luminance = (red + green + blue) / 3
+    if luminance < 64:
+      setColor(pixel, BLACK)
+    else:
+      setColor(pixel, WHITE)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity: Posterization}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation
+		\item Implement the function: \texttt{makeGreyscale(picture, colourCount)}
+		\item Test your solution
+		\item Then, post your solution on Slack
+		\item 20 minutes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sepia Tone}
+	
+	\begin{itemize}		
+		\item Pictures that are sepia-toned have a yellowish tint to them that we associate with older pictures.
+		\item It's not directly a matter of simply increasing the yellow in the picture, because it's not a one-to-one correspondence:
+		\begin{itemize}
+			\item Instead, colors in different ranges get mapped to other colours.
+			\item We can create such a mapping using IF statements
+		\end{itemize}	
+		\item The end result is that a bunch of different colours, get set to a few colours
+		\item Beware of naive solutions with a large number of `if' statements
+	\end{itemize}
+\end{frame}
+
+\fullbleed{field_normal}
+
+\fullbleed{field_sepia}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Sepia (1)}
+	
+\begin{lstlisting}
+def sepiaTint(picture):
+  #Convert image to greyscale
+  makeGreyscale(picture)
+
+  #loop through picture to tint pixels
+  for p in getPixels(picture):
+    red = getRed(p)
+    blue = getBlue(p)
+
+    #tint shadows
+    if (red < 63):
+      red = red*1.1
+      blue = blue*0.9
+...
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Sepia (2)}
+	
+\begin{lstlisting}
+...
+   #tint midtones
+    if (red > 62 and red < 192):
+      red = red*1.15
+      blue = blue*0.85
+
+    #tint highlights
+    if (red > 191):
+      red = red*1.08
+      if (red > 255):
+        red = 255
+
+      blue = blue*0.93
+
+    #set the new color values
+    setBlue(p, blue)
+    setRed(p, red)
+
+
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sepia Tone}
+	
+	\begin{itemize}		
+		\item First, we're calling greyScaleNew (the one with weights).
+		\item We then manipulate the red (increasing) and the blue (decreasing) channels to bring out more yellows and oranges.
+		\begin{itemize}
+			\item It's perfectly okay to have one function calling another.
+			\item Why are we doing the comparisons on the red? Why not?  After greyscale conversion, all channels are the same!
+		\end{itemize}	
+		\item The end result is that a bunch of different colours, get set to a few colours
+		\item Why these values? Trial-and-error: Tinker the values!
+
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity: Sepia Tone}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation
+		\item Refactor the function: \texttt{sepiaTint(picture) to use constants rather than literals}
+		\item Tinker with the values of the constants to test your solution
+		\item Then, post your solution on Slack
+		\item 20 minutes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Edge Detection}
+	
+	\begin{itemize}		
+		\item Blurring is averaging across pixels
+		\item Edge detection is looking for \textit{differences} between pixels:
+		\begin{itemize}
+			\item We draw lines that our eyes see --- where the luminance changes
+		\end{itemize}	
+		\item If the pixel changes left-to-right, or up-and-down, make a pixel black. Else, white.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Edge Detection}
+	
+\begin{lstlisting}
+def drawEdges(picture):
+  for x in xrange(0, picture.length - 1):
+      for y in xrange(0, picture.height - 1):
+          pixelSum = getRed(pixel) + getGreen(pixel) + getBlue(pixel)
+          nextPixel = getPixel(picture, x+1, y+1)
+          nextPixelSum = getRed(nextPixel)+ getGreen(nextPixel) + getBlue(nextPixel)
+          diff = abs(nextPixelSum-pixelSum)
+          newColor = makeColor(diff,diff,diff)
+          setColor(pixel, newColor)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\fullbleed{seahorse}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Edge Detection (1)}
+	
+\begin{lstlisting}
+def drawBetterEdges(picture):
+  orig = makePicture(filename)
+  makeBw = makePicture(filename)
+  
+  for x in xrange(0,getWidth(picture)-1):
+    for y in xrange(0,getHeight(picture)-1):
+      here=getPixel(makeBw,x,y)
+      down=getPixel(orig,x,y+1)
+      right=getPixel(orig,x+1,y)
+      
+      hereL=(getRed(here)+getGreen(here)+getBlue(here))/3
+      downL=(getRed(down)+getGreen(down)+getBlue(down))/3
+      rightL=(getRed(right)+getGreen(right)+getBlue(right))/3
+...
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Edge Detection (2)}
+	
+\begin{lstlisting}
+...
+      if abs(hereL-downL)>10 and abs(hereL-rightL)>10:
+        setColor(here,black)
+      if abs(hereL-downL)<=10 and abs(hereL-rightL)<=10:
+        setColor(here,white)
+  return makeBw
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\fullbleed{butterfly}
+
+\begin{frame}
+	\frametitle{Activity: Edge Detection}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation
+		\item Refactor the function: \texttt{drawBetterEdges(picture)} to use better variable names
+		\item Test your solution
+		\item Then, post your solution on Slack
+		\item 15 minutes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Background Subtraction}
+	
+	\begin{itemize}		
+		\item Let's say that you have a picture of someone, and a picture of the same place (same background) without the someone there,
+		could you subtract out the background and leave the picture of the person?
+		\item Maybe even change the background?
+		\item What we most need to do is to figure out whether the pixel in the Person shot is the same as the in the Background shot.
+		\item Will they be the EXACT same colour?  Probably not.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Background Subtraction}
+	
+\begin{lstlisting}
+def swapBackground(picture, back, newBack, tolerance):
+  for pixel in getPixels(picture):
+    x = getX(pixel)
+    y = getY(pixel)
+    backPixel = getPixel(back, x, y)
+    pixelColour = getColour(pixel)
+    backColour = getColour(backPixel)
+    if (distance(pixelColour,backColour) < tolerance):
+      newColour = getColour(getPixel(newBack, x, y))
+      setColor(pixel, newColour)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\fullbleed{katie_nomoon}
+
+\fullbleed{katie_forest}
+
+\begin{frame}
+	\frametitle{Problems}
+	
+	\begin{itemize}		
+		\item We've got places where we got pixels swapped that we didn't want to swap
+		\item We've got places where we want pixels swapped, but didn't get them swapped
+		\begin{itemize}
+			\item Shirt stripes
+			\item Shadows
+			\item etc.
+		\end{itemize}	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity: Background Subtraction}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation:
+		\begin{itemize}
+			\item \url{http://www.cs.utah.edu/~michael/chroma/}
+		\end{itemize}
+		\item Implement chroma key as a form of background subtraction
+		\item Test your solution
+		\item Then, post your solution on Slack
+		\item 30 minutes
+	\end{itemize}
+\end{frame}
+
+\part{Code Tracing}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Live Demonstration}
+	
+	\begin{itemize}		
+		\item Start using debug tools when you run into problems:
+		\item \url{https://www.youtube.com/watch?v=QJtWxm12Eo0}
 	\end{itemize}
 \end{frame}
 
