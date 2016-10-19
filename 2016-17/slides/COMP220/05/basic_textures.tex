@@ -65,3 +65,14 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Texture dimensions}
+	\begin{itemize}
+		\pause\item In the old days, OpenGL required textures to have \textbf{power of two} dimensions
+			\begin{itemize}
+				\pause\item $2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, \dots$
+			\end{itemize}
+		\pause\item Nowadays \textbf{non-power of two (NPOT)} textures are widely supported
+		\pause\item Still better to stick to powers of two as some things work better (e.g.\ mipmapping)
+		\pause\item NB: \textbf{rectangular} textures are fine, but \textbf{square} textures make UV coordinates saner
+	\end{itemize}
+\end{frame}
