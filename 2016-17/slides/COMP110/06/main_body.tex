@@ -4,9 +4,10 @@
 \usepackage{multimedia}
 \graphicspath{ {../../} }
 
+\usepackage[utf8]{inputenc}
+
 % Default language for code listings
-\lstset{language=C++,
-        morekeywords={each,in,nullptr}
+\lstset{language=Python
 }
 
 % For strikethrough effect
@@ -21,7 +22,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Object oriented programming}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -29,10 +30,16 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+    \item\textbf{Explain} the key concepts of OOP, including objects, classes, fields, methods, inheritance and polymorphism
+    \item\textbf{Use} objects to model systems
+    \item\textbf{Write} simple object oriented programs
 	\end{itemize}
 \end{frame}
+
+\input{classes}
+\input{inheritance}
+
+\part{Worksheet C}
+\frame{\partpage}
 
 \end{document}
