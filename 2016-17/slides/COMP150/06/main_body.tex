@@ -18,20 +18,258 @@
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
+\input{../../commands}
+
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Scholarly Writing}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
 \begin{frame}
-	\frametitle{Learning outcomes}
+	\frametitle{Learning Outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\item \textbf{Compare} the key features of academic discussions \textbf{and} arguments
+		\item \textbf{Explain how} to structure a scholarly paper
+		\item \textbf{Use} LaTeX to \textbf{write} a scholarly paper
+		\item \textbf{Reference} sources using BiBTeX
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Academic Discussion}
+	
+	In your pre-production development teams:
+	
+	\vspace{2em}
+	
+	\textbf{Discuss} what a `discussion' is, and what it does, in an academic context 
+	
+	\begin{itemize}
+		\item Discuss
+		\item Make Notes in Slack
+		\item 10 minutes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Academic Discussion}
+	
+	The core of academic discussion is `evidence-based argument of a non-obvious position'' with the following goals:
+		
+	\begin{itemize}	
+		\item Present new ideas and insights
+		\item Argue that ideas and insights are likely to be true (or, at least supported by credible evidence)
+		\item Defend the ideas and insights from likely criticisms
+		\item Propose useful applications of the idea and/or how the idea could be further developed
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Academic Discussion}
+	
+	All papers should \textit{argue} something.
+	
+	\vspace{2em}
+	
+	Construct some sort of judgement, and then to be able to construct an effective, convincing argument to defend it. This is the essence of academic writing.		
+\end{frame}
+
+\begin{frame}
+	\frametitle{Academic Discussion}
+	
+	A common criticism of student papers is that they are \textit{descriptive} rather than \textit{argumentative}.
+	
+	\begin{itemize}	
+		\item There must be evidence of original insight through analysis:
+		\begin{itemize}	
+			\item Compare and Contrast
+			\item Synthesis and Inference
+		\end{itemize}	
+		\item There must be a purpose to the argument:
+		\begin{itemize}	
+			\item Argument is centred on a question
+			\item The paper has a key take-away point that justifies its existence
+			\item The question is actually answered, and the answer defended
+		\end{itemize}	
+		\item Avoid describing things the reader is likely to already know
+	\end{itemize}		
+\end{frame}
+
+\begin{frame}
+	\frametitle{Academic Discussion}
+		
+	\begin{itemize}	
+		\item Relevant
+		\item Manageable in terms of research and other practical considerations
+		\item Specific, yet sustainable
+		\item Original, novel, and useful
+		\item Consistent with Requirements
+		\item Clear and Simple
+		\item Interesting
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Relevance}
+		
+	The question will be of academic and intellectual interest to people in the field you have chosen to study. 
+	The question may arise from curiosities about, or issues raised in, the literature, or queries about practice.
+
+	\vspace{2em}
+
+	You should be able to establish a clear purpose for your research in relation to the chosen field. 
+	For example, are you filling a gap in knowledge, analysing academic assumptions or professional practice, 
+	monitoring a development in practice, comparing different approaches or testing theories within a specific population?
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Management}
+		
+	You need to be realistic about the scope and scale of the project. The question you ask must be within your ability to tackle. 
+	Can this data be accessed within the limited time and resources you have available to you?
+	
+	\vspace{2em}
+	
+	Sometimes a research question appears feasible, but when you start your fieldwork or library study, it proves otherwise. 
+	In this situation, it is important to write up the problems honestly and to reflect on what has been learnt.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Original}
+		
+	The question should not simply copy others.
+	It should show your own imagination and your ability to construct and develop research issues. 
+	
+	\vspace{2em}
+	
+	The best insights cause pause and are derived by the author, rather than merely copied from others.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Specific, yet Sustainable}
+		
+	The question should be very specific, but should be able to sustain discussion.
+	It should show your insight into one key aspects of the field. However, it should also show your ability to construct and develop insights about that field. 
+	There needs to be sufficient scope to develop into a research project in the future.
+
+	\vspace{2em}
+
+	\textit{Depth} over \textbf{breadth}.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Consistent with Requirements}
+		
+	The question must allow you the scope to satisfy the learning outcomes of the course.
+	
+	\vspace{2em}
+	
+	For example, in this module you should conduct a theoretical study and/or literature review, one that does not contain analysis of empirical data. 
+	You should conduct an appropriate review of the academic literature and show how you have explored theory and reasoned analytically to produce new insights about the subject.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Clarity}
+		
+	If you create a clear and simple research question, you may find that it becomes more complex as you think about the situation you are studying and undertake the literature review. 
+	
+	\vspace{2em}
+	
+	Having one key question with several sub-components will guide your research here.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Interesting}
+		
+	The question needs to intrigue you and maintain your interest throughout the project. There are two traps to avoid:
+	
+	\begin{itemize}
+		\item Some questions are\textit{convenient} --- the best you can come up with when asked to state a question or, perhaps, the question fits in with the assessment so you decide it will suffice.
+		\item Some questions are \textit{fads} --- they arise out of a set of personal circumstances, for example a job application. Once the circumstances change you may lose interest for the topic and it becomes very tedious.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Essay Writing}
+	
+	``Writing  an essay does not simply ‘happen’ on a particular day. Effectively, you start the writing process as soon as you begin to study the topic of your next essay.''
+
+	--- Northedge 2005: 297
+\end{frame}
+
+\fullbleed{writing_stages}
+
+\begin{frame}
+	\frametitle{Essay Structure}
+	
+	\begin{itemize}
+		\item A clear structure is evident from a clear question and a focused argument
+		\item With a constrained word count, you must focus on a very specific question
+		\item \textit{Depth} is needed over \textbf{breadth}:
+		\begin{itemize}
+			\item There must be enough evidence to convince
+			\item The question must be answerable	
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Essay Structure}
+	
+	There are many parallels between academic writing and storytelling:
+	
+	\begin{itemize}
+		\item Similar rules of writing will apply (though formal)
+		\item Beginning, middle, and end:
+		\begin{itemize}
+			\item Who is the story about? Who are the characters? What do you need to understand to follow the story? What is the larger challenge that is being addressed?
+			\item What actions are taken to address the challenge? What do the characters do?
+			\item What have the characters accomplished? How have the characters and their world changed as a result of the action?
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Essay Structure}
+	
+	Schimel, J. (2012) presents an interesting overview of the structures that can be found in academic papers:
+	
+	\begin{itemize}
+		\item OCAR Structure
+		\item Opening, Challenge, Action, Resolution
+
+		\item ABDCE Structure
+		\item Action, Background, Development, Climax, Ending
+		
+		\item LDR Structure
+		\item Lead, Development, Review
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Essay Structure}
+	
+	Focus on OCAR!
+
+\end{frame}
+
+\fullbleed{ocar}
+
+\fullbleed{ocar_flow}
+
+\begin{frame}
+	\frametitle{Essay Structure}
+	
+	\begin{itemize}
+		\item Nobody uses OCAR as explicit headings in essays
+		\item It is a general framework --- use your own headings!
+		\item It is broadly compatible with other styles of academic writing
+		\item i.e., IMRAD as used in primary research
 	\end{itemize}
 \end{frame}
 
