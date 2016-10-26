@@ -9,6 +9,8 @@
         morekeywords={each,in,nullptr}
 }
 
+\input{../listings_GLSL}
+
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
@@ -21,7 +23,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Materials and Lighting}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -29,10 +31,16 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\item \textbf{Explain} the Phong illumination model
+		\item \textbf{Implement} Phong illumination in your own programs
+		\item \textbf{Describe} how effects such as normal mapping can be used to render realistic materials
 	\end{itemize}
 \end{frame}
+
+\input{vector_products}
+\input{phong}
+
+\part{Sprint review}
+\frame{\partpage}
 
 \end{document}
