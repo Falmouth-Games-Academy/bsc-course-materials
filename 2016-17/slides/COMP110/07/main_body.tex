@@ -5,8 +5,7 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=C++,
-        morekeywords={each,in,nullptr}
+\lstset{language=Python
 }
 
 % For strikethrough effect
@@ -17,11 +16,12 @@
 
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
+\usetikzlibrary{tikzmark,calc}
 
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Data structures}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -29,10 +29,15 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\item \textbf{Explain} the difference between pass-by-value and pass-by-reference
+		\item \textbf{Distinguish} the basic data structures available in Python
+		\item \textbf{Determine} the complexity of accessing and manipulating data in these data structures
+		\item \textbf{Choose} the correct data structure for a given task
 	\end{itemize}
 \end{frame}
+
+\input{references}
+\input{python_data_structures}
+\input{2d_arrays}
 
 \end{document}

@@ -1,0 +1,67 @@
+\part{2-dimensional arrays}
+\frame{\partpage}
+
+\begin{frame}{2-dimensional arrays}
+	\pause Common problem: we want to represent a \textbf{2-dimensional array} of values (i.e.\ a grid)
+	\pause
+	$$
+		\begin{matrix}
+			v_{0,0} & v_{1,0} & \cdots & v_{w-1,0} \\
+			v_{0,1} & v_{1,1} & \cdots & v_{w-1,1} \\
+			\vdots  & \vdots  & \ddots & \vdots  \\
+			v_{0,h-1} & v_{1,h-1} & \cdots & v_{w-1,h-1}
+		\end{matrix}
+	$$
+\end{frame}
+
+\begin{frame}{Approach 1: flat list}
+	\begin{itemize}
+		\pause\item For a $w \times h$ array, create a list of size $wh$
+		\pause\item The element in column $x$ row $y$ is accessed by \lstinline{list[y * w + x]}
+		\pause\item E.g.\ $w=5, h=4$:
+		$$
+			\begin{matrix}
+				0 & 1 & 2 & 3 & 4 \\
+				5 & 6 & 7 & 8 & 9 \\
+				10 & 11 & 12 & 13 & 14 \\
+				15 & 16 & 17 & 18 & 19
+			\end{matrix}
+		$$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Approach 2: list of lists}
+	\begin{itemize}
+		\pause\item For a $w \times h$ array, create a list of size $w$, where each element is a list of size $h$
+			\begin{itemize}
+				\pause\item Each element of the ``outer'' list represents a column of the array
+			\end{itemize}
+		\pause\item The element in column $x$ row $y$ is accessed by \lstinline{list[x][y]},
+			i.e.\ the $y$th element of the $x$th column
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Approach 3: dictionary}
+	\begin{itemize}
+		\pause\item Represent the array as a dictionary whose keys are \lstinline{(x,y)} tuples
+		\pause\item The element in column $x$ row $y$ is accessed by \lstinline{list[x, y]}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Approach 4: NumPy array}
+	\begin{itemize}
+		\pause\item Requires NumPy or SciPy, and can only store numeric types
+		\pause\item However, highly optimised for intensive calculations
+			(e.g.\ ``tinkering'' with image pixel colours...?)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Which is best?}
+	\begin{itemize}
+		\pause\item Flat list is reasonably efficient but not very readable
+		\pause\item List of lists is a reasonable trade-off between efficiency and readability
+		\pause\item Dictionary allows for ``sparse'' arrays (e.g.\ some cells can be missing)
+		\pause\item NumPy array is less versatile but faster in some use cases
+	\end{itemize}
+	\pause There is no single ``best'' approach --- it depends how you use it
+\end{frame}
