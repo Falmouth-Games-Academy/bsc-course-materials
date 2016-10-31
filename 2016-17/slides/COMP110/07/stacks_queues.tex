@@ -1,0 +1,91 @@
+\part{More data structures}
+\frame{\partpage}
+
+\begin{frame}{Stacks and queues}
+	\begin{columns}
+		\pause
+		\begin{column}{0.3\textwidth}
+			\includegraphics[width=\textwidth]{stack}
+		\end{column}
+		\begin{column}{0.68\textwidth}
+			\begin{itemize}
+				\item A \textbf{stack} is a \textbf{last-in first-out (LIFO)} data structure
+				\pause\item Items can be \textbf{pushed} to the \textbf{top} of the stack
+				\pause\item Items can be \textbf{popped} from the \textbf{top} of the stack
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	\begin{columns}
+		\pause
+		\begin{column}{0.3\textwidth}
+			\includegraphics[width=\textwidth]{queue}
+		\end{column}
+		\begin{column}{0.68\textwidth}
+			\begin{itemize}
+				\item A \textbf{queue} is a \textbf{first-in first-out (LIFO)} data structure
+				\pause\item Items can be \textbf{enqueued} to the \textbf{back} of the queue
+				\pause\item Items can be \textbf{dequeued} from the \textbf{front} of the queue
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Stacks and queues in Python}
+	\begin{itemize}
+		\pause\item Stacks can be implemented efficiently as lists
+		\pause\item Queues can be implemented as lists, but not efficiently
+		\pause\item \lstinline{deque} (from the \lstinline{collections} module) implements an efficient
+			\textbf{double-ended queue}
+		\pause\item Inserting and removing elements from the start and end of a \lstinline{deque} is $O(1)$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Graphs}
+	\begin{columns}
+		\pause
+		\begin{column}{0.3\textwidth}
+			\includegraphics[width=\textwidth]{graph1}
+			\par
+			\vspace{2ex}
+			\includegraphics[width=\textwidth]{graph2}
+		\end{column}
+		\begin{column}{0.68\textwidth}
+			\begin{itemize}
+				\pause\item A \textbf{graph} is defined by:
+					\begin{itemize}
+						\pause\item A collection of \textbf{nodes} or \textbf{vertices} (points)
+						\pause\item A collection of \textbf{edges} or \textbf{arcs} (undirected lines or directed arrows between points)
+					\end{itemize}
+				\pause\item Often used to model \textbf{networks} (e.g.\ social networks, transport networks, game levels, finite state automata, ...)
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trees}
+	\begin{columns}
+		\pause
+		\begin{column}{0.3\textwidth}
+			\includegraphics[width=\textwidth]{tree2}
+			\par
+			\vspace{2ex}
+			\includegraphics[width=\textwidth]{tree}
+		\end{column}
+		\begin{column}{0.68\textwidth}
+			\begin{itemize}
+				\pause\item A \textbf{tree} is a special type of directed graph where:
+					\begin{itemize}
+						\pause\item One node (the \textbf{root}) has no incoming edges
+						\pause\item All other nodes have exactly 1 incoming edge
+					\end{itemize}
+				\pause\item Edges go from \textbf{parent} to \textbf{child}
+					\begin{itemize}
+						\pause\item All nodes except the root have exactly one parent
+						\pause\item Nodes can have 0, 1 or many children
+					\end{itemize}
+				\pause\item Used to model \textbf{hierarchies} (e.g.\ file systems, object inheritance, scene graphs, state-action trees, ...)
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
