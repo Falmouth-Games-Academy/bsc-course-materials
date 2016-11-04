@@ -1,0 +1,61 @@
+\part{Modular program design}
+\frame{\partpage}
+
+\begin{frame}{Modular program design}
+	\begin{itemize}
+		\pause\item Writing a piece of software as a
+			\textbf{single long source file} is generally a bad idea
+		\pause\item Better to split the program into several self-contained files,
+			i.e.\ \textbf{modules}
+		\pause\item Makes code easier to \textbf{navigate}
+		\pause\item Allows related classes and functions to be
+			\textbf{grouped} together
+		\pause\item Modules can often be \textbf{reused} between programs
+		\pause\item In compiled languages, can allow for faster iteration via
+			\textbf{incremental recompilation}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Modules in Python}
+	\begin{itemize}
+		\pause\item \textbf{Every} Python source file is a \textbf{module}
+		\pause\item Can be loaded using the \lstinline{import} statement,
+			just like built-in modules
+	\end{itemize}
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\pause mymodule.py
+			\begin{lstlisting}
+def test():
+    print "Hello world!"
+			\end{lstlisting}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\pause program.py
+			\begin{lstlisting}
+import mymodule
+
+mymodule.test()
+			\end{lstlisting}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Modules vs programs}
+	\begin{itemize}
+		\pause\item How to tell if a Python file is a program or a module?
+		\pause\item Every Python file can be used as both, but you can check
+			at runtime:
+	\end{itemize}
+	\begin{lstlisting}
+if __name__ == "__main__":
+    print "I am a program"
+else:
+    print "I am an imported module"
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item \lstinline{__name__} is a built-in variable (note the
+			double underscores!)
+	\end{itemize}
+\end{frame}
+

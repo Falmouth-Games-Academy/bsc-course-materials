@@ -5,8 +5,7 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=C++,
-        morekeywords={each,in,nullptr}
+\lstset{language=Python
 }
 
 % For strikethrough effect
@@ -21,7 +20,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Exceptions and debugging}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -29,10 +28,24 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\item \textbf{Explain} the usefulness of exceptions and assertions in writing robust software
+\item \textbf{Write} Python programs that throw and catch exceptions
+\item \textbf{Use} the PyCharm debugger to trace the execution of programs
 	\end{itemize}
 \end{frame}
+
+\begin{frame}{Reading}
+	E.\ Dijkstra, 1968.
+	Go To Statement Considered Harmful.
+	\emph{Communications of the ACM},
+	11(3):147--148.
+\end{frame}
+
+\input{modular}
+\input{exceptions}
+\input{debugging}
+
+\part{Worksheet D}
+\frame{\partpage}
 
 \end{document}
