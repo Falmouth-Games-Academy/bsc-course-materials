@@ -5,8 +5,9 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=C++,
-        morekeywords={each,in,nullptr}
+\usepackage{mips}
+\lstset{language=[mips]Assembler,
+	morekeywords={[3]\$d,\$s,\$t}
 }
 
 % For strikethrough effect
@@ -36,5 +37,6 @@
 \end{frame}
 
 \input{compilers_vs_interpreters}
+\input{mips}
 
 \end{document}

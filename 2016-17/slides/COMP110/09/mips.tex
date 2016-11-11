@@ -1,0 +1,169 @@
+\part{Machine code}
+\frame{\partpage}
+
+\begin{frame}{MIPS}
+	\begin{itemize}
+		\pause\item An example of a \textbf{Reduced Instruction Set Computer (RISC)} architecture
+			\begin{itemize}
+				\pause\item Small number of simple instructions --- computational power comes from executing
+					many instructions per second
+				\pause\item Compare with \textbf{Complex Instruction Set Computer (CISC)} architecture (e.g.\ Intel x86)
+					--- large number of complex instructions
+					--- fewer instructions per second, but shorter programs
+			\end{itemize}
+		\pause\item MIPS was popular in 1980s -- 2000s
+			\begin{itemize}
+				\pause\item Embedded systems
+				\pause\item Consoles (Nintendo 64, PlayStation 1 and 2)
+			\end{itemize}
+		\pause\item Easier to understand than most CPU instruction sets in common use today
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Online MIPS simulator}
+	\begin{center}
+		\url{http://rivoire.cs.sonoma.edu/cs351/wemips/}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Registers}
+	\begin{itemize}
+		\pause\item Memory locations inside the CPU
+		\pause\item Faster to access than main memory
+		\pause\item Registers in MIPS architecture include:
+			\begin{itemize}
+				\pause\item \lstinline{$zero}: constant 0
+				\pause\item \lstinline{$t0}--\lstinline{$t9}: temporary storage
+				\pause\item \lstinline{$s0}--\lstinline{$s7}: saved temporary storage
+				%\pause\item \lstinline{$a0}--\lstinline{$a3}: function arguments
+				%\pause\item \lstinline{$v0}--\lstinline{$v1}: function return values
+			\end{itemize}
+		\pause\item Each register holds a single 32-bit value
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Adding register values}
+	\pause
+	\begin{lstlisting}
+ADD $d, $s, $t
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item \lstinline{$d}, \lstinline{$s} and \lstinline{$t} are register names
+		\pause\item This adds the value of \lstinline{$s} to the value of \lstinline{$t},
+			and stores the result in \lstinline{$d}
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+SUB $d, $s, $t
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Subtracts the value of \lstinline{$t} from the value of \lstinline{$s},
+			and stores the result in \lstinline{$d}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Adding a constant}
+	\pause
+	\begin{lstlisting}
+ADDI $d, $s, C
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item \lstinline{$d} and \lstinline{$s} are register names, \lstinline{C} is an integer constant
+		\pause\item This adds the value of \lstinline{$s} to \lstinline{C},
+			and stores the result in \lstinline{$d}
+		\pause\item \lstinline{ADDI} = ``add immediate''
+			--- as in \lstinline{C} is specified immediately in the code, not looked up from a register
+		\pause\item There is no \lstinline{SUBI} instruction --- to subtract \lstinline{C},
+			add \lstinline{-C}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{More fun with ADDI}
+	\begin{itemize}
+		\pause\item Socrative \texttt{FALCOMPED}
+		\pause\item What does this code do?
+	\end{itemize}
+	\begin{lstlisting}
+ADDI $s0, $s1, 0
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item What does this code do?
+	\end{itemize}
+	\begin{lstlisting}
+ADDI $s0, $zero, 12
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item MIPS does not have dedicated instructions for setting a register value to a
+			constant or to the value of another register --- it has to be done with \lstinline{ADDI}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Labels and jumping}
+	\begin{itemize}
+		\pause\item In assembly code, can set a \textbf{label} on any line:
+	\end{itemize}
+	\begin{lstlisting}
+MyLabel: ADD $s0, $s1, 1
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Some instructions use labels to refer to a location in the code
+		\pause\item E.g.\ the \lstinline{j} instruction
+			simply jumps (backwards or forwards) to the specified line:
+	\end{itemize}
+	\begin{lstlisting}
+j MyLabel
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Branching}
+	\begin{itemize}
+		\pause\item \textbf{Branching} is \textbf{conditional jumping}
+	\end{itemize}
+	\pause\begin{lstlisting}
+BEQ $s, $t, Label
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item This jumps to \lstinline{Label} \textbf{if and only if}
+			the value of \lstinline{$s} equals the value of \lstinline{$t}
+	\end{itemize}
+	\pause\begin{lstlisting}
+BNE $s, $t, Label
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item This jumps to \lstinline{Label} \textbf{if and only if}
+			the value of \lstinline{$s} does not equal the value of \lstinline{$t}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Loops}
+	\begin{itemize}
+		\pause\item Branching allows us to implement \textbf{while loops}
+	\end{itemize}
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{lstlisting}[language=Python]
+i = 0
+total = 0
+limit = 10
+
+while i != limit:
+    total += i
+    i += 1
+# end while
+			\end{lstlisting}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{lstlisting}
+ADDI $s0, $zero, 0
+ADDI $s1, $zero, 0
+ADDI $s2, $zero, 10
+
+Loop: BEQ $s0, $s2, LoopEnd
+Loop: ADD $s1, $s1, $s0
+ADDI $s0, $s0, 1
+BNE $s0, $s2, Loop
+			\end{lstlisting}
+		\end{column}
+	\end{columns}
+\end{frame}
+
