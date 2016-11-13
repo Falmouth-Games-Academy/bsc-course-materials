@@ -31,12 +31,12 @@
 	\begin{itemize}
 		\pause\item \textbf{opcode} and \textbf{function} together specify the operation to execute
 			\begin{itemize}
-				\pause\item E.g.\ \lstinline{ADD} has opcode \texttt{000000} and function \texttt{100000}
-				\pause\item E.g.\ \lstinline{SUB} has opcode \texttt{000000} and function \texttt{100010}
+				\pause\item E.g.\ \lstinline{add} has opcode \texttt{000000} and function \texttt{100000}
+				\pause\item E.g.\ \lstinline{sub} has opcode \texttt{000000} and function \texttt{100010}
 			\end{itemize}
 		\pause\item Some instructions specify a \textbf{shift} amount
 			\begin{itemize}
-				\pause\item For \lstinline{ADD} \lstinline{SUB} etc these 5 bits are ignored
+				\pause\item For \lstinline{add} \lstinline{sub} etc these 5 bits are ignored
 			\end{itemize}
 		\pause\item Registers are identified by a 5-bit number
 			\begin{itemize}
@@ -48,7 +48,7 @@
 
 \begin{frame}[fragile]{Example}
 	\begin{lstlisting}
-ADD $s0, $s0, $s1
+add $s0, $s0, $s1
 	\end{lstlisting}
 	$$ \downarrow $$
 	\begin{lstlisting}
@@ -74,7 +74,7 @@ opcode   s     t     d   shift function
 	\begin{itemize}
 		\pause\item \textbf{opcode} specifies the operation to execute
 			\begin{itemize}
-				\pause\item E.g.\ \lstinline{ADDI} has opcode \texttt{001000}
+				\pause\item E.g.\ \lstinline{addi} has opcode \texttt{001000}
 			\end{itemize}
 		\pause\item \lstinline{C} is specified as a 16-bit number
 	\end{itemize}
@@ -82,7 +82,7 @@ opcode   s     t     d   shift function
 
 \begin{frame}[fragile]{Example}
 	\begin{lstlisting}
-ADDI $s0, $s1, 123
+addi $s0, $s1, 123
 	\end{lstlisting}
 	$$ \downarrow $$
 	\begin{lstlisting}

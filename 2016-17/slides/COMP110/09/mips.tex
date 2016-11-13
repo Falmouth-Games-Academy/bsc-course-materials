@@ -45,7 +45,7 @@
 \begin{frame}[fragile]{Adding register values}
 	\pause
 	\begin{lstlisting}
-ADD $d, $s, $t
+add $d, $s, $t
 	\end{lstlisting}
 	\begin{itemize}
 		\pause\item \lstinline{$d}, \lstinline{$s} and \lstinline{$t} are register names
@@ -54,7 +54,7 @@ ADD $d, $s, $t
 	\end{itemize}
 	\pause
 	\begin{lstlisting}
-SUB $d, $s, $t
+sub $d, $s, $t
 	\end{lstlisting}
 	\begin{itemize}
 		\pause\item Subtracts the value of \lstinline{$t} from the value of \lstinline{$s},
@@ -65,35 +65,35 @@ SUB $d, $s, $t
 \begin{frame}[fragile]{Adding a constant}
 	\pause
 	\begin{lstlisting}
-ADDI $d, $s, C
+addi $d, $s, C
 	\end{lstlisting}
 	\begin{itemize}
 		\pause\item \lstinline{$d} and \lstinline{$s} are register names, \lstinline{C} is an integer constant
 		\pause\item This adds the value of \lstinline{$s} to \lstinline{C},
 			and stores the result in \lstinline{$d}
-		\pause\item \lstinline{ADDI} = ``add immediate''
+		\pause\item \lstinline{addi} = ``add immediate''
 			--- as in \lstinline{C} is specified immediately in the code, not looked up from a register
-		\pause\item There is no \lstinline{SUBI} instruction --- to subtract \lstinline{C},
+		\pause\item There is no \lstinline{subi} instruction --- to subtract \lstinline{C},
 			add \lstinline{-C}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{More fun with ADDI}
+\begin{frame}[fragile]{More fun with addi}
 	\begin{itemize}
 		\pause\item Socrative \texttt{FALCOMPED}
 		\pause\item What does this code do?
 	\end{itemize}
 	\begin{lstlisting}
-ADDI $s0, $s1, 0
+addi $s0, $s1, 0
 	\end{lstlisting}
 	\begin{itemize}
 		\pause\item What does this code do?
 	\end{itemize}
 	\begin{lstlisting}
-ADDI $s0, $zero, 12
+addi $s0, $zero, 12
 	\end{lstlisting}
 	\begin{itemize}
 		\pause\item MIPS does not have dedicated instructions for setting a register value to a
-			constant or to the value of another register --- it has to be done with \lstinline{ADDI}
+			constant or to the value of another register --- it has to be done with \lstinline{addi}
 	\end{itemize}
 \end{frame}

@@ -6,7 +6,7 @@
 		\pause\item In assembly code, can set a \textbf{label} on any line:
 	\end{itemize}
 	\begin{lstlisting}
-MyLabel: ADD $s0, $s1, 1
+MyLabel: add $s0, $s1, 1
 	\end{lstlisting}
 	\begin{itemize}
 		\pause\item Some instructions use labels to refer to a location in the code
@@ -23,14 +23,14 @@ j MyLabel
 		\pause\item \textbf{Branching} is \textbf{conditional jumping}
 	\end{itemize}
 	\pause\begin{lstlisting}
-BEQ $s, $t, Label
+beq $s, $t, Label
 	\end{lstlisting}
 	\begin{itemize}
 		\pause\item This jumps to \lstinline{Label} \textbf{if and only if}
 			the value of \lstinline{$s} equals the value of \lstinline{$t}
 	\end{itemize}
 	\pause\begin{lstlisting}
-BNE $s, $t, Label
+bne $s, $t, Label
 	\end{lstlisting}
 	\begin{itemize}
 		\pause\item This jumps to \lstinline{Label} \textbf{if and only if}
@@ -88,14 +88,14 @@ while i != limit:
 		\pause
 		\begin{column}{0.53\textwidth}
 			\begin{lstlisting}
-ADDI $s0, $zero, 0
-ADDI $s1, $zero, 0
-ADDI $s2, $zero, 10
+addi $s0, $zero, 0
+addi $s1, $zero, 0
+addi $s2, $zero, 10
 
-Loop: BEQ $s0, $s2, LoopEnd
-ADD $s1, $s1, $s0
-ADDI $s0, $s0, 1
-J Loop
+Loop: beq $s0, $s2, LoopEnd
+add $s1, $s1, $s0
+addi $s0, $s0, 1
+j Loop
 LoopEnd:
 			\end{lstlisting}
 		\end{column}
@@ -105,13 +105,13 @@ LoopEnd:
 \begin{frame}[fragile]{Exercise}
 	Write a piece of Python code equivalent to the following:
 	\begin{lstlisting}
-ADDI $s0, $zero, 10
-ADDI $s1, $zero, 0
+addi $s0, $zero, 10
+addi $s1, $zero, 0
 
-Loop: BEQ $s0, $zero, LoopEnd
-ADD $s1, $s1, $s0
-ADDI $s0, $s0, -1
-J Loop
+Loop: beq $s0, $zero, LoopEnd
+add $s1, $s1, $s0
+addi $s0, $s0, -1
+j Loop
 LoopEnd:
 	\end{lstlisting}
 \end{frame}
@@ -125,22 +125,22 @@ LoopEnd:
 	\begin{columns}
 		\begin{column}{0.48\textwidth}
 			\begin{lstlisting}
-ADDI $s1, $zero, 0
+addi $s1, $zero, 0
 
-Loop: BEQ $s0, $zero, LoopEnd
-ADD $s1, $s1, $s0
-ADDI $s0, $s0, -1
-J Loop
+Loop: beq $s0, $zero, LoopEnd
+add $s1, $s1, $s0
+addi $s0, $s0, -1
+j Loop
 LoopEnd:
 			\end{lstlisting}
 		\end{column}
 		\begin{column}{0.48\textwidth}
 			\begin{lstlisting}
-ADDI $s1, $zero, 0
+addi $s1, $zero, 0
 
-Loop: ADD $s1, $s1, $s0
-ADDI $s0, $s0, -1
-BNE $s0, $zero, Loop
+Loop: add $s1, $s1, $s0
+addi $s0, $s0, -1
+bne $s0, $zero, Loop
 			\end{lstlisting}
 		\end{column}
 	\end{columns}
