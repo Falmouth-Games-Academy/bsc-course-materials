@@ -1,0 +1,161 @@
+\part{Control flow in MIPS}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Labels and jumping}
+	\begin{itemize}
+		\pause\item In assembly code, can set a \textbf{label} on any line:
+	\end{itemize}
+	\begin{lstlisting}
+MyLabel: ADD $s0, $s1, 1
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Some instructions use labels to refer to a location in the code
+		\pause\item E.g.\ the \lstinline{j} instruction
+			simply jumps (backwards or forwards) to the specified line:
+	\end{itemize}
+	\begin{lstlisting}
+j MyLabel
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Branching}
+	\begin{itemize}
+		\pause\item \textbf{Branching} is \textbf{conditional jumping}
+	\end{itemize}
+	\pause\begin{lstlisting}
+BEQ $s, $t, Label
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item This jumps to \lstinline{Label} \textbf{if and only if}
+			the value of \lstinline{$s} equals the value of \lstinline{$t}
+	\end{itemize}
+	\pause\begin{lstlisting}
+BNE $s, $t, Label
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item This jumps to \lstinline{Label} \textbf{if and only if}
+			the value of \lstinline{$s} does not equal the value of \lstinline{$t}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Conditionals}
+	\begin{itemize}
+		\pause\item Branching allows us to implement \textbf{if statements}
+	\end{itemize}
+	\pause
+	\begin{columns}
+		\begin{column}{0.43\textwidth}
+			\begin{lstlisting}[language=Python,showlines=true]
+if s0 != 0:
+    s1 += 1
+else:
+    s2 += 1
+
+			\end{lstlisting}
+		\end{column}
+		\pause
+		\begin{column}{0.53\textwidth}
+			\begin{lstlisting}
+beq $s0, $zero, Else
+addi $s1, $s1, 1
+j End
+Else: addi $s2, $s2, 1
+End:
+			\end{lstlisting}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Loops}
+	\begin{itemize}
+		\pause\item Branching allows us to implement \textbf{while loops}
+	\end{itemize}
+	\pause
+	\begin{columns}
+		\begin{column}{0.43\textwidth}
+			\begin{lstlisting}[language=Python,showlines=true]
+i = 0
+total = 0
+limit = 10
+
+while i != limit:
+    total += i
+    i += 1
+# end while
+
+			\end{lstlisting}
+		\end{column}
+		\pause
+		\begin{column}{0.53\textwidth}
+			\begin{lstlisting}
+ADDI $s0, $zero, 0
+ADDI $s1, $zero, 0
+ADDI $s2, $zero, 10
+
+Loop: BEQ $s0, $s2, LoopEnd
+ADD $s1, $s1, $s0
+ADDI $s0, $s0, 1
+J Loop
+LoopEnd:
+			\end{lstlisting}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise}
+	Write a piece of Python code equivalent to the following:
+	\begin{lstlisting}
+ADDI $s0, $zero, 10
+ADDI $s1, $zero, 0
+
+Loop: BEQ $s0, $zero, LoopEnd
+ADD $s1, $s1, $s0
+ADDI $s0, $s0, -1
+J Loop
+LoopEnd:
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Not quite a while loop}
+	\begin{itemize}
+		\item Socrative \texttt{FALCOMPED}
+		\item What is the difference between these two programs?
+		\item (NB: assume \lstinline{$s0} $\geq 0$)
+	\end{itemize}
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\begin{lstlisting}
+ADDI $s1, $zero, 0
+
+Loop: BEQ $s0, $zero, LoopEnd
+ADD $s1, $s1, $s0
+ADDI $s0, $s0, -1
+J Loop
+LoopEnd:
+			\end{lstlisting}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\begin{lstlisting}
+ADDI $s1, $zero, 0
+
+Loop: ADD $s1, $s1, $s0
+ADDI $s0, $s0, -1
+BNE $s0, $zero, Loop
+			\end{lstlisting}
+		\end{column}
+	\end{columns}
+	\pause The code on the right implements a \textbf{do-while} loop (which Python doesn't have, but other languages do)
+\end{frame}
+
+\begin{frame}{Function calls}
+	\begin{itemize}
+		\pause\item Function calls can be implemented using the jump instruction:
+			\begin{itemize}
+				\pause\item To call the function: save the address of the instruction after the current one, then jump to the function
+				\pause\item To return from the function: jump to the previously saved address
+			\end{itemize}
+		\pause\item MIPS has \lstinline{jal} and \lstinline{jr} instructions and \lstinline{$ra} register for this purpose
+		\pause\item Socrative \texttt{FALCOMPED}: why save the return address? Why not just hard-code it into the program?
+		\pause\item Nested function calls require a \textbf{stack} of return addresses
+	\end{itemize}
+\end{frame}

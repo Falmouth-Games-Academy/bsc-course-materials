@@ -1,4 +1,4 @@
-\part{Machine code}
+\part{The MIPS architecture}
 \frame{\partpage}
 
 \begin{frame}{MIPS}
@@ -97,73 +97,3 @@ ADDI $s0, $zero, 12
 			constant or to the value of another register --- it has to be done with \lstinline{ADDI}
 	\end{itemize}
 \end{frame}
-
-\begin{frame}[fragile]{Labels and jumping}
-	\begin{itemize}
-		\pause\item In assembly code, can set a \textbf{label} on any line:
-	\end{itemize}
-	\begin{lstlisting}
-MyLabel: ADD $s0, $s1, 1
-	\end{lstlisting}
-	\begin{itemize}
-		\pause\item Some instructions use labels to refer to a location in the code
-		\pause\item E.g.\ the \lstinline{j} instruction
-			simply jumps (backwards or forwards) to the specified line:
-	\end{itemize}
-	\begin{lstlisting}
-j MyLabel
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Branching}
-	\begin{itemize}
-		\pause\item \textbf{Branching} is \textbf{conditional jumping}
-	\end{itemize}
-	\pause\begin{lstlisting}
-BEQ $s, $t, Label
-	\end{lstlisting}
-	\begin{itemize}
-		\pause\item This jumps to \lstinline{Label} \textbf{if and only if}
-			the value of \lstinline{$s} equals the value of \lstinline{$t}
-	\end{itemize}
-	\pause\begin{lstlisting}
-BNE $s, $t, Label
-	\end{lstlisting}
-	\begin{itemize}
-		\pause\item This jumps to \lstinline{Label} \textbf{if and only if}
-			the value of \lstinline{$s} does not equal the value of \lstinline{$t}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Loops}
-	\begin{itemize}
-		\pause\item Branching allows us to implement \textbf{while loops}
-	\end{itemize}
-	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\begin{lstlisting}[language=Python]
-i = 0
-total = 0
-limit = 10
-
-while i != limit:
-    total += i
-    i += 1
-# end while
-			\end{lstlisting}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{lstlisting}
-ADDI $s0, $zero, 0
-ADDI $s1, $zero, 0
-ADDI $s2, $zero, 10
-
-Loop: BEQ $s0, $s2, LoopEnd
-Loop: ADD $s1, $s1, $s0
-ADDI $s0, $s0, 1
-BNE $s0, $s2, Loop
-			\end{lstlisting}
-		\end{column}
-	\end{columns}
-\end{frame}
-
