@@ -1,0 +1,258 @@
+\part{Control structures}
+\frame{\partpage}
+
+\begin{frame}[fragile]{If statement}
+	\begin{lstlisting}
+if (x > 0)
+{
+    printf("x is positive\n");
+}
+else if (x < 0)
+{
+    printf("x is negative\n");
+}
+else
+{
+    printf("x is neither positive nor negative\n");
+}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{If statement}
+    \begin{itemize}
+        \item Works just like the \lstinline{if} statement in Python \pause
+        \item There can be zero, one or many \lstinline{else if} clauses \pause
+        \item The \lstinline{else} clause is optional, but if present then there can only be one
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Conditions}
+    \begin{itemize}
+        \item Numerical comparison operators work just like Python:
+        \lstinline{==  !=  <  >  <=  >=}
+        \pause
+        \item Boolean logic operators look a little different
+    \end{itemize}
+    \pause
+    Python uses \lstinline[language=Python]{and, or, not}
+    \begin{lstlisting}[language=Python]
+if not (x < 0 or x > 100) and not (y < 0 or y > 100):
+    print "Point is in rectangle"
+    \end{lstlisting}
+    \pause
+    C++ uses \lstinline{&&, ||, !}
+    \begin{lstlisting}[language=Python]
+if (!(x < 0 || x > 100) && !(y < 0 || y > 100))
+{
+    printf("Point is in rectangle\n");
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Single-statement blocks}
+    \begin{itemize}
+        \item In many cases, if a block contains only a single statement then the curly braces can be omitted
+    \end{itemize}
+    \begin{lstlisting}
+if (x > 0)
+    printf("x is positive\n");
+else if (x < 0)
+    printf("x is negative\n");
+else
+    printf("x is neither positive nor negative\n");
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Single-statement blocks}
+    \begin{itemize}
+        \item Careful though! This can lead to obscure bugs
+    \end{itemize}
+    \begin{lstlisting}
+if (z == 0)
+    x = 0; y = 0;
+    \end{lstlisting}
+		Socrative \texttt{FALCOMPED}: what's wrong with this?
+\end{frame}
+
+%\begin{frame}[fragile]{Switch statement}
+	%\begin{lstlisting}
+%switch (x)
+%{
+%case 0:
+    %printf("zero\n");
+    %break;
+%case 1:
+    %printf("one\n");
+    %break;
+%case 2:
+    %printf("two\n");
+    %break;
+%default:
+    %printf("something else\n");
+    %break;
+%}
+	%\end{lstlisting}
+%\end{frame}
+
+\begin{frame}[fragile]{While loop}
+	\begin{lstlisting}
+while (x > 0)
+{
+    printf("%d\n", x);
+    x--;
+}
+	\end{lstlisting}
+    \begin{itemize}
+        \item Same as Python
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Do-while loop}
+	\begin{lstlisting}
+do
+{
+    printf("%d\n", x);
+    x--;
+} while (x > 0);
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item \lstinline{while} loop checks the condition \textbf{before} executing the loop body \pause
+		\item \lstinline{do-while} loop checks the condition \textbf{after} executing the loop body \pause
+		\item e.g. if \lstinline{x == 0} to begin with, the \lstinline{while} body does not execute, the \lstinline{do-while} body executes once
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{For-each loop}
+	\begin{lstlisting}
+std::vector<int> numbers { 1, 3, 5, 7, 9 };
+
+for (int x : numbers)
+{
+    printf("%d\n", x);
+}
+	\end{lstlisting}
+    \pause
+	\begin{itemize}
+		\item This works like the \lstinline{for} loop in Python \pause
+		\item Used for iterating over data structures \pause
+		\item For iterating over ranges of numbers, C++ has something different...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{For loop}
+	\begin{lstlisting}
+for (int i = 0; i < 10; i++)
+{
+    printf("%d\n", i);
+}
+	\end{lstlisting}
+	\pause
+    \begin{itemize}
+        \item The \lstinline{for} loop has three parts: \pause
+        \item The \textbf{initialiser} \lstinline{int i = 0}
+        \begin{itemize}
+            \item This is executed at the start of the loop
+        \end{itemize} \pause
+        \item The \textbf{condition} \lstinline{i < 10}
+        \begin{itemize}
+            \item The loop executes while this evaluates to \lstinline{true}
+        \end{itemize} \pause
+        \item The \textbf{loop statement} \lstinline{i++}
+        \begin{itemize}
+            \item This is executed at the end of each iteration of the loop
+            \item \lstinline{i++} means ``increment \lstinline{i}'' --- this is shorthand for \lstinline{i = i + 1}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{For loops and while loops}
+	\begin{lstlisting}
+for (int i = 0; i < 10; i++)
+{
+    printf("%d\n", i);
+}
+	\end{lstlisting}
+    \begin{itemize}
+        \item Any \lstinline{for} loop can easily be rewritten as a \lstinline{while} loop
+    \end{itemize}
+    \pause
+	\begin{lstlisting}
+int i = 0;
+while (i < 10)
+{
+    printf("%d\n", i);
+    i++;
+}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{For loops in C++ and Python}
+	\begin{lstlisting}
+for (int i = 0; i < 10; i++)
+{
+    printf("%d\n", i);
+}
+	\end{lstlisting}
+	\pause
+    \begin{itemize}
+        \item In Python, this would be written as a for-each loop, first using the \lstinline[language=Python]{xrange} function
+        to construct the range of numbers $0, 1, 2, \dots, 9$:
+    \end{itemize}
+	\begin{lstlisting}[language=Python]
+for i in xrange(10):
+    print i
+	\end{lstlisting}
+	\pause
+    \begin{itemize}
+        \item The C++ way doesn't require construction of an iterable object, so is more efficient
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{FALCOMPED}}
+    What would the first code fragment print?
+	\begin{lstlisting}
+for (int i = 0; i < 10; i++)
+    printf("%d ", i);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{FALCOMPED}}
+    What would the second code fragment print?
+	\begin{lstlisting}
+for (int i = 0; i <= 10; i++)
+    printf("%d ", i);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{FALCOMPED}}
+    What would the third code fragment print?
+	\begin{lstlisting}
+for (int i = 0; i < 10; i += 2)
+    printf("%d ", i);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{FALCOMPED}}
+    What would the fourth code fragment print?
+	\begin{lstlisting}
+for (int i = 10; i < 0; i++)
+    printf("%d ", i);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{FALCOMPED}}
+    What would the fifth code fragment print?
+	\begin{lstlisting}
+for (int i = 10; i > 0; i++)
+    printf("%d ", i);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Socrative \texttt{FALCOMPED}}
+    What would the sixth code fragment print?
+	\begin{lstlisting}
+for (int i = 10; i > 0; i--)
+    printf("%d ", i);
+	\end{lstlisting}
+\end{frame}

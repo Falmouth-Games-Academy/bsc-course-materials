@@ -1,0 +1,158 @@
+\part{Your first C++ program}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Project setup}
+	\begin{itemize}
+		\item Open \textbf{Visual Studio 2015} from the Start menu
+		\item Click \textbf{New Project}
+		\item Choose \textbf{Templates $\to$ Visual~C++ $\to$ Win32 $\to$ Win32~Console~Application}
+		\item Choose an appropriate name and location, and click \textbf{OK}
+		\item Click \textbf{Finish}
+		\item If asked about source control, click \textbf{Cancel}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{The code}
+	\begin{itemize}
+		\item Edit \texttt{$\langle$YourApplicationName$\rangle$.cpp} to match the following:
+	\end{itemize}
+	\begin{lstlisting}
+// YourApplicationName.cpp : Defines the entry point for the console application.
+
+#include "stdafx.h"
+
+int main()
+{
+    printf("Hello, world!\n");
+    return 0;
+}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Running it}
+	\begin{itemize}
+		\item Click \includegraphics[height=2ex]{run_button.png}, or press \textbf{F5} \pause
+		\item It worked, but the window disappeared before we could see it! \pause
+		\item Solution 1: click \textbf{Debug $\to$ Start~Without~Debugging}, or press \textbf{Ctrl~+~F5}
+		\item Solution 2: click in the left margin next to the \lstinline{return 0;} line to set a \textbf{breakpoint} ---
+			a red circle should appear. Then click \includegraphics[height=2ex]{run_button.png}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Comments}
+	\begin{lstlisting}
+// ConsoleApplication1.cpp : Defines the entry point for the console application.
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item \lstinline{//} denotes a single-line comment \pause
+		\item Equivalent of \lstinline[language=Python]{#} in Python \pause
+		\item \textcolor{Gray}{$\hookleftarrow$} denotes a line too long to fit on the slide ---
+			in your program this should be a single line \pause
+		\item Multi-line comments, delimited by \lstinline{/* */}, are also available
+	\end{itemize}
+	\begin{lstlisting}
+/* This is an example of a multi-line comment
+   More comment text
+   Even more comment text */
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{The \#include directive}
+	\begin{lstlisting}
+#include "stdafx.h"
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item \lstinline{#include} imports definitions from a \textbf{header file} \pause
+		\item Similar to \lstinline[language=Python]{import} in Python \pause
+		\item \lstinline{#include "..."} (quotes) is used for headers in the current project \pause
+		\item \lstinline{#include <...>} (angle brackets) is used for external libraries \pause
+		\item \texttt{stdafx.h} is the \textbf{precompiled header} file --- for faster compilation, external library headers should be included here rather than in the main \texttt{.cpp} file
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Entry point}
+	\begin{lstlisting}
+int main()
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item \textbf{All code} must be inside a \textbf{function} \pause
+		\item The \textbf{entry point} of an application is (almost) always named \lstinline{main} \pause
+		\begin{itemize}
+			\item Some types of Windows GUI application use a different name for the entry point \pause
+			\item A game engine (e.g.\ Unreal) takes care of the entry point for you \pause
+		\end{itemize}
+		\item \lstinline{int} means the function \textbf{returns} a value of integer type \pause
+		\item \lstinline{()} means the function takes \textbf{no parameters}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Blocks and semicolons}
+	\begin{lstlisting}
+{
+    ...;
+    ...;
+}
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item Curly braces are used to denote \textbf{blocks} \pause
+		\item All statements in C++ end with a semicolon \lstinline{;} \pause
+		\item Unlike Python, C++ ignores whitespace (indentation and usually line breaks) \pause
+		\item ... but whitespace is important for readability, so use it anyway
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Writing to the console}
+	\begin{lstlisting}
+    printf("Hello, world!\n");
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item Equivalent of Python's \lstinline[language=Python]{print} statement \pause
+		\item \lstinline{printf} is a function, part of the \textbf{standard library} \pause
+		\item In Unreal, can use \lstinline{UE_LOG} for the same purpose \pause
+		\item \lstinline{"\n"} is the \textbf{new line character} \pause
+		\item Most online tutorials will recommend using \lstinline{std::cout} to write to console,
+			but \lstinline{printf} is easier for now
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Formatted printing}
+	\pause
+	\begin{itemize}
+		\item The string passed to \lstinline{printf} can include \textbf{placeholders} \pause
+		\item Pass further arguments to \lstinline{printf}, one for each placeholder \pause
+	\end{itemize}
+	\begin{lstlisting}
+printf("%d plus %d equals %d\n", 3, 4, 3+4);
+	\end{lstlisting}
+	\begin{itemize}
+		\item Placeholder \textbf{must} match the type of the argument \pause
+		\item \lstinline{"%d"} or \lstinline{"%i"}: integer \pause
+		\item \lstinline{"%f"}: floating point \pause
+		\item \lstinline{"%s"}: string
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Exit code}
+	\begin{lstlisting}
+    return 0;
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item Returning 0 from \lstinline{main} tells the OS that the program completed successfully \pause
+		\item Mainly useful for writing tools to be used in DOS/Windows batch scripts or Linux shell scripts ---
+			for our purposes, \lstinline{main} will almost always return 0
+	\end{itemize}
+\end{frame}
