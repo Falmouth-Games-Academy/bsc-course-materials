@@ -10,6 +10,35 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{Classes in C++}
+	\begin{lstlisting}
+class MyClass
+{
+public:
+	MyClass() { /* constructor */ }
+	~MyClass() { /* destructor */ }
+	
+	void myMethod();
+	int anotherMethod(float foo);
+	
+	int myField;
+	bool anotherField
+};
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Allocating objects on the stack}
+	\pause
+	\begin{lstlisting}
+// Calls a parameterless constructor
+MyClass instance;
+
+// Calls a constructor with parameters
+MyClass otherInstance(1, 2, 3);
+	\end{lstlisting}
+	\pause Beware though --- these instances are \textbf{destroyed} when the variable goes out of scope!
+\end{frame}
+
 \begin{frame}[fragile]{Allocating objects on the heap}
     \begin{itemize}
         \item Objects can be allocated on the heap using the \lstinline{new} keyword \pause
@@ -37,6 +66,7 @@ delete myInstance;
         \item Forgetting to do this is a \textbf{memory leak} \pause
         \item Deleting something \textbf{twice} is bad \pause
         \item Trying to \textbf{dereference a deleted pointer} is bad
+				\pause\item Key concept is \textbf{ownership}: you're responsible for deleting it \textbf{if and only if} you own it
     \end{itemize}
 \end{frame}
 
@@ -57,7 +87,7 @@ int c = *b;
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Socrative \texttt{6E8NSW3IN}}
+\begin{frame}[fragile]{Socrative \texttt{FALCOMPED}}
     \begin{lstlisting}
 int a = 7;
 int* b = &a;
@@ -79,24 +109,24 @@ int c = *b;
     \end{enumerate}
 \end{frame}
 
-\begin{frame}[fragile]{Dereferencing for objects}
-    \begin{itemize}
-        \item This would work...
-    \end{itemize}
-    \begin{lstlisting}
-Circle* myCircle = new Circle(10);
-double area = (*myCircle).getArea();
-    \end{lstlisting}
-    \pause
-    \begin{itemize}
-        \item \lstinline{->} is a shorthand for dereferencing and accessing a member \pause
-        \item The code below is equivalent to the code above, but clearer
-    \end{itemize}
-    \begin{lstlisting}
-Circle* myCircle = new Circle(10);
-double area = myCircle->getArea();
-    \end{lstlisting}
-\end{frame}
+%\begin{frame}[fragile]{Dereferencing for objects}
+    %\begin{itemize}
+        %\item This would work...
+    %\end{itemize}
+    %\begin{lstlisting}
+%Circle* myCircle = new Circle(10);
+%double area = (*myCircle).getArea();
+    %\end{lstlisting}
+    %\pause
+    %\begin{itemize}
+        %\item \lstinline{->} is a shorthand for dereferencing and accessing a member \pause
+        %\item The code below is equivalent to the code above, but clearer
+    %\end{itemize}
+    %\begin{lstlisting}
+%Circle* myCircle = new Circle(10);
+%double area = myCircle->getArea();
+    %\end{lstlisting}
+%\end{frame}
 
 \begin{frame}[fragile]{Null pointer}
     \begin{itemize}
@@ -129,15 +159,15 @@ MyClass* notAnInstance = nullptr;
     %\end{itemize}
 %\end{frame}
 
-\begin{frame}[fragile]{Polymorphism}
-    \begin{itemize}
-        \item Can have a pointer to a \textbf{base class} which is actually an instance of a \textbf{derived class}
-    \end{itemize}
-    \begin{lstlisting}
-class Shape { ... };
-class Circle : public Shape { ... };
-
-Shape* myShape = new Circle(10);
-std::cout << myShape.getArea() << std::endl;
-    \end{lstlisting}
-\end{frame}
+%\begin{frame}[fragile]{Polymorphism}
+    %\begin{itemize}
+        %\item Can have a pointer to a \textbf{base class} which is actually an instance of a \textbf{derived class}
+    %\end{itemize}
+    %\begin{lstlisting}
+%class Shape { ... };
+%class Circle : public Shape { ... };
+%
+%Shape* myShape = new Circle(10);
+%std::cout << myShape.getArea() << std::endl;
+    %\end{lstlisting}
+%\end{frame}

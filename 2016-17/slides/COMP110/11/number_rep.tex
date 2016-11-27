@@ -40,5 +40,94 @@ double plancksConstant = 6.626e-34;
 	\pause This also works in Python and many other programming languages
 \end{frame}
 
-\begin{frame}{IEEE floating point format}
+\begin{frame}{Floating point numbers}
+	\begin{itemize}
+		\pause\item Similar to scientific notation, but \textbf{base 2} (binary)
+		\pause\item $\pm \text{mantissa} \times 2^{\text{exponent}}$
+		\pause\item Sign is stored as a single bit: $0=+$, $1=-$
+		\pause\item Mantissa is a binary number with a 1 before the point;
+			only the digits after the point are stored
+		\pause\item Exponent is a signed integer, stored with a \textbf{bias}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{IEEE 754 floating point formats}
+	\begin{center}
+		\begin{tabular}{|r|ccc|l|}
+			\hline
+			Type & Sign & Exponent & Mantissa & Total \\\hline
+			\lstinline{float} & 1 bit & 8 bits & 23 bits & 32 bits \\\hline
+			\lstinline{double} & 1 bit & 11 bits & 52 bits & 64 bits \\\hline
+		\end{tabular}
+	\end{center}
+	\pause
+	Exponent is stored with a \textbf{bias}:
+	\begin{itemize}
+		\item Single precision: store $\text{exponent} + 127$
+		\item Double precision: store $\text{exponent} + 1023$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+	\pause
+	\begin{center}
+		\texttt{0 10000001 10100000000000000000000}
+	\end{center}
+	\begin{itemize}
+		\pause\item Exponent: $129 - 127 = 2$
+		\pause\item Mantissa: binary $1.101$
+		\pause\item $1 + \frac12 + \frac18 = 1.625$
+		\pause\item $1.625 \times 2^2 = 6.5$
+		\pause\item Alternatively: $1.101 \times 2^2 = 110.1$
+		\pause\item $= 4 + 2 + \frac12 = 6.5$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Socrative \texttt{FALCOMPED}}
+	\pause
+	What is the value of this number expressed in IEEE 754 single precision format?
+	\begin{center}
+		\texttt{0 01111100 10011000000000000000000}
+	\end{center}
+	You have \textbf{5 minutes}, and you \textbf{may} use a calculator!
+\end{frame}
+
+\begin{frame}{Floating point numbers}
+	\begin{itemize}
+		\pause\item Similar to scientific notation, but \textbf{base 2} (binary)
+		\pause\item $\pm \text{mantissa} \times 2^{\text{exponent}}$
+		\pause\item Sign is stored as a single bit: $0=+$, $1=-$
+		\pause\item Mantissa is a binary number with a 1 before the point;
+			only the digits after the point are stored
+		\pause\item Exponent is a signed integer, stored with a \textbf{bias}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Limitations of floating point numbers}
+	\begin{itemize}
+		\pause\item Precision \textbf{varies} by \textbf{magnitude}: numbers near 0 can be stored more accurately
+			than numbers further from 0.
+			\begin{itemize}
+				\pause\item Why? Socrative \texttt{FALCOMPED}
+			\end{itemize}
+		\pause\item Many numbers cannot be represented exactly, e.g.\ $\frac15$
+			\begin{itemize}
+				\pause\item Similar to how decimal notation cannot exactly represent
+					$\frac13 = 0.3333333\dots$
+			\end{itemize}
+		\pause\item This can lead to \textbf{rounding errors} with some calculations
+			\begin{itemize}
+				\pause\item E.g.\ according to Python,
+					\lstinline[language=Python]{0.1 + 0.2 == 0.30000000000000004}
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Testing for equality}
+	\begin{itemize}
+		\pause\item Due to rounding errors, using \lstinline{==} or \lstinline{!=} with floating point numbers is almost always a bad idea
+		\pause\item E.g.\ in Python, \lstinline[language=Python]{0.1 + 0.2 == 0.3} evaluates to \lstinline[language=Python]{False}
+		\pause\item Better to check for \textbf{approximate equality}: calculate the difference between the numbers,
+			and check that it's smaller than some threshold
+	\end{itemize}
 \end{frame}
