@@ -1,0 +1,71 @@
+\newcommand{\pictureslideb}[3]{
+	\begin{frame}{#1}
+		\begin{center}
+			#3
+			
+			\vspace{6pt}
+			
+			\includegraphics[height=0.6\textheight]{#2}
+		\end{center}
+	\end{frame}
+}
+
+\newcommand{\pictureslide}[2]{
+	\begin{frame}{#1}
+		\begin{center}
+			\includegraphics[height=0.6\textheight]{#2}
+		\end{center}
+	\end{frame}
+}
+
+\part{AI in games}
+\frame{\partpage}
+
+\pictureslide{Nimrod (Ferranti, 1951)}{nimrod}
+\pictureslide{Samuel's Checkers program (IBM, 1962)}{samuel}
+\pictureslide{Galaxian (Namco, 1979)}{galaxian}
+\pictureslide{Pac-Man (Namco, 1980)}{pacman}
+\pictureslide{Deep Blue (IBM, 1997)}{deep_blue}
+\pictureslide{Half-Life (Valve, 1998)}{half_life}
+\pictureslide{The Sims (Maxis, 2000)}{sims}
+\pictureslide{Black \& White (Lionhead, 2001)}{black_white}
+\pictureslide{Fa\c{c}ade (Mateas \& Stern, 2005)}{facade}
+\pictureslide{Chinook (Schaeffer et al, 2007)}{chinook}
+\pictureslide{Left 4 Dead (Valve, 2008)}{left_4_dead}
+\pictureslide{Watson (IBM, 2011)}{watson}
+\pictureslide{Deep learning for Atari games (DeepMind, 2013)}{deepmind_atari}
+\pictureslide{AlphaGo (Google DeepMind, 2016)}{alphago}
+
+\begin{frame}{Applications of AI in games}
+	\begin{itemize}
+		\pause\item Enemies and other NPCs
+		\pause\item Opponents in $\{$board, card, strategy$\}$ games
+		\pause\item Automated playtesting
+		\pause\item Directors, hints, adaptive difficulty
+		\pause\item Procedural content generation
+		\pause\item Content production tools
+		\pause\item Procedural narrative
+		\pause\item Agent-based simulations
+		\pause\item ...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Design considerations}
+	\begin{itemize}
+		\pause\item Creating ``perfect'' AI is an interesting technical challenge, but may be bad game design
+	\end{itemize}
+	\pause
+	\begin{algorithmic}
+		\Procedure{EnemySoldierAI}{}
+			\While{player.isAlive}
+				\State \Call{AimAt}{player.head}
+				\State \Call{Shoot}{\ }
+			\EndWhile
+		\EndProcedure
+	\end{algorithmic}
+	\begin{itemize}
+		\pause\item A common (and difficult) challenge: creating AI which is \textbf{imperfect},
+			but not obviously \textbf{stupid}
+	\end{itemize}
+\end{frame}
+
