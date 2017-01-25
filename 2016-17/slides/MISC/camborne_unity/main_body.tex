@@ -1,0 +1,82 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{Introduction to Unity}
+\subtitle{\modulecode\ \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}{What is Unity?}
+	\begin{itemize}
+		\pause\item A \textbf{game engine}
+		\pause\item Two parts:
+			\begin{itemize}
+				\pause\item \textbf{Editor}: used by developers to create the game
+				\pause\item \textbf{Player}: packages the game to run on the customer's machine
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Why Unity?}
+	\begin{itemize}
+		\pause\item It's \textbf{cross platform}
+			\begin{itemize}
+				\pause\item Editor runs on Windows and Mac
+				\pause\item Games can run on Windows, Mac, Linux, Android, iOS, all major consoles, and web via HTML5
+			\end{itemize}
+		\pause\item It's relatively (!) \textbf{easy to use}
+		\pause\item Very flexible, can be \textbf{programmed} using C\#
+		\pause\item Has \textbf{asset pipelines} for artists, animators, musicians etc.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Made with Unity}
+	\center\url{https://madewith.unity.com/}
+\end{frame}
+
+\begin{frame}{Key concepts}
+	\begin{itemize}
+		\pause\item A game is made up of one or more \textbf{scenes}
+		\pause\item Each scene contains a number of \textbf{game objects}
+		\pause\item Each game object has several \textbf{components} which affect how it looks, moves and behaves
+		\pause\item Programmers can create custom components called \textbf{behaviours}
+		\pause\item NB: behaviours can create or delete game objects, or change scenes...
+		\pause\item No main loop, but behaviours have an \lstinline{Update} method which is called each frame
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{What to make?}
+	\begin{itemize}
+		\pause\item Think simple --- \textbf{don't overscope}!
+		\pause\item Work in \textbf{teams}
+		\pause\item Focus on \textbf{core mechanics} --- what will the player do in your game, and why is that fun?
+		\pause\item Think about your \textbf{unique selling points (USPs)} --- what will make your game different from all the others?
+		\pause\item Aim for a \textbf{minimum viable product} --- don't worry about polishing yet
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Unity tutorial}
+	\center\url{http://bit.ly/unity_roll_a_ball}
+\end{frame}
+
+\end{document}
