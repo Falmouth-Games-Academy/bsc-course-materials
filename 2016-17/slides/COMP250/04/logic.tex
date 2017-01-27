@@ -1,0 +1,59 @@
+\part{Logic}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Logical operations}
+	\pause
+	\begin{center}
+		\begin{tabular}{|c||c|c|c|}
+			\hline
+			Python & C family & Mathematics \\\hline
+				  \lstinline[language=Python]{not a}
+				& \lstinline[language=C++]{!a}
+				& $\neg A$ {\huge\phantom{$I$}} or {\huge\phantom{$I$}} $\overline{A}$
+				\pause\\
+				  \lstinline[language=Python]{a and b}
+				& \lstinline[language=C++]{a && b}
+				& $A \wedge B$
+				\pause\\
+				  \lstinline[language=Python]{a or b}
+				& \lstinline[language=C++]{a || b}
+				& $A \vee B$
+				\\\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Implication}
+	\begin{itemize}
+		\pause\item ``$A$ implies $B$'' means ``if $A$ is true then $B$ is true''
+		\pause\item Written as $A \implies B$
+		\pause\item E.g.\ if Bob lives in Falmouth then Bob lives in Cornwall
+		\pause\item ``Bob lives in Falmouth'' implies ``Bob lives in Cornwall''
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contrapositive}
+	\begin{itemize}
+		\pause\item $A \implies B$ is the same as $\neg B \implies \neg A$
+		\pause\item E.g.\ if Bob does not live in Cornwall then Bob does not live in Falmouth
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Equivalence}
+	\begin{itemize}
+		\pause\item If $A \implies B$ and $B \implies A$ then $A$ and $B$ are \textbf{logically equivalent}
+		\pause\item $A$ is true \textbf{if and only if} $B$ is true
+		\pause\item Written as $A \iff B$
+		\pause\item E.g.\ ``Alice lives in a city in Cornwall'' if and only if ``Alice lives in Truro''
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Implication is transitive}
+	\begin{itemize}
+		\pause\item If $A \implies B$ and $B \implies C$ then $A \implies C$
+		\pause\item E.g.\ if Bob lives in Falmouth then Bob lives in Cornwall
+		\pause\item And if Bob lives in Cornwall then Bob lives in England
+		\pause\item Therefore if Bob lives in Falmouth then Bob lives in England
+	\end{itemize}
+\end{frame}
+
