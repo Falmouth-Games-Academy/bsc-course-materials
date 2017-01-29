@@ -106,7 +106,7 @@
 
     UTexture* TeaTexture;
 
-    bool IsTeaFresh(UTea Tea) \{...\}
+    bool IsTeaFresh(UTea Tea)
   \end{lstlisting}
 \end{frame}
 
@@ -146,4 +146,99 @@
       \end{tabular}
     \end{table}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comments - Write self documenting code}
+  \begin{lstlisting}
+    // Bad:
+    t = s + 1 - b;
+
+    // Good:
+    TotalLeaves=SmallLeaves+LargeLeaves-SmallAndLargeLeaves;
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Commets - Write Useful Commets}
+  \begin{lstlisting}
+    // Bad:
+    // Increment Leaves
+    ++Leaves;
+
+    // Good:
+    // we know there is another tea leaf
+    ++Leaves;
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comments - Do not comment bad code - rewrite it}
+  \begin{lstlisting}
+    // Bad:
+    // total number of leaves is sum of
+    // small and large leaves less the
+    // number of leaves that are both
+    t = s + 1 - b;
+
+    // Good:
+    TotalLeaves=SmallLeaves+LargeLeaves-SmallAndLargeLeaves;
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comments - Do not contradict code}
+  \begin{lstlisting}
+    // Bad:
+    // never increment Leaves!
+    ++Leaves;
+
+    //Good:
+    // we know there is another leaf
+    ++Leaves;
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comments - Formatting}
+  \begin{itemize}
+    \item Unreal uses a system based on JavaDocs to extract comments to build documentation
+    \item You have to use a specfic format in order for this tool to run
+    \item More info - url{http://www.oracle.com/technetwork/articles/java/index-137868.html}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Const Correctness}
+  \begin{itemize}
+    \item Const is documentation as much as a compiler directive
+    \item If function arguments aren't modified by a function, ensure they are passed with const keyword
+    \item Flag methods as const if they don't modify an object
+    \item Use const interation over containers if the loop doesn't modify container
+    \item Const should be preferred on by-value parameters and locals
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{C++11 and Modern C++}
+  \begin{itemize}
+    \item \textbf{nullptr} - Used instead of NULL except on XBoxOne use \textbf{TYPE{\_}OF{\_}NULLPTR})
+    \item \textbf{auto} - You should not use auto except in the following cases
+    \begin{itemize}
+      \item Binding to lambda types
+      \item Iteration variables
+      \item Template code (advance case)
+    \end{itemize}
+    \item \textbf{Range Based For} - Preferred to regular for loop
+    \item \textbf{Lambdas} - Can be used, but be careful (see docs)
+    \item \textbf{Enums} - Always use strongly type enums which inherit from \textbf{uint8}
+    \item \textbf{Move Semantics} - All main container types have move constructors and move assignment
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Refrences}
+  \url{Unreal Docs}
+\end{frame}
+
+
 \end{document}
