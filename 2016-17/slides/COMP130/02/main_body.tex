@@ -6,13 +6,15 @@
 
 % Default language for code listings
 \lstset{language=C++,
-        morekeywords={each,in,nullptr}
+        morekeywords={each,in,nullptr,int32, TCHAR, uint8, int8, uint16, int16,
+        uint32, int32, uint64, int64, PTRINT, UObject. AActor, SWidget, FName,
+        FString, UClass, USoundCue, UTexture}
 }
 
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
-
+\usepackage{listings}
 \usepackage{pdfpages}
 
 % http://www.texample.net/tikz/examples/state-machine/
@@ -21,18 +23,127 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Epic Coding Standards}
 \subtitle{\modulecode: \moduletitle}
 
-\frame{\titlepage} 
+\frame{\titlepage}
 
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\item \textbf{Understand} Epic coding standards
+		\item \textbf{Compare} different coding standards
+		\item \textbf{Apply} Epic coding standard to your own Unreal Projects
 	\end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Why Coding Standards?}
+  \begin{itemize}
+    \item Aids in software maintance
+    \item Improves readability and understandability
+    \item Adds to the documentation of the project
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Naming Conventions 1}
+  \begin{itemize}
+    \item First letter of each word in name is capitalised, and no underscores between words
+    \begin{itemize}
+      \item E.g. Health and UPrimitiveComponent, not lastMouseCoordinates or delta\_coordinates
+    \end{itemize}
+    \item Type and variable names are nouns
+    \item Method names are verbs that describe the effects or describe return value
+    \item Names should be clear unambigous, and discriptive. Avoid over-abbreviation.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Naming Conventions 2}
+  \begin{itemize}
+    \item All variables should be declared one at a time to allow commments
+    \item All functions that return bool should ask a true/false questions
+    \item A procedure(a function with no return) should use strong verb followed by an Object
+    \item Prefix function parameters passed by reference with \textbf{Out}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Naming Conventions 3}
+  \begin{itemize}
+    \item Type names are prefixed with an additional upper-case letter, to distinguish them from variable names.
+    E.g. \textbf{FSkin} for type, and \textbf{Skin} is an instance of \textbf{FSkin}
+    \begin{itemize}
+      \item Template classes are prefixed by T
+      \item Classes that inherit from UObject are prefixed by U
+      \item Classes that inheirt from AActor are prefixed by A
+      \item Classes that inheirt from SWidget are prefixed by S
+      \item Classes that are Interfaces are prexfixed by I
+      \item Enums are prexfixed by E
+      \item Boolean variables must be prefixed by b (e.g. bIsDead or bHasFallen)
+      \item Most other classes are prefixed by F
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Naming Convention Examples}
+  \begin{lstlisting}
+    float TeaWeight;
+
+    int32 TeaCount;
+
+    bool bDoesTeaStink;
+
+    FName TeaName;
+
+    FString TeaFriendlyName;
+
+    UClass* TeaClass;
+
+    USoundCue* TeaSound;
+
+    UTexture* TeaTexture;
+
+    bool IsTeaFresh(UTea Tea) \{...\}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Portable Aliases for C++ Types}
+  \begin{table}
+      \begin{tabular}{ | l | l | l | }
+        \hline
+        \textbf{Unreal Type} & \textbf{C++ Type} & \textbf{Size} \\
+        \hline
+        bool & bool or BOOL & Never assume size \\
+        \hline
+        TCHAR & TCHAR or char & Never assume size \\
+        \hline
+        uint8 & unsigned bytes & 1 byte \\
+        \hline
+        int8 & bytes & 1 byte \\
+        \hline
+        uint16 & unsigned short & 2 bytes \\
+        \hline
+        int16 & short & 2 bytes \\
+        \hline
+        uint32 & unsigned int & 4 bytes \\
+        \hline
+        int32 & int & 4 bytes \\
+        \hline
+        uint64 & unsigned long & 8 bytes \\
+        \hline
+        int64 & long & 8 bytes \\
+        \hline
+        float & float & 4 bytes \\
+        \hline
+        double & double & 8 bytes \\
+        \hline
+        PTRINT & void* & Never assume size \\
+        \hline
+      \end{tabular}
+    \end{table}
+\end{frame}
 \end{document}
