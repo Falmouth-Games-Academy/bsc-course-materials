@@ -1,34 +1,132 @@
+\part{Inheritance}
+\frame{\partpage}
+
 \begin{frame}{Relationships}
-\begin{itemize}
-	\pause\item OOP models three types of real-world relationships: \textbf{is a}, \textbf{has a} and \textbf{is a type of}
 	\begin{itemize}
-		\pause\item Donald \textbf{is a} duck
-		\pause\item A duck \textbf{has a} bill
-		\pause\item A duck \textbf{is a type of} bird
+		\pause\item OOP models three types of real-world relationships: \textbf{is~a}, \textbf{has~a} and \textbf{is~a~type~of}
 	\end{itemize}
-\end{itemize}
+	\pause
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\includegraphics[width=\textwidth]{donald.png}
+		\end{column}
+		\begin{column}{0.66\textwidth}
+			\begin{itemize}
+				\pause\item Donald \textbf{is a} duck
+				\pause\item A duck \textbf{has a} bill
+				\pause\item A duck \textbf{is a type of} bird
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Is-a $\to$ Instantiation}
-\begin{itemize}
-	\pause\item ``X is a Y'' means ``the specific object X is an object of the type Y''
-	\pause\item Is-a is modelled by \textbf{classes} and \textbf{instances}:
+\begin{frame}[fragile]{Is-a $\to$ Instantiation}
 	\begin{itemize}
-		\pause\item ``Donald is a duck'' 
-			$\to$ ``\lstinline{donald} is an \textbf{instance} of the \textbf{class} \lstinline{Duck}''
+		\pause\item ``X is a Y'' means ``the specific object X is an object of the type Y''
+		\pause\item Is-a is modelled by \textbf{classes} and \textbf{instances}:
+		\begin{itemize}
+			\pause\item ``Donald is a duck'' 
+				$\to$ ``\lstinline{donald} is an \textbf{instance} of the \textbf{class} \lstinline{Duck}''
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
+	\pause
+	\begin{lstlisting}
+class Duck
+{
+};
+
+Duck donald;
+	\end{lstlisting}
 \end{frame}
 
 \begin{frame}{Has-a $\to$ Composition}
-\begin{itemize}
-	\pause\item ``X has a Y'' means ``an object of type X \textbf{possesses} an object of type Y''
-	\pause\item OOP models this by having a \textbf{field} on X which holds an instance of Y
 	\begin{itemize}
-		\pause\item ``A duck has a bill''
-			$\to$ ``The class \lstinline{Duck} has a \textbf{field} which contains an instance of the class \lstinline{Bill}''
+		\pause\item ``X has a Y'' means ``an object of type X \textbf{possesses} an object of type Y''
+		\pause\item OOP models this by having a \textbf{field} on X which holds an instance of Y
+		\begin{itemize}
+			\pause\item ``A duck has a bill''
+				$\to$ ``The class \lstinline{Duck} has a \textbf{field} which contains an instance of the class \lstinline{Bill}''
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Composition in C++}
+    \begin{center}
+        ``A duck has a bill''
+    \end{center}
+    \pause
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item ``Each instance of class Duck contains \textbf{an instance} of class Bill''
+            \end{itemize}
+            \begin{lstlisting}
+class Bill { ... };
+
+class Duck
+{
+private:
+    Bill bill;
+};
+            \end{lstlisting}
+        \end{column}
+        \pause
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item \textbf{Or} ``Each instance of class Duck contains \textbf{a pointer} to an instance of class Bill''
+            \end{itemize}
+            \begin{lstlisting}
+class Bill { ... };
+
+class Duck
+{
+private:
+    Bill* bill;
+};
+            \end{lstlisting}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Composition in C++}
+    \begin{columns}
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item The contained instance of \lstinline{Bill} is stored \textbf{inside} the
+                    instance of \lstinline{Duck} (literally, in memory) \pause
+                \item It is constructed when the \lstinline{Duck} instance is constructed,
+                    and destroyed when it is destroyed \pause
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item The contained instance of \lstinline{Bill} is stored \textbf{outside} the
+                    instance of \lstinline{Duck}, which only stores a \textbf{pointer} \pause
+                \item It is usually constructed manually using \lstinline{new},
+                    and so must be destroyed manually using \lstinline{delete}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{When to use each?}
+    \begin{itemize}
+        \item Pointers are more versatile \pause
+            \begin{itemize}
+                \item Allow several pointers to the same instance (e.g.\ several ducks might \textbf{have-a} single pond) \pause
+                \item Allow \textbf{circular references} (e.g.\ a duck \textbf{has-a} bill, and a bill \textbf{has-a} duck) \pause
+                \item Pointers allow \textbf{polymorphism} (e.g.\ a pointer to a ``duck'' might actually be a pointer to a mallard) \pause
+            \end{itemize}
+        \item \textbf{But} stored instances are easier to work with \pause
+            \begin{itemize}
+                \item Destruction is handled automatically \pause
+            \end{itemize}
+        \item They model slightly different types of \textbf{has-a} relationship \pause
+            \begin{itemize}
+                \item Instance: \textbf{has-a} in the sense of ``contains'' \pause
+                \item Pointer: \textbf{has-a} in the sense of ``is associated with''
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Is-a-type-of $\to$ Inheritance}
@@ -66,19 +164,28 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Inheritance in Python}
-\end{frame}
+\begin{frame}[fragile]{Inheritance in C++}
+	\begin{lstlisting}
+class Shape
+{
+public:
+    float centreX, centreY;
+    Shape(float cx, float cy)
+    	: centreX(cx), centreY(cy) { }
+};
 
-\begin{frame}{Inheritance in Python}
-\end{frame}
-
-\begin{frame}{Inheritance in Python}
-\end{frame}
-
-\begin{frame}{Inheritance in Python}
-\end{frame}
-
-\begin{frame}{Inheritance in Python}
+class Circle : public Shape
+{
+public:
+    float radius;
+    Circle(float cx, float cy, float r)
+        : Shape(cx, cy), radius(r) { }
+    float getArea()
+    {
+    	return 3.14159f * radius * radius;
+    }
+};
+	\end{lstlisting}
 \end{frame}
 
 \begin{frame}{Chains of inheritance}
@@ -95,106 +202,4 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{A possible inheritance hierarchy}
-\end{frame}
-
-\begin{frame}{OOP: Polymorphism}
-\end{frame}
-
-\begin{frame}{Polymorphism}
-\begin{itemize}
-	\pause\item From Greek: ``many-shape-ism''
-	\pause\item Different classes can have the \textbf{same public interface}
-	\pause\item Thus we can write code that \textbf{uses} this interface, but doesn't need to worry about the \textbf{implementation} behind it
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Method overriding}
-\begin{itemize}
-	\pause\item A class can \textbf{override} methods defined in the class from which it inherits
-	\pause\item The overridden method can call the method from the base class, but it doesn't have to
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Without polymorphism}
-\begin{itemize}
-	\pause\item We have a list of shapes, and want to draw them all
-	\pause\item This approach is messy and difficult to maintain
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Polymorphism to the rescue!}
-\begin{itemize}
-	\pause\item All subclasses of \lstinline{Shape} implement \lstinline{draw}
-	\pause\item We can call \lstinline{shape->draw()} without worrying which type of shape it is
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Abstract classes and methods}
-\begin{itemize}
-	\pause\item Some classes should never be instantiated directly, as they only exist to be inherited from
-	\begin{itemize}
-		\pause\item \lstinline{Shape} is an example
-	\end{itemize}
-	\pause\item Such classes are called \textbf{abstract}
-	\pause\item Abstract methods are methods of an abstract class which are left unimplemented, so \textbf{must} be implemented in subclasses
-	\begin{itemize}
-		\pause\item \lstinline{draw} is an example
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{OOP: Access control}
-\end{frame}
-
-\begin{frame}{Access control}
-\begin{itemize}
-	\pause\item For \textbf{encapsulation}, it is a good idea to restrict access to certain attributes and methods from outside the class
-	\pause\item \textbf{Private} members are only accessible from the class's \textbf{own} methods
-	\pause\item \textbf{Protected} members are accessible from the class's own methods, \textbf{and} methods defined in \textbf{subclasses}
-	\pause\item \textbf{Public} members are accessible from \textbf{outside} the class
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Access control}
-\begin{itemize}
-	\pause\item The \textbf{public interface} of an object is how it interacts with other objects and the rest of the program
-	\pause\item The \textbf{protected interface} of an object is what allows subclasses to change the way the base class behaves
-	\pause\item The \textbf{private members} of an object are implementation details, hidden from the outside world
-\end{itemize}
-\end{frame}
-
-%\begin{frame}{Access control in Python}
-%\begin{itemize}
-%	\pause\item A field or method whose name begins with _ is protected
-%	\pause\item A field or method whose name begins with _ _ is private
-%	\begin{itemize}
-%		\pause\item Names which begin and end with _ _ (like __init__) are special --- don't use trailing underscores in your own names
-%	\end{itemize}
-%	\pause\item Everything else is public
-%\end{itemize}
-%\end{frame}
-
-\begin{frame}{Pedantic detail}
-\begin{itemize}
-	\pause\item Access control is merely a \textbf{convention} in Python
-	\begin{itemize}
-		\pause\item The interpreter \textbf{won't stop} you from accessing protected members from outside the class or its subclasses, but PyCharm will \textbf{warn} you
-		\pause\item Private members are ``name mangled'', but you can still access them if you know how
-	\end{itemize}
-	\pause\item Almost all other languages enforce access control with compile-time errors
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Summary}
-\begin{itemize}
-	\pause\item OOP models three main types of real-world relationships
-	\begin{itemize}
-		\pause\item Is-a $\to$ instantiation
-		\pause\item Has-a $\to$ composition
-		\pause\item Is-a-type-of $\to$ inheritance
-	\end{itemize}
-	\pause\item Inheritance allows polymorphism: different classes with the same public interface
-	\pause\item Access control is an important tool in designing reusable, encapsulated objects
-\end{itemize}
-\end{frame}
+\input{inheritance_socrative}
