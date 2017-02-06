@@ -1,0 +1,72 @@
+\part{Access control}
+\frame{\partpage}
+
+\begin{frame}{Access control}
+\begin{itemize}
+	\pause\item For \textbf{encapsulation}, it is a good idea to restrict access to certain attributes and methods from outside the class
+	\pause\item \textbf{Private} members are only accessible from the class's \textbf{own} methods
+	\pause\item \textbf{Protected} members are accessible from the class's own methods, \textbf{and} methods defined in \textbf{subclasses}
+	\pause\item \textbf{Public} members are accessible from \textbf{outside} the class
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Access control in C++}
+	\begin{lstlisting}
+class MyClass
+{
+public:
+	void thisMethodIsPublic();
+	int thisFieldIsPublicToo;
+
+protected:
+	void thisMethodIsProtected();
+	int thisFieldIsProtectedToo;
+	float soIsThisOne;
+	
+private:
+	void thisMethodIsPrivate();
+	int thisFieldIsPrivateToo;
+	std::string andThisOne;
+};
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Rules of thumb for access control}
+	\begin{itemize}
+		\pause\item The \textbf{public interface} of an object is how it interacts with other objects and the rest of the program
+		\pause\item The \textbf{protected interface} of an object is what allows subclasses to change the way the base class behaves
+		\pause\item The \textbf{private members} of an object are implementation details, hidden from the outside world
+		\pause\item For maintainable and reusable classes, minimise the \textbf{surface area}
+			\begin{itemize}
+				\pause\item Make as much as possible private
+				\pause\item If it \textbf{needs} to be accessible from subclasses, make it protected
+				\pause\item If it \textbf{needs} to be accessible from outside, make it public
+			\end{itemize}
+		\pause\item Avoid making fields public
+			\begin{itemize}
+				\pause\item Unless outside code \textbf{needs} unrestricted read/write access to your data?
+					(If it does then you've probably designed it wrong...)
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Getters and setters}
+	\begin{lstlisting}
+class MyClass
+{
+private:
+	float speed;
+
+public:
+	float getSpeed() { return speed; }
+	void setSpeed(float value) { speed = value; }
+};
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Allows different access control for getting and setting,
+			e.g.\ public getter, protected setter
+		\pause\item Allows extra logic upon getting or setting values
+		\pause\item Maybe a slight performance penalty,
+			but compiler can often inline them (if they're not virtual)
+	\end{itemize}
+\end{frame}

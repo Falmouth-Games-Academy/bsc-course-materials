@@ -6,7 +6,7 @@
 
 % Default language for code listings
 \lstset{language=C++,
-        morekeywords={each,in,nullptr}
+        morekeywords={each,in,nullptr,override}
 }
 
 % For strikethrough effect
@@ -21,18 +21,32 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Advanced OOP Design}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\begin{frame}
-	\frametitle{Learning outcomes}
+%\begin{frame}
+%	\frametitle{Learning outcomes}
+%	\begin{itemize}
+%		\item Outcome 1
+%		\item Outcome 2
+%		\item Outcome 3
+%	\end{itemize}
+%\end{frame}
+
+\begin{frame}{Sprint reviews and retrospectives}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\pause\item Documentation is now available on the COMP130 LearningSpace
+		\pause\item If your Product Owner has not already gone through these with you, they should soon!
 	\end{itemize}
 \end{frame}
+
+\input{access_control}
+\input{inheritance}
+\input{polymorphism}
+
+\part{Worksheet B: Mandelbrot}
+\frame{\partpage}
 
 \end{document}

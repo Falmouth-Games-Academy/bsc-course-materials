@@ -1,0 +1,205 @@
+\part{Inheritance}
+\frame{\partpage}
+
+\begin{frame}{Relationships}
+	\begin{itemize}
+		\pause\item OOP models three types of real-world relationships: \textbf{is~a}, \textbf{has~a} and \textbf{is~a~type~of}
+	\end{itemize}
+	\pause
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\includegraphics[width=\textwidth]{donald.png}
+		\end{column}
+		\begin{column}{0.66\textwidth}
+			\begin{itemize}
+				\pause\item Donald \textbf{is a} duck
+				\pause\item A duck \textbf{has a} bill
+				\pause\item A duck \textbf{is a type of} bird
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Is-a $\to$ Instantiation}
+	\begin{itemize}
+		\pause\item ``X is a Y'' means ``the specific object X is an object of the type Y''
+		\pause\item Is-a is modelled by \textbf{classes} and \textbf{instances}:
+		\begin{itemize}
+			\pause\item ``Donald is a duck'' 
+				$\to$ ``\lstinline{donald} is an \textbf{instance} of the \textbf{class} \lstinline{Duck}''
+		\end{itemize}
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+class Duck
+{
+};
+
+Duck donald;
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Has-a $\to$ Composition}
+	\begin{itemize}
+		\pause\item ``X has a Y'' means ``an object of type X \textbf{possesses} an object of type Y''
+		\pause\item OOP models this by having a \textbf{field} on X which holds an instance of Y
+		\begin{itemize}
+			\pause\item ``A duck has a bill''
+				$\to$ ``The class \lstinline{Duck} has a \textbf{field} which contains an instance of the class \lstinline{Bill}''
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Composition in C++}
+    \begin{center}
+        ``A duck has a bill''
+    \end{center}
+    \pause
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item ``Each instance of class Duck contains \textbf{an instance} of class Bill''
+            \end{itemize}
+            \begin{lstlisting}
+class Bill { ... };
+
+class Duck
+{
+private:
+    Bill bill;
+};
+            \end{lstlisting}
+        \end{column}
+        \pause
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item \textbf{Or} ``Each instance of class Duck contains \textbf{a pointer} to an instance of class Bill''
+            \end{itemize}
+            \begin{lstlisting}
+class Bill { ... };
+
+class Duck
+{
+private:
+    Bill* bill;
+};
+            \end{lstlisting}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Composition in C++}
+    \begin{columns}
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item The contained instance of \lstinline{Bill} is stored \textbf{inside} the
+                    instance of \lstinline{Duck} (literally, in memory) \pause
+                \item It is constructed when the \lstinline{Duck} instance is constructed,
+                    and destroyed when it is destroyed \pause
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item The contained instance of \lstinline{Bill} is stored \textbf{outside} the
+                    instance of \lstinline{Duck}, which only stores a \textbf{pointer} \pause
+                \item It is usually constructed manually using \lstinline{new},
+                    and so must be destroyed manually using \lstinline{delete}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{When to use each?}
+    \begin{itemize}
+        \item Pointers are more versatile \pause
+            \begin{itemize}
+                \item Allow several pointers to the same instance (e.g.\ several ducks might \textbf{have-a} single pond) \pause
+                \item Allow \textbf{circular references} (e.g.\ a duck \textbf{has-a} bill, and a bill \textbf{has-a} duck) \pause
+                \item Pointers allow \textbf{polymorphism} (e.g.\ a pointer to a ``duck'' might actually be a pointer to a mallard) \pause
+            \end{itemize}
+        \item \textbf{But} stored instances are easier to work with \pause
+            \begin{itemize}
+                \item Destruction is handled automatically \pause
+            \end{itemize}
+        \item They model slightly different types of \textbf{has-a} relationship \pause
+            \begin{itemize}
+                \item Instance: \textbf{has-a} in the sense of ``contains'' \pause
+                \item Pointer: \textbf{has-a} in the sense of ``is associated with''
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Is-a-type-of $\to$ Inheritance}
+\begin{itemize}
+	\pause\item ``X is a type of Y'' means ``If an object is of type X, then it is \textbf{also} of type Y''
+	\begin{itemize}
+		\pause\item ``A duck is a type of bird'' $\to$ ``If something is a duck, then it is also a bird''
+		\pause\item ``Every duck is a bird''
+		\pause\item ``If something is true for all birds, then it must be true for ducks''
+	\end{itemize}
+	\pause\item In OOP terms, this is called \textbf{inheritance}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Inheritance}
+\begin{itemize}
+	\pause\item Recall: an \textbf{object} is a collection of \textbf{fields} (data) and \textbf{methods} (code)
+	\pause\item Recall: the \textbf{class} defines which fields and methods an object possesses
+	\pause\item ``X is a type of Y'' $\to$ class \lstinline{X} inherits from class \lstinline{Y}
+	\pause\item Class X inherits all of the fields and methods from class Y, as well as any fields and methods of its own
+\end{itemize}
+\end{frame}
+
+\begin{frame}{When to inherit?}
+\begin{itemize}
+	\pause\item When modelling an \textbf{is-a-type-of} relationship from the real world
+	\pause\item When several classes can \textbf{share} some fields and/or methods
+	\begin{itemize}
+		\pause\item I.e. to minimise \textbf{code duplication}
+	\end{itemize}
+	\pause\item When several classes should have methods with the \textbf{same names}, but which do \textbf{different things}
+	\begin{itemize}
+		\pause\item This is called \textbf{polymorphism} --- more on this later
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Inheritance in C++}
+	\begin{lstlisting}
+class Shape
+{
+public:
+    float centreX, centreY;
+    Shape(float cx, float cy)
+    	: centreX(cx), centreY(cy) { }
+};
+
+class Circle : public Shape
+{
+public:
+    float radius;
+    Circle(float cx, float cy, float r)
+        : Shape(cx, cy), radius(r) { }
+    float getArea()
+    {
+    	return 3.14159f * radius * radius;
+    }
+};
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Chains of inheritance}
+\begin{itemize}
+	\pause\item ``A mallard is a type of duck, which is a type of bird, which is a type of vertebrate, which is a type of animal...''
+	\pause\item Is-a-type-of is \textbf{transitive}
+	\begin{itemize}
+		\pause\item If A is-a-type-of B and B is-a-type-of C, then A is-a-type-of C
+	\end{itemize}
+	\pause\item Likewise: class A inherits from class B, which inherits from class C, ...
+	\begin{itemize}
+		\pause\item ``Inherits from'' is also transitive
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\input{inheritance_socrative}
