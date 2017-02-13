@@ -23,7 +23,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Epic Coding Standards}
+\title{\sessionnumber: Memory and Profiling}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage}
@@ -31,214 +31,46 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item \textbf{Understand} Epic coding standards
-		\item \textbf{Compare} different coding standards
-		\item \textbf{Apply} Epic coding standard to your own Unreal Projects
+		\item \textbf{Understand} Memory in modern object orientated languages
+		\item \textbf{Compare} memory models in managed and unmanaged languages
+		\item \textbf{Understand} the role of the profiler in tunning performance in games
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Why Coding Standards?}
+  \frametitle{Memory}
   \begin{itemize}
-    \item Aids in software maintance
-    \item Improves readability and understandability
-    \item Adds to the documentation of the project
+    \item Dynamic memory, allocated on the Heap and is growable
+    \item Static memory, allocated on the Stack and is fixed size
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Naming Conventions 1}
-  \begin{itemize}
-    \item First letter of each word in name is capitalised, and no underscores between words
-    \begin{itemize}
-      \item E.g. Health and UPrimitiveComponent, not lastMouseCoordinates or delta\_coordinates
-    \end{itemize}
-    \item Type and variable names are nouns
-    \item Method names are verbs that describe the effects or describe return value
-    \item Names should be clear unambigous, and discriptive. Avoid over-abbreviation.
-  \end{itemize}
+  \frametitle{Heap Memory}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Naming Conventions 2}
-  \begin{itemize}
-    \item All variables should be declared one at a time to allow commments
-    \item All functions that return bool should ask a true/false questions
-    \item A procedure(a function with no return) should use strong verb followed by an Object
-    \item Prefix function parameters passed by reference with \textbf{Out}
-  \end{itemize}
+  \frametitle{Stack Memory}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Naming Conventions 3}
-  \begin{itemize}
-    \item Type names are prefixed with an additional upper-case letter, to distinguish them from variable names.
-    E.g. \textbf{FSkin} for type, and \textbf{Skin} is an instance of \textbf{FSkin}
-    \begin{itemize}
-      \item Template classes are prefixed by T
-      \item Classes that inherit from UObject are prefixed by U
-      \item Classes that inheirt from AActor are prefixed by A
-      \item Classes that inheirt from SWidget are prefixed by S
-      \item Classes that are Interfaces are prexfixed by I
-      \item Enums are prexfixed by E
-      \item Boolean variables must be prefixed by b (e.g. bIsDead or bHasFallen)
-      \item Most other classes are prefixed by F
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Naming Convention Examples}
-  \begin{lstlisting}
-    float TeaWeight;
-
-    int32 TeaCount;
-
-    bool bDoesTeaStink;
-
-    FName TeaName;
-
-    FString TeaFriendlyName;
-
-    UClass* TeaClass;
-
-    USoundCue* TeaSound;
-
-    UTexture* TeaTexture;
-
-    bool IsTeaFresh(UTea Tea)
-  \end{lstlisting}
+  \frametitle{Types - Value, Reference & Pointers}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Portable Aliases for C++ Types}
-  \begin{table}
-      \begin{tabular}{ | l | l | l | }
-        \hline
-        \textbf{Unreal Type} & \textbf{C++ Type} & \textbf{Size} \\
-        \hline
-        bool & bool or BOOL & Never assume size \\
-        \hline
-        TCHAR & TCHAR or char & Never assume size \\
-        \hline
-        uint8 & unsigned bytes & 1 byte \\
-        \hline
-        int8 & bytes & 1 byte \\
-        \hline
-        uint16 & unsigned short & 2 bytes \\
-        \hline
-        int16 & short & 2 bytes \\
-        \hline
-        uint32 & unsigned int & 4 bytes \\
-        \hline
-        int32 & int & 4 bytes \\
-        \hline
-        uint64 & unsigned long & 8 bytes \\
-        \hline
-        int64 & long & 8 bytes \\
-        \hline
-        float & float & 4 bytes \\
-        \hline
-        double & double & 8 bytes \\
-        \hline
-        PTRINT & void* & Never assume size \\
-        \hline
-      \end{tabular}
-    \end{table}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Comments - Write self documenting code}
-  \begin{lstlisting}
-    // Bad:
-    t = s + 1 - b;
-
-    // Good:
-    TotalLeaves=SmallLeaves+LargeLeaves-SmallAndLargeLeaves;
-  \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Commets - Write Useful Commets}
-  \begin{lstlisting}
-    // Bad:
-    // Increment Leaves
-    ++Leaves;
-
-    // Good:
-    // we know there is another tea leaf
-    ++Leaves;
-  \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Comments - Do not comment bad code - rewrite it}
-  \begin{lstlisting}
-    // Bad:
-    // total number of leaves is sum of
-    // small and large leaves less the
-    // number of leaves that are both
-    t = s + 1 - b;
-
-    // Good:
-    TotalLeaves=SmallLeaves+LargeLeaves-SmallAndLargeLeaves;
-  \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Comments - Do not contradict code}
-  \begin{lstlisting}
-    // Bad:
-    // never increment Leaves!
-    ++Leaves;
-
-    //Good:
-    // we know there is another leaf
-    ++Leaves;
-  \end{lstlisting}
+  \frametitle{Strings}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Comments - Formatting}
-  \begin{itemize}
-    \item Unreal uses a system based on JavaDocs to extract comments to build documentation
-    \item You have to use a specfic format in order for this tool to run
-    \item More info - url{http://www.oracle.com/technetwork/articles/java/index-137868.html}
-  \end{itemize}
+  \frametitle{Memory Management}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Const Correctness}
-  \begin{itemize}
-    \item Const is documentation as much as a compiler directive
-    \item If function arguments aren't modified by a function, ensure they are passed with const keyword
-    \item Flag methods as const if they don't modify an object
-    \item Use const interation over containers if the loop doesn't modify container
-    \item Const should be preferred on by-value parameters and locals
-  \end{itemize}
+  \frametitle{Profiling}
 \end{frame}
 
 \begin{frame}
-  \frametitle{C++11 and Modern C++}
-  \begin{itemize}
-    \item \textbf{nullptr} - Used instead of NULL except on XBoxOne use \textbf{TYPE{\_}OF{\_}NULLPTR})
-    \item \textbf{auto} - You should not use auto except in the following cases
-    \begin{itemize}
-      \item Binding to lambda types
-      \item Iteration variables
-      \item Template code (advance case)
-    \end{itemize}
-    \item \textbf{Range Based For} - Preferred to regular for loop
-    \item \textbf{Lambdas} - Can be used, but be careful (see docs)
-    \item \textbf{Enums} - Always use strongly type enums which inherit from \textbf{uint8}
-    \item \textbf{Move Semantics} - All main container types have move constructors and move assignment
-  \end{itemize}
+  \frametitle{Calling Unmanaged code}
 \end{frame}
-
-\begin{frame}
-  \frametitle{Refrences}
-  \url{https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/}
-\end{frame}
-
 
 \end{document}
