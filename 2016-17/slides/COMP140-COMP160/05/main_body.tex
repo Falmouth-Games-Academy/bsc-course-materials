@@ -56,23 +56,43 @@
 \begin{frame}
 	\frametitle{The Filesystem \& Game Engines}
 	\begin(itemize)
+  \item Often Game Engines use a compressed format to store assets
+  \item This aids in performance but also adds in a layer of security
+  \item This means that if you want to load assets programmatically you can't use standard file reading functions
+  \item See \textbff{Resource.Load} in Unity or \textbff{Referencing Assets} in Unreal
 	\end{itemize)
 \end{frame}
 
 \begin{frame}
 	\frametitle{Typical Filesytem operations}
+  \begin{itemize}
+    \item In most modern operating system you can't access the local filesystem
+    \item You can only use certain directories such as the Users Document or AppData directory
+    \item See \textbff{Application.*Path} in Unity \textbff{FPath} in Unreal
+    \item These sort of functions/variables will give us access to safe directories to use
+    \item We then use other functions to create directories and/or files
+    \item See \textbff{File} \& \textbff{Directory} class in C# or \textbff{File Management} for Unreal
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Serialization}
+  \begin{itemize}
+    \item Is the process of converting a data structure to a series of bytes
+    \item This can be used to transmit the data structure to a file, over the network or store in memory
+    \item We can also take serialized data and reconstruct a data structure
+    \item This makes serialization the perfect candidate for saving game data
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Streams}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Reflection}
+  \begin{itemize}
+    \item Are just generic series of bytes that are sent to a resource
+    \item This resource could be memory, a file or network
+    \item Often used in conjunction with Serialization to save data
+    \item See \textbff{IO Streams} in C# or \textbff{FBufferArchive} in Unreal
+  \end{itemize}
 \end{frame}
 
 \end{document}
