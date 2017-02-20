@@ -18,6 +18,7 @@
 \usepackage{wasysym}
 \usepackage{listings}
 \usepackage{pdfpages}
+\usepackage{enumerate}
 
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
@@ -55,12 +56,12 @@
 
 \begin{frame}
 	\frametitle{The Filesystem \& Game Engines}
-	\begin(itemize)
-  \item Often Game Engines use a compressed format to store assets
-  \item This aids in performance but also adds in a layer of security
-  \item This means that if you want to load assets programmatically you can't use standard file reading functions
-  \item See \textbff{Resource.Load} in Unity or \textbff{Referencing Assets} in Unreal
-	\end{itemize)
+	\begin{itemize}
+  		\item Often Game Engines use a compressed format to store assets
+  		\item This aids in performance but also adds in a layer of security
+  		\item This means that if you want to load assets programmatically you can't use standard file reading functions
+  		\item See\textbf{Resource.Load} in Unity or \textbf{Referencing Assets} in Unreal
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -68,10 +69,10 @@
   \begin{itemize}
     \item In most modern operating system you can't access the local filesystem
     \item You can only use certain directories such as the Users Document or AppData directory
-    \item See \textbff{Application.*Path} in Unity \textbff{FPath} in Unreal
+    \item See \textbf{Application.*Path} in Unity \textbf{FPath} in Unreal
     \item These sort of functions/variables will give us access to safe directories to use
     \item We then use other functions to create directories and/or files
-    \item See \textbff{File} \& \textbff{Directory} class in C# or \textbff{File Management} for Unreal
+    \item See \textbf{File} \& \textbf{Directory} class in C\# or \textbf{File Management} for Unreal
   \end{itemize}
 \end{frame}
 
@@ -91,8 +92,71 @@
     \item Are just generic series of bytes that are sent to a resource
     \item This resource could be memory, a file or network
     \item Often used in conjunction with Serialization to save data
-    \item See \textbff{IO Streams} in C# or \textbff{FBufferArchive} in Unreal
+    \item See \textbf{IO Streams} in C\# or \textbf{FBufferArchive} in Unreal
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Exercise 1 - Basic Saving}
+	\begin{enumerate}
+		\item Create a Player Info Screen where the player can enter a username
+		\item This is then saved and when the game is restarted the username is displayed on the screen
+		\begin{itemize}
+		\item \textbf{Hint} Unity - use \textbf{PlayerPrefs} 
+		\item \textbf{Hint} Unreal - search for \textbf{Saving Your Game}
+		\end{itemize}
+		\item Add in buttons to delete the saved data
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Exercise 2 - Dynamic Loading}
+	\begin{enumerate}
+		\item Create a basic scene with three cubes
+		\item Create three materials (red, green, blue)
+		\item Assign the red material to the cubes
+		\item On a key press load and assign the green material (you must do this dynamically) to the cubes
+		\item Create a Prefab/Actor of a sphere which uses the blue material
+		\item Dynamically Load and Spawn this sphere when a key is pressed 
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Exercise 2 - Hints}
+	\begin{itemize}
+		\item Unity - Use \textbf{Resource.Load}, all assets loaded this way should be in the Resource Folder. See \textbf{Loading Resources at Runtime}
+		\item Unreal - See \textbf{Referencing Assets} for loading assets such as materials and see \textbf{spawning actors} for spawning actors
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Exercise 3 - Serialization}
+	\begin{enumerate}
+		\item Create a directory in My Documents called \textbf{GameTitle}
+		\item Inside \textbf{GameTitle} create a directory called \textbf{Saves}
+		\item Create a scene which has a number of triggers dotted around the level
+		\begin{itemize}
+			\item When the FPS Player enters one of these triggers, save the players position to the\textbf{Saves} folder, the data should be saved in a file called \textbf{save.sav}
+			\item If the player quits the game and restarts, you should check for the existence of this file and load the last position
+		\end{itemize}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Exercise 3 - Hints}
+	\begin{itemize}
+		\item Unity - See \textbf{JSON Serialization in Unity}, this will get the data into a string. You will then need to use the \textbf{Path}, \textbf{StreamWriter} and \textbf{StreamReader} C\# classes to complete the task
+		\item Unreal - See \textbf{FBufferArchive} and \textbf{Save System, Read \& Write Any Data to Compressed Binary Files}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Exercise 4 - Extension}
+	\begin{enumerate}
+		\item Instead of saving to one file each time, create a filename with the date and time of the save. Save your game data to that
+		\item Create a basic UI which manages the saves (delete \& load)
+		\item Create some basic GameObjects/Actors, these should move up and down. Save the position of these to file
+	\end{enumerate}
 \end{frame}
 
 \end{document}
