@@ -37,7 +37,24 @@
 	\end{itemize}
 \end{frame}
 
-%TODO: Nice image of arduino
+
+\begin{frame}
+	\frametitle{What is an Arduino?}
+	\begin{figure}
+		\includegraphics[scale=1.2]{assets/arduino}  
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Sensors \& Actuators}
+	\begin{figure}
+		\includegraphics[scale=.15]{assets/nxt}  
+		\caption{Just another input / output controller }
+	\end{figure}
+\end{frame}
+
+
 \begin{frame}
   \frametitle{What is an Arduino?}
   \begin{itemize}
@@ -45,17 +62,11 @@
     \item The Arduino is a small microcontroller board
     \item Basically, a small computer 
     \item Perfect for rapid prototyping physical computing systems
+    \item Arduino Uno is based on the Atmel ATmega328P
   \end{itemize}
 \end{frame}
 
-%TODO: Update with an image of the sensor actuator diagram
-\begin{frame}
-	\frametitle{Sensors \& Actuators}
-	\begin{figure}
-		%\href{https://www.youtube.com/watch?v=gvozcv8pS3c}{ \includegraphics[scale=.3]{assets/mower}  }
-		\caption{The Lawn Mower Man - 1992}
-	\end{figure}
-\end{frame}
+
 
 \begin{frame}
   \frametitle{The basics}  
@@ -69,29 +80,67 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Technical specs}
+	\begin{figure}
+		\includegraphics[scale=.14]{assets/spec} 
+		\caption{A more in depth version of what the Arduino Uno has to offer}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Memory}
+	\begin{itemize}
+		\item Flash memory (program space), is where the Arduino sketch is stored.
+		\item SRAM (static random access memory) is where the sketch creates and manipulates variables when it runs.
+		\item EEPROM is memory space that programmers can use to store long-term information.	
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
   \frametitle{Power}
 	You can power the board using a USB port or DC power supply such as a 9v battery. The Arduino will default to the external power supply if there is one available.   
-	%TODO: 9V battery image
+	\begin{figure}
+		\includegraphics[scale=.1]{assets/battery} 
+		\caption{Arduino can be powered by a DC supply 7-12v}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Analogue \& Digital}
+	\frametitle{Analogue vs. Digital Signal}
+	What is the difference? 
+	
+	\pause
+	 \begin{figure}
+		\includegraphics[scale=.3]{assets/dva} 
+		\caption{Arduino can be powered by a DC supply 7-12v}
+
+	\end{figure}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Water Anology}
+ 	\frametitle{Ohms Law - Comic}
+   	\begin{figure}
+   		\includegraphics[scale=.3]{assets/ohm} 
+	\end{figure}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Water Anology}
-\end{frame}
-
-\begin{frame}
-	\frametitle{PWM}
+	\frametitle{Analogue Out - PWM}
+	\begin{figure}
+   		\includegraphics[scale=.4]{assets/pwm} 
+	\end{figure}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Serial Communication}
+	Serial communication on pins TX/RX uses TTL logic levels (5V or 3.3V depending on the board). \\~\\
+		
+	It communicates on digital pins 0 (RX) and 1 (TX) as well as with the computer via USB. Thus, if you use these functions, you cannot also use \\~\\pins 0 and 1 for digital input or output. 
+	
+	
+	Serial is used for communication between the Arduino board and a computer or other devices. 
+	
 \end{frame}
 
 \begin{frame}
@@ -100,10 +149,26 @@
 
 \begin{frame}
 	\frametitle{Breadboard}
+	\begin{figure}
+		\includegraphics[scale=.25]{assets/breadboard} 
+		\caption{The layout of the connectors inside the bread board}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Shields}
+	\frametitle{Breadboard}
+	\begin{figure}
+		\includegraphics[scale=.28]{assets/shields} 
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Open Source Game Boy Clone}
+	\frametitle{Breadboard}
+	\begin{figure}
+		\includegraphics[scale=.32]{assets/gameboy} 
+	\end{figure}
 \end{frame}
 
 
