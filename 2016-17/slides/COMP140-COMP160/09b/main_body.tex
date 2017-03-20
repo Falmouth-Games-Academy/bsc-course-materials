@@ -23,7 +23,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Epic Coding Standards}
+\title{\sessionnumber: 12}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage}
@@ -31,214 +31,129 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item \textbf{Understand} Epic coding standards
-		\item \textbf{Compare} different coding standards
-		\item \textbf{Apply} Epic coding standard to your own Unreal Projects
+		\item \textbf{Identify} the various protocols used to communicate with devices attached to the Arduino
+		\item \textbf{Explain} the difference between asynchronous \& synchronous communication
+		\item \textbf{Outline} the strengths and weaknesses of each protocol
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Why Coding Standards?}
-  \begin{itemize}
-    \item Aids in software maintance
-    \item Improves readability and understandability
-    \item Adds to the documentation of the project
-  \end{itemize}
+	\frametitle{Protocols}
+	The main protocols used to communicate with devices from the Arduino
+	\begin{itemize}
+		\item \textbf{I2C} - The Inter-integrated Circuit (I2C) Protocol
+		\item \textbf{SPI} - Serial Peripheral Interface
+		\item \textbf{Dallas one-wire} - microLan
+	\end{itemize}
+\end{frame}
+
+% ARDUINO I2C
+\begin{frame}
+	\frametitle{I2C Bus}
+	\begin{figure}
+		\includegraphics[scale=.35]{assets/i2c}  
+	\end{figure}
+	SCL is the clock line. It is used to synchronize all data transfers over the I2C bus. 
+	SDA is the data line. 
+	The SCL \& SDA lines are connected to all devices on the I2C bus
 \end{frame}
 
 \begin{frame}
-  \frametitle{Naming Conventions 1}
-  \begin{itemize}
-    \item First letter of each word in name is capitalised, and no underscores between words
-    \begin{itemize}
-      \item E.g. Health and UPrimitiveComponent, not lastMouseCoordinates or delta\_coordinates
-    \end{itemize}
-    \item Type and variable names are nouns
-    \item Method names are verbs that describe the effects or describe return value
-    \item Names should be clear unambigous, and discriptive. Avoid over-abbreviation.
-  \end{itemize}
+	\frametitle{I2C Bus}
+	\begin{figure}
+		\includegraphics[scale=.25]{assets/i2c}  
+	\end{figure}
+	There should be a resistor from the SCL line to the 5v line and another from the SDA line to the 5v line. You only need one set of pull-up resistors for the whole I2C bus, not for each device. The value of the resistors is not critical. 1k8, 4k7 and 10k are common values.
 \end{frame}
 
 \begin{frame}
-  \frametitle{Naming Conventions 2}
-  \begin{itemize}
-    \item All variables should be declared one at a time to allow commments
-    \item All functions that return bool should ask a true/false questions
-    \item A procedure(a function with no return) should use strong verb followed by an Object
-    \item Prefix function parameters passed by reference with \textbf{Out}
-  \end{itemize}
+	\frametitle{I2C Bus}
+	\begin{figure}
+		\includegraphics[scale=.35]{assets/i2carduino}  
+	\end{figure}
+	
+	Uno uses pins A4 for SDA and A5 (SCL).
+	I2C is easy to setup using the Wire Library preinstalled in the Arduino IDE.
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Master \& Slaves}
+The devices on the I2C bus are either masters or slaves. The master is always the device that drives the SCL clock line. The slaves are the devices that respond to the master. A slave cannot initiate a transfer over the I2C bus, only a master can do that. There can be, and usually are, multiple slaves on the I2C bus, however there is normally only one master.
 \end{frame}
 
 \begin{frame}
-  \frametitle{Naming Conventions 3}
-  \begin{itemize}
-    \item Type names are prefixed with an additional upper-case letter, to distinguish them from variable names.
-    E.g. \textbf{FSkin} for type, and \textbf{Skin} is an instance of \textbf{FSkin}
-    \begin{itemize}
-      \item Template classes are prefixed by T
-      \item Classes that inherit from UObject are prefixed by U
-      \item Classes that inheirt from AActor are prefixed by A
-      \item Classes that inheirt from SWidget are prefixed by S
-      \item Classes that are Interfaces are prexfixed by I
-      \item Enums are prexfixed by E
-      \item Boolean variables must be prefixed by b (e.g. bIsDead or bHasFallen)
-      \item Most other classes are prefixed by F
-    \end{itemize}
-  \end{itemize}
+	\frametitle{I2C Experiment}
+	\begin{figure}
+		\includegraphics[scale=.2]{assets/arduino2arduino}  
+	\end{figure}
+	https://www.arduino.cc/en/Tutorial/MasterWriter
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Naming Convention Examples}
-  \begin{lstlisting}
-    float TeaWeight;
+% SPI
 
-    int32 TeaCount;
-
-    bool bDoesTeaStink;
-
-    FName TeaName;
-
-    FString TeaFriendlyName;
-
-    UClass* TeaClass;
-
-    USoundCue* TeaSound;
-
-    UTexture* TeaTexture;
-
-    bool IsTeaFresh(UTea Tea)
-  \end{lstlisting}
+\begin{frame}
+	\frametitle{SPI Bus}
+	\begin{figure}
+		\includegraphics[scale=.15]{assets/spi}  
+	\end{figure}
+	\begin{itemize}
+		\item \textbf{MISO} - (Master In Slave Out) - The Slave line for sending data to the master
+		\item \textbf{MOSI} -  (Master Out Slave In) - The Master line for sending data to the peripherals,
+		\item \textbf{SCK} - (Serial Clock) - The clock pulses which synchronize data transmission generated by the master
+		\item \textbf{SS} - (Slave Select) - the pin on each device that the master can use to enable and disable specific devices.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Portable Aliases for C++ Types}
-  \begin{table}
-      \begin{tabular}{ | l | l | l | }
-        \hline
-        \textbf{Unreal Type} & \textbf{C++ Type} & \textbf{Size} \\
-        \hline
-        bool & bool or BOOL & Never assume size \\
-        \hline
-        TCHAR & TCHAR or char & Never assume size \\
-        \hline
-        uint8 & unsigned bytes & 1 byte \\
-        \hline
-        int8 & bytes & 1 byte \\
-        \hline
-        uint16 & unsigned short & 2 bytes \\
-        \hline
-        int16 & short & 2 bytes \\
-        \hline
-        uint32 & unsigned int & 4 bytes \\
-        \hline
-        int32 & int & 4 bytes \\
-        \hline
-        uint64 & unsigned long & 8 bytes \\
-        \hline
-        int64 & long & 8 bytes \\
-        \hline
-        float & float & 4 bytes \\
-        \hline
-        double & double & 8 bytes \\
-        \hline
-        PTRINT & void* & Never assume size \\
-        \hline
-      \end{tabular}
-    \end{table}
+	\frametitle{SPI Bus}
+	\begin{figure}
+		\includegraphics[scale=.25]{assets/spiarduino}  
+	\end{figure}
+	SPI is easy to setup using the SPI Library preinstalled in the Arduino IDE.
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Comments - Write self documenting code}
-  \begin{lstlisting}
-    // Bad:
-    t = s + 1 - b;
-
-    // Good:
-    TotalLeaves=SmallLeaves+LargeLeaves-SmallAndLargeLeaves;
-  \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Commets - Write Useful Commets}
-  \begin{lstlisting}
-    // Bad:
-    // Increment Leaves
-    ++Leaves;
-
-    // Good:
-    // we know there is another tea leaf
-    ++Leaves;
-  \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Comments - Do not comment bad code - rewrite it}
-  \begin{lstlisting}
-    // Bad:
-    // total number of leaves is sum of
-    // small and large leaves less the
-    // number of leaves that are both
-    t = s + 1 - b;
-
-    // Good:
-    TotalLeaves=SmallLeaves+LargeLeaves-SmallAndLargeLeaves;
-  \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Comments - Do not contradict code}
-  \begin{lstlisting}
-    // Bad:
-    // never increment Leaves!
-    ++Leaves;
-
-    //Good:
-    // we know there is another leaf
-    ++Leaves;
-  \end{lstlisting}
-\end{frame}
 
 \begin{frame}
-  \frametitle{Comments - Formatting}
-  \begin{itemize}
-    \item Unreal uses a system based on JavaDocs to extract comments to build documentation
-    \item You have to use a specfic format in order for this tool to run
-    \item More info - url{http://www.oracle.com/technetwork/articles/java/index-137868.html}
-  \end{itemize}
+	\frametitle{Master \& Slaves}
+In general, each slave will need a separate SS line. To talk to a particular slave, you?ll make that slave?s SS line low and keep the rest of them high (you don?t want two slaves activated at the same time, or they may both try to talk on the same MISO line resulting in garbled data). Lots of slaves will require lots of SS lines; if you?re running low on outputs, there are binary decoder chips that can multiply your SS outputs.
 \end{frame}
+
+
+% Asynchronous VS. Synchronous 
 
 \begin{frame}
-  \frametitle{Const Correctness}
-  \begin{itemize}
-    \item Const is documentation as much as a compiler directive
-    \item If function arguments aren't modified by a function, ensure they are passed with const keyword
-    \item Flag methods as const if they don't modify an object
-    \item Use const interation over containers if the loop doesn't modify container
-    \item Const should be preferred on by-value parameters and locals
-  \end{itemize}
+	\frametitle{Asynchronous - SPI}
+	\textbf{Asynchronous} means that data is transferred without support from an external clock signal. This transmission method is perfect for minimizing the required wires and I/O pins, but it does mean we need to put some extra effort into reliably transferring and receiving data.
 \end{frame}
+
 
 \begin{frame}
-  \frametitle{C++11 and Modern C++}
-  \begin{itemize}
-    \item \textbf{nullptr} - Used instead of NULL except on XBoxOne use \textbf{TYPE{\_}OF{\_}NULLPTR})
-    \item \textbf{auto} - You should not use auto except in the following cases
-    \begin{itemize}
-      \item Binding to lambda types
-      \item Iteration variables
-      \item Template code (advance case)
-    \end{itemize}
-    \item \textbf{Range Based For} - Preferred to regular for loop
-    \item \textbf{Lambdas} - Can be used, but be careful (see docs)
-    \item \textbf{Enums} - Always use strongly type enums which inherit from \textbf{uint8}
-    \item \textbf{Move Semantics} - All main container types have move constructors and move assignment
-  \end{itemize}
+	\frametitle{Synchronous - SPI}
+	A \textbf{synchronous} serial interface always pairs its data line(s) with a clock signal, so all devices on a synchronous serial bus share a common clock. This makes for a more straightforward, often faster serial transfer, but it also requires at least one extra wire between communicating devices. Examples of synchronous interfaces include SPI, and I2C.
+
 \end{frame}
+
+%MAXIM one wire - Neo Pixels
+\begin{frame}
+	\frametitle{Dallas One-wire \& NeoPixels}
+	Other protocols to watch for!
+	\begin{figure}
+		\includegraphics[scale=.4]{assets/neo}  
+	\end{figure}
+
+\end{frame}
+
 
 \begin{frame}
-  \frametitle{Refrences}
-  \url{https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/}
+	\frametitle{Emulate USB Keyboard}
+	\begin{figure}
+		\includegraphics[scale=.4]{assets/keyboard}  
+	\end{figure}
+	\url{https://www.youtube.com/watch?v=RoG_-9lAnSI}
 \end{frame}
 
+
+%https://www.youtube.com/watch?v=RoG_-9lAnSI uno keyboard emulation
 
 \end{document}
