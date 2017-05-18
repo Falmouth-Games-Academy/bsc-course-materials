@@ -1,0 +1,56 @@
+\documentclass[xcolor={dvipsnames}]{beamer}
+
+\usepackage{etoolbox}\newtoggle{printable}\togglefalse{printable}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\graphicspath{ {../../} }
+
+\title{Introduction to LaTeX}
+\author{Ed Powley}
+
+\begin{document}
+
+\frame{\maketitle}
+
+\part{Introducing LaTeX}
+\frame{\partpage}
+
+\begin{frame}{What is LaTeX?}
+\begin{itemize}
+	\pause\item A \textbf{typesetting} system
+	\pause\item A \textbf{markup language} (like HTML or Markdown)
+	\pause\item \textbf{Not} a WYSIWYG system
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why LaTeX?}
+\begin{itemize}
+	\pause\item Plain text format
+	\begin{itemize}
+		\pause\item Can use any text editor
+		\pause\item Can use version control (e.g.\ Git)
+	\end{itemize}
+	\pause\item Separates content from formatting
+	\begin{itemize}
+		\pause\item Similar to HTML and CSS
+		\pause\item Unlike most WYSIWYG systems
+	\end{itemize}
+	\pause\item Produces professional-looking papers, reports, theses, books, slideshows, ...
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Getting LaTeX}
+\begin{itemize}
+	\pause\item LaTeX is \textbf{free open source software}
+	\pause\item Consists of:
+	\begin{itemize}
+		\pause\item Several \textbf{executables} (pdflatex, bibtex, makeindex, ...)
+		\pause\item A large library of \textbf{packages}
+		\pause\item An \textbf{integrated development environment (IDE)} (optional)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\part{Your first LaTeX document}
+\frame{\partpage}
+
+\end{document}
