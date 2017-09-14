@@ -1,0 +1,281 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+\usepackage{textcomp}
+
+% Default language for code listings
+\lstset{language=Python, upquote=true,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\setbeamertemplate{navigation symbols}{}
+
+\input{../../commands}
+
+\begin{document}
+\title{\sessionnumber: Computing Professionals}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	\begin{itemize}
+		\item \textbf{Analyse} the role of computing professionals in the games industry
+		%Comp110 - 02 Material and Tinkering Text
+		\item Explain the role and basic functions of the IDE
+		\item Produce some basic Python programs
+		\item \textbf{Apply} pair programming practices to solve simple problems
+	\end{itemize}
+\end{frame}
+
+\part{Professional Roles}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{TwitterFall Activities}
+		
+	\begin{itemize}
+		\item Self-organise into small groups of 3-4
+		\item Load a Twitter app, or login to Twitter on a PC
+		\item Conduct research on the given topic
+		\item Post a tweet when you find something interesting
+	\end{itemize}
+
+	\begin{itemize}
+		\item Please use the hashtag for the module (i.e., \lstinline{\#comp120})
+		\item Also please ensure you use the @ symbol to open and continue discussions
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{TwitterFall Activity \#1}
+	
+	\textbf{Answer} the follow question:
+	
+	\vspace{1em}
+	
+	``What do computing professionals do, \textit{generally}?''
+	
+	\vspace{1em}
+	
+	You have:
+	
+	\begin{itemize}
+		\item 10 minutes to conduct research and tweet to \lstinline{\#comp120}
+		\item 5 minutes to debrief
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{TwitterFall Activity \#2}
+	
+	\textbf{Answer} the follow question:
+	
+	\vspace{1em}
+	
+	``What do computing professionals do, \textit{in games}?''
+	
+	\vspace{1em}
+	
+	You have:
+	
+	\begin{itemize}
+		\item 10 minutes to conduct research and tweet to \lstinline{\#comp120}
+		\item 5 minutes to debrief
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{TwitterFall Activity \#3}
+	
+	\textbf{Answer} the follow question:
+	
+	\vspace{1em}
+	
+	``What career options are available to graduates with B.Sc. degrees in computing?''
+	
+	\vspace{1em}
+	
+	You have:
+	
+	\begin{itemize}
+		\item 10 minutes to conduct research and tweet to \lstinline{\#comp120}
+		\item 5 minutes to debrief
+	\end{itemize}
+\end{frame}
+
+\part{Professional Development}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Continuing Professional Development}
+	
+	\begin{itemize}
+		\item Games industry is fast-moving
+		\item Learning does not end at school and university
+		\item A goal of this course is to facilitate your development as self-regulated learners
+		\item Gradually, more independence across each year of study
+		\item This is a science degree, which means you will become a producer of knowledge, not just a consumer of knowledge!
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Continuing Professional Development}
+	
+	\begin{itemize}
+		\item It isn't easy!
+		\item Many of you will encounter programming anxiety
+		\item Some will experience a sense of fear or a sense of hopelessness --- it is more common than you think
+		\item Some will need more support than others --- this isn't a bad thing
+		\item Everyone who puts in the time and effort will eventually achieve mastery
+	\end{itemize}
+\end{frame}
+
+
+\part{Professional Practice}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Pair Programming}
+		
+	Pair programming is an agile software development technique in which two programmers work together 
+	at one workstation. 
+	\\~\\
+	One, the driver, writes code while the other, the observer or navigator, reviews 
+	each line of code as it is typed in. 
+	\\~\\
+	The two programmers switch roles frequently.
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Pair Programming}
+	
+	Watch the video at:
+	
+	\vspace{1.5em}
+		
+	\url{https://www.youtube.com/watch?v=ET3Q6zNK3Io}
+	
+	\vspace{1em}
+		
+	(5 minutes)
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Pair Programming}
+	
+	Review the guidelines at:
+	
+	\vspace{1.5em}
+		
+	\url{http://www.pairprogramming.co.uk/}
+	
+	\vspace{1em}
+		
+	(10 minutes)
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Pair Programming}
+	
+	Watch the video at:
+	
+	\vspace{1.5em}
+		
+	\url{https://www.youtube.com/watch?v=ONnYCT_LJio}
+	
+	\vspace{1em}
+		
+	(5 minutes)
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Pair Programming Challenge}
+	
+	\begin{itemize}
+		\item In pairs
+		\item \textbf{Implement} the code excerpt
+		\item \textbf{Fix} the errors in the code excerpt
+		\item \textbf{Modify} the code excerpt to incorporate functions and arguments
+		\item \textbf{Post} your solution to the \lstinline{\#comp120} slack channel
+	\end{itemize}
+	
+	You can learn more about functions and arguments at:
+	
+	\vspace{1em}
+	
+	 \url{https://docs.python.org/3/tutorial/controlflow.html\#defining-functions}
+	
+	\vspace{1em}
+	
+	(20 minutes)
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Pair Programming Challenge}
+	
+	The function:
+
+	\begin{lstlisting}
+		def madlib()
+	\end{lstlisting}
+	
+	\vspace{1.5em}
+	
+	Should become:
+	
+	\begin{lstlisting}
+		def madlib(name, pet, verb, snack)
+	\end{lstlisting}
+	
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Pair Programming Challenge}
+	
+	\begin{lstlisting}
+def madlib():
+	name = 'Mike'
+	pet = 'Spyro'
+	verb = 'ate'
+	snack = 'doughnuts'
+	line1 = 'once upon a time,' + name + ' walked'
+	line2 = ' with ' + pet + ', a trained dragon.'
+	line3 = 'Suddenly, ' + pet + ' announced,'
+	line4 = 'I really want some ' + snack + '!'
+	line5 = name + ' complained. Where am I going to get that?'
+	line6 = 'Then ' + name + 'found a wizard's wand.'
+	line 7 = 'With a wave of the wand, '
+	line8 = pet + ' got ' + snack + '. '
+	line9 = 'Perhaps surprisingly, ' + pet + ' ' + verb + '  ' + snack
+	print line1 + line2 + line3 + line4
+	print line5 + line6 + line7 + line8 + line9
+
+\end{lstlisting}
+	
+\end{frame}
+
+\part{Coffee Break}
+
+\end{document}
