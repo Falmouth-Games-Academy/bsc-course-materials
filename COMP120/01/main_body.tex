@@ -27,7 +27,7 @@
 \input{../../commands}
 
 \begin{document}
-\title{\sessionnumber: Computing Professionals}
+\title{\sessionnumber: Python, Pairs, \& PyGame}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -35,87 +35,11 @@
 \begin{frame}
 	\frametitle{Learning Outcomes}
 	\begin{itemize}
-		\item \textbf{Analyse} the role of computing professionals in the games industry
+		%\item \textbf{Analyse} the role of computing professionals in the games industry
 		%Comp110 - 02 Material and Tinkering Text
 		\item Explain the role and basic functions of the IDE
 		\item Produce some basic Python programs
 		\item \textbf{Apply} pair programming practices to solve simple problems
-	\end{itemize}
-\end{frame}
-
-\part{Professional Roles}
-\frame{\partpage}
-
-\begin{frame}
-	\frametitle{TwitterFall Activities}
-		
-	\begin{itemize}
-		\item Self-organise into small groups of 3-4
-		\item Load a Twitter app, or login to Twitter on a PC
-		\item Conduct research on the given topic
-		\item Post a tweet when you find something interesting
-	\end{itemize}
-
-	\begin{itemize}
-		\item Please use the hashtag for the module (i.e., \lstinline{\#comp120})
-		\item Also please ensure you use the @ symbol to open and continue discussions
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{TwitterFall Activity \#1}
-	
-	\textbf{Answer} the follow question:
-	
-	\vspace{1em}
-	
-	``What do computing professionals do, \textit{generally}?''
-	
-	\vspace{1em}
-	
-	You have:
-	
-	\begin{itemize}
-		\item 10 minutes to conduct research and tweet to \lstinline{\#comp120}
-		\item 5 minutes to debrief
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{TwitterFall Activity \#2}
-	
-	\textbf{Answer} the follow question:
-	
-	\vspace{1em}
-	
-	``What do computing professionals do, \textit{in games}?''
-	
-	\vspace{1em}
-	
-	You have:
-	
-	\begin{itemize}
-		\item 10 minutes to conduct research and tweet to \lstinline{\#comp120}
-		\item 5 minutes to debrief
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{TwitterFall Activity \#3}
-	
-	\textbf{Answer} the follow question:
-	
-	\vspace{1em}
-	
-	``What career options are available to graduates with B.Sc. degrees in computing?''
-	
-	\vspace{1em}
-	
-	You have:
-	
-	\begin{itemize}
-		\item 10 minutes to conduct research and tweet to \lstinline{\#comp120}
-		\item 5 minutes to debrief
 	\end{itemize}
 \end{frame}
 
@@ -146,6 +70,11 @@
 	\end{itemize}
 \end{frame}
 
+\input{pycharm}
+
+\input{basicprograms}
+
+\part{Coffee Break}
 
 \part{Professional Practice}
 \frame{\partpage}
@@ -250,13 +179,12 @@
 	
 \end{frame}
 
-
 \begin{frame}[fragile]
 	\frametitle{Pair Programming Challenge}
 	
 	\begin{lstlisting}
 def madlib():
-	name = 'Mike'
+	name = 'Link'
 	pet = 'Spyro'
 	verb = 'ate'
 	snack = 'doughnuts'
@@ -276,10 +204,41 @@ def madlib():
 	
 \end{frame}
 
-\part{Coffee Break}
+\begin{frame}[fragile]
+	\frametitle{Stretch Goal --- PyGame}
+	
+	\begin{itemize}
+		\item In pairs
+		\item \textbf{Incorporate} your code into the PyGame framework
+		\item \textbf{Post} your solution to the \lstinline{#comp120} slack channel
+	\end{itemize}
+	
+\end{frame}
 
-\input{pycharm}
+\begin{frame}[fragile]
+	\frametitle{Stretch Goal --- PyGame}
+	
+	\begin{lstlisting}
+import pygame
 
-\input{basicprograms}
+pygame.init()
+screen = pygame.display.set_mode((640, 480))
+font = pygame.font.SysFont(None, 14)
+text = font.render(madlib(), True, (0, 128, 0))
+
+done = False
+while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            done = True
+
+    screen.fill((255, 255, 255))
+    screen.blit(text,(0,0))
+    pygame.display.flip()
+\end{lstlisting}
+	
+\end{frame}
 
 \end{document}
