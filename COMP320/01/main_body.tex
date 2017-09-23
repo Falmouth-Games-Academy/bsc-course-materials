@@ -1,0 +1,46 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{algpseudocode}
+
+\usepackage{pdfpages}
+
+\usepackage{fancyvrb}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Intro to the final year project}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning outcomes}
+	\begin{itemize}
+		\item \textbf{Explain} the aims and expectations of the final year project
+		\item \textbf{Select} appropriate methodologies to conduct scholarly research
+		\item \textbf{Recall} Falmouth University's policy on research ethics and the procedure for obtaining ethics approval
+	\end{itemize}
+\end{frame}
+
+\input{assignments}
+\input{ethics}
+\input{what_is_science}
+
+\end{document}
