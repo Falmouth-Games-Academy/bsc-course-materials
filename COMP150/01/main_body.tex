@@ -1,0 +1,224 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\setbeamertemplate{navigation symbols}{}
+
+\input{../../commands}
+
+\begin{document}
+\title{\sessionnumber: From Concepts to Design}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	
+	By the end of this session, you should be able to:
+	
+	\begin{itemize}
+		\item \textbf{Explain} the key differences between ideating game concepts and designing game mechanics
+		\item \textbf{Recall} functional definitions of the terms \textit{game} and \textit{games design}
+		\item \textbf{Recognise} the formal elements of games \textbf{and} how they fit within the MDA model
+		\item \textbf{Compare and contrast} general approaches to game development practice
+		\item \textbf{Discuss} the roles of prototyping and play-testing in game development practice
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+	
+	So, what is a `game'?
+	
+	\begin{itemize}
+		\item Login to Socrative and enter the room: \\ FALCOMPMIKE
+		\item In silence, consider your own definition (5 minutes) and then enter it into the system
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	\begin{center}
+	\begin{huge}
+	A game has ``ends and means'': an objective, an outcome, and a set of rules to get there.
+	\end{huge}
+	
+	\vspace{3em}
+	
+	(David Parlett, XXXX)
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	\begin{center}
+	\begin{huge}
+	A game is an activity involving player decisions, seeking objectives within a ``limiting context'' (i.e., rules).
+	\end{huge}
+	
+	\vspace{3em}
+	
+	(Clark C. Abt, XXXX)
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	\begin{center}
+	\begin{large}
+	A game has six properties, it:
+	
+		\begin{itemize}
+		\item is \textit{free}
+		\item is \textit{separate}
+		\item has an uncertain outcome
+		\item is uproductive
+		\item is governed by rules
+		\item and is \textit{make believe}
+	\end{itemize}
+	
+	\begin{center}
+	\end{large}
+	
+	\vspace{3em}
+	
+	(Roger Callois, XXXX)
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	\begin{center}
+	\begin{huge}
+	Voluntary effort to overcome unnecessary obstacles
+	\end{huge}
+	
+	\vspace{3em}
+	
+	(Bernard Suits, XXXX)
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	\begin{large}
+	A game has four properties, they:
+	
+	\begin{itemize}
+		\item are a \textit{closed} and \textit{formal system}
+		\item involve interaction
+		\item involve conflict
+		\item and they offer safety
+	\end{itemize}
+	
+	\end{large}
+	
+	\vspace{3em}
+	
+	\begin{center}
+	(Chris Crawford, XXXX)
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	\begin{center}
+	\begin{huge}
+	A form of art in which the participants, termed players, make decisions in order to manage resources through tokens in the pursuit of a goal
+	\end{huge}
+	
+	\vspace{3em}
+	
+	(Chris Crawford, XXXX)
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	\begin{center}
+	\begin{huge}
+	A system in which players engage in an artificial conflict, defined by rules, that results in a quantifiable outcome
+	\end{huge}
+	
+	\vspace{3em}
+	
+	(Salen \& Zimmerman, 2004)
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	\begin{center}
+	\begin{huge}
+	http://www.gamedefinitions.com/
+	\end{huge}
+	\end{center}
+	
+	\vspace{3em}
+	
+	\begin{small}
+	Yes, someone wrote a procedural generator for game definitions...
+	\end{small}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+	
+	My attempt:
+		
+	\begin{center}
+	\begin{huge}
+	A game is a framework that codifies imagination, encapsulating play and performance in a way that permits copying and sharing
+	\end{huge}
+	
+	\vspace{3em}
+	
+	(Scott, 2011)
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+	
+	There are over 60 different definitions, with considerable consensus of what artefacts may be described as games---but little agreement on an adequete definition (XXXX, 2015).
+
+\end{frame}
+
+\end{document}
