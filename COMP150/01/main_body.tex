@@ -1,34 +1,9 @@
-% Adjust these for the path of the theme and its graphics, relative to this file
-%\usepackage{beamerthemeFalmouthGamesAcademy}
-\usepackage{../../beamerthemeFalmouthGamesAcademy}
-\usepackage{multimedia}
-\graphicspath{ {../../} }
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	
+	From the perspective of game development practice, how do we go beyond the realm of ideating game concepts, to crafting them into designs, and then refining those designs into fun and commercially-exploitable experiences?
 
-% Default language for code listings
-\lstset{language=C++,
-        morekeywords={each,in,nullptr}
-}
-
-% For strikethrough effect
-\usepackage[normalem]{ulem}
-\usepackage{wasysym}
-
-\usepackage{pdfpages}
-
-% http://www.texample.net/tikz/examples/state-machine/
-\usetikzlibrary{arrows,automata}
-
-\input{sessioninfo}
-
-\setbeamertemplate{navigation symbols}{}
-
-\input{../../commands}
-
-\begin{document}
-\title{\sessionnumber: From Concepts to Design}
-\subtitle{\modulecode: \moduletitle}
-
-\frame{\titlepage} 
+\end{frame}
 
 \begin{frame}
 	\frametitle{Learning Outcomes}
@@ -36,23 +11,66 @@
 	By the end of this session, you should be able to:
 	
 	\begin{itemize}
-		\item \textbf{Explain} the key differences between ideating game concepts and designing game mechanics
 		\item \textbf{Recall} functional definitions of the terms \textit{game} and \textit{games design}
 		\item \textbf{Recognise} the formal elements of games \textbf{and} how they fit within the MDA model
+		\item \textbf{Explain} the key differences between ideating game concepts and designing game mechanics
 		\item \textbf{Compare and contrast} general approaches to game development practice
 		\item \textbf{Discuss} the roles of prototyping and play-testing in game development practice
 	\end{itemize}
 \end{frame}
 
+\part{Defining Game}
+\frame{\partpage}
+
 \begin{frame}
 	\frametitle{Defining Game}
+	
+	\socrative
 	
 	So, what is a `game'?
 	
 	\begin{itemize}
-		\item Login to Socrative and enter the room: \\ FALCOMPMIKE
-		\item In silence, consider your own definition (5 minutes) and then enter it into the system
+		\item In silence, consider your own definition (5 minutes)
+		\item Enter your definition
 	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+	
+	A game is:
+		
+	\begin{center}
+	\begin{large}
+	``...a free and meaningful activity, carried out for its own sake, spatially and temporally segregated from the requirements of practical life, and bound by a self-contained system of rules that holds absolutely''
+
+	\end{large}
+	
+	\vspace{3em}
+	
+	(Huizinga, 1938)
+	\end{center}
+	
+\end{frame}	
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	A game has six properties, it:
+	
+	\begin{itemize}
+		\item is \textit{free}
+		\item is \textit{separate}
+		\item has an uncertain outcome
+		\item is unproductive
+		\item is governed by rules
+		\item and is \textit{make believe}
+	\end{itemize}
+	
+	\vspace{3em}
+	
+	(Callois, 1961)
 
 \end{frame}
 
@@ -61,12 +79,12 @@
 		
 	\begin{center}
 	\begin{huge}
-	A game has ``ends and means'': an objective, an outcome, and a set of rules to get there.
+	Voluntary effort to overcome unnecessary obstacles
 	\end{huge}
 	
 	\vspace{3em}
 	
-	(David Parlett, XXXX)
+	(Suits, 1978)
 	\end{center}
 
 \end{frame}
@@ -81,33 +99,7 @@
 	
 	\vspace{3em}
 	
-	(Clark C. Abt, XXXX)
-	\end{center}
-
-\end{frame}
-
-\begin{frame}
-	\frametitle{Defining Game}
-		
-	\begin{center}
-	\begin{large}
-	A game has six properties, it:
-	
-		\begin{itemize}
-		\item is \textit{free}
-		\item is \textit{separate}
-		\item has an uncertain outcome
-		\item is uproductive
-		\item is governed by rules
-		\item and is \textit{make believe}
-	\end{itemize}
-	
-	\begin{center}
-	\end{large}
-	
-	\vspace{3em}
-	
-	(Roger Callois, XXXX)
+	(Clark C. Abt, 1987)
 	\end{center}
 
 \end{frame}
@@ -117,12 +109,27 @@
 		
 	\begin{center}
 	\begin{huge}
-	Voluntary effort to overcome unnecessary obstacles
+	A game has ``ends and means'': an objective, an outcome, and a set of rules to get there.
 	\end{huge}
 	
 	\vspace{3em}
 	
-	(Bernard Suits, XXXX)
+	(Parlett, 1999)
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+		
+	\begin{center}
+	\begin{huge}
+	A form of art in which the participants, termed players, make decisions in order to manage resources through tokens in the pursuit of a goal
+	\end{huge}
+	
+	\vspace{3em}
+	
+	(Costikyan, 2002)
 	\end{center}
 
 \end{frame}
@@ -145,22 +152,7 @@
 	\vspace{3em}
 	
 	\begin{center}
-	(Chris Crawford, XXXX)
-	\end{center}
-
-\end{frame}
-
-\begin{frame}
-	\frametitle{Defining Game}
-		
-	\begin{center}
-	\begin{huge}
-	A form of art in which the participants, termed players, make decisions in order to manage resources through tokens in the pursuit of a goal
-	\end{huge}
-	
-	\vspace{3em}
-	
-	(Chris Crawford, XXXX)
+	(Crawford, 2003)
 	\end{center}
 
 \end{frame}
@@ -184,15 +176,15 @@
 	\frametitle{Defining Game}
 		
 	\begin{center}
-	\begin{huge}
+	\begin{large}
 	http://www.gamedefinitions.com/
-	\end{huge}
+	\end{large}
 	\end{center}
 	
 	\vspace{3em}
 	
 	\begin{small}
-	Yes, someone wrote a procedural generator for game definitions...
+	Yes, Molleindustria (the `culture-jammers') wrote a procedural generator for game definitions...
 	\end{small}
 	
 \end{frame}
@@ -200,11 +192,30 @@
 \begin{frame}
 	\frametitle{Defining Game}
 	
-	My attempt:
+	\socrative
+	
+	So, let's revisit your definitions...
+	
+	\vspace{1em}
+	
+	Then:
+	
+	\begin{itemize}
+		\item In pairs or small groups, discuss the definitions (8-10 minutes)
+		\item Enter a revised definitions into Socrative
+		
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Defining Game}
+	
+	My own attempt:
 		
 	\begin{center}
 	\begin{huge}
-	A game is a framework that codifies imagination, encapsulating play and performance in a way that permits copying and sharing
+	A game is a framework that codifies imagination, encapsulating play and outcome in a way that permits copying and sharing
 	\end{huge}
 	
 	\vspace{3em}
@@ -217,8 +228,170 @@
 \begin{frame}
 	\frametitle{Defining Game}
 	
-	There are over 60 different definitions, with considerable consensus of what artefacts may be described as games---but little agreement on an adequete definition (XXXX, 2015).
+	My own attempt:
+		
+	\begin{center}
+	\begin{huge}
+	A game is a framework that codifies imagination, encapsulating play and outcome in a way that permits \textbf{\textit{copying and sharing}}
+	\end{huge}
+	
+	\vspace{3em}
+	
+	(Scott, 2011)
+	\end{center}
 
 \end{frame}
 
-\end{document}
+\begin{frame}
+	\frametitle{Defining Game}
+	
+	There are over 60 different definitions (Strenos, 2016), with considerable consensus of what artefacts may be described as games---but little agreement on an adequate definition that itself forms something of a Wittgensteinian game (Arjoranta, 2014).
+
+\end{frame}
+
+\part{Is It A Game}
+\frame{\partpage}
+
+\notepic{fig_digimon}{Toy? Game? Both? Does development practice differ?}{-2.5cm}{-3.5cm}
+
+\notepic{fig_myst}{Puzzle? Game? Both? Does development practice differ?}{-2.5cm}{-3.5cm}
+
+\notepic{fig_wwtbam}{Quiz? Game? Both? Does development practice differ?}{-2.5cm}{-3.5cm}
+
+\notepic{fig_simcity}{Simulation? Game? Does development practice differ?}{-2.5cm}{-3.5cm}
+
+\begin{frame}
+	\frametitle{Is It A Game?}
+	
+	Generally, when designing a game, or game-like product, it is the experience of interacting with the product that is important.
+
+\end{frame}
+
+\part{Games: Their Formal Elements}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{Constructing a Critical Vocabulary}
+	
+	``Few designers actually understand what \textit{gameplay} is, because the term itself is nebulous and therefore pretty useless.''
+	
+	\vspace{3em}
+	
+	Costikyan G., 2002. \textit{I Have No Words and I Must Design: Towards a Critical Vocabulary for Games}. DiGRA.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Constructing a Critical Vocabulary}
+	
+	``Saying \textit{it has good gameplay} does not help us understand what is good about it, what pleasures it provides, and how to go about doing something else good...''
+	
+	\vspace{3em}
+	
+	Costikyan G., 2002. \textit{I Have No Words and I Must Design: Towards a Critical Vocabulary for Games}. DiGRA.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Constructing a Critical Vocabulary}
+	
+	To this end, we need a working vocabulary:
+	
+	\vspace{3em}
+	
+	``When you strip away the genre differences and the technological complexities, all games share four defining traits: a goal, rules, a feedback system, and voluntary participation'' (McGonigal, 2011)
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Formal Elements}
+	
+	Schreiber \& Braithewaite (2009) propose a game:
+	
+	\begin{itemize}
+		\item is a system (a framework for interactivity);
+		\item has mechanics (rules)
+		\item has sequence (real-time or turn-based);
+		\item will communicate with players (control, feedback, text)
+		\item has states of perceivable consequence (resources, outcomes)
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Formal Elements}
+	
+	Schreiber \& Braithewaite (2009) propose a game:
+	
+	\begin{itemize}
+		\item has dynamics (decision making, intention, flow);
+		\item has uncertaintly (randomisation, luck);
+		\item enforces inefficient means (difficulties, handicaps, challenges);
+		\item can have terminal end-states (objectives, winning conditions, game over)
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Formal Elements}
+	
+	Schreiber \& Braithewaite (2009) propose a game:
+	
+	\begin{itemize}
+		\item has representations (tokens, assets);
+		\item can have theme and narrative (storytelling, setting, mis-en-scene);
+		\item requires volunteers (people who use the system);
+		\item is systematic (applies rules fairly to all players);
+		\item produces an aesthetic (the gameplay experience).
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Formal Elements}
+	
+	Schreiber \& Braithewaite (2009) propose a game:
+	
+	\begin{itemize}
+		\item has representations (tokens, assets);
+		\item can have theme and narrative (storytelling, setting, mis-en-scene);
+		\item requires volunteers (people who use the system);
+		\item is systematic (applies rules fairly to all players);
+		\item produces an aesthetic (the gameplay experience).
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Formal Elements}
+		
+	\begin{itemize}
+		\item Manipulating any of these formal elements can make for a very different experience
+		\item Sometimes, these elements are interrelated, such as: mechanics and representation
+		\item Changing one element affects the others!
+	\end{itemize}
+
+\end{frame}
+
+\notepic{fig_pong}{Consider the role of abstract representation in Pong}{-2.5cm}{-3.5cm}
+
+\notepic{fig_ttdeleux}{With a more realistic representation, should the ball bounce off the “wall” of the table like Pong?}{-2.5cm}{-3.5cm}
+
+\part{Games: From Concepts to Design}
+\frame{\partpage}
+
+\begin{frame}
+	\frametitle{So What Is Game Design?}
+		
+	The process of games design is distilling a high-level concept into its formal elements and then crafting those formal elements into a framework of interactivity that forms a playful experience suitable for evaluation and iteration.
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{So What Is Game Design?}
+		
+	``The process of games design is distilling a high-level concept into its formal elements and then crafting those formal elements...''
+	
+	This is, of course, only part of the role:
+
+\end{frame}
