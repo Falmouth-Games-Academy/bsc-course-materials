@@ -62,35 +62,54 @@
 \end{frame}
 
 \begin{frame}{Machine code}
-	\begin{itemize}
-		\pause\item Programs are represented as sequences of \textbf{numbers}
-			specifying \textbf{machine instructions}
-		\pause\item More on this later in the module
-		\pause\item Nobody has actually written programs in machine code since the 1960s...
-	\end{itemize}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{machinecode}
+		\end{column}
+		\begin{column}{0.58\textwidth}
+			\begin{itemize}
+				\pause\item Programs are represented as sequences of \textbf{numbers}
+					specifying \textbf{machine instructions}
+				\pause\item More on this later in the module
+				\pause\item Nobody has actually written programs in machine code since the 1960s...
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Assembly (or assembler) language}
-	\begin{itemize}
-		\pause\item Each line of assembly code translates \textbf{directly} to an instruction of machine code
-		\pause\item Commonly used for games in the 70s/80s/90s, but hardly ever used now
-		\pause\item Allows very fine control over the hardware...
-		\pause\item ... but difficult to use as there is no \textbf{abstraction}
-		\pause\item Each CPU architecture has its own assembly language,
-			e.g.\ an assembly language program for Intel-compatible processors cannot be
-			used on ARM processors
-	\end{itemize}
+\begin{frame}{Assembly language}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{assembly}
+		\end{column}
+		\begin{column}{0.58\textwidth}
+			\begin{itemize}
+				\pause\item Each line of assembly code translates \textbf{directly} to an instruction of machine code
+				\pause\item Commonly used for games in the 70s/80s/90s, but hardly ever used now
+				\pause\item Allows very fine control over the hardware...
+				\pause\item ... but difficult to use as there is no \textbf{abstraction}
+				\pause\item Also not portable between CPU architectures
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{C++}
-	\begin{itemize}
-		\pause\item Initially an object-oriented extension for the procedural language C
-		\pause\item Low level (though higher level than assembly)
-		\pause\item Used by developers of game engines,
-			and games using many popular ``AAA'' engines (Unreal, Source, CryEngine, ...)
-		\pause\item Also used by developers of operating systems and embedded systems,
-			but falling out of favour with other software developers
-	\end{itemize}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{cplusplus}
+		\end{column}
+		\begin{column}{0.58\textwidth}
+			\begin{itemize}
+				\pause\item Initially an object-oriented extension for the procedural language C
+				\pause\item Low level (though higher level than assembly)
+				\pause\item Used by developers of game engines,
+					and games using many popular ``AAA'' engines (Unreal, Source, CryEngine, ...)
+				\pause\item Also used by developers of operating systems and embedded systems,
+					but falling out of favour with other software developers
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{High level languages}
@@ -120,14 +139,23 @@
 \end{frame}
 
 \begin{frame}{Visual programming languages}
-	\pause Based on connecting graphical blocks rather than writing code as text
-	\begin{itemize}
-		\pause\item Scratch (used for teaching in school)
-		\pause\item Lego Mindstorms
-		\pause\item Blueprint (Unreal)
-	\end{itemize}
-	\pause Note: despite the name, Microsoft Visual Studio is \textbf{not}
-		a visual programming environment!
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{mindstorms}
+			\par\vspace{2ex}\par
+			\includegraphics[width=\textwidth]{blueprint}
+		\end{column}
+		\begin{column}{0.58\textwidth}
+			\pause Based on connecting graphical blocks rather than writing code as text
+			\begin{itemize}
+				\pause\item Scratch (used for teaching in school)
+				\pause\item Lego Mindstorms
+				\pause\item Blueprint (Unreal)
+			\end{itemize}
+			\pause Note: despite the name, Microsoft Visual Studio is \textbf{not}
+				a visual programming environment!
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Special purpose languages}
