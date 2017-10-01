@@ -40,8 +40,7 @@
 \begin{frame}{Agenda}
 	\begin{itemize}
 		\item Lecture / live coding: experimenting with shaders
-		\item Coffee
-		\item Portfolio proposals
+		\item Exercise - Working with OpenGL and Shaders
 	\end{itemize}
 \end{frame}
 
@@ -49,7 +48,21 @@
 \input{types}
 \input{variables}
 
-\part{Portfolio task proposals}
-\frame{\partpage}
+\begin{frame}{Exercise 1 - Shaders}
+	\begin{itemize}
+		\item Make sure you can compile and run the demos from last week
+		\item Bring in the shader loading code from the following - \url{http://www.opengl-tutorial.org/beginners-tutorials/tutorial-2-the-first-triangle/}
+		\item Add in a basic Vertex and Fragment shader based on the above link
+		\item Compile and run the application
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exercise 2 - Working with Uniform Variables}
+	\begin{itemize}
+		\item Add in a Uniform variable to the fragment shader, this should be a vec4 representing the colour of the triangle
+		\item Send the colour across from the Application side (C++), you can use an array of floats or GLM Library to represent the colour on the C++ side
+		\item Compile and run the application
+	\end{itemize}
+\end{frame}
 
 \end{document}
