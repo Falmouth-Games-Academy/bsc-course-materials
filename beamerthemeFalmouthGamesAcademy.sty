@@ -67,10 +67,10 @@
 				\includegraphics[width=0.1\paperwidth]{template_falmouth_logo}
 			};
 		}
-        \node[anchor=south east, xshift=-0.025\paperwidth, yshift=40\PptPoint] at (current page.south east) {
+        \node(Title)[anchor=south east, xshift=-0.025\paperwidth, yshift=40\PptPoint] at (current page.south east) {
 			\parbox[t]{0.95\paperwidth}{\raggedleft\usebeamerfont{title}\textbf{\inserttitle}}
         };
-        \node[anchor=south east, xshift=-0.025\paperwidth, yshift=80\PptPoint] at (current page.south east) {
+        \node[anchor=south east, yshift=-0.1cm] at (Title.north east) {
         	\parbox[t]{0.95\paperwidth}{\raggedleft\usebeamerfont{subtitle}\textcolor{SubtitleGrey}{\insertsubtitle}}
         };
     \end{tikzpicture}
