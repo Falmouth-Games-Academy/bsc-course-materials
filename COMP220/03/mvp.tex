@@ -69,19 +69,3 @@ glm::mat4 projection = glm::perspective(
 		\pause\item \textbf{Nothing outside} the view frustum is visible
 	\end{itemize}
 \end{frame}
-
-\begin{frame}[fragile]{Putting it together}
-	\pause\begin{lstlisting}
-glm::mat4 mvp = projection * view * modelTransform;
-glUniformMatrix4fv(mvpLocation, 1, GL_FALSE, glm::value_ptr(mvp));
-	\end{lstlisting}
-	\pause And in the vertex shader, simply multiply the vertex position (in homogeneous coordinates) by the MVP matrix:
-	\pause\begin{lstlisting}[language=GLSL]
-uniform mat4 mvp;
-
-void main()
-{
-  gl_Position = mvp * vec4(vertexPos, 1.0);
-}
-	\end{lstlisting}
-\end{frame}
