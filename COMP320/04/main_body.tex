@@ -1,0 +1,52 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{algpseudocode}
+
+\usepackage{pdfpages}
+
+\usepackage{fancyvrb}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\newcommand{\bitems}{\begin{itemize}\item}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\spitem}{\item}
+\newcommand{\vone}{\par\vspace{2ex}\par}
+\newcommand{\vhalf}{\par}
+
+\begin{document}
+\title{\sessionnumber: Experimental design and statistical analysis}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+%\begin{frame}
+	%\frametitle{Learning outcomes}
+	%\begin{itemize}
+		%\item \textbf{Explain} what makes a good research question
+		%\item \textbf{Formulate} research questions in the area of your chosen project
+		%\item \textbf{Conduct} a scholarly literature review
+	%\end{itemize}
+%\end{frame}
+
+\input{experimentation}
+
+\input{stat_inference}
+
+\end{document}
