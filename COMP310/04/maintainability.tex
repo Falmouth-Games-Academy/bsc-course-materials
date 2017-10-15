@@ -1,0 +1,166 @@
+\part{Writing maintainable code}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Using multiple files}
+	\begin{lstlisting}
+  .include "MyFile.asm"
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Named variables}
+\begin{lstlisting}
+  .rsset $0000    ;put variables starting at 0								
+  score1   .rs 1  ;put score for player 1 at $0000						
+  score2   .rs 1  ;put score for player 2 at $0001						
+  buttons1 .rs 1  ;put controller data for p1 at $0002	
+  buttons2 .rs 1  ;put controller data for p2 at $0003	
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Named constants}
+\begin{lstlisting}
+  RIGHTWALL      = $02	
+  TOPWALL        = $20	
+  BOTTOMWALL     = $D8	
+  LEFTWALL       = $F6	
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Local labels}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+\begin{lstlisting}
+ReadA: 
+  ...
+  BEQ ReadADone   
+LoopA:
+  ...         
+  CPX #$10			
+  BNE LoopA       
+ReadADone:        
+  
+ReadB: 
+  ...
+  BEQ ReadBDone   
+LoopB:
+  ...
+  CPX #$10			
+  BNE LoopB
+ReadBDone:        
+\end{lstlisting}
+		\end{column}
+		\begin{column}{0.1\textwidth}
+			\pause{\large$$=$$}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+\begin{lstlisting}
+ReadA: 
+  ...
+  BEQ .Done   
+.Loop:
+  ...         
+  CPX #$10			
+  BNE .Loop
+.Done:
+
+ReadB: 
+  ...
+  BEQ .Done   
+.Loop:
+  ...         
+  CPX #$10			
+  BNE .Loop
+.Done:
+\end{lstlisting}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Local labels}
+	\begin{itemize}
+		\pause\item Name begins with \lstinline{.}
+		\pause\item Associated with the \textbf{preceding} global (i.e.\ non-local) label
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{First draft --- why doesn't this work?}
+\begin{lstlisting}
+ReadA: 
+  ...
+  BEQ .Done   
+LoopA:
+  ...         
+  CPX #$10			
+  BNE LoopA
+.Done:
+
+ReadB: 
+  ...
+  BEQ .Done   
+LoopB:
+  ...         
+  CPX #$10			
+  BNE LoopB
+.Done:
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Subroutines}
+\begin{lstlisting}
+Add4ToX:
+  INX
+  INX
+  INX
+  INX
+  RTS
+\end{lstlisting}
+\begin{lstlisting}
+  ; Usage:
+  JSR Add4ToX
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Macros}
+\begin{lstlisting}
+Add4ToX .macro
+  INX
+  INX
+  INX
+  INX
+  .endm
+\end{lstlisting}
+\begin{lstlisting}
+  ; Usage:
+  Add4ToX
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Subroutines vs macros}
+	\begin{itemize}
+		\pause\item Macros are expanded at \textbf{assembly time}
+		\pause\item Subroutines are called at \textbf{run time}
+		\pause\item Macros have less \textbf{CPU overhead}, at the expense of \textbf{program size}
+		\pause\item Macros can take \textbf{arguments}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Fun with macros}
+	How does this work?
+\begin{lstlisting}
+AddToX .macro
+  .if \1 > 0
+    INX
+    AddToX \1-1
+  .endif
+  .endm
+\end{lstlisting}
+\begin{lstlisting}
+  ; Usage:
+  AddToX 4
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{More tips}
+	Read the \texttt{usage.txt} file from \texttt{NESASM3.zip}
+\end{frame}
+
