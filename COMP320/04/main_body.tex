@@ -1,4 +1,4 @@
-%\documentclass[t]{beamer}
+\documentclass[t]{beamer}
 
 % Load general definitions
 \input{../Campelo/defs/preamble.tex}
@@ -124,54 +124,6 @@ Usually performed with an objective in mind:
 \item Can achieve good results, but has a lot of limitations;
 \eitem
 \end{columns}
-\end{ftst}
-
-
-\begin{ftst}
-{Experimentation strategies}
-{Educated guessing}
-\vspace{-1em}
-\begin{columns}[T]
-\column{0.8\textwidth}
-	\begin{block}{}
-		\bitems Select arbitrary combination;
-			\item Test an observe; 
-			\item Change and re-test;
-		\eitem
-	\end{block}
-	\vone
-	\centering\includegraphics[width=0.65\textwidth]{../Campelo/figs/edguess3.png}
-\column{0.2\textwidth}
-\vhalf
-	\centering\includegraphics[width=.9\textwidth]{../Campelo/figs/edguess2.jpg}
-\end{columns}
-\lfr{Images (c) Roots Run Deep Winery: \url{http://www.rootsrundeep.com/educated_guess.html}}
-\end{ftst}
-
-%=====
-
-\begin{ftst}
-{Experimentation strategies}
-{Educated guessing}
-\vspace{-1em}
-\begin{columns}[T]
-\column{0.8\textwidth}
-	\begin{block}{}
-		\bitems Select arbitrary combination;
-			\item Test an observe; 
-			\item Change and re-test;
-		\eitem
-	\end{block}
-	\vone
-	\centering\includegraphics[width=0.65\textwidth]{../Campelo/figs/edguess3.png}
-\column{0.2\textwidth}
-\vhalf
-	\centering\includegraphics[width=.9\textwidth]{../Campelo/figs/edguess2.jpg}
-\end{columns}
-\begin{tikzpicture}[remember picture,overlay]
-	\node[anchor=south,yshift=20pt, xshift=-40pt] at (current page.south) {\includegraphics[width=9cm]{../Campelo/figs/edguess3b.png}};
-\end{tikzpicture}
-\lfr{Images (c) Roots Run Deep Winery: \url{http://www.rootsrundeep.com/educated_guess.html}}
 \end{ftst}
 
 %=====
@@ -384,19 +336,6 @@ Experimental design is useful for avoiding the influence of spurious factors and
 
 \begin{ftst}
 {Structure of Experimental Design}
-{Main points}
-To enable the use of a scientific approach in the design of an experiment, it is important to have on a solid understanding of:
-\vhalf
-\bitems The field where the experiment is to be conducted;
-	\spitem The strategy for data collection;
-	\spitem The way the data should be analyzed (at least qualitatively).
-\eitem
-\end{ftst}
-
-%=====
-
-\begin{ftst}
-{Structure of Experimental Design}
 {Guidelines for a good design}
 \bitems Pre-experimental design:
 
@@ -423,18 +362,6 @@ To enable the use of a scientific approach in the design of an experiment, it is
 	\spitem Placement within the literature;
 	\bitems Avoid repetition and irrelevance.\eitem
 \eitem
-\begin{columns}[T]
-\column{0.7\textwidth}
-\begin{colorblock}{}{bg=green!30,fg=black}
-{\ \\\ \\\scriptsize``\textit{Sometimes one should do a completely wild experiment,\\like blowing the trumpet to the tulips every morning\\for a month. Probably nothing would happen, but what if it did?}''\\}
-{\tiny -- Sir George Howard Darwin}
-\end{colorblock}
-\column{0.3\textwidth}
-\end{columns}
-\begin{tikzpicture} [remember picture,overlay]
-\node[anchor=south east,yshift=0pt,xshift=10pt] at (current page.south east) {\includegraphics[height=2.5cm]{../Campelo/figs/ttt.png}};
-\end{tikzpicture}
-\lfr{Girl playing: \url{http://www.film.queensu.ca/tulips/default.html}}
 \end{ftst}
 
 %=====
@@ -444,68 +371,21 @@ To enable the use of a scientific approach in the design of an experiment, it is
 {Definition of hypotheses}
 \bitems The translation \textit{scientific question} $\rightarrow$ \textit{test hypothesis} requires special attention, and a solid knowledge of the technical area in which the experiment is being performed;
 \eitem
-\vone
-\begin{tikzpicture}[remember picture,overlay]
-		\node[anchor=south,yshift=25pt, xshift=0pt] at (current page.south) {\includegraphics[width=0.9\textwidth]{../Campelo/figs/phdcmics_murphy.jpg}};
-	\end{tikzpicture}
-	\lfr{Image: \url{http://phdcomics.com/comics/archive.php?comicid=1867}}
 \end{ftst}
 
 %=====
-
-\begin{ftst}
-{Choice of Experimental Design}
-{Experimental design}
-\bitems (Relatively) simple, as long as the pre-experimental part is well done;
-	\spitem Dependent on what is being tested (statistical question);
-	\spitem A sound design tends to determine the analyses technique to be used, at least  qualitatively;
-	\spitem Involves considerations about:
-	\bitems Sample size;
-		\item Ordering of observations;
-		\item Determination of restrictions to the randomization and the use of blocks, etc.
-	\eitem
-	\spitem Available in several statistical/mathematical packages;
-\eitem
-\end{ftst}
-
-%=====
-
-\begin{ftst}
-{Choice of Experimental Design}
-{Problem-dependent}
-\bitems Depending on the experimental question, different experimental designs are required
-	\spitem A solid, statistically sound design tends to determine which statistical tests must be employed in the analysis step, at least qualitatively.
-	\spitem Quantification of the proportion between intra-groups and inter-groups variability;
-\eitem
-\end{ftst}
 
 \begin{ftst}
 {Actual Experiment}
 {Data gathering}
 \bitems Must be consistent with design, otherwise the validity of the results may be compromised - data collection must always follow the plan:\vhalf
 	\bitems No premature stops;	
-		\spitem\textit{No-peeking rule}\footnote[1]{Except when planned, of course.};
+		\spitem\textit{No-peeking rule} (except when planned, of course);
 	\eitem
 	\spitem Use of pilot experiments:\vhalf
 	\bitems Gathering of preliminary information;
 		\spitem Practice with the experimental conditions;
 	\eitem
-\eitem
-\end{ftst}
-
-%=====
-
-\begin{ftst}
-{Analysis of the experimental data}
-{A consequence of design}
-\bitems Analysis techniques are generally relatively simple, but \textit{the devil is in the details};
-	\spitem Use of existing statistical tools and frameworks, such as
-\eitem
-\begin{center}
-\includegraphics[width=0.2\textwidth]{../Campelo/figs/rlogo.png}
-\end{center}
-\bitems Free, versatile, good graphical capabilities, relatively simple\\
-(but with one hell of a learning curve);
 \eitem
 \end{ftst}
 
@@ -567,34 +447,20 @@ Combine textual, numeric and graphical elements to tell a story with your data. 
 \end{colorblock}
 \end{ftst}
 
-\begin{ftst}
-{Discussion}
- {Some more relevant points}
-\bitems Use of previous knowledge, theoretical or empirical;
-	\spitem Iterative experimentation;
-	\spitem Statistical $\times$ practical significance;
-	\spitem Use of additional experiments to validate conclusions.
-\eitem
-\end{ftst}
-
 
 
 \begin{ftst}
 {Bibliography}
 {\ }
 \scriptsize
-\textbf{Required reading}
 
 \benums Dept. Biochemistry \& Cell Biology, Rice University , \textit{Common Errors in Student Research Papers.} - {\tiny\url{http://www.ruf.rice.edu/~bioslabs/tools/report/reporterror.html}}
 \item T. Brady, \textit{Reviewer's quick guide to common statistical errors in scientific papers.}\\
 {\tiny\url{https://goo.gl/IKvAYc}}
 \item R.M. Szydloa et al., \textit{Sign of the Zodiac as a predictor of survival for recipients of an allogeneic stem cell transplant for chronic myeloid leukaemia (CML): an artificial association.} Transplantation Proceedings 42 (8):3312-3315, 2010.
 \item D.C. Montgomery, \textit{Design and Analysis of Experiments}, Chapter 1. 5th ed., Wiley, 2005
-\eenum
 
-\textbf{Recommended reading}
-
-\benums S.C. Stearns, \textit{Some Modest Advice for Graduate Students} - {\tiny\url{http://goo.gl/jtT4hA}}
+\item S.C. Stearns, \textit{Some Modest Advice for Graduate Students} - {\tiny\url{http://goo.gl/jtT4hA}}
 \item A. Rendahl, \textit{Experimental design and statistical analysis: questions to consider as you write your grant.} - {\tiny\url{http://goo.gl/yT0TK7}}
 \item J. Maddox et al., \textit{``High-dilution'' experiments a delusion.} Nature 334, 287-290, 1988
 \item V. Czitron, \textit{One-Factor-at-a-Time Versus Designed Experiments.} The American Statistician, 53(2) 126-131, 1999.
@@ -606,43 +472,7 @@ Combine textual, numeric and graphical elements to tell a story with your data. 
 
 %=====
 
-\begin{ftstf}{About this material}{Conditions of use and referencing}
-\centering\footnotesize This work is licensed under the Creative Commons CC BY-NC-SA 4.0 license\\(Attribution Non-Commercial Share Alike International License version 4.0).\\
-\vhalf
-\url{http://creativecommons.org/licenses/by-nc-sa/4.0/}\\
-\vone
-\footnotesize Please reference this work as:\\
-\footnotesize \flushleft Felipe Campelo (2015), \textit{Lecture Notes on Design and Analysis of Experiments}.\\Online: {\scriptsize\url{https://github.com/fcampelo/Design-and-Analysis-of-Experiments}}\\
-Version 2.11, Chapter 2; Creative Commons BY-NC-SA 4.0.\\
-
-\begin{Verbatim}[fontsize=\tiny]
-    @Misc{Campelo2015-01,
-      title={Lecture Notes on Design and Analysis of Experiments},
-      author={Felipe Campelo},
-      howPublished={\url{https://github.com/fcampelo/Design-and-Analysis-of-Experiments}},
-      year={2015},
-      note={Version 2.11, Chapter 2; Creative Commons BY-NC-SA 4.0.},
-    }
-\end{Verbatim}
-
-\begin{tikzpicture} [remember picture,overlay]
-\node[anchor=south,yshift=0pt] at (current page.south){ \includegraphics[width=.2\textwidth]{../Campelo/figs/CCSomerights.png}};
-\end{tikzpicture}
-\end{ftstf}
-
-% --------------------------------------------------------------------------------------------
-
 % Main slides
-\begin{ftst}
-{Statistical Inference}
-{Introduction}
-Definitions such as point estimators and statistical intervals belong to a branch of statistical theory known as \textit{descriptive statistics}, that is, methods that are focused on accurately describing characteristics such as location or uncertainty about a given population parameter;
-\vone
-While these concepts are certainly important, in many cases description is not enough -- one may need decision-making tools to deal with information from random samples, tools that allow a researcher to perform \textit{inference} with a quantifiable degree of certainty.
-\end{ftst}
-
-%=====
-
 \begin{ftst}
 {Statistical hypotheses}
 {Scientific Hypotheses}
@@ -737,26 +567,6 @@ On frequentist approaches, the formal test of hypotheses involves the contrast b
 
 \begin{ftst}
 {Statistical Hypotheses}
-{Definitions}
-Determination of the reference value for the null hypothesis $H_0$:
-
-\bitems Previous knowledge about the process (investigation of changes);
-	\item Value obtained from theory or models (model validation);
-	\item Project requirements (investigation of system compliance);
-\eitem
-\vone
-Hypothesis testing involves:
-
-\bitems Obtaining the sample;
-	\item Calculation of test statistics;
-	\item Decision based on the computed value;
-\eitem
-\end{ftst}
-
-%=====
-
-\begin{ftst}
-{Statistical Hypotheses}
 {Example}
 Suppose you own a company that sells green peas to large customers, 
 and that you want to determine whether your $50$kg sacks really 
@@ -819,7 +629,7 @@ Another frequently used term is the \textit{confidence level} of the test, given
 {Type I error}
 For a given sample, the selected value of $\alpha$ defines the critical threshold for the rejection of $H_0$.
 \vone
-If $H_0$ is true (i.e., if $\mu=50$kg), the distribution of values of $\bar{x}$ is aproximately normal (assuming the CLT holds), with average $50$kg and standard error $(\sigma/\sqrt{n})$ kg;
+If $H_0$ is true (i.e., if $\mu=50$kg), the distribution of values of $\bar{x}$ is aproximately normal (assuming the Central Limit Theorem holds), with average $50$kg and standard error $(\sigma/\sqrt{n})$ kg;
 \vone
 For a desired Type-I error probability $\alpha=0.05$, the critical values of the distribution of $\bar{x}$ are the ones for which the probability content within the acceptance region under the null hypothesis is $1-\alpha = 0.95$.
 \begin{tikzpicture}[remember picture,overlay]
@@ -931,97 +741,7 @@ H_1: \mu \neq 50kg
 \end{cases}\eqs
 \vone
 Let the desired significance level be $\alpha = 0.05$;
-\vone
-Given these characteristics, we expect that the sampling distribution of $\bar{X}$ is normal, with $Var(\bar{X})=\sigma^2/n$ and -- \textbf{if $H_0$ is true } -- a mean of $\mu_{\bar{X}}=\mu_0=50$;
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=12pt,xshift=-5pt] at (current page.north east) {\includegraphics[width=0.2\textwidth]{../Campelo/figs/peas.png}};
-\end{tikzpicture}
 \end{ftst}
-
-%=====
-
-\begin{ftst}
-{Hypothesis Testing}
-{Mean of a normal distribution, variance known}
-Based on these characteristics, the standardized variable
-\beqs Z_0 = \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}}\eqs
-\vhalf
-\noindent will be distributed according to the standard normal, $\mathcal{N}\left(0,1\right)$, \textbf{if $\mathbf{H_0}$ is true}.
-\vhalf
-This result implies that:
-\beqs
-P\left(z_{\alpha/2}\leq Z_0\leq z_{1-\alpha/2}\mid H_0~\mbox{is true}\right) = 1-\alpha
-\eqs
-
-\noindent which provides a selection criterion between $H_0$ and $H_1$:
-\vhalf
-\bitems If $z_{\alpha/2}> Z_0$ or $z_{1-\alpha/2}<Z_0$, reject $H_0$ with confidence $(1-\alpha)$;
-	\spitem Otherwise, there is not enough evidence to reject $H_0$ at this confidence level;
-\eitem
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=12pt,xshift=-5pt] at (current page.north east) {\includegraphics[width=0.2\textwidth]{../Campelo/figs/peas.png}};
-\end{tikzpicture}
-\end{ftst}
-
-%=====
-
-\begin{ftst}
-{Hypothesis Testing}
-{Mean of a normal distribution, variance known}
-Assume that we got $\bar{x} = 49.65$kg from our $n=10$ observations, and that we know that $\sigma = 1$kg. In this case,
-
-\beqs 
-z_0 = \frac{49.65 - 50}{1/\sqrt{10}} = -1.113
-\eqs
-\vhalf
-The critical values of the standard normal distribution at the significance level $\alpha = 0.05$ are $\left[z_{0.025},z_{0.975}\right] = \left[-1.96,1.96\right]$;
-\vone
-Since $z_0\in \left[-1.96,1.96\right]$, we can conclude that there is not enough evidence to reject $H_0$ at the $95\%$ confidence level.
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=12pt,xshift=-5pt] at (current page.north east) {\includegraphics[width=0.2\textwidth]{../Campelo/figs/peas.png}};
-\end{tikzpicture}
-\end{ftst}
-
-%=====
-
-\begin{ftst}
-{Hypothesis Testing}
-{Mean of a normal distribution, variance unknown}
-Suppose now a more realistic situation in which the real variance is unknown. Besides, assume that we are interested in detecting only negative deviations from the nominal contents of the package.
-\vone
-The test hypotheses can be defined as:
-\beqs\begin{cases}
-H_0: \mu \geq 50kg\\
-H_1: \mu < 50kg 
-\end{cases}\eqs
-\vhalf
-Assume also that we want to be more conservative, so we pick a significance level $\alpha = 0.01$;
-\vone
-In this case, \textbf{if $H_0$ is true}, we have that
-\beqs T_0 = \frac{\bar{X} - \mu_0}{S/\sqrt{n}} \sim t_{n-1}
-\eqs
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=12pt,xshift=-5pt] at (current page.north east) {\includegraphics[width=0.2\textwidth]{../Campelo/figs/peas.png}};
-\end{tikzpicture}
-\end{ftst}
-
-%=====
-
-\begin{ftst}
-{Hypothesis Testing}
-{Mean of a normal distribution, variance unknown}
-From the same data used earlier, $\bar{x} = 49.65$kg, $n=10$, $s = 0.697$kg:
-\beqs t_0 = \frac{49.65 - 50}{0.697/\sqrt{10}} = -1.597\eqs
-\vhalf
-The critical value of this test statistic for the desired significance is $t_{\alpha,n-1} = t_{0.01,9} = -2.82$, which means that under $H_0$ there is a $99\%$ change that the test statistic will yield a value greater than this number.
-\vone
-Given that $t_0 > -2.82$, we conclude that the evidence is insufficient to reject $H_0$ at the $99\%$ confidence level;
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=12pt,xshift=-5pt] at (current page.north east) {\includegraphics[width=0.2\textwidth]{../Campelo/figs/peas.png}};
-\end{tikzpicture}
-\end{ftst}
-
-%=====
 
 \begin{ftstf}
 	{Hypothesis Testing}
@@ -1080,15 +800,22 @@ Even thought it is correct, this description is relatively poor:
 \vone
 Can be interpreted as the probability under $H_0$ of the test statistic assuming a value at least as extreme as the one obtained;
 \vone\vhalf
-For the previous example, the p-value could be calculated as:
+For the previous example, R gives the p-value as $0.07237$. Interpretation:
 \beqs
-p = P(t_0\leq -1.597|H_0 = \mbf{TRUE}) = \int\limits_{-\infty}^{-1.597}t_{(df=9)}dt = 0.07237
+p = P(\bar{x} \leq 49.648|H_0 = \mbf{TRUE}) = 0.07237
 \eqs
 \vhalf
 
 \begin{block}{}
 \centering\textit{A priori} definition of the significance level is still important!
 \end{block}
+\end{ftst}
+
+\begin{ftst}
+{Hypothesis Testing}
+{Beware $p$-value fishing}
+\centering\includegraphics[height=0.8\textheight]{xkcd_significant_crop}
+\lfr{Image adapted from \url{https://xkcd.com/882/}}
 \end{ftst}
 
 %=====
@@ -1258,147 +985,16 @@ We need at least 48 observations to detect a $-5g\ (1\%)$ or larger deviation on
 \end{tikzpicture}
 \end{ftstf}
 
-\begin{ftst}
-{Model validation}
-{The normality assumption}
-The assumption of normality, required for the \textbf{z} and \textbf{t} tests, needs to be validated.
-	\begin{colorblock}{}{bg=green!30,fg=black}
-	``\textit{The Assumption of Normality (note the upper case) that underlies parametric stats does not assert that the observations within a given sample are normally distributed, nor does it assert that the values within the population (from which the sample was taken) are normal. This core element of the Assumption of Normality asserts that \textbf{the distribution of sample means (across independent samples) is normal.}}''\\
-	\flushright -- J. Toby Mordkoff, 2011.$^{(a)}$
-	\end{colorblock}
-
-\lfr{$^{(a)}$ Check J.T. Mordkoff's \textit{The assumption(s) of normality} for a nice discussion on this topic: \url{http://goo.gl/Z3w8ku}}
-\end{ftst}
-
-%=====
-
-\begin{ftstf}
-{Model validation}
-{The normality assumption}
-If the conditions for the CLT cannot be assumed \textit{a priori}, then normality tests can be performed on the data.
-\vone
-Graphical/qualitative tests;
-\vone
-\begin{rcode}
-> library(car)
-> qqPlot(sample,
-+        pch=16,
-+        cex=1.5,
-+        las=1)
-\end{rcode}
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=south east,yshift=-10pt,xshift=10pt] at (current page.south east) {\includegraphics[width=.7\textwidth]{../Campelo/figs/GraphNorm.pdf}};
-\node[anchor=south east,yshift=42pt,xshift=-120pt] at (current page.south east) {\color{red}$\boldsymbol{\longleftarrow}$ \textit{outlier}?};
-\node[anchor=north east,yshift=12pt,xshift=-5pt] at (current page.north east) {\includegraphics[width=0.2\textwidth]{../Campelo/figs/peas.png}};
-\end{tikzpicture}
-\end{ftstf}
-
-%=====
-
-\begin{ftst}
-{Model validation}
-{The normality assumption}
-Analytical tests of normality (choose \textbf{one});
-\bitems Shapiro-Wilk;
-	\item Anderson-Darling;
-	\item Lilliefors / Kolmogorov-Smirnov;
-\eitem
-\vone
-These procedures use different aspects of the sample distribution to test the following hypotheses:
-\beqs\begin{cases}
-	H_0: \mbox{population is normal}\\
-	H_1: \mbox{population is not normal}
-\end{cases}\eqs
-\vhalf
-In this case, rejection of the null hypothesis suggests evidence that the \textbf{sample} came from a non-normal population. Generally we use a strict $\alpha$ threshold for these tests, and consider their results together with a graphical analysis.
-\end{ftst}
-
-%=====
-
-\begin{ftstf}
-{Model validation}
-{The normality assumption}
-Even thought the Lilliefors / Kolmogorov-Smirnov test is possibly the most widely used for normality testing, the Shapiro-Wilk test is recommended as a better alternative in Michael Crawley's \textit{The R Book}, and will be used throughout this course.
-\vhalf
-\begin{rcode}
-> shapiro.test(sample)
-
-Shapiro-Wilk normality test
-data:  sample
-W = 0.8809, p-value = 0.1335
-\end{rcode}
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=12pt,xshift=-5pt] at (current page.north east) {\includegraphics[width=0.2\textwidth]{../Campelo/figs/peas.png}};
-\end{tikzpicture}
-\end{ftstf}
-
-%=====
-
-\begin{ftstf}
-{Model validation}
-{The independence assumption}
-Possibly the strongest assumption of the statistical model used for the t-test is that of independence, that is, of the absence of unmodeled biases contaminating the data.
-\vhalf
-While I know of no procedure to test independence in the general case, the special case of serial autocorrelations in the data (which can emerge, for instance, as a consequence of heating effects or equipment degradation) can be tested by a procedure known as the Durbin-Watson test:
-\begin{rcode}
-> library(car)
-> durbinWatsonTest(lm(sample ~ 1))
-
-lag Autocorrelation D-W Statistic p-value
-1      -0.0848535      2.111733   0.898
-Alternative hypothesis: rho != 0
-\end{rcode}
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=12pt,xshift=-5pt] at (current page.north east) {\includegraphics[width=0.2\textwidth]{../Campelo/figs/peas.png}};
-\end{tikzpicture}
-\end{ftstf}
-
-%=====
-
-\begin{ftstf}
-{Model validation}
-{The independence assumption}
-The Durbin-Watson test depends on the ordering of the data, so observations should be ordered (either in the data file or by manipulating the data vector) according to covariates that are suspected to introduce dependencies, e.g., order of collection, placement criteria, etc.
-\vone
-Violations of the independence assumption tend to be the hardest to weed out, so extra care is recommended in the design of the experiment in order to prevent, control, or at least document all variables that could introduce dependencies in the data.
-\end{ftstf}
-
-%=====
-
-\begin{ftst}
-{The green peas experiment}
-{Going over the process}
-After examining the green peas example, it is interesting to go back and follow the recommended sequence for this kind of experiment:
-
-\bitems Formulate question of interest;
-	\spitem Define minimally interesting effect;
-	\spitem Define desired confidence and power;
-	\spitem Calculate required sample size;
-	\spitem Collect data;
-	\spitem Perform statistical analysis;
-	\spitem Draw conclusions and recommendations.
-\eitem
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=12pt,xshift=-5pt] at (current page.north east) {\includegraphics[width=0.2\textwidth]{../Campelo/figs/peas.png}};
-\end{tikzpicture}
-\end{ftst}
-
-%=====
-
 
 \begin{ftst}
 {Bibliography}
 {\ }
 \scriptsize
-\textbf{Required reading}
 
 \benums D.C. Montgomery, G.C. Runger, \textit{Applied Statistics and Probability for Engineers}, Ch. 9.\\5th ed., Wiley, 2010. 
 \item J.T. Mordkoff (2011), \textit{The assumption(s) of normality} - \url{http://goo.gl/Z3w8ku}
-\eenum
 
-\textbf{Recommended reading}
-
-\benums A. Reinhart, \textit{Statistics Done Wrong: the woefully complete guide} - {\tiny\url{http://www.statisticsdonewrong.com}}
+\item A. Reinhart, \textit{Statistics Done Wrong: the woefully complete guide} - {\tiny\url{http://www.statisticsdonewrong.com}}
 \item W. Thalheimer and S. Cook, \textit{How to calculate effect sizes from published research articles: A simplified methodology} - {\tiny\url{http://goo.gl/c0g1oK}}
 \item E. Ernst and S. Singh, \textit{Trick or Treatment}, Norton \& Company, 2009.
 \eenum
