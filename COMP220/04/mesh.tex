@@ -46,65 +46,6 @@ glEnable(GL_CULL_FACE);
 	\end{center}
 \end{frame}
 
-\begin{frame}[fragile]{Passing coordinates}
-	\begin{itemize}
-		\pause\item Like many C functions, \lstinline{glBufferData} takes an array as a \textbf{pointer} and a \textbf{size}
-	\end{itemize}
-	\pause\begin{lstlisting}
-GLfloat vertexPositions[] = {
-    -0.5f, -0.5f, 0.0f,
-    0.5f, -0.5f, 0.0f,
-    0.0f,  0.5f, 0.0f,
-};
-
-glBufferData(GL_ARRAY_BUFFER,
-	sizeof(vertexPositions), // the size
-	vertexPositions,         // the pointer
-	GL_STATIC_DRAW);
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Passing vertices}
-	\begin{itemize}
-		\pause\item \lstinline{glm::vec3} has the same layout in memory as three \lstinline{GLfloat}s, so we could also do this:
-	\end{itemize}
-	\pause\begin{lstlisting}
-glm::vec3 vertexPositions[] = {
-    glm::vec3(-0.5f, -0.5f, 0.0f),
-    glm::vec3(0.5f, -0.5f, 0.0f),
-    glm::vec3(0.0f,  0.5f, 0.0f),
-};
-
-glBufferData(GL_ARRAY_BUFFER,
-	sizeof(vertexPositions), // the size
-	vertexPositions,         // the pointer
-	GL_STATIC_DRAW);
-	\end{lstlisting}
-	\begin{itemize}
-		\pause\item The third argument to \lstinline{glBufferData} is a \lstinline{void*}, which can accept any pointer type
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Vectors of vectors}
-	\begin{itemize}
-		\pause\item We can use a \lstinline{std::vector} instead of a C-style array:
-	\end{itemize}
-	\pause\begin{lstlisting}
-std::vector<glm::vec3> vertexPositions;
-vertexPositions.push_back(...);
-
-glBufferData(GL_ARRAY_BUFFER,
-	vertexPositions.size() * sizeof(glm::vec3),
-	vertexPositions.data(),
-	GL_STATIC_DRAW);
-	\end{lstlisting}
-	\begin{itemize}
-		\pause\item \lstinline{data()} returns a pointer to the data inside a \lstinline{std::vector}
-		\pause\item \lstinline{size()} returns the number of elements,
-			so multiplying by \lstinline{sizeof(glm::vec3)} gives the size in bytes
-	\end{itemize}
-\end{frame}
-
 \begin{frame}{Let's draw a square!}
 	\begin{center}
 		\includegraphics[height=0.8\textheight]{square_vertices}

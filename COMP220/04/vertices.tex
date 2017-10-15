@@ -1,0 +1,36 @@
+\part{Vertices}
+\frame{\partpage}
+
+\begin{frame}{Interleaved Vertices}
+	\begin{itemize}
+		\item Up until this point we have been storing vertex positions as floats
+		\item If we need a vertex to have colours, we can store these in a separate Vertex Buffer
+		\item Or we can create a \textbf{C structure} which represents a Vertex
+		\item This is known as Interleaved Vertices and in \textbf{MOST} cases is more efficient
+	\end{itemize}
+\end{frame}
+
+\begin{frame}}[fragile]{Vertex Structure 1}
+	\begin{lstlisting}
+		struct Vertex
+		{
+			float x,y,z;
+		};
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}}[fragile]{Vertex Structure 2}
+	\begin{lstlisting}
+		struct Vertex
+		{
+			float x,y,z;
+			float r,g,b,a;
+		};
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Changes to the Vertex Buffer}
+	\begin{itemize}
+		\item There will be a slight change 
+	\end{itemize}
+\end{frame}
