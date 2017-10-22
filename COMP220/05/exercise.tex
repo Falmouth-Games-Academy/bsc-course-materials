@@ -1,0 +1,45 @@
+\part{Exercises}
+\frame{\partpage}
+
+\begin{frame}{Exercise 1 - Texturing}
+	\begin{itemize}
+		\item Load in a image using SDL Image
+		\item Copy this image into a OpenGL Texture
+		\item Add Texture Coordinates to your Cube or Square
+		\item Map this texture onto the Cube or Square
+		\item Finally change the texture to a transparent texture
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exercise 2 - Model Loading}
+	\begin{itemize}
+		\item Load and display a model using Open Asset Importer
+		\item Change the model so that you load the following
+		\begin{itemize}
+			\item Tetrahedron 
+			\item Cube
+			\item Sphere
+			\item Cylinder
+		\end{itemize}
+		\item \url{http://assimp.sourceforge.net/howtoBasicShapes.html}
+		\item \url{https://github.com/assimp/assimp/tree/master/test/models/NFF/NFF}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exercise 3 - More Complex Scene}
+	\begin{itemize}
+		\item Create a GameObject class which contains the following as member variables
+		\begin{itemize}
+			\item Vertex Buffer
+			\item Element Buffer
+			\item Vertex Array Object
+			\item Position, Scale, Rotation Vectors
+			\item Position, Scale, Rotation, Model Matrices
+			\item Open GL Texture
+			\item Number of vertices and Indices
+		\end{itemize}
+		\item Add in functions to initialise and get each of these values
+		\item Add in functions to update (calculate the model matrix) and render
+		\item Create an instance of this Game Object and display it on the screen
+	\end{itemize}
+\end{frame}

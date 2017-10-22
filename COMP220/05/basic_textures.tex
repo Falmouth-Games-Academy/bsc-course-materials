@@ -3,7 +3,7 @@
 
 \begin{frame}{Loading textures from a file}
 	\begin{itemize}
-		\pause\item The \textbf{SDL\_Image library} lets us load images from JPG, PNG, BMP etc.
+		\item The \textbf{SDL\_Image library} lets us load images from JPG, PNG, BMP etc.
 		\pause\item Steps:
 			\begin{itemize}
 				\pause\item Load the image with \lstinline{IMG_Load}
@@ -17,7 +17,7 @@
 
 \begin{frame}{Texture coordinates}
 	\begin{itemize}
-		\pause\item We use \textbf{UV coordinates} to refer to points in a texture
+		\item We use \textbf{UV coordinates} to refer to points in a texture
 		\pause\item $u$ axis is horizontal and ranges from 0 (left) to 1 (right)
 		\pause\item $v$ axis is vertical and ranges from 0 (bottom) to 1 (top)
 		\pause\item (So really just another name for $xy$ coordinates in texture space)
@@ -54,7 +54,7 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	\end{lstlisting}
 	\begin{itemize}
-		\pause\item \textbf{Linear interpolation} (\lstinline{GL_LINEAR})
+		\item \textbf{Linear interpolation} (\lstinline{GL_LINEAR})
 			smooths between pixels
 		\pause\item \textbf{Nearest neighbour} (\lstinline{GL_NEAREST})
 			is pixelated but may be slightly faster
@@ -67,7 +67,7 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 \begin{frame}{Texture dimensions}
 	\begin{itemize}
-		\pause\item In the old days, OpenGL required textures to have \textbf{power of two} dimensions
+		\item In the old days, OpenGL required textures to have \textbf{power of two} dimensions
 			\begin{itemize}
 				\pause\item $2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, \dots$
 			\end{itemize}
@@ -75,4 +75,10 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		\pause\item Still better to stick to powers of two as some things work better (e.g.\ mipmapping)
 		\pause\item NB: \textbf{rectangular} textures are fine, but \textbf{square} textures make UV coordinates saner
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		Texture Mapping Example
+	\end{center}
 \end{frame}
