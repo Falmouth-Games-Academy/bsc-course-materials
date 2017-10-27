@@ -1,0 +1,54 @@
+\part{Computability}
+\frame{\partpage}
+
+\begin{frame}{Computability theory}
+	\begin{itemize}
+		\pause\item Let $A$ and $B$ be \textbf{sets} of elements
+			\begin{itemize}
+				\pause\item NB: $A$ may be \textbf{infinite}
+			\end{itemize}
+		\pause\item A function $f : A \to B$ is \textbf{computable} if there exists a Turing machine
+			which computes $f$
+			\begin{itemize}
+				\pause\item I.e.\ given an encoding of $a \in A$ as input, the Turing machine outputs an encoding of
+					$f(a)$
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{An uncomputable function}
+	The \textbf{halting problem}
+	\begin{itemize}
+		\pause\item $A$ = the set of all Turing machines
+		\pause\item $B = \{ \operatorname{true}, \operatorname{false} \}$
+		\pause\item $f(a) = \begin{cases}
+			\operatorname{true} & \text{ if $a$ halts in finite time on all inputs} \\
+			\operatorname{false} & \text{ otherwise}
+		\end{cases}$
+		\pause\item There is \textbf{no} Turing machine that computes $f$
+		\pause\item $f$ is \textbf{uncomputable}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Turing completeness}
+	\begin{itemize}
+		\pause\item A system (e.g.\ a computer or programming language) is \textbf{Turing complete}
+			if it can implement any given Turing machine
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Church-Turing Thesis}
+	\begin{itemize}
+		\pause\item If a function is \textbf{effectively calculable}, then it is \textbf{computable} by a Turing machine
+		\pause\item Effectively calculable = there is a method or algorithm for computing it
+		\pause\item So in terms of computability, Turing machines are as powerful as computers can be
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Halting revisited}
+	\begin{itemize}
+		\pause\item Write a software tool that, given a Python program, predicts whether that program can go into an infinite loop
+		\pause\item Your tool must work for \textbf{all} Python programs
+		\pause\item Is this possible?
+	\end{itemize}
+\end{frame}
