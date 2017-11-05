@@ -1,14 +1,15 @@
-\part{The Phong illumination model}
+\part{The Blinn-Phong illumination model}
 \frame{\partpage}
 
-\begin{frame}{The Phong illumination model}
-	\pause Bui Tuong Phong,
-	``Illumination for Computer Generated Pictures''.
-	\textit{Communications of the ACM},
-	18(6):311--317,
-	1975.
+\begin{frame}{The Blinn-Phong illumination model}
+	\pause Jim Blinn,
+	``Models of light reflection for computer synthesized pictures''.
+	\textit{ACM SIGGRAPH Computer Graphics},
+	11(2):192--198,
+	1977.
 	
-	\pause The Phong model breaks lighting down into three parts:
+	\pause The Blinn-Phong model builds on the Phong shading model
+	\pause It breaks lighting down into three parts:
 		\textbf{ambient}, \textbf{diffuse}, and \textbf{specular}.
 		
 	\pause\includegraphics[width=\textwidth]{phong}
@@ -103,14 +104,6 @@
 		\pause\item In the real world, light scattered from one surface illuminates others
 		\pause\item In the Phong model, we cheat and add a little \textbf{ambient} intensity to the lighting
 		\pause\item Another option would be to add more light sources...
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Normals revisited}
-	\begin{itemize}
-		\pause\item Currently, all points on a triangle have \textbf{the same} normal
-		\pause\item This gives the triangles a ``flat'' look, which may be what we want
-		\pause\item Using different normals for the vertices can give a ``curved'' look
 	\end{itemize}
 \end{frame}
 
