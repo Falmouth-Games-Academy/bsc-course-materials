@@ -86,14 +86,14 @@
 		\end{column}
 		\begin{column}{0.65\textwidth}
 			\begin{itemize}
-				\pause\item Let $r$ be the reflection angle (can be calculated in GLSL by \lstinline[language=GLSL]{reflect(-i, n)})
-				\pause\item $e$ is a unit vector pointing from the surface towards the camera
+				\pause\item Let $h$ be the halfway vector, calculated by $i+v$
+				\pause\item $h$ can be thought of as the surface normal which leads to the maximum reflection in $v$
 			\end{itemize}
 		\end{column}
 	\end{columns}
 	\begin{itemize}
 		\pause\item Specular light intensity is proportional to
-		$$ \operatorname{clamp}(e \cdot r)^s $$
+		$$ \operatorname{clamp}(n \cdot h)^s $$
 		where $s$ is a ``shininess'' parameter, and $\operatorname{clamp}(x)$ clamps its argument between $0$ and $1$
 	\end{itemize}
 \end{frame}
