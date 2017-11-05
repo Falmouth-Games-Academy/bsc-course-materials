@@ -62,25 +62,13 @@
 }
 
 \begin{frame}{Search}
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			\namesunsorted
-		\end{column}
-		\begin{column}{0.66\textwidth}
 			\begin{itemize}
 				\item We have a list of names, each with some data associated \pause
 				\item We want to find one of them
 			\end{itemize}
-		\end{column}
-	\end{columns}
 \end{frame}
 
 \begin{frame}{Linear search}
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			\namesunsorted
-		\end{column}
-		\begin{column}{0.66\textwidth}
 			\begin{algorithmic}
 				\Procedure{Find}{name, list} \pause
 					\For{each item in list} \pause
@@ -91,8 +79,6 @@
 					\State \textbf{throw} ``Not found'' \pause
 				\EndProcedure
 			\end{algorithmic}
-		\end{column}
-	\end{columns}
 \end{frame}
 
 \begin{frame}{How long does it take?}
@@ -130,16 +116,9 @@
 \end{frame}
 
 \begin{frame}{Searching a sorted list}
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			\namessorted
-		\end{column}
-		\begin{column}{0.66\textwidth}
 			\begin{itemize}
 				\item If the list is \textbf{sorted} in alphabetical order, we can do better than linear...
 			\end{itemize}
-		\end{column}
-	\end{columns}
 \end{frame}
 
 \begin{frame}{Binary search}
@@ -159,6 +138,8 @@
 		\EndProcedure
 	\end{algorithmic}
 \end{frame}
+
+\iffalse
 
 \begin{frame}{Find ``Lopez, Jeffrey''}
 	\begin{columns}
@@ -304,6 +285,8 @@
 	\end{columns}
 \end{frame}
 
+\fi
+
 \begin{frame}{How long does it take?}
 	Socrative room code: \texttt{FALCOMPED}
 	\begin{columns}
@@ -313,7 +296,7 @@
 				\item Worst case: we have to keep halving until we get down to a single element \pause
 				\item If the size of the list is \textbf{doubled}, what happens to the worst-case
 					\textbf{number of iterations} required? \pause
-				\item \textbf{Answer:} it increases by 1 \pause
+				\iftoggle{printable}{}{\item \textbf{Answer:} it increases by 1 \pause}
 				\item The running time is \textbf{logarithmic} or $O(\log n)$ \pause
 			\end{itemize}
 		\end{column}
