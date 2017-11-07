@@ -5,8 +5,9 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=C++,
-        morekeywords={each,in,nullptr}
+\usepackage{mips}
+\lstset{language=[mips]Assembler,
+	morekeywords={[3]\$d,\$s,\$t}
 }
 
 % For strikethrough effect
@@ -21,7 +22,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Transition to C++}
+\title{\sessionnumber: Compilers and interpreters}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -29,26 +30,35 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-      \item\textbf{Recall} the key differences between Python and C++
-      \item\textbf{Use} the Visual Studio IDE to compile and run your first C++ program
-      \item\textbf{Write} basic programs in C++
+		\item \textbf{Explain} the difference between interpretation, just-in-time compilation and ahead-of-time compilation
+		\item \textbf{Distinguish} the basic parts of a compilation pipeline and recall how they operate
+		\item \textbf{Describe} how common high-level code structures translate to machine code
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Worksheets --- final submission}
-	Recommended method:
+\begin{frame}{Worksheet E}
 	\begin{itemize}
-		\item Go to your fork of the \texttt{COMP110-worksheets} repo
-		\item ``Clone or download'' $\to$ ``Download zip''
-		\item \textbf{Check} that the zip contains \textbf{five subfolders}, named \texttt{worksheet\_A} to \texttt{worksheet\_E}
-		\item \textbf{Check} that the zip contains \textbf{all} material for your worksheet submissions (especially images not hosted on GitHub)
-		\item \textbf{Rename} the zip to \texttt{COMP110\_1\_1600000.zip}, replacing \texttt{1600000} with your \textbf{student number}
-		\item \textbf{Upload} the zip to the submission queue on LearningSpace
+		\item Compilers and machine code
+		\item Due in class on \textbf{Monday 21st November} (next week)
 	\end{itemize}
 \end{frame}
 
-\input{helloworld}
-\input{variables_types}
-\input{control_structures}
+\begin{frame}{Final worksheet submission}
+	\begin{itemize}
+		\item Soon!!! (see MyFalmouth)
+		\item Should be easy: ``Download Zip'' from GitHub, rename, upload to LearningSpace
+		\item If any of your work is \textbf{not} on GitHub (e.g.\ images on imgur), be sure to \textbf{add it to the zip}!
+			\begin{itemize}
+				\item Exception: SpaceChem \textbf{videos} can stay as YouTube links
+			\end{itemize}
+		\item Even if you have submitted everything on time via GitHub,
+			\textbf{late submission} to LearningSpace will have the standard penalty for late submission (40\% cap)!
+	\end{itemize}
+\end{frame}
+
+\input{compilers_vs_interpreters}
+\input{mips}
+\input{control_flow}
+\input{machine_code}
 
 \end{document}
