@@ -12,6 +12,8 @@
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
 
+\usepackage{algpseudocode}
+
 \usepackage{pdfpages}
 
 % http://www.texample.net/tikz/examples/state-machine/
@@ -21,39 +23,42 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Data structures}
+\title{\sessionnumber: Algorithm Strategies}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\begin{frame}
-	\frametitle{Learning outcomes}
+%\begin{frame}
+%	\frametitle{Learning outcomes}
+%	\begin{itemize}
+%		\item \textbf{Explain} the difference between pass-by-value and pass-by-reference
+%		\item \textbf{Distinguish} the basic data structures available in Python
+%		\item \textbf{Determine} the complexity of accessing and manipulating data in these data structures
+%		\item \textbf{Choose} the correct data structure for a given task
+%	\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Worksheet D}
+%	\begin{itemize}
+%		\item Data structures
+%		\item Due in class on \textbf{Monday 7th November} (next week)
+%	\end{itemize}
+%\end{frame}
+
+\begin{frame}{Research journal}
 	\begin{itemize}
-		\item \textbf{Explain} the difference between pass-by-value and pass-by-reference
-		\item \textbf{Distinguish} the basic data structures available in Python
-		\item \textbf{Determine} the complexity of accessing and manipulating data in these data structures
-		\item \textbf{Choose} the correct data structure for a given task
+		\item \textbf{Peer review}: upload your draft to LearningSpace by \textbf{9am on Wednesday}
+		\item Between then and next Friday's session: return to LearningSpace and \textbf{review} your peers' work
+		\item \textbf{Next week's session}: finishing off the peer review and making final tweaks to your journals
+		\item When is the \textbf{final (summative) deadline}?
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Worksheet D}
-	\begin{itemize}
-		\item Data structures
-		\item Due in class on \textbf{Monday 7th November} (next week)
-	\end{itemize}
-\end{frame}
+\input{strategies}
 
-\input{references}
-\input{python_data_structures}
-\input{2d_arrays}
-\input{stacks_queues}
+\input{recursion}
 
-\begin{frame}
-	\begin{center}
-		\textit{``Smart data structures and dumb code works a lot better than the other way around.''}
-		
-		--- Eric S.\ Raymond
-	\end{center}
-\end{frame}
+\part{Worksheet C}
+\frame{\partpage}
 
 \end{document}
