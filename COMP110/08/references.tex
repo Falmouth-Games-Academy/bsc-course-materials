@@ -4,29 +4,6 @@
 	\end{center}
 }
 
-\newcommand{\codeslide}[2]{
-	\begin{columns}
-		\begin{column}{0.58\textwidth}
-			\lstinputlisting{#1}
-		\end{column}
-		\pause
-		\begin{column}{0.38\textwidth}
-			\begin{center}
-				\colorbox{white}{
-					\color{black}
-					\begin{tabular}{|c|c|}
-						\hline
-						\textbf{Variable} & \textbf{Value} \\\hline
-						#2
-					\end{tabular}
-				}
-			\end{center}
-		\end{column}
-	\end{columns}
-}
-
-\newcommand{\trow}[1]{ & \\ \texttt{#1} & \\ & \\\hline}
-
 \part{Pass by reference}
 \frame{\partpage}
 
@@ -127,17 +104,17 @@
 
 \begin{frame}{Values and references}
 	\socrative
-	\codeslide{references_1.py}{\trow{a}\trow{b}}
+	\lstinputlisting{references_1.py}
 \end{frame}
 
 \begin{frame}{Values and references}
 	\socrative
-	\codeslide{references_2.py}{\trow{a}\trow{b}}
+	\lstinputlisting{references_2.py}
 \end{frame}
 
 \begin{frame}{Values and references}
 	\socrative
-	\codeslide{references_3.py}{\trow{a}\trow{b}}
+	\lstinputlisting{references_3.py}
 \end{frame}
 
 \begin{frame}[fragile]{Pass by value}
