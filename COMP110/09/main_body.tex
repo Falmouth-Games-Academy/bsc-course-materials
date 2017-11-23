@@ -1,0 +1,61 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=Python
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{algpseudocode}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+\usetikzlibrary{tikzmark,calc}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Primitive and Object Data}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning outcomes}
+	\begin{itemize}
+      \item \textbf{Explain} the representation of common "plain old data" types in memory
+			\item \textbf{Distinguish} pass-by-reference and pass-by-value
+			\item \textbf{Distinguish} allocation of memory on the stack and on the heap
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Quiz C}
+	\begin{itemize}
+		\item Dot and cross product
+		\item Due \textbf{this time next week}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Maths quizzes --- new rule}
+	\begin{itemize}
+		\item Old quizzes are reopened!
+		\item For the threshold criterion you must now
+			\begin{itemize}
+				\item \textbf{Either} achieve a mark of $8/10$ by the deadline
+				\item \textbf{Or} achieve a mark of $10/10$ after the deadline
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\input{references}
+\input{data_rep}
+
+\end{document}

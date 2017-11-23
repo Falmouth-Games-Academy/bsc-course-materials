@@ -92,8 +92,38 @@
 \begin{frame}{Integers} 
 	\begin{itemize}
 		\pause\item Represented in \textbf{binary}
-		\pause\item $n$ bits $\implies$ numbers from $0$ to $2^n-1$ inclusive
+		\pause\item \textbf{Unsigned} integers:
+			\begin{itemize}
+				\pause\item $n$ bits $\implies$ numbers from $0$ to $2^n-1$ inclusive
+			\end{itemize}
+		\pause\item \textbf{Signed} integers:
+			\begin{itemize}
+				\pause\item Store negative number $-a$ as $2^n - a$
+				\pause\item \textbf{2's complement}
+				\pause\item $n$ bits $\implies$ numbers from $-2^{n-1}$ to $2^{n-1}-1$ inclusive
+			\end{itemize}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{2's complement uses modular arithmetic} 
+	\begin{center}
+		\begin{tikzpicture}[line cap=rect,line width=3pt]
+			\filldraw [fill=cyan] (0,0) circle [radius=2cm];
+			\foreach \angle [count=\xi from 0] in {90,67.5,...,-247.5}
+			{
+				\draw[line width=1pt] (\angle:1.8cm) -- (\angle:2.2cm);
+				\node[font=\large] at (\angle:1.36cm) {\textsf{\xi}};
+			}
+			\foreach \angle [count=\xi from -8] in {270,247.5,...,-67.5}
+			{
+				\node[font=\large] at (\angle:2.56cm) {\textsf{\xi}};
+			}
+			\foreach \angle in {0,90,180,270}
+				\draw[line width=2pt] (\angle:1.6cm) -- (\angle:2cm);
+			\draw (0,0) -- (120:0.8cm);
+			\draw (0,0) -- (90:1cm);
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Endian-ness}
@@ -102,6 +132,43 @@
 		\pause\item Bytes are in ``reverse'' order (least significant first)
 		\pause\item E.g.\ $123456_{10} = 1E240_{16}$, represented as
 			\texttt{40 E2 01 00}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Fractional numbers}
+	\begin{itemize}
+		\pause\item Generally stored using \textbf{floating point}
+		\pause\item More on this another time
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Strings}
+	\begin{itemize}
+		\pause\item Stored as sequences of \textbf{characters} encoded as \textbf{integers}
+		\pause\item Often \textbf{null-terminated}
+			\begin{itemize}
+				\pause\item Zero character signifies the end of the string
+			\end{itemize}
+		\pause\item \textbf{ASCII} encodes characters as 8-bit integers
+			\begin{itemize}
+				\pause\item 255 characters: Latin alphabet, numerals, punctuation
+			\end{itemize}
+		\pause\item \textbf{UTF-32} encodes characters as 32-bit integers
+			\begin{itemize}
+				\pause\item \textbf{Unicode} characters: ASCII + several other alphabets, Asian languages, symbols, emoji, ...
+			\end{itemize}
+		\pause\item \textbf{UTF-8} encodes characters as 8, 16, 24 or 32-bit integers
+			\begin{itemize}
+				\pause\item More common Unicode characters are smaller $\implies$ more efficient than UTF-32
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Object data}
+	\begin{itemize}
+		\pause\item Fields are fixed size
+		\pause\item Stored consecutively in memory
+		\pause\item Variable-size data may be stored indirectly, using pointers
 	\end{itemize}
 \end{frame}
 
