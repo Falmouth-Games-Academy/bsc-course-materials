@@ -1,6 +1,8 @@
 \part{Representing numbers}
 \frame{\partpage}
 
+\lstset{language=Python}
+
 \begin{frame}{Powers of 10}
 	\pause
 	$$ 10^6 = 1\underbrace{000000}_{\text{6 zeroes}} $$
@@ -30,14 +32,13 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Scientific notation in C++}
-	\pause Instead of writing $\times 10$, write \lstinline{e}
+\begin{frame}[fragile]{Scientific notation in code}
+	\pause Instead of writing \fbox{$\times 10$}, write \fbox{\lstinline{e}} (no spaces)
 	\pause
 	\begin{lstlisting}
-double lightYear = 9.461e15;
-double plancksConstant = 6.626e-34;
+lightYear = 9.461e15
+plancksConstant = 6.626e-34
 	\end{lstlisting}
-	\pause This also works in Python and many other programming languages
 \end{frame}
 
 \begin{frame}{Floating point numbers}
@@ -56,8 +57,8 @@ double plancksConstant = 6.626e-34;
 		\begin{tabular}{|r|ccc|l|}
 			\hline
 			Type & Sign & Exponent & Mantissa & Total \\\hline
-			\lstinline{float} & 1 bit & 8 bits & 23 bits & 32 bits \\\hline
-			\lstinline{double} & 1 bit & 11 bits & 52 bits & 64 bits \\\hline
+			Single precision & 1 bit & 8 bits & 23 bits & 32 bits \\\hline
+			Double precision & 1 bit & 11 bits & 52 bits & 64 bits \\\hline
 		\end{tabular}
 	\end{center}
 	\pause
@@ -65,6 +66,10 @@ double plancksConstant = 6.626e-34;
 	\begin{itemize}
 		\item Single precision: store $\text{exponent} + 127$
 		\item Double precision: store $\text{exponent} + 1023$
+	\end{itemize}
+	\begin{itemize}
+		\pause\item Python uses double precision
+		\pause\item Other languages have \lstinline[language=C]{float} (single) and \lstinline[language=C]{double} types
 	\end{itemize}
 \end{frame}
 
@@ -90,44 +95,70 @@ double plancksConstant = 6.626e-34;
 		\texttt{0 01111100 10011000000000000000000}
 	\end{center}
 	You have \textbf{5 minutes}, and you \textbf{may} use a calculator!
+	(Unless your calculator does IEEE 754 conversion...)
 \end{frame}
 
-\begin{frame}{Floating point numbers}
+\begin{frame}{Precision of floating point numbers}
 	\begin{itemize}
-		\pause\item Similar to scientific notation, but \textbf{base 2} (binary)
-		\pause\item $\pm \text{mantissa} \times 2^{\text{exponent}}$
-		\pause\item Sign is stored as a single bit: $0=+$, $1=-$
-		\pause\item Mantissa is a binary number with a 1 before the point;
-			only the digits after the point are stored
-		\pause\item Exponent is a signed integer, stored with a \textbf{bias}
+		\pause\item Precision \textbf{varies} by \textbf{magnitude}
+		\pause\item Numbers near 0 can be stored more accurately than numbers further from 0
+		\pause\item Analogy: in scientific notation with 3 decimal places
+			\begin{itemize}
+				\pause\item Around $3.142 \times 10^0$: can represent a difference of $0.001$
+				\pause\item Around $3.142 \times 10^3$: can represent a difference of $1$
+				\pause\item Around $3.142 \times 10^6$: can represent a difference of $1000$
+			\end{itemize}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Limitations of floating point numbers}
+\begin{frame}[fragile]{Range of floating point numbers}
+	\begin{center}
+		\begin{tabular}{|r|cc|}
+			\hline
+			Type & Smallest value & Largest value \\\hline
+			Single precision & $\pm 1.175 \times 10^{-38}$ & $\pm 3.403 \times 10^{38}$ \\\hline
+			Double precision & $\pm 2.225 \times 10^{-308}$ & $\pm 1.798 \times 10^{308}$ \\\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Rounding errors}
 	\begin{itemize}
-		\pause\item Precision \textbf{varies} by \textbf{magnitude}: numbers near 0 can be stored more accurately
-			than numbers further from 0.
-			\begin{itemize}
-				\pause\item Why? Socrative \texttt{FALCOMPED}
-			\end{itemize}
-		\pause\item Many numbers cannot be represented exactly, e.g.\ $\frac15$
+		\pause\item Many numbers cannot be represented exactly in IEEE float
 			\begin{itemize}
 				\pause\item Similar to how decimal notation cannot exactly represent
-					$\frac13 = 0.3333333\dots$
+					$\frac13 = 0.3333333\dots$ or $\frac17 = 0.142857\dots$
 			\end{itemize}
+		\pause\item Decimal: can represent $\frac{a}{b}$ exactly iff $b = 2^m 5^n$
+		\pause\item Binary: can represent $\frac{a}{b}$ exactly iff $b = 2^n$
+		\pause\item In particular, IEEE float can't represent $\frac{1}{10} = 0.1$ exactly!
 		\pause\item This can lead to \textbf{rounding errors} with some calculations
 			\begin{itemize}
 				\pause\item E.g.\ according to Python,
-					\lstinline[language=Python]{0.1 + 0.2 == 0.30000000000000004}
+					$0.1 + 0.2 - 0.3 = 5.551 \times 10^{-17}$
 			\end{itemize}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Testing for equality}
+\begin{frame}[fragile]{Testing for equality}
 	\begin{itemize}
 		\pause\item Due to rounding errors, using \lstinline{==} or \lstinline{!=} with floating point numbers is almost always a bad idea
 		\pause\item E.g.\ in Python, \lstinline[language=Python]{0.1 + 0.2 == 0.3} evaluates to \lstinline[language=Python]{False}
 		\pause\item Better to check for \textbf{approximate equality}: calculate the difference between the numbers,
 			and check that it's smaller than some threshold
+		\pause
+		\begin{lstlisting}
+THRESHOLD = 1e-5
+def is_approx_equal(a, b):
+    return abs(b - a) < THRESHOLD
+		\end{lstlisting}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Decimal types}
+	\begin{itemize}
+		\pause\item Python (and other languages) provide a \lstinline{decimal} type
+		\pause\item Uses base 10 rather than base 2, so avoids some of the gotchas with IEEE float
+		\pause\item ... however not natively supported by the CPU, hence much slower
 	\end{itemize}
 \end{frame}

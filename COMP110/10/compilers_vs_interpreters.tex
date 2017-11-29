@@ -33,6 +33,7 @@
 		        \item C
 		        \item C++
 		        \item Swift
+		        \item Rust
 		    \end{itemize}
 		\end{column} \pause
 		\begin{column}{0.3\textwidth}
@@ -45,6 +46,7 @@
 		    \end{itemize}
 		\end{column}
 	\end{columns}
+	\vspace{1ex}
 	\pause NB: technically any language could appear in any column here, but this is where they typically are
 \end{frame}
 
@@ -117,25 +119,3 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{The C++ build process}
-    \textbf{Preprocessor} \pause
-    \begin{itemize}
-        \item Handles \textbf{header inclusion}, \textbf{macro expansion} and \textbf{conditional compilation} \pause
-        \item Outputs modified C++ source code \pause				
-    \end{itemize}
-    \textbf{Compiler} \pause
-    \begin{itemize}
-        \item Translates each source file into an \textbf{object file} containing machine code \pause
-        \item May be configured to \textbf{optimise} code (e.g.\ calculate constant values, expand inline functions,
-					re-order instructions to take advantage of CPU architecture, etc.) \pause
-    \end{itemize}
-    \textbf{Linker} \pause
-    \begin{itemize}
-        \item Combines the object files together with any external libraries to produce an \textbf{executable}
-            (on Windows, a .exe file)
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{The C++ build process}
-    \includegraphics[width=\textwidth]{compiler_flowchart.pdf}
-\end{frame}
