@@ -102,51 +102,6 @@ LoopEnd:
 	\end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Exercise}
-	Write a piece of Python code equivalent to the following:
-	\begin{lstlisting}
-addi $s0, $zero, 10
-addi $s1, $zero, 0
-
-Loop: beq $s0, $zero, LoopEnd
-add $s1, $s1, $s0
-addi $s0, $s0, -1
-j Loop
-LoopEnd:
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Not quite a while loop}
-	\begin{itemize}
-		\item Socrative \texttt{FALCOMPED}
-		\item What is the difference between these two programs?
-		\item (NB: assume \lstinline{$s0} $\geq 0$)
-	\end{itemize}
-	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\begin{lstlisting}
-addi $s1, $zero, 0
-
-Loop: beq $s0, $zero, LoopEnd
-add $s1, $s1, $s0
-addi $s0, $s0, -1
-j Loop
-LoopEnd:
-			\end{lstlisting}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{lstlisting}
-addi $s1, $zero, 0
-
-Loop: add $s1, $s1, $s0
-addi $s0, $s0, -1
-bne $s0, $zero, Loop
-			\end{lstlisting}
-		\end{column}
-	\end{columns}
-	\pause The code on the right implements a \textbf{do-while} loop (which Python doesn't have, but other languages do)
-\end{frame}
-
 \begin{frame}{Function calls}
 	\begin{itemize}
 		\pause\item Function calls can be implemented using the jump instruction:
