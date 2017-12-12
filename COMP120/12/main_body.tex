@@ -7,10 +7,9 @@
 \usepackage{textcomp}
 
 % Default language for code listings
-\lstset{language=Python, upquote=true,
-        morekeywords={each,in,nullptr}
+\lstset{language=C++,
+	morekeywords={each,in,nullptr}
 }
-
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
@@ -35,9 +34,35 @@
 \begin{frame}
 	\frametitle{Learning Outcomes}
 	\begin{itemize}
-		\item \textbf{Understand} AI Agents in the Unreal Engine
-		\item \textbf{Produce} a small FPS Demo in Unreal which contains enemy characters
+		\item \textbf{Understand} the interaction between C++ and Blueprints in Unreal
+		\item \textbf{Understand} the various Unreal Gameplay classes in C++
+		\item \textbf{Produce} a small Demo Game in Unreal
 	\end{itemize}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Unreal Tutorial}
+	\begin{center}
+		\url{https://docs.unrealengine.com/latest/INT/Videos/PLZlv_N0_O1gYup-gvJtMsgJqnEB_dGiM4/}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Unreal Tutorial - Corrections 5}
+\begin{itemize}
+	\item 09 - Extending the Character Class 11:24 - \url{https://youtu.be/5nwBVBVDlZk?t=684} the code to attach components has changed to
+\end{itemize}
+\begin{lstlisting}
+	CollectionSphere->SetupAttachment(RootComponent);
+\end{lstlisting}
+\begin{itemize}
+	\item 13 - Power Down the Character 3:40 - \url{https://youtu.be/qCrIPglRY6M?t=226} In order for the Tick function to be called you have to add the following code to the GameMode Constructor(next to DecayRate)
+\end{itemize}
+\begin{lstlisting}
+	PrimaryActorTick.bStartWithTickEnabled = true;
+	PrimaryActorTick.bCanEverTick = true;
+\end{lstlisting}
+\end{frame}
+
 
 \end{document}
