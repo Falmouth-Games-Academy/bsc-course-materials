@@ -8,9 +8,7 @@
 \lstset{language=C++,
         morekeywords={each,in,nullptr,int32, TCHAR, uint8, int8, uint16, int16,
         uint32, int32, uint64, int64, PTRINT, UObject. AActor, SWidget, FName,
-        FString, UClass, USoundCue, UTexture},
-        breaklines=true,
-        basicstyle=\tiny
+        FString, UClass, USoundCue, UTexture}
 }
 
 % For strikethrough effect
@@ -25,7 +23,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Memory and Profiling}
+\title{\sessionnumber: Epic Coding Standards}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage}
@@ -33,333 +31,214 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item \textbf{Understand} Memory in modern object orientated languages
-		\item \textbf{Compare} memory models in managed and unmanaged languages
-		\item \textbf{Understand} the role of the profiler in measuring performance in games
+		\item \textbf{Understand} Epic coding standards
+		\item \textbf{Compare} different coding standards
+		\item \textbf{Apply} Epic coding standard to your own Unreal Projects
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Memory}
+  \frametitle{Why Coding Standards?}
   \begin{itemize}
-    \item Dynamic memory, allocated on the Heap and is growable
-    \item Static memory, allocated on the Stack and is fixed size
+    \item Aids in software maintance
+    \item Improves readability and understandability
+    \item Adds to the documentation of the project
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Stack Memory}
+  \frametitle{Naming Conventions 1}
   \begin{itemize}
-  	\item When you allocate value types (int, float, short, char etc), these are allocated on the stack
-  	\item Values allocated on the stack are local, when they drop out of scope they are deallocated  
-  	\item Values passed into functions are copied onto the stack
-  	\item The stack is of fixed size
-  	\begin{itemize}
-  	\item C\# 1MB
-  	\item C++ depends on compiler, Visual Studio is 1MB
-  	\end{itemize}
+    \item First letter of each word in name is capitalised, and no underscores between words
+    \begin{itemize}
+      \item E.g. Health and UPrimitiveComponent, not lastMouseCoordinates or delta\_coordinates
+    \end{itemize}
+    \item Type and variable names are nouns
+    \item Method names are verbs that describe the effects or describe return value
+    \item Names should be clear unambigous, and discriptive. Avoid over-abbreviation.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Naming Conventions 2}
+  \begin{itemize}
+    \item All variables should be declared one at a time to allow commments
+    \item All functions that return bool should ask a true/false questions
+    \item A procedure(a function with no return) should use strong verb followed by an Object
+    \item Prefix function parameters passed by reference with \textbf{Out}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Naming Conventions 3}
+  \begin{itemize}
+    \item Type names are prefixed with an additional upper-case letter, to distinguish them from variable names.
+    E.g. \textbf{FSkin} for type, and \textbf{Skin} is an instance of \textbf{FSkin}
+    \begin{itemize}
+      \item Template classes are prefixed by T
+      \item Classes that inherit from UObject are prefixed by U
+      \item Classes that inheirt from AActor are prefixed by A
+      \item Classes that inheirt from SWidget are prefixed by S
+      \item Classes that are Interfaces are prexfixed by I
+      \item Enums are prexfixed by E
+      \item Boolean variables must be prefixed by b (e.g. bIsDead or bHasFallen)
+      \item Most other classes are prefixed by F
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Stack Memory Example 1}
-	\begin{lstlisting}
-		void Update()
-		{
-			int x=10;
-			int y=10;
-			
-			Vector2 pos=Vector2(x,y);
-		} //<-- x, y and pos drop out of scope here
-	\end{lstlisting} 
-\end{frame}
+  \frametitle{Naming Convention Examples}
+  \begin{lstlisting}
+    float TeaWeight;
 
-\begin{frame}[fragile]
-	\frametitle{Stack Memory Example 2}
-	\begin{lstlisting}
-		class MonsterStats
-		{
-			private:
-				int health;
-				int strength;
-			public:
-				MonsterStats()
-				{
-					health=100;
-					strength=10;
-				}
-			
-				void ChangeHealth(int h)
-				{
-					health+=h;
-				}//<- h drops out of scope here
-			
-				void ChangeStrength(int s)
-				{
-					strength+=s;
-				}//<- s drops out of scope here
-		}
-		
-		void main()
-		{		
-			//Create an instance of the class on the stack
-			MonsterStats stats=MonsterStats();
-			stats.ChangeHealth(10);
-			stats.ChangeStrength(-2);
-		}//<-- stats drops out of scope here
-	\end{lstlisting}
+    int32 TeaCount;
+
+    bool bDoesTeaStink;
+
+    FName TeaName;
+
+    FString TeaFriendlyName;
+
+    UClass* TeaClass;
+
+    USoundCue* TeaSound;
+
+    UTexture* TeaTexture;
+
+    bool IsTeaFresh(UTea Tea)
+  \end{lstlisting}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Heap Memory}
+  \frametitle{Portable Aliases for C++ Types}
+  \begin{table}
+      \begin{tabular}{ | l | l | l | }
+        \hline
+        \textbf{Unreal Type} & \textbf{C++ Type} & \textbf{Size} \\
+        \hline
+        bool & bool or BOOL & Never assume size \\
+        \hline
+        TCHAR & TCHAR or char & Never assume size \\
+        \hline
+        uint8 & unsigned bytes & 1 byte \\
+        \hline
+        int8 & bytes & 1 byte \\
+        \hline
+        uint16 & unsigned short & 2 bytes \\
+        \hline
+        int16 & short & 2 bytes \\
+        \hline
+        uint32 & unsigned int & 4 bytes \\
+        \hline
+        int32 & int & 4 bytes \\
+        \hline
+        uint64 & unsigned long & 8 bytes \\
+        \hline
+        int64 & long & 8 bytes \\
+        \hline
+        float & float & 4 bytes \\
+        \hline
+        double & double & 8 bytes \\
+        \hline
+        PTRINT & void* & Never assume size \\
+        \hline
+      \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comments - Write self documenting code}
+  \begin{lstlisting}
+    // Bad:
+    t = s + 1 - b;
+
+    // Good:
+    TotalLeaves=SmallLeaves+LargeLeaves-SmallAndLargeLeaves;
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Commets - Write Useful Commets}
+  \begin{lstlisting}
+    // Bad:
+    // Increment Leaves
+    ++Leaves;
+
+    // Good:
+    // we know there is another tea leaf
+    ++Leaves;
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comments - Do not comment bad code - rewrite it}
+  \begin{lstlisting}
+    // Bad:
+    // total number of leaves is sum of
+    // small and large leaves less the
+    // number of leaves that are both
+    t = s + 1 - b;
+
+    // Good:
+    TotalLeaves=SmallLeaves+LargeLeaves-SmallAndLargeLeaves;
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comments - Do not contradict code}
+  \begin{lstlisting}
+    // Bad:
+    // never increment Leaves!
+    ++Leaves;
+
+    //Good:
+    // we know there is another leaf
+    ++Leaves;
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comments - Formatting}
   \begin{itemize}
-  \item Otherwise known as dynamic memory
-  \item Types allocated with the \textbf{new} keyword are allocated on the heap
-  \item The new operator returns a reference to the type and can be allocated to a pointer (C++)
-  \item This heap is managed by the programmer in C++ (see \textbf{delete} keyword) or the garbage collector in C\#
-  \item In C++ is very important that you delete anything allocated on the heap
-  \item \textbf{for every new, you need a matching delete}
-  \item In the Unreal Engine objects can be Garbage Collected
+    \item Unreal uses a system based on JavaDocs to extract comments to build documentation
+    \item You have to use a specfic format in order for this tool to run
+    \item More info - url{http://www.oracle.com/technetwork/articles/java/index-137868.html}
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-	\frametitle{Heap Memory Example 1 - C\#}
-	\begin{lstlisting}
-		public class MonsterStats
-		{
-			private int health;
-			private int strength;
-			public MonsterStats()
-			{
-				health=100;
-				strength=10;
-			}
-			
-			public void ChangeHealth(int h)
-			{
-				health+=h;
-			}//<- h drops out of scope here
-			
-			void ChangeStrength(int s)
-			{
-				strength+=s;
-			}//<- s drops out of scope here
-		}
-		
-		void Start()
-		{		
-			//Create an instance of the class on the Heap
-			MonsterStats new stats=MonsterStats();
-			stats.ChangeHealth(10);
-			stats.ChangeStrength(-2);
-		}	
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Heap Memory Example 2 - C++}
-	\begin{lstlisting}
-		class MonsterStats
-		{
-			private:
-				int health;
-				int strength;
-			public:
-				MonsterStats()
-				{
-					health=100;
-					strength=10;
-				}
-				
-				.....
-		}
-		
-		void main()
-		{		
-			//Create an instance of the class on the Heap
-			MonsterStats * stats=new MonsterStats();
-			stats->ChangeHealth(10);
-			stats->ChangeStrength(-2);
-			
-			if (stats)
-			{
-				delete stats;
-				stats=nullptr;
-			}
-		}
-	\end{lstlisting}
-\end{frame}
-
 \begin{frame}
-  \frametitle{Types in C\#}
+  \frametitle{Const Correctness}
   \begin{itemize}
-  	\item Value types are primitives such as int, bool, float etc
-  	\item Structs are custom value types (see example)
-  	\item Reference types are anything declare with the \textbf{class}, \textbf{interface} \& \textbf{delegate}
-  	\item In addition to this strings are also reference types
-  	\item Value types are allocated on stack
-  	\item Reference type are allocated on the heap
+    \item Const is documentation as much as a compiler directive
+    \item If function arguments aren't modified by a function, ensure they are passed with const keyword
+    \item Flag methods as const if they don't modify an object
+    \item Use const interation over containers if the loop doesn't modify container
+    \item Const should be preferred on by-value parameters and locals
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-	\frametitle{Struct Example - C\#}
-	\begin{lstlisting}
-		public struct MonsterStats
-		{
-			private int health;
-			private int strength;
-			public MonsterStats()
-			{
-				health=100;
-				strength=10;
-			}
-		}
-		
-		void Start()
-		{		
-			//Create an instance of the struct on the stack
-			MonsterStats stats=new MonsterStats();
-			stats.ChangeHealth(10);
-			stats.ChangeStrength(-2);
-		}	
-	\end{lstlisting}
-\end{frame}
-
 \begin{frame}
-	\frametitle{Passing Types}
-	\begin{itemize}
-	\item In C\#, when we call a method and pass some data as a parameter we either pass by value or we pass by reference. 
-	\item We can mark a parameter with the \textbf{ref} or \textbf{out} keyword (see example)
-	\item Reference types are always passed by reference
-	\item In C++, we can also pass by value or reference. We can also pass in a pointer
-	\item We can mark parameter with \textbf{\&} to pass by Reference 
-	\item Larger data types should be passed by Pointer or Reference
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Passing Example 1 - C\#}
-	\begin{lstlisting}
-		int x=10;
-			
-		void Adder(ref int value,int v)
-		{
-			value+=v;	
-		}
-		
-		Adder(ref x,10);
-		//x would now be 20 after this		
-		
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Passing Example 2 - C\#}
-	\begin{lstlisting}
-	
-	void SetupMonster(ref MonsterStats stats, int health, int strength)
-	{
-		//if we use the ref keyword MonsterStats has to be initialised
-		stats.health=health;
-		stats.strength=strength;
-	}
-	
-	void CreateMonster(out MonsterStats stats,int health, int strength)
-	{
-		//when we use out, it means we can initialise inside the function
-		stats=new MonsterStats();
-		stats.health=health;
-		stats.strength=strength;
-	}
-	
-	//Calling code
-	MonsterStats goblinStats=new MonsterStats();
-	SetupMonster(ref goblinStats,10,2);
-	
-	MonsterStats orcStats;
-	CreateMonster(out orcStats,20,4);
-	\end{lstlisting}
-\end{frame}
-
-
-\begin{frame}[fragile]
-	\frametitle{Passing Example 1 - C++}
-	\begin{lstlisting}
-		int x=10;
-			
-		void Adder(int &value,int v)
-		{
-			value+=v;	
-		}
-		
-		Adder(x,10);
-		//x would now be 20 after this		
-		
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Passing Example 2 - C++}
-	\begin{lstlisting}
-	
-	void SetupMonster(MonsterStats &stats, int health, int strength)
-	{
-		stats.health=health;
-		stats.strength=strength;
-	}
-	
-	//Calling code
-	MonsterStats * goblinStats=new MonsterStats();
-	SetupMonster(goblinStats,10,2);
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Strings}
+  \frametitle{C++11 and Modern C++}
   \begin{itemize}
-  \item Strings act like value types but they are actually reference types (C\#)
-  \item This means we need to be careful in allocating new strings
-  \item \textbf{And} doing any operations using strings such as concatenation using +
-  \item In C\# you should use the \textbf{StringBuilder} class 
-  \item In C++ you should use the \textbf{stringstream} class
+    \item \textbf{nullptr} - Used instead of NULL except on XBoxOne use \textbf{TYPE{\_}OF{\_}NULLPTR})
+    \item \textbf{auto} - You should not use auto except in the following cases
+    \begin{itemize}
+      \item Binding to lambda types
+      \item Iteration variables
+      \item Template code (advance case)
+    \end{itemize}
+    \item \textbf{Range Based For} - Preferred to regular for loop
+    \item \textbf{Lambdas} - Can be used, but be careful (see docs)
+    \item \textbf{Enums} - Always use strongly type enums which inherit from \textbf{uint8}
+    \item \textbf{Move Semantics} - All main container types have move constructors and move assignment
   \end{itemize}
 \end{frame}
-	
-\begin{frame}
-	\frametitle{Garbage Collection in C\#}
-  	\begin{itemize}
-  	\item In C\# there is an inbuilt Garbage Collector which will  walk through the Object Graph
-	\item It will check to see if the object is still allocated, if not, the Garbage Collector will cleanup the object
-	\item This process is automatic and is tuned for maximum performance
-	\item However you should think of caching GetComponent calls using the \textbf{Start} or \textbf{Awake}
-  	\end{itemize}
-\end{frame}
 
 \begin{frame}
-	\frametitle{Memory Management in C++ \& Unreal}
-	\begin{itemize}
-	\item In C++ there is no Garbage Collection, you have to manually delete objects when no longer needed
-  	\item Worth repeating  \textbf{for every new, you need a matching delete}
-  	\item In the Unreal Engine there is Garbage Collection but you have to follow these rules
-  	\begin{itemize}
-  		\item Every Member of the class should be marked with \textbf{UPROPERTY}
-  		\item Member pointers should only point to \textbf{UObject} or texttbf{UObject-derived objects}
-  		\item The only container that is safe to have UObject or UObject-derived pointers in is a TArray
-  	\end{itemize}
-	\end{itemize}
+  \frametitle{Refrences}
+  \url{https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/}
 \end{frame}
 
-\begin{frame}
-\frametitle{Exercises - BA students Only}
-\begin{itemize}
-	\item Debugging - Watch the following video - \url{https://unity3d.com/learn/tutorials/topics/scripting/debugging-unity-games-visual-studio}
-	\item Debugging - Grab DebugExample.cs from learning space
-	\item Put this in a Unity project and attach it to a game object in a new scene.
-	\item Use the debugger to find answers to the questions Q1 and Q2 which are shown as comments within the Start() method.
-	\item Profiling - Watch the following video - \url{https://unity3d.com/learn/tutorials/topics/interface-essentials/introduction-profiler}
-\end{itemize}
-\end{frame}
 
 \end{document}
