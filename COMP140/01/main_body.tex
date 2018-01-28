@@ -6,13 +6,17 @@
 
 % Default language for code listings
 \lstset{language=C++,
-        morekeywords={each,in,nullptr}
+        morekeywords={each,in,nullptr},
+        basicstyle=\ttfamily\scriptsize,
+        keywordstyle=\color{blue}\ttfamily,
+		stringstyle=\color{red}\ttfamily,
+		commentstyle=\color{green}\ttfamily,
+		breaklines=true
 }
 
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
-
 \usepackage{pdfpages}
 
 % http://www.texample.net/tikz/examples/state-machine/
@@ -38,7 +42,7 @@
 \input{assignment}
 \input{altcontroller}
 \input{OOPPrinciples}
-
+\input{SRPrinciple}
 
 
 \end{document}

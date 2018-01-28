@@ -1,2 +1,73 @@
 \part{Object Orientated Principles}
 \frame{\partpage}
+
+\begin{frame}{Classes and Objects}
+	\begin{itemize}
+		\pause \item Most programming languages have a pre-defined set of data types (int, float, bool etc)
+		\pause \item We can add our own data types by declaring and defining Classes
+		\pause \item Classes are a collection of data and functions which operate on the data
+		\pause \item We can then use these classes like any built-in data type
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Class Examples - C++}
+	\begin{lstlisting}[language=C++]
+	class Player
+	{
+	public:
+		Player()
+		{
+			Health=100;
+		};
+		
+		void TakeDamage(int health)
+		{
+			Health-=health;
+		};
+		
+		void HealDamage(int health)
+		{
+			Health+=health;
+		};
+		
+		~Player(){};
+	private:
+		int Health;
+		
+	};
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Class Examples - C\# Unity}
+	\begin{lstlisting}[language=C++]
+	class Player : MonoBehaviour
+	{
+		private int Health=100;
+		
+		void Start()
+		{
+			Health=100;
+		}
+	
+		public void TakeDamage(int health)
+		{
+			Health-=health;
+		}
+	
+		public void HealDamage(int health)
+		{
+			Health+=health;
+		}
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Naming Tips}
+	\begin{itemize}
+		\pause \item Classnames should be proper nouns (e.g. Player, Enemy, Orc, Goblin, etc)
+		\pause \item Function names should be verbs (e.g Attack, TakeDamage, SetName, etc)
+		\pause \item All names should be descriptive
+		\pause \item Comments! You should add comments before each function!
+	\end{itemize}
+\end{frame}
+
