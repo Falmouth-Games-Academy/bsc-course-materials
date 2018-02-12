@@ -1,0 +1,63 @@
+\part{Algorithms}
+\frame{\partpage}
+
+\begin{frame}{Standard Template Library}
+	\begin{itemize}
+		\pause \item STL is a collection of containers and algorithms to support the creation of more reusable systems
+		\pause \item Containers:
+		\begin{itemize}
+			\pause \item Vector: Drop in replacement for a C/C++ array, elements are stored \textbf{contiguously} 
+			\pause \item List: Supports constant time insertion and removal of elements
+			\pause \item Map: Search, removal and insertion have logarithmic complexity
+		\end{itemize}
+		\pause \item Algorithm:
+		\begin{itemize}
+			\pause \item Find: Find an element in a container
+			\pause \item Transform: Apply a function to an element
+			\pause \item Swap: Swaps the values of two objects
+			\pause \item Reverse: Reverse the elements in a container 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Common Container Errors}
+	\begin{itemize}
+		\pause \item Picking the wrong container!
+		\begin{itemize}
+			\pause \item If you are adding/removing elements from the middle of collection then use a list 
+			\pause \item Require random access, use a vector over a list
+			\pause \item If you want to retrieve an element quickly, consider using a \textbf{map} or a \textbf{set}
+			\pause \item Sorted vectors can give same performance as associative containers for retrieval   
+			\pause \item \url{http://john-ahlgren.blogspot.co.uk/2013/10/stl-container-performance.html}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Common Container Errors}
+\begin{itemize}
+	\pause \item Resizing of vector
+	\begin{itemize}
+		\pause \item Resizing of vector requires a memory allocation
+		\pause \item If you know the amount of data you are managing, you should use the \textbf{reserve} function to allocate the memory in advance
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Algorithms}
+	\begin{itemize}
+		\pause \item Before you write something you should consider checking out the algorithms contained in the \textbf{algorithms} library
+		\pause \item These contain all sorts of useful functions for searching, sorting, counting, manipulating
+		\pause \item These are usually optimised for the compiler, so use these rather than write your own
+		\pause \item You can also customise how these algorithms function by providing predicate functions 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{What about Unity or Unreal?}
+	\begin{itemize}
+		\pause \item Both Unity/C\# \& Unreal have containers
+		\pause \item List in C\# \& TArray in Unreal is equivalent to std::vector
+		\pause \item Dictionary in C\# \& TMap in Unreal is equivalent to std::map
+		\pause \item The containers in those engines should perform exactly like the C++ equivalents
+		\pause \item \textbf{BUT!} check the docs as these engines/languages have additional container types
+	\end{itemize}
+\end{frame}

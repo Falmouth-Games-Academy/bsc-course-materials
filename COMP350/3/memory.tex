@@ -1,4 +1,4 @@
-\part{Memory}
+\part{Memory \& CPU}
 \frame{\partpage}
 
 \begin{frame}{Memory Hierarchy}
@@ -51,9 +51,49 @@
 	\end{itemize}
 \end{frame}
 
-
-\begin{frame}{Pre-Fetching}
+\begin{frame}{Memory Alignment}
+\begin{itemize}
+	\pause \item The CPU will read memory aligned data much faster than non-aligned
+	\pause \item Any \textit{N}-byte data is memory aligned if its starting address is evenly divisible by \textit{N}
+	\pause \item e.g. A 32 bit integer is memory aligned if the starting address is 0x04000000, not 0x04000002
+	\pause \item Make sure your structs or class has data types order highest to lowest  
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Cache Coherence}
+\begin{frame}{Avoiding Cache Misses}
+	\begin{itemize}
+		\pause \item The compiler and linker dictate how your code is laid out in memory
+		\pause \item However the linker/compiler follows some simple rules
+		\pause \item If you know these, then you can leverage them 
+	\end{itemize}
 \end{frame}
+
+\begin{frame}{Compiler \& Linker rules}
+\begin{itemize}
+	\pause \item The machine code for a single function is contiguous in memory
+	\pause \item Functions are laid out in memory in the order they appear in the cpp file
+	\pause \item Function in the cpp are always contigous
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Applying Compiler \& Linker rules}
+\begin{itemize}
+	\pause \item Keep high performance code as small as possible
+	\pause \item Avoid calling functions from a performance critical section of code
+	\pause \item If you do have to call a function, place it as close as possible (never in another translation unit)
+	\pause \item Use inline functions. Inlining a small function can lead to a performance boost. But this can lead to bloated code if over used (and lead to cache misses)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Branch Prediction}
+\begin{itemize}
+	\pause \item CPUs will try to predict what branch to take ( if loop)
+	\pause \item If the guess is wrong then we executed instructions that shouldn't have been called
+	\pause \item This causes a stall, as the pipeline is flushed and the first instruction of the branch is then called
+	\pause \item To solve this issue, you should attempt to reduce or remove all branches (see loop unrolling \& )
+\end{itemize}
+\end{frame}
+
+
+
+
