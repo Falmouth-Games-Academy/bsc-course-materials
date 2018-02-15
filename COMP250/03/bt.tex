@@ -14,8 +14,9 @@
 \begin{frame}{Using BTs}
 	\begin{itemize}
 		\pause\item Fairly easy to implement; plenty of resources online
-		\pause\item Some engines (e.g.\ Unreal) have BTs built in
-		\pause\item We will be using the free \textbf{Behaviour Machine} library for Unity
+		\pause\item \textbf{Unreal}: an advanced BT system is built in
+		\pause\item \textbf{Unity}: numerous free and paid options on the Asset Store
+			e.g.\ Behavior Machine, Behavior Designer, Behave, RAIN
 	\end{itemize}
 \end{frame}
 
@@ -77,37 +78,6 @@
 			\end{itemize}
 		\pause\item Leaf nodes often have \textbf{parameters} to allow for reuse in different situations
 	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Leaf node example}
-	\begin{lstlisting}[basicstyle=\tiny\ttfamily]
-using UnityEngine;
-using System.Collections;
-using BehaviourMachine;
-
-public class GoTo : ActionNode
-{
-    public GameObjectVar objectToMove;
-    public Vector3Var target;
-    public FloatVar speed;
-
-    public override Status Update()
-    {
-        float distance = (objectToMove.Value.transform.position - target.Value).magnitude;
-        float step = speed.Value * Time.deltaTime;
-        if (distance < step)
-        {
-            objectToMove.Value.transform.position = target.Value;
-            return Status.Success;
-        }
-        else
-        {
-            objectToMove.Value.transform.position = Vector3.MoveTowards(objectToMove.Value.transform.position, target.Value, step);
-            return Status.Running;
-        }
-    }
-}
-	\end{lstlisting}
 \end{frame}
 
 \begin{frame}{Composite nodes: sequence}
@@ -220,5 +190,19 @@ public class GoTo : ActionNode
 		\includegraphics[width=\textwidth]{the_division}
 		
 		\url{http://www.gdcvault.com/play/1023382/AI-Behavior-Editing-and-Debugging}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Activity}
+	\begin{center}
+		\textbf{Unreal users}: follow the tutorial at
+		
+		\url{https://docs.unrealengine.com/latest/INT/Engine/AI/BehaviorTrees/QuickStart/}
+		
+		\vspace{2ex}
+		
+		\textbf{Unity users}: download ``Behaviour Machine Free'' from the Asset Store, and follow the tutorial at
+		
+		\url{https://youtu.be/ZVl1FM24OXg}
 	\end{center}
 \end{frame}
