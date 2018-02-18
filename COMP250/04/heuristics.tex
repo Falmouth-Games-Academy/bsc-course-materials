@@ -1,37 +1,6 @@
 \part{Heuristics for search}
 \frame{\partpage}
 
-\begin{frame}{From session 2: Minimax search}
-	\footnotesize
-	\begin{algorithmic}
-		\Procedure{Minimax}{state, currentPlayer} 
-			\If{state is terminal} 
-				\State \textbf{return} value of state 
-			\ElsIf{currentPlayer is maximising} 
-				\State bestValue $= -\infty$ 
-				\For{\textbf{each} possible nextState} 
-					\State $v$ = \Call{Minimax}{nextState, $3 -$ currentPlayer} 
-					\State bestValue = \Call{Max}{bestValue, $v$} 
-					\If{bestValue $\geq 1$}
-						\State \textbf{break}
-					\EndIf
-				\EndFor
-				\State \textbf{return} bestValue 
-			\ElsIf{currentPlayer is minimising} 
-				\State bestValue $= +\infty$
-				\For{\textbf{each} possible nextState}
-					\State $v$ = \Call{Minimax}{nextState, $3 -$ currentPlayer}
-					\State bestValue = \Call{Min}{bestValue, $v$}
-					\If{bestValue $\leq -1$}
-						\State \textbf{break}
-					\EndIf
-				\EndFor
-				\State \textbf{return} bestValue 
-			\EndIf
-		\EndProcedure
-	\end{algorithmic}
-\end{frame}
-
 \begin{frame}{Minimax for larger games}
 	\begin{itemize}
 		\pause\item The game tree for noughts and crosses has only a few thousand states
@@ -62,21 +31,21 @@
 	\end{itemize}
 \end{frame}
 
-%\begin{frame}{Move ordering}
-	%\begin{itemize}
-		%\pause\item Minimax can \textbf{stop early} if it sees a value of $+1$ for maximising player or $-1$
-			%for minimising player
-		%\pause\item Modifications to minimax algorithm (e.g.\ \textbf{alpha-beta pruning}) lead to more of this
-		%\pause\item Thus ordering moves from \textbf{best to worst} means faster search
-		%\pause\item How do we know which moves are ``best'' and ``worst''? Use a heuristic!
-	%\end{itemize}
-%\end{frame}
+\begin{frame}{Move ordering}
+	\begin{itemize}
+		\pause\item Minimax can \textbf{stop early} if it sees a value of $+1$ for maximising player or $-1$
+			for minimising player
+		\pause\item Modifications to minimax algorithm (e.g.\ \textbf{alpha-beta pruning}) lead to more of this
+		\pause\item Thus ordering moves from \textbf{best to worst} means faster search
+		\pause\item How do we know which moves are ``best'' and ``worst''? Use a heuristic!
+	\end{itemize}
+\end{frame}
 
 \begin{frame}{Designing heuristics}
 	\begin{itemize}
 		\pause\item The \textbf{playing strength} of depth limited minimax depends heavily on the design of the \textbf{heuristic}
 		\pause\item Good heuristic design requires \textbf{in-depth knowledge} of the tactics and strategy of the game
-		\pause\item What if we don't have that knowledge? ...
+		\pause\item Next time we will look at what we can do if we don't possess such knowledge
 	\end{itemize}
 \end{frame}
 
