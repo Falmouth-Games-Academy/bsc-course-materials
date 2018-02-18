@@ -1,0 +1,91 @@
+\part{Linked List}
+\frame{\partpage}
+
+\begin{frame}{The Problem}
+	\begin{itemize}
+		\pause \item You have started using a dynamic array and you have notice performance is poor on adding/removing
+		 \pause \item You then realise that you are adding/removing elements from the middle of the collection
+		 \pause \item You also realise that you don't require random access to elements in the collection
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Solution}
+	\begin{itemize}
+		\pause \item In this case a Linked List would be a better choice
+		\begin{itemize}
+			\pause \item In C\# we have the \textbf{LinkedList} class
+			\pause \item In C++ we have the \textbf{list} class
+		\end{itemize}
+		\pause \item Linked Lists contain elements (called Nodes) which usually have a reference (or pointer) to the previous and next Node in the list
+		\pause \item This means that there is a slight increase in memory needed when working with lists
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Use Case}
+	\begin{itemize}
+		\pause \item If you AI character has to visit a series of waypoints, these could be stored in a list
+		\pause \item Your Player has a number of quests they can
+		\pause \item If the AI/Player carries an action and a number of systems need to be notified of the event 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{C\# Linked List
+Example}
+\begin{lstlisting}
+	LinkedList<Transform> waypoints=new LinkedList<Transform>();
+	
+	waypoints.AddLast(GameObject.Find("Waypoint1").Transform);
+	waypoints.AddLast(GameObject.Find("Waypoint2").Transform);
+	waypoints.AddLast(GameObject.Find("Waypoint3").Transform);
+	
+	foreach(Transfrom t in waypoints)
+	{
+		Debug.Log("Waypoint Locations "+t.position.ToString());
+	}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C\# Linked List
+	Example}
+\begin{lstlisting}
+waypoints.AddFirst(GameObject.Find("Waypoint0").Transform);
+
+LinkedListNode<Transform> waypoint2Node = linked.Find(GameObject.Find("Waypoint2"));
+waypoints.AddAfter(waypoint2Node,GameObject.Find("SpecialQuest"));
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C++ List
+Example}
+\begin{lstlisting}
+	list<vec2> waypoints;
+	
+	waypoints.push_back(vec2(10,10));
+	waypoints.push_back(vec2(15,15));
+	waypoints.push_back(vec2(20,20));
+	
+	for(vec2 position:waypoints)
+	{
+		std::cout<<"Waypoint Locations "<<position.x<<" "<<position.y<<std::endl;
+	}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C++ List
+	Example}
+\begin{lstlisting}
+	waypoints.push_front(vec2(0,0));
+	
+	auto iter=std::find(waypoints.begin(),waypoints.end(),vec2(15,15));
+	waypoints.insert(iter, vec3(25,25));
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Additional Notes}
+	\begin{itemize}
+		\pause \item Linked Lists usually support constant time insertions and deletions in the collection (O(1))
+		\pause \item Also perform better than dynamic arrays for moving elements around the collection
+		\pause \item This feature means that Linked Lists are a good data structure if you need to sort your data
+		\pause \item Main drawback of Linked Lists is that you can't have direct access to elements in the list, it takes linear time (O(n)) to access
+	\end{itemize}
+\end{frame}
