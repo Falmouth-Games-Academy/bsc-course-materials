@@ -68,7 +68,7 @@
 			std::cout<<"Score is "<<score<<std::endl;
 		}
 		int player1Score=scores[0];
-		scores.Remove(100);
+		scores.erase(scores.begin()+1);
 	\end{lstlisting}
 \end{frame}
 
