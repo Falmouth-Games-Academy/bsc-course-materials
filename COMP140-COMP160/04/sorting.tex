@@ -90,6 +90,7 @@ characters.Sort()
 	\pause \item Often you will use option 3 as the default sort
 	\pause \item Which then be override by option 1 
 	\pause \item 2 is probably the more modern way of doing it, but syntax can be confusing
+	\pause \item You have to include the \textbf{<algorithm>} header file
 \end{itemize}
 \end{frame}
 
@@ -108,7 +109,7 @@ bool sortByHealth(Character a, Character b){return a.health<b.health;}
 vector<Character> characters;
 
 //Sort by health
-characters.sort(characters.begin(), characters.end(), sortByHealth);
+sort(characters.begin(), characters.end(), sortByHealth);
 \end{lstlisting}
 \end{frame}
 
@@ -127,6 +128,6 @@ bool operator <(const Character& other) const {return name<other.name;}
 vector<Character> characters;
 
 //Sort by health
-characters.sort(characters.begin(), characters.end());
+sort(characters.begin(), characters.end());
 \end{lstlisting}
 \end{frame}
