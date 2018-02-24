@@ -1,2 +1,218 @@
 \part{Inheritance}
 \frame{\partpage}
+
+\begin{frame}{Introduce to Inheritance}
+	\begin{itemize}
+		\pause \item One of the key features of OOP languages is \textbf{Inheritance}
+		\pause \item This allows you to \textbf{Derive} a new class from an existing one
+		\pause \item When this is done, the new class automatically inherits the variables and functions of the \textbf{parent} class
+		\pause \item Advantages of inheritance includes
+		\begin{itemize}
+			\pause \item Code reuse: There is no need to redefine functionality, you can just inherit from a base class
+			\pause \item Fewer errors: If you build on existing class that is bug free then you are more likely to have less errors
+			\pause \item Cleaner code: because of the increase of code reuse then your code is more modular and reusable. 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Inheritance Example - C\#}
+		\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+		public class Enemy : MonoBehaviour
+		{
+			[SerializeField]
+			proteced int Damage;
+			
+			void Start()
+			{
+				Damage=1;
+			}
+			
+			public void Attack()
+			{
+				Debug.Log("The attack causes "+Damage.ToString()+" damage");
+			}
+		}
+		\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Inheritance Example - C\#}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	public class Boss : Enemy
+	{
+		[SerializeField]
+		private int DamageMultiplier; 
+		
+		void Start()
+		{
+			Damage=5;
+			DamageMultipler=2;
+		}
+		
+		public void Attack()
+		{
+			Debug.Log("The attack causes "+Damage.ToString()+" damage");
+		}
+		
+		public void SpecialAttack()
+		{
+			int totalDamage=Damage*DamageMultiplier;
+			Debug.Log("Special attack causes "+totalDamage.ToString()+" damage");
+		}
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Inheritance Example - C++}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	public class Enemy
+	{
+		public:
+			Enemy()
+			{
+				Damage=1;
+			};
+			
+			~Enemy()
+			{
+			}
+			
+			void Attack()
+			{
+				std::cout<<"The attack causes "<<Damage<<" damage"<<std::endl;
+			}
+		protected:
+			int Damage;
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Inheritance Example - C++}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	public class Boss : public Enemy
+	{
+		public:
+			Boss()
+			{
+				Damage=5;
+				DamageMultiplier=2;
+			};
+			
+			~Boss()
+			{
+			}
+			
+			void SpecialAttack()
+			{
+				int totalDamage=Damage*DamageMultiplier;
+				std::cout<<"Special attack causes "<<totalDamage<<" damage"<<std::endl;
+			}	
+		protected:
+			int DamageMultiplier;
+		
+
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Overriding}
+	\begin{itemize}
+		\pause \item You can override functions in the base class by providing a new version of the function
+		\pause \item You should mark any function that you are going to override with the \textbf{virtual} keyword 
+		\pause \item Then in the child class, you have a function with the same signature which is marked with the \textbf{override} keyword
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Overriding Example - C\#}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+		public class Enemy : MonoBehaviour
+		{
+			[SerializeField]
+			proteced int Damage;
+		
+			void Start()
+			{
+				Damage=1;
+			}
+		
+			public virtual void Attack()
+			{
+				Debug.Log("The attack causes "+Damage.ToString()+" damage");
+			}
+		}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Overriding Example - C\#}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+		public class Boss : Enemy
+		{
+			[SerializeField]
+			private int DamageMultiplier; 
+		
+		void Start()
+		{
+			Damage=5;
+			DamageMultipler=2;
+		}
+		
+		public override void Attack()
+		{
+			base.Attack();
+			Damage+=1;
+			Debug.Log("Thisis the boss attacking");
+		}
+		
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Overriding Example - C++}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	public class Enemy
+	{
+	public:
+	Enemy()
+	{
+	Damage=1;
+	};
+	
+	~Enemy()
+	{
+	}
+	
+	void Attack()
+	{
+	std::cout<<"The attack causes "<<Damage<<" damage"<<std::endl;
+	}
+	protected:
+	int Damage;
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Overriding Example - C++}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	public class Boss : public Enemy
+	{
+	public:
+	Boss()
+	{
+	Damage=5;
+	DamageMultiplier=2;
+	};
+	
+	~Boss()
+	{
+	}
+	
+	void SpecialAttack()
+	{
+	int totalDamage=Damage*DamageMultiplier;
+	std::cout<<"Special attack causes "<<totalDamage<<" damage"<<std::endl;
+	}	
+	protected:
+	int DamageMultiplier;
+	
+	
+	}
+	\end{lstlisting}
+\end{frame}
