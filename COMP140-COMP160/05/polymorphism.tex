@@ -1,2 +1,81 @@
 \part{Polymorphism}
 \frame{\partpage}
+
+\begin{frame}{Introduction to Polymorphism}
+	\begin{itemize}
+		\pause \item Polymorphism is another key feature of OOP languages
+		\pause \item The basic idea is that instances of a derived class can be treated as objects of the basic class
+		\pause \item They can be used as parameters for functions and in collections
+		\pause \item We then call the functions on these objects and our code will called the 'correct' version of the function
+		\pause \item This is best illustrated by an example 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Polymorphism example C\#}
+		\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+		class Enemy{/*This has been define in previous slides*/}
+		class Boss : Enemy{/*Again see previou slides*/}
+		
+		//This function will be in monobehavior
+		void DoAttacks(Enemy enemy)
+		{
+			enemy.Attack();
+		}
+		
+		//We probably have grabbed these from other game objects
+		Enemy goblin=new Enemy();
+		Eneny orc=new Enemy();
+		Boss ogre=new Boss();
+		
+		//Call DoAttack on each one of these
+		DoAttack(goblin);
+		DoAttack(orc);
+		DoAttack(ogre);
+		
+		//This even works if each instance is in a list
+		List<Enemy> enemies=new List<Enemy>();
+		enemies.Add(goblin);
+		enemies.Add(orc);
+		enemies.Add(ogre);
+		
+		foreach(Enemy e in enemies)
+		{
+			DoAttack(e);
+		}
+		\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Polymorphism example C++}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	class Enemy{/*This has been define in previous slides*/}
+	class Boss : Enemy{/*Again see previou slides*/}
+	
+	//This function will be in monobehavior
+	void DoAttacks(Enemy *enemy)
+	{
+		enemy->Attack();
+	}
+	
+	//We probably have grabbed these from other game objects
+	Enemy goblin=new Enemy();
+	Eneny orc=new Enemy();
+	Boss ogre=new Boss();
+	
+	//Call DoAttack on each one of these
+	DoAttack(goblin);
+	DoAttack(orc);
+	DoAttack(ogre);
+	
+	//This even works if each instance is in a list
+	std::vector<Enemy*> enemies;
+	enemies.push_back(goblin);
+	enemies.push_back(orc);
+	enemies.push_back(ogre);
+	
+	for(Enemy * e : enemies)
+	{
+		DoAttack(e);
+	}
+	\end{lstlisting}
+\end{frame}
+

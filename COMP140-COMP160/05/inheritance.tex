@@ -72,7 +72,7 @@
 				Damage=1;
 			};
 			
-			~Enemy()
+			virtual ~Enemy()
 			{
 			}
 			
@@ -146,20 +146,17 @@
 	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
 		public class Boss : Enemy
 		{
-			[SerializeField]
-			private int DamageMultiplier; 
 		
 		void Start()
 		{
 			Damage=5;
-			DamageMultipler=2;
 		}
 		
 		public override void Attack()
 		{
 			base.Attack();
 			Damage+=1;
-			Debug.Log("Thisis the boss attacking");
+			Debug.Log("This is the boss attacking");
 		}
 		
 	\end{lstlisting}
@@ -170,21 +167,21 @@
 	public class Enemy
 	{
 	public:
-	Enemy()
-	{
-	Damage=1;
-	};
+		Enemy()
+		{
+			Damage=1;
+		};
+		
+		virtual ~Enemy()
+		{
+		}
 	
-	~Enemy()
-	{
-	}
-	
-	void Attack()
-	{
-	std::cout<<"The attack causes "<<Damage<<" damage"<<std::endl;
-	}
+		virtual void Attack()
+		{
+			std::cout<<"The attack causes "<<Damage<<" damage"<<std::endl;
+		}
 	protected:
-	int Damage;
+		int Damage;
 	}
 	\end{lstlisting}
 \end{frame}
@@ -194,25 +191,26 @@
 	public class Boss : public Enemy
 	{
 	public:
-	Boss()
-	{
-	Damage=5;
-	DamageMultiplier=2;
-	};
+		Boss()
+		{
+			Damage=5;
+		};
 	
-	~Boss()
-	{
-	}
+		~Boss()
+		{
+		}
 	
-	void SpecialAttack()
-	{
-	int totalDamage=Damage*DamageMultiplier;
-	std::cout<<"Special attack causes "<<totalDamage<<" damage"<<std::endl;
-	}	
+		void Attack() override
+		{
+			Enemy::Attack();
+			Damage+=1;
+			std::cout<<"This is the boss attacking"<<std::endl;
+		}	
 	protected:
-	int DamageMultiplier;
-	
-	
+		int DamageMultiplier;
 	}
 	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Abstract Classes \& Interfaces}
 \end{frame}
