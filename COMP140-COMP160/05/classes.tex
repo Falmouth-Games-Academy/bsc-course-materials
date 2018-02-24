@@ -1,0 +1,258 @@
+\part{Classes Review}
+\frame{\partpage}
+
+\begin{frame}{Classes}
+	\begin{itemize}
+		\pause \item Let us look at Classes again
+		\pause \item Classes allow us to create our own data types
+		\pause \item They consist of a series of data(variables) and functions that operate on the data
+		\pause \item Functions and variables inside the class can be marked with the following \textbf{access specifiers}
+		\begin{itemize}
+			\pause \item \textbf{Public}: Can be accessed directly
+			\pause \item \textbf{Private}: Can only be accessed inside the class
+			\pause \item \textbf{Protected}: Acts like private, but child classes can access
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Class Examples - C++}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	class Player
+	{
+	public:
+		Player()
+		{
+			Health=100;
+		};
+
+		void TakeDamage(int health)
+		{
+			Health-=health;
+		};
+
+		void HealDamage(int health)
+		{
+			Health+=health;
+		};
+
+		~Player(){};
+	private:
+		int Health;
+	};
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Class Examples - C\# Unity}
+\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	public class Player
+	{
+		private int Health;
+
+		public Player()
+		{
+			Health=100;
+		}
+		
+		public void TakeDamage(int health)
+		{
+			Health-=health;
+		}
+
+		public void HealDamage(int health)
+		{
+			Health+=health;
+		}
+	}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Classes vs Structs}
+\begin{itemize}
+	\pause \item A \textbf{Struct} is pretty much the same as a \textbf{Class}
+	\pause \item The only difference in functionally, by default:
+	\begin{itemize}
+		\pause \item Everything in a \textbf{Class} is \textbf{private}
+		\pause \item Everything in a \textbf{Struct} is \textbf{public}
+	\end{itemize}
+	\pause \item Difference by convention:
+	\begin{itemize}
+		\pause \item Structs are used for holding related data and tend not to have functions
+		\pause \item Classes hold data and functions
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Creating an Instance - C++}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+		//Creating on the stack, this will be deleted when it drops out of scope
+		Player player1=Player();
+		
+		//Call take damage function, notice we use . to access functions
+		player.TakeDamage(20);
+		
+		//Creating on the Heap, please delete!!
+		Player * player2=new Player();
+		
+		//Call take damage function, note we use -> to access functions
+		player->TakeDamage(20);
+		
+		//Deleting player2 on the heap
+		if (player2)
+		{
+			delete player2;
+			player2=nullptr;
+		}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Creating an Instance - C\#}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+		//Create a player
+		Player player1=new Player();
+		
+		//Call take Damage
+		player1.TakeDamage(50);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Constructor \& Deconstructor}
+	\begin{itemize}
+		\pause \item \textbf{Constructors} are called when you create an instance
+		\pause \item Constructors can take in zero or many parameters
+		\pause \item You need to declare different version of the constructor
+		\pause \item Deconstructors are called when the instance has been deleted (by the dropping out of scope, or explicitly deleted in C++)
+		\pause \item Constructors have to be names the same as the class
+		\pause \item Deconstructors have the same name as the class but prefixed with \textbf{$\sim$} (tilde symbol)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Constructors C++}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	public class Player
+	{
+		public:
+			Player()
+			{
+				Health=100;
+				Strength=10;
+			};
+			
+			Player(int health)
+			{
+				Health=health;
+				Strength=10;
+			};
+			
+			Player(int health,int strength)
+			{
+				Health=health;
+				Strength=strength;
+			};
+			~Player(){};
+	private:
+		int Health;
+		int Strength;
+	};	
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Constructors C++}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	//Create a player
+	Player * player1=new Player();
+	
+	//Create another player with the one parameter constructor
+	Player player2=Player(10);
+	
+	//Create another player with the two parameter constructor
+	Player * player3=new Player(100,20);
+	
+	delete player1;
+	delete player2;
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Constructors C\#}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	class Player
+	{
+		private int Health;
+		private int Strength;
+		
+		public Player()
+		{
+			Health=100;
+			Strength=10;
+		}
+		
+		public Player(int health)
+		{
+			Health=health;
+			Strength=10;	
+		}
+		
+		public Player(int health,int strength)
+		{
+			Health=health;
+			Strength=strength;
+		}
+		
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Using Constructors C\#}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+		//Create a player with the default no parameter constructor
+		Player player1=new Player();
+		
+		//Create a player with one parameter constructor
+		Player player2=new Player(50);
+		
+		//Create a player with two parametes constructor
+		Player player3=new Player(120,50);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Encapsulation}
+	\begin{itemize}
+		\pause \item In OOP, Encapsulation is a key principle 
+		\pause \item This refers to the idea that all data in a class should be hidden by the caller
+		\pause \item This means that \textbf{all} variables should be marked \textbf{private} or \textbf{protected}
+		\pause \item And only functions inside the class can operate on the data
+		\pause \item \textbf{Unity - but what about exposing variables to the editor?}
+		\begin{itemize}
+			\pause \item You should still make everything private
+			\pause \item Then use the \textbf{[SerializeField]} attribute to make the variable visible in the inspector
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Class Examples - C\# Unity}
+	\begin{lstlisting}[language=C++,basicstyle=\tiny,]
+	using UnityEngine;
+	
+	public class Player : MonoBehaviour
+	{
+		[SerializeField]
+		private int Health;
+	
+		public Player()
+		{
+			Health=100;
+		}
+	
+		public void TakeDamage(int health)
+		{
+			Health-=health;
+		}
+	
+		public void HealDamage(int health)
+		{
+			Health+=health;
+		}
+	}
+	\end{lstlisting}
+\end{frame}
+
