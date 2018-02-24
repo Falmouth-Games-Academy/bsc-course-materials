@@ -35,7 +35,7 @@
 			\pause \item OpenGL: Have only a few larger VBOs  
 		\end{itemize} 
 	\end{itemize}
-\begin{frame}
+\end{frame}
 
 \begin{frame}{Instancing}
 	\begin{itemize}
@@ -45,5 +45,21 @@
 			\pause \item Unreal: \url{https://forums.unrealengine.com/unreal-engine/events/90518-canon-man-tutorial-hierarchical-instanced-static-meshes-july-26th-live-from-epic-hq?118229=}  
 			\pause \item OpenGL: \url{http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/particles-instancing/}
 		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Shaders}
+	\begin{itemize}
+		\pause \item Texture Sampling is one of the biggest source of memory access problems
+			\begin{itemize}
+				\pause \item Reduce Texture reads
+				\pause \item Pack Texture data
+				\pause \item Reduce bandwidth by using a 16 bit texture
+			\end{itemize}
+		\pause \item Avoid branching
+			\begin{itemize}
+				\pause \item Prefer static branching over dynamic
+				\pause \item With static branching, the loop can be evaluated at compile time 
+			\end{itemize}
 	\end{itemize}
 \end{frame}
