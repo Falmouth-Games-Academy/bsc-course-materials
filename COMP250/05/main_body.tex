@@ -6,6 +6,9 @@
 
 \usepackage[T1]{fontenc}
 
+% Fixes font encoding issue where £ sign comes out as $ in math mode
+\renewcommand{\pounds}{\text{\textsterling}}
+
 % Default language for code listings
 \lstset{language=C++,
         morekeywords={each,in,nullptr}
@@ -29,6 +32,7 @@
 
 \frame{\titlepage} 
 
+\input{assignments}
 \input{montecarlo}
 \input{mcts}
 
