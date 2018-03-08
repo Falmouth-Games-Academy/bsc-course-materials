@@ -1,0 +1,20 @@
+\part{Memory Management}
+\frame{\partpage}
+
+\begin{frame}
+\frametitle{Garbage Collection in C\#}
+\begin{itemize}
+	\item In C\# there is an inbuilt Garbage Collector which will  walk through the Object Graph
+	\item It will check to see if the object is still allocated, if not, the Garbage Collector will cleanup the object
+	\item This process is automatic and is tuned for maximum performance
+	\item However you should think of caching GetComponent calls using the \textbf{Start} or \textbf{Awake}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Memory Management in C++}
+\begin{itemize}
+\item In C++ there is no Garbage Collection, you have to manually delete objects when no longer needed
+\item Worth repeating  \textbf{for every new, you need a matching delete}
+\end{itemize}
+\end{frame}
