@@ -3,18 +3,30 @@
 
 \begin{frame}
 \frametitle{Garbage Collection in C\#}
-\begin{itemize}
-	\item In C\# there is an inbuilt Garbage Collector which will  walk through the Object Graph
-	\item It will check to see if the object is still allocated, if not, the Garbage Collector will cleanup the object
-	\item This process is automatic and is tuned for maximum performance
-	\item However you should think of caching GetComponent calls using the \textbf{Start} or \textbf{Awake}
-\end{itemize}
+	\begin{itemize}
+		\pause \item In C\# there is an inbuilt Garbage Collector which will  walk through the Object Graph
+		\pause \item It will check to see if the object is still allocated, if not, the Garbage Collector will cleanup the object
+		\pause \item This process is automatic and is tuned for maximum performance
+		\pause \item \url{https://unity3d.com/learn/tutorials/topics/performance-optimization/optimizing-garbage-collection-unity-games}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Memory Management in C++}
-\begin{itemize}
-\item In C++ there is no Garbage Collection, you have to manually delete objects when no longer needed
-\item Worth repeating  \textbf{for every new, you need a matching delete}
-\end{itemize}
+	\begin{itemize}
+		\pause \item In C++ there is no Garbage Collection, you have to manually delete objects when no longer needed
+		\pause \item Worth repeating  \textbf{for every new, you need a matching delete}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Memory - General Good Practices}
+	\begin{itemize}
+		\pause \item Never allocate or deallocate during game update (this includes Instantiate)
+		\pause \item Use Memory Pools to recycle objects
+		\begin{itemize}
+			\pause \item Unity - \url{https://unity3d.com/learn/tutorials/topics/scripting/object-pooling}
+			\pause \item C++ - \url{http://gameprogrammingpatterns.com/object-pool.html} 
+		\end{itemize}  
+		\pause \item Cache frequently used objects
+	\end{itemize}
 \end{frame}
