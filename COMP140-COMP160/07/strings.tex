@@ -15,6 +15,18 @@
 \begin{frame}[fragile]
 \frametitle{String Builder Example - C\#}
 	\begin{lstlisting}
+	//We need to use the namespace - System.Text
+	//Create the string builder with a capacity of 1024
+	StringBuilder sb=new StringBuilder(1024,1024);
+	
+	//Append some text
+	sb.Append("Name: ");
+	sb.Append("Brian");
+	sb.Append(" Health: ");
+	sb.Append(100);
+	
+	//Get the String from the String Builder
+	string s=sb.ToString();
 	\end{lstlisting}
 \end{frame}
 
