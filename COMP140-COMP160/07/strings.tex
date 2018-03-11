@@ -1,8 +1,7 @@
 \part{Strings}
 \frame{\partpage}
 
-\begin{frame}
-\frametitle{Strings}
+\begin{frame}{Strings}
 	\begin{itemize}
 		\item Strings act like value types but they are actually reference types (C\#)
 		\item This means we need to be careful in allocating new strings
@@ -12,10 +11,11 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{String Builder Example - C\#}
+\begin{frame}[fragile]{String Builder Example - C\#}
 	\begin{lstlisting}
 	//We need to use the namespace - System.Text
+	using naespace System.Text
+	
 	//Create the string builder with a capacity of 1024
 	StringBuilder sb=new StringBuilder(1024,1024);
 	
@@ -30,8 +30,22 @@
 	\end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{String Stream Example - C++}
+\begin{frame}[fragile]{String Stream Example - C++}
 	\begin{lstlisting}
+	//We need to include the sstream header file
+	#include <sstream>
+	
+	//Create String Stream
+	std::ostringstream stringStream;
+	
+	//Append some text
+	stringStream << "Name: ";
+	stringStream << "Brian";
+	stringStream <<" Health: ";
+	stringStream << 100;
+	
+	//Grab the constructed string from string stream
+	std::string s=stringStream.str();
+	
 	\end{lstlisting}
 \end{frame}
