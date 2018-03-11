@@ -50,56 +50,50 @@
 \begin{frame}{Pathfinding example}
     \begin{itemize}
         \pause\item \url{https://github.com/falmouth-games-academy/bsc-live-coding}
-        \pause\item Open \url{06_pathfinding} in PyCharm
+        \pause\item Open \url{COMP250/07_pathfinding} in PyCharm
     \end{itemize}
-\end{frame}
-
-\begin{frame}{Aside: data structures}
-	\begin{itemize}
-		\pause\item \textbf{Stack}: can \textbf{push} to the top and \textbf{pop} from the top
-			\begin{itemize}
-				\pause\item ``Last in, first out''
-			\end{itemize}
-		\pause\item \textbf{Queue}: can \textbf{enqueue} to the back and \textbf{dequeue} to the front
-			\begin{itemize}
-				\pause\item ``First in, first out''
-			\end{itemize}
-		\pause\item \textbf{Priority queue}: maintains its elements in \textbf{sorted} order
-			\begin{itemize}
-				\pause\item \textbf{Enqueue} automatically puts the element in the correct position according to its priority
-				\pause\item \textbf{Dequeue} gives the highest priority element currently in the queue
-				\pause\item Usually implemented as a \textbf{heap} or a \textbf{balanced tree}...
-				\pause\item ... but implementations are available for all popular programming languages
-			\end{itemize}
-	\end{itemize}
 \end{frame}
 
 \begin{frame}{Graph traversal}
 	\begin{itemize}
 		\pause\item \textbf{Depth-first} or \textbf{breadth-first}
 		\pause\item Recall: can be implemented with a \textbf{stack} or a \textbf{queue} respectively
+		\pause\item For graphs (as opposed to trees), need to remember which nodes have been \textbf{visited}
+			to avoid getting stuck in a loop
 		\pause\item Inefficient --- generally has to explore the \textbf{entire map}
 		\pause\item Finds a path, but probably not the \textbf{shortest}
+		\pause\item Third type of traversal: \textbf{best-first}
+			\begin{itemize}
+				\pause\item ``Best'' according to some heuristic evaluation
+				\pause\item Often implemented with a \textbf{priority queue}
+			\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Greedy search}
 	\begin{itemize}
 		\pause\item Always try to move \textbf{closer} to the goal
-		\pause\item Can be implemented with a \textbf{priority queue}
+		\pause\item Visit the node whose \textbf{distance to the goal} is \textbf{minimal}
 		\pause\item Doesn't handle \textbf{dead ends} well
 		\pause\item Not guaranteed to find the \textbf{shortest} path
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Dijkstra's algorithm}
+	\begin{itemize}
+		\pause\item Let $g(x)$ be the distance of the path found from the start to $x$
+		\pause\item Choose a node that minimises $g(x)$
+		\pause\item Needs to handle cases where a shorter path to a node is discovered later in the search
+		\pause\item \textbf{Is} guaranteed to find the shortest path
+		\pause\item ... but is not the most efficient algorithm for doing so
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{A$^*$ search}
     \begin{itemize}
-    	\pause\item Let $h(x)$ be an estimate of the distance from $x$ to the goal
-    	\pause\item Let $g(x)$ be the distance of the path found from the start to $x$
+    	\pause\item Let $h(x)$ be an estimate of the distance from $x$ to the goal (as in greedy search)
+    	\pause\item Let $g(x)$ be the distance of the path found from the start to $x$ (as in Dijkstra's algorithm)
     	\pause\item Choose a node that minimises $g(x) + h(x)$
-		    \begin{itemize}
-		    	\pause\item Contrast with greedy search, which just minimises $h(x)$
-			\end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -114,7 +108,7 @@
             \end{itemize}
         \item The more accurate $h(x)$ is, the more efficient the search \pause
             \begin{itemize}
-                \item E.g.\ $h(x) = 0$ is admissible, but not very helpful \pause
+                \item E.g.\ $h(x) = 0$ is admissible (and gives Dijkstra's algorithm), but not very helpful \pause
             \end{itemize}
         \item $h(x)$ is a \textbf{heuristic} \pause
             \begin{itemize}
