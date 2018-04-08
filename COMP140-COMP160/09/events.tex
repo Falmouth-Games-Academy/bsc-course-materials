@@ -1,0 +1,21 @@
+\part{Events}
+\frame{\partpage}
+
+\begin{frame}{Observer}
+	\begin{itemize}
+		\pause \item When one object is updated, all observers of this object are notified
+		\pause \item A list of observers are maintained by the subject
+		\pause \item When the state of the subject changes then the list of the observers is processed
+		\pause \item Each observer is then notified of the change
+		\pause \item Each observer should register/unregistered itself with a subject 
+		\pause \item Very useful for UI, Input or Network systems in games
+		\pause \item Some of this function is already built into C\#(delegates \& Events) and Unity(Unity Events)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Implementations}
+	\begin{itemize}
+		\pause \item Unity (event system)  - \url{https://unity3d.com/learn/tutorials/topics/scripting/events-creating-simple-messaging-system}
+		\pause \item C++ (Observer Pattern) - \url{http://gameprogrammingpatterns.com/observer.html}
+	\end{itemize}
+\end{frame}
