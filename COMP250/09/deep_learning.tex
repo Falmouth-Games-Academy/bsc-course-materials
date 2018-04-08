@@ -52,7 +52,40 @@
 	\includegraphics[width=\textwidth]{style_transfer}
 \end{frame}
 
+\begin{frame}{Generative Adversarial Networks (GANs)}
+	\begin{itemize}
+		\pause\item Two ANNs trained in parallel
+			\begin{itemize}
+				\pause\item One to generate ``fake'' artefacts
+				\pause\item One to distinguish ``real'' from ``fake''
+			\end{itemize}
+		\pause\item \url{http://research.nvidia.com/publication/2017-10_Progressive-Growing-of}
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Learning to play Atari games (Mnih et al, 2015)}
 	\includegraphics[width=\textwidth]{deepmind_atari}
+\end{frame}
+
+\begin{frame}{AlphaGo (Silver et al, 2017)}
+	\begin{itemize}
+		\pause\item MCTS with ANNs for move pruning, simulation playouts and state evaluation
+		\pause\item ANNs trained on both expert human matches and self-play (reinforcement learning)
+		\pause\item Defeated Lee Sedol, world Go champion
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{AlphaZero (Silver et al, 2018)}
+	\begin{itemize}
+		\pause\item Similar MCTS+ANN architecture to AlphaGo
+		\pause\item Trained by reinforcement learning (self-play) only
+		\pause\item After only 9 hours$^*$ of training, defeated Stockfish
+			(one of the strongest chess programs available) in a 100-match tournament
+			\begin{itemize}
+				\pause\item $^*$ On a cluster of 5000 of Google's custom Tensor Processing Units
+			\end{itemize}
+		\pause\item Stockfish is based on decades of research by expert chess players and AI programmers
+			--- AlphaZero started from no chess-specific knowledge whatsoever (other than the rules of the game)
+	\end{itemize}
 \end{frame}
 
