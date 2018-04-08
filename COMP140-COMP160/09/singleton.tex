@@ -1,0 +1,63 @@
+\part{Static Keyword \& Singletons}
+\frame{\partpage}
+
+\begin{frame}{Static Keyword}
+	\begin{itemize}
+		\pause \item The \textbf{Static} keyword has multiple meanings in modern programming languages
+		\begin{itemize}
+			\pause \item If you mark a variable \textbf{inside a function} as static then it is allocated once for the whole lifetime of the programme
+			\pause \item If you mark a variable \textbf{inside a class} as static then it is allocated once and the data is shared between all instances of the class (otherwise known as a class variable)
+			\pause \item If you mark a function \textbf{inside a class} as static then it is shared amongst all instances of the class \& can only operate on static variables
+		\end{itemize}
+		\pause \url{https://softwareengineering.stackexchange.com/questions/163457/understanding-the-static-keyword}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Static Example - C++}
+\end{frame}
+
+\begin{frame}[fragile]{Static Usage - C++}
+\end{frame}
+
+\begin{frame}[fragile]{Static Example - C\#}
+\end{frame}
+
+\begin{frame}[fragile]{Static Usage - C\#}
+\end{frame}
+
+\begin{frame}{Static keyword - Use Cases}
+	\begin{itemize}
+		\pause \item Useful for managing Global Data such as score 
+		\pause \item Creating Utility functions which don't require to be part of a class instance
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Static Examples}
+	\begin{itemize}
+		\pause \item Unity - \url{https://unity3d.com/learn/tutorials/topics/scripting/statics}
+		\pause \item C++ - \url{https://www.youtube.com/watch?v=zGPefqkwBK0}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Singleton}
+	\begin{itemize}
+		\pause \item Guarantees that there is only one instance of a class and can be accessed globally
+		\pause \item Usually 'lazily' initialised via a static function that satisfy the statement above
+		\pause \item Used for manager classes which track some sort of Global State
+		\pause \item \textbf{Warning!} Some consider Singletons to be an anti-pattern
+		\pause \item Singleton: an anti-pattern? - \url{https://stackoverflow.com/questions/12755539/why-is-singleton-considered-an-anti-pattern}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Unity Implementations}
+	\begin{itemize}
+		\item Singleton - \url{https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial/writing-game-manager}
+		\item Better Singleton? - \url{https://stackoverflow.com/documentation/unity3d/2137/singletons-in-unity}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{C++ Implementations}
+\begin{itemize}
+	\item Singleton - \url{http://gameprogrammingpatterns.com/singleton.html}
+\end{itemize}
+\end{frame}
