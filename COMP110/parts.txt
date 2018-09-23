@@ -1,0 +1,12 @@
+
+01/COMP110_01_screen.tex 	Course introduction 	What was the first computer? 	What was the first computer game? 	What was the first games console? 	Basic computer architecture 	Programming languages and paradigms
+02/COMP110_02_screen.tex
+03/COMP110_03_screen.tex 	Algorithms 	Flowcharts 	Pseudocode
+04/COMP110_04_screen.tex 	Logic gates 	Binary notation 	Computer memory 	Arithmetic Logic Unit 	Worksheet B
+05/COMP110_05_screen.tex 	Computation time 	Search 	Algorithm strategies 	More on complexity 	Computability
+07/COMP110_07_screen.tex 	Algorithm strategies 	Recursion and induction 	Worksheet C
+08/COMP110_08_screen.tex 	Research Journal Peer Review 	Basic containers in Python 	Pass by reference
+09/COMP110_09_screen.tex 	Pass by reference 	Data representation
+10/COMP110_10_screen.tex 	How programs are executed 	The MIPS architecture 	Control flow in MIPS 	MIPS machine code 	Representing numbers
+11/COMP110_11_screen.tex 	Stacks and queues 	Linked lists 	Graphs 	Worksheet D
+12/COMP110_12_screen.tex 	Recursion and induction
