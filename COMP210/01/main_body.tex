@@ -6,6 +6,14 @@
 \usepackage{tikz}
 \usepackage{verbatim}
 \graphicspath{ {../../} }
+\usepackage{csquotes}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
 % Default language for code listings
 \lstset{language=C++,
@@ -24,7 +32,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: \normalsize{Human-Centred Design for AR/VR}}
+\title{\sessionnumber: \normalsize{Human-Centred Design(HCI)}}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -38,13 +46,11 @@
 	\end{figure}
 \end{frame}
 
-
-
 % MODULE ROADMAP
 \begin{frame}
 	\frametitle{Module Roadmap}
 	\begin{figure}
-		\includegraphics[scale=.14]{assets/roadmap}
+		\includegraphics[scale=.36]{assets/roadmap}
 	\end{figure}
 \end{frame}
 
@@ -53,346 +59,184 @@
 \begin{frame}
 	\frametitle{Assignment Briefs}
 	\begin{itemize}
+		\item \textbf{Produce} a journal detailing your research into HCI research
 		\item \textbf{Evaluate} an existing screen-based game interface
 		\item \textbf{Design} and \textbf{develop} an interface that incorporates either AR or VR
-		\item \textbf{Produce} a journal detailing your research into virtual and augmented reality
 	\end{itemize}
 \end{frame}
 
 % LEARNING OUTCOMES
 \begin{frame}
-	\frametitle{Virtual and Augmented Reality Overview:}
-	
-	\textbf{Learning Outcomes:}
+	\frametitle{Learning Outcomes }
 	
 	\begin{itemize}
-		\item \textbf{Explain} the difference between augmented \& virtual reality. 
-		\item \textbf{Discuss} the various forms of haptic feedback.
-		\item \textbf{List} and \textbf{describe} the key components that make up the hardware side of reality systems.	
+		\item \textbf{Explain}
+		\item \textbf{Discuss} 
+		\item \textbf{List} 
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{A Word of Warning}
-	AR/VR are both emerging technologies and thus, they borrow language from other similar disciplines such as game development, film studies and 3D design. This appropriation of lexicons can be confusing and there will be some overlap in relation to key terms and definitions.
-\end{frame}
-
-\begin{frame}
-	\begin{figure}
-		\includegraphics[scale=.6]{assets/history.png}
-		\caption{\tiny{Left to Right - Pratt's head-mounted targeting interface, Heilig's Stereoscope TV Apparatus \& Sensorama, NASA's VIEW System} }
-	\end{figure}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Forms of Reality}
-	\begin{figure}
-		\includegraphics[scale=.2]{assets/continuum.png}
-		\caption{The Virtuality Continuum - Milgram \& Kishino}
-	\end{figure}
-\end{frame}
-
-
-\begin{frame}
-	\begin{figure}
-		\includegraphics[scale=0.3]{assets/lanier.jpg}
-	\end{figure}
-	The term `virtual reality' was coined by Jaron Lanier in 1987 during a period of intense research activity into this form of technology.
+	\frametitle{Human-Computer Interaction}
+	''If we didn't have people, everything would work so much better`` Donald A. Norman
 	
+	\begin{center}
+		\huge what is HCI?
+	\end{center}
 \end{frame}
 
 \begin{frame}
-	``As babies, each of us has an astonishing liquid infinity of imagination on the inside; that butts up against the stark reality of the physical world. That the baby's imagination cannot be realised is a fundamental indignity that we only learn to live with when we decide to call ourselves adults. With virtual reality you have a world with many of the qualities of the physical world, but it doesn't resist us. It release us from the taboo against infinite possibilities. That's the reason virtual reality electrifies people so much.''
-
-\end{frame}
-
-
-% Hands up who has had a go with....
-% run through some of the introduction from book.
-
-%REALITY SYSTEMS
-\begin{frame}
-	\frametitle{Reality Systems - Hardware}
-	
-	\begin{columns}
-		
-		\begin{column}{0.5\textwidth}
-			\textbf{Display Types:}
-			\begin{itemize}
-				\item Head-Mounted Displays
-				\item World-Fixed Displays
-				\item Hand-held Displays (tablets = floating, mobile = personal)
-			\end{itemize}
-		\end{column}
-		
-		\begin{column}{0.5\textwidth}
-
-			\textbf{Audio:}
-			Spatialised Audio is preferred
-			\begin{itemize}
-				\item Headphones - more immersive.
-				\item surround sound speakers.
-			\end{itemize}
-			
-		\end{column}
-		
-	\end{columns}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Head-Mounted Displays (HMD)}
+	\begin{center}
+	HCI is the study of the relationship between people and technology
+	\end{center}
 	\begin{figure}
-		\includegraphics[scale=0.4]{assets/hmd.png}
+		\includegraphics[scale=.45]{assets/cyborgist}
+		\caption{\href{https://www.youtube.com/watch?v=C_OnYqx3ynA}{Cyborg Neil Harbisson} with his antenna implant}
 	\end{figure}
 \end{frame}
 
 \begin{frame}
-	\frametitle{World-Fixed Display}
-	\begin{figure}
-		\includegraphics[scale=0.3]{assets/cave.jpg}
-		\caption{Cave VR environment: A lifelike visual display is created by projectors positioned outside the CAVE and controlled by physical movements from a user inside the CAVE.}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Hand-held displays}
-	Have a guess at the example I chosen?
-	\pause
-	\begin{figure}
-		\includegraphics[scale=0.25]{assets/pgo.png}
-		\caption{Pokemon Go}
-	\end{figure}
-	
-\end{frame}
-
-%TRACKING
-\begin{frame}
-	\frametitle{Tracking}
+	\frametitle{A Little Bit of History}
 	\begin{itemize}
-		\item Accelerator \& Gyro embedded in displays
-		\item Leap motion - Hand Tracking
-		\item Eye Tribe (Foveated rendering)
-		\item Fiducials Markers
-		\item Kinect2 - Skeleton Tracking
-		\item Valve's Lighthouse Tracking Sensors
-		\item Vive Trackers \href{https://www.youtube.com/watch?v=rJKO2WGSP_I}{(Link)}
-	\end{itemize}
-\end{frame}
-
-% OUTSIDE VS INSIDE
-\begin{frame}
-	\frametitle{Tracking}
-	\begin{figure}
-		\includegraphics[scale=0.25]{assets/tracking.png}
-		\caption{Pokemon Go}
-	\end{figure}
-\end{frame}
-
-
-
-\begin{frame}
-	\frametitle{Haptics}
-	Haptics are the artificial forces between virtual objects and the user.
-	\vspace{.2in}
-	
-	\textbf{Passive -}
-	real-world physical objects that match the shapes of a virtual objects. (Doors, ledges, pillars... )
-	\vspace{.2in}
-	
-	\textbf{Active -} Haptics can be dynamically controlled by the computer to provide a feeling of a wide range of simulated virtual objects.
-	
-\end{frame}
-
-\begin{frame}
-	\begin{figure}
-		\includegraphics[scale=0.25]{assets/thepit.png}
-		\caption{University of North Carolina - Pit Experiment}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
-	
-	\frametitle{Tactile Haptics}
-	
-	\begin{itemize}
-		\item Vibrotactile - vibration passed directly or indirectly to the skin
-		\item Electrotactile - electrodes passing current through the skin
-		\item Proprioceptive force - provides a sense of limb movement and muscular resistance
-	\end{itemize}	
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Self-Grounded vs. World-Grounded Haptics}
-	\begin{figure}
-		\includegraphics[scale=0.3]{assets/self-world.png}
-		\caption{DexmoF2 \& Sensable's Phantom Haptic System}
-	\end{figure}
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Motion Platforms}
-	A motion platform is a hardware device that moves the entire body resulting in a sense of physical motion and gravity. 
-	\vspace{.2in}
-	
-	
-	These systems can convey a sense of orientation, vibration, acceleration and jerking.	
-	\vspace{.2in}
-	
-	
-	[Examples]
-	
-\end{frame}
-
-{
-      \begin{frame}[plain]
-        \begin{tikzpicture}[remember picture,overlay]
-            \node[at=(current page.center)] {
-                \includegraphics[width=\paperwidth]{assets/virtuix}
-            };
-        \end{tikzpicture}
-     \end{frame}
-}
-
-{
-      \begin{frame}[plain]
-        \begin{tikzpicture}[remember picture,overlay]
-            \node[at=(current page.center)] {
-                \includegraphics[width=\paperwidth]{assets/birdy}
-            };
-        \end{tikzpicture}
-     \end{frame}
-}
-
-% NEW: http://www.roadtovr.com/five-universal-tasks-3d-user-interfaces-doug-bowman/
-\begin{frame}
-	\frametitle{Five Universal Tasks of 3D User Interfaces }
-	\begin{itemize}
-		\item Navigation
-		\item Selection
-		\item Manipulation
-		\item System Control 
-		\item Text \& Voice Input
+		\item Commonly understood that HCI formally acknowledged as a field of study in1982
+		\item driven by the shift from secure cool room computers to personal computer - Apple 2 IBM PC Commodore
+		\item In essence, non-engineers having access to computers
+		\item Early computers were pretty daunting to non-engineers
+		\item HCI was born from the shift from specialist users to day-to-day use by non-engineers
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Human-Centred Design:}
-	
-	\textbf{Learning Outcomes:}
-	
-	\begin{itemize}
-		\item \textbf{explain} the importance of placing the user at the centre of the design process
-		\item \textbf{briefly} describe and compare different user-centred design techniques
-		\item \textbf{demonstrate} a knowledge of the principles of user-centred design.	
-		\item \textbf{acknowledge} that sophisticated/eloquent solutions are less important than great user experiences. 
-	\end{itemize}
-\end{frame}
-
-
-
-% CONTINUOUS DISCOVERY 
-\begin{frame}
-	\frametitle{Continuous Discovery}
-	Continuous discovery is the on-going process of engaging users during the design and development process. 
-	\begin{itemize}
-		\item \pause You can never know everything in advance of a project.
-		\item \pause Waiting until the end of a build to find out that something doesn't work is unsustainable. 
-		\item \pause Change is inevitable.
-		\item \pause Failures are an inevitable outcome of creativity and innovation. 
-	\end{itemize}
-\end{frame}	
-
-% ITERATION CYCLE
-\begin{frame}
-	\frametitle{Iteration}
+	\frametitle{Ivan Sutherland}
 	\begin{figure}
-		\includegraphics[scale=0.4]{assets/iteration.png}
-		\caption{The Iteration Cycle}
+		\includegraphics[scale=.2]{assets/sutherland}
+		\caption{\href{https://youtu.be/6orsmFndx_o?t=655}{Youtube link for Sketchpad demo filmed in the early 60s}}
 	\end{figure}
 \end{frame}
 
-
-
-% DEFINE STAGE
 \begin{frame}
-	\frametitle{ Design/Define Stage}
-	This stage attempts to answer the question, `what do we want to make?' and includes everything from the high-level vision to listing requirements. All parts of the define stage should be described from the users point of view and easily understood by all. 
-	\pause
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item Vision
-				\item Objectives 
-				\item Key Players				
-				\item Time \& Costs
-				\item Risks
-			\end{itemize}
-   		\end{column}
-		
-		\begin{column}{0.5\textwidth}  
-			\begin{itemize}
-				\item Assumptions
-				\item Constraints
-				\item Personas		
-				\item User Stories
-				\item Story Boards
-			\end{itemize}
-		\end{column}
-	\end{columns}
+	\frametitle{More recently...}
+	\begin{center}
+		Early 90s HCI blew up as the internet and web went mainstream and there was an explosion of new interface and communication methods
+	\end{center}
+	\textbf{Other Notable Shifts: }
+	
+	\begin{center}
+		Fixed computers\textless 2004\textgreater  portable devices \\ ~ \\
+                    Authored content\textless 2004\textgreater  user generated content
+         \end{center}
 \end{frame}
 
 \begin{frame}
-	\frametitle{\textbf{ASK QUESTIONS}}
+	\frametitle{NOW}
+	\begin{center}
+		Tech Buzzword Bingo!
+	\end{center}
 	\begin{itemize}
-		\item Feedback is crucial at the define stage. 
-		\item Ask lots of questions.
-		\item Do not trust assumptions. 
-		\item Common misconception.
+		\item Mobile
+		\item Multitouch
+		\item Gestures and natural computing
+		\item Sensors
+		\item Embedded
+		\item Wearables
+		\item Sustainability
+		\item Big Data
+		\item Social computing
+		\item Accessibility
+		\item Mixed Reality
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	Lets begin with the principle that all artificial things are designed. \\ ~ \\
+	
+	Who is doing the designing?
+	\begin{center}
+		\pause Are you doing any design? 
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{HCI - A Crash Course}
+	\begin{center}
+		\huge Do not...
+	\end{center}
+	\begin{itemize}
+		\item Presume prior knowledge of the audience
+		\item Especially, if they are a similar demographic to you
+		\item Expecting people to read the instructions
+		\item Blaming the user for errors
+		\item Getting frustrated with the user for unpredictable behaviour
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{HCI is complex because...}
+	\begin{itemize}
+		\item Borrow methods from other fields
+		\item Create standards derived from other fields
+		\item Involves Humans
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\begin{center}
-		\Huge{Analysis Paralysis }
+		If HCI is the study of the relationship between people and technology what fields might that span?
 	\end{center}
+	\pause
+	\begin{itemize}
+		\item Computer Science (duh)
+		\item Sociology
+		\item Psychology
+		\item Communication
+		\item Human factors engineering
+		\item Industrial engineering
+		\item rehabilitation engineering
+		\item and many more.
+	\end{itemize}	
 \end{frame}
 
-
-% MAKE STAGE
 \begin{frame}
-	\frametitle{Make Stage}
-	This stage answers the question, `how do we make it?' and then proceeds to make it. Each iteration of the make stage should take the project from basic sketches and minimal prototypes, closer and closer to the final product. 
+	\frametitle{HCI Research}
+	\begin{displayquote}	
+		``HCI research requires both rigorous methods and relevance'' \\ ~ \\ - Donald A. Norman
+	\end{displayquote} 
+	\pause
 	
-\pause
+	
+	We use it to influence interface design, development process, user training, and public policy. \\ ~ \\
+	Generally, to improve our relationship with computers.
+
+\end{frame}
+
+\begin{frame}
+		
+	\frametitle{What can be considered HCI contributions?}
+
 	\begin{itemize}
-		\item Use Cases
-		\item Block Diagrams 
-		\item Sketches				
-		\item Prototypes
-		\item Class Definitions
-		\item Hardware and Software implementation   		
+		\item Empirical
+		\item Artefact
+		\item Methodological
+		\item Dataset
+		\item Survey	
+		\item Opinion
+		\item theoretical
+	\end{itemize}
+
+	We are mostly interested in empirical
+\end{frame}
+
+\begin{frame}
+	\frametitle{These are Exciting Times}
+	\begin{itemize}
+		\item Tools are much better now
+		\item Eye tracking, sensors (EMG EEG)
+		\item Access to the masses - mechanical Turk, social networks, large amounts of generated content to analyse
+		\item Automation - AI machine learning, neural networks
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Prototypes}
-	A prototype is a simplistic implementation of what is trying to be accomplished without being overly concerned with aesthetics or perfection. Design prototypes are defined by their level of fidelity, or resolved finish. 
-	\begin{figure}
-		\includegraphics[scale=0.23]{assets/prototype.png}
-		\caption{The Prototype Continuum}
-	\end{figure}
-\end{frame}
 
-
-\begin{frame}
-	\frametitle{Learn Stage}
-	Utilises VR experts, subject matter experts, experiment design experts, statisticians and the end-user to ensure that you are doing the right things to maximise learning. 
-	
-	\vspace{.2in}
-	This is the stage that we are mostly concerned with when approaching assignment COMP210 1.
-\end{frame}
 
 
 \end{document}
