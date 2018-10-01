@@ -1,50 +1,75 @@
 \part{Turing machines}
 \frame{\partpage}
 
-\begin{frame}
-	\frametitle{Activity - Groups of Five}
-	\begin{figure}
-		\includegraphics[scale=0.3]{assets/activity.png}
-	\end{figure}
+\begin{frame}{Turing machines}
+    \begin{itemize}
+        \pause\item Introduced in 1936 by Alan Turing
+        \pause\item Theoretical model of a ``computer''
+            \begin{itemize}
+                \pause\item I.e.\ a machine that carries out computations (calculations)
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Turing machine}
+    \begin{itemize}
+        \pause\item Has a finite number of \textbf{states}
+        \pause\item Has an infinite \textbf{tape}
+        \pause\item Each space on the tape holds a \textbf{symbol} from a finite \textbf{alphabet}
+        \pause\item Has a \textbf{tape head} pointing at one space on the tape
+        \pause\item Has a transition table which, given:
+            \begin{itemize}
+                \item The current state
+                \item The symbol under the tape head
+            \end{itemize}
+        specifies:
+            \begin{itemize}
+                \item A new state
+                \item A new symbol to write to the tape, overwriting the current symbol
+                \item Where to move the tape head: one space to the left, or one space to the right
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Activity}
+    \begin{itemize}
+        \pause\item In groups of 2-3
+        \pause\item Line up 5-10 chocolates of different colours --- this is your \textbf{tape}
+        \pause\item Put your \textbf{red} lolly under the \textbf{leftmost} chocolate
+        \pause\item Repeatedly apply the rules on the next slide
+        \pause\item What computation does this machine perform?
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\begin{figure}
-		\includegraphics[scale=0.2]{assets/turingvideo.png}
-		\caption{\href{https://www.youtube.com/watch?v=gtRLmL70TH0}{https://www.youtube.com/watch?v=gtRLmL70TH0}}
-	\end{figure}
+    \newcommand{\stateA}{Red}
+    \newcommand{\stateB}{Orange}
+    \newcommand{\stateC}{Yellow}
+    \newcommand{\tapeX}{Blank}
+    \newcommand{\tapeO}{Milk}
+    \newcommand{\tapeI}{Dark}
+    \begin{tabular}{|cc|ccc|} \hline
+        Current & Current & New & New & Move \\
+        lolly & chocolate & lolly & chocolate & direction \\\hline
+        \stateA & \tapeX & \stateB & \tapeX & $\rightarrow$ \\
+        \stateA & \tapeO & \stateA & \tapeO & $\leftarrow$  \\
+        \stateA & \tapeI & \stateA & \tapeI & $\leftarrow$  \\\hline
+        \stateB & \tapeX & \stateC & \tapeI & $\leftarrow$  \\
+        \stateB & \tapeO & \stateC & \tapeI & $\rightarrow$ \\
+        \stateB & \tapeI & \stateB & \tapeO & $\rightarrow$ \\\hline
+        \stateC & \tapeX & Stop    & \tapeX & $\rightarrow$ \\
+        \stateC & \tapeO & \stateC & \tapeO & $\leftarrow$  \\
+        \stateC & \tapeI & \stateC & \tapeI & $\leftarrow$  \\\hline
+    \end{tabular}
 \end{frame}
 
-\begin{frame}
-
-	\begin{figure}
-		\includegraphics[scale=0.2]{assets/compute.png}
-		\caption{\href{https://www.youtube.com/watch?v=dNRDvLACg5Q}{https://www.youtube.com/watch?v=dNRDvLACg5Q}}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
-	\begin{figure}
-		\includegraphics[scale=0.2]{assets/interactive.png}
-		\caption{\href{http://turingmaschine.klickagent.ch/einband/}{http://turingmaschine.klickagent.ch/einband/}}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Turing Completeness}
-	
-	To show that something is Turing complete, it is enough to show that it can be used to simulate some Turing complete system. 	\\ ~ \\
-	For an imperative language to be classed as Turing Complete it must have:
-
-	\begin{itemize}
-		\item Conditional branching (e.g., ``if'' and ``goto'' statements, or a ``branch if zero'' instruction)
-		\item Ability to change an arbitrary amount of memory (e.g., the ability to maintain an arbitrary number of variables).
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	!!! Since this is almost always the case, most if not all imperative languages are Turing complete if the limitations of finite memory are ignored. \\~\\
-	\tiny{imperative programming is a programming paradigm that uses statements that change a program's state}
-	
+\begin{frame}{The Church-Turing Thesis}
+    \begin{itemize}
+        \pause\item If a calculation can be carried out by a mechanical process at all,
+            then it can be carried out by a Turing machine
+        \pause\item I.e.\ a Turing machine is the most ``powerful'' computer possible,
+            in terms of what is possible or impossible to compute
+        \pause\item A machine, language or system is \textbf{Turing complete} if it can simulate a Turing machine
+    \end{itemize}
 \end{frame}
 
