@@ -31,32 +31,39 @@
     \end{itemize}
 \end{frame}
 
+\newcommand{\stateA}{Drumstick}
+\newcommand{\stateB}{Fruit}
+\newcommand{\stateC}{Swizzels}
+\newcommand{\tapeX}{Blank}
+\newcommand{\tapeO}{Milk}
+\newcommand{\tapeI}{White}
+
 \begin{frame}{Activity}
     \begin{itemize}
-        \pause\item In groups of 2-3
+        \pause\item In groups of 3-4
         \pause\item Line up 5-10 chocolates of different colours --- this is your \textbf{tape}
-        \pause\item Put your \textbf{red} lolly under the \textbf{leftmost} chocolate
+        \pause\item Point your \textbf{\stateA} lolly at the \textbf{leftmost} chocolate
+            \begin{itemize}
+                \pause\item The lolly is your \textbf{tape head}, and the type of lolly is your \textbf{state}
+            \end{itemize}
         \pause\item Repeatedly apply the rules on the next slide
         \pause\item What computation does this machine perform?
+            \begin{itemize}
+                \pause\item Hint: $\text{\tapeO}=0$, $\text{\tapeI}=1$, and remember yesterday's lecture...
+            \end{itemize}
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \newcommand{\stateA}{Red}
-    \newcommand{\stateB}{Orange}
-    \newcommand{\stateC}{Yellow}
-    \newcommand{\tapeX}{Blank}
-    \newcommand{\tapeO}{Milk}
-    \newcommand{\tapeI}{Dark}
     \begin{tabular}{|cc|ccc|} \hline
         Current & Current & New & New & Move \\
         lolly & chocolate & lolly & chocolate & direction \\\hline
-        \stateA & \tapeX & \stateB & \tapeX & $\rightarrow$ \\
-        \stateA & \tapeO & \stateA & \tapeO & $\leftarrow$  \\
-        \stateA & \tapeI & \stateA & \tapeI & $\leftarrow$  \\\hline
-        \stateB & \tapeX & \stateC & \tapeI & $\leftarrow$  \\
-        \stateB & \tapeO & \stateC & \tapeI & $\rightarrow$ \\
-        \stateB & \tapeI & \stateB & \tapeO & $\rightarrow$ \\\hline
+        \stateA & \tapeX & \stateB & \tapeX & $\leftarrow$  \\
+        \stateA & \tapeO & \stateA & \tapeI & $\rightarrow$ \\
+        \stateA & \tapeI & \stateA & \tapeO & $\rightarrow$ \\\hline
+        \stateB & \tapeX & \stateC & \tapeI & $\rightarrow$ \\
+        \stateB & \tapeO & \stateC & \tapeI & $\leftarrow$  \\
+        \stateB & \tapeI & \stateB & \tapeO & $\leftarrow$  \\\hline
         \stateC & \tapeX & Stop    & \tapeX & $\rightarrow$ \\
         \stateC & \tapeO & \stateC & \tapeO & $\leftarrow$  \\
         \stateC & \tapeI & \stateC & \tapeI & $\leftarrow$  \\\hline
