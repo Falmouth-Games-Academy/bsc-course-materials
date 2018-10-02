@@ -1,29 +1,8 @@
-% Adjust these for the path of the theme and its graphics, relative to this file
-%\usepackage{beamerthemeFalmouthGamesAcademy}
-\usepackage{../../beamerthemeFalmouthGamesAcademy}
-\usepackage{multimedia}
-\graphicspath{ {../../} }
-\input{sessioninfo}
-
-% Default language for code listings
-\lstset{language=C++,
-        morekeywords={each,in,nullptr}
-}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=white,
-    filecolor=magenta,      
-    urlcolor=cyan,
-}
-
-% For strikethrough effect
-\usepackage[normalem]{ulem}
-\usepackage{wasysym}
-\usepackage{gensymb}
-\usepackage{pdfpages}
-\usepackage{verbatim}
-\usepackage{longtable,booktabs}
-
+\documentclass[ignorenonframetext,]{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -99,22 +78,12 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
 
-% http://www.texample.net/tikz/examples/state-machine/
-\usetikzlibrary{arrows,automata}
-
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-
+\title{test}
+\author{Al}
+\date{01/10/2018}
 
 \begin{document}
-\title{\sessionnumber: Data Collection for Evaluating Interfaces \& Interactions}
-\subtitle{\modulecode: \moduletitle}
-
-\frame{\titlepage} 
-
-% ----------------------------------------------- Generated with RMarkdown (Experimental)------------------------------------------------- %
-
+\frame{\titlepage}
 
 \section{Session 2: Data Collection for Evaluating Interfaces \&
 Interactions}\label{session-2-data-collection-for-evaluating-interfaces-interactions}
@@ -595,7 +564,7 @@ the questions to better suit your goals.
 \item
   Interface Consistency Testing Questionnaire (ICTQ)
 \item
-  Perdue Usability Testing Questionnaire (PUTQ)
+  Perdue Usability Testin Questionnaire (PUTQ)
 \item
   Questionnaire for User Interaction Satisfaction (QUIS)
 \item
@@ -605,10 +574,8 @@ the questions to better suit your goals.
 \end{itemize}
 
 Always check the validity of existing surveys through peer reviewed
-evaluation before utilising it in your own study!
+evalation before utilising it in your own study!
 
 \end{frame}
 
 \end{document}
-
-
