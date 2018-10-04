@@ -1,4 +1,4 @@
-a = int(raw_input())
+a = int(input())
 b = 0
 
 if a < 20:
@@ -9,5 +9,5 @@ else:
 	a = 20
 	b = 20
 
-print a
-print b
+print(a)
+print(b)

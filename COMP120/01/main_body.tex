@@ -37,44 +37,15 @@
 	\begin{itemize}
 		%\item \textbf{Analyse} the role of computing professionals in the games industry
 		%Comp110 - 02 Material and Tinkering Text
-		\item Explain the role and basic functions of the IDE
-		\item Produce some basic Python programs
-		\item \textbf{Apply} pair programming practices to solve simple problems
-	\end{itemize}
-\end{frame}
-
-\part{Professional Development}
-\frame{\partpage}
-
-\begin{frame}
-	\frametitle{Continuing Professional Development}
-	
-	\begin{itemize}
-		\item Games industry is fast-moving
-		\item Learning does not end at school and university
-		\item A goal of this course is to facilitate your development as self-regulated learners
-		\item Gradually, more independence across each year of study
-		\item This is a science degree, which means you will become a producer of knowledge, not just a consumer of knowledge!
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Continuing Professional Development}
-	
-	\begin{itemize}
-		\item It isn't easy!
-		\item Many of you will encounter programming anxiety
-		\item Some will experience a sense of fear or a sense of hopelessness --- it is more common than you think
-		\item Some will need more support than others --- this isn't a bad thing
-		\item Everyone who puts in the time and effort will eventually achieve mastery
+		\item \textbf{Explain} the role and basic functions of the IDE
+		\item\textbf{Interpret} some basic Python code
+		\item \textbf{Apply} pair programming practices to solve a simple problem
 	\end{itemize}
 \end{frame}
 
 \input{pycharm}
 
 \input{basicprograms}
-
-\part{Coffee Break}
 
 \part{Professional Practice}
 \frame{\partpage}
@@ -118,7 +89,7 @@
 	
 	\vspace{1em}
 		
-	(10 minutes)
+	(5 minutes)
 	
 \end{frame}
 
@@ -138,7 +109,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Pair Programming Challenge}
+	\frametitle{PASS Challenge}
 	
 	\begin{itemize}
 		\item In pairs
@@ -161,8 +132,8 @@
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Pair Programming Challenge}
-	
+	\frametitle{PASS Challenge}
+		
 	The function:
 
 	\begin{lstlisting}
@@ -180,7 +151,7 @@
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Pair Programming Challenge}
+	\frametitle{PASS Challenge}
 	
 	\begin{lstlisting}
 def madlib():
@@ -199,38 +170,36 @@ def madlib():
 	line9 = 'Perhaps surprisingly, ' + pet + ' ' + verb + '  ' + snack
 	print line1 + line2 + line3 + line4
 	print line5 + line6 + line7 + line8 + line9
-
 \end{lstlisting}
 	
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Stretch Goal --- PyGame}
+	\frametitle{PASS Challenge Stretch Goal}
 	
 	\begin{itemize}
 		\item In pairs
 		\item \textbf{Incorporate} your code into the PyGame framework
 		\item \textbf{Post} your solution to the \lstinline{#comp120} slack channel
+		\item You will likely need to search the PyGame library documentation and StackOverflow:
 	\end{itemize}
 	
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		PyGame Live Coding
-	\end{center}
+	\vspace{2em}
+	\url{www.pygame.org/docs/ref/pygame.html}
+	
+	\vspace{1em}
+	\url{stackoverflow.com/questions/tagged/pygame}
+	
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Stretch Goal --- PyGame}
+\frametitle{PASS Challenge Stretch Goal}
 	
-	\begin{lstlisting}
+\begin{lstlisting}
 import pygame
-
 pygame.init()
 screen = pygame.display.set_mode((640, 480))
-font = pygame.font.SysFont(None, 14)
-text = font.render(madlib(), True, (0, 128, 0))
+#TODO: setup string, madlib, and font
 
 done = False
 while not done:
@@ -241,7 +210,7 @@ while not done:
             done = True
 
     screen.fill((255, 255, 255))
-    screen.blit(text,(0,0))
+    #TODO: display text on the screen
     pygame.display.flip()
 \end{lstlisting}
 	

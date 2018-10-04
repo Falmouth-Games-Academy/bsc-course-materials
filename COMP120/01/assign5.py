@@ -5,6 +5,6 @@ c = 30
 a = b
 b = c
 
-print a
-print b
-print c
+print(a)
+print(b)
+print(c)

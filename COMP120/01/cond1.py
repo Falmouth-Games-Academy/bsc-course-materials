@@ -1,8 +1,8 @@
-a = int(raw_input())
+a = int(input())
 b = 30
 
 if a < 15:
-	b = a
+    b = a
 
-print a
-print b
+print(a)
+print(b)

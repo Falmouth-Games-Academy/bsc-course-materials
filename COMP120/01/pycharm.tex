@@ -1,59 +1,84 @@
-\part{The PyCharm IDE}
+\part{Integrated Development Environment (IDE)}
 \frame{\partpage}
 
-\begin{frame}{Integrated Development Environment (IDE)}
+\begin{frame}{Using an IDE}
 \begin{itemize}
-	\pause\item You \textit{could} just write code in Notepad, but...
-	\pause\item An \textbf{Integrated Development Environment (IDE)} is an application providing several
+	\item You \textit{could} just write code in Notepad, but...
+	\item An \textbf{Integrated Development Environment (IDE)} is an application providing several
 	useful features for programmers, including:
 	\begin{itemize}
-		\pause\item A ``run'' button
-		\pause\item Management of multi-file projects
-		\pause\item Syntax highlighting
-		\pause\item Autocompletion
-		\pause\item Navigation
-		\pause\item Language and API documentation
-		\pause\item Debugging
-		\pause\item Profiling
-		\pause\item Version control
+		\item A ``run'' button
+		\item Management of multi-file projects
+		\item Syntax highlighting
+		\item Autocompletion
+		\item Navigation
+		\item Language and API documentation
+		\item Debugging
+		\item Profiling
+		\item Version control
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{Setting up your own PC}
+\begin{itemize}
+	\item Python 3.7
+	\begin{itemize}
+		\item \url{https://www.python.org/}
+		\item Python 2.x and Python 3.x are (slightly) different programming languages; we are using 3.x (for now)
+		\item Python is included with Mac OSX and most Linux distributions, but needs to be installed separately on Windows
+	\end{itemize}
+
+	\item PyGame 1.9.4
+	\begin{itemize}
+	\item We use \texttt{PyGame} as our framework for media computation and game development
+	\item Library version must accord with language version
+	\item Insteall on your PC using \texttt{pip}
+	\end{itemize}
+\end{itemize}
+
+ \begin{lstlisting}
+ pip install pygame==1.9.4
+ \end{lstlisting}
+
+\end{frame}
+
 \begin{frame}{Setting up your own PC}
 \begin{itemize}
-\pause\item Python 2.7
+\item PyCharm 2018.2
 \begin{itemize}
-	\pause\item \url{https://www.python.org/}
-	\pause\item Python 2.7 is included with Mac OSX and most Linux distributions, but needs to be installed separately on Windows
-	\pause\item Python 2.x and Python 3.x are (slightly) different programming languages; we are using 2.x (for now)
-\end{itemize}
-\pause\item PyCharm
-\begin{itemize}
-	\pause\item \url{https://www.jetbrains.com/student/}
-	\pause\item Register with your \texttt{falmouth.ac.uk} email address to obtain PyCharm Professional Edition for free
-	\pause\item Runs on Windows, Mac and Linux
-	\pause\item Other Python IDEs are available
+	\item \url{https://www.jetbrains.com/student/}
+	\item Register with your \texttt{falmouth.ac.uk} email address to obtain PyCharm Professional Edition for free
+	\item Or, use the free open-source entitled `Community Edition'
+	\item Runs on Windows, Mac and Linux
 \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{PyCharm in the Lab}
+\begin{frame}[fragile]{PyCharm in the Lab}
 	\begin{itemize}
-		\pause\item You have to license your account to use PyCharm
-		\pause\item Run PyCharm and select \textbf{License server}
-		\pause\item In the \textbf{License server address} enter the following \textbf{http://trlicefal.fal.ac.uk}
-		\pause\item This will be added to your user profile and you will not need to do this again
+		\item You have to license your account to use PyCharm
+		\item Run PyCharm and select \textbf{License server}
+		\item In the \textbf{License server address} enter the following:
+	\end{itemize} 
+	 \begin{lstlisting}
+	http://trlicefal.fal.ac.uk
+ 	\end{lstlisting}
+	\begin{itemize}
+		\item This will be added to your user profile and (hopefully) you will not need to do this again
 	\end{itemize} 
 \end{frame}
 
 \begin{frame}{Getting started with PyCharm}
 \begin{itemize}
-\pause\item Create a new project (from the start-up wizard or from the File menu)
-\pause\item We want a ``Pure Python'' project
-\pause\item Right-click the project in the panel on the left, and choose ``New $\to$ Python File''
-\pause\item Write some code!
-\pause\item First run: click ``Run $\to$ Run...'' and choose the Python file
-\pause\item Subsequent runs: click the $\blacktriangleright$ button
+\item Create a new project (from the start-up wizard or from the File menu)
+\item We want a ``Pure Python'' project
+\item Right-click the project in the panel on the left, and choose ``New $\to$ Python File''
+\item Write some code!
+\item Setup the run configurations
+\item First run: click ``Run $\to$ Run...'' and choose the Python file
+\item Subsequent runs: click the $\blacktriangleright$ button
 \end{itemize}
 \end{frame}
+
+

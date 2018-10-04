@@ -3,7 +3,7 @@
 		\begin{column}{0.48\textwidth}
 			\lstinputlisting{#1}
 		\end{column}
-		\pause
+		
 		\begin{column}{0.48\textwidth}
 			\begin{center}
 				\colorbox{white}{
@@ -26,14 +26,14 @@
 
 \begin{frame}[fragile]{Your first Python program}
 \begin{lstlisting}
-print "Hello, world!"
+print("Hello, world!")
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Your second Python program}
 \begin{lstlisting}
-print "This is a very long line of code which had to be split to fit on the slide, but you should type it as a single line."
-print "This is the second line of code."
+print("This is a very long line of code which had to be split to fit on the slide, but you should type it as a single line.")
+print("This is the second line of code.")
 \end{lstlisting}
 \end{frame}
 
@@ -43,11 +43,15 @@ print "This is the second line of code."
 
 \begin{frame}{Remember!}
 \begin{itemize}
-\pause\item A program is a \textbf{sequence of instructions}
-\pause\item The Python interpreter executes the \textbf{first line} of your program, then the \textbf{second line},
+\item A program is a \textbf{sequence of instructions}
+\item The Python interpreter executes the \textbf{first line} of your program, then the \textbf{second line},
 and so on
-\pause\item When it reaches the end of the file, it \textbf{stops}
+\item When it reaches the end of the file, it \textbf{stops}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Socrative - FALCOMPMIKE}
+Login to Socrative!
 \end{frame}
 
 \begin{frame}{Reassigning variables (1)}
@@ -71,10 +75,10 @@ and so on
 \end{frame}
 
 \begin{frame}{Reading input}
-\pause \lstinputlisting{input.py}
+\lstinputlisting{input.py}
 \begin{itemize}
-\pause\item \lstinline{raw_input()} reads a \textbf{string} as text from the command line
-\pause\item \lstinline{int(...)} converts a \textbf{string} into an \textbf{integer} (a number)
+\item \lstinline{input()} reads a \textbf{string} as text from the command line
+\item \lstinline{int(...)} converts a \textbf{string} into an \textbf{integer} (a number)
 \end{itemize}
 \end{frame}
 
@@ -84,13 +88,13 @@ and so on
 
 \begin{frame}{Indentation}
 \begin{itemize}
-\pause\item Unlike many other programming languages, \textbf{indentation has meaning} in Python!
-\pause\item Python uses indentation to denote the \textbf{block of code} inside a conditional, loop, function etc.
-\pause\item PEP-8 recommends \textbf{4 spaces} for indentation
+\item Unlike many other programming languages, \textbf{indentation has meaning} in Python!
+\item Python uses indentation to denote the \textbf{block of code} inside a conditional, loop, function etc.
+\item PEP-8 recommends \textbf{4 spaces} for indentation
 \begin{itemize}
-\pause\item Some programmers use a tab character
-\pause\item \textbf{Never} mix tabs and spaces in the same file!
-\pause\item PyCharm inserts 4 spaces by default when you press the tab key;
+\item Some programmers use a tab character
+\item \textbf{Never} mix tabs and spaces in the same file!
+\item PyCharm inserts 4 spaces by default when you press the tab key;
 other IDEs and text editors can be configured to do this
 \end{itemize}
 \end{itemize}
@@ -101,61 +105,56 @@ other IDEs and text editors can be configured to do this
 \end{frame}
 
 \begin{frame}{Conditionals}
-\pause An \lstinline{if} statement can have:
+ An \lstinline{if} statement can have:
 \begin{itemize}
-\pause\item \textbf{Zero or more} \lstinline{elif} clauses
-\pause\item \textbf{An optional} \lstinline{else} clause
+\item \textbf{Zero or more} \lstinline{elif} clauses
+\item \textbf{An optional} \lstinline{else} clause
 \end{itemize}
-\pause In that order!
+ In that order!
 \end{frame}
 
 \begin{frame}{Mathematical operators}
 \begin{itemize}
-\pause\item \lstinline{+} add
-\pause\item \lstinline{-} subtract
-\pause\item \lstinline{*} multiply
-\pause\item \lstinline{/} divide
-\pause\item \lstinline{**} power
+\item \lstinline{+} add
+\item \lstinline{-} subtract
+\item \lstinline{*} multiply
+\item \lstinline{/} divide
+\item \lstinline{**} power
 \end{itemize}
-\pause Order of operations: \textbf{BIDMAS}
+ Order of operations: \textbf{BIDMAS}
 \begin{itemize}
-\pause\item \uline{B}rackets first
-\pause\item Then \uline{i}ndices (powers)
-\pause\item Then \uline{d}ivision and \uline{m}ultiplication (left to right)
-\pause\item Then \uline{a}ddition and \uline{s}ubtraction (left to right)
+\item \uline{B}rackets first
+\item Then \uline{i}ndices (powers)
+\item Then \uline{d}ivision and \uline{m}ultiplication (left to right)
+\item Then \uline{a}ddition and \uline{s}ubtraction (left to right)
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Comparison operators}
 \begin{itemize}
-\pause\item \lstinline{<} less than
-\pause\item \lstinline{<=} less than or equal to
-\pause\item \lstinline{>} greater than
-\pause\item \lstinline{>=} greater than or equal to
-\pause\item \lstinline{==} equal to
-\pause\item \lstinline{!=} not equal to
+\item \lstinline{<} less than
+\item \lstinline{<=} less than or equal to
+\item \lstinline{>} greater than
+\item \lstinline{>=} greater than or equal to
+\item \lstinline{==} equal to
+\item \lstinline{!=} not equal to
 \end{itemize}
-\pause Note the difference between \lstinline{=} and \lstinline{==}
+ Note the difference between \lstinline{=} and \lstinline{==}
 \begin{itemize}
-\pause\item \lstinline{a = b} means ``make \lstinline{a} be equal to \lstinline{b}''
-\pause\item \lstinline{a == b} means ``is \lstinline{a} equal to \lstinline{b}?''
+\item \lstinline{a = b} means ``make \lstinline{a} be equal to \lstinline{b}''
+\item \lstinline{a == b} means ``is \lstinline{a} equal to \lstinline{b}?''
 \end{itemize}
 \end{frame}
 
 \begin{frame}{For loops and ranges}
 \lstinputlisting{for0.py}
 \begin{itemize}
-\pause\item \lstinline{xrange(n)} is the \textbf{sequence}
+\item \lstinline{range(n)} is the \textbf{sequence}
 $0, 1, 2, \dots, n-1$
-\pause\item So \lstinline{xrange(5)} is the \textbf{sequence}
+\item So \lstinline{range(5)} is the \textbf{sequence}
 $0, 1, 2, 3, 4$
-\pause\item Note: \lstinline{xrange(n)} \textbf{does not include} $n$
-\pause\item The \lstinline{for} loop iterates through the items in a sequence \textbf{in order}
-\pause\item Can also use \lstinline{range} instead of \lstinline{xrange},
-but \lstinline{range} is less efficient
-\begin{itemize}
-\item Homework (advanced): what is the difference between \lstinline{range} and \lstinline{xrange}?
-\end{itemize}
+\item Note: \lstinline{range(n)} \textbf{does not include} $n$
+\item The \lstinline{for} loop iterates through the items in a sequence \textbf{in order}
 \end{itemize}
 \end{frame}
 
@@ -178,15 +177,15 @@ The \lstinline{while} loop keeps executing while the condition is \textbf{true}
 \end{frame}
 
 \begin{frame}{Summary}
-\pause We have seen some basic code constructions in Python
+ We have seen some basic code constructions in Python
 \begin{itemize}
-\pause\item \lstinline{print} and \lstinline{raw_input} for command-line input and output
-\pause\item Variable assignment using \lstinline{=}
-\pause\item \lstinline{if} statements for choosing whether or not to execute a block of code
-\pause\item \lstinline{for} loops to execute a block of code a specified number of times
-\pause\item \lstinline{while} loops to execute a block of code until a condition is no longer true
+\item \lstinline{print()} and \lstinline{input()} for command-line input and output
+\item Variable assignment using \lstinline{=}
+\item \lstinline{if} statements for choosing whether or not to execute a block of code
+\item \lstinline{for} loops to execute a block of code a specified number of times
+\item \lstinline{while} loops to execute a block of code until a condition is no longer true
 \end{itemize}
-\pause These are enough to write some simple programs, but you will see several more in coming weeks...
+ These are enough to write some simple programs, but you will see several more in coming weeks...
 \end{frame}
 
 % Show PyCharm bouncing ball example? -- think about this between now and Michael's session next Wednesday
