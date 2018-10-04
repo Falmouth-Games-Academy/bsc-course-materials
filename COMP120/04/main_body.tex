@@ -15,7 +15,7 @@
 
 \usepackage{pdfpages}
 
-% http://www.texample.net/tikz/examples/state-machine/
+% //www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
 \input{sessioninfo}
@@ -32,10 +32,11 @@
 
 \begin{frame}
 	\frametitle{Learning Outcomes}
+	By the end of this workshop, you should be able to:	
 	\begin{itemize}
 		\item \textbf{Explain how} pictures are digitised into raster images by a computer system
-		\item \textbf{Apply} knowledge of colour models to \textbf{write} programs that manipulate pixels in a surface
-		\item \textbf{Use} functions, arguments, and basic data structures such as matrices to \textbf{write} programs that manipulate raster images
+		\item \textbf{Apply} knowledge of colour models to \textbf{write} code that manipulates pixels in a surface
+		\item \textbf{Use} functions, arguments, and basic data structures such as arrays
 	\end{itemize}
 \end{frame}
 
@@ -119,9 +120,9 @@
 	A picture is a \textit{matrix} of pixels
 	
 	\begin{itemize}
-		\item It is not a continuous line of elements, that is, an \textit{array}
+		\item It is not a continuous line of elements, that is, a one-dimensional \textit{array}
 		\item A picture has two dimensions: width and height
-		\item A two-dimensional array is a matrix
+		\item It's a two-dimensional \textit{array}
 	\end{itemize}
 \end{frame}
 
@@ -159,13 +160,13 @@
 	
 	\begin{itemize}
 		\item Each component color (red, green, and blue) is encoded as a single byte
-		\item Colors go from (0,0,0) to (255,255,255):
+		\item Colors go from \lstinline{(0,0,0)} to \lstinline{(255,255,255)}:
 		\begin{itemize}
 			\item If all three components are the same, the colour is in grey-scale
-			\item (0,0,0) is black
-			\item (255, 255, 255) is white
+			\item  \lstinline{(0,0,0)} is black
+			\item  \lstinline{(255, 255, 255)} is white
 		\end{itemize}
-		\item Why 255?
+		\item Why \texttt{255}?
 	\end{itemize}
 \end{frame}
 
@@ -233,8 +234,8 @@
 		\item Setup a basic project in PyGame
 		\item Refer to the following documentation
 		\begin{itemize}
-			\item \url{http://www.pygame.org/docs/ref/surface.html}
-			\item \url{http://www.pygame.org/docs/ref/pixelarray.html}
+			\item \url{www.pygame.org/docs/ref/surface.html}
+			\item \url{www.pygame.org/docs/ref/pixelarray.html}
 		\end{itemize}
 		\item Manipulate the pixels in a surface using PixelArray
 		\item 10 minutes
@@ -264,8 +265,41 @@ Note: This source code excerpt will not work in PyGame.
 	\vspace{2em}
 	
 	\begin{itemize}
-		\item Define a function that turns all of the pixels into red in PyGame
-		\item Define a function that turns all of the pixels more green in PyGame
+		\item Define a function that turns all of the red values of pixels into blue values...
+		\item ...and all of the blue values into red values
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Swap Channels}
+	
+\begin{lstlisting}
+def swapRedBlueChannels(pict):
+  pixelMatrix = getPixels(pict)
+  for pixel in pixelMatrix:
+    red_value = getRed(pixel)
+    blue_value = getBlue(pixel)
+    setRedPixel(pixel, blue_value)
+    setBluePixel(pixel, red_value)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity \#3}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}
+		\item Refer to the following documentation:
+		\begin{itemize}
+			\item \url{//www.pygame.org/docs/ref/image.html}
+		\end{itemize}
+		\item Define a function that loads an image and turns it to greyscale
 	\end{itemize}
 \end{frame}
 
@@ -292,7 +326,7 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#3}
+	\frametitle{Activity \#4}
 	
 	In pairs:
 	
@@ -301,9 +335,9 @@ Note: This source code excerpt will not work in PyGame.
 	\begin{itemize}
 		\item Refer to the following documentation:
 		\begin{itemize}
-			\item \url{http://www.pygame.org/docs/ref/image.html}
+			\item \url{//www.pygame.org/docs/ref/image.html}
 		\end{itemize}
-		\item Define a function that loads an image and turns it to greyscale
+		\item Define a function that loads an image and turns it to its negative
 	\end{itemize}
 \end{frame}
 
@@ -311,7 +345,7 @@ Note: This source code excerpt will not work in PyGame.
 	\frametitle{Make a Picture Negative}
 	
 \begin{lstlisting}
-def loadGrayscale(file):
+def neg(picture):
   pixelMatrix = getPixels(makePicture(file))
   for pixel in pixelMatrix:
     red = getRed(p)
@@ -328,7 +362,7 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#4}
+	\frametitle{Activity \#5}
 	
 	In pairs:
 	
@@ -337,40 +371,29 @@ Note: This source code excerpt will not work in PyGame.
 	\begin{itemize}
 		\item Refer to the following documentation:
 		\begin{itemize}
-			\item \url{http://www.pygame.org/docs/ref/image.html}
-		\end{itemize}
-		\item Define a function that loads an image and turns it to its negative
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Challenge Activity}
-	
-	In pairs:
-	
-	\vspace{2em}
-	
-	\begin{itemize}
-		\item Refer to the following documentation:
-		\begin{itemize}
-			\item \url{http://www.pygame.org/docs/ref/time.html}
+			\item \url{//www.pygame.org/docs/ref/time.html}
 		\end{itemize}
 		\item Define a function that loads an image and animates a sunset
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Copying Part of a Picture}
+	\frametitle{Decrease Luminance Over Time}
 
 \begin{lstlisting}
-def copyHalf(picture):
- pixels = getPixels(picture)
- for index in range(0,len(pixels)/2):
-   sourcePixel = pixels[index]
-   sourceRGBValue = getColor(sourcePixel)
-   destinationPixel = pixels[index + len(pixels)/2]
-   setColor(destinationPixel,sourceRGBValue)
- repaint(picture)
+def decreaseRed(picture, amount):
+  for p in getPixels(picture):
+    value=getRed(p)
+    setRed(p,value*amount)
+
+amount = 0.1 #tinker with this value
+wait_time = 50 #tinker with this value    
+    
+for i in range(10):
+  decreaseRed(picture, amount)
+  decreaseGreen(picture, amount)
+  decreaseBlue(picture, amount)
+  wait(50)
 \end{lstlisting}
 
 Note: This source code excerpt will not work in PyGame.
@@ -391,6 +414,24 @@ Note: This source code excerpt will not work in PyGame.
 		\end{itemize}
 		\item Define a function that animates copying the top half of a picture to its bottom half
 	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Copying Part of a Picture}
+
+\begin{lstlisting}
+def copyHalf(picture):
+ pixels = getPixels(picture)
+ for index in range(0,len(pixels)/2):
+   sourcePixel = pixels[index]
+   sourceRGBValue = getColor(sourcePixel)
+   destinationPixel = pixels[index + len(pixels)/2]
+   setColor(destinationPixel,sourceRGBValue)
+ repaint(picture)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
 \end{frame}
 
 \end{document}
