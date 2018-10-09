@@ -70,6 +70,8 @@ user interfaces. ACM Comput. Surv. 33, 4 (December 2001), 470-516.](http://dx.do
 ### Expert Based (TODAY)
 "Expert-based tests are essentially structured inspections by interface experts."
 
+Expert Inspection
+
 - To avoid bias, the expert should not have any involvement in the design and development of the interface.
 - Can often be carried out without a deep understanding of in the interface.
 - Expert testing can be used in conjunction with user testing but must be done first.
@@ -80,14 +82,12 @@ user interfaces. ACM Comput. Surv. 33, 4 (December 2001), 470-516.](http://dx.do
 - Heuristic Evaluation
 - Most tests that draw upon expert experience to derive insight.
 
-### Definition: Heuristic [^2]
-adjective
-1. serving to indicate or point out; stimulating interest as a means of furthering investigation.
-2. encouraging a person to learn, discover, understand, or solve problems on his or her own, as by experimenting, evaluating possible answers or solutions, or by trial and error: a heuristic teaching method.
-3. of, relating to, or based on experimentation, evaluation, or trial-and-error methods. 
-4. Computers, Mathematics. pertaining to a trial-and-error method of problem solving used when an algorithmic approach is impractical.
+### According to Wikipedia:
 
-[^2]: [Dictionary.com](http://www.dictionary.com/browse/heuristic)
+> “A heuristic technique, often called simply a heuristic, is any approach to problem solving, learning, or discovery that employs a practical method not guaranteed to be optimal or perfect, but sufficient for the immediate goals.” 
+
+– Wikipedia
+
 
 ### What Does NNG Say?
 > "Heuristic evaluation involves having a small set of evaluators examine the interface and judge its compliance with recognised usability  principles (the 'heuristics')."
@@ -127,6 +127,20 @@ we are looking for issues in located in a dialogue in four different ways:
 [- Source](https://www.nngroup.com/articles/usability-problems-found-by-heuristic-evaluation/) 
 
 42% likely to identify major issues vs. 32% chance of spotting minor issues (Nielsen 1992).
+
+### Strengths
+- It can provide some quick and relatively inexpensive feedback to designers.
+- You can obtain feedback early in the design process.
+- Assigning the correct heuristic can help suggest the best corrective measures to designers.
+- You can use it together with other usability testing methodologies.
+- You can conduct usability testing to further examine potential issues.
+
+### Weaknesses
+- It requires knowledge and experience to apply the heuristics effectively.
+- Trained usability experts are sometimes hard to find and can be expensive.
+- You should use multiple experts and aggregate their results.
+- The evaluation may identify more minor issues and fewer major issues.
+
 
 
 # Jacob Nielsens Original Heuristics (Revised)
