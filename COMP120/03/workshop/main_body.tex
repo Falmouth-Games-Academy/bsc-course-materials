@@ -1,0 +1,220 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../../} }
+
+% Default language for code listings
+\lstset{language=Python,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\setbeamertemplate{navigation symbols}{}
+
+\input{../../../commands}
+
+\begin{document}
+\title{\sessionnumber: Tinkering Graphics III}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	\begin{itemize}
+		\item \textbf{Explain how} to identify the spaces and features of an image
+		\item \textbf{Apply} mathematical knowledge to \textbf{write} computer programs that manipulate the spaces and features of an image
+		\item \textbf{Implement} executable code that can `tinker' graphics
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Edge Detection}
+	
+	\begin{itemize}		
+		\item Blurring is averaging across pixels
+		\item Edge detection is looking for \textit{differences} between pixels:
+		\begin{itemize}
+			\item We draw lines that our eyes see --- where the luminance changes
+		\end{itemize}	
+		\item If the pixel changes left-to-right, or up-and-down, make a pixel black. Else, white.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Edge Detection}
+	
+\begin{lstlisting}
+def drawEdges(picture):
+  for x in xrange(0, picture.length - 1):
+      for y in xrange(0, picture.height - 1):
+          pixelSum = getRed(pixel) + getGreen(pixel) + getBlue(pixel)
+          nextPixel = getPixel(picture, x+1, y+1)
+          nextPixelSum = getRed(nextPixel)+ getGreen(nextPixel) + getBlue(nextPixel)
+          diff = abs(nextPixelSum-pixelSum)
+          newColor = makeColor(diff,diff,diff)
+          setColor(pixel, newColor)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\fullbleed{seahorse}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Edge Detection (1)}
+	
+\begin{lstlisting}
+def drawBetterEdges(picture):
+  orig = makePicture(filename)
+  makeBw = makePicture(filename)
+  
+  for x in xrange(0,getWidth(picture)-1):
+    for y in xrange(0,getHeight(picture)-1):
+      here=getPixel(makeBw,x,y)
+      down=getPixel(orig,x,y+1)
+      right=getPixel(orig,x+1,y)
+      
+      hereL=(getRed(here)+getGreen(here)+getBlue(here))/3
+      downL=(getRed(down)+getGreen(down)+getBlue(down))/3
+      rightL=(getRed(right)+getGreen(right)+getBlue(right))/3
+...
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Edge Detection (2)}
+	
+\begin{lstlisting}
+...
+      if abs(hereL-downL)>10 and abs(hereL-rightL)>10:
+        setColor(here,black)
+      if abs(hereL-downL)<=10 and abs(hereL-rightL)<=10:
+        setColor(here,white)
+  return makeBw
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\fullbleed{butterfly}
+
+\begin{frame}
+	\frametitle{Activity \#1: Edge Detection}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation
+		\item Refactor the function: \texttt{drawBetterEdges(picture)} to use better variable names
+		\item Test your solution
+		\item Then, post your solution on Slack
+		\item 15 minutes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Background Subtraction}
+	
+	\begin{itemize}		
+		\item Let's say that you have a picture of someone, and a picture of the same place (same background) without the someone there,
+		could you subtract out the background and leave the picture of the person?
+		\item Maybe even change the background?
+		\item What we most need to do is to figure out whether the pixel in the Person shot is the same as the in the Background shot.
+		\item Will they be the EXACT same colour?  Probably not.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Background Subtraction}
+	
+\begin{lstlisting}
+def swapBackground(picture, back, newBack, tolerance):
+  for pixel in getPixels(picture):
+    x = getX(pixel)
+    y = getY(pixel)
+    backPixel = getPixel(back, x, y)
+    pixelColour = getColour(pixel)
+    backColour = getColour(backPixel)
+    if (distance(pixelColour,backColour) < tolerance):
+      newColour = getColour(getPixel(newBack, x, y))
+      setColor(pixel, newColour)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\fullbleed{katie_nomoon}
+
+\fullbleed{katie_forest}
+
+\begin{frame}
+	\frametitle{Problems}
+	
+	\begin{itemize}		
+		\item We've got places where we got pixels swapped that we didn't want to swap
+		\item We've got places where we want pixels swapped, but didn't get them swapped
+		\begin{itemize}
+			\item Shirt stripes
+			\item Shadows
+			\item etc.
+		\end{itemize}	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity \#2: Background Subtraction}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation:
+		\begin{itemize}
+			\item \url{http://www.cs.utah.edu/~michael/chroma/}
+		\end{itemize}
+		\item Implement chroma key as a form of background subtraction
+		\item Test your solution
+		\item Then, post your solution on Slack
+		\item 30 minutes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What Next?}
+	
+	If you have implemented all of these algorithms, then use the rest of the workshop to:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Finish implementing the algorithms needed to complete your coursework
+		\item Tidy up your code, ready for next session's peer-review activity
+		\begin{itemize}
+			\item \url{http://www.cs.utah.edu/~michael/chroma/}
+		\end{itemize}
+		\item Extend the code beyond the brief
+	\end{itemize}
+\end{frame}
