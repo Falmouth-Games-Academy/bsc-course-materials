@@ -1,0 +1,63 @@
+\begin{frame}[fragile]
+	\frametitle{PASS Challenge}
+		
+	Review the following PyGame setup code:
+
+	\begin{lstlisting}
+import sys, pygame
+BLACK = 0, 0, 0
+WHITE = 255, 255, 255
+pygame.init()
+screen = pygame.display.set_mode((640,480))
+pygame.display.set_caption("Moving Box")
+clock = pygame.time.Clock()
+
+box_x = 300
+box_dir = 3
+ 	\end{lstlisting}
+		
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{PASS Challenge}
+		
+	Review the following PyGame loop code:
+
+	\begin{lstlisting}
+while 1:
+  clock.tick(50)
+ 
+  for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+      sys.exit()
+ 
+  screen.fill(BLACK)
+  %TODO
+  pygame.draw.rect(screen, WHITE, (box_x, 200, 20, 20))
+  pygame.display.flip()
+	\end{lstlisting}
+		
+\end{frame}
+
+\begin{frame}
+	\frametitle{PASS Challenge}
+	
+	\begin{itemize}
+		\item In pairs
+		\item \textbf{Implement} the code excerpt
+		\item \textbf{Fix} the errors in the code excerpt
+		\item \textbf{Modify} the code excerpt to incorporate functions and arguments
+		\item \textbf{Modify} the code excerpt to allow the player to move the box around the screen
+	\end{itemize}
+	
+	You can learn more about PyGame input at:
+	
+	\vspace{1em}
+	
+	 \url{https://www.pygame.org/ftp/contrib/input.html}
+	
+	\vspace{1em}
+	
+	(20 minutes)
+	
+\end{frame}

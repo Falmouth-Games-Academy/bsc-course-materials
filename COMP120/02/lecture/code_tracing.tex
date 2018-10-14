@@ -1,0 +1,41 @@
+\part{Code Tracing}
+\frame{\partpage}
+
+\begin{frame}
+\frametitle{Demo}
+
+\begin{itemize}		
+	\item Start using debug tools when you run into problems:
+	\item \url{https://www.youtube.com/watch?v=QJtWxm12Eo0}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Less Red}
+	
+\begin{lstlisting}
+def decreaseRed(picture, amount):
+  pixelMatrix = getPixels(picture)
+  for pixel in pixelMatrix:
+    value = getRed(pixel)
+    setRedPixel(pixel, value * amount)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\fullbleed{big_ben}
+
+\begin{frame}{Activity: Less Red}
+	\vspace{2em}
+	
+	If `bb' is the original picture of Big Ben, which of the below function calls created the change:
+	
+	\begin{itemize}
+		\item changeRed(bb, 1.5)
+		\item changeRed(bb, 2.0)
+		\item changeRed(bb, 0)
+	\end{itemize}
+\end{frame}
