@@ -12,7 +12,7 @@ output:
     toc: false
     slide_level: 2
     pandoc_args: [ 
-      "--output=COMP210_04_handout.pdf"
+      "--output=COMP210_04_screen.pdf"
     ]
 ---
 
@@ -244,7 +244,7 @@ The process of reducing a piece of content down into a representative descriptio
 ## Priori Coding
 - Draws upon established theories or existing models
 - Categories are defined before analysis
-- Based on solif theoretical framework (taxonomies)
+- Based on solid theoretical framework (taxonomies)
 - Good for research in well established areas
 - Higher levels of rigour and validity
 - Transparent and less vulnerable to bias
@@ -252,4 +252,10 @@ The process of reducing a piece of content down into a representative descriptio
 ## Step-by-step Guide
 
 [A Step-By-Step Guide To Qualitative Data Analysis - Nancy Gibson](https://www.researchgate.net/publication/292432218_A_Step-By-Step_Guide_To_Qualitative_Data_Analysis)
+
+## Activities
+
+1. Recruit three experts to carry out heuristic evaluations
+2. Write methodology for report
+3. Plan your study
 
