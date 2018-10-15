@@ -179,7 +179,7 @@
 	\end{center}
 \end{frame}
 
-\begin{frame}{Writing logical operations}
+\begin{frame}[fragile]{Writing logical operations}
 	\pause
 	\centering
 	\begin{tabular}{|c||c|c|c|}
@@ -277,3 +277,42 @@
 		\end{column}
 	\end{columns}
 \end{frame}
+
+\begin{frame}{Any logic gate can be constructed from NAND gates}
+    \begin{center}
+        \includegraphics[height=0.7\textheight]{nand_gates}
+    \end{center}
+\end{frame}
+
+\begin{frame}{What does this circuit do?}
+	\centering
+	\begin{circuitikz} \draw[color=\circuitcolour]
+		(0,0) node[nand port] (gateA) {}
+		(0,-2) node[nand port] (gateB) {}
+		(gateA.out) -- ($ (gateA.out) + (0, -0.5) $) -- ($ (gateB.in 1) + (0, 0.5) $) -- (gateB.in 1) {}
+		(gateB.out) -- ($ (gateB.out) + (0, 0.5) $) -- ($ (gateA.in 2) + (0, -0.5) $) -- (gateA.in 2) {}
+		(gateA.out) -- ($ (gateA.out) + (0.5, 0) $) node[anchor=west] {$Q$}
+		(gateB.out) -- ($ (gateB.out) + (0.5, 0) $) node[anchor=west] {$\overline{Q}$}
+		(gateA.in 1) -- ($ (gateA.in 1) + (-0.5, 0) $) node[anchor=east] {$S$}
+		(gateB.in 2) -- ($ (gateB.in 2) + (-0.5, 0) $) node[anchor=east] {$R$}
+		;
+	\end{circuitikz}
+	\begin{itemize}
+		\pause\item This is called a \textbf{NAND latch}
+		\pause\item It ``remembers'' a single boolean value
+		\pause\item Put a few billion of these together
+			(along with some control circuitry)
+			and you've got \textbf{memory}!
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{NAND gates}
+    \begin{itemize}
+        \pause\item All arithmetic and logic operations, as well as memory, can be built from NAND gates
+        \pause\item So an entire computer can be built just from NAND gates!
+        \pause\item Play the game: \url{http://nandgame.com}
+        \pause\item NAND gate circuits are \textbf{Turing complete}
+        \pause\item The same is true of NOR gates
+    \end{itemize}
+\end{frame}
+

@@ -38,55 +38,36 @@
 	\end{itemize}
 \end{frame}
 
-\newcommand{\carry}[1]{\uncover<#1->{$_1$}}
-\newcommand{\nocarry}[1]{\phantom{$_1$}}
-
-\begin{frame}{Addition with carry}
-	In base 10:
-	\begin{center}
-		\begin{tabular}{lllll}
-			& 1 & 2 & 3 & 4 \\
-			+ & 5\nocarry{4} & 6\carry{3} & 7\carry{2} & 8\nocarry{1} \\\hline
-			& \uncover<5->{6} & \uncover<4->{9} & \uncover<3->{1} & \uncover<2->{2}
-		\end{tabular}
-	\end{center}
-\end{frame}
-
-\begin{frame}{Addition with carry}
-	In base 2:
-	\begin{center}
-		\fbox{$1 + 1 = 10$ \qquad $1 + 1 + 1 = 11$}
-		
-		\vspace{2ex}
-		
-		\begin{tabular}{lllllllll}
-			& 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0 \\
-			+ &
-				0\carry{8} &
-				0\carry{7} &
-				1\nocarry{6} &
-				0\carry{5} &
-				0\carry{4} &
-				1\carry{3} &
-				1\nocarry{2} &
-				1 \\\hline
-			&
-				\uncover<9->{1} &
-				\uncover<8->{0} &
-				\uncover<7->{0} &
-				\uncover<6->{1} &
-				\uncover<5->{0} &
-				\uncover<4->{1} &
-				\uncover<3->{0} &
-				\uncover<2->{1}
-		\end{tabular}
-	\end{center}
+\begin{frame}{Adding 3 bits}
+    \begin{center}
+        \begin{tabular}{|ccc|c|}
+            \hline
+            $A$ & $B$ & $C$ & $A+B+C$ \\\hline
+            0 & 0 & 0 & 00 \\
+            0 & 0 & 1 & 01 \\
+            0 & 1 & 0 & 01 \\
+            0 & 1 & 1 & 10 \\
+            1 & 0 & 0 & 01 \\
+            1 & 0 & 1 & 10 \\
+            1 & 1 & 0 & 10 \\
+            1 & 1 & 1 & 11 \\\hline
+        \end{tabular}
+    \end{center}
 \end{frame}
 
 \begin{frame}{1-bit adder}
 	\begin{center}
 		\includegraphics[width=\textwidth]{1bit_adder}
 	\end{center}
+\end{frame}
+
+\begin{frame}{How does the 1-bit adder work?}
+    Exercise:
+	\begin{itemize}
+		\item Write down the boolean expressions for $S$ and $Co$
+		\item Draw a truth table for these
+		\item Compare the truth table to the addition table on a previous slide
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{$n$-bit adder}
