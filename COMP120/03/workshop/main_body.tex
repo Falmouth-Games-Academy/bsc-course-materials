@@ -33,11 +33,77 @@
 \begin{frame}
 	\frametitle{Learning Outcomes}
 	\begin{itemize}
+		\item \textbf{Explain how} to duplicate parts of an image
 		\item \textbf{Explain how} to identify the spaces and features of an image
 		\item \textbf{Apply} mathematical knowledge to \textbf{write} computer programs that manipulate the spaces and features of an image
 		\item \textbf{Implement} executable code that can `tinker' graphics
 	\end{itemize}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Mirroring}
+	
+	\begin{itemize}		
+		\item Mirroring is averaging across pixels
+		\item A mirror will:
+		\begin{itemize}
+			\item Define a dimension of inflexion
+			\item Duplicate pixels from the one side of the inflextion to the other, in reverse order
+		\end{itemize}	
+	\end{itemize}
+\end{frame}
+
+\fullbleed{mirror}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Mirroring (1)}
+	
+\begin{lstlisting}
+def mirror_vertical(picture):
+  width = get_width(picture)
+  height = get_height(picture)
+  mirror_point = width / 2
+  for y in xrange(0, height):
+      for x in xrange(0, mirror_point):
+          left_pixel = get_pixel(picture, x, y)
+          right_pixel = get_pixel(picture, width - x - 1, y)
+          set_colour(right_pixel, get_colour(left_pixel))
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Mirroring (2)}
+	
+\begin{lstlisting}
+def mirror_vertical(picture):
+  width = get_width(picture)
+  height = get_height(picture)
+  mirror_point = height / 2
+  for x in xrange(0, width):
+      for y in xrange(0, mirror_point):
+          top_pixel = get_pixel(picture, x, y)
+          bottom_pixel = get_pixel(picture, x, height - y - 1)
+          set_colour(bottom_pixel, get_colour(top_pixel))
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity \#1: Mirroring}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Use your function to repair the temple
+		\item 20 minutes
+		\item Post your repaired temple on Slack!
+	\end{itemize}
+\end{frame}
+
+\fullbleed{repair_the_temple}
 
 \begin{frame}
 	\frametitle{Edge Detection}
@@ -116,7 +182,7 @@ Note: This source code excerpt will not work in PyGame.
 \fullbleed{butterfly}
 
 \begin{frame}
-	\frametitle{Activity \#1: Edge Detection}
+	\frametitle{Activity \#2: Edge Detection}
 	
 	In pairs:
 	
@@ -127,8 +193,6 @@ Note: This source code excerpt will not work in PyGame.
 		\item Refer to the following documentation
 		\item Refactor the function: \texttt{drawBetterEdges(picture)} to use better variable names
 		\item Test your solution
-		\item Then, post your solution on Slack
-		\item 15 minutes
 	\end{itemize}
 \end{frame}
 
@@ -183,7 +247,7 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#2: Background Subtraction}
+	\frametitle{Activity \#3: Background Subtraction}
 	
 	In pairs:
 	
@@ -197,8 +261,75 @@ Note: This source code excerpt will not work in PyGame.
 		\end{itemize}
 		\item Implement chroma key as a form of background subtraction
 		\item Test your solution
-		\item Then, post your solution on Slack
-		\item 30 minutes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Collage}
+	
+\begin{lstlisting}
+def copyBarb():
+  # Set up the source and target pictures
+  barbf=getMediaPath("barbara.jpg")
+  barb = makePicture(barbf)
+  canvasf = getMediaPath("7inX95in.jpg")
+  canvas = makePicture(canvasf)
+  # Now, do the actual copying
+  targetX = 0
+  for sourceX in range(0,getWidth(barb)):
+    targetY = 0
+    for sourceY in range(0,getHeight(barb)):
+      color = getColor(getPixel(barb,sourceX,sourceY))
+      setColor(getPixel(canvas,targetX,targetY), color)
+      targetY = targetY + 1
+    targetX = targetX + 1
+  show(barb)
+  show(canvas)
+  return canvas
+\end{lstlisting}
+
+\end{frame}
+
+\fullbleed{copy_1}
+\fullbleed{copy_2}
+\fullbleed{copy_3}
+\fullbleed{copy_4}
+\fullbleed{copy_5}
+
+\begin{frame}
+	\frametitle{Activity \#4: Collage}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Find some smaller images online
+		\item Integrate the copy algorithm into your tinkering graphics project
+		\item Create a collage of the images you found
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sprite Sheets and Animations}
+	Review Al Swigart's pyganim python module: 
+	
+	\vspace{2em}
+	
+	\url{http://inventwithpython.com/pyganim/}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity \#5: Sprite Sheets}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Find a sprite sheet online
+		\item Integrate pyganim into your tinkering graphics project
+		\item Animate something
 	\end{itemize}
 \end{frame}
 
@@ -209,12 +340,13 @@ Note: This source code excerpt will not work in PyGame.
 	
 	\vspace{2em}
 	
-	\begin{itemize}		
-		\item Finish implementing the algorithms needed to complete your coursework
+	\begin{itemize}	
+		\item You now have a range of image manipulation algorithms at your disposal
+		\item You only need to successfully implement and repurpose a set of these to do well on your Tinkering Graphics assignment!
+		\item So, finish implementing the algorithms needed to complete your coursework
 		\item Tidy up your code, ready for next session's peer-review activity
-		\begin{itemize}
-			\item \url{http://www.cs.utah.edu/~michael/chroma/}
-		\end{itemize}
-		\item Extend the code beyond the brief
+		\item Extend the code beyond the brief as appropriate to your particular game
 	\end{itemize}
 \end{frame}
+
+\end{document}
