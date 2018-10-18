@@ -1,0 +1,220 @@
+\begin{frame}[fragile]
+	\frametitle{Maintainability}
+		
+	Remember:
+
+	\begin{itemize}
+		\item Maintainability is one of the most heavily weighted criteria on your programming assignments
+		\item Remeber to read \textit{Clean Code}
+		\item Clean Code describes many principles behind writing maintainable code
+		\item Also look through PEP-8
+		\item These are the Python standards against which your work will be reviewed
+	\end{itemize}
+	
+	So, what is maintainability?
+		
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Maintainability}
+		
+	Code maintainability is ``\textbf{itself a measure of the ease to modify code; higher maintainability means less time to make a change}''
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Maintainability}
+		
+	We ensure maintainability by ensuring:
+	
+	\begin{itemize}
+		\item Code is readable:
+		\begin{itemize}
+			\item Code can be understood
+			\item Code is reasonably structured in an easy-to-read way
+			\item Code follows a house style (e.g., PEP-8)
+		\end{itemize}		
+	\end{itemize}
+	
+	Let's explore some of the \texttt{PEP-8} conventions:
+	
+	\vspace{1em}
+	
+	 \url{www.python.org/dev/peps/pep-0008/}
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Maintainability}
+		
+	We ensure maintainability by ensuring:
+	
+	\begin{itemize}
+		\item Code is not redundant
+		\begin{itemize}
+			\item Code is not repeated
+			\item Instead, code is refactored into functions for re-use and is embued with versatility, thereby handling a range of different input
+		\end{itemize}				
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Maintainability}
+		
+	We ensure maintainability by ensuring:
+	
+	\begin{itemize}
+		\item Appropriate architectures are embedded into code design:
+		\begin{itemize}
+			\item Coupling is minimised
+			\item Cohesion of responsibility is maximised
+			\item Entanglement is avoided (i.e., spaghetti code)
+		\end{itemize}		
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Maintainability}
+		
+	We ensure maintainability by ensuring:
+	
+	\begin{itemize}
+		\item Code is sufficiently documented:
+		\begin{itemize}
+			\item Comments provide useful clarifications
+			\item ``Code tells you how, comments tell you why''
+			\item Doc-strings describe the capabilities of the codebase
+			\item Appropriate links to living documentation, like wikis
+		\end{itemize}		
+	\end{itemize}
+	
+	Let's explore some of the \texttt{PEP-257} conventions:
+	
+	\vspace{1em}
+	
+	 \url{www.python.org/dev/peps/pep-0257/}	
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Spaghetti Code}
+		
+	\begin{lstlisting}
+import time
+
+letters = "we gonna divide some stuff"
+n1="type first number: "
+n2="type second number to divide by: "
+
+print(letters)
+
+a=float(input(n1))
+b=float(input(n2))
+
+# ##### DONT TOUCH ANYTHING BELOW LINE #####
+# #####  IT WORKS AND I DONT KNOW WHY  #####
+add_used = 0
+	\end{lstlisting}	
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Spaghetti Code}
+		
+	\begin{lstlisting}
+# define add
+def add(a, b):
+    global add_used
+    add_used += 1
+    return a + b
+
+# dont know why this works but it does.
+def divide(a, b):
+    quotient = 0
+    c = 0
+    d = 0
+    while add(d, b) <= a:
+        c = add(c, 1)
+        d = add(d, b)
+    return c
+
+print("the answer is: ",divide(a, b))
+
+time.sleep(3)
+	\end{lstlisting}	
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Better Code}
+		
+	\begin{lstlisting}
+import time
+
+print('divide two numbers')
+
+# get the user to enter in some integers
+x=int(input('enter first number: '))
+y=int(input('enter number to divide by: '))
+
+print('the answer is: ',int(x/y)),
+
+time.sleep(3) #delay of a few seconds before closing
+	\end{lstlisting}	
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Clean Code}
+		
+	A key issue that first-year students tend to encounter, are identifiers for their variables. Please use sensible names! Uncle Bob (author of Clean Code) suggests:
+	
+	\begin{itemize}
+		\item Meaningful names, which:
+		\begin{itemize}
+			\item Are explicit
+			\item Reveal intentions
+			\item Avoid disinformation
+			\item Make meaningful distinctions
+			\item Are searchable
+			\item Avoid arbitrary encodings
+			\item Avoid mental mapping
+			\item Aren't ``cute'' or puns
+			\item Use domain and solution terms
+		\end{itemize}	
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Clean Code}
+		
+	\begin{lstlisting}
+count_of_college_graduates = 2500
+	\end{lstlisting}	
+
+\vspace{2em}
+
+is better than:
+
+\vspace{2em}
+
+	\begin{lstlisting}
+gn = 2500
+	\end{lstlisting}	
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{More on Readability}
+		
+	Review more readability issues here: 
+	
+	\vspace{2em}
+	
+	\url{treyhunner.com/readability-counts/#/}
+	
+\end{frame}

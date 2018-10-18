@@ -1,0 +1,60 @@
+\begin{frame}[fragile]
+	\frametitle{PASS Challenge}
+		
+	Review the following python setup code:
+
+	\begin{lstlisting}
+import random
+randomNumber = random.randrange(0,100)
+print("Random number has been generated")
+ 	\end{lstlisting}
+		
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{PASS Challenge}
+		
+	Review the following pythoin game code:
+
+	\begin{lstlisting}
+guessed = False
+while guessed==False:
+    userInput = int(input("Your guess pleas: "))
+    if userInput==randomNumber:
+        guessed = True
+        print("Well done!")
+    elif userInput>100:
+        print("Our guess range is between 0 and 100, please try a bit lower")
+    elif userInput<0:
+        print("Our guess range is between 0 and 100, please try a bit higher")
+    elif userInput>randomNumber:
+        print("Try one more time, a bit lower")
+    elif userInput < randomNumber:
+        print("Try one more time, a bit higher")
+print("You win!")
+	\end{lstlisting}
+		
+\end{frame}
+
+\begin{frame}
+	\frametitle{PASS Challenge}
+	
+	\begin{itemize}
+		\item In pairs
+		\item \textbf{Implement} the code excerpt
+		\item \textbf{Refactor} the code to improve readability
+		\item \textbf{Improve} overall maintainability of the code, breaking it down into functions
+		\item \textbf{Note} the principles which make the revised version better
+	\end{itemize}
+	
+	You can learn more about PyGame \texttt{random} at:
+	
+	\vspace{1em}
+	
+	 \url{docs.python.org/3.6/library/random.html}
+	
+	\vspace{1em}
+	
+	(40 minutes)
+	
+\end{frame}
