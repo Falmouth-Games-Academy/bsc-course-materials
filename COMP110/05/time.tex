@@ -29,7 +29,7 @@ start_time = time.clock()
 ... do something here ...
 
 end_time = time.clock()
-print "Computation took", end_time - start_time, "seconds"
+print("Computation took", end_time - start_time, "seconds")
 	\end{lstlisting}
 \end{frame}
 
@@ -41,12 +41,12 @@ start_time = time.clock()
 
 repetition_count = 1000
 
-for repetition in xrange(repetition_count):
+for repetition in range(repetition_count):
     ... do something here ...
 
 end_time = time.clock()
 time_per = (end_time - start_time) / repetition_count
-print "Computation took", time_per, "seconds"
+print("Computation took", time_per, "seconds")
 	\end{lstlisting}
 \end{frame}
 
