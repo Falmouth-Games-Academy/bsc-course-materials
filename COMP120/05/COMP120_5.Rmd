@@ -1,0 +1,182 @@
+---
+title: ""
+author: "Al"
+date: "01/10/2018"
+output: 
+  beamer_presentation:
+    includes:
+      in_header: 
+        - sessioninfo.tex
+        - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
+    keep_tex: false
+    toc: false
+    slide_level: 2
+    pandoc_args: [ 
+#      "--output=COMP120_05_screen.pdf"
+#      "--output=COMP120_05_handout.pdf"
+    ]
+---
+
+\title{\sessionnumber:  Code Review}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+# Session 4: Code Review
+
+## Register Attendance
+![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/attendance.png)
+
+## Learning Outcomes 
+After this session you will be able to:
+
+- **Write** maintainable & readable code 
+- **Execute** a code review 
+- **Check** code and comments using linters
+
+
+## Code Review
+
+![](assets/funny.png)\
+
+
+>"Peer review—an activity in which people other than the author of a software deliverable
+examine it for defects and improvement opportunities—is one of the most powerful software
+quality tools available." 
+
+[Karl E. Wiegers - Humanizing Peer Reviews, 2002](http://www.processimpact.com/articles/humanizing_reviews.pdf)
+
+## What to review 
+- Any size project can benefit from code review.
+- Avoid 'Not applicable here' (NAH) Syndrome
+- 200 Line of code and hour (once familiar with code reviews)
+
+## Difficulties
+
+- pressure on both reviewer and reviewee 
+- Lack of understanding
+- Not instinctive behavior
+- Set aside your ego and pride
+- Accepting critique (Don't take it personally
+- Misunderstood as time consuming
+- Busy practitioners
+
+## Benefits
+
+- Shortened product development cycle time
+- Less time spent performing rework
+- Increased group programming productivity
+- Better techniques learned from other developers* 
+- Team cohesion
+- Exchanging of information about components and overall system with other team members
+- Better quality code base
+
+[Karl E. Wiegers - Humanizing Peer Reviews, 2002](http://www.processimpact.com/articles/humanizing_reviews.pdf)
+
+## Egoless Programming
+A term first coined in 1971 by Gerald Weinberg - The Psychology of Computer Programming
+
+> “egoless programming,” not “egoless programmer.” Developers
+need a robust enough ego to trust and defend their work, but not so much ego that they reject
+suggestions for better solutions. Similarly, the egoless reviewer should have compassion and
+sensitivity for his colleagues, if only because their roles will be reversed one day.
+
+[Karl E. Wiegers - Humanizing Peer Reviews, 2002](http://www.processimpact.com/articles/humanizing_reviews.pdf)
+
+## Tips for reviewee
+- RESPECT
+- be receptive
+- Reciprocate don't retaliate 
+
+
+## Tips for reviewer
+- RESPECT
+- Avoid accusatory language
+- Discuss the work not the author
+- Be constructive with your criticism
+- "Bugs are the bad guy" - Wiegers
+- Identify the good as well as the bad
+
+## Planning a Review
+Allocate resources 
+
+
+## How
+
+
+
+
+## Pythonic Code
+
+
+
+## Some helpful talking points 
+```
+>import this
+```
+\tiny
+
+```{python, echo=FALSE}
+import this
+```
+
+## Potential Issues: General
+- Does the code follow the teams prefered paradigms
+- 
+
+
+## Potential Issues: Look and Feel
+Did the author show respect for their code
+
+- Indentations
+- Redundant code - delete it don't comment it out
+- Blank lines
+- General Tidyness
+
+## Readability
+- Names reflect their purpose
+- Comments are used appropriately
+- 
+
+
+## Potential Issues: Variables
+- Consistent naming conventions
+- Redundant vars
+- aRE 
+
+## Potential Issues: Adherence to Style and Standards
+- PEP8
+- PEP257
+
+
+## PEP8 Linting 
+```
+pip3 install pycodestyle
+pycodestyle filename.py
+```
+
+- **--statistics** how often each error was found      
+- **--show-source** shows the source where error occurs
+- **--show-pep8** pulls in the PEP8 text for error
+
+
+## PEP 257 Docstrings
+[View Docs]() 
+
+Checking Docstrings
+
+```
+pip install pep257
+pep257 PetPEP257.py
+```
+
+## Review Your Way to Success
+
+> "If you’re serious about the quality of your work, you’ll accept that you make mistakes,
+seek the counsel of your compatriots in finding them, and willingly review your colleagues’
+work products. You will set aside your ego so you can benefit from the experience and
+perspective of your technical associates. When you have internalized the benefits of peer
+reviews, you won’t feel comfortable unless someone else carefully examines any significant
+deliverable you create."
+
+[Karl E. Wiegers - Humanizing Peer Reviews, 2002](http://www.processimpact.com/articles/humanizing_reviews.pdf)
