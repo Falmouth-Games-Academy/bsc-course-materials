@@ -28,10 +28,10 @@ output:
 ## Learning Outcomes 
 After this session you will be able to:
 
-- **Write** maintainable & readable code 
-- **Execute** a code review 
-- **Check** code and comments using linters
-
+- **Identify** the key aspects of maintainable code 
+- **Apply** linters to source files
+- **Conduct** a code review
+- **Describe how** code could be improved
 
 ## Code Review
 
@@ -48,7 +48,7 @@ quality tools available."
 - Avoid 'Not applicable here' (NAH) Syndrome
 - Any size project can benefit from code review
 - Review no more than 400 lines at a time
-- 200 Line of code and hour (once familiar with code reviews)
+- 200 Line of code an hour (once familiar with code reviews)
 
 ## Difficulties
 - Pressure on both reviewer and reviewee 
@@ -114,9 +114,9 @@ import this
 ```
 
 ## Potential Issues: General
-- Does it work?
-- Does the code follow the teams prefered paradigms
-- Otimisation 
+- Does it work? (CI and TDD later on in the course)
+- Does the code follow the teams' prefered paradigms
+- Optimisation 
 
 ## Potential Issues: Look and Feel
 Did the author show respect for their code
@@ -130,7 +130,7 @@ Did the author show respect for their code
 - General Tidyness
 
 ## Readability
-- Consitent nameing conventions
+- Consistent naming conventions
 - Names reflect their purpose (variables, functions, classes...)
 - Comments are consistent and appropriate
 - Easy to follow the flow
@@ -142,7 +142,7 @@ Did the author show respect for their code
 - Subtle bugs - wrong variables used
 - limit global vars (none if possible)
 
-## Potential Issues: Unforseen 
+## Potential Issues: Unforseen Issues
 - Security issues
 - Blockers further down the road
 - Integration issues
