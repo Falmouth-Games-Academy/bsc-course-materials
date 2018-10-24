@@ -97,11 +97,25 @@ sensitivity for his colleagues, if only because their roles will be reversed one
 - Identify the good as well as the bad
 
 ## Planning a Review
-- Allocate resources 
+
+\includegraphics[width=0.5\textwidth, center]{assets/tick.png}
+
+
+- Allocate time and resources 
 - Create a check list
+- No more than 60 mins at a time 
+- Lock in scope
+- Identify the lines for review
 
 
-# import this
+## ZEN
+
+\includegraphics[width=0.5\textwidth, center]{assets/python.png}
+
+
+```
+import this
+```
 
 ## Some helpful talking points 
 ```
@@ -114,9 +128,13 @@ import this
 ```
 
 ## Potential Issues: General
+
+\includegraphics[width=0.5\textwidth, center]{assets/mag.png}
+
+
 - Does it work?
-- Does the code follow the teams prefered paradigms
-- Otimisation 
+- Does the code follow the teams prefered paradigms?
+- Can it be optimised?
 
 ## Potential Issues: Look and Feel
 Did the author show respect for their code
@@ -130,6 +148,10 @@ Did the author show respect for their code
 - General Tidyness
 
 ## Readability
+
+\includegraphics[width=0.5\textwidth, center]{assets/read.png}
+
+
 - Consitent nameing conventions
 - Names reflect their purpose (variables, functions, classes...)
 - Comments are consistent and appropriate
@@ -137,17 +159,27 @@ Did the author show respect for their code
 - line lengths (79 chars ish)
 
 ## Potential Issues: Variables
+
+\includegraphics[width=0.5\textwidth, center]{assets/bug.png}
+
+
 - Consistent naming conventions
 - Redundant variables
 - Subtle bugs - wrong variables used
 - limit global vars (none if possible)
 
 ## Potential Issues: Unforseen 
+
+\includegraphics[width=0.5\textwidth, center]{assets/lock.png}
+
 - Security issues
 - Blockers further down the road
 - Integration issues
 
 ## Potential Issues: Adherence to Style and Standards
+
+\includegraphics[width=0.5\textwidth, center]{assets/bot.png}
+
 - PEP8: Standard Python style guide
 - PEP257: Docstrings
 - Linting for all the things... 
