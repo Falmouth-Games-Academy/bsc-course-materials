@@ -216,3 +216,39 @@ reviews, you won’t feel comfortable unless someone else carefully examines any
 deliverable you create."
 
 [Karl E. Wiegers - Humanizing Peer Reviews, 2002](http://www.processimpact.com/articles/humanizing_reviews.pdf)
+
+## PASS Challenge
+- **Format and document** your submission
+- Getting the file and folder structure right is important, it gives assessors more time to focus on useful feedback
+- Then **submit** to the peer-review activity
+- Submissions are group submissions (i.e., your pre-production teams)
+- The submission must be a .zip file
+
+## PASS Challenge
+- One folder for each contract
+- Each member of the team should have 'assumed ownership' of one contract
+- Name the folder according to the contract
+- Ensure the name of the 'owner' is included in the folder name
+    + e.g. "Contract 1 - Scott"
+    + e.g. "Contract 2 - Parker"
+
+## PASS Challenge
+- Add a README.md file alongside the contract folders
+- Use [Markdown](https://www.markdowntutorial.com/) appropriately
+- Describe the project
+- For each member of the team, repeat who assumed ownership of each contract but here also include who else worked on it
+- Then, again for each member of the team, clarify to assessors where the three or more algorithms/function are
+
+## PASS Challenge
+- Also add README.md files in each contract folder
+- Use [Markdown](https://www.markdowntutorial.com/) appropriately
+- Explain to assessors how to execute the code
+- Add any details you think neccessary
+- Acknowledge and thank contributors to that contract
+
+## PASS Challenge
+- Include doc-strings in source files to clarify authorship
+- Where appropriate, credit everyone who contributed and make clear who was driving
+- If equal contributions (due to rotating driver/navigator), say so
+- If present, reference third-party code
+- Supply a link in the doc-string if any code has been taken from StackOverflow
