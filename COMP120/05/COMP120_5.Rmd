@@ -242,8 +242,9 @@ deliverable you create."
 ## PASS Challenge
 - Also add README.md files in each contract folder
 - Use [Markdown](https://www.markdowntutorial.com/) appropriately
+- Add a link to the repository used for version control
 - Explain to assessors how to execute the code
-- Add any details you think neccessary
+- Add any other details you think neccessary
 - Acknowledge and thank contributors to that contract
 
 ## PASS Challenge
