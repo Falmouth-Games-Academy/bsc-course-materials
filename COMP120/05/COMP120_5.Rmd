@@ -22,8 +22,6 @@ output:
 
 \frame{\titlepage} 
 
-# Session 4: Code Review
-
 ## Register Attendance
 ![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/attendance.png)
 
@@ -47,22 +45,22 @@ quality tools available."
 [Karl E. Wiegers - Humanizing Peer Reviews, 2002](http://www.processimpact.com/articles/humanizing_reviews.pdf)
 
 ## What to review 
-- Any size project can benefit from code review.
 - Avoid 'Not applicable here' (NAH) Syndrome
+- Any size project can benefit from code review
+- Review no more than 400 lines at a time
 - 200 Line of code and hour (once familiar with code reviews)
 
 ## Difficulties
-
-- pressure on both reviewer and reviewee 
-- Lack of understanding
+- Pressure on both reviewer and reviewee 
 - Not instinctive behavior
+- Honesty
+- Fear of offending 
 - Set aside your ego and pride
 - Accepting critique (Don't take it personally
 - Misunderstood as time consuming
-- Busy practitioners
+- Too busy
 
 ## Benefits
-
 - Shortened product development cycle time
 - Less time spent performing rework
 - Increased group programming productivity
@@ -84,6 +82,7 @@ sensitivity for his colleagues, if only because their roles will be reversed one
 [Karl E. Wiegers - Humanizing Peer Reviews, 2002](http://www.processimpact.com/articles/humanizing_reviews.pdf)
 
 ## Tips for reviewee
+- Strive for quality
 - RESPECT
 - be receptive
 - Reciprocate don't retaliate 
@@ -98,17 +97,11 @@ sensitivity for his colleagues, if only because their roles will be reversed one
 - Identify the good as well as the bad
 
 ## Planning a Review
-Allocate resources 
+- Allocate resources 
+- Create a check list
 
 
-## How
-
-
-
-
-## Pythonic Code
-
-
+# import this
 
 ## Some helpful talking points 
 ```
@@ -121,33 +114,43 @@ import this
 ```
 
 ## Potential Issues: General
+- Does it work?
 - Does the code follow the teams prefered paradigms
-- 
-
+- Otimisation 
 
 ## Potential Issues: Look and Feel
 Did the author show respect for their code
 
+- Repetition
+- Shy code - loosely coupled (Pragmatic Programmer)
 - Indentations
 - Redundant code - delete it don't comment it out
 - Blank lines
+- Debuging code removed
 - General Tidyness
 
 ## Readability
-- Names reflect their purpose
-- Comments are used appropriately
-- 
-
+- Consitent nameing conventions
+- Names reflect their purpose (variables, functions, classes...)
+- Comments are consistent and appropriate
+- Easy to follow the flow
+- line lengths (79 chars ish)
 
 ## Potential Issues: Variables
 - Consistent naming conventions
-- Redundant vars
-- aRE 
+- Redundant variables
+- Subtle bugs - wrong variables used
+- limit global vars (none if possible)
+
+## Potential Issues: Unforseen 
+- Security issues
+- Blockers further down the road
+- Integration issues
 
 ## Potential Issues: Adherence to Style and Standards
-- PEP8
-- PEP257
-
+- PEP8: Standard Python style guide
+- PEP257: Docstrings
+- Linting for all the things... 
 
 ## PEP8 Linting 
 ```
