@@ -13,7 +13,7 @@ output:
     slide_level: 2
     pandoc_args: [ 
 #      "--output=COMP120_05_screen.pdf"
-#      "--output=COMP120_05_handout.pdf"
+      "--output=COMP120_05_handout.pdf"
     ]
 ---
 
@@ -34,7 +34,7 @@ After this session you will be able to:
 - **Describe how** code could be improved
 
 ## Code Review
-
+1
 ![](assets/funny.png)\
 
 
