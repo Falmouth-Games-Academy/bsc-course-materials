@@ -20,12 +20,12 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-\title{\sessionnumber:  Visualisation \& Analysis of Results}
+\title{\sessionnumber:  Code Review}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-# Session 4: Visualisation & Analysis of Results
+# Session 4: Code Review
 
 ## Register Attendance
 ![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/attendance.png)
@@ -33,9 +33,9 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Learning Outcomes 
 After this session you will be able to:
 
-- **Utilise** descriptive statistics to explain your quantitative findings
-- **Codify** qualitative data and find patterns and trends
-- **Visualise** data using Excel of Google Sheets
+- **Execute** a code review
+- **Write** well formed docstrings
+- **Check** code and comments using linters
 
 ## Quantitative Data vs Qualitative
 

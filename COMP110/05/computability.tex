@@ -19,7 +19,7 @@
 \begin{frame}{An uncomputable function}
 	The \textbf{halting problem}
 	\begin{itemize}
-		\pause\item $A$ = the set of all Turing machines
+		\pause\item $A$ = the set of all Turing machines (encoded as transition tables)
 		\pause\item $B = \{ \operatorname{true}, \operatorname{false} \}$
 		\pause\item $f(a) = \begin{cases}
 			\operatorname{true} & \text{ if $a$ halts in finite time on all inputs} \\
@@ -30,15 +30,10 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Turing completeness}
+\begin{frame}{Church-Turing Thesis}
 	\begin{itemize}
 		\pause\item A system (e.g.\ a computer or programming language) is \textbf{Turing complete}
 			if it can implement any given Turing machine
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Church-Turing Thesis}
-	\begin{itemize}
 		\pause\item If a function is \textbf{effectively calculable}, then it is \textbf{computable} by a Turing machine
 		\pause\item Effectively calculable = there is a method or algorithm for computing it
 		\pause\item So in terms of computability, Turing machines are as powerful as computers can be
