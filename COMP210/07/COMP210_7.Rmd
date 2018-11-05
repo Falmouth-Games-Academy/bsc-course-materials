@@ -12,8 +12,8 @@ output:
     toc: false
     slide_level: 2
     pandoc_args: [ 
-    #"--output=COMP210_04_screen.pdf"
-    "--output=COMP210_04_handout.pdf"
+    #"--output=COMP210_07_screen.pdf"
+    "--output=COMP210_07_handout.pdf"
     ]
 ---
 
