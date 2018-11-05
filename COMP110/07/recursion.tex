@@ -1,20 +1,6 @@
 \part{Recursion and induction}
 \frame{\partpage}
 
-\begin{frame}[fragile]{Recursion}
-    \begin{itemize}
-        \pause\item A \textbf{recursive} function is a function that \textbf{calls itself}
-    \end{itemize}
-    \pause
-    \begin{lstlisting}
-def factorial(n):
-    if n <= 1:
-        return 1
-    else:
-        return n * factorial(n-1)
-    \end{lstlisting}
-\end{frame}
-
 \begin{frame}{A boolean identity}
     $$ \neg (X_1 \vee X_2 \vee \dots \vee X_n) = \neg X_1 \wedge \neg X_2 \wedge \dots \wedge \neg X_n $$
 \end{frame}
@@ -135,6 +121,20 @@ $$ \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6} $$
 		\pause\item I can also prove $n=1$
 		\pause\item Therefore by induction I can prove the result for all $n$
 	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Recursion}
+    \begin{itemize}
+        \pause\item A \textbf{recursive} function is a function that \textbf{calls itself}
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+def factorial(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+    \end{lstlisting}
 \end{frame}
 
 \begin{frame}{Thinking recursively}
