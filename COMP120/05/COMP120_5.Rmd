@@ -34,7 +34,7 @@ After this session you will be able to:
 - **Describe how** code could be improved
 
 ## Code Review
-1
+
 ![](assets/funny.png)\
 
 
