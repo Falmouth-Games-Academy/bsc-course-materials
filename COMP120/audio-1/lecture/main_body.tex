@@ -1,8 +1,8 @@
 % Adjust these for the path of the theme and its graphics, relative to this file
 %\usepackage{beamerthemeFalmouthGamesAcademy}
-\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{../../../beamerthemeFalmouthGamesAcademy}
 \usepackage{multimedia}
-\graphicspath{ {../../} }
+\graphicspath{ {../../../} }
 
 % Default language for code listings
 \lstset{language=C++,
@@ -20,6 +20,8 @@
 
 \input{sessioninfo}
 
+\setbeamertemplate{navigation symbols}{}
+
 \begin{document}
 \title{\sessionnumber: An Introduction to Digital Sound}
 \subtitle{\modulecode: \moduletitle}
@@ -35,11 +37,11 @@
 	\end{itemize}
 \end{frame}
 
-\input{introduction}
 \input{soundsingames}
 \input{soundwave}
 \input{soundsdigital}
 \input{programsound}
 \input{additionalresources}
+\input{pass_challenge}
 
 \end{document}
