@@ -1,0 +1,67 @@
+\part{Linked lists}
+\frame{\partpage}
+
+\begin{frame}{Linked list}
+	\begin{itemize}
+		\pause\item Composed of a number of \textbf{nodes}
+		\pause\item Each node contains:
+			\begin{itemize}
+		 		\pause\item An \textbf{item} --- the actual data to be stored
+		 		\pause\item A pointer or reference to the \textbf{next node} in the list (null for the last item)
+			\end{itemize}
+	\end{itemize}
+	\pause
+	\vspace{2ex}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			{\tiny item} & {\tiny next} \\
+			\texttt{first} & \tikzmark{nexta} \\\hline
+		\end{tabular}
+		\qquad
+		\begin{tabular}{|c|c|}
+			\hline
+			{\tiny item} & {\tiny next} \\
+			\tikzmark{nodeb}\texttt{second} & \tikzmark{nextb} \\\hline
+		\end{tabular}
+		\qquad
+		\begin{tabular}{|c|c|}
+			\hline
+			{\tiny item} & {\tiny next} \\
+			\tikzmark{nodec}\texttt{third} & $\times$ \\\hline
+		\end{tabular}
+		\begin{tikzpicture}
+			[
+			  remember picture,
+			  overlay,
+			  -latex,
+			  yshift=0.5ex,
+			  shorten >=1pt,
+			  shorten <=1pt,
+			]
+			\draw ({pic cs:nexta}) to ($ ({pic cs:nodeb}) + (-1ex, 0) $);
+			\draw ({pic cs:nextb}) to ($ ({pic cs:nodec}) + (-1ex, 0) $);
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\newcommand{\footnoteref}[1]{$^{\text{\ref{#1}}}$}
+
+\begin{frame}{Linked lists vs arrays}
+	\begin{center}
+		\begin{tabular}{|r|l|l|}
+			\hline
+			\textbf{Operation} & \textbf{Array} & \textbf{Linked list} \\\hline
+			\pause Append & $O(1)$ & $O(1)$ \footnote{\label{f:llend}If we already have a reference to the last node} \\
+			\pause Pop & $O(1)$ & $O(1)$ \footnoteref{f:llend} \\
+			\pause Index lookup & $O(1)$ & $O(n)$ \\
+			\pause Count elements & $O(1)$ & $O(n)$ \\
+			\pause Insert & $O(n)$ & $O(1)$ \footnote{\label{f:llinsert}If we already have a reference to the relevant node} \\
+			\pause Delete & $O(n)$ & $O(1)$ \footnoteref{f:llinsert} \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Implementing a linked list}
+\end{frame}

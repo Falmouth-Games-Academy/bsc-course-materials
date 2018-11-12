@@ -1,0 +1,65 @@
+\part{Graph traversal}
+\frame{\partpage}
+
+\begin{frame}{Tree traversal}
+	\begin{itemize}
+		\pause\item \textbf{Traversal}: visiting all the nodes of the tree
+		\pause\item Two main types
+			\begin{itemize}
+				\pause\item Depth first
+				\pause\item Breadth first
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Tree traversal}
+	\pause\footnotesize
+%	\begin{columns}
+%		\begin{column}{0.48\textwidth}
+			\begin{algorithmic}
+				\Procedure{DepthFirstSearch}{} \pause
+					\State let $S$ be a stack \pause
+					\State push root node onto $S$ \pause
+					\While{$S$ is not empty} \pause
+						\State pop $n$ from $S$ \pause
+						\State print $n$ \pause
+						\State push children of $n$ onto $S$ \pause
+					\EndWhile
+				\EndProcedure
+			\end{algorithmic}
+%		\end{column}
+		\pause
+%		\begin{column}{0.48\textwidth}
+		\vspace{2ex}
+			\begin{algorithmic}
+				\Procedure{BreadthFirstSearch}{} \pause
+					\State let $Q$ be a queue \pause
+					\State enqueue root node into $Q$ \pause
+					\While{$Q$ is not empty} \pause 
+						\State dequeue $n$ from $Q$ \pause
+						\State print $n$ \pause
+						\State enqueue children of $n$ into $Q$ \pause
+					\EndWhile
+				\EndProcedure
+			\end{algorithmic}
+%		\end{column}
+%	\end{columns}
+\end{frame}
+
+\input{traversal_example}
+
+\begin{frame}{Recursive depth first search}
+	\pause
+	\begin{algorithmic}
+		\Procedure{DepthFirstSearch}{$n$} \pause
+			\State print $n$ \pause
+			\For{\textbf{each} child $c$ of $n$} \pause
+				\State \Call{DepthFirstSearch}{$c$} \pause
+			\EndFor
+		\EndProcedure
+	\end{algorithmic}
+	\begin{itemize}
+		\pause\item Compare to the pseudocode on the previous slide. Where is the stack?
+	\end{itemize}
+\end{frame}
+
