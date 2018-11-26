@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright 2017 mathsisfun.com -->
+<svg xmlns="http://www.w3.org/2000/svg" width="325.7" height="189.8" version="1.1" style="font-family:'Comic Sans MS'; font-size:22.5px; stroke-width:0.42px;">
+<defs>
+	<marker id="aa3" style="overflow:visible;" orient="auto">
+		<path transform="matrix(0.8,0,0,0.8,10,0)" style="stroke:black; stroke-width:1pt;" d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"/>
+	</marker>
+	<marker id="aa4" style="overflow:visible;" orient="auto">
+		<path transform="matrix(-0.8,0,0,-0.8,-10,0)" style="stroke:black; stroke-width:1pt;" d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"/>
+	</marker>
+	<marker id="aa2" style="overflow:visible;" orient="auto">
+		<path transform="matrix(-0.4,0,0,-0.4,-4,0)" style="stroke:black; stroke-width:1pt;" d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"/>
+	</marker>
+	<marker id="aa1" style="overflow:visible;" orient="auto">
+		<path transform="matrix(0.4,0,0,0.4,4,0)" style="stroke:black; stroke-width:1pt;" d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"/>
+	</marker>
+</defs>
+<path style="fill:none; stroke:#0000ff; stroke-width:1.66;" d="M 226.2,142.9 H 17.3 L 226,27.1 Z"/>
+<text x="106.7" y="127.2" transform="scale(1.00031,0.999693)" style="font-size:26px; stroke-width:2.53;">θ</text>
+<path style="marker-start:url(#aa1); marker-end:url(#aa2); fill:none; stroke:black; stroke-width:1.66;" d="m 88.6,106.7 a 77.9,77.9 0 0 1 8.8,34"/>
+<path style="fill:none; stroke:black;" d="m 16.2,178 v -26.4"/>
+<path style="fill:none; stroke:black;" d="m 226.7,177.8 v -26.4"/>
+<path style="marker-start:url(#aa3); marker-end:url(#aa4); fill:none; stroke:black; stroke-width:0.75;" d="M 223.7,163.3 H 18.4"/>
+<path style="fill:none; stroke:black;" d="m 11.9,139.6 -11.7,-21.5"/>
+<path style="fill:none; stroke:black;" d="m 223.7,21.7 -11.7,-21.5"/>
+<path style="marker-start:url(#aa3); marker-end:url(#aa4); fill:none; stroke:black; stroke-width:0.75;" d="M 214.2,11.5 7.6,126.4"/>
+<path style="fill:none; stroke:black;" d="m 275,144.5 h -43.9"/>
+<path style="fill:none; stroke:black;" d="m 274.7,28 h -43.9"/>
+<path style="marker-end:url(#aa4); fill:none; stroke:black; stroke-width:0.75;" d="m 260.4,104.7 v 38.6"/>
+<text x="11.9" y="104" transform="rotate(-28.8695)" style="fill:#ce5c00; stroke-width:1px;">Hypotenuse</text>
+<text x="232" y="93.1" style="fill:#c4a000; stroke-width:1px;">Opposite</text>
+<text x="86.7" y="183.3" style="fill:#3465a4; stroke-width:1px;">Adjacent</text>
+<path style="fill:none; stroke:black; stroke-width:1.66;" d="m 202.8,142.5 v -22.7 h 22.3"/>
+<path style="marker-start:url(#aa3); fill:none; stroke:black; stroke-width:0.75;" d="M 260.4,28.8 V 71.7"/>
+</svg>
