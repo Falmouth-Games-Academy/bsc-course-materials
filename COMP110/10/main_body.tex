@@ -5,9 +5,7 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\usepackage{mips}
-\lstset{language=[mips]Assembler,
-	morekeywords={[3]\$d,\$s,\$t}
+\lstset{language=Python
 }
 
 % For strikethrough effect
@@ -18,28 +16,16 @@
 
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
+\usetikzlibrary{tikzmark,calc}
 
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Machine Architecture}
+\title{\sessionnumber: References}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\begin{frame}
-	\frametitle{Learning outcomes}
-	\begin{itemize}
-		\item \textbf{Explain} the difference between interpretation, just-in-time compilation and ahead-of-time compilation
-		\item \textbf{Describe} how common high-level code structures translate to machine code
-		\item \textbf{Explain} how floating-point numbers are represented in the computer
-	\end{itemize}
-\end{frame}
-
-\input{compilers_vs_interpreters}
-\input{mips}
-\input{control_flow}
-\input{machine_code}
-\input{number_rep}
+\input{references}
 
 \end{document}
