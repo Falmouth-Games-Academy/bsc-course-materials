@@ -5,63 +5,46 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=Python
+\usepackage{mips}
+\lstset{language=[mips]Assembler,
+	morekeywords={[3]\$d,\$s,\$t}
 }
 
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
 
-\usepackage{algpseudocode}
-
 \usepackage{pdfpages}
 
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
-\usetikzlibrary{tikzmark,calc}
 
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Further Computational Mathematics for Games}
+\title{\sessionnumber: Machine Code}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-%\begin{frame}
-%	\frametitle{Learning outcomes}
-%	\begin{itemize}
-%		\item \textbf{Explain} the difference between pass-by-value and pass-by-reference
-%		\item \textbf{Distinguish} the basic data structures available in Python
-%		\item \textbf{Determine} the complexity of accessing and manipulating data in these data structures
-%		\item \textbf{Choose} the correct data structure for a given task
-%	\end{itemize}
-%\end{frame}
-
-\begin{frame}{Worksheet E}
+\begin{frame}
+	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item Assembly programming (TIS-100)
-		\item Due \textbf{week 13} (after Christmas --- see timetable)
+		\item \textbf{Explain} the difference between interpretation, just-in-time compilation and ahead-of-time compilation
+		\item \textbf{Describe} how common high-level code structures translate to machine code
+		\item \textbf{Write} and \textbf{understand} simple assembly language programs
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Quiz E}
-	\begin{itemize}
-		\item There is no Quiz E
-		\item But complete quizzes A--D if you haven't already!
-	\end{itemize}
+\begin{frame}{Exercise Sheet iv}
+	\begin{center}
+		Due \textbf{tomorrow}!
+	\end{center}
 \end{frame}
 
-\begin{frame}{Final worksheet submission}
-	\begin{itemize}
-		\item Check MyFalmouth for the deadline
-		\item \textbf{Download} \textbf{all five} of your worksheet forks as zips
-		\item \textbf{Extract} them into five separate folders
-		\item \textbf{Re-compress} the five folders into a \textbf{single zip file}
-		\item \textbf{Upload} this zip file to LearningSpace
-	\end{itemize}
-\end{frame}
-
-\input{recursion}
+\input{compilers_vs_interpreters}
+\input{mips}
+\input{control_flow}
+\input{machine_code}
 
 \end{document}

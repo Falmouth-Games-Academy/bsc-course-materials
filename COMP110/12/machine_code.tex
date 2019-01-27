@@ -1,0 +1,112 @@
+\part{MIPS machine code}
+\frame{\partpage}
+
+\begin{frame}{MIPS instructions}
+	\begin{itemize}
+		\pause\item Each line of MIPS assembly code can be translated into a \textbf{machine code instruction}
+		\pause\item 1 line of assembly = 1 instruction
+		\pause\item Each instruction is a \textbf{32 bit} value
+		\pause\item First 6 bits specify the \textbf{opcode}; how the remaining 26 bits are interpreted depends on which opcode it is
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Anatomy of an instruction}
+	\pause \textbf{R-type} instruction:
+	\setlength{\tabcolsep}{4.8pt}
+		\begin{tabular}{|*{32}{c|}}
+			\hline &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& \\\hline
+			\multicolumn{6}{|c|}{opcode} &
+			\multicolumn{5}{|c|}{\$s} &
+			\multicolumn{5}{|c|}{\$t} &
+			\multicolumn{5}{|c|}{\$d} &
+			\multicolumn{5}{|c|}{shift} &
+			\multicolumn{6}{|c|}{function} \\
+			\multicolumn{6}{|c|}{6 bits} &
+			\multicolumn{5}{|c|}{5 bits} &
+			\multicolumn{5}{|c|}{5 bits} &
+			\multicolumn{5}{|c|}{5 bits} &
+			\multicolumn{5}{|c|}{5 bits} &
+			\multicolumn{6}{|c|}{6 bits} \\\hline
+		\end{tabular}
+	\begin{itemize}
+		\pause\item \textbf{opcode} and \textbf{function} together specify the operation to execute
+			\begin{itemize}
+				\pause\item E.g.\ \lstinline{add} has opcode \texttt{000000} and function \texttt{100000}
+				\pause\item E.g.\ \lstinline{sub} has opcode \texttt{000000} and function \texttt{100010}
+			\end{itemize}
+		\pause\item Some instructions specify a \textbf{shift} amount
+			\begin{itemize}
+				\pause\item For \lstinline{add} \lstinline{sub} etc these 5 bits are ignored
+			\end{itemize}
+		\pause\item Registers are identified by a 5-bit number
+			\begin{itemize}
+				\pause\item E.g.\ \lstinline{$zero} $\to$ \texttt{00000}, \lstinline{$s0} $\to$ \texttt{01000}, \lstinline{$s1} $\to$ \texttt{01001}
+				\pause\item There are 32 registers
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+	\begin{lstlisting}
+add $s0, $s0, $s1
+	\end{lstlisting}
+	$$ \downarrow $$
+	\begin{lstlisting}
+opcode   s     t     d   shift function
+000000 01000 01001 01001 00000 100000
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Anatomy of an instruction}
+	\pause \textbf{I-type} instruction:
+	\setlength{\tabcolsep}{4.8pt}
+	\begin{tabular}{|*{32}{c|}}
+		\hline &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& \\\hline
+		\multicolumn{6}{|c|}{opcode} &
+		\multicolumn{5}{|c|}{\$s} &
+		\multicolumn{5}{|c|}{\$t} &
+		\multicolumn{16}{|c|}{C} \\
+		\multicolumn{6}{|c|}{6 bits} &
+		\multicolumn{5}{|c|}{5 bits} &
+		\multicolumn{5}{|c|}{5 bits} &
+		\multicolumn{16}{|c|}{16 bits} \\\hline
+	\end{tabular}
+	\begin{itemize}
+		\pause\item \textbf{opcode} specifies the operation to execute
+			\begin{itemize}
+				\pause\item E.g.\ \lstinline{addi} has opcode \texttt{001000}
+			\end{itemize}
+		\pause\item \lstinline{C} is specified as a 16-bit number
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+	\begin{lstlisting}
+addi $s0, $s1, 123
+	\end{lstlisting}
+	$$ \downarrow $$
+	\begin{lstlisting}
+opcode   s     t           C
+001000 01001 01000 0000000001111011
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Anatomy of an instruction}
+	\pause \textbf{J-type} instruction:
+	\setlength{\tabcolsep}{4.8pt}
+	\begin{tabular}{|*{32}{c|}}
+		\hline &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& \\\hline
+		\multicolumn{6}{|c|}{opcode} &
+		\multicolumn{26}{|c|}{address} \\
+		\multicolumn{6}{|c|}{6 bits} &
+		\multicolumn{26}{|c|}{26 bits} \\\hline
+	\end{tabular}
+	\begin{itemize}
+		\pause\item \textbf{opcode} specifies the operation to execute
+			\begin{itemize}
+				\pause\item E.g.\ \lstinline{J} has opcode \texttt{000010}
+			\end{itemize}
+		\pause\item \textbf{address} is specified as a 26-bit number
+	\end{itemize}
+\end{frame}
+
