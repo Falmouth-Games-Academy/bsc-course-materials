@@ -38,30 +38,6 @@
 	\end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Class Examples - C\# Unity}
-	\begin{lstlisting}[language=C++]
-	class Player : MonoBehaviour
-	{
-		private int Health=100;
-		
-		void Start()
-		{
-			Health=100;
-		}
-	
-		public void TakeDamage(int health)
-		{
-			Health-=health;
-		}
-	
-		public void HealDamage(int health)
-		{
-			Health+=health;
-		}
-	}
-	\end{lstlisting}
-\end{frame}
-
 \begin{frame}{Naming Tips}
 	\begin{itemize}
 		\pause \item Classnames should be proper nouns (e.g. Player, Enemy, Orc, Goblin, etc)
@@ -71,3 +47,9 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Coding Standards}
+	\begin{itemize}
+		\pause \item UE4 Coding Standards - \url{https://docs.unrealengine.com/en-us/Programming/Development/CodingStandard}
+		\pause \item Google C++ Coding Standards - \url{https://google.github.io/styleguide/cppguide.html} 
+	\end{itemize}
+\end{frame}
