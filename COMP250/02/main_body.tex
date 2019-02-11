@@ -20,6 +20,8 @@
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
+\usepackage{qtree}
+
 \input{sessioninfo}
 
 \begin{document}
@@ -28,23 +30,20 @@
 
 \frame{\titlepage} 
 
-%\begin{frame}
-%	\frametitle{Learning outcomes}
-%	\begin{itemize}
-%		\item Outcome 1
-%		\item Outcome 2
-%		\item Outcome 3
-%	\end{itemize}
-%\end{frame}
-
-\begin{frame}{Reminder}
-	\begin{center}
-		AI component proposal due \textbf{next week}!
-	\end{center}
+\begin{frame}
+	\frametitle{Learning outcomes}
+	\begin{itemize}
+		\item \textbf{Explain} how finite state machines and behaviour trees are used in AI
+        \item \textbf{Design} character behaviours using behaviour trees
+        \item \textbf{Implement} an AI system based on behaviour trees
+	\end{itemize}
 \end{frame}
 
+\part{Research journal check-in}
+\frame{\partpage}
+
 \input{architectures}
-\input{logic}
-\input{gametheory}
+\input{fsm}
+\input{bt}
 
 \end{document}
