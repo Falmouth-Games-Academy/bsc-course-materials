@@ -13,7 +13,6 @@
 	\begin{itemize}
 		\pause \item You should use an Associative array
 		\begin{itemize}
-			\pause \item In C\# we have the \textbf{Dictionary} class
 			\pause \item in C++ we have the \textbf{map} or \textbf{unordered\_map}  class
 		\end{itemize} 
 		\pause \item These data structures are structured as key-value pair
@@ -31,33 +30,6 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{C\# Dictionary
-Example}
-\begin{lstlisting}
-Dictonary<string,int> highScoreTable=new Dictonary<string,int>();
-
-highScores.Add("Brian",200);
-highScores.Add("Sarah",2000);
-highScores[Julia]=4000;
-
-foreach(KeyValuePair<string,int> pair in highScoreTable)
-{
-	Debug.Log("High Score "+pair.Key+" "+pair.Value);
-}
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{C\# Dictionary
-	Example}
-\begin{lstlisting}
-if (highScores.ContainsKey("Brian"))
-{
-	int score=highScores["Brian"];
-}
-
-highScores.Remove("Sarah");
-\end{lstlisting}
-\end{frame}
 
 \begin{frame}[fragile]{C++ Map
 Example}
