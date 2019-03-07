@@ -1,0 +1,97 @@
+\part{Associative Array: Map \& Dictionary}
+\frame{\partpage}
+
+\begin{frame}{The Problem}
+	\begin{itemize}
+		\pause \item If you need to store one unique copy of an element
+		\pause \item You want to access an element via a key
+		\pause \item You are doing lots of searches for an element
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Solution}
+	\begin{itemize}
+		\pause \item You should use an Associative array
+		\begin{itemize}
+			\pause \item In C\# we have the \textbf{Dictionary} class
+			\pause \item in C++ we have the \textbf{map} or \textbf{unordered\_map}  class
+		\end{itemize} 
+		\pause \item These data structures are structured as key-value pair
+		\pause \item It allows you to retrieve the items via the key
+		\pause \item This makes it a good choice for looking up large data sets
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Use Case}
+	\begin{itemize}
+		\pause \item If you are creating a resource management system for handling textures, models or other assets
+		\pause \item Localisation system, each language is stored in an Associative Array
+		\pause \item Unit Manager, a class to manage units created in the game
+		\pause \item Save Game System
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{C\# Dictionary
+Example}
+\begin{lstlisting}
+Dictonary<string,int> highScoreTable=new Dictonary<string,int>();
+
+highScores.Add("Brian",200);
+highScores.Add("Sarah",2000);
+highScores[Julia]=4000;
+
+foreach(KeyValuePair<string,int> pair in highScoreTable)
+{
+	Debug.Log("High Score "+pair.Key+" "+pair.Value);
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C\# Dictionary
+	Example}
+\begin{lstlisting}
+if (highScores.ContainsKey("Brian"))
+{
+	int score=highScores["Brian"];
+}
+
+highScores.Remove("Sarah");
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C++ Map
+Example}
+\begin{lstlisting}
+Map<string,int> highScores;
+
+highScores["Brian"]=200;
+highScores["Sarah"]=2000;
+highScores["Julia]=4000;
+
+for(auto iter : highScores)
+{
+	std::cout<<"High Score "+iter.first<<" "<<iter.second<<std::endl;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C++ Map
+	Example}
+\begin{lstlisting}
+auto iter=highScores.find("Brian");
+if (iter!=highScores.end())
+{
+	int score=highScores["Brian];
+}
+
+highScores.earse("Sarah");
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Additional Notes}
+\begin{itemize}
+	\pause \item Iterating over a map has a slightly annoying syntax
+	\pause \item Associative Arrays tend to have good performance for retrieval (O (log n))
+	\pause \item If you add an item and its key already exists it may overwrite the value
+\end{itemize}
+\end{frame}

@@ -1,0 +1,76 @@
+\part{Queue}
+\frame{\partpage}
+
+\begin{frame}{The Problem}
+	\begin{itemize}
+		\pause \item If you need to visit items in a certain (e.g front to back)
+		\pause \item Examples of this could be waypoints or commands to an AI character 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Solution}
+	\begin{itemize}
+		\pause \item In this case a Queue would be a good choice
+		\begin{itemize}
+			\pause \item In C\# we have the \textbf{Queue} class
+			\pause \item in C++ we have the \textbf{queue} class
+		\end{itemize}
+		\pause \item This is \textbf{F}irst-\textbf{I}n-\textbf{L}ast-\textbf{O}ut data structure
+		\pause \item You add elements to the end of the queue and you remove elements from the start
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Use Case}
+	\begin{itemize}
+		\pause \item An RTS game where you can add orders to a unit, these are then carried out sequence
+		\pause \item An RTS where you have a base which produces units
+		\pause \item A spawning system, where you have to defeat enemies in a specific order
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{C\# Queue
+Example}
+\begin{lstlisting}
+Queue<GameObject> unitsToBuild=new Queue<GameObject>();
+
+unitsToBuild.Enqeue(soliderPrefab);
+unitsToBuild.Enqeue(builderPrefab);
+unitsToBuild.Enqeue(tankPrefab);
+
+foreach(GameObject go in unitsToBuild)
+{
+	Debug.Log("Units to build "+go.name);
+}
+
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{C\# Queue
+	Example}
+\begin{lstlisting}
+	GameObject nextUnitToBuild=unitsToBuild.Peek();
+	
+	unitsToBuild.Dequeue();
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C++ Queue
+Example}
+\begin{lstlisting}
+queue<Command> aiCommands;
+
+aiCommands.push(Command("Attack"));
+aiCommands.push(Command("Recharge"));
+aiCommands.push(Command("Run"));
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C++ Queue
+	Example}
+\begin{lstlisting}
+Command nextCommand=aiCommands.front();
+
+aiCommands.pop();
+\end{lstlisting}
+\end{frame}

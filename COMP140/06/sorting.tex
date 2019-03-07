@@ -1,0 +1,133 @@
+\part{Operations on collections}
+\frame{\partpage}
+
+\begin{frame}{Sorting}
+	\begin{itemize}
+		\pause \item Sorting is where we order the items in a collection in a specific order
+		\pause \item There are a whole bunch of sorting algorithms including; Insertion sort, Heap sort, Quick sort (please read about these!)
+		\pause \item In C\#, the best sorting algorithm will be picked depending on the size of the collection
+		\pause \item In C++, this depends on the compiler implementation 
+		\pause \item Most of the common data types don't need additional work
+		\pause \item For custom classes, we have to write our own sorting algorithm
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sorting C\#}
+	\begin{itemize}
+		\pause \item There are few ways to sort a collection
+		\begin{enumerate}
+			\pause \item Provide a custom delegate function for the sort
+			\pause \item Provide a custom class which inherits from \textbf{IComparer}
+			\pause \item Your own class has to inherit from \textbf{IComparable}
+		\end{enumerate}
+		\pause \item Often you will use option 3 as the default sort
+		\pause \item Which then be override by option 1 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{C\# Example - Sorting with Delegate }
+\begin{lstlisting}
+struct Character
+{
+	string name;
+	int health;
+	int strength;
+}
+
+//Adding omitted!
+List<Character> characters=new List<Character>();
+
+//Sort by health
+characters.Sort(delegate (Character c1, Character c2)
+{
+	return (c1.health.CompareTo(c2.health));
+});
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C\# Example - Sorting with ICompareable }
+\begin{lstlisting}
+struct Character:IComparable<Character>
+{
+string name;
+int health;
+int strength;
+
+// sort by name
+ public int CompareTo(Character compareCharacter)
+ {
+ 	return name.CompareTo(comareCharacter.name);
+ }
+}
+
+//Adding omitted!
+List<Character> characters=new List<Character>();
+
+//Sort will use the CompareTo in the struct or class
+characters.Sort()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{C\# - Points to note}
+	\begin{itemize}
+		\pause \item The \textbf{CompareTo} function returns an int which can be the following
+		\begin{itemize}
+			\pause \item Less than zero: The instance precedes the one passed in
+			\pause \item Zero: The objects are in the same order
+			\pause \item Greater than zero: The instance follows the one passed in
+		\end{itemize} 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sorting C++}
+\begin{itemize}
+	\pause \item There are few ways to sort a collection
+	\begin{enumerate}
+		\pause \item Provide a custom function for the sort
+		\pause \item Provide a lambda expression for the sort
+		\pause \item Your own class has to override the < operator
+	\end{enumerate}
+	\pause \item Often you will use option 3 as the default sort
+	\pause \item Which then be override by option 1 
+	\pause \item 2 is probably the more modern way of doing it, but syntax can be confusing
+	\pause \item You have to include the \textbf{<algorithm>} header file
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{C++ Example - Sorting with Function }
+\begin{lstlisting}
+struct Character
+{
+std::string name;
+int health;
+int strength;
+}
+
+bool sortByHealth(Character a, Character b){return a.health<b.health;}
+
+//Adding omitted!
+vector<Character> characters;
+
+//Sort by health
+sort(characters.begin(), characters.end(), sortByHealth);
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C++ Example - Sorting < operator }
+\begin{lstlisting}
+struct Character
+{
+std::string name;
+int health;
+int strength;
+
+bool operator <(const Character& other) const {return name<other.name;}
+}
+
+//Adding omitted!
+vector<Character> characters;
+
+//Sort by health
+sort(characters.begin(), characters.end());
+\end{lstlisting}
+\end{frame}

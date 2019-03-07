@@ -6,14 +6,17 @@
 
 % Default language for code listings
 \lstset{language=C++,
-        morekeywords={each,in,nullptr}
+        morekeywords={each,in,nullptr,int32, TCHAR, uint8, int8, uint16, int16,
+        uint32, int32, uint64, int64, PTRINT, UObject. AActor, SWidget, FName,
+        FString, UClass, USoundCue, UTexture}
 }
 
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
-
+\usepackage{listings}
 \usepackage{pdfpages}
+\usepackage[T1]{fontenc} 
 
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
@@ -21,18 +24,36 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Data Structures, Collections, \& Generic Types}
 \subtitle{\modulecode: \moduletitle}
 
-\frame{\titlepage} 
+\frame{\titlepage}
 
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\item \textbf{Understand} the various collection classes in C++
+		\item \textbf{Compare} the collection classes
+		\item \textbf{Implement} an application which uses collection classes
 	\end{itemize}
 \end{frame}
+
+\input{collections}
+\input{dynamic_array}
+\input{generic_types}
+\input{list}
+\input{queue}
+\input{stack}
+\input{map}
+\input{break}
+\input{sorting}
+\input{exercise}
+%\input{singletons}
+
+\begin{frame}
+  \frametitle{References}
+  \url{https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/}
+\end{frame}
+
 
 \end{document}
