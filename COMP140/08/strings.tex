@@ -1,0 +1,31 @@
+\part{Strings}
+\frame{\partpage}
+
+\begin{frame}{Strings}
+	\begin{itemize}
+		\pause \item When you carry out concatenations (using the \textbf{+} operator) new strings are created
+		\pause \item This means that strings can cause a performance issues
+		\pause \item In C++ you should use the \textbf{stringstream} class to build strings
+		\pause \item This also allows you to create strings from other types such as int, boolean, float etc
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{String Stream Example - C++}
+	\begin{lstlisting}
+	//We need to include the sstream header file
+	#include <sstream>
+	
+	//Create String Stream
+	std::ostringstream stringStream;
+	
+	//Append some text
+	stringStream << "Name: ";
+	stringStream << "Brian";
+	stringStream <<" Health: ";
+	stringStream << 100;
+	
+	//Grab the constructed string from string stream
+	std::string s=stringStream.str();
+	
+	\end{lstlisting}
+\end{frame}

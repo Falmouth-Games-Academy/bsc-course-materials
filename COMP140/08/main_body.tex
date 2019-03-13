@@ -6,13 +6,15 @@
 
 % Default language for code listings
 \lstset{language=C++,
-        morekeywords={each,in,nullptr}
+        morekeywords={each,in,nullptr,int32, TCHAR, uint8, int8, uint16, int16,
+        uint32, int32, uint64, int64, PTRINT, UObject. AActor, SWidget, FName,
+        FString, UClass, USoundCue, UTexture}
 }
 
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
-
+\usepackage{listings}
 \usepackage{pdfpages}
 
 % http://www.texample.net/tikz/examples/state-machine/
@@ -21,18 +23,23 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: Memory}
 \subtitle{\modulecode: \moduletitle}
 
-\frame{\titlepage} 
+\frame{\titlepage}
 
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
+		\item \textbf{Understand} Memory in modern object orientated languages
+		\item \textbf{Compare} memory models in managed and unmanaged languages
+		\item \textbf{Understand} the role of the profiler in measuring performance in games
 	\end{itemize}
 \end{frame}
+
+\input{memory}
+\input{strings}
+\input{memory_management}
+\input{exercise}
 
 \end{document}
