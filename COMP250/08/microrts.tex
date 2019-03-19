@@ -35,6 +35,12 @@
     \begin{itemize}
         \pause\item \lstinline{getAction} is called every game tick
         \pause\item Assign \textbf{actions} to each of the player's units (including buildings)
+        \pause\item Two levels to work at:
+            \begin{itemize}
+                \pause\item Basic actions up, down, left, right, attack, etc.
+                \pause\item \lstinline{AbstractionLayerAI}: higher-level actions with built-in pathfinding, e.g.\
+                    \lstinline{move}, \lstinline{build}, \lstinline{attack} etc.
+            \end{itemize}
     \end{itemize}
 \end{frame}
 
