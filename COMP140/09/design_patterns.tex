@@ -3,7 +3,6 @@
 
 \begin{frame}{Role of Design Patterns}
 Object orientated systems tend to exhibit recurring structures that promote:
-
 	\begin{itemize}
 		\item Abstraction
 		\item Flexibility
@@ -160,12 +159,11 @@ Design patterns come in three main flavours:
 \begin{frame}{Observer}
 	\begin{itemize}
 		\item When one object is updated, all observers of this object are notified
-		\item A list of observers are mainted by the subject
+		\item A list of observers are maintained by the subject
 		\item When the state of the subject changes then the list of the observers is processed
 		\item Each observer is then notified of the change
 		\item Each observer should register/unregistered itself with a subject 
 		\item Very useful for UI, Input or Network systems in games
-		\item Some of this function is already built into C\#(delegates \& Events) and Unity(Unity Events)
 	\end{itemize}
 \end{frame}
 
@@ -179,17 +177,5 @@ Design patterns come in three main flavours:
 		\item Each Concrete State will then implement these methods and handle its own logic 
 		\item Transitions can be handled by a Manager class
 		\item This is generally used to deal with Game State or AI (see Finite State Machines)
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Unity Implementations}
-	\begin{itemize}
-		\item Singleton - \url{https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial/writing-game-manager}
-		\item Better Singleton? - \url{https://riptutorial.com/unity3d/example/9564/implementation-using-runtimeinitializeonloadmethodattribute}
-		\item Factory - \url{http://brightreasongames.com/object-construction-factory-method/}
-		\item State - \url{http://www.habrador.com/tutorials/programming-patterns/6-state-pattern/}
-		\item Observer -
-		\url{http://www.habrador.com/tutorials/programming-patterns/3-observer-pattern/}
-		
 	\end{itemize}
 \end{frame}
