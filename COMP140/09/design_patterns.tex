@@ -1,0 +1,181 @@
+\part{OO Design Basics}
+\frame{\partpage}
+
+\begin{frame}{Role of Design Patterns}
+Object orientated systems tend to exhibit recurring structures that promote:
+	\begin{itemize}
+		\item Abstraction
+		\item Flexibility
+		\item Modularity
+		\item Elegance
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Role of Design Patterns}
+	\begin{itemize}
+		\item Therein lies valuable design knowledge.
+		\item The challenge, of course, is to...		
+		\begin{itemize}
+			\item capture
+			\item communicate
+			\item and apply
+		\end{itemize}
+		\item ...this knowledge.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Role of Design Patterns}
+A design pattern...
+
+	\begin{itemize}
+		\item Abstracts a recurring design structure
+		\item Comprises class and/or object	
+		\begin{itemize}
+			\item dependencies
+			\item structures
+			\item interactions
+			\item conventions
+		\end{itemize}
+		\item names and specifies the design structure explicitly
+		\item and thereby distils design experience
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Components of a Design Pattern}
+A design pattern is comprised of:
+
+	\begin{itemize}
+		\item A name
+		\item Common aliases --- \textit{also known as}...	
+		\item Real-world examples
+		\item Contexts
+		\item Common problems solved
+		\item Solution
+		\item Structure
+		\item Diagrams
+		\item Consequences
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Components of a Design Pattern}
+	\begin{itemize}
+		\item Design patterns are often tacit knowledge made explicit.
+		\item You will develop tacit knowledge of patterns through regular design practice.
+		\item You are expected to engage in constant research and reflection
+		when designing software to learn all of these different patterns.
+		\item They will help you communicate and design in the future.
+		\item Additional research will be required as the number of patterns greatly
+		exceeds those that can be covered in workshops.
+	\end{itemize}
+\end{frame}
+
+\part{Design Patterns}
+\frame{\partpage}
+
+\begin{frame}{Types of Design Pattern}
+Design patterns come in three main flavours:
+
+	\begin{itemize}
+		\item \textbf{creational}: concerned with the process of creating and managing the creation of objects.
+		\item \textbf{structural}: dealing with the composition of objects.
+		\item \textbf{behavioural}: characterizing the different means by which objects can interact with others.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Design Pattern}
+	\begin{columns}[onlytextwidth]
+		\begin{column}{0.33\textwidth}
+			\begin{itemize}
+				\item \textbf{Creational}
+				\item Singleton
+				\item Typesafe Enum
+				\item Factory
+				\item Prototype
+				\item Builder
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.33\textwidth}
+			\begin{itemize}
+				\item \textbf{Structural}
+				\item Adapter
+				\item Bridge
+				\item Proxy
+				\item Facade
+				\item Decorator
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.33\textwidth}
+			\begin{itemize}
+				\item \textbf{Behavioural}
+				\item Template
+				\item State
+				\item Observer
+				\item Visitor				
+				\item Strategy
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Design Patterns}
+	We will now briefly examine these patterns. Throughout this section...
+	
+	\begin{itemize}
+		\item \textbf{Please} make notes
+		\item \textbf{Link} to on-line resources
+		\item \textbf{Ask} questions
+		\item \textbf{Think} about how the patterns may apply to your own projects
+		\item \textbf{Conduct} further research
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Singleton}
+	\begin{itemize}
+		\item Guarantees that there is only one instance of a class and can be accessed globally
+		\item Usually 'lazily' initialised via a static function that satisfy the statement above
+		\item Used for manager classes which track some sort of Global State
+		\item \textbf{Warning!} Some consider Singletons to be an anti-pattern
+		\item Singleton: an anti-pattern? - \url{https://stackoverflow.com/questions/12755539/why-is-singleton-considered-an-anti-pattern}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Abstract Factory}
+	\begin{itemize}
+		\item Centralises the creation of similar objects
+		\item Decouples the creation of the object from actual object
+		\item This pattern requires several class
+		\begin{itemize}
+			\item Abstract Product - Base class for all things created by the Factory
+			\item Abstract Factory - Base class for all factories, creates Abstract Products
+			\item Many Concrete Products - Implement Abstract Product
+			\item Many Concrete Factories - Implements Abstract Factory and creates Concrete Products 
+		\end{itemize}
+		\item The caller then creates instances of Product through the concrete factory
+		\item Used for spawning objects or the creation of other similar objects
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Observer}
+	\begin{itemize}
+		\item When one object is updated, all observers of this object are notified
+		\item A list of observers are maintained by the subject
+		\item When the state of the subject changes then the list of the observers is processed
+		\item Each observer is then notified of the change
+		\item Each observer should register/unregistered itself with a subject 
+		\item Very useful for UI, Input or Network systems in games
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{State}
+	\begin{itemize}
+		\item Do you have large amount of if..else or switch statements in your code?
+		\item Have you ever had to change such a system?
+		\item Then the State pattern is here to help
+		\item You define a Base State class which all other States implement
+		\item This Base State will have a method for updating the state, for entering and exiting
+		\item Each Concrete State will then implement these methods and handle its own logic 
+		\item Transitions can be handled by a Manager class
+		\item This is generally used to deal with Game State or AI (see Finite State Machines)
+	\end{itemize}
+\end{frame}
