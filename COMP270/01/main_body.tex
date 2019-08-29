@@ -1,0 +1,54 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+% https://tex.stackexchange.com/a/42620
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{algpseudocode}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Module Introduction}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+%\begin{frame}
+%	\frametitle{Learning outcomes}
+%	\begin{itemize}
+%		\item Outcome 1
+%		\item Outcome 2
+%		\item Outcome 3
+%	\end{itemize}
+%\end{frame}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf[pages=-]{../../../bsc-module-guides/comp250/slides/2018-19-comp250-module-guide.pdf}
+}
+
+\input{assignments}
+\input{what_is_ai}
+\input{ai_in_games}
+
+\end{document}

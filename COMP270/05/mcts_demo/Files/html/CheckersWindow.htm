@@ -1,0 +1,45 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+        <link rel="Stylesheet" href="Style.css" />
+	</head>
+	<body>
+	    <h1>How to play</h1>
+        <p>
+        This is the classic game of <b>draughts</b>, also known as <b>checkers</b>.
+        </p><p>
+        On your turn, you move one of your pieces forwards by one square diagonally.
+        If a piece reaches the farthest row, it becomes a <i>king</i>:
+        that piece may then move backwards as well as forwards.
+        If the next square is occupied by an opponent piece but the square beyond is free,
+        your piece <i>captures</i> the piece by jumping over it.
+        Captures can be chained together if the capturing piece can immediately make another capture from the square in which it lands.
+        If a capture move is available, it <i>must</i> be played.
+        To win, you must capture all of your opponent's pieces, or otherwise force them into a situation where no moves are possible.
+        </p><p>
+        To play, place your finger on one of your pieces and drag it to another square.
+        The pieces you can move on your turn are highlighted.
+        </p>
+
+        <h1>How the computer plays</h1>
+        <p>
+        The computer player uses a method called <b>Monte Carlo Tree Search (MCTS)</b>.
+        MCTS works by building a <b>tree</b> of game moves, one branch at a time.
+        In Computer Science, a <b>tree</b> is a way of organising data in a branching structure &mdash; like a family tree, for example.
+        MCTS uses a <b>game tree</b>:
+        each point in the tree is a position in the game,
+        and each branch is a move that can be played from that position.
+        </p><p>
+        MCTS <b>simulates</b> thousands of complete games.
+        The outcomes of these simulations (win, loss or draw) are recorded in the tree.
+        Further simulations use this information to concentrate on the lines of play that most often lead to a win.
+        In this way, MCTS <b>learns</b> the best line of play &mdash; and hence the best move to make next.
+        </p><p>
+        The display above shows the tree MCTS is building as it decides which move to play next.
+        The <b>colour</b> of a branch shows how likely that branch is to lead to a
+        <b><span style="color:Green">win</span></b>, <b><span style="color:Orange">draw</span></b> or <b><span style="color: Red">loss</span></b> for the MCTS player.
+        The <b>thickness</b> of a branch shows how many simulated games have included that move, i.e. how much time MCTS has spent considering that line of play.
+        </p>
+	</body>
+</html>
