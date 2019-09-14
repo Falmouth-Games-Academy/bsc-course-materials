@@ -39,16 +39,6 @@ for module_code, module_name in modules:
 				info_file.write(r"\newcommand{\moduletitle}{%s}" % module_name.replace('&', r'\&'))
 				info_file.write(r"\newcommand{\sessionnumber}{%i}" % session)
 
-			for file_type in ("handout", "screen"):
-				old_file_name = "main_%s.tex" % file_type
-				new_file_name = "%s_%02i_%s.tex" % (module_code, session, file_type)
-				
-				old_path = os.path.join(dir_path, old_file_name)
-				new_path = os.path.join(dir_path, new_file_name)
-				os.rename(old_path, new_path)
-				
-				compile_commands.append((dir_path, new_file_name))
-
 compile_commands = compile_commands * 4
 
 # http://stackoverflow.com/a/12926181
