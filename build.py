@@ -45,16 +45,24 @@ for d in directory_list:
             new_name = file.parts[2]
             new_name = new_name.split('_')            
             new_name = ''.join(new_name[0:len(new_name)-1])
-            #print(file_name_prefix + str(new_name) + '-materials')
+            new_name = file_name_prefix + str(new_name) + '-materials'
+            #print(new_name)
+            
+            # Skip existing files
+            if os.path.exists(working_directory + "\\" + new_name + '.pdf'):
+                continue
+ 
+            print()
+            print("Compiling " + working_directory + "\\" + new_name + '.pdf')
+            print()
  
             for i in range(2):
-                subprocess.Popen('pdflatex ' + str(file.parts[2]) +' -jobname=' + file_name_prefix + str(new_name) + '-materials', cwd = working_directory).wait()
+                subprocess.Popen('pdflatex ' + str(file.parts[2]) +' -jobname=' + new_name, cwd = working_directory).wait()
       
             old_files = []
-            for e in ['*.aux','*.out','*.nav','*.log','*.snm','*.toc','*.tcp']:
+            for e in ['*.aux','*.out','*.nav','*.log','*.snm','*.toc','*.tcp','*.vrb']:
                 temp = [ f for f in Path(working_directory).glob(e) if f.is_file() ]
                 old_files.extend(temp)
             for f in old_files:
                 os.remove(str(f))
-
         
