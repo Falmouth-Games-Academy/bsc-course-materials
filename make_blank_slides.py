@@ -21,16 +21,16 @@ modules = [
 
 sessions_per_module = 12
 
-template_path = os.path.join("template", "template")
+template_path = os.path.join("template", "template_latex")
 compile_commands = []
 
 for module_code, module_name in modules:
-	for session in xrange(1, sessions_per_module+1):
+	for session in range(1, sessions_per_module+1):
 		dir_path = os.path.join(module_code, "%02i" % session)
 		if os.path.exists(dir_path):
-			print dir_path, "already exists -- skipping"
+			print(dir_path, "already exists -- skipping")
 		else:
-			print "creating", dir_path
+			print("creating", dir_path)
 			shutil.copytree(template_path, dir_path)
 			
 			info_file_path = os.path.join(dir_path, "sessioninfo.tex")
@@ -56,11 +56,11 @@ DEVNULL = open(os.devnull, 'wb')
 
 workers = [
 	subprocess.Popen(["echo"], stdout=DEVNULL)
-	for i in xrange(12)
+	for i in range(12)
 ]
 
 while any(w is not None for w in workers):
-	for i in xrange(len(workers)):
+	for i in range(len(workers)):
 		if workers[i] is not None:
 			code = workers[i].poll()
 			if code is not None:
@@ -69,7 +69,7 @@ while any(w is not None for w in workers):
 				else:
 					if len(compile_commands) > 0:
 						(dir_path, file_name) = compile_commands.pop()
-						print len(compile_commands), "remaining"
+						print(len(compile_commands), "remaining")
 						workers[i] = subprocess.Popen(["pdflatex", file_name], stdout=DEVNULL, cwd=dir_path)
 					else:
 						workers[i] = None
