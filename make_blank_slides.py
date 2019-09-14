@@ -8,16 +8,15 @@ import time
 modules = [
 	("COMP110", "Principles of Computing"),
 	("COMP120", "Creative Computing: Tinkering"),
-	("COMP130", "Game Architecture"),
 	("COMP140", "Creative Computing: Hacking"),
-	("COMP150", "Game Development Practices"),
-	("COMP160", "Software Engineering"),
 	("COMP210", "Interfaces & Interaction"),
 	("COMP220", "Graphics & Simulation"),
-	("COMP230", "Game Development I: Pre-Production"),
-	("COMP240", "Game Development I: Production"),
 	("COMP250", "Artificial Intelligence"),
-	("COMP260", "Distributed Systems")
+	("COMP260", "Distributed Systems"),
+	("COMP270", "Mathematics for 3D Worlds & Simulations"),
+	("COMP280", "Specialisms in Creative Computing"),
+	("COMP320", "Research & Development: Practice"),
+	("COMP360", "Research & Development: Dissertation")
 ]
 
 sessions_per_module = 12
