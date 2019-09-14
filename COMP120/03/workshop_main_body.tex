@@ -1,0 +1,358 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=Python,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\setbeamertemplate{navigation symbols}{}
+
+\input{../../commands}
+
+\begin{document}
+\title{\sessionnumber: Tinkering Graphics II}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	\begin{itemize}
+		\item \textbf{Explain how} conditional logic can manipulate the output of a computer program
+		\item \textbf{Apply} mathematical knowledge to \textbf{write} computer programs that manipulate pixels in a surface
+		\item \textbf{Trace} existing computer programs
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Distance Between Colors}
+	
+	Sometimes we need to measure when something is `close enough':
+	
+	\begin{itemize}		
+		\item Distance between two points in the Cartesian coordinate system:
+		\item $\sqrt{(x_{1} - x_{2})^2 + (y_{1} - y_{2})^2}$
+		\item Distance between two colours in the RGB colour representation system:
+		\item $\sqrt{(red_{1} - red_{2})^2 + (green_{1} - green_{2})^2 + (blue_{1} - blue_{2})^2}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity \#1: Color Distance}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Use the distance equation from the previous slide to write a function which accepts a two colours and returns the distance
+		\item Test your solution
+		\item Then, post your solution on Slack
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Numeric Return Values}
+	
+\begin{lstlisting}
+def distance(colour_base, colour_comparitor):
+    return  sqrt( (colour_base.r - colour_comparitor.r)**2 + (colour_base.g - colour_comparitor.g)**2 + (colour_base.b - colour_comparitor.b)**2 )
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Expected Output: Color Distance}
+	
+\begin{lstlisting}
+>>> print distance(WHITE, BLACK)
+441.6729559300637
+>>> print distance(WHITE, PINK)
+113.13708498984761
+>>> print distance(BLACK, PINK)
+355.3519382246282
+>>> print distance(MAGENTA, PINK)
+192.41881404893857
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity \#2: Colour Tolerance}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Implement the function \texttt{closeEnough((colour, colour), tolerance)} that returns a boolean value
+		\item Test your solution
+		\item Then, post your solution on Slack
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Boolean Return Values}
+	
+\begin{lstlisting}
+def close_enough(colour_base, colour_comparitor):
+    if distance(colour_base, colour_comparitor) < 50.0:
+        return True
+    else:
+        return False
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Tolerance-based Pixel Manipulation}
+	
+\begin{lstlisting}
+def turnRed():
+  brown = makeColor(42,25,15)
+  file="/Users/guzdial/Desktop/mediasources/katieFancy.jpg"
+  picture=loadPicture(file)
+  for pixel in getPixels(picture):
+    color = getColor(pixel)
+    if distance(color, BROWN) < 50.0:
+      red=getRed(pixel)*2
+      green=getGreen(pixel)
+      blue=getBlue(pixel)
+      setColor(pixel,makeColor(red,green,blue))
+  return picture
+
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Red Eye}
+	
+	\begin{itemize}		
+		\item When the flash of the camera catches the eye just right (especially with light colored eyes), we get bounce back from the back of the retina.
+		\item This results in `red eye'
+		\item We can replace the “red” with a color of our choosing
+		\item First, we figure out where the eyes are (x,y)
+	\end{itemize}
+\end{frame}
+
+\fullbleed{jenny}
+
+\begin{frame}
+	\frametitle{Activity \#3: Red Eye}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation
+		\begin{itemize}
+			\item \url{http://www.pygame.org/docs/ref/rect.html}
+		\end{itemize}
+		\item Implement the function: \texttt{removeRedEye(picture, area, colour)}
+		\item Test your solution
+		\item Then, post your solution on Slack
+	\end{itemize}
+\end{frame}
+
+\fullbleed{jenny_nored}
+
+\begin{frame}
+	\frametitle{Posterization}
+	
+	\begin{itemize}		
+		\item Posterization is simply reducing the number of colours in an image
+		\item We look for a range of colours, then map them to a single colour, e.g:
+		\begin{itemize}
+			\item If red is between 63 and 128, set it to 95
+			\item If green is less than 64, set it to 31
+		\end{itemize}	
+		\item The end result is that a bunch of different colours, get set to a few colours
+		\item Beware of naive solutions with a large number of `if' statements
+	\end{itemize}
+\end{frame}
+
+\fullbleed{ben}
+
+\begin{frame}
+	\frametitle{Calculating Luminance in RGB}
+	
+	To do this, we may need to determine the luminance of a pixel:
+	
+	\begin{itemize}		
+		\item Luminance is the overall brightness of a pixel
+		\item In RGB, it is the \textit{mean} average value of each component:
+		\begin{itemize}
+			\item $lum = (red + green + blue) / 3$
+		\end{itemize}	
+	\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Activity \#5: Black and White}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation
+		\item Implement the function: \texttt{makeGreyscale(picture, colourCount)}
+		\item Test your solution
+		\item Then, post your solution on Slack
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Black and White}
+	
+\begin{lstlisting}
+def blackAndWhitePosterize(picture):
+  for pixel in getPixels(picture):
+    red = getRed(pixel)
+    green = getGreen(pixel)
+    blue = getBlue(pixel)
+    luminance = (red + green + blue) / 3
+    if luminance < 64:
+      setColor(pixel, BLACK)
+    else:
+      setColor(pixel, WHITE)
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sepia Tone}
+	
+	\begin{itemize}		
+		\item Pictures that are sepia-toned have a yellowish tint to them that we associate with older pictures.
+		\item It's not directly a matter of simply increasing the yellow in the picture, because it's not a one-to-one correspondence:
+		\begin{itemize}
+			\item Instead, colors in different ranges get mapped to other colours.
+			\item We can create such a mapping using IF statements
+		\end{itemize}	
+		\item The end result is that a bunch of different colours, get set to a few colours
+		\item Beware of naive solutions with a large number of `if' statements
+	\end{itemize}
+\end{frame}
+
+\fullbleed{field_normal}
+
+\fullbleed{field_sepia}
+
+\begin{frame}
+	\frametitle{Sepia Tone}
+	
+	\begin{itemize}		
+		\item First, we're calling greyScaleNew (the one with weights).
+		\item We then manipulate the red (increasing) and the blue (decreasing) channels to bring out more yellows and oranges.
+		\begin{itemize}
+			\item It's perfectly okay to have one function calling another.
+			\item Why are we doing the comparisons on the red? Why not?  After greyscale conversion, all channels are the same!
+		\end{itemize}	
+		\item The end result is that a bunch of different colours, get set to a few colours
+		\item Why these values? Trial-and-error: Tinker the values!
+
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Sepia (1)}
+	
+\begin{lstlisting}
+def sepiaTint(picture):
+  #Convert image to greyscale
+  makeGreyscale(picture)
+
+  #loop through picture to tint pixels
+  for p in getPixels(picture):
+    red = getRed(p)
+    blue = getBlue(p)
+
+    #tint shadows
+    if (red < 63):
+      red = red*1.1
+      blue = blue*0.9
+...
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code: Sepia (2)}
+	
+\begin{lstlisting}
+...
+   #tint midtones
+    if (red > 62 and red < 192):
+      red = red*1.15
+      blue = blue*0.85
+
+    #tint highlights
+    if (red > 191):
+      red = red*1.08
+      if (red > 255):
+        red = 255
+
+      blue = blue*0.93
+
+    #set the new color values
+    setBlue(p, blue)
+    setRed(p, red)
+
+
+\end{lstlisting}
+
+Note: This source code excerpt will not work in PyGame.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity \#6: Sepia Tone}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Setup a basic project in PyGame
+		\item Refer to the following documentation
+		\item Refactor the function: \texttt{sepiaTint(picture) to use constants rather than literals}
+		\item Tinker with the values of the constants to test your solution
+		\item Then, post your solution on Slack
+	\end{itemize}
+\end{frame}
+
+\end{document}
