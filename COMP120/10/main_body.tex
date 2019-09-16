@@ -1,0 +1,41 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\setbeamertemplate{navigation symbols}{}
+
+\input{../../commands}
+
+\begin{document}
+\title{\sessionnumber: Tinkering Graphics III}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	\begin{itemize}
+		\item \textbf{Apply} iteration \textbf{and} nested iteration to \textbf{write} a program that manipulates part of a raster image
+		\item \textbf{Copy} an image from one array to another
+	\end{itemize}
+\end{frame}
+
+\end{document}
