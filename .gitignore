@@ -140,4 +140,5 @@ sympy-plots-for-*.tex/
 *.bak
 *.sav
 
-COMP260/01/~$COMP260 -  Lecture 01.pptx
+# PowerPoint temporary files
+~$*
