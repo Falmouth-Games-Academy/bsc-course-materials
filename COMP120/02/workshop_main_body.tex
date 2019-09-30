@@ -34,215 +34,140 @@
 	\frametitle{Learning Outcomes}
 	By the end of this workshop, you should be able to:	
 	\begin{itemize}
-		\item \textbf{Explain how} pictures are digitised into raster images by a computer system
 		\item \textbf{Apply} knowledge of colour models to \textbf{write} code that manipulates pixels in a surface
 		\item \textbf{Use} functions, arguments, and basic data structures such as arrays
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Light Perception}
-	\begin{itemize}
-		\item Colour is continuous:
-		\begin{itemize}
-			\item Visible light is in the wavelengths between 370nm and 730nm
-			\item i.e., 0.00000037 --- 0.00000073 meters
-		\end{itemize}
-		\item However, we \textit{perceive} light around three particular peaks:
-		\begin{itemize}
-			\item Blue peaks around 425nm
-			\item Green peaks around 550nm
-			\item Red peaks around 560nm
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Light Perception}
-	\begin{itemize}
-		\item Our eyes have three types of colour-sensitive photoreceptor cells called `cones' that respond to light wavelengths
-		\item Our perception of colour is based on how much of each kind of sensor is responding
-		\item An implication of this is perception overlap: we see two kinds of `orange' --- one that's spectral and one that's combinatorial
-	\end{itemize}
-\end{frame}
-
-\fullbleed{1416_Color_Sensitivity}
-
-\begin{frame}
-	\frametitle{Luminance vs Colour}
-	\begin{itemize}
-		\item Our eyes have another type of photoreceptor cells called `rods' that respond to light intensity
-		\item Our perception, however, is actually luminance: a relativistic contrast of \textit{borders} of things (i.e., motion) 
-		\begin{itemize}
-			\item Luminance is \textit{not} the amount of light, but our perception of the amount of light
-			\item Much of our luminance perception is based on comparison to background, not raw values
-		\end{itemize}
-		\item An implication of this is perception overlap: we see blue as `darker' than red when the intensity is actually the same
-	\end{itemize}
-\end{frame}
-
-\fullbleed{grayscale}
-
-\begin{frame}
-	\frametitle{Resolution}
-	\begin{itemize}
-		\item We have a limited number of rods and cones in our eyes
-		\item This means humans perceive vision in a limited resolution --- yet, we perceive vision as continuous
-		\item We take advantage of this human characteristic in computer monitors
-	\end{itemize}
-\end{frame}
-
-\fullbleed{sony-dsc-29-625x1000}
-
-\begin{frame}
-	\frametitle{Pixels}
-	\begin{itemize}
-		\item We digitize pictures into many little dots
-		\item Enough dots and it looks like a continuous whole to our eye
-		\item Each element is referred to as a \textit{pixel}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Pixels}
-	
-	Pixels must have:
-	
-	\begin{itemize}
-		\item a color
-		\item a position
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Pictures and Surfaces}
-	
-	A picture is a \textit{matrix} of pixels
-	
-	\begin{itemize}
-		\item It is not a continuous line of elements, that is, a one-dimensional \textit{array}
-		\item A picture has two dimensions: width and height
-		\item It's a two-dimensional \textit{array}
-	\end{itemize}
-\end{frame}
-
-\fullbleed{pic_array}
-
-\fullbleed{pic_matrix}
-
-\begin{frame}
-	\frametitle{Pictures and Surfaces}
-	
-	\begin{itemize}
-		\item (x, y) ---or--- (horizontal, vertical)
-		\item (1,0) = 12
-		\item (0, 2) = 6
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Encoding Colour}
-	
-	\begin{itemize}
-		\item Each element in the matrix is a pixel, with the matrix defining its position and the value defining  its colour
-		\item Computer memory stores numbers, so colour must be encoded into a number:
-		\begin{itemize}
-			\item CMYK = cyan, magenta, yellow, black
-			\item HSB = hue, saturation, brightness
-			\item RGBA = red, green, blue, alpha (transparency)
-		\end{itemize}
-		\item By default, PyGame uses RGBA
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Encoding RGB}
-	
-	\begin{itemize}
-		\item Each component color (red, green, and blue) is encoded as a single byte
-		\item Colors go from \lstinline{(0,0,0)} to \lstinline{(255,255,255)}:
-		\begin{itemize}
-			\item If all three components are the same, the colour is in grey-scale
-			\item  \lstinline{(0,0,0)} is black
-			\item  \lstinline{(255, 255, 255)} is white
-		\end{itemize}
-		\item Why \texttt{255}?
-	\end{itemize}
-\end{frame}
-
-\fullbleed{rgb_matrix}
-
-\begin{frame}
-	\frametitle{Encoding Bits}
-	
-	\begin{itemize}
-		\item If we have one bit, we can represent two patterns:
-		\begin{itemize}
-			\item 0
-			\item 1
-		\end{itemize}
-		
-		\item If we have two bits, we can represent two patterns:
-		\begin{itemize}
-			\item 00
-			\item 01
-			\item 10
-			\item 11
-		\end{itemize}
-		\item As a general rule: In \textit{n} bits, we can have $2^n$ patterns
-		\item One of these patterns will be 0, so the highest value we can represent is: $2^8 - 1$, or 255
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Encoding Bits}
-	\begin{itemize}
-		\item RGB uses 24-bit color (i.e., $3 * 8$ = 24)
-		\begin{itemize}
-			\item That's 16,777,216 (224) possible colours
-			\item Our eyes cannot discern many colours beyond this
-			\item The big issue is the monitor: they can`t reliably reproduce 16 million colours
-		\end{itemize}
-		\item RGBA uses 32-bit colour
-		\begin{itemize}
-			\item No additional colour, but offers support for transparency
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Encoding Bits}
-	\begin{itemize}
-		\item Use this information to estimate the size of a bitmap:
-		\begin{itemize}
-			\item 320x240x24 = 230,400 bytes
-			\item 640x480x32 = 1,228,800 bytes
-			\item 1024x768x32 = 3,145,728 bytes
-		\end{itemize}
-		\item Why do we have smaller numbers here?
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Activity \#1}
+	\frametitle{Activity \#1a -- Setup}
 	
 	In pairs:
 	
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
-		\item Refer to the following documentation
+		\item Launch a basic Python project in PyCharm
+		\item Import PyGame, setup a main window, and define a game-loop which renders a white background
+		\item Refer to the following documentation:
 		\begin{itemize}
-			\item \url{www.pygame.org/docs/ref/surface.html}
-			\item \url{www.pygame.org/docs/ref/pixelarray.html}
+			\item \url{www.pygame.org/docs/tut/tom_games2.html}
 		\end{itemize}
-		\item Manipulate the pixels in a surface using PixelArray
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Make a Picture Less Red}
+	\frametitle{Activity \#1a -- Setup}
+	
+\begin{lstlisting}
+import pygame
+
+pygame.init()
+
+main_window = pygame.display.set_mode((800,600))
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            crashed = False
+
+    main_window.fill((255,255,255))
+    pygame.display.update()
+
+pygame.quit()
+\end{lstlisting}
+
+Note: This is a PyGame example.
+
+\end{frame}
+	
+\begin{frame}
+	\frametitle{Activity \#1b -- Setup}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Render a green \texttt{Surface} in the top corner of the window
+		\item Define a function to manipulate a single pixel in the \texttt{Surface} using a \texttt{PixelArray}
+		\item Refer to the following documentation:
+		\begin{itemize}
+			\item \url{www.pygame.org/docs/ref/surface.html}
+			\item \url{www.pygame.org/docs/ref/pixelarray.html}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Activity \#1b -- Setup}
+
+Firstly, create a new \texttt{Surface} and fill it with green:
+	
+\begin{lstlisting}
+my_surface = pygame.Surface((200,200))
+my_surface.fill((0,255,0))
+\end{lstlisting}
+
+\vspace{0.5em}
+
+Then, blit the green \texttt{Surface} onto the main window at the origin:
+
+\begin{lstlisting}
+    main_window.fill((255,255,255))
+    main_window.blit(my_surface, (0,0))
+    pygame.display.update()
+\end{lstlisting}
+
+Note: This is a PyGame example.
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Activity \#1b -- Setup}
+
+Finally, define a new function using the \texttt{def} keyword to manipulate a single pixel in the \texttt{Surface}:
+	
+\begin{lstlisting}
+def set_pixel(surf, x_pos, y_pos, colour):
+    px_array = pygame.PixelArray(surf)
+    px_array[x_pos,y_pos] = colour
+    del px_array
+
+set_pixel(my_surface, 100, 100, (0,0,0))
+\end{lstlisting}
+
+Note: This is a PyGame example.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Activity \#2 -- Less Red}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}		
+		\item Define a function to load an image file to a \texttt{Surface}
+		\item Then, define a function to reduce it's redness
+		\item Refer to the following documentation:
+		\begin{itemize}
+			\item \url{https://www.pygame.org/docs/ref/image.html}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Activity \#2 -- Less Red}
+
+\begin{lstlisting}
+my_surface = pygame.image.load('test.jpg')
+\end{lstlisting}
+
+\vspace{0.5em}
+
 	
 \begin{lstlisting}
 def decreaseRed(pict):
@@ -252,12 +177,12 @@ def decreaseRed(pict):
     setRedPixel(pixel, value * 0.5)
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
+Note: Not all of this source code excerpt will work in PyGame.
 
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#2}
+	\frametitle{Activity \#3 -- Swap Channel}
 	
 	In pairs:
 	
@@ -270,7 +195,7 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Swap Channels}
+	\frametitle{Activity \#3 -- Swap Channel}
 	
 \begin{lstlisting}
 def swapRedBlueChannels(pict):
@@ -287,23 +212,23 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#3}
+	\frametitle{Activity \#4 -- Greyscale}
 	
 	In pairs:
 	
 	\vspace{2em}
 	
 	\begin{itemize}
-		\item Refer to the following documentation:
-		\begin{itemize}
-			\item \url{//www.pygame.org/docs/ref/image.html}
-		\end{itemize}
 		\item Define a function that loads an image and turns it to greyscale
+		\item Consider the following calculation:
+		\begin{itemize}
+			\item $New Pixel Value = \frac{\Sigma Current Channel Value}{Number Of Channels}$
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Make a Picture Grey-scale}
+	\frametitle{Activity \#4 -- Greyscale}
 	
 \begin{lstlisting}
 def loadGrayscale(file):
@@ -325,23 +250,23 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#4}
+	\frametitle{Activity \#5 -- Negative}
 	
 	In pairs:
 	
 	\vspace{2em}
 	
 	\begin{itemize}
-		\item Refer to the following documentation:
-		\begin{itemize}
-			\item \url{//www.pygame.org/docs/ref/image.html}
-		\end{itemize}
 		\item Define a function that loads an image and turns it to its negative
+		\item Consider the following calculation:
+		\begin{itemize}
+			\item $New Channel Value = 255 - Current Channel Value$
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Make a Picture Negative}
+	\frametitle{Activity \#5 -- Negative}
 	
 \begin{lstlisting}
 def neg(picture):
@@ -361,23 +286,23 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#5}
+	\frametitle{Activity \#6 -- Sunset}
 	
 	In pairs:
 	
 	\vspace{2em}
 	
 	\begin{itemize}
+		\item Define a function that loads an image and produces several images as output, descreasing luminance
 		\item Refer to the following documentation:
 		\begin{itemize}
 			\item \url{//www.pygame.org/docs/ref/time.html}
 		\end{itemize}
-		\item Define a function that loads an image and animates a sunset
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Decrease Luminance Over Time}
+	\frametitle{Activity \#6 -- Sunset}
 
 \begin{lstlisting}
 def decreaseRed(picture, amount):
@@ -400,23 +325,23 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#6}
+	\frametitle{Activity \#7 -- Top-Copy}
 	
 	In pairs:
 	
 	\vspace{2em}
 	
 	\begin{itemize}
+		\item Define a function that copies the top half of a picture to its bottom half
 		\item Refer to the following documentation:
 		\begin{itemize}
-			\item \url{https://docs.python.org/2/tutorial/introduction.html\#lists}
+			\item \url{https://docs.python.org/3.7/tutorial/introduction.html\#lists}
 		\end{itemize}
-		\item Define a function that animates copying the top half of a picture to its bottom half
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Copying Part of a Picture}
+	\frametitle{Activity \#7 -- Top-Copy}
 
 \begin{lstlisting}
 def copyHalf(picture):
