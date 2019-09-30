@@ -1,0 +1,44 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Basic Principles for Computation}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\include{research_journal}
+
+\include{number_bases}
+
+\begin{frame}{Exercise Sheet i}
+  \begin{center}
+      Due next Tuesday!
+  \end{center}
+\end{frame}
+
+\include{turing_machines}
+
+\part{Worksheet A review}
+\frame{\partpage}
+
+\end{document}
