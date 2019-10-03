@@ -51,6 +51,15 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Why binary?}
+	\begin{itemize}
+		\pause\item Modern computers are \textbf{digital}
+		\pause\item Based on the flow of current in a circuit being either \textbf{on} or \textbf{off}
+		\pause\item Hence it is natural to store and operate on numbers in base 2
+		\pause\item The binary digits $0$ and $1$ correspond to \textbf{off} and \textbf{on} respectively
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Converting to binary}
     \begin{center}
         \url{https://www.youtube.com/watch?v=OezK_zTyvAQ}
@@ -62,6 +71,7 @@
 		\pause\item A \textbf{bit} is a \uline{b}inary dig\uline{it}
 			\begin{itemize}
 				\pause\item Can store a 0 or 1 (i.e.\ a boolean value)
+				\pause\item The smallest possible unit of information
 			\end{itemize}
 		\pause\item A \textbf{byte} is 8 \textbf{bits}
 			\begin{itemize}
@@ -79,6 +89,20 @@
 				\pause\item $2^{64}-1 = 18,446,744,073,709,551,615$
 			\end{itemize}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Other units}
+    \begin{itemize}
+        \pause\item A \textbf{nibble} is 4 \textbf{bits}
+        \pause\item A \textbf{kilobyte} is 1000 or 1024 \textbf{bytes}
+            \begin{itemize}
+                \pause\item $10^3 = 1000 \approx 1024 = 2^{10}$
+            \end{itemize}
+        \pause\item A \textbf{megabyte} is 1000 or 1024 \textbf{kilobytes}
+        \pause\item A \textbf{gigabyte} is 1000 or 1024 \textbf{megabytes}
+        \pause\item A \textbf{terabyte} is 1000 or 1024 \textbf{gigabytes}
+        \pause\item $\dots$
+    \end{itemize}
 \end{frame}
 
 \newcommand{\carry}[1]{\uncover<#1->{$_1$}}
@@ -126,70 +150,33 @@
 	\end{center}
 \end{frame}
 
-\begin{frame}{Modular arithmetic}
-    \begin{columns}
-        \begin{column}{0.4\textwidth}
-            \begin{center}
-                \begin{tikzpicture}[line cap=rect,line width=3pt,scale=0.9]
-                    \filldraw [fill=cyan] (0,0) circle [radius=2cm];
-                    \foreach \angle [count=\xi from 0] in {90,67.5,...,-247.5}
-                    {
-                        \draw[line width=1pt] (\angle:1.8cm) -- (\angle:2.2cm);
-                        \node[font=\large] at (\angle:1.36cm) {\textsf{\xi}};
-                    }
-                    \foreach \angle [count=\xi from -8] in {270,247.5,...,-67.5}
-                    {
-                        \node[font=\large] at (\angle:2.56cm) {\textsf{\xi}};
-                    }
-                    \foreach \angle in {0,90,180,270}
-                        \draw[line width=2pt] (\angle:1.6cm) -- (\angle:2cm);
-                    \draw (0,0) -- (120:0.8cm);
-                    \draw (0,0) -- (90:1cm);
-                \end{tikzpicture}
-            \end{center}
-        \end{column}
-        \begin{column}{0.55\textwidth}
-            \begin{itemize}
-                \pause\item Arithmetic \textbf{modulo} $N$
-                \pause\item Numbers ``wrap around'' between $0$ and $N-1$
-                \pause\item E.g.\ modulo $16$:
-                    \begin{itemize}
-                        \pause\item $14 + 7 = 5$
-                        \pause\item $4 - 7 = 13$
-                    \end{itemize}
-            \end{itemize}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{2's complement}
-    \begin{itemize}
-        \pause\item How can we represent negative numbers in binary?
-        \pause\item Represent them modulo $2^n$ (for $n$ bits)
-        \pause\item I.e.\ represent $-a$ as $2^n-a$
-        \pause\item Instead of an $n$-bit number ranging from $0$ to $2^n-1$, it ranges from $-2^{n-1}$ to $+2^{n-1}-1$
-        \pause\item E.g.\ 16-bit number ranges from $-32768$ to $+32767$
-        \pause\item Note that the left-most bit can be interpreted as a \textbf{sign} bit:
-            $1$ if negative, $0$ if positive or zero
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Converting to 2's complement}
-    \begin{itemize}
-        \pause\item Convert the absolute value to binary
-        \pause\item Invert all the bits (i.e.\ change $0 \leftrightarrow 1$)
-        \pause\item Add 1
-        \pause\item (This is equivalent to subtracting the number from $2^n$... why?)
-        \pause\item This is also the process for converting back from 2's complement,
-            i.e.\ doing it twice should give the original number
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Why 2's complement?}
-    \begin{itemize}
-        \pause\item Allows all addition and subtraction to be carried out modulo $2^n$
-            without caring whether numbers are positive or negative
-        \pause\item In fact, subtraction can just be done as addition
-        \pause\item I.e.\ $a-b$ is the same as $a+(-b)$, where $a$ and $-b$ are just $n$-bit numbers
-    \end{itemize}
+\begin{frame}{Hexadecimal notation}
+	\begin{columns}
+		\begin{column}{0.32\textwidth}
+			\begin{itemize}
+				\pause\item Other number bases than 2 and 10 are also useful
+				\pause\item Hexadecimal is \textbf{base 16}
+				\pause\item Uses extra digits:
+					\begin{itemize}
+						\item \texttt{A}=10, \texttt{B}=11, ..., \texttt{F}=15
+					\end{itemize}
+			\end{itemize}
+		\end{column}
+		\pause
+		\begin{column}{0.64\textwidth}
+			\begin{tabular}{rl|rl|rl}
+				\textbf{Hex} & \textbf{Dec} & \textbf{Hex} & \textbf{Dec} & \textbf{Hex} & \textbf{Dec} \\
+				\texttt{00} & 0             & \texttt{10} & 16            & \texttt{F0} & 240           \\
+				\texttt{01} & 1             & \texttt{11} & 17            & \texttt{F1} & 241           \\
+				$\vdots$ & $\vdots$         & $\vdots$ & $\vdots$         & $\vdots$ & $\vdots$         \\
+				\texttt{09} & 9             & \texttt{19} & 25            & \texttt{F9} & 249           \\
+				\texttt{0A} & 10            & \texttt{1A} & 26            & \texttt{FA} & 250           \\
+				\texttt{0B} & 11            & \texttt{1B} & 27            & \texttt{FB} & 251           \\
+				\texttt{0C} & 12            & \texttt{1C} & 28            & \texttt{FC} & 252           \\
+				\texttt{0D} & 13            & \texttt{1D} & 29            & \texttt{FD} & 253           \\
+				\texttt{0E} & 14            & \texttt{1E} & 30            & \texttt{FE} & 254           \\
+				\texttt{0F} & 15            & \texttt{1F} & 31            & \texttt{FF} & 255           
+			\end{tabular}
+		\end{column}
+	\end{columns}
 \end{frame}
