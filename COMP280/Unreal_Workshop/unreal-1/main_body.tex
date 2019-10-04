@@ -1,0 +1,92 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+\usepackage{textcomp}
+
+% Default language for code listings
+\lstset{language=C++,
+	morekeywords={each,in,nullptr}
+}
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\setbeamertemplate{navigation symbols}{}
+
+\input{../../commands}
+
+\begin{document}
+\title{\sessionnumber: Intro to Unreal Engine I}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	\begin{itemize}
+		\item \textbf{Understand} the architecture of the Unreal Engine
+		\item \textbf{Understand} the differences between C++ and Python
+		\item \textbf{Produce} a small Demo Game in Unreal
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unreal Tutorial}
+	\begin{center}
+		\url{https://docs.unrealengine.com/latest/INT/Videos/PLZlv_N0_O1gYup-gvJtMsgJqnEB_dGiM4/}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Unreal Tutorial - Corrections 1}
+	\begin{itemize}
+		\item 03 - Making Your First Pickup 10:55 - \url{https://youtu.be/EIptJ0YrYg0?t=655} Add the following include statement after Pickup.h
+	\end{itemize}
+	\begin{lstlisting}
+		#include "Components/StaticMeshComponent.h"
+	\end{lstlisting}
+	\begin{itemize}
+		\item 05 - Extending the Pickup Class 4:32 - \url{https://youtu.be/imOQ5JHPSlo?t=272} Add the following include statement after BatteryPickup.h
+	\end{itemize}
+	\begin{lstlisting}
+		#include "Components/StaticMeshComponent.h"
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Unreal Tutorial - Corrections 2}
+\begin{itemize}
+	\item 06 - Creating the Spawning Volume 10:55 - \url{https://youtu.be/KpgEVxfwpYQ?t=430} Add the following include statement after Pickup.h
+\end{itemize}
+\begin{lstlisting}
+#include "Components/BoxComponent.h"
+\end{lstlisting}
+\begin{itemize}
+	\item 07 - Extending the Pickup Class 5:50 - \url{https://youtu.be/qZHMf2WqjSM?t=349} Add the following include statement after SpawnVolume.h
+\end{itemize}
+\begin{lstlisting}
+#include "Engine/World.h"
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Unreal Tutorial - Corrections 3}
+\begin{itemize}
+	\item 08 - Setting Timers for Spawning 5:10 - \url{https://youtu.be/xXG-fYzpSW4?t=311} Add the following include statement after SpawnVolume.h
+\end{itemize}
+\begin{lstlisting}
+#include "Runtime/Engine/Public/TimerManager.h"
+\end{lstlisting}
+\end{frame}
+
+\end{document}
