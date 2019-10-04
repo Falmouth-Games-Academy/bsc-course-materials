@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/simplejson.iml" filepath="$PROJECT_DIR$/.idea/simplejson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Pyhthon HTTP Server.iml" filepath="$PROJECT_DIR$/.idea/Pyhthon HTTP Server.iml" />
     </modules>
   </component>
 </project>
