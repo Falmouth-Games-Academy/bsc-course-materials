@@ -30,6 +30,16 @@ struct FResponse_Login {
 	FResponse_Login() {}
 };
 
+USTRUCT()
+struct FRequest_PostScoreDetails {
+	GENERATED_BODY()
+		UPROPERTY() int id;
+	UPROPERTY() FString name;
+	UPROPERTY() int score;
+
+	FRequest_PostScoreDetails() {}
+};
+
 UCLASS(Blueprintable, hideCategories = (Rendering, Replication, Input, Actor, "Actor Tick"))
 class TEST00_API AMyHTTPRequest : public AActor
 {
@@ -37,7 +47,7 @@ class TEST00_API AMyHTTPRequest : public AActor
 
 private:
 	FHttpModule* Http;
-	FString ApiBaseUrl = "http://localhost:5000/api/";
+	FString ApiBaseUrl = "http://localhost:8000";
 
 	FString AuthorizationHeader = TEXT("Authorization");
 	void SetAuthorizationHash(FString Hash, TSharedRef<IHttpRequest>& Request);
@@ -59,6 +69,9 @@ private:
 public:	
 	// Sets default values for this actor's properties
 	AMyHTTPRequest();
+
+	UFUNCTION(BlueprintCallable, Category="hello")
+	void OnButtonPress();
 
 protected:
 	// Called when the game starts or when spawned
