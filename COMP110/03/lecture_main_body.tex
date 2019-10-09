@@ -6,7 +6,9 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=Python
+\lstset{language=Python,
+    keepspaces=true,
+    breaklines=false
 }
 
 % For strikethrough effect
@@ -23,31 +25,24 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Flowcharts and pseudocode}
+\title{\sessionnumber: Basic data types}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\begin{frame}
-	\frametitle{Learning outcomes}
+\input{research_journal}
+
+\begin{frame}{Worksheets}
 	\begin{itemize}
-		\item Explain and use basic data types
-		\item Recall some basic algorithms
-		\item Produce and explain basic flowcharts
-		\item Produce and explain basic pseudocode
+		\item Worksheet 2 (Binary numbers) due \textbf{tomorrow}
+		\item Worksheet 3 (Flowcharts and pseudocode) due \textbf{next Friday}
 	\end{itemize}
 \end{frame}
 
 \input{datatypes}
-\input{algorithm}
-\input{flowcharts}
-\input{pseudocode}
-
-\begin{frame}{Worksheet B}
-	\begin{itemize}
-		\item Flowcharts and pseudocode
-		\item Due in class \textbf{next Tuesday}
-	\end{itemize}
-\end{frame}
+\input{numbers}
+\input{strings}
+\input{other_types}
+\input{typecasting}
 
 \end{document}
