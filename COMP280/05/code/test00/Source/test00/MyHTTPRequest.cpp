@@ -2,6 +2,7 @@
 
 
 #include "MyHTTPRequest.h"
+#include "Engine/Engine.h"
 
 // Sets default values
 AMyHTTPRequest::AMyHTTPRequest()
@@ -31,6 +32,22 @@ void AMyHTTPRequest::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AMyHTTPRequest::OnButtonPress()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 100.0f, FColor::Red, TEXT("OnButtonPress"));
+
+	FString ContentJsonString;
+	FRequest_PostScoreDetails score;
+	score.name = "aaa";
+	score.score = 100;
+
+	GetJsonStringFromStruct<FRequest_PostScoreDetails>(score, ContentJsonString);
+
+	TSharedRef<IHttpRequest> Request = PostRequest("user/login", ContentJsonString);
+	Request->OnProcessRequestComplete().BindUObject(this, &AMyHTTPRequest::LoginResponse);
+	Send(Request);
 }
 
 
