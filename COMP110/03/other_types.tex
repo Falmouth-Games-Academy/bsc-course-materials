@@ -1,0 +1,68 @@
+\part{Other types}
+\frame{\partpage}
+
+\begin{frame}{Booleans}
+	\begin{itemize}
+		\pause\item A \textbf{boolean} can have one of two values: \textbf{true} or \textbf{false}
+		\pause\item Python type: \lstinline{bool}
+		\pause\item In Python, we have the keywords \lstinline{True} and \lstinline{False}
+		\pause\item Could be represented by a single bit in memory...
+		\pause\item ... but since memory is addressed in bytes (or words of multiple bytes),
+			usually represented as an \lstinline{int} with $0$ meaning \lstinline{False}
+			and any non-zero (e.g.\ $1$) meaning \lstinline{True}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Boolean values}
+	\begin{itemize}
+		\pause\item The \lstinline{if} statement takes a boolean value as its condition:
+	\end{itemize}
+	\begin{lstlisting}
+if x > 10:
+    print(x)
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Variables can also store boolean values:
+	\end{itemize}
+	\begin{lstlisting}
+result = (x > 10)   # result now stores True or False
+if result:
+    print(x)
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{The ``None'' value}
+	\begin{itemize}
+		\pause\item Python has a special value \lstinline{None} which can be used to denote the ``absence'' of any other value
+		\pause\item Python type: \lstinline{NoneType}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Checking types in Python}
+	\begin{itemize}
+		\pause\item Call \lstinline{type()} to check the type of a variable or value
+		\pause\item Note that \lstinline{type()} returns a value of type \lstinline{type}
+		\pause\item You can use these \lstinline{type} values like any other value, e.g.
+	\end{itemize}
+	\begin{lstlisting}
+	    if type(x) == int:
+	        print("x has type int")
+	    elif type(x) == type(y):
+	        print("x and y have the same type")
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Other types}
+	\begin{itemize}
+		\pause\item \textbf{Container} types for collecting several values
+			\begin{itemize}
+				\pause\item \lstinline{list}, \lstinline{tuple}, \lstinline{dict}, \lstinline{set}, ...
+			\end{itemize}
+		\pause\item \textbf{Objects} --- a way to define your own types
+		\pause\item Almost everything in Python is a value with a type
+			\begin{itemize}
+				\pause\item Functions, modules, classes, exceptions, ...
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+

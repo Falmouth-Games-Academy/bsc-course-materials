@@ -1,0 +1,48 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage[utf8]{inputenc}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=Python,
+    keepspaces=true,
+    breaklines=false
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{algpseudocode}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Basic data types}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\input{research_journal}
+
+\begin{frame}{Worksheets}
+	\begin{itemize}
+		\item Worksheet 2 (Binary numbers) due \textbf{tomorrow}
+		\item Worksheet 3 (Flowcharts and pseudocode) due \textbf{next Friday}
+	\end{itemize}
+\end{frame}
+
+\input{datatypes}
+\input{numbers}
+\input{strings}
+\input{other_types}
+\input{typecasting}
+
+\end{document}
