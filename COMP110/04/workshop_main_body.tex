@@ -5,8 +5,9 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=C++,
-        morekeywords={each,in,nullptr}
+\lstset{language=Python,
+    keepspaces=true,
+    breaklines=false
 }
 
 % For strikethrough effect
@@ -30,19 +31,10 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Logic and memory}
+\title{\sessionnumber: LaTeX}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
-
-\begin{frame}
-	\frametitle{Learning outcomes}
-	\begin{itemize}
-		\item \textbf{Distinguish} the basic types of logic gate
-		\item \textbf{Use} logic gates to build simple circuits
-		\item \textbf{Explain} how computer memory works
-	\end{itemize}
-\end{frame}
 
 %\begin{frame}{Worksheet B}
 %    \begin{center} 
@@ -50,13 +42,7 @@
 %    \end{center}
 %\end{frame}
 
-\input{logicgates}
-\input{alu}
-
-\begin{frame}{Exercise Sheet ii}
-    \begin{center} 
-        Due \textbf{next Tuesday!}
-    \end{center}
-\end{frame}
+\input{../03/typecasting}
+\input{latex}
 
 \end{document}
