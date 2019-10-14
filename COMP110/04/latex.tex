@@ -1,0 +1,86 @@
+\lstset{language=[LaTeX]{TeX}, morekeywords={part,pause,lstinputlisting}}
+
+\part{Introducing LaTeX}
+\frame{\partpage}
+
+\begin{frame}{What is LaTeX?}
+    \begin{itemize}
+        \pause\item A \textbf{typesetting} system
+        \pause\item A \textbf{markup language}
+                (like HTML or Markdown)
+        \pause\item \textbf{Not} a WYSIWYG system
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{These slides were written in LaTeX}
+    % Display the first few lines of this file
+    \lstinputlisting[firstline=3,lastline=18]{latex.tex}
+\end{frame}
+
+\begin{frame}{Why LaTeX?}
+\begin{itemize}
+	\pause\item Plain text format
+	\begin{itemize}
+		\pause\item Can use any text editor
+		\pause\item Can use version control (e.g.\ Git)
+		\pause\item Can use online editors (e.g.\ Overleaf)
+	\end{itemize}
+	\pause\item Separates content from formatting
+	\begin{itemize}
+		\pause\item Similar to HTML and CSS
+		\pause\item Unlike most WYSIWYG systems
+	\end{itemize}
+	\pause\item Produces professional-looking papers, reports, theses, books, slideshows, ...
+	\pause\item Excellent facilities for typesetting mathematical equations, pseudocode, source code listings etc.
+	\pause\item Automatically handles cross-referencing of sections, figures etc.
+	\pause\item Automatic tools for managing bibliographies (BibTeX)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Getting LaTeX}
+\begin{itemize}
+	\pause\item LaTeX is \textbf{free open source software}
+	\pause\item Consists of:
+	\begin{itemize}
+		\pause\item Several \textbf{executables} (pdflatex, bibtex, makeindex, ...)
+		\pause\item A large library of \textbf{packages}
+		\pause\item An \textbf{integrated development environment (IDE)} (optional)
+	\end{itemize}
+	\pause\item Distributions available for all major OSes
+	\begin{itemize}
+		\item Windows: MikTeX
+		\item MacOS: MacTeX
+		\item Linux: TeXLive
+	\end{itemize}
+	\pause\item Online services e.g.\ Overleaf (should also work on iPad / Android)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Workshop Activity}
+\begin{itemize}
+	\item Go to \url{https://www.overleaf.com} and sign up for a free account
+	\item Go to \url{https://www.latex-tutorial.com/tutorials/} and work through the tutorials
+	\item Please prioritise the following tutorials (look at the others afterwards if you have time):
+	    \begin{itemize}
+            %\item 00 Installation
+            \item 01 Your first document
+            \item 02 Document structure (sections and paragraphs)
+            \item 03 Packages
+            %\item 04 Math
+            \item 05 Adding pictures
+            %\item 06 Table of contents
+            \item 07 Bibliography
+            %\item 08 Footnotes
+            %\item 09 Tables
+            %\item 10 Automatic table generation (from .csv)
+            %\item 11 Automatic plot generation (from .csv)
+            %\item 12 Drawing graphs (vector graphics with tikz)
+            \item 13 Source code highlighting
+            %\item 14 Circuit diagrams
+            %\item 15 Advanced circuit diagrams
+            \item 16 Hyperlinks
+            \item 17 Lists
+	    \end{itemize}
+    \end{itemize}
+\end{frame}
+

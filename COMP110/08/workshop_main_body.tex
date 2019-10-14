@@ -1,0 +1,51 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=Python}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata,tikzmark,calc}
+
+\usepackage{algpseudocode}
+\usepackage{qtree}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Data Structures}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning outcomes}
+	\begin{itemize}
+		\item \textbf{Define} the key concepts of graph theory
+		\item \textbf{Distinguish} advanced data structures such as trees, DAGs and graphs
+		\item \textbf{Determine} the complexity of accessing and manipulating data in these data structures
+		\item \textbf{Choose} the correct data structure for a given task
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exercise Sheet iii}
+	\begin{center}
+		Due \textbf{next week}
+	\end{center}
+\end{frame}
+
+\input{graphs}
+\input{stacks_queues}
+\input{graph_traversal}
+%\input{linked_list}
+
+\end{document}

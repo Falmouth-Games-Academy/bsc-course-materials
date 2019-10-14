@@ -1,0 +1,50 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\usepackage{mips}
+\lstset{language=[mips]Assembler,
+	morekeywords={[3]\$d,\$s,\$t}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Machine Code}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning outcomes}
+	\begin{itemize}
+		\item \textbf{Explain} the difference between interpretation, just-in-time compilation and ahead-of-time compilation
+		\item \textbf{Describe} how common high-level code structures translate to machine code
+		\item \textbf{Write} and \textbf{understand} simple assembly language programs
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exercise Sheet iv}
+	\begin{center}
+		Due \textbf{tomorrow}!
+	\end{center}
+\end{frame}
+
+\input{compilers_vs_interpreters}
+\input{mips}
+\input{control_flow}
+\input{machine_code}
+
+\end{document}
