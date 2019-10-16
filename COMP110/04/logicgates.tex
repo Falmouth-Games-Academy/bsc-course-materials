@@ -206,12 +206,48 @@
 	Other operators can be expressed by combining these
 \end{frame}
 
-%\begin{frame}{De Morgan's Laws}
-	%\pause
-	%$$ \OPnot (A \OPor B) = (\OPnot A) \OPand (\OPnot B) $$
-	%\pause
-	%$$ \OPnot (A \OPand B) = (\OPnot A) \OPor (\OPnot B) $$
-%\end{frame}
+\begin{frame}{De Morgan's Laws}
+	\pause
+	$$ \OPnot (A \OPor B) = (\OPnot A) \OPand (\OPnot B) $$
+	\pause
+	$$ \OPnot (A \OPand B) = (\OPnot A) \OPor (\OPnot B) $$
+	\pause
+	Proof: Worksheet 4, questions 3a and 3b
+\end{frame}
+
+\part{Truth tables}
+\frame{\partpage}
+
+\begin{frame}{Enumeration}
+	\begin{itemize}
+		\pause\item Since booleans have only two possible values, we can often \textbf{enumerate}
+			all possible values of a set of boolean variables
+		\pause\item For $n$ variables there are $2^n$ possible combinations
+		\pause\item Essentially, all the $n$-bit binary numbers
+		\pause\item A \textbf{truth table} enumerates all the possible values of a boolean expression
+		\pause\item Can be used to prove that two expressions are equivalent
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Truth table example}
+	$$ (A \OPor \OPnot B) \OPand C $$
+	\begin{centering}
+		\begin{tabular}{|ccc|cc|c|}
+			$A$ & $B$ & $C$ & $\OPnot B$ & $A \OPor \OPnot B$ & (A \OPor \OPnot B) \OPand C \\\hline\pause
+			\FF & \FF & \FF & \TT & \TT & \FF \\\pause
+			\FF & \FF & \TT & \TT & \TT & \TT \\\pause
+			\FF & \TT & \FF & \FF & \FF & \FF \\\pause
+			\FF & \TT & \TT & \FF & \FF & \FF \\\pause
+			\TT & \FF & \FF & \TT & \TT & \FF \\\pause
+			\TT & \FF & \TT & \TT & \TT & \TT \\\pause
+			\TT & \TT & \FF & \FF & \TT & \FF \\\pause
+			\TT & \TT & \TT & \FF & \TT & \TT \\\hline
+		\end{tabular}
+	\end{centering}
+\end{frame}
+
+\part{Other logic gates}
+\frame{\partpage}
 
 \OPframe{Exclusive Or}
 	{$A \OPxor B$ is \TT}{\textbf{either $A$ or $B$, but not both,} are \TT}
