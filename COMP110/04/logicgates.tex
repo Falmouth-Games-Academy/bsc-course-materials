@@ -165,10 +165,10 @@
 			(0,0) node[and port] (gateA) {}
 			(0,-2) node[or port] (gateB) {}
 			(1,0) node[not port] (gateC) {}
-			(4,-1) node[or port] (gateD) {}
+			(3.5,-1) node[or port] (gateD) {}
 			(gateA.out) -- (gateC.in) {}
-			(gateC.out) -- (gateD.in 1) {}
-			(gateB.out) -- (gateD.in 2) {}
+			(gateC.out) -| (gateD.in 1) {}
+			(gateB.out) -| (gateD.in 2) {}
 			(gateD.out) node[anchor=west] {?}
 			(gateA.in 1) node[anchor=east] {$A$}
 			(gateA.in 2) node[anchor=east] {$B$}
@@ -231,6 +231,12 @@
 
 \begin{frame}{Socrative \texttt{FALCOMPED}}
 	How can $A \OPxor B$ be written using the operations $\OPand, \OPor, \OPnot$?
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{boolean_hair_logic}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Negative gates}
