@@ -11,43 +11,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 
-public static class JsonHelper
-{
-    public static T[] FromJson<T>(string json)
-    {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Items;
-    }
-
-    public static string ToJson<T>(T[] array)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper);
-    }
-
-    public static string ToJson<T>(T[] array, bool prettyPrint)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper, prettyPrint);
-    }
-
-    [Serializable]
-    private class Wrapper<T>
-    {
-        public T[] Items;
-    }
-
-
-    public static string fixJson(string value)
-    {
-        value = "{\"Items\":" + value + "}";
-        return value;
-    }
-
-}
-
 class HiScoreEntry
 {
     public HiScoreEntry()
@@ -62,6 +25,16 @@ class HiScoreEntry
 
     public String name;
     public int score;
+}
+
+class HiScoreEntries
+{
+    public HiScoreEntries()
+    {
+
+    }
+
+    public List<HiScoreEntry> details;
 }
 
 
@@ -91,11 +64,11 @@ public class scorewidget : MonoBehaviour
                     // by calling .Result you are synchronously reading the result
                     string responseString = responseContent.ReadAsStringAsync().Result;
 
-                    var obj = JsonConvert.DeserializeObject<List<HiScoreEntry>>(responseString);
+                    var obj = JsonConvert.DeserializeObject<HiScoreEntries>(responseString);
 
                     String text = "";
 
-                    foreach (var entry in obj)
+                    foreach (var entry in obj.details)
                     {
                         text += entry.name + " " + entry.score;
                         text += "\n";

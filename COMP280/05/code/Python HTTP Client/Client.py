@@ -1,7 +1,7 @@
 import http
 import json
 
-conn = http.client.HTTPConnection("localhost")
+conn = http.client.HTTPConnection("localhost",8000)
 headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
 
 quitApp = False
@@ -25,7 +25,7 @@ while quitApp is False:
 
         new_data = json.loads(data1)
 
-        for entry in new_data:
+        for entry in new_data['details']:
             print(entry['name'] + ' ' + str(entry['score']) )
 
     if key is '2':

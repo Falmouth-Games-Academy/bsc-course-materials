@@ -39,6 +39,10 @@ class MyServer(BaseHTTPRequestHandler):
 
 			list.append(entry)
 
+		#annoyingly, the stupid json parser in Unreal can't parse annoynmous containers
+		#so we need to put the list into a tuple and give it a name. The Unreal and Unity
+		#parsers will have objects of List<entry> or TArray<entry> to reflect the data.
+		
 		result = json.dumps({"details": list})
 		self.wfile.write(result.encode())
 
