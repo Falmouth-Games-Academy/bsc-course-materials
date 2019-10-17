@@ -39,9 +39,7 @@ class MyServer(BaseHTTPRequestHandler):
 
 			list.append(entry)
 
-		#dict = {"scores" : list}
-		#result = json.dumps(dict)
-		result = json.dumps(list)
+		result = json.dumps({"details": list})
 		self.wfile.write(result.encode())
 
 		new_data = json.loads(result);
@@ -49,12 +47,15 @@ class MyServer(BaseHTTPRequestHandler):
 		print("GET RESPONSE ", result)
 
 	def do_POST(self):
+
+		print( "POST")
 		content_length = int(self.headers['Content-Length'])  # <--- Gets the size of data
 		post_data = self.rfile.read(content_length)  # <--- Gets the data itself
 		self.send_response(200)
 		self.end_headers()
 
 		print( "POST: ", post_data)
+		print(json.loads(post_data))
 
 		command = json.loads(post_data)
 		c.execute('insert into highscores(name, score) values(?,?)', (command['name'], command['score'] ))
