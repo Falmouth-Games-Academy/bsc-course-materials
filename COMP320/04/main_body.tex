@@ -1,6 +1,8 @@
 \documentclass[t]{beamer}
 
 % Load general definitions
+% NB: if this fails, you probably forgot to check out bsc-assignment-briefs with submodules
+% Run `git submodule init && git submodule update` to fix
 \input{../Campelo/defs/preamble.tex}
 
 % Specific definitions
@@ -14,6 +16,12 @@
 \setbeamertemplate{footline}{}
 \begin{frame}
   \titlepage
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south west, xshift=0.1cm, yshift=0.1cm] at (current page.south west) {
+	  \includegraphics[width=0.125\paperwidth]{../../sign_in}
+        };
+    \end{tikzpicture}
+
 \end{frame}
 
 %=====
