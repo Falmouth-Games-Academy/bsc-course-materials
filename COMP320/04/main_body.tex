@@ -16,6 +16,12 @@
 \setbeamertemplate{footline}{}
 \begin{frame}
   \titlepage
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south west, xshift=0.1cm, yshift=0.1cm] at (current page.south west) {
+	  \includegraphics[width=0.125\paperwidth]{../../sign_in}
+        };
+    \end{tikzpicture}
+
 \end{frame}
 
 %=====
