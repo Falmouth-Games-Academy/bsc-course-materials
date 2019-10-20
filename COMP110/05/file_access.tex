@@ -1,0 +1,50 @@
+\part{Accessing files}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Opening files}
+	\begin{itemize}
+		\pause\item Files can be opened with the \lstinline{open} function
+		\pause\item Takes a \textbf{file name} and a \textbf{mode string}
+			\begin{itemize}
+				\pause\item See \url{https://docs.python.org/3/library/functions.html#open} for details
+				\pause\item E.g.\ \lstinline{open("file.txt", "wt")} opens \texttt{file.txt} for writing as text
+			\end{itemize}
+		\pause\item Returns a \textbf{file object}, with methods including \lstinline{read} and \lstinline{write}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Writing to a file --- example}
+	\begin{lstlisting}
+f = open("hello.txt", "wt")
+f.write("Hello, world!\n")
+f.close()
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Note that \lstinline{write} does \textbf{not} write a line break automatically, hence the \lstinline{"\n"}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Cleaning up}
+	\begin{itemize}
+		\pause\item It is important to \textbf{close} the file once we are done writing to it
+		\pause\item We can do this using the \lstinline{close} method
+		\pause\item Or we can use Python's \lstinline{with} statement to do it automatically
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+with open("hello.txt", "wt") as f:
+	f.write("Hello, world!\n")
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item \lstinline{f.close()} is automatically called when we leave the \lstinline{with} statement
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{CSV files}
+	\begin{itemize}
+		\pause\item \textbf{Comma Separated Values}
+		\pause\item A simple text-based file format for storing tables of data
+		\pause\item Rows = lines of text, cell values separated by commas
+		\pause\item Can easily be imported into spreadsheets (e.g.\ Excel) and data analysis tools (e.g.\ R)
+	\end{itemize}
+\end{frame}
