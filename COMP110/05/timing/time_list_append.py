@@ -16,10 +16,10 @@ with open("results.csv", "wt") as f:
 			my_list.append(random.randrange(1000))
 
 		# Time appending elements to the list
-		start_time = time.clock()
+		start_time = time.perf_counter()
 		for repetition in range(rep_count):
 			my_list.append(random.randrange(1000))
 
-		end_time = time.clock()
+		end_time = time.perf_counter()
 		total_time = end_time - start_time
 		f.write("{0},{1}\n".format(n, total_time))
