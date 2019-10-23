@@ -1,0 +1,43 @@
+\part{Turing machines}
+\frame{\partpage}
+
+\begin{frame}{Turing machines}
+    \begin{itemize}
+        \pause\item Introduced in 1936 by Alan Turing
+        \pause\item Theoretical model of a ``computer''
+            \begin{itemize}
+                \pause\item I.e.\ a machine that carries out computations (calculations)
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Turing machine}
+    \begin{itemize}
+        \pause\item Has a finite number of \textbf{states}
+        \pause\item Has an infinite \textbf{tape}
+        \pause\item Each space on the tape holds a \textbf{symbol} from a finite \textbf{alphabet}
+        \pause\item Has a \textbf{tape head} pointing at one space on the tape
+        \pause\item Has a transition table which, given:
+            \begin{itemize}
+                \pause\item The current state
+                \pause\item The symbol under the tape head
+            \end{itemize}
+        \pause specifies:
+            \begin{itemize}
+                \pause\item A new state
+                \pause\item A new symbol to write to the tape, overwriting the current symbol
+                \pause\item Where to move the tape head: one space to the left, or one space to the right
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The Church-Turing Thesis}
+    \begin{itemize}
+        \pause\item If a calculation can be carried out by a mechanical process at all,
+            then it can be carried out by a Turing machine
+        \pause\item I.e.\ a Turing machine is the most ``powerful'' computer possible,
+            in terms of what is possible or impossible to compute
+        \pause\item A machine, language or system is \textbf{Turing complete} if it can simulate a Turing machine
+    \end{itemize}
+\end{frame}
+
