@@ -16,6 +16,7 @@
 				\pause\item Particularly in games:
 					want to maintain a good \textbf{frame rate}
 					free of \textbf{lag} or \textbf{stuttering}
+				\pause\item To run at 60 frames per second, we only have \textbf{16.666~milliseconds} to do everything that needs to be done on every frame
 			\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -24,35 +25,92 @@
 	\begin{lstlisting}
 import time
 
-start_time = time.clock()
+start_time = time.perf_counter()
 
-... do something here ...
+# ... do something here ...
 
-end_time = time.clock()
-print("Computation took", end_time - start_time, "seconds")
+end_time = time.perf_counter()
+print("Time:", end_time - start_time, "seconds")
 	\end{lstlisting}
+	
+	\begin{itemize}
+		\pause\item \lstinline{time.perf_counter()} gives the ``current time'' in seconds
+		\pause\item On Windows, this is the time since you first called \lstinline{time.perf_counter()}
+		\pause\item Means little by itself, but \textbf{comparing} two values tells us how much time has \textbf{elapsed}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Repeating for better accuracy}
 	\begin{lstlisting}
 import time
 
-start_time = time.clock()
+start_time = time.perf_counter()
 
 repetition_count = 1000
 
 for repetition in range(repetition_count):
-    ... do something here ...
+    # ... do something here ...
 
-end_time = time.clock()
-time_per = (end_time - start_time) / repetition_count
-print("Computation took", time_per, "seconds")
+end_time = time.perf_counter()
+total_time = end_time - start_time
+print("Time:", total_time, "seconds")
 	\end{lstlisting}
+	
+	\begin{itemize}
+		\pause\item There is some \textbf{overhead} from the \lstinline{for} loop, but in practice it is negligible
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Scaling}
+\begin{frame}
+	\lstinputlisting[basicstyle=\scriptsize\ttfamily]{timing/time_list_creation.py}
+\end{frame}
+
+\begin{frame}
+	\lstinputlisting[basicstyle=\scriptsize\ttfamily]{timing/time_list_append.py}
+\end{frame}
+
+\begin{frame}{Workshop exercise}
 	\begin{itemize}
-		\pause\item Timing is dependent on hardware and software issues
-		\pause\item We are often less interested in how many milliseconds a particular computation takes on today's hardware, and more interested in how the execution time \textbf{scales} with the problem size
+		\pause\item Investigate various operations on Python lists, and how their running time varies with the size of the list
+		\pause\item For each of the operations listed on the next slide:
+			\begin{itemize}
+				\pause\item \textbf{Find out} how to do the operation
+				\pause\item \textbf{Write} code similar to the previous slides, to generate a list of size $n$ (for various values of $n$) and then time the operation on that list
+				\pause\item \textbf{Plot} graphs of the operations using Excel
+				\pause\item (Advanced mode: instead of using Excel, plot graphs directly from Python using the Matplotlib library)
+			\end{itemize}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Operations to time}
+	\footnotesize
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item Append an element
+				\item Insert an element at the beginning
+				\item Insert an element at a random position
+				\item Delete the first element
+				\item Delete the last element
+				\item Delete a random element
+				\item Get the first element
+				\item Get the last element
+				\item Get a random element
+				\item Find if the list contains a specific element
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{itemize}
+				\item Get the smallest element
+				\item Get the largest element
+				\item Get the sum of all elements
+				\item Get the length of the list
+				\item Copy the list
+				\item Reverse the list
+				\item Sort the list
+				\item Randomly shuffle the list
+				\item Convert the list to string
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
