@@ -13,26 +13,28 @@
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
 
+% https://tex.stackexchange.com/a/42620
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
 \usepackage{pdfpages}
 
-% http://www.texample.net/tikz/examples/state-machine/
-\usetikzlibrary{arrows,automata}
+\usepackage{algpseudocode}
+\usepackage{qtree}
 
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Session title here}
+\title{\sessionnumber: AI Architectures}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\begin{frame}
-	\frametitle{Learning outcomes}
-	\begin{itemize}
-		\item Outcome 1
-		\item Outcome 2
-		\item Outcome 3
-	\end{itemize}
-\end{frame}
+\input{what_is_ai}
+\input{ai_in_games}
+\input{architectures}
+\input{bt}
+\input{worksheet}
 
 \end{document}
