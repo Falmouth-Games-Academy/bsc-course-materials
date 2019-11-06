@@ -7,28 +7,30 @@
 		\pause\item Each node contains:
 			\begin{itemize}
 		 		\pause\item An \textbf{item} --- the actual data to be stored
+		 		\pause\item A pointer or reference to the \textbf{previous node} in the list (null for the first item)
 		 		\pause\item A pointer or reference to the \textbf{next node} in the list (null for the last item)
 			\end{itemize}
 	\end{itemize}
 	\pause
 	\vspace{2ex}
 	\begin{center}
-		\begin{tabular}{|c|c|}
+	    \setlength{\tabcolsep}{0.2em}
+		\begin{tabular}{|c|c|c|}
 			\hline
-			{\tiny item} & {\tiny next} \\
-			\texttt{first} & \tikzmark{nexta} \\\hline
+			{\tiny prev} & {\tiny item} & {\tiny next} \\
+			$\times$ & \texttt{\footnotesize first} & \tikzmark{nexta} \\\hline
 		\end{tabular}
 		\qquad
-		\begin{tabular}{|c|c|}
+		\begin{tabular}{|c|c|c|}
 			\hline
-			{\tiny item} & {\tiny next} \\
-			\tikzmark{nodeb}\texttt{second} & \tikzmark{nextb} \\\hline
+			{\tiny prev} & {\tiny item} & {\tiny next} \\
+			\tikzmark{prevb} & \texttt{\footnotesize second} & \tikzmark{nextb} \\\hline
 		\end{tabular}
 		\qquad
-		\begin{tabular}{|c|c|}
+		\begin{tabular}{|c|c|c|}
 			\hline
-			{\tiny item} & {\tiny next} \\
-			\tikzmark{nodec}\texttt{third} & $\times$ \\\hline
+			{\tiny prev} & {\tiny item} & {\tiny next} \\
+			\tikzmark{prevc} & \texttt{\footnotesize third} & $\times$ \\\hline
 		\end{tabular}
 		\begin{tikzpicture}
 			[
@@ -39,8 +41,10 @@
 			  shorten >=1pt,
 			  shorten <=1pt,
 			]
-			\draw ({pic cs:nexta}) to ($ ({pic cs:nodeb}) + (-1ex, 0) $);
-			\draw ({pic cs:nextb}) to ($ ({pic cs:nodec}) + (-1ex, 0) $);
+			\draw ($ ({pic cs:nexta}) + (0, 0.5ex) $) to ($ ({pic cs:prevb}) + (-1.2ex, 0.5ex) $);
+			\draw ($ ({pic cs:nextb}) + (0, 0.5ex) $) to ($ ({pic cs:prevc}) + (-1.2ex, 0.5ex) $);
+			\draw ($ ({pic cs:prevb}) + (0, -0.5ex) $) to ($ ({pic cs:nexta}) + (1.2ex, -0.5ex) $);
+			\draw ($ ({pic cs:prevc}) + (0, -0.5ex) $) to ($ ({pic cs:nextb}) + (1.2ex, -0.5ex) $);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
