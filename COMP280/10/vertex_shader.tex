@@ -1,2 +1,59 @@
 \part{Vertex Shader}
 \frame{\partpage}
+
+\begin{frame}{Reminder}
+	\begin{itemize}
+		\item As a reminder, the vertex shader takes in exactly one vertex
+		\pause \item This vertex will contain data we 
+		\pause \item We then carry out operations on that vertex
+		\pause \item Then return that vertex back to the pipeline
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Unity's Vertex}
+	\begin{itemize}
+		\item Unity has built in vertex types
+		\begin{itemize}
+			\pause \item \textbf{appdata\_base}: position, normal and one texture coordinate
+			\pause \item \textbf{appdata\_tan}: position, tangent, normal and one texture coordinate
+			\pause \item \textbf{appdata\_full}: position, tangent, normal, four texture coordinates and colour
+		\end{itemize}
+		\pause \item \url{https://docs.unity3d.com/Manual/SL-VertexProgramInputs.html}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{UE4 Vertex - Expressions}
+	\begin{itemize}
+		\item UE4 has a bunch of Expression nodes which allow you to interact with Vertices
+		\begin{itemize}
+			\pause \item Vector Expressions: \url{https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/ExpressionReference/Vector/index.html}
+			\pause \item Coordinate Expressions: \url{https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/ExpressionReference/Coordinates/index.html}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Vertex Shader - GLSL Example}
+	\begin{lstlisting}
+	#version 330 core
+	
+	layout(location = 0) in vec3 vertexPosition;
+	layout(location = 1) in vec2 vertexTextureCoord;
+	
+	uniform mat4 modelMatrix;
+	uniform mat4 viewMatrix;
+	uniform mat4 projectionMatrix;
+	
+	out vec2 vertexTextureCoordOut;
+	
+	void main(){
+	
+		mat4 mvpMatrix=projectionMatrix*viewMatrix*modelMatrix;
+		
+		vec4 mvpPosition=mvpMatrix*vec4(vertexPosition,1.0f);
+		
+		vertexTextureCoordOut=vertexTextureCoord;
+		
+		gl_Position=mvpPosition;
+	}
+	\end{lstlisting}
+\end{frame}

@@ -1,0 +1,105 @@
+\part{GLSL}
+\frame{\partpage}
+
+\lstset{language=GLSL}
+
+\begin{frame}{OpenGL Shading Language (GLSL)}
+	\begin{itemize}
+		\pause\item Used for writing \textbf{shaders} for OpenGL applications
+		\pause\item C-like syntax
+		\pause\item GLSL compiler is part of the \textbf{graphics driver}
+			on the \textbf{end user's machine}
+			\begin{itemize}
+				\pause\item Yes, you need to ship your shader source code with your game!
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Basic vertex shader}
+	\begin{lstlisting}
+#version 330 core
+
+layout(location = 0) in vec3 vertexPos;
+
+void main()
+{
+    gl_Position.xyz = vertexPos;
+    gl_Position.w = 1.0;
+}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Basic vertex shader}
+	\begin{lstlisting}
+#version 330 core
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Tells the compiler to use OpenGL 3.3 core functionality
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Basic vertex shader}
+	\begin{lstlisting}[language=GLSL]
+layout(location = 0) in vec3 vertexPos;
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Specifies \textbf{input values} to the vertex shader
+		\pause\item Corresponds with layout of \textbf{vertex buffers} in C++ program
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Basic vertex shader}
+	\begin{lstlisting}[language=GLSL]
+void main()
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item Every shader program must define a \lstinline{void main()} function
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Basic vertex shader}
+	\begin{lstlisting}[language=GLSL]
+    gl_Position.xyz = vertexPos;
+    gl_Position.w = 1.0;
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item \lstinline{gl_Position} is one of many \textbf{built-in} variables with special meaning
+		\pause\item See \url{https://www.opengl.org/wiki/Built-in_Variable_(GLSL)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Basic fragment shader}
+	\begin{lstlisting}[language=GLSL]
+#version 330 core
+
+out vec3 color;
+
+void main()
+{
+    color = vec3(1, 1, 0);
+}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Basic fragment shader}
+	\begin{lstlisting}[language=GLSL]
+out vec3 color;
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item By convention, fragment shader should have \textbf{one output}, namely the fragment colour
+		\pause\item Doesn't have to be named \lstinline{color} --- could be any other non-reserved identifier
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Programming in GLSL}
+	\begin{itemize}
+		\pause\item \lstinline{if} statements, \lstinline{for} loops, \lstinline{while} loops, \lstinline{do while} loops, \lstinline{switch} statements,
+			\lstinline{break}, \lstinline{continue}, \lstinline{return} all work the same as C++
+		\pause\item \lstinline{// Single-line comments} and \lstinline{/* Multi-line comments */} work the same too
+		\pause\item Function definitions and declarations are similar to C++, except that parameters must be declared as
+			\lstinline{in}, \lstinline{out} or \lstinline{inout}
+		\pause\item Recursion is \textbf{forbidden}
+		\pause\item No \texttt{\#include} --- splitting a shader into multiple files is not easy...
+		\pause\item No \lstinline[language=C++]{class}
+	\end{itemize}
+\end{frame}
