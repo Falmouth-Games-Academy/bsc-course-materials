@@ -1,11 +1,10 @@
 % Adjust these for the path of the theme and its graphics, relative to this file
 %\usepackage{beamerthemeFalmouthGamesAcademy}
 \usepackage{../../beamerthemeFalmouthGamesAcademy}
-\usepackage{multimedia}
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=Python
+\lstset{language=[Sharp]C
 }
 
 % For strikethrough effect
@@ -14,6 +13,9 @@
 
 \usepackage{pdfpages}
 
+\usepackage{algpseudocode}
+\usepackage{qtree}
+
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 \usetikzlibrary{tikzmark,calc}
@@ -21,18 +23,21 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: References}
+\title{\sessionnumber: Algorithm Strategies}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\input{research_journal}
+\begin{frame}{Worksheets}
+	\begin{itemize}
+		\item Worksheet 6: due \textbf{today}
+		\item Worksheet 7: due \textbf{next Monday}
+	\end{itemize}
+\end{frame}
 
-\input{references}
-
-\input{vectors}
-
-\part{Worksheet D}
-\frame{\partpage}
+\input{recursion}
+\input{graphs}
+\input{traversal}
+\input{strategies}
 
 \end{document}

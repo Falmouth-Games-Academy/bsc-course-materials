@@ -6,5 +6,7 @@ Version=4
 MainFile=2019-20-COMP110-10-workshop-materials-screen.tex
 UseBibTeX=0
 UseMakeIndex=0
+ActiveProfile=LaTeX ⇨ PDF
 ProjectLanguage=en
 ProjectDialect=US
+
