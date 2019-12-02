@@ -40,6 +40,10 @@ After this session you will be able to:
 - **Discuss** how HCI has changed over the years
 - **Outline** some basic HCI principles as described by Don Norman in his book, The Design of Everyday Things  
 
+## Worksheet 4
+
+[WORKSHEET LINK](https://learningspace.falmouth.ac.uk/mod/url/view.php?id=55997&forceview=1)
+
 ## Human-Computer Interaction (HCI)
 > "If we didn't have people, everything would work so much better" - **Donald A. Norman**
 
@@ -85,7 +89,7 @@ Early 90s HCI blew up as the internet and web went mainstream and there was an e
 - personal portable screens - wearables and HMDs
 
 
-## Tech Buzzword Bingo!
+## Buzzword Bingo!
 
 - Mobile
 - Multitouch
@@ -169,21 +173,93 @@ Generally, to improve our relationship with computers.
 
 ## Donald Norman
 
-![Google Snippet about Donal Norman](assets/don.png){ width=50% }
+![Donal Norman - The fundamental principles of Interaction](assets/don.png){ width=50% }
 
-# Affordances
+## Affordances
 
-- Standard Affordances
-- Perceivable Affordances
-- Anti-Affordances
+> "the relationship between a physical object and a person" 
 
-# Signifiers
+animal, human, robot...
+
+- Standard Affordances - the real deal
+- Perceivable Affordances - not really there (great for games)
+- Anti-Affordances - designed to reduce affordances
+
+## Signifiers
+
+> "Communicate where the action should take place"
+
+- also, hint towards what type of affordances there are (linked to mental models)
+- The focus of designers
+- Important for usability and accessibility
 	
-# Mappings
+## Mappings
+> "There is no need to understand the underlying physics or chemistry of each device we own, just the relationship between the controls and the outcomes"
 
-# Mental models
+
+![The worst volume UIs - [View the Reddit feed](https://www.reddit.com/r/ProgrammerHumor/search?q=volume+slider&restrict_sr=on) ](assets/volume.png){ width=60% }
+
+## GESTALT 
+```{r results='asis'}
+if (html) {
+  cat('<iframe width="640" height="390" src="https://www.youtube.com/embed/dk7cXdjX2Ys?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>')
+}else{
+  cat("![ [ **Gestalt Psychology** ](https://www.youtube.com/watch?v=dk7cXdjX2Ys)  ](assets/gestalt.png){ width=60% }")
+}
+```
+
+
+## Conceptual models
+
+- "People may hold different models of the same item"
+- Models don't have to be, "complete or even accurate as long as they are useful"
+
+What models can we think of? (padlocks on computer screens)
 
 ## [Nielsen Norman Group](https://www.nngroup.com/)
 
 ![Google Snippet about Nielsen Norman Group](assets/nngroup.png){ width=50% }
+
+## UI Design Tips 
+
+- Alignment
+- Alignment
+- Alignment
+
+The placement of elements such that the edges line up along common rows or columns. or their bodies along a common center. 
+
+> "Visual acuity is the ability to resolve details" (Jason Jerald)
+
+
+- In ideal conditions a human can resolve details as small as 1/7200th of a degree 
+
+## UI Design Tips 
+
+**Consistency** 
+"The usability of a system is improved when similar parts are expressed in similar ways" 
+
+
+**Legibility** 
+The visual clarity of text, generally based size, typeface and contrast with the background. 
+
+
+**Scaling Fallacy** 
+A tendency to assume that a system that works at one scale will also work at a smaller or larger scale
+
+## Composition
+
+**Rule of Thirds** 
+The alignment of content based on invisible guides that divide the layout into thiids both on the vertical and horizontal plane
+
+
+
+## Some useful UI laws
+
+**Fitts' Law** 
+The time required to move to a target is a function of the target size and distance to the target.
+
+**Hick's Law** 
+The time it takes to make a decision increases as the number of alternatives increases
+
+
 
