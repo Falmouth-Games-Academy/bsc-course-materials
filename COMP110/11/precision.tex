@@ -1,0 +1,59 @@
+\part{Numerical precision}
+\frame{\partpage}
+
+\begin{frame}{Precision of floating point numbers}
+	\begin{itemize}
+		\pause\item Precision \textbf{varies} by \textbf{magnitude}
+		\pause\item Numbers near 0 can be stored more accurately than numbers further from 0
+		\pause\item Analogy: in scientific notation with 3 decimal places
+			\begin{itemize}
+				\pause\item Around $3.142 \times 10^0$: can represent a difference of $0.001$
+				\pause\item Around $3.142 \times 10^3$: can represent a difference of $1$
+				\pause\item Around $3.142 \times 10^6$: can represent a difference of $1000$
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Range of floating point numbers}
+	\begin{center}
+		\begin{tabular}{|r|cc|}
+			\hline
+			Type & Smallest value & Largest value \\
+			& (closest to 0) & (furthest from 0) \\\hline
+			Single precision & $\pm 1.175 \times 10^{-38}$ & $\pm 3.403 \times 10^{38}$ \\\hline
+			Double precision & $\pm 2.225 \times 10^{-308}$ & $\pm 1.798 \times 10^{308}$ \\\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Rounding errors}
+	\begin{itemize}
+		\pause\item Many numbers cannot be represented exactly in IEEE float
+			\begin{itemize}
+				\pause\item Similar to how decimal notation cannot exactly represent
+					$\frac13 = 0.3333333\dots$ or $\frac17 = 0.142857\dots$
+			\end{itemize}
+		\pause\item Decimal: can represent $\frac{a}{b}$ exactly iff $b = 2^m 5^n$
+		\pause\item Binary: can represent $\frac{a}{b}$ exactly iff $b = 2^n$
+		\pause\item In particular, IEEE float can't represent $\frac{1}{10} = 0.1$ exactly!
+		\pause\item This can lead to \textbf{rounding errors} with some calculations
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Testing for equality}
+	\begin{itemize}
+		\pause\item Due to rounding errors, using \lstinline{==} or \lstinline{!=} with floating point numbers is almost always a bad idea
+		\pause\item E.g.\ in most languages, \lstinline{0.1 + 0.2 == 0.3} evaluates to \lstinline{false}!
+		\pause\item Better to check for \textbf{approximate equality}: calculate the difference between the numbers,
+			and check that it's smaller than some threshold
+		\pause\item E.g.\ Unity has \lstinline{Mathf.Approximately} which does exactly this
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Decimal type}
+	\begin{itemize}
+		\pause\item C\# has a \lstinline{decimal} type
+		\pause\item Uses base 10 rather than base 2, so avoids some of the surprises of IEEE float
+		\pause\item ... however not natively supported by the CPU, hence much slower than \lstinline{float}/\lstinline{double}
+	\end{itemize}
+\end{frame}
