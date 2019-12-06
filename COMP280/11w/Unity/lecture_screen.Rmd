@@ -1,0 +1,179 @@
+---
+title: 'COMP280 Week 11: Workshop'
+author: "Alcwyn Parker"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    theme: united
+    highlight: espresso
+    toc_depth: 2
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE, fig.align="center")
+opts_knit$get("rmarkdown.pandoc.to")
+html <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"
+mycounter <- 0
+
+```
+
+
+```{r results='asis'}
+if (!html) {
+  cat("\\title{\\sessionnumber: An Introduction to HCI} \\subtitle{\\modulecode: \\moduletitle} \\frame{\\titlepage} ")
+}
+```
+
+## Register Attendance
+![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/tapit.png)
+
+
+## Learning Outcomes 
+After completing this worksheet you will be able to:
+
+- **Create** new scripts
+- **Design** UI in Unity
+- **Connect** a progress bar widget to a c# variable  
+
+*Using Unity 2018.4.3f1
+
+# PART 1 - SETUP
+
+## `r mycounter<-mycounter+1; mycounter`. Create Project
+
+- Launch Unity
+- Create a new 3D project
+
+![](assets/01-create.png)
+
+
+
+## `r mycounter<-mycounter+1; mycounter`. Asset Pack
+
+- Go to the asset store
+- Search for the 'Standard Assets'
+- Download and Import 
+
+![](assets/02-standardassets.png)
+
+## FirstPerson
+
+- Open the FPS Scene insde the imported assets. 
+
+![](assets/03-fps.png)
+
+## Canvas
+
+- Add a canvas to the scene and rename it 'HUD'
+
+![](assets/4-hud.png)
+
+## Slider 
+
+Now add a Slide Bar UI component and rename it 'HealthBar'
+
+![](assets/5-slider.png)
+
+## Delete 
+
+- Delete the 'Handle Slide Area' from insider the Slide Bar. We don't need this for health.
+
+![](assets/06-delete.png)
+
+
+## Slider Target Graphic
+
+- Now grab the fill from inside the 'Fill Area' and Drag it on to the 'Target Graphic' property of the main HealthBar component.
+
+![](assets/07-graphic.png)
+
+## Set Fill Width
+
+- Now click the 'Fill' object inside of 'Fill Area' and set the width to 0 in the inspector.
+
+![](assets/08-fill0.png)
+
+## Adjust the Fill Dimensions
+
+- Using the Rect tool in the editor, adjust the 'Fill Area' dimensions to fit the 'Background' better.
+![](assets/09-rect.png)
+
+## Final HealthBar Inspector Settings
+
+- Now make sure the the hierarchy and HealthBar inspector settings match what can be seen below. 
+
+![](assets/10-set-slider.png)
+
+## Test with a Script
+
+- Create a 'Script' folder in the assets root. 
+- Create a new script inside this folder: 'IncrementHealth.cs'
+- Double click on the script so it opens in editor. 
+
+Now, Import the UI resources at the top of the file:
+``` using UnityEngine.UI; ``` 
+
+Add the variables above 'void Start()':
+```
+Slider sliderComponent;
+float healthValue = 100f; 
+```
+
+Inside 'void Start()' add:
+```
+sliderComponent = GetComponent<Slider>();
+InvokeRepeating("UpdateLoop", 2.0f, 0.3f);
+```
+
+Add a timer function at the bottom of the class:
+```
+void UpdateLoop()
+{
+     healthValue += 10;
+     if (healthValue > 100) healthValue = 0;
+    sliderComponent.value = healthValue;
+}
+```
+
+## The Final File
+
+```
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+public class HealthIncrement : MonoBehaviour
+{
+    Slider sliderComponent;
+    float healthValue = 100f; 
+    // Start is called before the first frame update
+    void Start()
+    {
+        sliderComponent = GetComponent<Slider>();
+        InvokeRepeating("UpdateLoop", 2.0f, 0.3f);
+    }
+    // Update is called once per frame
+    void Update()
+    {
+    }
+    void UpdateLoop()
+    {
+         healthValue += 10;
+         if (healthValue > 100) healthValue = 0;
+        sliderComponent.value = healthValue;
+    }
+}
+
+```
+
+## Add Script to Scene
+
+Go back to Unity and drag the new script from the project explorer onto the HealthBar object in the scene. 
+
+Press Play to test
+
+
+
+
