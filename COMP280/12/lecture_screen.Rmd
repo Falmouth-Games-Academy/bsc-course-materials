@@ -26,7 +26,7 @@ html <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"
 
 ```{r results='asis'}
 if (!html) {
-  cat("\\title{\\sessionnumber: An Introduction to HCI} \\subtitle{\\modulecode: \\moduletitle} \\frame{\\titlepage} ")
+  cat("\\title{\\sessionnumber: An Introduction Expert Usability Testing} \\subtitle{\\modulecode: \\moduletitle} \\frame{\\titlepage} ")
 }
 ```
 
@@ -101,6 +101,19 @@ Expert Inspection
 3. **Assess -** Expert assigns a severity rating to each issue found.
 4. **Debrief -** Short debrief to discuss the findings with the relevant stakeholders (usually the other experts and the design team).
 
+## Severity Rating
+
+** It is common to rate usabilty issues on a scale from 0 to 4 **
+
+- 0 = I don't agree that this is a usability problem at all
+- 1 = Cosmetic problem only: need not be fixed unless extra time is available on project
+- 2 = Minor usability problem: fixing this should be given low priority
+- 3 = Major usability problem: important to fix, so should be given high priority
+- 4 = Usability catastrophe: imperative to fix this before product can be released
+
+This is done after the fact
+
+
 ## When?
 > "Since the evaluators are not using the system as such (to perform a real task), it is possible to perform heuristic evaluation of user interfaces that exist on paper only and have not yet been implemented (Nielsen 1990). This makes heuristic evaluation suited for use early in the usability engineering lifecycle."
 
@@ -146,7 +159,7 @@ we are looking for issues in located in a dialogue in four different ways:
 
 
 
-# Jacob Nielsens Original Heuristics (Revised)
+## Jacob Nielsens Original Heuristics (Revised)
 
 ## Visibility of system status
 The system should always keep users informed about what is going on, through appropriate feedback within reasonable time.
@@ -187,10 +200,25 @@ Error messages should be expressed in plain language (no codes), precisely indic
 ## Help and documentation
 Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation. Any such information should be easy to search, focused on the user's task, list concrete steps to be carried out, and not be too large.
 
+
 ## Alternatives
+
+![](assets/ambient.png){ width=40% }
+![](assets/VR.png){ width=40% }
+
+![](assets/homeauto.png){ width=40% }
+
+![](assets/elearning.png){ width=40% }
+
+## and many more... 
+
 - [Heuristic Evaluation for Playability (HEP)](https://www.researchgate.net/publication/200553251_Using_heuristics_to_evaluate_the_playability_of_games)
 - [Heuristic evaluation of virtual reality applications](https://www.researchgate.net/publication/222086342_Heuristic_evaluation_of_virtual_reality_applications)
-- [Usability Principles for Video Game Design](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.142.211&rep=rep1&type=pdf)
 - [Augmented Reality Design Heuristics: DESIGNING FOR
 DYNAMIC INTERACTIONS](http://journals.sagepub.com/doi/pdf/10.1177/1541931213602007)
 - and many more!
+
+
+## We are going to use: 
+
+[The Nielson Standard](https://tfa.stanford.edu/download/TenUsabilityHeuristics.pdf)
