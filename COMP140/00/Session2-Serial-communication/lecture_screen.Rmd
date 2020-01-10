@@ -1,0 +1,118 @@
+---
+title: ""
+author: "Al"
+date: "01/10/2018"
+output:
+  html_document:
+    toc_depth: 2
+    toc: yes
+  # beamer_presentation:
+  #   includes:
+  #     in_header:
+  #     - sessioninfo.tex
+  #     - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
+  #   keep_tex: no
+  #   slide_level: 2
+  #   toc: no
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE, fig.align="center")
+opts_knit$get("rmarkdown.pandoc.to")
+html <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"
+```
+
+
+```{r results='asis'}
+if (!html) {
+  cat("\\title{\\sessionnumber: Communication Between Computers} \\subtitle{\\modulecode: \\moduletitle} \\frame{\\titlepage} ")
+}
+
+#############
+## CENTER 
+out_type = knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+centerImage = function(asset, scale = 0.6){
+  
+  perc <- scale * 100
+  
+  if(out_type == 'latex' || out_type == 'beamer')
+    paste("\\begin{figure}\n \\includegraphics[width=", scale, "\\columnwidth]{", asset, "}\n \\end{figure}", sep="")
+  else if(out_type == 'html')
+    paste("<center>\n![](", asset, "){ width=", perc, "% }\n</center>", sep="")
+  else
+    asset
+}
+```
+```
+
+## Register Attendance
+![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/tapit.png)
+
+## Learning Outcomes {.build}
+After this session you will be able to:
+
+- **Identify** the various parts of the Arduino and their function
+- **Explain** the difference between analog and digital
+- **Follow** the Arduino tutorials to create basic functionality
+
+
+
+
+## What is Serial Communication?
+
+- Arduino to Multimedia Computer (retro term alert) 
+- Arduino to Arduino 
+- Arduino to sensors
+
+Some kind of picture? 
+
+
+## Types of Serial Communications
+
+- **I2C**
+- RS232
+- **USB**
+- R2422
+- CAN
+- Microwire
+- RS485
+- **SPI**
+- **TTL**
+
+## Protocols
+
+A protocol is the language that governs communication between systems or devices.
+
+
+- Midi
+- DMX-512
+- X10
+- USB
+- RS485
+- UDP/IP
+- TCP/IP
+
+## Physical Agreement 
+
+## Timing Agreement
+
+## Electrical Agreement
+
+## Package Size
+
+## Hexadecimal
+
+
+
+## SPI vs I2C
+
+
+
+
+
+
+
+
+
