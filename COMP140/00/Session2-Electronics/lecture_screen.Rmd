@@ -1,0 +1,91 @@
+---
+title: "GAM160-COMP140 Creative Computing Project"
+author: "Al"
+date: "01/10/2018"
+output:
+  # html_document:
+  #   toc_depth: 2
+  #   toc: yes
+  beamer_presentation:
+    includes:
+      in_header:
+      - sessioninfo.tex
+      - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
+    keep_tex: no
+    slide_level: 2
+    toc: no
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE, fig.align="center")
+opts_knit$get("rmarkdown.pandoc.to")
+html <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"
+
+if (!html) {
+  cat("\\title{\\sessionnumber: Hardware Interfaces} \\subtitle{\\modulecode: \\moduletitle} \\frame{\\titlepage} ")
+}
+
+```
+
+
+
+```{r results='asis'}
+
+#############
+## CENTER 
+out_type = knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+centerImage = function(asset, scale = 0.6){
+  
+  perc <- scale * 100
+  
+  if(out_type == 'latex' || out_type == 'beamer')
+    paste("\\begin{figure}\n \\includegraphics[width=", scale, "\\columnwidth]{", asset, "}\n \\end{figure}", sep="")
+  else if(out_type == 'html')
+    paste("<center>\n![](", asset, "){ width=", perc, "% }\n</center>", sep="")
+  else
+    asset
+}
+```
+
+## Register Attendance
+![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/tapit.png)
+
+## Learning Outcomes {.build}
+After this session you will be able to:
+
+- **Exlain** the difference between current, voltage, and resistance
+- **Predict** the characteristics of basic circuits using simple formulas
+- **Choose** components based on their purpose and characteristics
+
+## What is current electricity? 
+
+(the stuff that makes our gadgets tick)
+
+`r centerImage("assets/electrons.png", .9)`
+^source:https://learn.sparkfun.com/tutorials/what-is-electricity/allrmar^
+
+- The flow of electrons through
+- a closed circuit (wire, components, etc)
+- Induced by an electric field (battery)
+
+## Battery Example
+
+`r centerImage("assets/battery.png", .5) `
+^source:https://learn.sparkfun.com/tutorials/what-is-electricity/allrmar^
+
+## Basic characteristics 
+
+- **Voltage (V)** - The relative level of electrical energy between any two points in a circuit. Voltage is measured in *volts*.
+- **Current (I)** - The amount of electrical energy passing through any point in a circui. Current is measured in *amps*
+- **Resistence (R)** - The amount that any component in the circuit resists the flow of current. Resistence is measured in *ohms*
+
+## Water Analogy
+
+`r centerImage("assets/analogy.png", .75)`
+#### Hagan,J.(2017). Learn Electronics with Arduino. Maker Media, Inc.
+
+## Ohms Law
+
+I = V / R
