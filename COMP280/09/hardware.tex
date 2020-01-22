@@ -1,0 +1,59 @@
+% http://tex.stackexchange.com/questions/30720/footnote-without-a-marker
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\part{Graphics and simulation hardware}
+\frame{\partpage}
+
+\begin{frame}{CPUs vs GPUs}
+	\begin{itemize}
+		\item (CPU = central processing unit; GPU = graphics processing unit)
+		\pause \item GPUs are \textbf{highly parallelised}
+			\begin{itemize}
+				\pause \item Intel i7 6900K: \textbf{8} cores
+				\pause \item Nvidia GTX 1080: \textbf{2560} shader processors
+			\end{itemize}
+		\pause \item GPUs are \textbf{highly specialised}
+			\begin{itemize}
+				\pause \item Optimised for floating-point calculations rather than logic
+				\pause \item Optimised for performing the same calculation on several thousand vertices or pixels at once
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{General purpose GPU (GPGPU)}
+	\begin{itemize}
+		\item Early GPUs used a \textbf{fixed pipeline} -- could only be used for rendering 3D graphics
+		\pause \item Modern GPUs use a \textbf{programmable pipeline} -- can be programmed for other tasks
+		\pause \item Physics simulation (e.g.\ PhysX)
+		\pause \item Scientific computing (e.g.\ CUDA)
+		\pause \item Deep learning
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Graphics APIs}
+	\begin{itemize}
+		\item Graphics APIs \textbf{abstract} away the differences between different manufacturers' GPUs
+		\pause\item There are several APIs in use today:
+		\begin{itemize}
+			\pause\item \textbf{OpenGL}: Open standard, very mature, very widely supported
+			\pause\item \textbf{Vulkan}: Open standard, less mature, lots of control on rendering, lots of work to get a basic sample working
+			\pause\item \textbf{Direct3D}: Microsoft only
+			\pause\item \textbf{Metal}: Apple only
+			\pause\item Sony and Nintendo consoles have their own APIs; Microsoft consoles use Direct3D
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Game Engines \& Graphic APIs}
+\begin{itemize}
+	\item Game Engines tend to support multiple Graphics API
+	\pause \item They using have an abstract rendering layer which has concrete implementations of D3D, OpenGL, Vulkan, Metal, Console APIs etc
+	\pause \item This allows the Engine to support multiple platforms
+	\pause \item In addition, this makes it easier to upgrade the engine to support new versions of APIs or newly released APIs
+\end{itemize}
+\end{frame}

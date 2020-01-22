@@ -1,0 +1,42 @@
+\part{Recursion}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Recursion}
+    \begin{itemize}
+        \pause\item A \textbf{recursive} function is a function that \textbf{calls itself}
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+int factorial(int n)
+{
+    if (n <= 1)
+        return 1;
+    else
+        return n * factorial(n-1);
+}
+    \end{lstlisting}
+    \begin{itemize}
+        \pause\item Recursive functions need a \textbf{base case} where they stop recursing,
+			otherwise they will go \textbf{forever}
+        \pause\item (Or rather, until a \textbf{stack overflow})
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Thinking recursively}
+	\begin{itemize}
+		\pause\item I want to solve a problem
+		\pause\item If I already had a function to solve smaller instances of the problem, I could use it
+			to write my function
+		\pause\item I can solve the smallest possible problem
+		\pause\item Therefore I can write a recursive function
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The call stack}
+	\begin{itemize}
+		\pause\item Recall: nested function calls are handled using a \textbf{stack}
+		\pause\item Recursive functions are no different
+		\pause\item This means if a recursive function contains \textbf{local variables},
+			they are \textbf{independent} between instances of the function
+	\end{itemize}
+\end{frame}

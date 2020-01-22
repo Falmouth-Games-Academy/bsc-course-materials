@@ -1,0 +1,20 @@
+\part{Indices}
+\frame{\partpage}
+
+\begin{frame}{Indices and Rendering}
+	\begin{itemize}
+		\item Indices are integers which specify the vertices that make up a mesh
+		\pause\item In rendering this allows us to send less data to the pipeline
+		\pause\item A cube would have 36 vertices, this will be at least 432 bytes (12 bytes per vertex)
+		\pause\item With indices, we used 8 vertices and 36 indices, which is around 240 bytes in total.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Index Buffer}
+\begin{itemize}
+	\item These indices are stored in what is know as a Index Buffer(Directx) or Element Buffer(OpenGL)
+	\pause \item In OpenGL and Directx, we fill these up and tell the pipeline what Buffer to use
+	\pause \item In UE4 and Unity, these buffers are usually hidden away from us
+	\pause \item We typically use higher level classes such as C\# Mesh and UE4 Procedural Mesh to add in our own indices 
+\end{itemize}
+\end{frame}

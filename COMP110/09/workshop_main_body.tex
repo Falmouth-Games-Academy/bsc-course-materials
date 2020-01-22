@@ -5,7 +5,7 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=Python
+\lstset{language=[Sharp]C
 }
 
 % For strikethrough effect
@@ -28,23 +28,53 @@
 
 \frame{\titlepage} 
 
-\begin{frame}{Exercise Sheet iii}
+\begin{frame}{Worksheet 6}
     \begin{center}
-        Due \textbf{tomorrow}
+        Due \textbf{Monday 25th November}
     \end{center}
 \end{frame}
 
-\input{python_data_structures}
-%\input{linked_list}
-\input{2d_arrays}
+\input{cs_generics}
+\input{cs_data_structures}
+\input{linked_list}
+%\input{2d_arrays}
 
-\begin{frame}{Worksheet D}
-    \begin{center}
-        Due \textbf{next week}
-    \end{center}
-\end{frame}
-
-\begin{frame}{Exercise Sheet iii}
+\begin{frame}{Workshop}
+    \footnotesize
+    \begin{columns}
+        \begin{column}{0.45\textwidth}
+            For each of the following containers:
+            
+                array, \lstinline{List}, \lstinline{LinkedList},
+                \lstinline{Dictionary}, \lstinline{HashSet},
+                \lstinline{SortedDictionary}, \lstinline{SortedList},
+                \lstinline{SortedSet}, \lstinline{Stack}, \lstinline{Queue}
+                
+            And each of the operations $\to$, use the Microsoft .NET documentation
+            and experimentation to answer the following:
+            
+            \begin{itemize}
+                \item Does this operation make sense / is it possible?
+                \item If so, how do you do it?
+                \item What is the time complexity?
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Add an element at the [beginning, $i$, end]
+                \item Remove an element at the [beginning, $i$, end]
+                \item Get the [first, $i$th, last] element
+                \item Find if a specific element is present
+                \item Get the [smallest, largest] element
+                \item Get the number of elements
+                \item Copy the container
+                \item Reverse the container
+                \item Sort the container
+                \item Randomly shuffle the container
+                \item Print a string listing the contents
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \end{document}

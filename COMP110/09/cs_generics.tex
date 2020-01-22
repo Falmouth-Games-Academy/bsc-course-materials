@@ -1,0 +1,135 @@
+\part{Generics in C\#}
+\frame{\partpage}
+
+\begin{frame}[fragile]{The problem}
+    \begin{itemize}
+        \pause\item Suppose we want to define a \lstinline{Pair} class to store two values
+        \pause\item Something like this...
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+class PairOfInts
+{
+    public int first;
+    public int second;
+    
+    public PairOfInts(int f, int s)
+    {
+        first = f;
+        second = s;
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{The problem}
+    \begin{itemize}
+        \pause\item This is fine if we just want pairs of \lstinline{int}s
+        \pause\item To store a pair of \lstinline{string}s we would need another class:
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+class PairOfStrings
+{
+    public string first;
+    public string second;
+    
+    public PairOfStrings(string f, string s)
+    {
+        first = f;
+        second = s;
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{The problem}
+    \begin{itemize}
+        \pause\item This quickly gets repetitive!
+        \pause\item We could just store a pair of \lstinline{object}s --- in C\# \lstinline{object} can store values of any
+            type
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+class PairOfObjects
+{
+    public object first;
+    public object second;
+    
+    public PairOfObjects(object f, object s)
+    {
+        first = f;
+        second = s;
+    }
+}
+    \end{lstlisting}
+    \begin{itemize}
+        \pause\item However this doesn't let us impose type safety
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{The solution}
+    \begin{itemize}
+        \pause\item \textbf{Generics} are a feature of C\# which let us pass types as ``parameters''
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+class Pair<ElementType>
+{
+    public ElementType first;
+    public ElementType second;
+    
+    public PairOfObjects(ElementType f, ElementType s)
+    {
+        first = f;
+        second = s;
+    }
+}
+    \end{lstlisting}
+    \begin{itemize}
+        \pause\item \lstinline{ElementType} can be any type
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{The solution}
+    \begin{itemize}
+        \pause\item When we instantiate the generic class, we pass in the type in angle brackets:
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+Pair<int> pairOfInts = new Pair<int>(12, 34);
+Pair<string> pairOfStrings = new Pair<string>("hello", "world");
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Multiple parameters}
+    \begin{itemize}
+        \pause\item Generics can take multiple parameters:
+    \end{itemize}
+    \pause
+    \begin{lstlisting}
+class Pair<Type1, Type2>
+{
+    public Type1 first;
+    public Type2 second;
+    
+    public PairOfObjects(Type1 f, Type2 s)
+    {
+        first = f;
+        second = s;
+    }
+}
+    \end{lstlisting}
+    \begin{lstlisting}
+Pair<int, string> x = new Pair<int, string>(123, "hello");
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Why generics?}
+    \begin{itemize}
+        \pause\item Generics let us write type safe code which can be adapted to data of different types
+        \pause\item Standard libraries in .NET and Unity make use of generics for e.g.\ container types
+        \pause\item Similar to \textbf{templates} in C++
+    \end{itemize}
+\end{frame}
+

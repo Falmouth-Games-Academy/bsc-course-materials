@@ -1,0 +1,27 @@
+\part{Fragment Shader}
+\frame{\partpage}
+
+\begin{frame}{Reminder}
+	\begin{itemize}
+		\item Takes in a pixel fragment (see rasterization)
+		\pause \item Outputs colour and depth values
+		\pause \item Typically used for shading calculations and texturing
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Fragment Shader - GLSL Example}
+	\begin{lstlisting}
+		#version 330 core
+		
+		in vec2 vertexTextureCoordOut;
+		
+		out vec4 colour;
+		
+		uniform sampler2D diffuseTexture;
+		
+		void main()
+		{
+			colour=texture2D(diffuseTexture,vertexTextureCoordOut);
+		}
+	\end{lstlisting}
+\end{frame}

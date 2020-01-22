@@ -1,0 +1,65 @@
+\part{Scientific notation}
+\frame{\partpage}
+
+\begin{frame}{Integer powers}
+	Let $a \neq 0$ be a real number, and let $b > 0$ be an integer
+	\pause
+	$$ a^b = \underbrace{a \times a \times \dots \times a}_{\text{$b$ times}} $$
+	\pause
+	$$ a^0 = 1 $$
+	\pause
+	$$ a^{-b} = \underbrace{\frac{1}{a \times a \times \dots \times a}}_{\text{$b$ times}} $$
+\end{frame}
+
+\begin{frame}{Powers of 10}
+	\pause
+	$$ 10^6 = 1\underbrace{000\,000}_{\text{6 zeroes}} $$
+	\pause
+	$$ 10^1 = 10 $$
+	\pause
+	$$ 10^0 = 1 $$
+	\pause
+	$$ 10^{-1} = 0.1 $$
+	\pause
+	$$ 10^{-6} = 0.\underbrace{000\,00}_{\text{5 zeroes}}1 $$
+\end{frame}
+
+\begin{frame}{Multiplying by powers of 10}
+	\pause
+	Multiplying by $10^n$ is the same as moving the decimal point $n$ places to the \textbf{right}
+	(adding zeroes if necessary)
+	\pause
+	$$ 3.14159 \times 10^2 = 314.159 $$
+	\pause
+	$$ 27 \times 10^3 = 27\,000 $$
+	\pause
+	Similarly if $n$ is negative, the decimal point moves to the \textbf{left}
+	\pause
+	$$ 123.45 \times 10^{-2} = 1.2345 $$
+\end{frame}
+
+\begin{frame}{Scientific notation}
+	\begin{itemize}
+		\pause\item A way of writing \textbf{very large} and \textbf{very small} numbers
+		\pause\item $a \times 10^b$, where
+			\begin{itemize}
+				\pause\item $a$ ($1 \leq |a| < 10$) is the \textbf{mantissa}
+				\pause\item ($a$ is a positive or negative number
+					with a single non-zero digit before the decimal point)
+				\pause\item $b$ (an integer) is the \textbf{exponent}
+			\end{itemize}
+		\pause\item E.g.\ 1 light year = $9.461 \times 10^{15}$ metres
+		\pause\item E.g.\ Planck's constant = $6.626 \times 10^{-34}$ joules
+		\pause\item Socrative \texttt{FALCOMPED}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Scientific notation in code}
+	\pause Instead of writing \fbox{$\times 10$}, write \fbox{\lstinline{e}} (no spaces)
+	\pause
+	\begin{lstlisting}
+double lightYear = 9.461e15;
+double plancksConstant = 6.626e-34;
+	\end{lstlisting}
+\end{frame}
+

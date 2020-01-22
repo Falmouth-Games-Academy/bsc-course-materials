@@ -1,0 +1,183 @@
+---
+title: "GAM160-COMP140 Creative Computing Project"
+author: "Al"
+date: "01/10/2018"
+output:
+  # html_document:
+  #   toc_depth: 2
+  #   toc: yes
+  beamer_presentation:
+    includes:
+      in_header:
+      - sessioninfo.tex
+      - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
+    keep_tex: no
+    slide_level: 2
+    toc: no
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE, fig.align="center")
+opts_knit$get("rmarkdown.pandoc.to")
+html <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"
+
+if (!html) {
+  cat("\\title{\\sessionnumber: Hardware Interfaces} \\subtitle{\\modulecode: \\moduletitle} \\frame{\\titlepage} ")
+}
+
+```
+
+
+
+```{r results='asis'}
+
+#############
+## CENTER 
+out_type = knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+centerImage = function(asset, scale = 0.6){
+  
+  perc <- scale * 100
+  
+  if(out_type == 'latex' || out_type == 'beamer')
+    paste("\\begin{figure}\n \\includegraphics[width=", scale, "\\columnwidth]{", asset, "}\n \\end{figure}", sep="")
+  else if(out_type == 'html')
+    paste("<center>\n![](", asset, "){ width=", perc, "% }\n</center>", sep="")
+  else
+    asset
+}
+
+centerText = function (text, size = 10) {
+  
+  baseLineSkip <- size * 1.2 # \fontsize{size}{baselineskip}
+  
+  if(out_type == 'latex' || out_type == 'beamer')
+    paste("\\begin{center}\n","{\\fontsize{", size, "}{", baseLineSkip, "}\\selectfont ",text, "}\n \\end{center}", sep="")
+  else if(out_type == 'html')
+    paste("<center style=\"font-size:", size,"px;\">\n", text, "\n</center>", sep="")
+  else
+    asset
+}
+```
+
+## Register Attendance
+![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/tapit.png)
+
+## Learning Outcomes {.build}
+After this session you will be able to:
+
+- **Exlain** the difference between current, voltage, and resistance
+- **Predict** the characteristics of basic circuits using simple formulas
+- **Choose** components based on their purpose and characteristics
+
+## What is current electricity? 
+
+(the stuff that makes our gadgets tick)
+
+`r centerImage("assets/electrons.png", .9)`
+^source:https://learn.sparkfun.com/tutorials/what-is-electricity/allrmar^
+
+- The flow of electrons through
+- a closed circuit (wire, components, etc)
+- Induced by an electric field (battery)
+
+## Battery Example
+
+`r centerImage("assets/battery.png", .5) `
+^source:https://learn.sparkfun.com/tutorials/what-is-electricity/allrmar^
+
+## Basic characteristics 
+
+- **Voltage (V)** - The relative level of electrical energy between any two points in a circuit. Voltage is measured in *volts*.
+- **Current (I)** - The amount of electrical energy passing through any point in a circui. Current is measured in *amps*
+- **Resistence (R)** - The amount that any component in the circuit resists the flow of current. Resistence is measured in *ohms*
+
+## Water Analogy
+
+`r centerImage("assets/analogy.png", .75)`
+#### Hagan,J.(2017). Learn Electronics with Arduino. Maker Media, Inc
+
+## Resistors (Series vs. Parrallel)
+
+
+
+## Ohm's Law
+
+`r centerText("$I = V / R$", 40)` 
+
+- If the voltage increases, whe the current (a) increase or (b) decrease.
+- If the resistance increases will the current (a) increase or (b) decrease.
+
+## Ohm's Law Example 1
+
+
+
+## Ohm's Law Example 2
+
+
+## Power (Watts-W)
+
+Similar to current, Power is a measure of change over time. Instead of charge, power is the amount of energy converted into heat over time.
+
+- When the flow of current is resisted, heat is generated
+- Calculated by measuring the voltage across a load times the current flowing through it
+
+`r centerText("$P = I x v$", 40)`
+
+`r centerText("$P = V^2 / R$", 40)` 
+
+## Power Example
+
+
+## Reading Schematic Diagrams
+
+`r centerImage("assets/basic-circuit.png")`
+
+## The Rules
+
+- Positive volatages are uppermost
+- Things happen left to right
+- All components have a name and values
+- Remember symbols
+- Dots show that the wires are connected: 
+`r centerImage("assets/connections.png", .2)`
+- Nets: Inferred connection based on symbol or name: 
+`r centerImage("assets/connections.png", .2)`
+
+## Reading Schematic Diagrams (answer)
+
+`r centerImage("assets/basic-circuit-answer.png")`
+
+
+## Schematic Circuits 1
+
+`r centerImage("assets/schemes-top.jpg", .85)`
+^source:https://www.autodesk.com/products/eagle/blog/how-to-read-your-first-autodesk-eagle-schematic-like-a-pro-in-3-easy-steps^
+
+## Schematic Circuits 2
+
+`r centerImage("assets/schemes-bottom.jpg", .85)`
+^source:https://www.autodesk.com/products/eagle/blog/how-to-read-your-first-autodesk-eagle-schematic-like-a-pro-in-3-easy-steps^
+
+## Voltage Divider
+
+- Used to step down the voltage
+- Involves a pair of resistors 
+
+`r centerImage("assets/divider.png")`
+
+## Voltage Divider Formula
+
+`r centerImage("assets/divider-answer.png")`
+
+`r centerText("$ V out = \\frac{V_s x R_2}{(R_1 / R_2)}$", 40)` 
+
+
+
+
+
+
+
+
+

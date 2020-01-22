@@ -4,11 +4,17 @@
 \usepackage{multimedia}
 \graphicspath{ {../../} }
 
+% https://tex.stackexchange.com/a/115743
+\usepackage{algpseudocode}
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+
 % Default language for code listings
-\usepackage{mips}
-\lstset{language=[mips]Assembler,
-	morekeywords={[3]\$d,\$s,\$t}
-}
+\lstset{language=,
+	morekeywords={ADC,AND,ASL,BCC,BCS,BEQ,BIT,BMI,BNE,BPL,BRK,BVC,BVS,CLC,
+		CLD,CLI,CLV,CMP,CPX,CPY,DEC,DEX,DEY,EOR,INC,INX,INY,JMP,
+		JSR,LDA,LDX,LDY,LSR,NOP,ORA,PHA,PHP,PLA,PLP,ROL,ROR,RTI,
+		RTS,SBC,SEC,SED,SEI,STA,STX,STY,TAX,TAY,TSX,TXA,TXS,TYA},
+	morecomment=[l]{;}}
 
 % For strikethrough effect
 \usepackage[normalem]{ulem}
@@ -27,24 +33,11 @@
 
 \frame{\titlepage} 
 
-\begin{frame}
-	\frametitle{Learning outcomes}
-	\begin{itemize}
-		\item \textbf{Explain} the difference between interpretation, just-in-time compilation and ahead-of-time compilation
-		\item \textbf{Describe} how common high-level code structures translate to machine code
-		\item \textbf{Write} and \textbf{understand} simple assembly language programs
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Exercise Sheet iv}
-	\begin{center}
-		Due \textbf{tomorrow}!
-	\end{center}
-\end{frame}
-
+\input{worksheets}
 \input{compilers_vs_interpreters}
-\input{mips}
-\input{control_flow}
-\input{machine_code}
+\input{6502}
+
+\part{Workshop}
+\frame{\partpage}
 
 \end{document}
