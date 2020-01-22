@@ -3,17 +3,17 @@ title: "asdfasdfadsf"
 author: "Al"
 date: "01/10/2018"
 output:
-  html_document:
-    toc_depth: 2
-    toc: yes
-  # beamer_presentation:
-  #   includes:
-  #     in_header:
-  #     - sessioninfo.tex
-  #     - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
-  #   keep_tex: no
-  #   slide_level: 2
-  #   toc: no
+  # html_document:
+  #   toc_depth: 2
+  #   toc: yes
+  beamer_presentation:
+    includes:
+      in_header:
+      - sessioninfo.tex
+      - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
+    keep_tex: no
+    slide_level: 2
+    toc: no
 ---
 
 ```{r setup, include=FALSE}

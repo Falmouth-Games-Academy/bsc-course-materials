@@ -1,7 +1,7 @@
 ---
-title: "GAM160-COMP140 Creative Computing Project"
-author: "Al"
-date: "01/10/2018"
+title: "COMP140 Creative Computing Project"
+author: "Alcwyn Parker"
+date: "18/01/2020"
 output:
   # html_document:
   #   toc_depth: 2
@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = FALSE, fig.align="center")
 opts_knit$get("rmarkdown.pandoc.to")
 html <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"
 
-if (!html) {
+if (!html) { 
   cat("\\title{\\sessionnumber: Hardware Interfaces} \\subtitle{\\modulecode: \\moduletitle} \\frame{\\titlepage} ")
 }
 
@@ -98,38 +98,6 @@ After this session you will be able to:
 `r centerImage("assets/analogy.png", .75)`
 #### Hagan,J.(2017). Learn Electronics with Arduino. Maker Media, Inc
 
-## Resistors (Series vs. Parrallel)
-
-
-
-## Ohm's Law
-
-`r centerText("$I = V / R$", 40)` 
-
-- If the voltage increases, whe the current (a) increase or (b) decrease.
-- If the resistance increases will the current (a) increase or (b) decrease.
-
-## Ohm's Law Example 1
-
-
-
-## Ohm's Law Example 2
-
-
-## Power (Watts-W)
-
-Similar to current, Power is a measure of change over time. Instead of charge, power is the amount of energy converted into heat over time.
-
-- When the flow of current is resisted, heat is generated
-- Calculated by measuring the voltage across a load times the current flowing through it
-
-`r centerText("$P = I x v$", 40)`
-
-`r centerText("$P = V^2 / R$", 40)` 
-
-## Power Example
-
-
 ## Reading Schematic Diagrams
 
 `r centerImage("assets/basic-circuit.png")`
@@ -159,6 +127,91 @@ Similar to current, Power is a measure of change over time. Instead of charge, p
 
 `r centerImage("assets/schemes-bottom.jpg", .85)`
 ^source:https://www.autodesk.com/products/eagle/blog/how-to-read-your-first-autodesk-eagle-schematic-like-a-pro-in-3-easy-steps^
+
+## Ohm's Law
+
+`r centerText("$I = V / R$", 40)` 
+
+- If the voltage increases, whe the current (a) increase or (b) decrease.
+- If the resistance increases will the current (a) increase or (b) decrease.
+
+## Ohm's Law Example 1
+
+`r centerImage("assets/ohms1.png")`
+
+## Ohm's Law Example 1 - Answer
+
+$$ I = V/R $$
+
+$$ 0.24amps = ? / 150ohms $$
+$$ V = 0.24 * 150 $$
+
+Answer = 36 Volts
+
+## Ohm's Law Example 2
+
+`r centerImage("assets/ohms2.png")`
+
+## Ohm's Law Example 2 - Answer
+
+$$ I = V/R $$
+
+$$ 3amps = 12volts / ? $$
+$$ R = 12 / 3 $$
+
+Answer = 4Ohms
+
+## Resistors (Series vs. Parrallel)
+
+`r centerImage("assets/series.png")`
+
+`r centerImage("assets/parallel.png")`
+
+## Series
+
+`r centerImage("assets/series.png")`
+
+$$ R_{T} = R_{1} + R_{2} + R_{3} + R_{4} $$
+$$ R_{T} = 4700 + 4700 + 4700 + 4700 = 18000ohms = 18kohms$$
+
+
+
+## Parallel
+
+`r centerImage("assets/parallel.png", .4)`
+
+$$ Conductance(G) = \frac{1}{R_{T}} = \frac{1}{R_{1}} + \frac{1}{R_{2}} + \frac{1}{R_{3}} + \frac{1}{R_{4}} $$
+
+Then calculate the resistance based on the reciprocal:
+
+$$ Conductance(G) = \frac{4}{4700}  Reciprocal = \frac{4700}{4} $$
+
+Resistance = 1175ohms = 1.175kohms
+
+## Power Dissipation (Watts-W)
+
+Similar to current, Power is a measure of change over time. Instead of charge, power is the amount of energy converted into heat over time.
+
+- When the flow of current is resisted, heat is generated
+- Calculated by measuring the voltage across a load times the current flowing through it
+
+`r centerText("$P = I * v$", 40)`
+
+`r centerText("$P = V^2 / R$", 40)` 
+
+## Power Example
+
+`r centerImage("assets/power.png")`
+
+## Power Example Answer
+
+`r centerImage("assets/power.png",.4)`
+
+$I = 12/3 = 4$
+
+$W = 12 * 4 = 48$
+
+Power Dissispation = 48 Watts
 
 ## Voltage Divider
 
