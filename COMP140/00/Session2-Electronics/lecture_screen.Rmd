@@ -224,13 +224,25 @@ Power Dissispation = 48 Watts
 
 `r centerImage("assets/divider-answer.png")`
 
-`r centerText("$ V out = \\frac{V_s x R_2}{(R_1 / R_2)}$", 40)` 
+`r centerText("$ V out = \\frac{V_s x R_2}{(R_1 + R_2)}$", 40)` 
 
 
+## Voltage Divider Example 1
 
+`r centerImage("assets/divider2.png", .8)`
 
+## Voltage Divider Example 1 - Answer
 
+$$ V out = \frac{V_s x R_2}{(R_1 + R_2)} $$
 
+$$ 12v * 2200ohms = 26400 $$
 
+$$ 4000 + 2200 = 6200 $$
+
+$$ 26400 / 6200 = 4.26 volts $$
+
+## Reading Data Sheets 
+
+[Andy - Do you have anything for this? ]
 
 
