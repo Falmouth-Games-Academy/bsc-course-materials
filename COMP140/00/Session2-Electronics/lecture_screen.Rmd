@@ -1,19 +1,19 @@
 ---
-title: "COMP140 Creative Computing Project"
+title: "COMP140 Individual Creative Computing Project"
 author: "Alcwyn Parker"
 date: "18/01/2020"
 output:
-  # html_document:
-  #   toc_depth: 2
-  #   toc: yes
-  beamer_presentation:
-    includes:
-      in_header:
-      - sessioninfo.tex
-      - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
-    keep_tex: no
-    slide_level: 2
-    toc: no
+  html_document:
+    toc_depth: 2
+    toc: yes
+  # beamer_presentation:
+  #   includes:
+  #     in_header:
+  #     - sessioninfo.tex
+  #     - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
+  #   keep_tex: no
+  #   slide_level: 2
+  #   toc: no
 ---
 
 ```{r setup, include=FALSE}
@@ -111,7 +111,7 @@ After this session you will be able to:
 - Dots show that the wires are connected: 
 `r centerImage("assets/connections.png", .2)`
 - Nets: Inferred connection based on symbol or name: 
-`r centerImage("assets/connections.png", .2)`
+`r centerImage("assets/nets.png", .2)`
 
 ## Reading Schematic Diagrams (answer)
 
