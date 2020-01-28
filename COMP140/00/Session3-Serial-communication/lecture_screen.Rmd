@@ -91,19 +91,16 @@ A protocol is the language that governs communication between systems or devices
 - UDP/IP
 - TCP/IP
 
-## Physical Agreement 
+% ## Physical Agreement 
 
-## Timing Agreement
-Interfaces require 
+% ## Timing Agreement
+% Interfaces require 
 
-## Electrical Agreement
+% ## Electrical Agreement
 
-## Package Size
+% ## Package Size
 
-## Hexadecimal
-
-## Serial vs. Parallel
-
+% ## Serial vs. Parallel
 
 ## Universal asynchronious Receiver/transmitter (UART)
 - 
