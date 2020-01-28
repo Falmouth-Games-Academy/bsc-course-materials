@@ -3,17 +3,17 @@ title: "COMP140 Individual Creative Computing Project"
 author: "Alcwyn Parker"
 date: "18/01/2020"
 output:
-  html_document:
-    toc_depth: 2
-    toc: yes
-  # beamer_presentation:
-  #   includes:
-  #     in_header:
-  #     - sessioninfo.tex
-  #     - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
-  #   keep_tex: no
-  #   slide_level: 2
-  #   toc: no
+  # html_document:
+  #   toc_depth: 2
+  #   toc: yes
+  beamer_presentation:
+    includes:
+      in_header:
+      - sessioninfo.tex
+      - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
+    keep_tex: no
+    slide_level: 2
+    toc: no
 ---
 
 ```{r setup, include=FALSE}
@@ -241,8 +241,6 @@ $$ 4000 + 2200 = 6200 $$
 
 $$ 26400 / 6200 = 4.26 volts $$
 
-## Reading Data Sheets 
 
-[Andy - Do you have anything for this? ]
 
 

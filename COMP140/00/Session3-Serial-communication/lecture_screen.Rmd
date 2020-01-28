@@ -3,17 +3,17 @@ title: "COMP140 Individual Creative Computing Project"
 author: "Al"
 date: "01/10/2018"
 output:
-  html_document:
-    toc_depth: 2
-    toc: yes
-  # beamer_presentation:
-  #   includes:
-  #     in_header:
-  #     - sessioninfo.tex
-  #     - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
-  #   keep_tex: no
-  #   slide_level: 2
-  #   toc: no
+  # html_document:
+  #   toc_depth: 2
+  #   toc: yes
+  beamer_presentation:
+    includes:
+      in_header:
+      - sessioninfo.tex
+      - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
+    keep_tex: no
+    slide_level: 2
+    toc: no
 ---
 
 ```{r setup, include=FALSE}
@@ -63,8 +63,6 @@ After this session you will be able to:
 - Arduino to Arduino 
 - Arduino to sensors
 
-Some kind of picture? 
-
 
 ## Types of Serial Communications
 
@@ -82,7 +80,6 @@ Some kind of picture?
 
 A protocol is the language that governs communication between systems or devices.
 
-
 - Midi
 - DMX-512
 - X10
@@ -91,22 +88,10 @@ A protocol is the language that governs communication between systems or devices
 - UDP/IP
 - TCP/IP
 
-% ## Physical Agreement 
-
-% ## Timing Agreement
-% Interfaces require 
-
-% ## Electrical Agreement
-
-% ## Package Size
-
-% ## Serial vs. Parallel
-
-## Universal asynchronious Receiver/transmitter (UART)
-- 
-![](assets/block.jpg)
-
 ## Serial/UART 
+
+As mentioned previously...
+
 - This is how an Arduino talks to a computer
 - Arduino has an onboard UART to Seral Converter
 - Requires an agreed baud rate: Serial.begin(9600)
@@ -114,7 +99,7 @@ A protocol is the language that governs communication between systems or devices
 - TX connects RX, RX to TX
 - Used by some peripherals such as Bluetooth modules
 
-# When Time Goes Wrong
+##  When Time Goes Wrong
 ![](assets/error.png)
 
 ## Inter-Intergrated Circuit (I^2^C)
@@ -183,8 +168,6 @@ A protocol is the language that governs communication between systems or devices
 
 ![](assets/diff.png)
 
-## Activity - MPU-6050
-![](assets/sensor.png)
 
 
 
