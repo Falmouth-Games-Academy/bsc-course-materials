@@ -1,3 +1,5 @@
+% !TeX root = ./2019-20-COMP250-02-session-materials_screen.tex
+
 % Adjust these for the path of the theme and its graphics, relative to this file
 %\usepackage{beamerthemeFalmouthGamesAcademy}
 \usepackage{../../beamerthemeFalmouthGamesAcademy}
@@ -5,8 +7,7 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=C++,
-        morekeywords={each,in,nullptr}
+\lstset{language=[Sharp]C
 }
 
 % For strikethrough effect
@@ -30,20 +31,8 @@
 
 \frame{\titlepage} 
 
-\begin{frame}
-	\frametitle{Learning outcomes}
-	\begin{itemize}
-		\item \textbf{Explain} how finite state machines and behaviour trees are used in AI
-        \item \textbf{Design} character behaviours using behaviour trees
-        \item \textbf{Implement} an AI system based on behaviour trees
-	\end{itemize}
-\end{frame}
-
-\part{Research journal check-in}
-\frame{\partpage}
-
-\input{architectures}
+\input{agents}
 \input{fsm}
-\input{bt}
+%\input{bt}
 
 \end{document}
