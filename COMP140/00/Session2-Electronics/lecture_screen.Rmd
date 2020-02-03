@@ -90,7 +90,7 @@ After this session you will be able to:
 ## Basic characteristics 
 
 - **Voltage (V)** - The relative level of electrical energy between any two points in a circuit. Voltage is measured in *volts*.
-- **Current (I)** - The amount of electrical energy passing through any point in a circui. Current is measured in *amps*
+- **Current (I)** - The amount of electrical energy passing through any point in a circuit. Current is measured in *amps*
 - **Resistence (R)** - The amount that any component in the circuit resists the flow of current. Resistence is measured in *ohms*
 
 ## Water Analogy
