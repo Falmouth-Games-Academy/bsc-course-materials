@@ -3,13 +3,14 @@
 
 \begin{frame}{Finite state machines}
     \begin{itemize}
-        \item A \textbf{finite state machine (FSM)} consists of: \pause
+        \pause\item A \textbf{finite state machine (FSM)} consists of:
             \begin{itemize}
-                \item A set of \textbf{states}; and \pause
-                \item \textbf{Transitions} between states \pause
+                \pause\item A set of \textbf{states}; and
+                \pause\item \textbf{Transitions} between states
             \end{itemize}
-        \item At any given time, the FSM is in a \textbf{single state} \pause
-        \item \textbf{Inputs} or \textbf{events} can cause the FSM to transition to a different state
+        \pause\item At any given time, the FSM is in a \textbf{single state} 
+        \pause\item \textbf{Inputs} or \textbf{events} (\textbf{percepts}) can cause the FSM to transition to a different state
+        \pause\item Which state the FSM is in dictates what \textbf{actions} the agent takes
     \end{itemize}
 \end{frame}
 
@@ -72,14 +73,37 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Beyond FSMs}
-    Some topics for you to research, for when plain old FSMs aren't enough... \pause
+\begin{frame}[fragile]{Implementing FSMs}
     \begin{itemize}
-        \item Hierarchical FSMs
-        \item Nested FSMs
-        \item Stack-based FSMs
-        \item Hierarchical task networks
-        \item ...
+        \pause\item Implementation needs to keep track of current state,
+            and execute some code dependent on the state
+            (this code itself possibly changing the current state)
+        \pause\item Most common approach: a big \lstinline{switch}--\lstinline{case} statement,
+            with an \lstinline{enum} type for the state
+        \pause\item Object-oriented approach: a \lstinline{State} class, which your FSM states inherit from
+        \pause\item Functional approach: represent state by a function delegate
+        \pause\item Coroutine approach: encode your FSM logic as a procedure which runs as a coroutine
+            (requires either refactoring logic into structured loops, or using \lstinline{goto}...)
     \end{itemize}
-		Plus the topic we will be looking at today: \textbf{behaviour trees}
 \end{frame}
+
+\begin{frame}{Hierarchical FSMs}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{hierarchical_fsm}
+    \end{center}
+    \begin{itemize}
+        \pause\item An FSM with $N$ states has potentially $N^2$ transitions
+        \pause\item Designing complex behaviour with FSMs quickly gets unwieldy
+        \pause\item Hierarchical FSMs allow to group states into \textbf{super-states} to simplify defining transitions
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Should you use FSMs?}
+    \begin{itemize}
+        \pause\item FSMs are useful for designing simple AI behaviours
+        \pause\item Historically an important technique for game AI
+        \pause\item However other techniques such as behaviour trees are more flexible
+            and better suited to designing complex behaviours
+    \end{itemize}
+\end{frame}
+
