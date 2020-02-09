@@ -1,8 +1,6 @@
 \part{GLSL}
 \frame{\partpage}
 
-\lstset{language=GLSL}
-
 \begin{frame}{OpenGL Shading Language (GLSL)}
 	\begin{itemize}
 		\pause\item Used for writing \textbf{shaders} for OpenGL applications
@@ -15,76 +13,46 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Basic vertex shader}
-	\begin{lstlisting}
-#version 330 core
-
-layout(location = 0) in vec3 vertexPos;
-
-void main()
-{
-    gl_Position.xyz = vertexPos;
-    gl_Position.w = 1.0;
-}
-	\end{lstlisting}
+\begin{frame}{Basic vertex shader}
+	\lstinputlisting[language=GLSL]{basicVert.glsl}
 \end{frame}
 
-\begin{frame}[fragile]{Basic vertex shader}
-	\begin{lstlisting}
-#version 330 core
-	\end{lstlisting}
+\begin{frame}{Basic vertex shader}
+	\lstinline{#version 330 core}
 	\begin{itemize}
 		\pause\item Tells the compiler to use OpenGL 3.3 core functionality
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Basic vertex shader}
-	\begin{lstlisting}[language=GLSL]
-layout(location = 0) in vec3 vertexPos;
-	\end{lstlisting}
+\begin{frame}{Basic vertex shader}
+	\lstinline{layout(location = 0) in vec3 vertexPos;}
 	\begin{itemize}
 		\pause\item Specifies \textbf{input values} to the vertex shader
 		\pause\item Corresponds with layout of \textbf{vertex buffers} in C++ program
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Basic vertex shader}
-	\begin{lstlisting}[language=GLSL]
-void main()
-	\end{lstlisting}
+\begin{frame}{Basic vertex shader}
+	\lstinline{void main()}
 	\begin{itemize}
 		\pause\item Every shader program must define a \lstinline{void main()} function
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Basic vertex shader}
-	\begin{lstlisting}[language=GLSL]
-    gl_Position.xyz = vertexPos;
-    gl_Position.w = 1.0;
-	\end{lstlisting}
+\begin{frame}{Basic vertex shader}
+	\lstinline{gl_Position=vec4(vertexPos,1.0f);}
 	\begin{itemize}
 		\pause\item \lstinline{gl_Position} is one of many \textbf{built-in} variables with special meaning
 		\pause\item See \url{https://www.opengl.org/wiki/Built-in_Variable_(GLSL)}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Basic fragment shader}
-	\begin{lstlisting}[language=GLSL]
-#version 330 core
-
-out vec3 color;
-
-void main()
-{
-    color = vec3(1, 1, 0);
-}
-	\end{lstlisting}
+\begin{frame}{Basic fragment shader}
+	\lstinputlisting[language=GLSL]{basicFrag.glsl}
 \end{frame}
 
-\begin{frame}[fragile]{Basic fragment shader}
-	\begin{lstlisting}[language=GLSL]
-out vec3 color;
-	\end{lstlisting}
+\begin{frame}{Basic fragment shader}
+	\lstinline{out vec3 color;}
 	\begin{itemize}
 		\pause\item By convention, fragment shader should have \textbf{one output}, namely the fragment colour
 		\pause\item Doesn't have to be named \lstinline{color} --- could be any other non-reserved identifier

@@ -18,18 +18,12 @@
 
 \begin{frame}[fragile]{Uniform variables}
 	\pause In GLSL (outside \lstinline{main()}):
-	\begin{lstlisting}
-uniform vec3 myVariable;
-	\end{lstlisting}
+	\lstinline{uniform vec3 myVariable;}
 	\pause In C++:
-	\begin{lstlisting}[language=C++]
-GLuint location
-  = glGetUniformLocation(programID, "myVariable");
-	\end{lstlisting}
+	\lstinline{GLuint location
+  = glGetUniformLocation(programID, "myVariable");}
 	\pause and then:
-	\begin{lstlisting}[language=C++]
-glUniform3f(location, 1, 2, 3);
-	\end{lstlisting}
+	\lstinline{\glUniform3f(location, 1, 2, 3);}
 \end{frame}
 
 \begin{frame}{Uniform variables}

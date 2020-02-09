@@ -25,49 +25,26 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Constructing vectors in GLSL}
-	\begin{lstlisting}
-vec2 a = vec2(1.2, 3.4);
-vec3 b = vec3(1); // same as vec3(1, 1, 1)
-vec3 c = vec3(a, 5.6); // same as vec3(1.2, 3.4, 5.6)
-	\end{lstlisting}
+\begin{frame}{Constructing vectors in GLSL}
+	\lstinputlisting[language=GLSL]{vec.glsl}
 \end{frame}
 
-\begin{frame}[fragile]{Vector maths}
+\begin{frame}{Vector maths}
 	\pause Most operations work \textbf{component-wise}:
-	\begin{lstlisting}
-vec2 a = vec2(1, 2);
-vec2 b = vec2(3, 4);
-vec2 c = a + b; // c == vec2(4, 6);
-vec2 d = a * b; // d == vec2(3, 8);
-	\end{lstlisting}
+	\lstinputlisting[language=GLSL]{vecMaths.glsl}
 	\pause Can also multiply a \textbf{vector} by a \textbf{scalar}:
-	\begin{lstlisting}
-vec2 e = 3.1 * a; // e == vec2(3.1, 6.2)
-	\end{lstlisting}
+	\lstinline{vec2 e = 3.1 * a; // e == vec2(3.1, 6.2)}
 \end{frame}
 
-\begin{frame}[fragile]{Accessing components}
+\begin{frame}{Accessing components}
 	\pause Can access the components of a vector as \lstinline{.x}, \lstinline{.y}, \lstinline{.z}, \lstinline{.w}:
-	\pause\begin{lstlisting}
-vec4 a = vec4(1, 2, 3, 4);
-float b = a.y; // b == 2
-float c = a.z; // c == 3
-a.x = 5;       // a == vec4(5, 2, 3, 4)
-a.w = a.y;     // a == vec4(5, 2, 3, 2)
-	\end{lstlisting}
+	\lstinputlisting[language=GLSL]{vecComp.glsl}
 	\pause Can also use \lstinline{r g b a} (for colours) and \lstinline{s t p q} (for texture coordinates)
 \end{frame}
 
-\begin{frame}[fragile]{Swizzling}
+\begin{frame}{Swizzling}
 	\pause Can access multiple components in one go:
-	\pause\begin{lstlisting}
-vec4 a = vec4(1, 2, 3, 4);
-vec2 b = a.xy;    // b == vec2(1, 2)
-vec3 c = a.zyz;   // c == vec3(3, 2, 3)
-a.xw = vec2(5,6); // a == vec4(5, 2, 3, 6)
-a.xyzw = a.wzyx;  // a == vec4(6, 3, 2, 5)
-	\end{lstlisting}
+	\lstinputlisting[language=GLSL]{swizzle.glsl}
 	\begin{itemize}
 		\pause \item\textbf{Can} use the same component twice in the \textbf{right-hand side} of an assignment 
 		\pause \item\textbf{Cannot} use the same component twice in the \textbf{left-hand side} of an assignment 
