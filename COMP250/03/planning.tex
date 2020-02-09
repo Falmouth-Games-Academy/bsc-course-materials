@@ -244,41 +244,27 @@ TakeBananas(x)
 			based on their \textbf{preconditions}
 		\pause\item We can also find the \textbf{next state} resulting from each action
 			based on their \textbf{postconditions}
-		\pause\item We can construct a \textbf{tree} of states and actions
+		\pause\item We can construct a \textbf{state-action graph}
+		\begin{itemize}
+			\pause\item Nodes: environment states
+			\pause\item Edges: actions
+		\end{itemize}
 		\pause\item We can then \textbf{search} this tree to find a goal state
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Tree traversal}
-	\pause\footnotesize
-%	\begin{columns}
-%		\begin{column}{0.48\textwidth}
-			\begin{algorithmic}
-				\Procedure{DepthFirstSearch}{} \pause
-					\State let $S$ be a stack \pause
-					\State push root node onto $S$ \pause
-					\While{$S$ is not empty} \pause
-						\State pop $n$ from $S$ \pause
-						\State push children of $n$ onto $S$ \pause
-					\EndWhile
-				\EndProcedure
-			\end{algorithmic}
-%		\end{column}
-%		\pause
-%		\begin{column}{0.48\textwidth}
-		\vspace{2ex}
-			\begin{algorithmic}
-				\Procedure{BreadthFirstSearch}{} \pause
-					\State let $Q$ be a queue \pause
-					\State enqueue root node into $Q$ \pause
-					\While{$Q$ is not empty} \pause 
-						\State dequeue $n$ from $Q$ \pause
-						\State enqueue children of $n$ into $Q$ \pause
-					\EndWhile
-				\EndProcedure
-			\end{algorithmic}
-%		\end{column}
-%	\end{columns}
+\begin{frame}{Searching for the solution}
+	\begin{itemize}
+		\pause\item We have a \textbf{tree}, which is a type of \textbf{graph}
+		\pause\item We have an \textbf{initial node} within this tree
+		\pause\item Want to find a \textbf{sequence of edges} that leads to a \textbf{goal node}
+		\pause\item Does this sound familiar?
+		\pause\item Very similar to \textbf{pathfinding}, so can use the same algorithms (recall from COMP280 session 8)
+		\begin{itemize}
+			\pause\item Depth-first search
+			\pause\item Breadth-first search
+			\pause\item Dijkstra's algorithm
+			\pause\item A$^*$ (if we have a suitable \textbf{heuristic})
+		\end{itemize}
+	\end{itemize}
 \end{frame}
-
-\input{traversal_example}
