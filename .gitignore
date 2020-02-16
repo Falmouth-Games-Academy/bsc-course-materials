@@ -143,22 +143,6 @@ sympy-plots-for-*.tex/
 # PowerPoint temporary files
 ~$*
 
-COMP260/01/._2019-20-COMP260-01-lecture.pptx
-
-COMP120/08/._2019-20-COMP120-08-audio-lecture-2-materials.pdf
-
-COMP280/03/._2019-20-COMP280-03-lecture.pdf
-
-COMP280/04/._2019-20-COMP280-04-lecture.pdf
-
-COMP260/02/workshop_code/01.flood server/client/.idea/
-
-COMP260/02/workshop_code/01.flood server/server/.idea/
-
-COMP260/02/workshop_code/02.packets/client/.idea/
-
-COMP260/02/workshop_code/02.packets/server/.idea/
-
-COMP260/02/workshop_code/03.client threading/client/.idea/
-
-COMP260/02/workshop_code/03.client threading/server/.idea/
+._*.pptx
+._*.pdf
+.idea
