@@ -1,0 +1,726 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[ignorenonframetext,]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+\centering
+\begin{beamercolorbox}[sep=16pt,center]{part title}
+  \usebeamerfont{part title}\insertpart\par
+\end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+\centering
+\begin{beamercolorbox}[sep=12pt,center]{part title}
+  \usebeamerfont{section title}\insertsection\par
+\end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+\centering
+\begin{beamercolorbox}[sep=8pt,center]{part title}
+  \usebeamerfont{subsection title}\insertsubsection\par
+\end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={COMP210 Interfaces \& Interaction},
+            pdfauthor={Alcwyn Parker},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\newif\ifbibliography
+\usepackage{longtable,booktabs}
+\usepackage{caption}
+% These lines are needed to make table captions work with longtable:
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\newcommand{\modulecode}{COMP210}\newcommand{\moduletitle}{Interfaces \& Interaction}\newcommand{\sessionnumber}{2}
+\RequirePackage{tikz}
+
+\usepackage{avant} % A font similar to Century Gothic
+\usepackage{courier} % Courier font for code listings
+\usepackage{graphicx}
+\usepackage{listings}
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	frame=single,
+	tabsize=4,
+	showstringspaces=false,
+	breaklines=true,
+	prebreak={\space\hbox{\textcolor{Gray}{$\hookleftarrow$}}}
+}
+
+\graphicspath{ {FalmouthGamesAcademyTheme/} }
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=white,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+
+\iftoggle{printable}{
+	\lstset{
+		commentstyle=\ttfamily\textit,
+		keywordstyle=\ttfamily\textbf,
+		stringstyle=\ttfamily,
+		rulecolor=\color{Black}
+	}
+}{ % else
+	\lstset{
+		commentstyle=\color{LimeGreen}\ttfamily\textit,
+		keywordstyle=\color{SkyBlue}\ttfamily\textbf,
+		stringstyle=\color{Melon}\ttfamily,
+		rulecolor=\color{White}
+	}
+}
+
+%\setbeamercovered{transparent}
+
+\definecolor{GamesAcademyPurple}{rgb}{0.25,0.19,0.32}
+\definecolor{SubtitleGrey}{rgb}{0.53,0.53,0.53}
+
+\iftoggle{printable}{
+	\usecolortheme{default}
+	\setbeamercolor{normal text}{fg=black,bg=white}
+	\setbeamercolor{frametitle}{fg=black}
+	\setbeamercolor{itemize item}{fg=black}
+	\setbeamercolor{enumerate item}{fg=black}
+	\setbeamercolor{subtitle}{fg=black}
+}{ % else
+	\usecolortheme{albatross}
+	\setbeamercolor{normal text}{fg=white,bg=GamesAcademyPurple}
+	\setbeamercolor{frametitle}{fg=white}
+	\setbeamercolor{itemize item}{fg=white}
+	\setbeamercolor{enumerate item}{fg=white}
+	\setbeamercolor{subtitle}{fg=SubtitleGrey}
+}
+
+\newlength{\PptPoint}
+\setlength{\PptPoint}{0.5pt}
+\setbeamerfont{title}{size=\fontsize{40\PptPoint}{40\PptPoint}}
+\setbeamerfont{subtitle}{size=\fontsize{24\PptPoint}{24\PptPoint}}
+\setbeamerfont{frametitle}{size=\fontsize{40\PptPoint}{40\PptPoint}}
+
+\setbeamertemplate{title page}{
+    \begin{tikzpicture}[remember picture,overlay]
+    	\iftoggle{printable}{}{
+			\node[anchor=north, xshift=0cm, yshift=0.12cm] (banner) at (current page.north) {
+				\includegraphics[width=\paperwidth]{template_girl}
+			};
+			\node[anchor=south west, xshift=0.1cm, yshift=0.1cm] at (banner.south west) {
+				\includegraphics[width=0.1\paperwidth]{template_falmouth_logo}
+			};
+		}
+        \node(Title)[anchor=south east, xshift=-0.025\paperwidth, yshift=40\PptPoint] at (current page.south east) {
+			\parbox[t]{0.95\paperwidth}{\raggedleft\usebeamerfont{title}\textbf{\inserttitle}}
+        };
+        \node[anchor=south east, yshift=-0.1cm] at (Title.north east) {
+        	\parbox[t]{0.95\paperwidth}{\raggedleft\usebeamerfont{subtitle}\textcolor{SubtitleGrey}{\insertsubtitle}}
+        };
+    \end{tikzpicture}
+}
+
+\setbeamertemplate{headline}{
+    \begin{tikzpicture}[remember picture,overlay]
+    	\iftoggle{printable}{}{
+			\node[anchor=north, xshift=0cm, yshift=0.12cm] (head) at (current page.north) {
+				\includegraphics[width=\paperwidth]{template_head}
+			};
+			\node[anchor=north west, xshift=0.1cm, yshift=-0.1cm] at (current page.north west) {
+				\includegraphics[width=0.1\paperwidth]{template_falmouth_logo}
+			};
+		}
+    \end{tikzpicture}
+    \vspace*{0.7cm}
+}
+
+\setbeamertemplate{frametitle}[default][center]
+
+\setbeamertemplate{part page}{
+    \begin{tikzpicture}[remember picture,overlay]
+    	\iftoggle{printable}{}{
+			\fill [GamesAcademyPurple] (current page.north west) rectangle (current page.south east);
+			\node[anchor=north west, xshift=0.1cm, yshift=-0.1cm] at (current page.north west) {
+				\includegraphics[width=0.1\paperwidth]{template_falmouth_logo}
+			};
+			\node[anchor=south east, xshift=0.2cm, yshift=0.2cm] at (current page.south east) {
+				\includegraphics[height=\paperheight]{template_man}
+			};
+		}
+        \node[anchor=south west, xshift=0.05\paperwidth, yshift=80\PptPoint] at (current page.south west) {
+			\parbox[t]{0.9\paperwidth}{\raggedright\usebeamerfont{title}\textbf{\insertpart}}
+        };
+    \end{tikzpicture}
+}
+
+\title{COMP210 Interfaces \& Interaction}
+\author{Alcwyn Parker}
+\date{10/01/2020}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{session-2-data-collection-for-evaluating-interfaces-interactions}{%
+\section{Session 2: Data Collection for Evaluating Interfaces \&
+Interactions}\label{session-2-data-collection-for-evaluating-interfaces-interactions}}
+
+\begin{block}{Register Attendance}
+
+\begin{figure}
+\centering
+\includegraphics{assets/attendance.png}
+\caption{Attendance monitoring is in place. It is your responsability to
+ensure that you have signed yourself in.}
+\end{figure}
+
+\end{block}
+
+\begin{block}{Learning Outcomes}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Select} the right participants for a HCI study
+\item
+  \textbf{Consider} the participants needs
+\item
+  \textbf{Conduct} Interviews and focus groups correctly
+\end{itemize}
+
+\end{block}
+
+\begin{frame}{Human Subjects - Human Considerations}
+\protect\hypertarget{human-subjects---human-considerations}{}
+
+\begin{block}{Who?}
+
+\begin{itemize}
+\tightlist
+\item
+  Is the system designed for experts or more general users?
+\item
+  Are the participants the independent variable? (age, gender, height)
+\end{itemize}
+
+\textbf{General}
+
+\begin{itemize}
+\tightlist
+\item
+  Appropriateness / Target Audience
+\item
+  Individual's goals, background and motivations
+\item
+  Technical Competency
+\item
+  Gender
+\end{itemize}
+
+Gaming Specific - Gaming Expertise - Gaming Preferences
+
+\end{block}
+
+\begin{block}{Numbers}
+
+\begin{itemize}
+\tightlist
+\item
+  Cost vs benefit
+\item
+  Time required per participant
+\item
+  Dependent on the type of research and design of the study
+\item
+  Cook \& Campbell - Classic Reading
+  \href{https://moodle2.units.it/pluginfile.php/132646/mod_resource/content/1/Estratto_ShadishCookCampbellExperimental2002.pdf}{{[}Find
+  it here{]}}
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Large Numbers}
+
+\begin{itemize}
+\tightlist
+\item
+  Usually involve a diverse range of participants
+\item
+  Outcome is separate from the individuals
+\item
+  Expensive
+\item
+  Complex
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Small Numbers}
+
+\begin{itemize}
+\tightlist
+\item
+  More participants = More statistical power
+\item
+  Usability Test - 5 people are enough? (Nielsen \& Molich 1990)
+\item
+  Studies with 12 participants are not uncommon
+\item
+  20+ are better
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Individual}
+
+\begin{itemize}
+\tightlist
+\item
+  Inexpensive
+\item
+  Limited
+\item
+  Non-representative
+\item
+  Not statistically significant
+\item
+  Helpful on a personal level - auto ethnography
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Recruitment}
+
+\begin{itemize}
+\tightlist
+\item
+  Dependent on Study
+\item
+  Games Academy FTW
+\item
+  GDPR
+\item
+  Commensurate Incentivisation (pizza ++)
+\item
+  Over-recruit if you can
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Protecting the Participant}
+
+\begin{itemize}
+\item
+  Informed Consent (Usually, a signed form)
+\item
+  Respect and Trust
+\item
+  Respect for the individual, beneficence (moral obligation) and justice
+  (benefits are for all and not just one privileged group) (National
+  Commission for the protection of Human Subjects of Biomedical and
+  Behavioural Research, 1979)
+\item
+  Privacy
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Image and video - Protect identities where possible
+  \item
+    Data Storage (GDPR again!)
+  \item
+    Consider Dissemination throughout
+  \end{itemize}
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Institutional Review Boards (IRB)}
+
+\begin{itemize}
+\tightlist
+\item
+  Most institutions that engage in research have an ethics review board
+\item
+  Approval is needed to begin the research (NOT IN THIS MODULE)
+\item
+  Falmouth University Policy can be found
+  \href{https://www.falmouth.ac.uk/sites/default/files/download/research_ethics_policy-13nov15.pdf}{HERE}
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Qualitative, Quantitative \& Mixed Method}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Qualitative:} (qual) data, collects information that seeks to
+  describe a topic more than measure it. Think of impressions, opinions,
+  and views. A qualitative survey is less structured: It seeks to delve
+  deep into the topic at hand to gain information about people's
+  motivations, thinking, and attitudes. While this brings depth of
+  understanding to your research questions, it also makes the results
+  harder to analyze.
+\item
+  \textbf{Quantitative:} (quant) data is designed to collect cold, hard
+  facts. Numbers. Quantitative data is structured and statistical. It
+  provides support when you need to draw general conclusions from your
+  research.
+  \href{https://www.surveymonkey.com/mp/quantitative-vs-qualitative-research/}{(source)}
+\item
+  \textbf{Mixed Method:} A study that combines the
+  two\href{http://didier-jourdan.com/wp-content/uploads/2017/04/MM-and-Graduates-students.pdf}{(Useful
+  reading)}
+\end{itemize}
+
+\end{block}
+
+\begin{block}{User Research Methods}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Qualitative & Quantitative\tabularnewline
+\midrule
+\endhead
+Interviews & Automated Data Collection\tabularnewline
+Focus Groups & Physiological Data\tabularnewline
+Diaries & Eye Tracking\tabularnewline
+Camera Study & Task Analysis\tabularnewline
+Surveys & A/B testing\tabularnewline
+Heuristic Evaluation & Bench Marking\tabularnewline
+Cognitive Walkthroughs & Surveys\tabularnewline
+Ethnographic Field Study & Click Stream Analysis\tabularnewline
+Think Aloud Protocol & System Usability Scale (SUS)\footnote<.->{More
+  information on SUS can be found
+  \href{https://moodle2.units.it/pluginfile.php/132646/mod_resource/content/1/Estratto_ShadishCookCampbellExperimental2002.pdf}{here}}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{block}
+
+\end{frame}
+
+\hypertarget{surveys}{%
+\section{Surveys}\label{surveys}}
+
+\begin{block}{What is a Survey?}
+
+\begin{quote}
+``In short, it is a well defined and well-written set of questions to
+which an individual is asked to respond''
+\end{quote}
+
+(Lazar et al., 2017)
+
+\begin{itemize}
+\tightlist
+\item
+  Often used, hardly ever done well
+\item
+  Easy to generate data that is not relevant or valid
+\item
+  Misconceived as easy
+\item
+  Require pilot test
+\item
+  Good for measuring attitudes, awareness, intent, and getting feedback
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Pros \& Cons}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Pros & Cons\tabularnewline
+\midrule
+\endhead
+Large Sample Groups & Hard to refine\tabularnewline
+Low Cost & No follow-up questions\tabularnewline
+Help to understand a population & Shallow understanding\tabularnewline
+Distributed Easily &\tabularnewline
+Easy to get approval &\tabularnewline
+Good for factual information & Suffer from recall bias \footnote<.->{\href{https://en.wikipedia.org/wiki/Recall_bias}{Recall
+  Bias}}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{block}
+
+\begin{block}{Question Design}
+
+Questions must be:
+
+\begin{itemize}
+\tightlist
+\item
+  balanced \& non biased
+\item
+  Easy to understand by the participant
+\end{itemize}
+
+There are three main types of question.
+
+\begin{itemize}
+\tightlist
+\item
+  Open-ended
+\item
+  Closed-ended - ordered response
+\item
+  Closed-ended - unordered response
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Open-Ended}
+
+\begin{quote}
+``Open-ended questions are useful for getting a better understanding of
+phenomena, because they give the respondant complete flexibility in
+their answers''
+\end{quote}
+
+(Lazar et al., 2017)
+
+\textbf{Considerations}
+
+\begin{itemize}
+\tightlist
+\item
+  Extra care is needed to extract the right information
+\item
+  Provide sufficient detail
+\item
+  Avoid ambiguity
+\end{itemize}
+
+\end{block}
+
+\begin{frame}
+
+\textbf{Bad:} How did you feel about the drop-down menu interface?
+
+\textbf{Good:} list the issues you faced when trying to navigate using
+the drop-down menu interface?
+
+More specific to the needs of the study.
+
+\begin{block}{Closed-Ended}
+
+Closed ended questions constrain the users answers within a range of
+choices designed by you.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ordered:} one of more answers can be selected in some logical
+  order.
+\item
+  \textbf{Unordered:} One or more answer can be selected with no
+  relationship between each other.
+\end{itemize}
+
+\end{block}
+
+\begin{block}{}
+
+\begin{figure}
+\centering
+\includegraphics{assets/likert.jpg}
+\caption{One example of closed-ended ordered response questions is the
+Likert Scale}
+\end{figure}
+
+\end{block}
+
+\begin{block}{Sampling}
+
+A census is generally considered impossible. Instead, we do
+probabilistic (random) sampling. This gives us a general picture of the
+attitudes or feeling of a certain population.
+
+\textbf{EXAMPLE}
+
+In a study designed to gauge student attitudes towards food served in
+the Stannary, it would be unrealistic to expect to reach out to every
+student (5000+) and achieve a 100\% response rate. Instead, you might
+take a random slice of 10\%.
+
+\end{block}
+
+\begin{block}{Targeted Users}
+
+\begin{itemize}
+\tightlist
+\item
+  Consider the targeted respondents
+\item
+  Set clear Limits (inclusion/exclusion criteria)
+\item
+  Identify communities of interest
+\item
+  Decide on a dissemination plan
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Pilot Test}
+
+\textbf{DO NOT} release a survey into the wild without running some
+pretesting!
+
+\begin{itemize}
+\tightlist
+\item
+  Review: Get the the survey checked by other experts
+\item
+  Test: Find a very small sample 3-5 and run hybrid interviews
+\item
+  Pilot: release the survey to a small test sample
+\end{itemize}
+
+The pilot study can be the difference between useful data and nonsense!
+
+\end{block}
+
+\begin{block}{\color<1>[rgb]{1,0,0} Common Mistakes}
+
+\begin{itemize}
+\tightlist
+\item
+  Double Barreled Question
+\item
+  Bias/loaded words (avoid overly negative or positive sounds words)
+\item
+  Provocative language such as ``liberal'', ``terrorism'',
+  ``conservative''\ldots{}
+\item
+  Assuming prior knowledge
+\item
+  Inadequate response options (frustrate the user)
+\item
+  Lengthy survey
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Overall Survey Design}
+
+\begin{itemize}
+\tightlist
+\item
+  It is useful to be explicit about the inclusion criteria within the
+  survey
+\item
+  grouping is helpful
+\item
+  Questions don't exist in a vacuum
+\item
+  Order and flow is important
+\item
+  keep it as short as possible
+\item
+  Place sensitive questions towards the end of the survey
+\item
+  Always provice attribution so the participant knows who you are and
+  how to contact you
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Why Reinvent the Wheel?}
+
+Find an existing tool and apply it to your study. You may need to modify
+the questions to better suit your goals.
+
+\begin{itemize}
+\tightlist
+\item
+  Computer System Usability Questionnaire (CSUQ)
+\item
+  Interface Consistency Testing Questionnaire (ICTQ)
+\item
+  Perdue Usability Testin Questionnaire (PUTQ)
+\item
+  Questionnaire for User Interaction Satisfaction (QUIS)
+\item
+  Software Usability Measurement Inventory (SUMI)
+\item
+  System Usability Scale (SUS)
+\end{itemize}
+
+Always check the validity of existing surveys through peer reviewed
+evalation before utilising it in your own study!
+
+\end{block}
+
+\end{frame}
+
+\end{document}
