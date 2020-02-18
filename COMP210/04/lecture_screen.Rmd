@@ -1,261 +1,265 @@
 ---
-title: ""
-author: "Al"
-date: "01/10/2018"
-output: 
+title: "COMP210 Interfaces & Interaction"
+author: "Alcwyn Parker"
+date: "10/01/2020"
+output:
+  # html_document:
+  #   toc_depth: 2
+  #   toc: yes
   beamer_presentation:
     includes:
-      in_header: 
-        - sessioninfo.tex
-        - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
-    keep_tex: false
-    toc: false
+      in_header:
+      - sessioninfo.tex
+      - FalmouthGamesAcademyTheme/beamerthemeFalmouthGamesAcademy.tex
+    keep_tex: no
     slide_level: 2
-    pandoc_args: [ 
-      "--output=COMP210_04_screen.pdf"
-    ]
+    toc: no
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE, fig.align="center")
+opts_knit$get("rmarkdown.pandoc.to")
+html <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"
 ```
 
-\title{\sessionnumber:  Code Review}
-\subtitle{\modulecode: \moduletitle}
 
-\frame{\titlepage} 
+```{r results='asis'}
+if (!html) {
+  cat("\\title{\\sessionnumber} \\subtitle{\\modulecode: \\moduletitle} \\frame{\\titlepage} ")
+}
 
-# Session 4: Code Review
+#############
+## CENTER 
+out_type = knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+centerImage = function(asset, scale = 0.6){
+  
+  perc <- scale * 100
+  
+  if(out_type == 'latex' || out_type == 'beamer')
+    paste("\\begin{figure}\n \\includegraphics[width=", scale, "\\columnwidth]{", asset, "}\n \\end{figure}", sep="")
+  else if(out_type == 'html')
+    paste("<center>\n![](", asset, "){ width=", perc, "% }\n</center>", sep="")
+  else
+    asset
+}
+```
+
+# Session 4: Data Collection for Evaluating Interfaces & Interactions
 
 ## Register Attendance
-![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/attendance.png)
+![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/tapit.png)
 
-## Learning Outcomes 
-After this session you will be able to:
+## Learning Outcomes
+* **Select** the right participants for a HCI study
+* **Consider** the participants needs
+* **Conduct** Interviews and focus groups correctly
 
-- **Execute** a code review
-- **Write** well formed docstrings
-- **Check** code and comments using linters
+# Human-Centered 
 
-## Quantitative Data vs Qualitative
+## Who?
+* Is the system designed for experts or more general users?
+* Are the participants the independent variable? (age, gender, height)
+
+**General**
+
+* Appropriateness / Target Audience
+* Individual's goals, background and motivations
+* Technical Competency
+* Gender
+     
+Gaming Specific
+- Gaming Expertise
+- Gaming Preferences
+
+## Numbers
+- Cost vs benefit
+- Time required per participant
+- Dependent on the type of research and design of the study
+- Cook & Campbell - Classic Reading [[Find it here]](https://moodle2.units.it/pluginfile.php/132646/mod_resource/content/1/Estratto_ShadishCookCampbellExperimental2002.pdf)
+
+## Large Numbers
+- Usually involve a diverse range of participants
+- Outcome is separate from the individuals
+- Expensive
+- Complex
+
+## Small Numbers
+- More participants = More statistical power
+- Usability Test - 5 people are enough? (Nielsen & Molich 1990)
+- Studies with 12 participants are not uncommon
+- 20+ are better
+
+## Individual
+- Inexpensive
+- Limited
+- Non-representative
+- Not statistically significant
+- Helpful on a personal level - auto ethnography
+
+## Recruitment
+- Dependent on Study
+- Games Academy FTW
+- GDPR
+- Commensurate Incentivisation (pizza ++)
+- Over-recruit if you can
+
+## Protecting the Participant
+- Informed Consent (Usually, a signed form)
+- Respect and Trust
+- Privacy
+    + Image and video - Protect identities where possible
+    + Data Storage (GDPR again!)
+    + Consider Dissemination throughout
+
+
+## Institutional Review Boards (IRB)
+- Most institutions that engage in research have an ethics review board
+- Approval is needed to begin the research (NOT IN THIS MODULE)
+- Falmouth University Policy can be found [HERE]( https://falmouthac.sharepoint.com/research/SitePages/Research%20Integrity%20%26%20Ethics.aspx)
+
+
+## Qualitative, Quantitative & Mixed Method
+
+- **Qualitative:** (qual) data, collects information that seeks to describe a topic more than measure it. Think of impressions, opinions, and views.
+
+- **Quantitative:** (quant) data is designed to collect cold, hard facts. Numbers. Quantitative data is structured and statistical. It provides support when you need to draw general conclusions from your research. [(source)](https://www.surveymonkey.com/mp/quantitative-vs-qualitative-research/)
+- **Mixed Method:** A study that combines the two[(Useful reading)](     http://didier-jourdan.com/wp-content/uploads/2017/04/MM-and-Graduates-students.pdf)
+
+## User Research Methods
 
 Qualitative                   | Quantitative
 ----------------------------- | ------------------------
-Slow                          | Fast
-Subjective                    | Objective
-Mostly Manual                 | Mostly automated
-discover patterns             | Representation?
-Causal Links                  | 
+Interviews                    | Automated Data Collection
+Focus Groups                  | Physiological Data
+Diaries                       | Eye Tracking
+Camera Study                  | Task Analysis
+Surveys                       | A/B testing
+Heuristic Evaluation          | Bench Marking
+Cognitive Walkthroughs        | Surveys
+Ethnographic Field Study      | Click Stream Analysis
+Think Aloud Protocol          | System Usability Scale (SUS)[^1]
 
-## Statistical Analysis
 
-- More labor intensive than data collection
-- Important to choose the appropriate methods
-- This module is only converned with descriptive statistics
+[^1]:More information on SUS can be found [here](https://moodle2.units.it/pluginfile.php/132646/mod_resource/content/1/Estratto_ShadishCookCampbellExperimental2002.pdf)
 
-Side note: Understanding statistical analysis will help you to understand the validity of findings reported in other studies
 
+# Surveys 
 
-## To err is human (Alexander Pope, "Essay on Criticism")
+## What is a Survey?
+> "In short, it is a well defined and well-written set of questions to which an individual is asked to respond" 
 
-- Reasonableness 
-- Fomatting
-- Fix or removal (do not fudge!) 
+(Lazar et al., 2017)
 
+* Often used, hardly ever done well
+* Easy to generate data that is not relevant or valid
+* Misconceived as easy
+* Require pilot test
+* Good for measuring attitudes, awareness, intent, and getting feedback
 
-## Preparation
-- Grouping
-- Organising - Some statistical tools require data to be presented in a specific way
-- Formatting
-- Coding
-    + Yes or no answers could be coded as 1 or 0 accordingly
-    + Example of complex codeing [Paper: Hu and Feng(2015)](https://dl.acm.org/citation.cfm?id=2729981)
+## Pros & Cons
 
-## Descriptive Statistics
-1. Central Tendency
-2. Spread
+Pros | Cons
+----------------------------- | ------------------------
+Large Sample Groups  | Hard to refine
+Low Cost  | No follow-up questions
+Help to understand a population | Shallow understanding
+Distributed Easily  | 
+Easy to get approval | 
+Good for factual information  | Suffer from recall bias [^2]
 
-# 1.Central Tendency
-The central tendency is an attempt to identify where the majority of results are positioned. There are three main techniques for describing the central tendency: 
+[^2]: [Recall Bias](https://en.wikipedia.org/wiki/Recall_bias)
 
-- Mean
-- Median
-- Mode
+## Question Design
+Questions must be:
 
-## The Bill Gates Effect (Mean vs. Median)
+* balanced & non biased 
+* Easy to understand by the participant
 
-Bob, Pete, Dave and Baz are sitting at the bar. Don't judge, they are working class folk who like a beer thats all.
+There are three main types of question.
 
-Name            | Salary
-----------------| -------------
-Bob             |    21k
-Pete            |    27k
-Dave            |    28k
-Sam             |    29k
-Baz             |    31k
+* Open-ended
+* Closed-ended - ordered response
+* Closed-ended - unordered response
 
+## Open-Ended
+> "Open-ended questions are useful for getting a better understanding of phenomena, because they give the respondant complete flexibility in their answers"  
 
-## Mean
-The mean of their salaries is (X-Bar represents the sample mean): 
-$$\bar x = (\sum_ {}X{i}) / n$$
-$$(21+27+28+29+31)/5 = 27.2k $$
+(Lazar et al., 2017)
 
-## In Comes Bill Gates
+**Considerations**  
 
-And shoves poor old Bax off his chair. Baz panics and runs out of the building. Meanwhile, Bill Gates convinces the others they are better off for him being there. 
+- Extra care is needed to extract the right information
+- Provide sufficient detail 
+- Avoid ambiguity 
 
-- How? 
-- And why is this not true? 
+***
 
-## Let's Recalculate
-Name            | Salary
-----------------| -------------
-Bob             |    21k
-Pete            |    27k
-Dave            |    28k
-Sam             |    29k
-Bill            |    1,000,000k
+**Bad:** How did you feel about the drop-down menu interface? 
 
-New Mean: (21 + 27 + 28 + 29 + 1000000) / 5 = 200k-ish (who cares, Bill Gates is already drunk!) 
-The average salary has gone up and everyone is wealthier! 
+**Good:** list the issues you faced when trying to navigate using the drop-down menu interface?
 
+More specific to the needs of the study.
 
-## Median
-It is the value that separates the lower half of the values from the upper half
+## Closed-Ended 
+Closed ended questions constrain the users answers within a range of choices designed by you. 
 
-The median is resistant to extreme data values meaning that it will not be skewed by Bill Gates
+- **Ordered:** one of more answers can be selected in some logical order. 
+- **Unordered:** One or more answer can be selected with no relationship between each other.
 
-Original Median = ~~21~~, ~~27~~, 28, ~~29~~, ~~31~~
+## 
+![One example of closed-ended ordered response questions is the Likert Scale](assets/likert.jpg)
 
-Bill Median = ~~21~~, ~~27~~, 28, ~~29~~, ~~1000000~~
 
-## Mode 
-The value that occurs most frequently. 
+### Sampling
+A census is generally considered impossible. Instead, we do probabilistic (random) sampling. This gives us a general picture of the attitudes or feeling of a certain population.
 
-Unfortunately, there is no mode in the bar at the moment but if Bill leaves and Daves mate Jim appears who also earns 28k then the mode would be 28! 
+**EXAMPLE**
 
-- The mode is resistant to extreme data values
-- useful for qualitative inspection
-- Not capable of further mathematical treatment
+In a study designed to gauge student attitudes towards food served in the Stannary, it would be unrealistic to expect to reach out to every student (5000+) and achieve a 100% response rate. Instead, you might take a random slice of 10%. 
 
-## 2. Spread
+## Targeted Users
+* Consider the targeted respondents 
+* Set clear Limits (inclusion/exclusion criteria)
+* Identify communities of interest
+* Decide on a dissemination plan
 
-The second objective in descriptive statistics is to describe how far the results deviate from the center. This is know as the spread. 
+## Pilot Test
+**DO NOT** release a survey into the wild without running some pretesting! 
 
-- Range
-- Variance
-- Standard Deviation
-- Normal Distribution
+- Review: Get the the survey checked by other experts
+- Test: Find a very small sample 3-5 and run hybrid interviews
+- Pilot: release the survey to a small test sample 
 
-## Range
-- The range is the distance between the highest and lowest values. 
-- The higher ther range the wider the distribution
-
-Example: 
-$$6, 8, 12, 34, 43, 43, 50, 55$$
-$$ 55 - 5 = 49 $$
-Therefore, the range is **49**
-
-
-## Variance
-
-> Variance is the, "mean of the squared distances of all the values from the mean of the data set"
-
-(Lazar et al, 2017)
-
-- Sigma^2^
-- Describes how far a set of values are spread out from the mean
-
-$$\sigma^2/s^2 = \frac{\displaystyle\sum_{i=1}^{n}(x_i - \bar x)^2} {n}$$
-
-## Variance and Mean
-![Example of samples from two populations with the same mean but different variances.](assets/var.png)
-
-## Normal Distribution
-![](assets/normdist.png)
-
-
-
-## Standard Deviation
-
-![](assets/sd.png)
-$$ \sigma/s = \sqrt {\frac {\sum _{i=1}^{N}(x_{i}-{\overline {x}})^{2}}{N-1}} $$
-
-## Statistical Tools
-- Spreadsheets (Excel, Google Sheets)
-- Statistical Package for the Social Sciences (SPSS) 
-- R programming language and free software environment for statistical computing
-
-## Box Plots
-![](assets/bp.png)
-
-## Box Plots
-![](assets/bpanno.png)
-- Box Plots are easy to generate using [ChemGrid's Boxplotr Tool](http://shiny.chemgrid.org/boxplotr/)
-
-## QUICK BREAK
-- Fresh Air
-- Rehydrate
-- Snack food for the brain?
-
-## Qualitative Data Analysis
-- Unstructured
-- Complex
-- Unpredictable 
-- Subjective
-- Time
-
-## The Goal
-- Convert unstructured data into meaning to describe a situation of phenomenon
-- To be transparent about the process 
-- Use proven methodolgy to ensure valid and reliable results
-
-## Content Analysis
-The process of reducing a piece of content down into a representative description based on rules of coding. The term, 'content', describes any qualitative data collected directly or indirectly from the particpants.
-
-- Text
-- Image
-- Audio
-- Video
-- Photos
-
-## Preparation
-- Lock in scope
-- Define your data set (exactly what is being taken into consideration)
-- Clearly define the popluation 
-- Remove any data that doesn't fit the criteria
-
-## Coding 
-> "involves assigning categories and descriptors to blocks"
-
-(Lazar et al, 2017)
-
-- Comparisons
-- Deriving concepts
-- Convert concepts into properties or dimensions
-
-## Emergent Coding
-- Conducted without guidance from existing theory of modeling
-- Note down interesting concepts 
-- Continually refine
-- Good for new research
-- See: Grounded Theory
-
-## Priori Coding
-- Draws upon established theories or existing models
-- Categories are defined before analysis
-- Based on solid theoretical framework (taxonomies)
-- Good for research in well established areas
-- Higher levels of rigour and validity
-- Transparent and less vulnerable to bias
-
-## Step-by-step Guide
-
-[A Step-By-Step Guide To Qualitative Data Analysis - Nancy Gibson](https://www.researchgate.net/publication/292432218_A_Step-By-Step_Guide_To_Qualitative_Data_Analysis)
-
-## Activities
-
-1. Recruit three experts to carry out heuristic evaluations
-2. Write methodology for report
-3. Plan your study
-
+The pilot study can be the difference between useful data and nonsense!
+
+## \color<1>[rgb]{1,0,0} Common Mistakes
+- Double Barreled Question 
+- Bias/loaded words (avoid overly negative or positive sounds words)
+- Provocative language such as "liberal", "terrorism", "conservative"...
+- Assuming prior knowledge
+- Inadequate response options (frustrate the user)
+- Lengthy survey 
+
+## Overall Survey Design
+- It is useful to be explicit about the inclusion criteria within the survey
+- grouping is helpful
+- Questions don't exist in a vacuum 
+- Order and flow is important
+- keep it as short as possible
+- Place sensitive questions towards the end of the survey
+- Always provice attribution so the participant knows who you are and how to contact you
+
+## Why Reinvent the Wheel?
+
+Find an existing tool and apply it to your study. You may need to modify the questions to better suit your goals. 
+
+- Computer System Usability Questionnaire (CSUQ)
+- Interface Consistency Testing Questionnaire (ICTQ)
+- Perdue Usability Testin Questionnaire (PUTQ)
+- Questionnaire for User Interaction Satisfaction (QUIS)
+- Software Usability Measurement Inventory (SUMI)
+- System Usability Scale (SUS)
+
+Always check the validity of existing surveys through peer reviewed evalation before utilising it in your own study! 
