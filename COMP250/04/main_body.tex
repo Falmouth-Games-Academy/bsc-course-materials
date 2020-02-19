@@ -1,6 +1,7 @@
 % !TeX root = ./2019-20-COMP250-04-session-materials_screen.tex
 % Adjust these for the path of the theme and its graphics, relative to this file
 %\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage[T1]{fontenc}
 \usepackage{../../beamerthemeFalmouthGamesAcademy}
 \usepackage{multimedia}
 \graphicspath{ {../../} }
@@ -19,6 +20,9 @@
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
+\usepackage{pgfplots}
+\pgfplotsset{width=\textwidth,height=0.6\textheight,compat=1.9}
+
 \input{sessioninfo}
 
 \begin{document}
@@ -27,6 +31,7 @@
 
 \frame{\titlepage} 
 
-%\input{whatis}
+\input{utility}
+\input{goap}
 
 \end{document}
