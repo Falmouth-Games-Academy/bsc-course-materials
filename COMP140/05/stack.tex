@@ -1,0 +1,41 @@
+\part{Stack}
+\frame{\partpage}
+
+\begin{frame}{The Problem}
+	\begin{itemize}
+		\pause \item If you need to manage the state of an AI character
+		\pause \item If you need to implement a Undo system   
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Solution}
+	\begin{itemize}
+	\pause \item A Stack would be a good choice
+	\begin{itemize}
+		\pause \item In C\# we have the \textbf{Stack} class
+	\end{itemize}
+	\pause \item This is \textbf{L}ast-\textbf{I}n-\textbf{F}irst-\textbf{O}ut data structure
+	\pause \item You add elements to the top of the stack and you remove elements from the top
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{C\# Stack
+Example}
+\begin{lstlisting}
+Stack<Command> issuedCommands=new Stack<Command>();
+
+issuedCommands.Push(new Command("Edit"));
+issuedCommands.Push(new Command("Create"));
+issuedCommands.Push(new Command("Update"));
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{C\# Stack
+	Example}
+\begin{lstlisting}
+Command lastCommandIssued=issuedCommands.Peek();
+
+Command lastCommandIssued=issuedCommands.Pop();
+\end{lstlisting}
+\end{frame}
