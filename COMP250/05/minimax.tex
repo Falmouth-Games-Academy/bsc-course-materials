@@ -1,12 +1,6 @@
+% !TeX root = ./2019-20-COMP250-05-session-materials_screen.tex
 \part{Minimax search}
 \frame{\partpage}
-
-\begin{frame}{Game trees}
-	\centering
-	\fcolorbox{white}{white}{
-		\includegraphics[width=0.8\textwidth]{game_tree}
-	}
-\end{frame}
 
 \begin{frame}{Minimax}
 	\begin{itemize}
@@ -31,6 +25,9 @@
 \end{frame}
 
 \begin{frame}{Minimax search -- example}
+	\begin{center}
+		\texttt{minimax.pptx}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Minimax search pseudocode}
@@ -52,7 +49,7 @@
 					\State $v$ = \Call{Minimax}{nextState, $3 -$ currentPlayer}
 					\State bestValue = \Call{Min}{bestValue, $v$}
 				\EndFor
-				\State \textbf{return} bestValue \pause
+				\State \textbf{return} bestValue 
 			\EndIf
 		\EndProcedure
 	\end{algorithmic}
