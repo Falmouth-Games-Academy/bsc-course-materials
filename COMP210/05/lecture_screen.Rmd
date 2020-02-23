@@ -1,6 +1,6 @@
 ---
 title: ""
-author: "Al"
+author: "Alcwyn Parker"
 date: "01/10/2018"
 output: 
   beamer_presentation:
@@ -11,31 +11,41 @@ output:
     keep_tex: false
     toc: false
     slide_level: 2
-    pandoc_args: [ 
-      "--output=COMP210_04_screen.pdf"
-    ]
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE, fig.align="center")
+opts_knit$get("rmarkdown.pandoc.to")
+html <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"
 ```
 
-\title{\sessionnumber:  Code Review}
-\subtitle{\modulecode: \moduletitle}
 
-\frame{\titlepage} 
+```{r results='asis'}
+if (!html) {
+  cat("\\title{\\sessionnumber} \\subtitle{\\modulecode: \\moduletitle} \\frame{\\titlepage} ")
+}
 
-# Session 4: Code Review
+#############
+## CENTER 
+out_type = knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+centerImage = function(asset, scale = 0.6){
+  
+  perc <- scale * 100
+  
+  if(out_type == 'latex' || out_type == 'beamer')
+    paste("\\begin{figure}\n \\includegraphics[width=", scale, "\\columnwidth]{", asset, "}\n \\end{figure}", sep="")
+  else if(out_type == 'html')
+    paste("<center>\n![](", asset, "){ width=", perc, "% }\n</center>", sep="")
+  else
+    asset
+}
+```
 
 ## Register Attendance
-![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/attendance.png)
+![Attendance monitoring is in place. It is your responsability to ensure that you have signed yourself in.](assets/tapit.png)
 
-## Learning Outcomes 
-After this session you will be able to:
-
-- **Execute** a code review
-- **Write** well formed docstrings
-- **Check** code and comments using linters
 
 ## Quantitative Data vs Qualitative
 
