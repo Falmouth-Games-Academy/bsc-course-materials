@@ -1,51 +1,13 @@
+% !TeX root = ./2019-20-COMP250-05-session-materials_screen.tex
 \part{Monte Carlo evaluation}
 \frame{\partpage}
 
-\begin{frame}{From last time}
+\begin{frame}{Recap}
 	\begin{itemize}
 		\pause\item It is useful to have a \textbf{heuristic evaluation function} for nonterminal states
 		\pause\item Allows 1-ply search, depth-limited minimax, \dots
 		\pause\item Designing a good heuristic requires in-depth knowledge of the game
 		\pause\item What if you don't have such knowledge?
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Expected value}
-	\begin{itemize}
-		\pause\item Let $X$ be a \textbf{random variable}
-		\pause\item Let $p(x)$ be the probability that $X$ has value $x$
-		\pause\item Then the \textbf{expected value} of $X$ is
-			$$ \sum_x x \cdot p(x) $$
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Expected value --- example}
-	\begin{itemize}
-		\pause\item A slot machine pays out:
-			\begin{itemize}
-				\pause\item $\pounds 1$ with probability $0.05$
-				\pause\item $\pounds 5$ with probability $0.03$
-				\pause\item $\pounds 10$ with probability $0.02$
-				\pause\item Nothing with probability $0.9$
-			\end{itemize}
-		\pause\item The expected payout is
-			$$ 1 \times 0.05 + 5 \times 0.03 + 10 \times 0.02 + 0 \times 0.9
-				= 0.4 $$
-			i.e.\ $\pounds 0.40$
-		\pause\item What this means: if you play the slot machine $N$ times, on average you will win $N \times \pounds 0.40$
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{``Randomness'' in computing}
-	\begin{itemize}
-		\pause\item Digital computers are \textbf{deterministic}, so there's no such thing as true randomness
-			\begin{itemize}
-				\pause\item Cryptographically secure systems use an external source of randomness e.g.\ atmospheric noise, radioactive decay
-			\end{itemize}
-		\pause\item What we actually have are \textbf{pseudo-random number generators (PRNGs)}
-		\pause\item A PRNG is an algorithm which gives an \textbf{unpredictable} sequence of numbers based on a \textbf{seed}
-		\pause\item Sequence is \textbf{uniformly distributed}, i.e.\ all numbers have equal probability
-		\pause\item Seed is generally based on some source of \textbf{entropy}, e.g.\ system clock, mouse input, electronic noise
 	\end{itemize}
 \end{frame}
 
@@ -60,6 +22,19 @@
 				\pause\item As the \textbf{number of samples} increases, the \textbf{accuracy} of the answer improves
 			\end{itemize}
 		\pause\item Applications in physics, engineering, finance, weather forecasting, graphics, ...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Aside: ``randomness'' in computing}
+	\begin{itemize}
+		\pause\item Digital computers are \textbf{deterministic}, so there's no such thing as true randomness
+			\begin{itemize}
+				\pause\item Cryptographically secure systems use an external source of randomness e.g.\ atmospheric noise, radioactive decay
+			\end{itemize}
+		\pause\item What we actually have are \textbf{pseudo-random number generators (PRNGs)}
+		\pause\item A PRNG is an algorithm which gives an \textbf{unpredictable} sequence of numbers based on a \textbf{seed}
+		\pause\item Sequence is \textbf{uniformly distributed}, i.e.\ all numbers have equal probability
+		\pause\item Seed is generally based on some source of \textbf{entropy}, e.g.\ system clock, mouse input, electronic noise
 	\end{itemize}
 \end{frame}
 
