@@ -1,0 +1,49 @@
+% !TeX root = ./2019-20-COMP360-05-workshop-materials_screen.tex
+\part{Test cases}
+\frame{\partpage}
+
+\begin{frame}{Three questions}
+    \begin{itemize}
+        \pause\item What makes a good test case?
+        \pause\item What makes a good bug report?
+        \pause\item What does a unit test describe?
+        \pause\item The answer to these three questions is very similar...
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Test case}
+    \pause A good test case should include:
+    \begin{itemize}
+        \pause\item Any assumptions, initial conditions, prerequisites
+        \pause\item A set of steps to follow
+        \pause\item The expected result
+        \pause\item (When the test is carried out) The actual result
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Bug report}
+    \pause A good bug report should include:
+    \begin{itemize}
+        \pause\item Any assumptions, initial conditions, prerequisites
+        \pause\item A set of steps to follow
+        \pause\item The expected result
+        \pause\item The actual result (the bug being that this differs from the expected result)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Unit test}
+    \pause A good unit test should include:
+    \begin{itemize}
+        \pause\item Code to set up any assumptions, initial conditions, prerequisites
+        \pause\item A function to execute (a set of steps)
+        \pause\item An assertion checking the expected result matches the actual result
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{How they fit together}
+    \begin{itemize}
+        \pause\item A test case is general --- can fit at unit, integration, system or acceptance testing level
+        \pause\item A unit test is essentially an automated test case
+        \pause\item A bug report is suggestive of a new test case that should be added to the test plan
+    \end{itemize}
+\end{frame}

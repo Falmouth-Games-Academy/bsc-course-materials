@@ -1,0 +1,66 @@
+\part{Optimisation}
+\frame{\partpage}
+
+\begin{frame}{Optimisation}
+	\begin{itemize}
+		\pause\item \textbf{Optimisation} is the process of making a program \textbf{more efficient}
+			in terms of speed, memory usage etc. 
+        \pause\item Optimisation can \textbf{increase} or \textbf{decrease} software quality,
+            depending on what measure of ``quality'' is being used
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		``Rules of optimization:
+		
+		Rule 1: Don't do it.
+		
+		Rule 2 (for experts only): Don't do it yet.''
+	\end{center}
+	\begin{flushright}
+		--- Michael A.\ Jackson
+	\end{flushright}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		``Programmers waste enormous amounts of time thinking about, or worrying about,
+		the speed of noncritical parts of their programs, and these attempts at efficiency
+		actually have a strong negative impact when debugging and maintenance are considered.
+		We \textit{should} forget about small efficiencies, say about 97\% of the time:
+		\textbf{premature optimization is the root of all evil}.
+		Yet we should not pass up our opportunities in that critical 3\%.''
+	\end{center}
+	\begin{flushright}
+		--- Donald Knuth
+	\end{flushright}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		``Measure twice, cut once.''
+	\end{center}
+	\begin{flushright}
+		--- Proverb
+	\end{flushright}
+\end{frame}
+
+\begin{frame}{Levels of Optimisation}
+	\begin{itemize}
+		\pause \item System Level: Utilisation, Balancing and Efficiency
+		\pause \item Algorithmic Level: Focus on removing work
+		\pause \item Micro-Level: Line by line optimising (data structures is a good example here)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Optimisation Pitfalls}
+	\begin{itemize}
+		\pause \item Assumptions: Always measure!
+		\pause \item Premature Optimisation: Don't optimise with data, or too early in the development process
+		\pause \item Optimisation on Only One Machine: Test on the worst case system
+        \pause \item Optimising Debug Builds
+        \pause \item Trying to second-guess the compiler: in many cases, the compiler is better at micro-level optimisation than you are!
+	\end{itemize}
+\end{frame}
+

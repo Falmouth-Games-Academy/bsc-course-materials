@@ -1,0 +1,92 @@
+\part{Optimisation}
+\frame{\partpage}
+
+\begin{frame}{Optimiser Mantra}
+	\begin{enumerate}
+		\pause \item Benchmark
+		\pause \item Measure
+		\pause \item Detect
+		\pause \item Solve
+		\pause \item Check
+		\pause \item Repeat
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Benchmark}
+	\begin{itemize}
+		\pause \item This is a point of reference for your game, serves as a standard for comparison
+		\pause \item A good benchmark should:
+		\begin{enumerate}
+			\pause \item Consistent between runs
+			\pause \item Should be quick
+			\pause \item Represent an actual game situation
+			\pause \item Responsive to changes 
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Measure}
+	\begin{itemize}
+		\pause \item You should be able to measures the performance of your code 
+		\pause \item Tools like Profilers allow you to monitor the following:
+		\begin{itemize}
+			\pause \item CPU Usage - Across all cores, usually \% utilisation
+			\pause \item Memory Usage - Ram, Stack, Heap etc
+			\pause \item GPU - GPU core \& memory usage and shader performance
+			\pause \item Code - Timings, function calls stats, call graphs
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Detect}
+	\begin{itemize}
+		\pause \item Usually the result of looking at the data from the profiler
+		\pause \item With every change you are looking for the biggest possible performance increase
+		\pause \item Always start with the big picture and work your way down
+		\begin{itemize}
+			\pause \item CPU or GPU slowing you down most?
+			\pause \item If GPU is under utilised, perhaps shift some of work to the GPU (Compute Shaders) or perhaps GPU is waiting for CPU
+			\pause \item If CPU is over utilised, perhaps look at profiling code in functions
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Solve}
+	\begin{itemize}
+		\pause \item Once you have detected the problem you need to solve it
+		\pause \item This could involve rewriting an algorithm or changing data structures
+		\pause \item In all cases the data captured should drive your work
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Check}
+	\begin{itemize}
+		\pause \item After a change has been made you should always run the profiler again
+		\pause \item Also check on different hardware!
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Repeat}
+	\begin{itemize}
+		\pause \item A change in your code base can cause other issues to crop
+		\pause \item Create a new benchmark and start the process again 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Levels of Optimisation}
+	\begin{itemize}
+		\pause \item System Level: Utilisation, Balancing and Efficiency
+		\pause \item Algorithmic Level: Focus on removing work
+		\pause \item Micro-Level: Line by line optimising (data structures is a good example here)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Optimisation Pitfalls}
+	\begin{itemize}
+		\pause \item Assumptions: Always measure!
+		\pause \item Premature Optimisation: Don't optimise with data, or too early in the development process
+		\pause \item Optimisation on Only One Machine: Test on the worst case system
+		\pause \item Optimising Debug Builds
+	\end{itemize}
+\end{frame}
+
