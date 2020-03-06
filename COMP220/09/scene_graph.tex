@@ -1,0 +1,36 @@
+\part{Scene graphs}
+\frame{\partpage}
+
+\begin{frame}{Coordinate spaces}
+	\begin{center}
+		\begin{tabular}{cl}
+			\pause Model space \\
+			\pause $\downarrow$ & Model matrix \\
+			\pause World space \\
+			\pause $\downarrow$ & View matrix \\
+			\pause Camera space \\
+			\pause $\downarrow$ & Projection matrix \\
+			\pause Screen space
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Rule of thumb}
+	\begin{itemize}
+		\pause\item When performing calculations, \textbf{do not mix} vectors from \textbf{different coordinate spaces}
+		\pause\item E.g.\ when performing lighting calculations, ensure your fragment position, normal, light direction, eye direction are all
+			in the \textbf{same} space
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Scene graph}
+	\begin{itemize}
+		\pause\item It is often useful to organise objects into a \textbf{hierarchy}
+		\pause\item Each node in the hierarchy has its own model matrix
+		\pause\item Transformations stack: object is affected by its own transformation,
+			and that of its parent,
+			and that of its grandparent,
+			and so on
+		\pause\item The model matrix is the \textbf{product} of model matrices for the node and its ancestors
+	\end{itemize}
+\end{frame}

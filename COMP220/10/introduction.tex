@@ -1,0 +1,14 @@
+\part{Introduction}
+\frame{\partpage}
+
+\begin{frame}{What is Post-Processing?}
+	\begin{itemize}
+		\pause\item Is a series of techniques that are carried out after a scene has been rendered
+		\pause\item Traditionally this could only be done as an offline process
+		\pause\item With the advent of faster GPUs and programmable shaders, we could implement some of the effects in real time
+		\pause\item The key to the effect is to switch from drawing to the back buffer to a texture
+		\pause\item This texture will contain the scene
+		\pause\item We then use a shader to implement a post-processing effect
+		\pause\item We then map the processed texture onto a full screen quad, which is rendered to the backbuffer
+	\end{itemize}
+\end{frame}

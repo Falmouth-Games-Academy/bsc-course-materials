@@ -6,7 +6,7 @@
 
 % Default language for code listings
 \lstset{language=C++,
-	morekeywords={each,in,nullptr}
+        morekeywords={each,in,nullptr}
 }
 
 \input{../listings_GLSL}
@@ -23,7 +23,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Post-processing}
+\title{\sessionnumber: Materials and Lighting}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -31,18 +31,14 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item \textbf{Understand} Post-processing in computer graphics
-		\item \textbf{Implement} graphical effects from COMP120 in realtime 
-		\item \textbf{Implement} other Post-processing effects in your application
+		\item \textbf{Explain} the Blinn-Phong illumination model
+		\item \textbf{Implement} Blinn-Phong illumination in your own programs
+		\item \textbf{Describe} how effects such as normal mapping can be used to render realistic materials
 	\end{itemize}
 \end{frame}
 
-\input{introduction}
-\input{render_to_texture}
-\input{display_texture}
-\input{comp120_refresher}
-\input{postprocessing_techniques}
-\input{debrief}
-\input{exercise}
+\input{vector_products}
+\input{phong}
+
 
 \end{document}

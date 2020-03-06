@@ -9,6 +9,8 @@
         morekeywords={each,in,nullptr}
 }
 
+\input{../listings_GLSL}
+
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
@@ -21,7 +23,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Rigging and animation}
+\title{\sessionnumber: Materials and Lighting}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -29,22 +31,14 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item \textbf{Explain} the role of rigging in 3D animation
-		\item \textbf{Describe} how a rigged model is transformed to produce animation
-		\item \textbf{Use} skeletal animation in your own programs
+		\item \textbf{Explain} the Blinn-Phong illumination model
+		\item \textbf{Implement} Blinn-Phong illumination in your own programs
+		\item \textbf{Describe} how effects such as normal mapping can be used to render realistic materials
 	\end{itemize}
 \end{frame}
 
-\input{scene_graph}
-\input{rigging}
+\input{vector_products}
+\input{phong}
 
-\part{Advanced animation}
-\frame{\partpage}
-
-\begin{frame}{Animating with Math}
-	\begin{center}
-		\url{http://www.gdcvault.com.ezproxy.falmouth.ac.uk/play/1023249/Animating-With}
-	\end{center}
-\end{frame}
 
 \end{document}
