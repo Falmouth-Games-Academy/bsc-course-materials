@@ -6,8 +6,10 @@
 
 % Default language for code listings
 \lstset{language=C++,
-        morekeywords={each,in,nullptr}
+	morekeywords={each,in,nullptr}
 }
+
+\input{../listings_GLSL}
 
 % For strikethrough effect
 \usepackage[normalem]{ulem}
@@ -21,7 +23,7 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Rigging and animation}
+\title{\sessionnumber: Post-processing}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -29,22 +31,18 @@
 \begin{frame}
 	\frametitle{Learning outcomes}
 	\begin{itemize}
-		\item \textbf{Explain} the role of rigging in 3D animation
-		\item \textbf{Describe} how a rigged model is transformed to produce animation
-		\item \textbf{Use} skeletal animation in your own programs
+		\item \textbf{Understand} Post-processing in computer graphics
+		\item \textbf{Implement} graphical effects from COMP120 in realtime 
+		\item \textbf{Implement} other Post-processing effects in your application
 	\end{itemize}
 \end{frame}
 
-\input{scene_graph}
-\input{rigging}
-
-\part{Advanced animation}
-\frame{\partpage}
-
-\begin{frame}{Animating with Math}
-	\begin{center}
-		\url{http://www.gdcvault.com.ezproxy.falmouth.ac.uk/play/1023249/Animating-With}
-	\end{center}
-\end{frame}
+\input{introduction}
+\input{render_to_texture}
+\input{display_texture}
+\input{comp120_refresher}
+\input{postprocessing_techniques}
+\input{debrief}
+\input{exercise}
 
 \end{document}
