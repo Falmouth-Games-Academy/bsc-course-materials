@@ -1,3 +1,4 @@
+% !TeX root = ./2019-20-COMP250-08-session-materials_screen.tex
 % Adjust these for the path of the theme and its graphics, relative to this file
 %\usepackage{beamerthemeFalmouthGamesAcademy}
 \usepackage{../../beamerthemeFalmouthGamesAcademy}
@@ -5,7 +6,8 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=Java
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
 }
 
 % For strikethrough effect
@@ -20,11 +22,13 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: MicroRTS}
+\title{\sessionnumber: Evolutionary Algorithms}
 \subtitle{\modulecode\ \moduletitle}
 
 \frame{\titlepage} 
 
-\input{microrts}
+\input{optimisation}
+\input{evolution}
+\input{neuralnet}
 
 \end{document}
