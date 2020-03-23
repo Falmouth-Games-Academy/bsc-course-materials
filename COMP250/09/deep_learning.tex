@@ -1,0 +1,96 @@
+\part{Deep learning}
+\frame{\partpage}
+
+\begin{frame}{Deep learning}
+	\begin{itemize}
+		\pause\item Basically, the use of large ANNs with \textbf{many layers}
+		\pause\item Often uses \textbf{large training sets}
+		\pause\item Training often uses powerful \textbf{GPUs} --- many times faster than training on the CPU
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Convolutional Neural Networks (ConvNets)}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{convnet}
+	\end{center}
+	\begin{itemize}
+		\pause\item Layers are \textbf{2D arrays}
+		\pause\item Neurons in convolutional layers are only connected to nearby neurons
+		\pause\item There are also fully connected layers
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\includegraphics[width=\textwidth]{convnet_face}
+\end{frame}
+
+\begin{frame}{DeepDream}
+	\begin{itemize}
+		\pause\item Train a ConvNet to recognise something (e.g.\ faces, objects, animals)
+		\pause\item Run the network in ``reverse''
+			\begin{itemize}
+				\pause\item Adjust the image (e.g.\ via gradient ascent) so that it is more strongly recognised by the network
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{DeepDream}
+	\includegraphics[width=\textwidth]{deepdream}
+\end{frame}
+
+\begin{frame}{Style transfer}
+	\begin{itemize}
+		\pause\item Train a ConvNet to recognise a particular artistic style
+		\pause\item Run the network in ``reverse'' on an input image
+			\begin{itemize}
+				\pause\item Adjust the image (e.g.\ via gradient ascent) so that it is more strongly recognised by the network
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\includegraphics[width=\textwidth]{style_transfer}
+\end{frame}
+
+\begin{frame}{Generative Adversarial Networks (GANs)}
+	\begin{itemize}
+		\pause\item Two ANNs trained in parallel
+			\begin{itemize}
+				\pause\item One to generate ``fake'' artefacts
+				\pause\item One to distinguish ``real'' from ``fake''
+			\end{itemize}
+		\pause\item \url{http://research.nvidia.com/publication/2017-10_Progressive-Growing-of}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Learning to play Atari games (Mnih et al, 2015)}
+	\includegraphics[width=\textwidth]{deepmind_atari}
+\end{frame}
+
+\begin{frame}{AlphaGo (Silver et al, 2017)}
+	\begin{itemize}
+		\pause\item MCTS with ANNs for move pruning, simulation playouts and state evaluation
+		\pause\item ANNs trained on both expert human matches and self-play (reinforcement learning)
+		\pause\item Defeated Lee Sedol, world Go champion
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{AlphaZero (Silver et al, 2018)}
+	\begin{itemize}
+		\pause\item Similar MCTS+ANN architecture to AlphaGo
+		\pause\item Trained by reinforcement learning (self-play) only
+		\pause\item After only 9 hours$^*$ of training, defeated Stockfish
+			(one of the strongest chess programs available) in a 100-match tournament
+			\begin{itemize}
+				\pause\item $^*$ On a cluster of 5000 of Google's custom Tensor Processing Units
+			\end{itemize}
+		\pause\item Stockfish is based on decades of research by expert chess players and AI programmers
+			--- AlphaZero started from no chess-specific knowledge whatsoever (other than the rules of the game)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Deep learning for PCG}
+	\begin{center}
+		\url{https://www.youtube.com/watch?v=3wcpLwvBTYo}
+	\end{center}
+\end{frame}
