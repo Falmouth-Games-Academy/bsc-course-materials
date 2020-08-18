@@ -87,9 +87,9 @@
 	\end{itemize}
 \end{frame}
 
-\fullbleed{pic_array}
+%\fullbleed{pic_array}
 
-\fullbleed{pic_matrix}
+%\fullbleed{pic_matrix}
 
 \begin{frame}
 	\frametitle{Pictures and Surfaces}
@@ -113,16 +113,16 @@
 			\item HSB = hue, saturation, brightness
 			\item RGBA = red, green, blue, alpha (transparency)
 		\end{itemize}
-		\item By default, PyGame uses RGBA
+		\item By default, Visual Studio and C\# uses RGBA
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Encoding RGB}
 	
 	\begin{itemize}
 		\item Each component color (red, green, and blue) is encoded as a single byte
-		\item Colors go from \lstinline{(0,0,0)} to \lstinline{(255,255,255)}:
+		\item Colors go from %\lstinline{(0,0,0)} to \lstinline{(255,255,255)}:
 		\begin{itemize}
 			\item If all three components are the same, the colour is in grey-scale
 			\item  \lstinline{(0,0,0)} is black
@@ -131,7 +131,7 @@
 	\end{itemize}
 \end{frame}
 
-\fullbleed{rgb_matrix}
+
 
 \begin{frame}
 	\frametitle{Encoding Bits}
@@ -157,7 +157,11 @@
 		\item One of these patterns will be $0$, so the highest value we can represent with $8$ bits is: $2^8 - 1$, or $255$
 	\end{itemize}
 \end{frame}
-
+\begin{frame}
+	\begin{center}
+		\includegraphics[scale=0.5]{rgb_pallette}
+	\end{center}	
+\end{frame}
 \begin{frame}
 	\frametitle{Encoding Bits}
 	\begin{itemize}
@@ -170,8 +174,10 @@
 		\item RGBA uses 32-bit colour
 		\begin{itemize}
 			\item No additional colour, but offers support for transparency
+			\item This transparency channel is called \texttt{alpha}
+			\item The alpha channel also requires 8 bits
 		\end{itemize}
-		\item Assuming 1 \texttt{byte} == 8 \texttt{bits}
+		\item Assuming \texttt{1 byte} == \texttt{8 bits}
 		\item We can use this information to estimate the size of a bitmap:
 		\begin{itemize}
 			\item 320x240x24 = 230,400 bytes
@@ -179,4 +185,32 @@
 			\item 1024x768x32 = 3,145,728 bytes
 		\end{itemize}
 	\end{itemize}
+\end{frame}
+
+\fullbleed{texture-254576_1920}
+
+\begin{frame}[fragile]
+	\frametitle{Manipulating Bitmap Pixels}
+	
+	\begin{itemize}
+		\item Images are controlled and manipulated using the \texttt{Bitmap} class in C\#
+		\item We can use \texttt{GetPixel} and \texttt{SetPixel} methods to both find and change pixels.
+	    \begin{lstlisting}
+myImage.GetPixel(x, y);
+myImage.SetPixel(x, y, newColor);
+	    \end{lstlisting}
+	    \item Both methods use cartesian coordinates (x and y) to define the position of a specific pixel
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Manipulating Bitmap Pixels}
+\begin{center}
+	\includegraphics[scale=0.2]{pixel_coordinates}	
+\end{center}
+	\begin{lstlisting}
+myImage.GetPixel(3, 2);
+	\end{lstlisting}
+	We can use the method to discover the ARGB values at the above position
+
 \end{frame}

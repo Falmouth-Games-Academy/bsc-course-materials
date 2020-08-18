@@ -47,38 +47,33 @@
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Launch a basic Python project in PyCharm
-		\item Import PyGame, setup a main window, and define a game-loop which renders a white background
-		\item Refer to the following documentation:
-		\begin{itemize}
-			\item \url{www.pygame.org/docs/tut/tom_games2.html}
-		\end{itemize}
+		\item Open Visual Basic 
+		\item Create a 'Windows Forms Application'
+		\item Refer to the following documentation for details:
 	\end{itemize}
+\scriptsize \url{https://docs.microsoft.com/en-us/visualstudio/ide/create-csharp-winform-visual-studio}
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Activity \#1a -- Setup}
 	
 \begin{lstlisting}
-import pygame
+int width = 640, height = 320;
+Bitmap bmp = new Bitmap(width, height);
+Random rand = new Random();
 
-pygame.init()
-
-main_window = pygame.display.set_mode((800,600))
-
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    main_window.fill((255,255,255))
-    pygame.display.update()
-
-pygame.quit()
+for (int y = 0; y < height; y++)
+	{
+	for (int x = 0; x < width; x++)
+	{
+		bmp.SetPixel(x, y, Color.FromArgb(256, 0, 0, 0));
+	}
+}
+pictureBox1.Image = bmp;
+bmp.Save("D:\\Image\blackImage.png");
 \end{lstlisting}
 
-Note: This is a PyGame example.
+Note: This is an example using the contained in the 'Form' class
 
 \end{frame}
 	
@@ -90,8 +85,8 @@ Note: This is a PyGame example.
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Render a green \texttt{Surface} in the top corner of the window
-		\item Define a function to manipulate a single pixel in the \texttt{Surface} using a \texttt{PixelArray}
+		\item Render a green \texttt{Bitmap} image
+		\item Define a function to change at least one pixel to another colour in the \texttt{Bitmap} using a \texttt{SetPixel}
 		\item Refer to the following documentation:
 		\begin{itemize}
 			\item \url{www.pygame.org/docs/ref/surface.html}
