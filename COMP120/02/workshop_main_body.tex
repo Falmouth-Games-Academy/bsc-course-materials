@@ -34,7 +34,7 @@
 	\frametitle{Learning Outcomes}
 	By the end of this workshop, you should be able to:	
 	\begin{itemize}
-		\item \textbf{Apply} knowledge of colour models to \textbf{write} code that manipulates pixels in a surface
+		\item \textbf{Apply} knowledge of colour models to \textbf{write} code that manipulates pixels in a Visual Studio Form App
 		\item \textbf{Use} functions, arguments, and basic data structures such as arrays
 	\end{itemize}
 \end{frame}
@@ -60,23 +60,57 @@
 \begin{lstlisting}
 int width = 640, height = 320;
 Bitmap bmp = new Bitmap(width, height);
-Random rand = new Random();
 
 for (int y = 0; y < height; y++)
 	{
 	for (int x = 0; x < width; x++)
 	{
-		bmp.SetPixel(x, y, Color.FromArgb(256, 0, 0, 0));
+		bmp.SetPixel(x, y, Color.FromArgb(255, 0, 0, 0));
 	}
 }
 pictureBox1.Image = bmp;
-bmp.Save("D:\\Image\blackImage.png");
+bmp.Save("D:\\images\blackImage.png");
 \end{lstlisting}
-
-Note: This is an example using the contained in the 'Form' class
-
+Note: This is an example that is contained in the 'Form' class
 \end{frame}
+\begin{frame}[fragile]
+	\frametitle{Activity \#1a -- Setup}
 	
+Add a \textbf{Picturebox} from \textbf{Tools}. Set the \textbf{Picturebox} to \textbf{Zoom}.
+NOTE - ADD SCREENSHOT TO ILLUSTRATE
+\end{frame}
+
+\begin{frame}
+		\frametitle{Key C\# Methods Used}
+			\begin{itemize}		
+			\item \texttt{Bitmap} - consists of the pixel data for a graphics image and its attributes.
+				\begin{itemize}	
+					\item \texttt{New} - Initializes a new instance of the Bitmap class with the specified size or from an existing file.
+					\item \texttt{Save} - Saves the Image to the specified file or stream.
+				\end{itemize}	
+			\item \texttt{SetPixel} - Sets the color of the specified pixel in a Bitmap.
+			\item \texttt{GetPixel} - Gets the color of the specified pixel in a Bitmap.
+			\item \texttt{Color.FromArgb} - Creates a colour structure from the four 8-bit ARGB components (alpha, red, green, and blue) values.	
+			\end{itemize}
+\end{frame}	
+
+\begin{frame}[fragile]
+	\frametitle{Key Concepts}
+	
+	\textbf{Nested} \texttt{for} \textbf{Loops} - to iterate through all the positions in a two dimensional array. For example: all the pixels in an image which are arranged in rows and columns.
+	
+	\begin{lstlisting}
+for (int hours = 0; hours < 24; hours++)
+{
+	for (int minutes = 0; minutes < 60; minutes++)
+	{
+		//do something for every minute in the day
+	}
+}
+	\end{lstlisting}
+	
+\end{frame}
+
 \begin{frame}
 	\frametitle{Activity \#1b -- Setup}
 	
@@ -86,55 +120,67 @@ Note: This is an example using the contained in the 'Form' class
 	
 	\begin{itemize}		
 		\item Render a green \texttt{Bitmap} image
-		\item Define a function to change at least one pixel to another colour in the \texttt{Bitmap} using a \texttt{SetPixel}
 		\item Refer to the following documentation:
 		\begin{itemize}
-			\item \url{www.pygame.org/docs/ref/surface.html}
-			\item \url{www.pygame.org/docs/ref/pixelarray.html}
+			\item \url{https://docs.microsoft.com/en-us/dotnet/api/system.drawing.color.fromargb}
+			\item \url{https://docs.microsoft.com/en-us/dotnet/api/system.drawing.bitmap.setpixel}
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Activity \#1b -- Setup}
+	\frametitle{Activity \#2 - Test Card}
 
-Firstly, create a new \texttt{Surface} and fill it with green:
+\begin{itemize}		
+	\item Create a \texttt{Bitmap} image that displays 3 equal vertical bars of red, green and blue
+	\item The image must be \textbf{640 x 480} in size.
+	\item Consider how you will allocate the painting of pixels to the different areas of the screen. 
+
+\end{itemize}
 	
-\begin{lstlisting}
-my_surface = pygame.Surface((200,200))
-my_surface.fill((0,255,0))
-\end{lstlisting}
-
-\vspace{0.5em}
-
-Then, blit the green \texttt{Surface} onto the main window at the origin:
-
-\begin{lstlisting}
-    main_window.fill((255,255,255))
-    main_window.blit(my_surface, (0,0))
-    pygame.display.update()
-\end{lstlisting}
-
-Note: This is a PyGame example.
+\center\includegraphics[scale=0.16]{testCard}
 
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Activity \#1b -- Setup}
+	\frametitle{Activity \#3 - Random Pixels}
 
-Finally, define a new function using the \texttt{def} keyword to manipulate a single pixel in the \texttt{Surface}:
+\begin{itemize}		
+	\item Create a \texttt{Bitmap} image that displays random pixel for every pixel in the image. Like snow on an old TV.
+	\item Consider how you will generate random values for ARGB
+	\item You will need to explore these methods associated with the \texttt{Random} class:
+	
+\end{itemize}
 	
 \begin{lstlisting}
-def set_pixel(surf, x_pos, y_pos, colour):
-    px_array = pygame.PixelArray(surf)
-    px_array[x_pos,y_pos] = colour
-    del px_array
-
-set_pixel(my_surface, 100, 100, (0,0,0))
+ new Random();
 \end{lstlisting}
+Initializes a new instance of the \texttt{Random} class.
+\begin{lstlisting}
+Next();
+\end{lstlisting}
+Returns a non-negative random integer.
 
-Note: This is a PyGame example.
+\end{frame}
 
+\begin{frame}[fragile]
+	\frametitle{Activity \#3 - Random Pixels}
+\begin{columns}
+	\begin{column}{0.48\textwidth}
+	\begin{lstlisting}
+Random rand = new Random();
+	\end{lstlisting}
+Create a variable to contain the \texttt{Random} class.
+	\begin{lstlisting}
+int a = rand.Next(256);
+	\end{lstlisting}
+Assign a variable for each colour channel and use \texttt{Next} with the new random variable to randomly choose a value.
+
+\end{column}
+ \begin{column}{0.48\textwidth}
+\includegraphics[scale=0.14]{videodrome}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}
