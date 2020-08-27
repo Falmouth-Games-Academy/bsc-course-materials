@@ -76,7 +76,7 @@
         };
         \node[anchor=south east, yshift=-0.1cm] at (Title.north east) {
            \tagstructbegin{tag=Subtitle}\tagmcbegin{tag=Subtitle}
-        	\parbox[t]{0.8\paperwidth}{\raggedleft\usebeamerfont{subtitle}\textcolor{SubtitleGrey}{\insertsubtitle}}
+        	\parbox[t]{0.8\paperwidth}{\raggedleft\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}{\insertsubtitle}}
         	\tagmcend \tagstructend
         };
         \node[anchor=south west, xshift=0.1cm, yshift=0.1cm] at (current page.south west) {
