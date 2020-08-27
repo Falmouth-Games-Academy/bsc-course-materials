@@ -350,46 +350,6 @@ bmp.SetPixel(x, y, Color.FromArgb(a, r, g, b));
 Note: This code occurs inside the nested for loop and presumes you have setup a bitmap variable - bmp.
 
 \end{frame}
-% NEEDS REVISING FOR WEEK 3
-\iffalse
-\begin{frame}
-	\frametitle{Activity \#6 -- Sunset}
-	
-	In pairs:
-	
-	\vspace{2em}
-	
-	\begin{itemize}
-		\item Define a function that loads an image and produces several images as output, descreasing luminance
-		\item Refer to the following documentation:
-		\begin{itemize}
-			\item \url{//www.pygame.org/docs/ref/time.html}
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-{frame}[fragile]
-\frametitle{Activity \#6 -- Sunset}
-
-\begin{lstlisting}
-def decreaseRed(picture, amount):
-  for p in getPixels(picture):
-    value=getRed(p)
-    setRed(p,value*amount)
-
-amount = 0.1 #tinker with this value
-wait_time = 50 #tinker with this value    
-    
-for i in range(10):
-  decreaseRed(picture, amount)
-  decreaseGreen(picture, amount)
-  decreaseBlue(picture, amount)
-  wait(50)
-\end{lstlisting}
-
-Note: This source code excerpt will not work in PyGame.
-
-\end{frame}
 
 \begin{frame}
 	\frametitle{Activity \#7 -- Top-Copy}
@@ -402,28 +362,69 @@ Note: This source code excerpt will not work in PyGame.
 		\item Define a function that copies the top half of a picture to its bottom half
 		\item Refer to the following documentation:
 		\begin{itemize}
-			\item \url{https://docs.python.org/3.7/tutorial/introduction.html\#lists}
+			\item Consider this example of multiple conditions in a for loop as a possible solution:
+			\item \url{http://www.java2s.com/Tutorial/Cpp/0060__Operators-statements/Usemultiplestatementsinforloops.htm}
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Activity \#7 -- Top-Copy}
+	
+	\begin{lstlisting}
+int width = oldImg.Width;
+int height = oldImg.Height;
 
-\begin{lstlisting}
-def copyHalf(picture):
- pixels = getPixels(picture)
- for index in range(0,len(pixels)/2):
-   sourcePixel = pixels[index]
-   sourceRGBValue = getColor(sourcePixel)
-   destinationPixel = pixels[index + len(pixels)/2]
-   setColor(destinationPixel,sourceRGBValue)
- repaint(picture)
-\end{lstlisting}
+Bitmap newImg = new Bitmap(width, height);
 
-Note: This source code excerpt will not work in PyGame.
+for (int y = 0, ry = height/2; y < height/2; y++, ry++)
+	{
+		for (int x = 0; x < width; x++ )
+		{
+		Color p = oldImg.GetPixel(x, y);
+		newImg.SetPixel(x, y, p);
+		newImg.SetPixel(x, ry, p);    
+	}
+}	
+	\end{lstlisting}
+	
+	Note: You still need to consider load and saving element of this code block.
+	
+\end{frame}
+% NEEDS REVISING FOR WEEK 3
+\begin{frame}
+	\frametitle{Challenge for next week -- Sunset}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}
+		\item Define a function that loads an image and produces several images as output, descreasing luminance
+		\item You will need to think about how to reduce the luminance of the image iteratively producing a number of images and displaying them.
+	\end{itemize}
+\end{frame}
 
-\end{frame}\fi
-
+\begin{frame}
+	{frame}[fragile]
+	\frametitle{Challenge for next week -- Sunset}
+	
+	\begin{lstlisting}
+	def decreaseRed(picture, amount):
+	for p in getPixels(picture):
+	value=getRed(p)
+	setRed(p,value*amount)
+	
+	amount = 0.1 #tinker with this value
+	wait_time = 50 #tinker with this value    
+	
+	for i in range(10):
+	decreaseRed(picture, amount)
+	decreaseGreen(picture, amount)
+	decreaseBlue(picture, amount)
+	wait(50)
+	\end{lstlisting}visual visua
+	
+\end{frame}
 
 \end{document}

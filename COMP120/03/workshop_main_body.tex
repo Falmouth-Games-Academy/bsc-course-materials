@@ -60,7 +60,7 @@
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
+		\item Setup a basic project in Visual Studio
 		\item Use the distance equation from the previous slide to write a function which accepts a two colours and returns the distance
 		\item Test your solution
 		\item Then, post your solution on Slack
@@ -71,28 +71,43 @@
 	\frametitle{Numeric Return Values}
 	
 \begin{lstlisting}
-def distance(colour_base, colour_comparitor):
-    return  sqrt( (colour_base.r - colour_comparitor.r)**2 + (colour_base.g - colour_comparitor.g)**2 + (colour_base.b - colour_comparitor.b)**2 )
+public static int GetDistance(Color first, Color second)
+{
+	int redDifference;
+	int greenDifference;
+	int blueDifference;
+
+	redDifference = first.R - second.R;
+	greenDifference = first.G - second.G;
+	blueDifference = first.B - second.B;
+
+	return redDifference * redDifference + 
+	greenDifference * greenDifference +
+255blueDifference * blueDifference;
+}
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
 
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Expected Output: Color Distance}
-	
+ You can use predefined color names with this method:
 \begin{lstlisting}
->>> print distance(WHITE, BLACK)
-441.6729559300637
->>> print distance(WHITE, PINK)
-113.13708498984761
->>> print distance(BLACK, PINK)
-355.3519382246282
->>> print distance(MAGENTA, PINK)
-192.41881404893857
+Color Color1 = Color.FromKnownColor(KnownColor.Pink);	
 \end{lstlisting}
-
+Expected Values:	
+\begin{lstlisting}
+Console.WriteLine (GetDistance(WHITE, BLACK));
+- 195075
+Console.WriteLine (GetDistance(WHITE, PINK));
+- 6673
+Console.WriteLine (GetDistance(BLACK, PINK));
+- 143098
+Console.WriteLine (GetDistance(MAGENTA DARKGOLDENROD));
+- 82533
+\end{lstlisting}
+NOTE - You need to create the color objects and pass them into the function, don't just use a colour in capitals. just for illustration.  
 \end{frame}
 
 \begin{frame}
@@ -247,7 +262,7 @@ def blackAndWhitePosterize(picture):
       setColor(pixel, WHITE)
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
+
 
 \end{frame}
 
