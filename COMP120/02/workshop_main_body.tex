@@ -18,17 +18,17 @@
 % //www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
-\input{sessioninfo}
+\title{\sessionnumber: Tinkering Graphics I}
+\subtitle{\modulecode: \moduletitle}
+\author{Michael Scott and Matt Watkins}
 
 \setbeamertemplate{navigation symbols}{}
 
 \input{../../commands}
 
 \begin{document}
-\title{\sessionnumber: Tinkering Graphics I}
-\subtitle{\modulecode: \moduletitle}
 
-\frame{\titlepage} 
+\maketitle
 
 \begin{frame}
 	\frametitle{Learning Outcomes}
@@ -169,8 +169,8 @@ Returns a non-negative random integer.
 
 \begin{frame}[fragile]
 	\frametitle{Activity \#3 - Random Pixels}
-\begin{setting Fromcolumns}
-	\begin{column}{0.48\textwidth}
+\begin{columns}
+	\column{0.48\textwidth}
 	\begin{lstlisting}
 Random rand = new Random();
 	\end{lstlisting}
@@ -180,11 +180,9 @@ int a = rand.Next(256);
 	\end{lstlisting}
 Assign a variable for each colour channel and use \texttt{Next} with the new random variable to randomly choose a value.
 
-\end{column}
- \begin{column}{0.48\textwidth}
+\column{0.48\textwidth}
 \includegraphics[scale=0.14]{videodrome}
-\end{column}
-\end{setting Fromcolumns}
+\end{columns}
 \end{frame}
 
 \part{Manipulating Bitmaps}
