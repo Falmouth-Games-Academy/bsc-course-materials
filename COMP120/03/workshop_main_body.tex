@@ -83,7 +83,7 @@ public static int GetDistance(Color first, Color second)
 
 	return redDifference * redDifference + 
 	greenDifference * greenDifference +
-255blueDifference * blueDifference;
+	blueDifference * blueDifference;
 }
 \end{lstlisting}
 
@@ -115,28 +115,41 @@ NOTE - You need to create the color objects and pass them into the function, don
 	
 	In pairs:
 	
-	\vspace{2em}
+	\vspace{.5em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
-		\item Implement the function \texttt{closeEnough((colour, colour), tolerance)} that returns a boolean value
+		\item Setup a Windows forms project in Visual Studio
+		\item Implement the function \texttt{closeEnough((colour1, colour2), tolerance)} that returns a boolean value
 		\item Test your solution
 		\item Then, post your solution on Slack
 	\end{itemize}
+	\vspace{.5em}
+\includegraphics[scale=0.5]{GoingRed}
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Boolean Return Values}
 	
 \begin{lstlisting}
-def close_enough(colour_base, colour_comparitor):
-    if distance(colour_base, colour_comparitor) < 50.0:
-        return True
-    else:
-        return False
+public static bool closeEnough(Color first, Color second) {
+	int redDifference;
+	int greenDifference;
+	int blueDifference;
+	redDifference = first.R - second.R;
+	greenDifference = first.G - second.G;
+	blueDifference = first.B - second.B;
+	
+	if ((redDifference * redDifference + greenDifference
+	* greenDifference + blueDifference * blueDifference)
+	< 300)	{
+		return true;
+	} else {
+		return false;
+	}
+}
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
+Note: This source code should be used in conjunction with a function call to activate it.
 
 \end{frame}
 
@@ -144,24 +157,50 @@ Note: This source code excerpt will not work in PyGame.
 	\frametitle{Tolerance-based Pixel Manipulation}
 	
 \begin{lstlisting}
-def turnRed():
-  brown = makeColor(42,25,15)
-  file="/Users/guzdial/Desktop/mediasources/katieFancy.jpg"
-  picture=loadPicture(file)
-  for pixel in getPixels(picture):
-    color = getColor(pixel)
-    if distance(color, BROWN) < 50.0:
-      red=getRed(pixel)*2
-      green=getGreen(pixel)
-      blue=getBlue(pixel)
-      setColor(pixel,makeColor(red,green,blue))
-  return picture
+public static bool turnRed(Color newColour) {
+	Color brown = Color.FromKnownColor(KnownColor.Brown);
+	int redDifference;
+	int greenDifference;
+	int blueDifference;
+	redDifference = newColour.R - brown.R;
+	greenDifference = newColour.G - brown.G;
+	blueDifference = newColour.B - brown.B;
+	
+	if ((redDifference * redDifference + greenDifference
+	* greenDifference + blueDifference * blueDifference)
+	 < 4000) {
+		return true;
+	} else {
+		return false;
+	}	
+}
 
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
 
 \end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Tolerance-based Pixel Manipulation}
+	
+	\begin{lstlisting}
+Color p;
+
+for (int y = 0; y < height; y++) {
+	for (int x = 0; x < width; x++) {
+		p = bmp.GetPixel(x, y);
+		if (turnRed(p))	{
+			bmp.SetPixel(x, y, Color.FromKnownColor
+			(KnownColor.Red));
+		}
+	}
+}
+		
+	\end{lstlisting}
+Note: This uses the function from the previous screen. To achieve the outcome that you want you may need to tinker with the tolerance level to quite a high number.	
+	
+\end{frame}
+		
 
 \begin{frame}
 	\frametitle{Red Eye}
@@ -176,23 +215,32 @@ Note: This source code excerpt will not work in PyGame.
 
 \fullbleed{jenny}
 
-\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Activity \#3: Red Eye}
 	
 	In pairs:
 	
-	\vspace{2em}
+	\vspace{1em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
-		\item Refer to the following documentation
-		\begin{itemize}
-			\item \url{http://www.pygame.org/docs/ref/rect.html}
+		\item Setup a Windows form project in Visual Studio
+		\item You will need to create a method to sample a specific area of the image. I suggest you sample the mouse position.
 		\end{itemize}
+	\begin{lstlisting}
+private void pictureBox1_MouseUp(object sender,
+MouseEventArgs e)
+{
+	mouseX = e.X;
+	mouseY = e.Y;
+}
+\end{lstlisting}
+	\begin{itemize}	
 		\item Implement the function: \texttt{removeRedEye(picture, area, colour)}
 		\item Test your solution
 		\item Then, post your solution on Slack
 	\end{itemize}
+
+
 \end{frame}
 
 \fullbleed{jenny_nored}
@@ -200,7 +248,7 @@ Note: This source code excerpt will not work in PyGame.
 \begin{frame}
 	\frametitle{Posterization}
 	
-	\begin{itemize}		
+	\begin{itemize}			
 		\item Posterization is simply reducing the number of colours in an image
 		\item We look for a range of colours, then map them to a single colour, e.g:
 		\begin{itemize}
@@ -238,7 +286,7 @@ Note: This source code excerpt will not work in PyGame.
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
+		\item Setup a Windows form project in Visual Studio
 		\item Refer to the following documentation
 		\item Implement the function: \texttt{makeGreyscale(picture, colourCount)}
 		\item Test your solution
@@ -250,16 +298,24 @@ Note: This source code excerpt will not work in PyGame.
 	\frametitle{Source Code: Black and White}
 	
 \begin{lstlisting}
-def blackAndWhitePosterize(picture):
-  for pixel in getPixels(picture):
-    red = getRed(pixel)
-    green = getGreen(pixel)
-    blue = getBlue(pixel)
-    luminance = (red + green + blue) / 3
-    if luminance < 64:
-      setColor(pixel, BLACK)
-    else:
-      setColor(pixel, WHITE)
+for (int y = 0; y < height; y++) {
+	for (int x = 0; x < width; x++)	{
+		p = bmp.GetPixel(x, y);
+		int r = p.R;
+		int g = p.G;
+		int b = p.B;
+		int luminance = (r + g + b) / 3;
+		// start at 64 to see the difference
+		if (luminance < 104)	{
+			bmp.SetPixel(x, y, Color.FromArgb(255, 0, 0,
+			 0));
+		}
+		if (luminance >= 104)	{
+		 	bmp.SetPixel(x, y, Color.FromArgb(255, 255, 
+		 	255, 255));
+		}
+	}
+}
 \end{lstlisting}
 
 
@@ -305,23 +361,26 @@ def blackAndWhitePosterize(picture):
 	\frametitle{Source Code: Sepia (1)}
 	
 \begin{lstlisting}
-def sepiaTint(picture):
-  #Convert image to greyscale
-  makeGreyscale(picture)
+public void sepiaTint(picture) {
+	//Convert image to greyscale
+  	makeGreyscale(picture);  
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
+		{
+			p = picture.GetPixel(x, y);
+			
+			int r = p.R;
+			int g = p.G;
+			int b = p.B;
 
-  #loop through picture to tint pixels
-  for p in getPixels(picture):
-    red = getRed(p)
-    blue = getBlue(p)
-
-    #tint shadows
-    if (red < 63):
-      red = red*1.1
-      blue = blue*0.9
+			if (r < 63)
+			{
+				r = r*1.1;
+				b = b*0.9;
+			}			
 ...
 \end{lstlisting}
-
-Note: This source code excerpt will not work in PyGame.
 
 \end{frame}
 
@@ -330,27 +389,24 @@ Note: This source code excerpt will not work in PyGame.
 	
 \begin{lstlisting}
 ...
-   #tint midtones
-    if (red > 62 and red < 192):
-      red = red*1.15
-      blue = blue*0.85
+			if (r > 62 and r < 192) {
+				bmp.SetPixel(x, y, Color.FromArgb(
+				255, 255, 255, 255));
+			}
+			if (r > 191) {
+				r = r*1.08;
+				if (r > 255) {
+					r = 255; 	
+				}
+				b = b*0.93;
+			}
 
-    #tint highlights
-    if (red > 191):
-      red = red*1.08
-      if (red > 255):
-        red = 255
-
-      blue = blue*0.93
-
-    #set the new color values
-    setBlue(p, blue)
-    setRed(p, red)
-
+		}
+	}	
+}
 
 \end{lstlisting}
-
-Note: This source code excerpt will not work in PyGame.
+Note: This requires that you incorporate a greyscale function as well.
 
 \end{frame}
 
@@ -362,7 +418,7 @@ Note: This source code excerpt will not work in PyGame.
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
+		\item Setup a Windows form project in Visual Studio
 		\item Refer to the following documentation
 		\item Refactor the function: \texttt{sepiaTint(picture) to use constants rather than literals}
 		\item Tinker with the values of the constants to test your solution
