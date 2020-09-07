@@ -19,30 +19,39 @@
 
 \usepackage{pdfpages}
 
+\usepackage{circuitikz}
+
+\iftoggle{printable}{
+    \newcommand{\circuitcolour}{black}
+}{ % else
+    \newcommand{\circuitcolour}{white}
+}
+
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
 \input{sessioninfo}
 
+\hypersetup{
+pdftex,
+pdftitle=\sessionnumber: Data Types,
+pdfauthor=Ed Powley,
+pdfdisplaydoctitle,
+pdflang=en-GB
+}
+ 
 \begin{document}
-\title{\sessionnumber: Basic data types}
+\title{\sessionnumber: Data Types}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\input{research_journal}
-
-\begin{frame}{Worksheets}
-	\begin{itemize}
-		\item Worksheet 2 (Binary numbers) due \textbf{tomorrow}
-		\item Worksheet 3 (Flowcharts and pseudocode) due \textbf{next Friday}
-	\end{itemize}
-\end{frame}
-
-\input{datatypes}
+\input{logicgates}
+\input{number_bases}
 \input{numbers}
 \input{strings}
 \input{other_types}
 \input{typecasting}
+\input{markdown}
 
 \end{document}
