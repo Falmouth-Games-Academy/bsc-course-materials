@@ -21,30 +21,26 @@
 \usetikzlibrary{arrows,automata}
 \usetikzlibrary{calc}
 
-\iftoggle{printable}{
-    \newcommand{\circuitcolour}{black}
-}{ % else
-    \newcommand{\circuitcolour}{white}
-}
-
 \input{sessioninfo}
 
+\hypersetup{
+pdftex,
+pdftitle=\sessionnumber: Research Skills,
+pdfauthor=Ed Powley,
+pdfdisplaydoctitle,
+pdflang=en-GB
+}
+ 
 \begin{document}
-\title{\sessionnumber: Logic and memory}
+\title{\sessionnumber: Research Skills}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\begin{frame}{Worksheet 4}
-    \begin{center} 
-        Due \textbf{next Friday!}
-    \end{center}
-\end{frame}
-
+\input{research_journal}
 \input{scholarly}
 \input{library}
 \input{referencing}
-\input{logicgates}
-\input{alu}
+\input{latex}
 
 \end{document}
