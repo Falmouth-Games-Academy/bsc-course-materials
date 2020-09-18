@@ -1,0 +1,127 @@
+\part{Code Tracing}
+\frame{\partpage}
+
+\begin{frame}
+\frametitle{Demo}
+\noindent We will begin this class with a quiz.  
+We wish to develop a program that takes a sequence of ASCII characters 
+	and outputs a frequency-sorted concordance of all words in the input.\\
+We define a word with the following regular expression: [A-Za-z]+ \\
+Words must be bounded by white space.
+\end{frame}
+
+\begin{frame}
+\frametitle{Demo}
+An example usage of our program is:
+\begin{center}\begin{tikzpicture}
+	% input
+		\node[rectangle, draw, align=center] (input) 
+			{Four score and \\ 7 years ago, \\ our ago and \\ \% and four and};
+	% output
+		\node[rectangle, draw, right =of input, align=center] (output) 
+			{5 and \\ 2 ago \\ 1 years \\ 1 score \\ 1 our \\ 1 four \\ 1 Four};
+	% arrow
+		\draw [->] (input.east) -- (output.west);
+\end{tikzpicture}\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Demo}
+\noindent This was used by Turing Award winner DE Knuth as press for his book, 
+	\underline{The Art of Computer Programming} \\
+The motivation came from difficulties in creating the initial press for his book;\\
+	\indent The lead type press could not handle code or equations, which were fundamental! \\
+So Knuth invented a language to produce correct images, called Tex. \\
+He developed a textbook to bring attention to his language, which explained the framework.
+\end{frame}
+
+\begin{frame}
+\frametitle{Demo}
+The framework took the form:
+\begin{center}\begin{tikzpicture}
+	\node[rectangle, draw] (book) {textbook.tex};
+	\node[rectangle, draw, below =2cm of book] (pas) {tex.pas};
+	\node[circle, draw, right =2cm of book] (TeX) {TeX};
+	\node[circle, draw, right =2cm of pas, align=center] (P) {Pascal\\Compiler};	
+	\node[rectangle, draw, right =2cm of TeX, align=center] (Pages) {\\Pages\\};		
+	\draw [->] (book.east) -- node [align=center, above] {input} (TeX.west);
+	\draw [->] (pas.east) -- node [align=center, above] {input} (P.west);
+	\draw [->] (P.north) -- node [align=center, right] {compiles to} (TeX.south);		
+	\draw [->] (TeX.east) -- node [align=center, above] {compiles to} (Pages.west);	
+\end{tikzpicture}\end{center}
+\noindent This presents a large (and common) issue --  code and documentation must be kept in agreement.\\
+Knuth developed the idea of a unified, interleaved file to combat this.
+\end{frame}
+
+\begin{frame}
+\frametitle{Demo}
+Thus his program took the following final form:\\
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+	% nodes
+		\node[rectangle, draw, align=center] (unified) {\\Unified\\File\\};
+		\node[circle, draw, right =2cm of unified, align=center] (splitter) {P};	
+		\node[rectangle, draw, above right =2cm of splitter] (book) {textbook.tex};
+		\node[rectangle, draw, below right =2cm of splitter] (pas) {tex.pas};
+		\node[circle, draw, right =2cm of book] (TeX) {TeX};
+		\node[circle, draw, right =2.4cm of pas, align=center] (P) {Pascal\\Compiler};	
+		\node[rectangle, draw, right =2cm of TeX, align=center] (pages) {\\pages\\};
+	%edges 
+		\draw [->] (unified.east) -- node [align=center, above] {input} (splitter.west);
+		\draw [->] (splitter.north east) -- node [align=center, left] {splits to} (book.west);
+		\draw [->] (splitter.south east) -- node [align=center, left] {splits to} (pas.west);
+		\draw [->] (book.east) -- node [align=center, above] {input} (TeX.west);
+		\draw [->] (pas.east) -- node [align=center, above] {input} (P.west);
+		\draw [->] (P.north) -- node [align=center, right] {compiles to} (TeX.south);		
+		\draw [->] (TeX.east) -- node [align=center, above] {compiles to} (pages.west);	
+\end{tikzpicture}
+}%
+\end{frame}
+
+\begin{frame}
+\frametitle{Demo}
+\noindent This left him with a nearly 500 page textbook; how would he drum up interest?\\
+Like a good computer scientist, he chose to write a paper.\\
+He coined his approach \textbf{\underline{literate programming}}.\\
+This has become standard practice in many disciplines; we can see JavaLibrary for proof.\\ 
+Knuth approached Doug McIlroy, the manager for the development of UNIX, for help.\\
+McIlroy suggested our problem as an example\\
+Knuth wrote a solution using Hash Tries via literate programming!\\
+Running it through TeX gives pages and through pascal gives the paper!
+\end{frame}
+
+\begin{frame}
+\frametitle{Demo}
+\noindent As impressive as this was, the afterword was what stuck.\\
+McIlroy proposed the following trivial BASH solution (he was the brain behind UNIX pipes after all)
+%	\begin{lstlisting}
+%	tr -c 'A-Za-z' '\n' | sort | uniq -c | sort -rn
+%	\end{lstlisting}
+The pascal solution was, say, 1000 lines.\\
+\indent It was faster\\
+\indent It was more "checked" by compilers\\
+BUT the bash solution is exceedingly simple and documents itself as follows:
+\begin{center}\begin{tikzpicture}
+	\node[rectangle, draw, align=left] (1) {Four\\Score\\and 7\\years\...};
+	\node[rectangle, draw, align=left, right =of 1] (2) {Four\\Score\\and\\years\...};
+	\node[rectangle, draw, align=left, right =of 2] (3) {Four\\ago\\and\\score\...};
+	\node[rectangle, draw, align=left, right =of 3] (4) {1 Four\\2 ago\\4 and\\1 score\\...};
+	\node[rectangle, draw, align=left, right =of 4] (5) {4 and\\2 ago\\1 Four\\1 score\\...};
+	\draw [->] (1.east) -- node [align=center, above] {tr} (2.west);
+	\draw [->] (2.east) -- node [align=center, above] {sort} (3.west);
+	\draw [->] (3.east) -- node [align=center, above] {uniq} (4.west);
+	\draw [->] (4.east) -- node [align=center, above] {sort} (5.west);
+\end{tikzpicture}\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Demo}
+\noindent This demonstrates an issue fundamental to computer science called \textbf{\underline{choice of notation}}.\\
+There are pros and cons to any choice of notation, and it is up to the engineer to weigh them!\\
+As this is a discussion of languages, consider the following fundamental linguistic hypothesis:\\
+\textbf{\underline{Sapir-Whorf Hypothesis}}. \begin{itemize}
+\item There is no limit on the structural diversity of language.
+\item The structure of a language determines a native speaker's perception of experience.
+\end{itemize}
+This was proposed by linguists for natural languages, but (b) was softened. Even though it is false, it stuck: see “Eskimos have 19 words for snow”. Even if false for natural languages,  it is true for programming languages!
+\end{frame}

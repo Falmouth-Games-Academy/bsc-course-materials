@@ -1,0 +1,52 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+\usepackage{textcomp}
+
+% Default language for code listings
+\lstset{language=Python, upquote=true,
+        morekeywords={each,in,nullptr}
+}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\setbeamertemplate{navigation symbols}{}
+
+\input{../../commands}
+
+\begin{document}
+\title{\sessionnumber: Graphics Peer-Review}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\begin{frame}
+	\frametitle{Learning Outcomes}
+	\begin{itemize}
+		\item \textbf{Identify} the key aspects of maintainable code
+		\item \textbf{Apply} linters to source files
+		\item\textbf{Conduct} a code review
+		\item\textbf{Describe how} code could be improved
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Peer Review}
+	>"Peer review—an activity in which people other than the author of a software deliverable
+examine it for defects and improvement opportunities—is one of the most powerful software
+quality tools available."  \\
+Karl E. Wiegers \\
+Humanizing Peer Reviews, 2002, \url{http://www.processimpact.com/articles/humanizing_reviews.pdf}
+\end{frame}
+
+\end{document}
