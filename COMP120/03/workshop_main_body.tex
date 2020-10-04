@@ -1,12 +1,12 @@
 % Adjust these for the path of the theme and its graphics, relative to this file
 %\usepackage{beamerthemeFalmouthGamesAcademy}
-\usepackage{../../beamerthemeFalmouthGamesAcademy}
+	\usepackage{../../beamerthemeFalmouthGamesAcademy}
 \usepackage{multimedia}
 \graphicspath{ {../../} }
 
 % Default language for code listings
 \lstset{language=Python,
-        morekeywords={each,in,nullptr}
+	morekeywords={each,in,nullptr,Bitmap,SetPixel,Color,Save,FromArgb}
 }
 
 % For strikethrough effect
@@ -18,15 +18,17 @@
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
+\title{\sessionnumber: Tinkering Graphics II}
+\subtitle{\modulecode: \moduletitle}
+\author{Michael Scott and Matt Watkins}
+
 \setbeamertemplate{navigation symbols}{}
 
 \input{../../commands}
-
+{\tiny }
 \begin{document}
-\title{\sessionnumber: Tinkering Graphics II}
-\subtitle{\modulecode: \moduletitle}
 
-\frame{\titlepage} 
+\maketitle
 
 \begin{frame}
 	\frametitle{Learning Outcomes}
@@ -49,6 +51,9 @@
 		\item $\sqrt{(red_{1} - red_{2})^2 + (green_{1} - green_{2})^2 + (blue_{1} - blue_{2})^2}$
 	\end{itemize}
 \end{frame}
+
+\fullbleed{distance-points}
+\fullbleed{distance-colour}
 
 \begin{frame}
 	\frametitle{Activity \#1: Color Distance}
@@ -235,12 +240,13 @@ MouseEventArgs e)
 	\begin{itemize}	
 		\item Implement the function: \texttt{removeRedEye(picture, area, colour)}
 		\item Test your solution
-		\item Then, post your solution on Slack
+		\item Then, post your solution on Teams
 	\end{itemize}
 
 
 \end{frame}
 
+\fullbleed{sample_area}
 \fullbleed{jenny_nored}
 
 \begin{frame}
