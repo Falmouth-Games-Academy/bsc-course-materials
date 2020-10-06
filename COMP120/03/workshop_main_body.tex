@@ -6,7 +6,7 @@
 
 % Default language for code listings
 \lstset{language=Python,
-	morekeywords={each,in,nullptr,Bitmap,SetPixel,Color,Save,FromArgb}
+	morekeywords={each,in,nullptr,Bitmap,SetPixel,Color,Save,FromArgb, double, Math, Sqrt,public,static,string}
 }
 
 % For strikethrough effect
@@ -37,6 +37,39 @@
 		\item \textbf{Apply} mathematical knowledge to \textbf{write} computer programs that manipulate pixels in a surface
 		\item \textbf{Trace} existing computer programs
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{House Keeping}
+	
+	This week we are going to focus on workflow. Less hacky more professional:
+	
+	\begin{itemize}		
+		\item Make sure in your pair you have a shared repo on \textbf{Bitbucket}
+		\item We will try to focus on portable code that uses \textbf{constants} over \textbf{literals}
+		\item Reuse \textbf{functions} to build an effective code base.
+		\item Link your functions to the Forms \textbf{UI} components
+	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Recap - Functions in C\#}
+	
+	\begin{lstlisting}
+public static string NameAndScore(string Name, int Score) 
+{
+	return "Name: " + Name + " Score: " + Score;
+}		
+string output = NameAndScore("Matt", 2345);		
+
+	\end{lstlisting}
+Variable 'output' is set to:
+	\begin{lstlisting}
+Name: Matt Score: 2345		
+
+\end{lstlisting}
+	
 \end{frame}
 
 \begin{frame}
@@ -79,14 +112,16 @@ public static int GetDistance(Color first, Color second)
 	int redDifference;
 	int greenDifference;
 	int blueDifference;
+	double sqrt;
 
 	redDifference = first.R - second.R;
 	greenDifference = first.G - second.G;
 	blueDifference = first.B - second.B;
+	sqrt = Math.Sqrt(redDifference * redDifference + 
+	greenDifference *  greenDifference +
+	blueDifference * blueDifference);
 
-	return redDifference * redDifference + 
-	greenDifference * greenDifference +
-	blueDifference * blueDifference;
+	return sqrt;		
 }
 \end{lstlisting}
 
