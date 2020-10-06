@@ -91,26 +91,26 @@
 % 	\end{tabular}}
 % \end{frame}
 
-% \begin{frame}{UTF-8 representation}
-% 	\begin{itemize}
-% 		\pause\item For characters in ASCII, UTF-8 is the same:
-% 			\begin{itemize}
-% 				\pause\item a $\to [97]$
-% 			\end{itemize}
-% 		\pause\item Other characters are encoded as multi-byte sequences:
-% 			\begin{itemize}
-% 				\pause\item \"u $\to [195, 188]$
-% 				\pause\item \includegraphics[height=1.5ex]{chinese}\ $\to [228, 184, 178]$
-% 				\pause\item \includegraphics[height=1.5ex]{emoji}\ $\to [240, 159, 152, 130]$
-% 			\end{itemize}
-% 		\pause\item \texttt{"Haha \includegraphics[height=1.5ex]{emoji}"} encoded in UTF-8:
-% 	\end{itemize}
-% 	{\footnotesize\pause\begin{tabular}{*{13}{|c}|}
-% 		\hline
-% 		H & a & h & a & space & \multicolumn{4}{c|}{\includegraphics[height=1.5ex]{emoji}} & null \\\hline
-% 		72 & 97 & 104 & 97 & 32 & 240 & 159 & 152 & 130 & 0 \\\hline
-% 	\end{tabular}}
-% \end{frame}
+\begin{frame}{UTF-8 representation}
+	\begin{itemize}
+		\pause\item For characters in ASCII, UTF-8 is the same:
+			\begin{itemize}
+				\pause\item a $\to [97]$
+			\end{itemize}
+		\pause\item Other characters are encoded as multi-byte sequences:
+			\begin{itemize}
+				\pause\item \"u $\to [195, 188]$
+				\pause\item \includegraphics[height=1.5ex]{chinese}\ $\to [228, 184, 178]$
+				\pause\item \includegraphics[height=1.5ex]{emoji}\ $\to [240, 159, 152, 130]$
+			\end{itemize}
+		\pause\item \texttt{"Haha \includegraphics[height=1.5ex]{emoji}"} encoded in UTF-8:
+	\end{itemize}
+	{\footnotesize\pause\begin{tabular}{*{13}{|c}|}
+		\hline
+		H & a & h & a & space & \multicolumn{4}{c|}{\includegraphics[height=1.5ex]{emoji}} & null \\\hline
+		72 & 97 & 104 & 97 & 32 & 240 & 159 & 152 & 130 & 0 \\\hline
+	\end{tabular}}
+\end{frame}
 
 % \begin{frame}{Strings in Python}
 %     \begin{itemize}
