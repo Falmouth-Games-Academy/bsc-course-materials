@@ -237,7 +237,7 @@ We need to modify our Player contract to include an RPC method. This example is 
 
 Open the forge window we used before. This time we'll be adding RPC call. 
 
-image::forge_rpc.png[]
+image::forge_rpc_add.png[]
 
 Use the Add RPC button and modify the name. I've called it UpdateName, this will be reflected in the method you need to override later, so make sure it matches :).
 
