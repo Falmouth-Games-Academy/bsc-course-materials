@@ -139,8 +139,6 @@
 	\end{algorithmic}
 \end{frame}
 
-\iffalse
-
 \begin{frame}{Find ``Lopez, Jeffrey''}
 	\begin{columns}
 		\begin{column}{0.3\textwidth}
@@ -285,8 +283,6 @@
 	\end{columns}
 \end{frame}
 
-\fi
-
 \begin{frame}{How long does it take?}
 	Socrative room code: \texttt{FALCOMPED}
 	\begin{columns}
@@ -331,25 +327,21 @@
 \end{frame}
 
 \begin{frame}{Binary search done wrong}
-	\lstinputlisting{binary_search_bad.py}
+	\lstinputlisting[language=Python]{binary_search_bad.py}
 \end{frame}
 
 \begin{frame}{Binary search done right}
-	\lstinputlisting{binary_search_good.py}
+	\lstinputlisting[language=Python]{binary_search_good.py}
 \end{frame}
 
 \begin{frame}{Binary search vs linear search}
-	Socrative room code: \texttt{FALCOMPED}
 	\begin{columns}
 		\begin{column}{0.45\textwidth}
 			\includegraphics[width=\textwidth]{plot2_linear_log}
 		\end{column}
 		\begin{column}{0.55\textwidth}
 			\begin{itemize}
-				\item So binary search is better than linear search... right? \pause
-				\item Discuss in \textbf{pairs}
-				\item On Socrative, post \textbf{one reason} why, or \textbf{one situation} where,
-					linear search may be a better choice than binary search
+				\item So binary search is better than linear search... right?
 			\end{itemize}
 		\end{column}
 	\end{columns}
@@ -435,21 +427,17 @@ $\vdots$ & $\vdots$
 	\begin{itemize}
 		\pause\item We are using search as an \textbf{example}, to learn the \textbf{principles} --- in practice
 			you should hardly ever implement your own search
-		\pause\item Linear search in Python:
+		\pause\item Linear search in C\#:
 			\begin{itemize}
-				\pause\item \lstinline{list.index()} method
-				\pause\item \textbf{List comprehension}, e.g.
-					\begin{lstlisting}
-[person for person in people if person.name == "Lopez, Jeffrey"]
-					\end{lstlisting}
+				\pause\item \lstinline{List<T>.IndexOf()}
 			\end{itemize}
-		\pause\item Binary search in Python:
+		\pause\item Binary search in C\#:
 			\begin{itemize}
-				\pause\item The \lstinline{bisect} module
+				\pause\item \lstinline{List<T>.BinarySearch()}
 			\end{itemize}
-		\pause\item Hash tables in Python:
+		\pause\item Hash tables in C\#:
 			\begin{itemize}
-				\pause\item The \lstinline{dict} (dictionary) data structure
+				\pause\item \lstinline{Dictionary<TKey, TValue>}
 			\end{itemize}
 	\end{itemize}
 \end{frame}
