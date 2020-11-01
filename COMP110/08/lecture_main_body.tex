@@ -5,47 +5,59 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=Python}
+\lstset{language=Python
+}
 
 % For strikethrough effect
 \usepackage[normalem]{ulem}
 \usepackage{wasysym}
 
+\usepackage{algpseudocode}
+
 \usepackage{pdfpages}
+\usepackage{qtree}
 
 % http://www.texample.net/tikz/examples/state-machine/
-\usetikzlibrary{arrows,automata,tikzmark,calc}
-
-\usepackage{algpseudocode}
-\usepackage{qtree}
+\usetikzlibrary{arrows,automata}
+\usetikzlibrary{tikzmark,calc}
 
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Data Structures}
+\title{\sessionnumber: Data Structures I}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\begin{frame}
-	\frametitle{Learning outcomes}
+%\begin{frame}
+%	\frametitle{Learning outcomes}
+%	\begin{itemize}
+%		\item \textbf{Explain} the difference between pass-by-value and pass-by-reference
+%		\item \textbf{Distinguish} the basic data structures available in Python
+%		\item \textbf{Determine} the complexity of accessing and manipulating data in these data structures
+%		\item \textbf{Choose} the correct data structure for a given task
+%	\end{itemize}
+%\end{frame}
+
+\begin{frame}{Assignments}
 	\begin{itemize}
-		\item \textbf{Define} the key concepts of graph theory
-		\item \textbf{Distinguish} advanced data structures such as trees, DAGs and graphs
-		\item \textbf{Determine} the complexity of accessing and manipulating data in these data structures
-		\item \textbf{Choose} the correct data structure for a given task
+		\item Peer review \textbf{next Thursday}
+		\item Please come to the session with a \textbf{draft} of your research journal
+	\end{itemize}
+	\vspace{3ex}
+	\begin{itemize}
+		\item Worksheet 5 due \textbf{tomorrow}
+		\item \textbf{No new worksheet} this week --- work on your research journal instead
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Exercise Sheet iii}
-	\begin{center}
-		Due \textbf{next week}
-	\end{center}
-\end{frame}
-
-\input{graphs}
+\input{../05/turing_machines}
+\input{../05/computability}
+\input{arrays}
 \input{stacks_queues}
-\input{graph_traversal}
+\input{references}
+%\input{graphs}
+%\input{graph_traversal}
 %\input{linked_list}
 
 \end{document}
