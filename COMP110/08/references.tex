@@ -19,11 +19,11 @@
 
 \begin{frame}{The wrong picture}
 	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\lstinputlisting{references_0.py}
+		\begin{column}{0.58\textwidth}
+			\lstinputlisting{references_0.cs}
 		\end{column}
 		\pause
-		\begin{column}{0.48\textwidth}
+		\begin{column}{0.38\textwidth}
 			\begin{center}
 				\colorbox{white}{
 					\color{black}
@@ -54,11 +54,11 @@
 
 \begin{frame}{The right picture}
 	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\lstinputlisting{references_0.py}
+		\begin{column}{0.58\textwidth}
+			\lstinputlisting{references_0.cs}
 		\end{column}
 		\pause
-		\begin{column}{0.48\textwidth}
+		\begin{column}{0.38\textwidth}
 			\colorbox{white}{\parbox{0.9\textwidth}{
 				\begin{center}
 					\color{black}
@@ -104,71 +104,118 @@
 
 \begin{frame}{Values and references}
 	\socrative
-	\lstinputlisting{references_1.py}
+	\lstinputlisting{references_1.cs}
 \end{frame}
 
 \begin{frame}{Values and references}
 	\socrative
-	\lstinputlisting{references_2.py}
+	\lstinputlisting{references_2.cs}
 \end{frame}
 
 \begin{frame}{Values and references}
 	\socrative
-	\lstinputlisting{references_3.py}
+	\lstinputlisting{references_3.cs}
 \end{frame}
 
 \begin{frame}[fragile]{Pass by value}
-	\pause
+	\socrative
 	In \textbf{function parameters},
 	``plain old data'' is passed by \textbf{value}
 	\pause
 	\begin{lstlisting}
-def double(x):
-    x *= 2
+void double(int x)
+{
+	x = x * 2;
+}
 
-a = 7
-double(a)
-print(a)
+int a = 7;
+double(a);
+Console.WriteLine(a);
 	\end{lstlisting}
 	\pause
-	\lstinline{double} does not actually do anything, as \lstinline{x} is just a local copy of
-		whatever is passed in!
+	What does it print?
 \end{frame}
 
 \begin{frame}[fragile]{Pass by reference}
+	\socrative
+	However, objects (class instances) are passed by \textbf{reference}
 	\pause
-	However, instances are passed by \textbf{reference}
 	\begin{lstlisting}
-class Box:
-    def __init__(self, v):
-        self.value = v
+class Foo
+{
+	public int value;
+	public Foo(int v) { value = v; }
+}
 
-def double(x):
-    x.value *= 2
+void double(Foo x)
+{
+    x.value = x.value * 2;
+}
 
-a = Box(7)
+Foo a = new Foo(7);
 double(a)
-print(a.value)
+Console.WriteLine(a.value);
 	\end{lstlisting}
 	\pause
-	\lstinline{double} now has an effect, as \lstinline{x} gets a reference to the \lstinline{Box} instance
+	What does it print?
 \end{frame}
 
 \begin{frame}[fragile]{Lists are objects too}
 	\pause
 	\begin{lstlisting}
-a = ["Hello"]
-b = a
-b.append("world")
-print(a)  # ["Hello", "world"]
-	\end{lstlisting}
+List<string> a = new List<string>{ "Hello" };
+List<string> b = a;
+b.Add("world");
+foreach (string word in a)
+{
+	Console.WriteLine(word);
+}
+// Output:
+//   Hello
+//   world
+\end{lstlisting}
 	\pause
 	... which means you should be careful when passing lists into functions,
 	because the function might actually change the list!
 \end{frame}
 
-\begin{frame}[fragile]{References can be circular}
-	\lstinputlisting{references_4.py}
+\begin{frame}[fragile]{Pass by value again}
+	In C\#, struct instances are passed by \textbf{value}
+	\pause
+	\begin{lstlisting}
+struct Foo
+{
+	public int value;
+	public Foo(int v) { value = v; }
+}
+
+void double(Foo x)
+{
+    x.value = x.value * 2;
+}
+
+Foo a = new Foo(7);
+double(a);
+Console.WriteLine(a.value);
+	\end{lstlisting}
+	\pause
+	This prints 7
+\end{frame}
+
+\begin{frame}{By reference or value?}
+    \begin{itemize}
+		\pause\item In C\#, these function arguments are passed \textbf{by value}:
+			\begin{itemize}
+				\pause\item Basic data types (\lstinline{int}, \lstinline{bool}, \lstinline{float} etc)
+				\pause\item Instances of \lstinline{struct}s
+			\end{itemize}
+		\pause\item These function arguments are passed \textbf{by reference}:
+			\begin{itemize}
+				\pause\item Instances of \lstinline{class}es --- this includes classes built into .NET or Unity etc
+				\pause\item Arguments with the \lstinline{ref} keyword attached
+			\end{itemize}
+		\pause\item Passing by value implies copying --- not a problem for small data values but beware of passing large structs around
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{References and pointers}

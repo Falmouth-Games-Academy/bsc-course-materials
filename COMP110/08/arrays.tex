@@ -1,26 +1,24 @@
 \part{Arrays and lists}
 \frame{\partpage}
 
-\begin{frame}{Memory allocation}
+\begin{frame}{Memory allocation --- recap}
 	\begin{itemize}
 		\pause\item Memory is allocated in \textbf{blocks}
 		\pause\item The program specifies the size, in bytes, of the block it wants
 		\pause\item The OS allocates a \textbf{contiguous} block of that size
 		\pause\item The program owns that block until it frees it
-		\pause\item Forgetting to free a block is called a \textbf{memory leak}
-			(rare in Python/C\#, but a common bug in C++)
 		\pause\item Blocks can be allocated and deallocated at will, but can \textbf{never grow or shrink}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Containers}
+\begin{frame}{Collection types}
 	\begin{itemize}
 		\pause\item Memory management is hard and programmers are lazy
-		\pause\item Containers are an \textbf{abstraction}
+		\pause\item Collections are an \textbf{abstraction}
 			\begin{itemize}
 				\pause\item Hide the details of memory allocation, and allow the programmer to write simpler code
 			\end{itemize}
-		\pause\item Containers are an \textbf{encapsulation}
+		\pause\item Collections are an \textbf{encapsulation}
 			\begin{itemize}
 				\pause\item Bundle together the data's representation in memory along with the algorithms for accessing it
 			\end{itemize}
@@ -48,8 +46,19 @@
 		\pause\item A \textbf{list} is a variable size array
 		\pause\item When the list needs to change size, it \textbf{creates} a new array,
 			\textbf{copies} the contents of the old array, and \textbf{deletes} the old array
-		\pause\item Implementation details: \url{http://www.laurentluce.com/posts/python-list-implementation/}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Arrays and lists in C\#}
+	\begin{lstlisting}
+int[] myArray = new int[10];
+
+int[] myOtherArray = new int[] { 2, 3, 5, 7, 11 };
+
+List<int> myList = new List<int>();
+
+List<int> myOtherList = new List<int> { 2, 3, 5, 8, 13 };
+	\end{lstlisting}
 \end{frame}
 
 \begin{frame}{Time taken to append an element to a list of size $n$}
