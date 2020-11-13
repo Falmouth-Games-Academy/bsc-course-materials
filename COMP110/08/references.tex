@@ -123,13 +123,13 @@
 	``plain old data'' is passed by \textbf{value}
 	\pause
 	\begin{lstlisting}
-void double(int x)
+void doubleIt(int x)
 {
 	x = x * 2;
 }
 
 int a = 7;
-double(a);
+doubleIt(a);
 Console.WriteLine(a);
 	\end{lstlisting}
 	\pause
@@ -147,13 +147,13 @@ class Foo
 	public Foo(int v) { value = v; }
 }
 
-void double(Foo x)
+void doubleIt(Foo x)
 {
     x.value = x.value * 2;
 }
 
 Foo a = new Foo(7);
-double(a)
+doubleIt(a);
 Console.WriteLine(a.value);
 	\end{lstlisting}
 	\pause
@@ -189,13 +189,13 @@ struct Foo
 	public Foo(int v) { value = v; }
 }
 
-void double(Foo x)
+void doubleIt(Foo x)
 {
     x.value = x.value * 2;
 }
 
 Foo a = new Foo(7);
-double(a);
+doubleIt(a);
 Console.WriteLine(a.value);
 	\end{lstlisting}
 	\pause
