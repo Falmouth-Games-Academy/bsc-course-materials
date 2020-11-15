@@ -10,6 +10,7 @@
 		 		\pause\item A pointer or reference to the \textbf{previous node} in the list (null for the first item)
 		 		\pause\item A pointer or reference to the \textbf{next node} in the list (null for the last item)
 			\end{itemize}
+		\pause\item The nodes are \textbf{not necessarily contiguous} in memory, unlike an (array-backed) list
 	\end{itemize}
 	\pause
 	\vspace{2ex}
@@ -52,20 +53,19 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Operations on linked lists}
+\end{frame}
+
 \newcommand{\footnoteref}[1]{$^{\text{\ref{#1}}}$}
 
-\begin{frame}{Linked lists vs arrays}
-	\begin{center}
-		\begin{tabular}{|r|l|l|}
-			\hline
-			\textbf{Operation} & \textbf{Array} & \textbf{Linked list} \\\hline
-			\pause Append & $O(1)$ & $O(1)$ \footnote{\label{f:llend}If we already have a reference to the last node} \\
-			\pause Pop & $O(1)$ & $O(1)$ \footnoteref{f:llend} \\
-			\pause Index lookup & $O(1)$ & $O(n)$ \\
-			\pause Count elements & $O(1)$ & $O(n)$ \\
-			\pause Insert & $O(n)$ & $O(1)$ \footnote{\label{f:llinsert}If we already have a reference to the relevant node} \\
-			\pause Delete & $O(n)$ & $O(1)$ \footnoteref{f:llinsert} \\
-			\hline
-		\end{tabular}
-	\end{center}
+\begin{frame}{Linked lists vs array-backed lists}
+	\begin{itemize}
+		\pause\item \textbf{Inserting} and \textbf{removing} from the middle of an array list requires shuffling the following elements to make or fill space
+		\pause\item This makes these operations $O(n)$
+		\pause\item Linked list doesn't require this shuffling, so inserting and deleting is $O(1)$
+		\pause\item However...
+		\pause\item \textbf{Finding the $i$th element} of an array list is simple pointer arithmetic, which is $O(1)$
+		\pause\item In a linked list we have to count along the ``next'' pointers, which is $O(i)$
+		\pause\item So which data structure is more efficient? It depends what operations we need to do more often
+	\end{itemize}
 \end{frame}
