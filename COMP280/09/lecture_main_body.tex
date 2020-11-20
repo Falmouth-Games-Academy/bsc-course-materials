@@ -6,7 +6,7 @@
 
 % Default language for code listings
 \lstset{language=C++,
-        morekeywords={each,in,nullptr}
+	morekeywords={each,in,nullptr}
 }
 
 % For strikethrough effect
@@ -21,10 +21,10 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Introduction to Optimisation
-\subtitle{\modulecode: \moduletitle}
-
-\frame{\titlepage} 
+	\title{\sessionnumber: Optimisation Process}
+	\subtitle{\modulecode: \moduletitle}
+	
+	\frame{\titlepage} 
 
 \begin{frame}{Learning outcomes}
 \begin{itemize}
@@ -34,8 +34,20 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Intro}
+	Programmers waste enormous amounts of time thinking about or worrying
+	about, the speed of noncritical parts of their programs, and these attempts
+	at efficiency have a strong negative impact when debugging and
+	maintenance are considered. We should forget about small efficiencies, say
+	about 97\% of the time: premature optimisation is the root of all evil. Yet we
+	should not pass up our opportunities in that critical 3\%. \textit{--Donald Knuth}
+\end{frame}
+
 \input{Optimisation_process}
 \input{profiler}
 \input{tool}
+\input{Woksheet}
+
+\frame{\partpage}
 
 \end{document}
