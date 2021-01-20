@@ -13,6 +13,7 @@
 				\pause\item (Photo)realistic vs. stylised, e.g. cel shading
 			\end{itemize}
 			\pause\item How light travels around the scene - \textbf{rendering}
+			\pause\item Enhancing the image - \textbf{post processing}
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -49,6 +50,25 @@
 				\pause\item Models are given \textbf{textures} and other surface properties as \textbf{materials}
 				\pause\item Use equations from physics to define how light behaves and interacts with materials
 				\pause\item A variety of simplifications exist that approximate (some of) the full equation, e.g. Phong shading
+				\pause\item Generate an image using \textbf{projection}
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Post processing}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{motion_blur}
+				\caption*{Image courtesy of \href{https://www.framestore.com}{Framestore}}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.65\textwidth}
+			\begin{itemize}
+				\pause\item Used to create "in-camera" effects, e.g. motion blur, bloom
+				\pause\item Applied to the 2D projected image of the scene
+				\pause\item Can use the \textbf{frame buffer} to implement fast techniques for lighting effects, e.g. shadows, reflection etc.
 			\end{itemize}
 		\end{column}
 	\end{columns}
