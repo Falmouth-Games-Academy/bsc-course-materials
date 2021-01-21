@@ -1,12 +1,12 @@
 % Adjust these for the path of the theme and its graphics, relative to this file
 %\usepackage{beamerthemeFalmouthGamesAcademy}
-	\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
 \usepackage{multimedia}
 \graphicspath{ {../../} }
 
 % Default language for code listings
 \lstset{language=Python,
-	morekeywords={each,in,nullptr,Bitmap,SetPixel,Color,Save,FromArgb, double, Math, Sqrt,public,static,string}
+	morekeywords={each,in,nullptr,Bitmap,SetPixel,Color,Save,FromArgb, double, Math, Sqrt,public,static,string,Console,WriteLine}
 }
 
 % For strikethrough effect
@@ -59,15 +59,25 @@
 	\begin{lstlisting}
 public static string NameAndScore(string Name, int Score) 
 {
-	return "Name: " + Name + " Score: " + Score;
+	string combine = "Name: " + Name+" Score: " + Score;
+	return combine;
 }		
-string output = NameAndScore("Matt", 2345);		
+string output = NameAndScore("Matt", 2345);	
+Console.WriteLine(output);
 
 	\end{lstlisting}
-Variable 'output' is set to:
+Console Output:
 	\begin{lstlisting}
 Name: Matt Score: 2345		
 
+\end{lstlisting}
+Applied to a BMP specific function:
+	\begin{lstlisting}
+public static bitmap GreyScale(string Image) 
+{
+	//Code to tinker your graphic
+	return;
+}	
 \end{lstlisting}
 	
 \end{frame}
@@ -137,13 +147,13 @@ Color Color1 = Color.FromKnownColor(KnownColor.Pink);
 Expected Values:	
 \begin{lstlisting}
 Console.WriteLine (GetDistance(WHITE, BLACK));
-- 195075
+OUTPUT - "441.6729"
 Console.WriteLine (GetDistance(WHITE, PINK));
-- 6673
+OUTPUT - "81.6884"
 Console.WriteLine (GetDistance(BLACK, PINK));
-- 143098
+OUTPUT - "378.2829"
 Console.WriteLine (GetDistance(MAGENTA DARKGOLDENROD));
-- 82533
+OUTPUT - "287.2855"
 \end{lstlisting}
 NOTE - You need to create the color objects and pass them into the function, don't just use a colour in capitals. just for illustration.  
 \end{frame}
@@ -169,17 +179,17 @@ NOTE - You need to create the color objects and pass them into the function, don
 	\frametitle{Boolean Return Values}
 	
 \begin{lstlisting}
-public static bool closeEnough(Color first, Color second) {
+public static bool closeEnough(Color first, Color second,
+int tolerance) {
 	int redDifference;
 	int greenDifference;
 	int blueDifference;
 	redDifference = first.R - second.R;
 	greenDifference = first.G - second.G;
-	blueDifference = first.B - second.B;
-	
+	blueDifference = first.B - second.B;	
 	if ((redDifference * redDifference + greenDifference
 	* greenDifference + blueDifference * blueDifference)
-	< 300)	{
+	< tolerance)	{
 		return true;
 	} else {
 		return false;
@@ -200,13 +210,15 @@ public static bool turnRed(Color newColour) {
 	int redDifference;
 	int greenDifference;
 	int blueDifference;
+	double sqrt;
 	redDifference = newColour.R - brown.R;
 	greenDifference = newColour.G - brown.G;
 	blueDifference = newColour.B - brown.B;
+	sqrt = Math.Sqrt(redDifference * redDifference + 
+	greenDifference * greenDifference + blueDifference * 
+	blueDifference);
 	
-	if ((redDifference * redDifference + greenDifference
-	* greenDifference + blueDifference * blueDifference)
-	 < 4000) {
+	if (sqrt < 80) {
 		return true;
 	} else {
 		return false;
@@ -357,8 +369,6 @@ for (int y = 0; y < height; y++) {
 }
 \end{lstlisting}
 
-
-
 \end{frame}
 
 \begin{frame}
@@ -461,7 +471,7 @@ Note: This requires that you incorporate a greyscale function as well.
 		\item Refer to the following documentation
 		\item Refactor the function: \texttt{sepiaTint(picture) to use constants rather than literals}
 		\item Tinker with the values of the constants to test your solution
-		\item Then, post your solution on Slack
+		\item Then, post your solution on Teams
 	\end{itemize}
 \end{frame}
 
