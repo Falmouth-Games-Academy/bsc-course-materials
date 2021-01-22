@@ -1,0 +1,44 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+\input{../listings_glsl}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Getting Started with OpenGL}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\input{outcomes}
+
+\input{opengl}
+\input{shaders}
+
+\begin{frame}{Next steps}
+	\begin{itemize}
+		\item \textbf{Review} the additional asynchronous material for more background on OpenGL and shaders/GLSL
+		\item \textbf{Attend} the workshop to see how to use OpenGL with SDL to set up a scene and render it with shaders in GLSL
+	\end{itemize}
+\end{frame}
+
+\end{document}
+
