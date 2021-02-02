@@ -1,0 +1,28 @@
+\part{First person camera control}
+\frame{\partpage}
+
+\begin{frame}{The plan}
+	\begin{itemize}
+		\pause\item Represent the player's \textbf{position} by a 3D vector
+		\pause\item Represent the player's \textbf{orientation} by Euler angles
+		\pause\item Mouse events change these angles
+		\pause\item View matrix is calculated using position and orientation
+		\pause\item To move forwards, use the Euler angles to find the ``forward'' vector,
+			and offset the position by this vector
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Keyboard and mouse in SDL}
+	\pause Use \textbf{relative mouse mode}
+	\begin{itemize}
+		\pause\item Hides the mouse pointer
+		\pause\item Prevents the mouse pointer from hitting the edge of the screen
+		\pause\item Gives us the distance the mouse has moved since last frame, rather than its current position
+	\end{itemize}
+	\pause Use \lstinline{SDL_GetKeyboardState} instead of handling individual keyboard events
+	\begin{itemize}
+		\pause\item Allows us to check on every frame whether the key is held down
+		\pause\item Otherwise, the player will move jerkily according to the key repeat rate
+	\end{itemize}
+\end{frame}
+

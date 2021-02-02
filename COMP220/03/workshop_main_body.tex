@@ -1,0 +1,59 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+\input{../listings_glsl}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Vertices, Transforms \& Projections}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\input{outcomes}
+
+\begin{frame}{Schedule}
+	\begin{center}
+		\begin{tabular}{|c c|}
+			\hline
+			16:00-16:05 & Arrival \& sign-in \\
+			\hline
+			16:05-16:10 & Introduction \\
+			\hline
+			16:10-16:20 & Setting up (LS) \\
+			\hline
+			16:20-16:40 & Demo: Creating a Triangle \\
+			16:40-17:00 & Exercise: Creating a Triangle (LS) \\
+			\hline
+			17:00-17:20 & Introduction to GLSL \\
+			\hline
+			17:20-17:40 & Demo: Creating Shaders \\
+			17:40-18:00 & Exercise: Creating Shaders (LS) \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\input{element_buffer}
+\input{transformations}
+\input{controls}
+
+\end{document}
