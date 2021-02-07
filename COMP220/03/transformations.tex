@@ -1,6 +1,18 @@
 \part{Transformations}
 \frame{\partpage}
 
+\begin{frame}{Right hand rule}
+	\pause OpenGL uses a \textbf{right-handed coordinate system}
+	\pause \begin{center}
+		\includegraphics[width=0.3\textwidth]{RightHandRule}
+	\end{center}
+	\begin{itemize}
+		\pause\item The \textbf{$x$-axis} points towards the \textbf{right-hand side} of the screen
+		\pause\item The \textbf{$y$-axis} points towards the \textbf{top} of the screen
+		\pause\item The \textbf{$z$-axis} points \textbf{out} of the screen
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Transformations and matrices}
 	\begin{itemize}
 		\pause\item A \textbf{transformation} is a \textbf{mathematical function} that \textbf{changes points in space}
@@ -74,29 +86,39 @@ transform = glm::rotate(transform, angle, axis);
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Euler angles}
-	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\begin{itemize}
-				\pause\item Any orientation of an object in 3D space can be described by \textbf{three} rotations around:
-					\begin{itemize}
-						\pause\item The $x$-axis $(1, 0, 0)$
-						\pause\item The $y$-axis $(0, 1, 0)$
-						\pause\item The $z$-axis $(0, 0, 1)$
-					\end{itemize}
-				\pause\item These angles are sometimes called \textbf{roll}, \textbf{pitch} and \textbf{yaw}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\includegraphics[width=\textwidth]{euler_aeroplane}
-		\end{column}
-	\end{columns}
+\begin{frame}{The model matrix}
+	\pause Exactly what we've been doing so far today...
 \end{frame}
 
-\begin{frame}{Gimbal lock}
-	\begin{center}
-		\url{https://youtu.be/rrUCBOlJdt4?t=1m55s}
-	\end{center}
+\begin{frame}[fragile]{The view matrix}
+	\pause Need to translate and rotate the scene so that the ``camera'' is at $(0,0,0)$ and looking in the negative $z$ direction
+	\pause\begin{lstlisting}
+glm::mat4 view = glm::lookAt(
+  glm::vec3(2, 0, 2),    // eye
+  glm::vec3(0, 0, 0),    // centre
+  glm::vec3 up(0, 1, 0)  // up
+);
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item \lstinline{eye} is the position of the camera
+		\pause\item \lstinline{centre} is a point for the camera to look at
+		\pause\item \lstinline{up} is which direction is ``up'' for the camera (usually the positive $y$-axis)
+	\end{itemize}
 \end{frame}
 
-
+\begin{frame}[fragile]{The projection matrix}
+	\pause\begin{lstlisting}
+glm::mat4 projection = glm::perspective(
+	glm::radians(45.0f), // field of view
+	4.0f / 3.0f,         // aspect ratio
+	0.1f,                // near clip plane
+	100.0f               // far clip plane
+);
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item \textbf{Field of view (FOV)}: how ``wide'' or ``narrow'' the view is
+		\pause\item \textbf{Aspect ratio}: should be \lstinline{screenWidth / screenHeight}
+		\pause\item \textbf{Near and far clip planes}: fragments that fall outside this range of distances from the camera are not drawn
+	\end{itemize}
+	\pause Also available: \lstinline{glm::ortho} for orthographic projection
+\end{frame}
