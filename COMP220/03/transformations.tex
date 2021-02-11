@@ -1,4 +1,4 @@
-\part{Transformations}
+\part{Transformations in GLM}
 \frame{\partpage}
 
 \begin{frame}{Right hand rule}
@@ -33,7 +33,8 @@
 			\begin{lstlisting}
 // transformLocation points to a uniform of type mat4
 glm::mat4 transform = ...;
-glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(transform));
+glUniformMatrix4fv(transformLocation, 1, GL_FALSE,
+				glm::value_ptr(transform));
 			\end{lstlisting}
 	\end{itemize}
 \end{frame}
@@ -41,7 +42,8 @@ glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(transform));
 \begin{frame}[fragile]{Identity}
 	\pause The identity transformation does not change anything
 	\pause \begin{lstlisting}
-// Default constructor for glm::mat4 creates an identity matrix
+// Default constructor for glm::mat4
+// creates an identity matrix
 glm::mat4 transform;
 	\end{lstlisting}
 \end{frame}
@@ -49,14 +51,16 @@ glm::mat4 transform;
 \begin{frame}[fragile]{Translation}
 	\pause Translation shifts all points by the same vector offset
 	\pause \begin{lstlisting}
-transform = glm::translate(transform, glm::vec3(0.3f, 0.5f, 0.0f));
+transform = glm::translate(transform,
+					glm::vec3(0.3f, 0.5f, 0.0f));
 	\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Scaling}
 	\pause Scaling moves all points closer or further from the origin by the same factor
 	\pause \begin{lstlisting}
-transform = glm::scale(transform, glm::vec3(1.2f, 0.5f, 1.0f));
+transform = glm::scale(transform,
+				glm::vec3(1.2f, 0.5f, 1.0f));
 	\end{lstlisting}
 \end{frame}
 
@@ -75,7 +79,8 @@ transform = glm::rotate(transform, angle, axis);
 
 \begin{frame}[fragile]{Combining transformations}
 	\pause \begin{lstlisting}
-transform = glm::translate(transform, glm::vec3(0.5f, 0.5f, 0.0f));
+transform = glm::translate(transform,
+					glm::vec3(0.5f, 0.5f, 0.0f));
 transform = glm::rotate(transform, angle, axis);
 	\end{lstlisting}
 	\begin{itemize}
@@ -84,41 +89,4 @@ transform = glm::rotate(transform, angle, axis);
 		\pause\item The order they are applied is the \textbf{reverse} of what you might think ---
 			i.e.\ the above rotates \textbf{then} translates
 	\end{itemize}
-\end{frame}
-
-\begin{frame}{The model matrix}
-	\pause Exactly what we've been doing so far today...
-\end{frame}
-
-\begin{frame}[fragile]{The view matrix}
-	\pause Need to translate and rotate the scene so that the ``camera'' is at $(0,0,0)$ and looking in the negative $z$ direction
-	\pause\begin{lstlisting}
-glm::mat4 view = glm::lookAt(
-  glm::vec3(2, 0, 2),    // eye
-  glm::vec3(0, 0, 0),    // centre
-  glm::vec3 up(0, 1, 0)  // up
-);
-	\end{lstlisting}
-	\begin{itemize}
-		\pause\item \lstinline{eye} is the position of the camera
-		\pause\item \lstinline{centre} is a point for the camera to look at
-		\pause\item \lstinline{up} is which direction is ``up'' for the camera (usually the positive $y$-axis)
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{The projection matrix}
-	\pause\begin{lstlisting}
-glm::mat4 projection = glm::perspective(
-	glm::radians(45.0f), // field of view
-	4.0f / 3.0f,         // aspect ratio
-	0.1f,                // near clip plane
-	100.0f               // far clip plane
-);
-	\end{lstlisting}
-	\begin{itemize}
-		\pause\item \textbf{Field of view (FOV)}: how ``wide'' or ``narrow'' the view is
-		\pause\item \textbf{Aspect ratio}: should be \lstinline{screenWidth / screenHeight}
-		\pause\item \textbf{Near and far clip planes}: fragments that fall outside this range of distances from the camera are not drawn
-	\end{itemize}
-	\pause Also available: \lstinline{glm::ortho} for orthographic projection
 \end{frame}
