@@ -235,7 +235,7 @@ utility = WEIGHT_PRICE * price + WEIGHT_TIME * time;
             \onslide<2->{\State \textit{bestUtility} $\gets -\infty$}
             \onslide<3->{\For{each valid \textit{action} from \textit{state}}}
                 \onslide<4->{\State \textit{nextState} $\gets$ copy of \textit{state}}
-                \onslide<4->{\State apply \textit{action} to \textit{state}}
+                \onslide<4->{\State apply \textit{action} to \textit{nextState}}
                 \onslide<5->{\State \textit{utility} $\gets$ \Call{Utility}{\textit{nextState}}}
                 \onslide<6->{\If{\textit{utility} $>$ \textit{bestUtility}}}
                     \onslide<7->{\State \textit{bestAction} $\gets$ \textit{action}}
