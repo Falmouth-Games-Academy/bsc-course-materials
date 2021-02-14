@@ -45,6 +45,16 @@ utility = WEIGHT_PRICE * price + WEIGHT_TIME * time;
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Utility --- example}
+    \begin{itemize}
+        \pause\item A GPU costs $\pounds 400$ from Amazon or $\pounds 500$ from Bob's Computers
+        \pause\item Both offer next day delivery
+        \pause\item You have a moral objection to supporting large corporations, and would rather support local businesses
+        \pause\item Assuming everything else equal, where do you buy it from?
+        \pause\item To apply utility theory, we need to \textbf{quantify} everything --- which may mean putting a numerical value on \textbf{intangible} things
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Nonlinearity}
     \begin{itemize}
         \pause\item Decision factors are not always linear
@@ -179,12 +189,77 @@ utility = WEIGHT_PRICE * price + WEIGHT_TIME * time;
         \pause\item Adjusting utility curves is \textbf{more art than science}
         \pause\item It's worth \textbf{experimenting} with different curve types to get the desired result
         \pause\item \textbf{Graphical curve editors} are worth investigating
+        \pause\item E.g.\ \lstinline{AnimationCurve} in Unity, ``Curve Float'' in UE4
         \pause\item E.g.\ InstinctAI asset for Unity:
     \end{itemize}
     \begin{center}
-        \includegraphics[width=0.9\textwidth]{instinctai}
+        \includegraphics[width=0.8\textwidth]{instinctai}
     \end{center}
 \end{frame}
+
+\begin{frame}{Inertia}
+    \begin{itemize}
+        \pause\item Utilities will generally change rapidly as the state of the environment changes
+        \pause\item This could result in the agent \textbf{changing its mind} as to which action has the best utility
+        \pause\item Can force the agent to finish its current action before evaluating and choosing another
+        \pause\item Can give a utility bonus to sticking to the current action ---
+            this still allows the agent to change its mind if the current action's utility becomes very bad
+	\end{itemize}
+\end{frame}
+
+\part{1-ply Search}
+\frame{\partpage}
+
+\begin{frame}{1-ply tree}
+    \begin{itemize}
+        \pause\item Recall from last time: in discrete planning problems or games, we can build a \textbf{state-action tree}
+        \pause\item Consider a tree with only one level or \textbf{ply}
+    \end{itemize}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{1ply}
+    \end{center}
+\end{frame}
+
+\begin{frame}{1-ply search}
+    \begin{itemize}
+        \pause\item Suppose we have a utility measure for states
+        \pause\item I.e.\ a function which, given a state, assigns it a utility score
+        \pause\item Then we can ``search'' for the action leading to the best utility score
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{1-ply search}
+    \begin{algorithmic}
+        \onslide<1->{\Procedure{OnePlySearch}{state}}
+            \onslide<2->{\State \textit{bestAction} $\gets$ null}
+            \onslide<2->{\State \textit{bestUtility} $\gets -\infty$}
+            \onslide<3->{\For{each valid \textit{action} from \textit{state}}}
+                \onslide<4->{\State \textit{nextState} $\gets$ copy of \textit{state}}
+                \onslide<4->{\State apply \textit{action} to \textit{state}}
+                \onslide<5->{\State \textit{utility} $\gets$ \Call{Utility}{\textit{nextState}}}
+                \onslide<6->{\If{\textit{utility} $>$ \textit{bestUtility}}}
+                    \onslide<7->{\State \textit{bestAction} $\gets$ \textit{action}}
+                    \onslide<7->{\State \textit{bestUtility} $\gets$ \textit{utility}}
+                \onslide<6->{\EndIf}
+            \onslide<3->{\EndFor}
+            \onslide<2->{\State \textbf{return} \textit{bestAction}}
+        \onslide<1->{\EndProcedure}
+    \end{algorithmic}
+\end{frame}
+
+\begin{frame}{Why 1-ply search?}
+    \begin{itemize}
+        \pause\item It is often easier to come up with a utility measure for states than for actions
+            \begin{itemize}
+                \pause\item E.g.\ distance to goal --- greedy search
+                \pause\item E.g.\ material evaluation in chess
+            \end{itemize}
+        \pause\item Much faster than a full-blown BFS or game tree search, if depth of forward planning is not required
+    \end{itemize}
+\end{frame}
+
+\part{Expectation}
+\frame{\partpage}
 
 \begin{frame}{Expected utility}
 	\begin{itemize}
@@ -216,15 +291,8 @@ utility = WEIGHT_PRICE * price + WEIGHT_TIME * time;
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Inertia}
-    \begin{itemize}
-        \pause\item Utilities will generally change rapidly as the state of the environment changes
-        \pause\item This could result in the agent \textbf{changing its mind} as to which action has the best utility
-        \pause\item Can force the agent to finish its current action before evaluating and choosing another
-        \pause\item Can give a utility bonus to sticking to the current action ---
-            this still allows the agent to change its mind if the current action's utility becomes very bad
-	\end{itemize}
-\end{frame}
+\part{Multi-Objective Optimisation}
+\frame{\partpage}
 
 \begin{frame}{Multi-objective optimisation}
     \begin{itemize}
@@ -257,6 +325,6 @@ utility = WEIGHT_PRICE * price + WEIGHT_TIME * time;
             decision factors
         \pause\item However, there are generally a large number of Pareto optimal solutions so we need some
             other method to tie-break between them
+        \pause\item ... which may boil down to weights (or at least priorities) anyway
     \end{itemize}
 \end{frame}
-
