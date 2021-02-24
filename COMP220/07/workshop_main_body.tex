@@ -1,0 +1,57 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+\input{../listings_glsl}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+\usepackage{caption}
+\captionsetup[figure]{font=scriptsize,labelfont=scriptsize}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Lighting \& Post-processing}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\input{../worksheets}
+
+\input{outcomes}
+
+\begin{frame}{Schedule}
+	\begin{center}
+		\begin{tabular}{|c c|}
+			\hline
+			16:00-16:10 & Arrival, sign-in \& overview \\
+			\hline
+			16:10-16:50 & Demo \& Exercise: Let There be (a) Light \\
+			\hline
+			16:50-17:00 & Rendering to Texture \\
+			17:00-18:00 & Demo \& Exercise: Post-Processing \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\input{lighting}
+\input{render_to_texture}
+\input{display_texture}
+
+\end{document}

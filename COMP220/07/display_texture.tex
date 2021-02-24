@@ -1,0 +1,97 @@
+\part{Using Our Texture}
+\frame{\partpage}
+
+\begin{frame}{Brief Overview}
+	\begin{itemize}
+		\item\pause Now we have our scene store on a texture
+		\item\pause We need to map this texture onto a surface
+		\item\pause This is usually a screen-aligned quad, but it can be any 3D object!
+		\item\pause In the fragment shader, we can do some processing
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Steps}
+	\begin{enumerate}
+		\item\pause Create a Vertex Buffer Object (VBO) for our quad
+		\item\pause Create a Vertex Array Object (VAO)
+		\item\pause Load in a 'pass through' Vertex Shader and a Fragment shader which takes in a texture
+		\item\pause Render the quad and send across the texture that was bound to the framebuffer
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Creating our Vertex Buffer Object}
+	\begin{lstlisting}
+float vertices[] =
+{
+	-1, -1,
+	1, -1,
+	-1, 1,
+	1, 1,
+};
+
+GLuint screenQuadVBOID;
+glGenBuffers(1, &screenQuadVBOID);
+glBindBuffer(GL_ARRAY_BUFFER, screenQuadVBOID);
+glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), vertices,
+			GL_STATIC_DRAW);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Creating our Vertex Array}
+	\begin{lstlisting}
+GLuint screenVAOID;
+glGenVertexArrays(1, &screenVAOID);
+glBindVertexArray(screenVAOID);
+glBindBuffer(GL_ARRAY_BUFFER, screenQuadVBOID);
+
+glEnableVertexAttribArray(0);
+glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, NULL);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Pass Through Vertex Shader}
+	\begin{lstlisting}
+#version 330 core
+
+layout(location=0) in vec2 vertexPosition;
+
+out vec2 textureCoords;
+
+void main()
+{
+	//Calculate Texture Coordinates for the Vertex
+	textureCoords = (vertexPosition + 1.0) / 2.0;
+	gl_Position = vec4(vertexPosition, 0.0, 1.0);
+}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Example Fragment Shader}
+	\begin{lstlisting}
+#version 330 core
+
+out vec4 color;
+in vec2 textureCoords;
+
+uniform sampler2D texture0;
+
+void main()
+{
+	//Read the texture and do some processing!
+	color = texture(texture0, textureCoords);
+}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Rendering}
+	\begin{lstlisting}
+glBindFramebuffer(GL_FRAMEBUFFER,0);
+glBindVertexArray(screenVAOID);
+
+//Bind our Postprocessing Program
+
+//Send across any values to the shader
+
+//Draw the quad!
+	\end{lstlisting}
+\end{frame}
