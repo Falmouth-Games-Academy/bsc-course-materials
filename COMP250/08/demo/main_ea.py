@@ -104,9 +104,9 @@ def main():
             ]
         population_fitness.sort()
 
-        #elite = population_fitness[-1:]
-        #for (fitness, tiles) in elite:
-        #    new_population.append(tiles)
+        elite = population_fitness[-1:]
+        for (fitness, tiles) in elite:
+            new_population.append(tiles)
 
         while len(new_population) < POPULATION_SIZE:
             parent = tournament_select(population)

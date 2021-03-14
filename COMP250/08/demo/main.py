@@ -1,5 +1,6 @@
 import pygame
 import random
+import matplotlib.pyplot as plt
 
 import map
 import pathfinding
@@ -54,11 +55,13 @@ def main():
 
     the_map = map.Map((MAP_WIDTH, MAP_HEIGHT), tiles, TILE_SIZE, include_diagonals=True)
     fitness = calculate_fitness(the_map)
+    fitness_history = [fitness]
+    temperature = 1.0
 
     while True:
-        for tile_index in range(len(tiles)):
+        #for tile_index in range(len(tiles)):
             new_tiles = tiles[:]
-            #tile_index = random.randrange(len(new_tiles))
+            tile_index = random.randrange(len(new_tiles))
             if new_tiles[tile_index] == ' ':
                 new_tiles[tile_index] = '*'
             elif new_tiles[tile_index] == '*':
@@ -66,14 +69,23 @@ def main():
             new_map = map.Map((MAP_WIDTH, MAP_HEIGHT), new_tiles, TILE_SIZE, include_diagonals=True)
             new_fitness = calculate_fitness(new_map)
 
-            if new_fitness > fitness:
+            temperature *= 0.99
+            if new_fitness > fitness or random.uniform(0, 1) < temperature:
                 tiles = new_tiles
                 the_map = new_map
                 fitness = new_fitness
+                
+                print("Temperature:", temperature)
 
                 print("Current fitness:", fitness)
                 path = get_path(the_map)
                 draw_map_and_path(screen, the_map, path)
+
+                fitness_history.append(fitness)
+                plt.clf()
+                plt.plot(range(len(fitness_history)), fitness_history)
+                plt.show(block=False)
+                plt.pause(0.001)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
