@@ -3,9 +3,9 @@
 
 \begin{frame}{Brief Overview}
 	\begin{enumerate}
-		\item\pause Create a Texture of the required dimensions
+		\item\pause Create a texture of the required dimensions
 		\item\pause Create Depth Buffer Object
-		\item\pause Create a Frambuffer Object (FBO)
+		\item\pause Create a Framebuffer Object (FBO)
 		\item\pause Bind the texture and the Depth Buffer Object into the FBO
 		\item\pause Bind the FBO to the pipeline
 		\item\pause Render the scene to the new framebuffer
@@ -19,13 +19,15 @@ GLuint renderTextureID;
 glGenTextures(1,&renderTextureID);
 
 //Bind Texture
-glBindTexture(GL_TEXTURE_2D, renderTexture);
+glBindTexture(GL_TEXTURE_2D, renderTextureID);
 
 //fill with empty data
 glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,
 	840,680,0,GL_RGB, GL_UNSIGNED_BYTE,0);
-
-//Add any texture states (filtering etc)
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+	GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+	GL_LINEAR);
 	\end{lstlisting}
 \end{frame}
 
@@ -37,15 +39,15 @@ glGenRenderbuffers(1,&depthBufferID);
 
 //Bind the depth buffer
 glBindRenderbuffer(GL_RENDERBUFFER, depthBufferID);
-//Set the foremat of the depth buffer
+//Set the format of the depth buffer
 glRenderbufferStorage(GL_RENDERBUFFER,GL_DEPTH_COMPONENT,
 				840,680);
 	\end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Creating Frame Buffer}
+\begin{frame}[fragile]{Creating a Frame Buffer}
 	\begin{lstlisting}
-//The frambuffer
+//The framebuffer
 GLuint frameBufferID;
 glGenFramebuffers(1,&frameBufferID);
 	\end{lstlisting}

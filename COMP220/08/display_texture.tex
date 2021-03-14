@@ -3,10 +3,10 @@
 
 \begin{frame}{Brief Overview}
 	\begin{itemize}
-		\item\pause Now we have our scene store on a texture
+		\item\pause Now we have our scene stored on a texture
 		\item\pause We need to map this texture onto a surface
 		\item\pause This is usually a screen-aligned quad, but it can be any 3D object!
-		\item\pause In the fragment shader, we can do some processing
+		\item\pause In the fragment shader, we can do some processing...
 	\end{itemize}
 \end{frame}
 
@@ -14,14 +14,14 @@
 	\begin{enumerate}
 		\item\pause Create a Vertex Buffer Object (VBO) for our quad
 		\item\pause Create a Vertex Array Object (VAO)
-		\item\pause Load in a 'pass through' Vertex Shader and a Fragment shader which takes in a texture
+		\item\pause Load in a 'pass through' vertex shader and a fragment shader which takes in a texture
 		\item\pause Render the quad and send across the texture that was bound to the framebuffer
 	\end{enumerate}
 \end{frame}
 
 \begin{frame}[fragile]{Creating our Vertex Buffer Object}
 	\begin{lstlisting}
-float vertices[] =
+float quadVertices[] =
 {
 	-1, -1,
 	1, -1,
@@ -32,7 +32,7 @@ float vertices[] =
 GLuint screenQuadVBOID;
 glGenBuffers(1, &screenQuadVBOID);
 glBindBuffer(GL_ARRAY_BUFFER, screenQuadVBOID);
-glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), vertices,
+glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), quadVertices,
 			GL_STATIC_DRAW);
 	\end{lstlisting}
 \end{frame}
@@ -87,6 +87,8 @@ void main()
 	\begin{lstlisting}
 glBindFramebuffer(GL_FRAMEBUFFER,0);
 glBindVertexArray(screenVAOID);
+glBindTexture(GL_TEXTURE_2D, renderTextureID);
+// etc.
 
 //Bind our Postprocessing Program
 
