@@ -1,5 +1,16 @@
 % Compile this file for on-screen presentation
 
-\documentclass[xcolor={dvipsnames}]{beamer}\usepackage{etoolbox}\newtoggle{printable}\togglefalse{printable}
+\documentclass[xcolor={dvipsnames}, usepdftitle=false]{beamer}\usepackage{etoolbox}\newtoggle{printable}\togglefalse{printable}
+
+\input{sessioninfo}
+
+% Not sure why pdfusetitle doesn't work, but this fixes accessibility problem with the metadata
+\hypersetup{
+    pdftex,
+    pdftitle=\sessionnumber: Tinkering Graphics II,
+    pdfauthor=Michael Scott and Henry Genus,
+    pdfdisplaydoctitle,
+    pdflang=en-GB
+}
 
 \input{lecture_main_body}

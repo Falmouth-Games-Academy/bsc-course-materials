@@ -1,4 +1,0 @@
-# Don't ignore anything within this directory
-# This is to ensure that the .lib and .dll files don't get ignored
-
-!**

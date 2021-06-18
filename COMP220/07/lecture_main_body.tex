@@ -1,0 +1,47 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+\input{../listings_glsl}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+\usepackage{caption}
+\captionsetup[figure]{font=scriptsize,labelfont=scriptsize}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Lighting}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\input{outcomes}
+
+\input{vector_products}
+\input{phong}
+
+\begin{frame}{Next steps}
+	\begin{itemize}
+		\item \textbf{Review} the additional asynchronous material for more background on different lighting models and effects.
+		\item \textbf{Attend} the workshop to practice creating light sources and using them to illuminate the scene.
+	\end{itemize}
+\end{frame}
+
+\end{document}
+

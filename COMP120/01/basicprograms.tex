@@ -1,0 +1,221 @@
+\newcommand{\codeslide}[2]{
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
+			\lstinputlisting{#1}
+		\end{column}
+		
+		\begin{column}{0.48\textwidth}
+			\begin{center}
+				\colorbox{white}{
+					\color{black}
+					\begin{tabular}{|c|c|}
+						\hline
+						\textbf{Variable} & \textbf{Value} \\\hline
+						#2
+					\end{tabular}
+				}
+			\end{center}
+		\end{column}
+	\end{columns}
+}
+
+\newcommand{\trow}[1]{ & \\ \texttt{#1} & \\ & \\\hline}
+
+\part{Basic C\# programs}
+
+\frame{\partpage}
+
+\begin{frame}[fragile]{Your first C\# program}
+\begin{lstlisting}
+using System;
+
+namespace Test
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{C\# Terminology}
+	\small
+	\begin{itemize}
+	\item \textbf{Using} The using directive creates an alias for a namespace or import types defined in other namespaces.
+	\item \textbf{nameSpace} A namespace is designed to keep one set of names separate from another. Consequently class names declared in one namespace do not conflict with the same class names declared in another.
+	\item \textbf{Class} A class defines the kinds of data and the functionality objects will have. A class enables you to create your custom types by grouping variables of other types, methods, and events.
+	\item \textbf{public static void Main} It is the first method which gets invoked whenever an application started and it is present in every C\# executable file.
+	\end{itemize}
+\end{frame}
+	
+
+
+\begin{frame}[fragile]{Your second C\# program}
+\begin{lstlisting}
+Console.WriteLine("This is a very long line of code which
+had to be split to fit on the slide, but you should type 
+it as a single line.")
+Console.WriteLine("This is the second line of code.")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Assigning to variables}
+\codeslide{assign0.cs}{\trow{a}}
+\end{frame}
+
+\begin{frame}{Remember!}
+\begin{itemize}
+\item A program is a \textbf{sequence of instructions}
+\item The C\# interpreter executes the \textbf{first line} of your program, then the \textbf{second line},
+and so on
+\item When it reaches the end of the file, it \textbf{stops}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Socrative - FALCOMPMIKE}
+Login to Socrative!
+
+\vspace{1em}
+
+\url{https://b.socrative.com/login/student/}
+
+\end{frame}
+
+\begin{frame}{Reassigning variables (1)}
+\codeslide{assign1.cs}{\trow{a}\trow{b}}
+\end{frame}
+
+\begin{frame}{Reassigning variables (2)}
+\codeslide{assign2.cs}{\trow{a}\trow{b}}
+\end{frame}
+
+\begin{frame}{Reassigning variables (3)}
+\codeslide{assign3.cs}{\trow{big}\trow{small}}
+\end{frame}
+
+\begin{frame}{Reassigning variables (4)}
+\codeslide{assign4.cs}{\trow{a}\trow{b}}
+\end{frame}
+
+\begin{frame}{Reassigning variables (5)}
+\codeslide{assign5.cs}{\trow{a}\trow{b}\trow{c}}
+\end{frame}
+
+\begin{frame}{Reading Input}
+\lstinputlisting{input.cs}
+\begin{itemize}
+\item \lstinline{Console.ReadLine()} reads a \textbf{string} (a sequence of characters---text) from the command line
+\item \lstinline{Int16.Parse(...)} parses(converts) a \textbf{string} into an \textbf{integer} (a number)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conditionals (1)}
+\codeslide{cond1.cs}{\trow{a}\trow{b}}
+\end{frame}
+
+\begin{frame}{Indentation}
+\begin{itemize}
+\item Like many other programming languages, \textbf{indentation is not essential but useful} in C\#
+\item C\# uses indentation to denote the \textbf{block of code} inside a conditional, loop, function etc.
+\item Microsoft recommends \textbf{4 spaces} for indentation
+\begin{itemize}
+\item Some programmers use a tab character
+\item \textbf{Never} mix tabs and spaces in the same file!
+\end{itemize}
+\end{itemize}
+
+\scriptsize\url{https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions}
+\end{frame}
+
+\begin{frame}{Conditionals (2)}
+\codeslide{cond2.cs}{\trow{a}\trow{b}}
+\end{frame}
+
+\begin{frame}{Conditionals}
+ An \lstinline{if} statement can have:
+\begin{itemize}
+\item \textbf{Zero or more} \lstinline{else if} clauses
+\item \textbf{An optional} \lstinline{else} clause
+\end{itemize}
+ In that order!
+\end{frame}
+
+\begin{frame}{Mathematical operators}
+\begin{itemize}
+\item \lstinline{+} add
+\item \lstinline{-} subtract
+\item \lstinline{*} multiply
+\item \lstinline{/} divide
+\item \lstinline{**} power
+\end{itemize}
+ Order of operations: \textbf{BIDMAS}
+\begin{itemize}
+\item \uline{B}rackets first
+\item Then \uline{i}ndices (powers)
+\item Then \uline{d}ivision and \uline{m}ultiplication (left to right)
+\item Then \uline{a}ddition and \uline{s}ubtraction (left to right)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comparison operators}
+\begin{itemize}
+\item \lstinline{<} less than
+\item \lstinline{<=} less than or equal to
+\item \lstinline{>} greater than
+\item \lstinline{>=} greater than or equal to
+\item \lstinline{==} equal to
+\item \lstinline{!=} not equal to
+\end{itemize}
+ Note the difference between \lstinline{=} and \lstinline{==}
+\begin{itemize}
+\item \lstinline{a = b} means ``make \lstinline{a} be equal to \lstinline{b}''
+\item \lstinline{a == b} means ``is \lstinline{a} equal to \lstinline{b}?''
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For loops and ranges}
+\lstinputlisting{for0.cs}
+\begin{itemize}
+\item \lstinline{for} contains 3 statements: \textbf{variable, condition} and \textbf{increment}
+\item Initially the  \textbf{variable} is set to a value and the  \textbf{incrementer} increases the value until the  \textbf{condition} is met
+\item The \lstinline{for} loop iterates through the items in a sequence \textbf{in order}. As the loop iterates the variable is increased each time: $0, 1, 2, 3, 4$
+\item Note: \lstinline{i < 5} \textbf{does not include} $5$ as the condition is met at 4 so the loop stops.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For loops (1)}
+\codeslide{for1.cs}{\trow{a}\trow{b}\trow{i}}
+\end{frame}
+
+\begin{frame}{For loops (2)}
+\codeslide{for2.cs}{\trow{a}\trow{b}\trow{i}}
+\end{frame}
+
+\begin{frame}{While loops}
+The \lstinline{while} loop keeps executing while the condition is \textbf{true}
+
+\codeslide{while1.cs}{\trow{a}}
+\end{frame}
+
+\begin{frame}{Looping forever}
+\lstinputlisting{while2.cs}
+\end{frame}
+
+\begin{frame}{Summary}
+ We have seen some basic code constructions in Python
+\begin{itemize}
+\item \lstinline{Console.WriteLine()} and \lstinline{Console.ReadLine()} for command-line input and output
+\item Variable assignment using \lstinline{=}
+\item \lstinline{if} statements for choosing whether or not to execute a block of code
+\item \lstinline{for} loops to execute a block of code a specified number of times
+\item \lstinline{while} loops to execute a block of code until a condition is no longer true
+\end{itemize}
+ These are enough to write some simple programs, but you will see several more in coming weeks...
+\end{frame}
+
+% Show PyCharm bouncing ball example? -- think about this between now and Michael's session next Wednesday

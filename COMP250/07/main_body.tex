@@ -1,4 +1,4 @@
-% !TeX root = ./2019-20-COMP250-07-session-materials_screen.tex
+% !TeX root = ./2020-21-COMP250-07-session-materials_screen.tex
 % Adjust these for the path of the theme and its graphics, relative to this file
 %\usepackage{beamerthemeFalmouthGamesAcademy}
 \usepackage{../../beamerthemeFalmouthGamesAcademy}
@@ -27,14 +27,49 @@
 
 \frame{\titlepage} 
 
+\newcommand{\pictureslideb}[3]{
+	\begin{frame}{#1}
+		\begin{center}
+			\includegraphics[height=0.6\textheight]{#2}
+			
+			\vspace{6pt}
+			
+			#3
+		\end{center}
+	\end{frame}
+}
+
+\newcommand{\pictureslide}[2]{
+	\begin{frame}{#1}
+		\begin{center}
+			\includegraphics[height=0.6\textheight]{#2}
+		\end{center}
+	\end{frame}
+}
+
+\newcommand{\pictureslidew}[2]{
+	\begin{frame}{#1}
+		\begin{center}
+			\includegraphics[width=\textwidth]{#2}
+		\end{center}
+	\end{frame}
+}
+
 \input{whatis}
 
-\input{history}
+\pictureslide{The Binding of Isaac (2011)}{isaac}
+\pictureslide{Enter The Gungeon (2016)}{enterthegungeon}
+\pictureslide{Spelunky (2008)}{spelunky}
+\pictureslide{Dwarf Fortress (2006)}{dwarffortress}
+\pictureslide{No Man's Sky (2016)}{nomanssky}
 
-\input{approaches}
 
-\input{discussion}
+%\input{history}
 
-\input{future}
+%\input{approaches}
+
+%\input{discussion}
+
+%\input{future}
 
 \end{document}

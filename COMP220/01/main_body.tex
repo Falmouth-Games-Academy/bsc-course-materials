@@ -15,42 +15,46 @@
 
 \usepackage{pdfpages}
 
+\usepackage[skip=2pt,font=tiny]{caption}
+
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=gray,
+	urlcolor=gray
+}
 
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: The graphics pipeline}
+\title{\sessionnumber: Introduction to Graphics and Simulation}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
 \begin{frame}
 	\frametitle{Learning outcomes}
-	By the end of today's session, you will be able to:
+	By the end of this week, you will be able to:
 	\begin{itemize}
-		\item \textbf{Recall} the key stages of the graphics pipeline
-		\item \textbf{Explain} the differences between a CPU and a GPU
-		\item \textbf{Write} basic programs using SDL and OpenGL
+		\item \textbf{Understand} the context of computer graphics and simulation in games.
+		\item \textbf{Recall} some of the main areas of interest in graphics and simulation.
 	\end{itemize}
 \end{frame}
 
-\input{courseintro}
+\input{graphics}
 
-\input{hardware}
+\input{simulation}
 
-\input{pipeline}
-
-\input{livecoding}
+\input{context}
 
 \begin{frame}
-	\frametitle{Debrief}
-	It's the end of today's session. You are now able to:
+	\frametitle{Next steps}
+	Now you have a general idea of what graphics and simulation is about, and the factors to bear in mind whilst implementing the techniques,
 	\begin{itemize}
-		\item \textbf{Recall} the key stages of the graphics pipeline
-		\item \textbf{Explain} the differences between a CPU and a GPU
-		\item \textbf{Write} basic programs using SDL and OpenGL
+		\item \textbf{Review} content from COMP270 on the graphics pipeline.
+		\item \textbf{Research} the main topics within graphics and simulation to decide which areas you'd like to focus on for your artefact.
 	\end{itemize}
 \end{frame}
 

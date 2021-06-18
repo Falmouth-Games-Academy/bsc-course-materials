@@ -1,0 +1,171 @@
+\part{Pseudocode}
+\frame{\partpage}
+
+\begin{frame}{Pseudocode}
+	\pause Flowcharts are useful, but...
+	\begin{itemize}
+		\pause\item Can be time-consuming to draw
+		\pause\item Do not reflect structured programming concepts well
+	\end{itemize}
+	\pause \textbf{Pseudocode} expresses an algorithm in a way that looks more like a structured program
+\end{frame}
+
+\begin{frame}{Pseudocode example}
+	\begin{algorithmic}
+		\State \textbf{print} ``How old are you?''
+		\State \textbf{read} $age$
+		\If{$age < 13$}
+			\State \textbf{print} ``You are a child''
+		\ElsIf{$age < 18$}
+			\State \textbf{print} ``You are a teenager''
+		\Else
+			\State \textbf{print} ``You are an adult''
+		\EndIf
+	\end{algorithmic}
+\end{frame}
+
+\begin{frame}{Pseudocode example}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{algorithmic}
+				\State $sum \gets 0$ \Comment{initialisation}
+				\For{$i$ in $1, \dots, 9$}
+					\State $sum \gets sum + i$
+				\EndFor
+				\State \textbf{print} $sum$ \Comment{print the result}
+			\end{algorithmic}
+		\end{column}
+	\end{columns}
+	
+	\vspace{4ex}
+	
+	\begin{center}
+		\url{https://socrative.com}, room code \texttt{FALCOMPED}:
+		
+		what would this print?
+	\end{center}
+\end{frame}
+
+\begin{frame}{Pseudocode example}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{algorithmic}
+				\State $a \gets 1$ \Comment{initialisation}
+				\While{$a < 100$}
+					\State $a \gets a \times 2$
+				\EndWhile
+				\State \textbf{print} $a$ \Comment{print the result}
+			\end{algorithmic}
+		\end{column}
+	\end{columns}
+
+	\vspace{4ex}
+	
+	\begin{center}
+		\url{https://socrative.com}, room code \texttt{FALCOMPED}:
+		
+		what would this print?
+	\end{center}
+\end{frame}
+
+\begin{frame}{Formatting pseudocode}
+	\begin{itemize}
+		\pause\item Pseudocode is a \textbf{communication tool}, not a \textbf{programming language}
+		\pause\item Important: \textbf{clear}, \textbf{concise}, \textbf{unambiguous}, \textbf{consistent}
+		\pause\item \textbf{Not} important: adhering to a strict set of style guidelines,
+			ensuring direct translatability to your chosen programming language
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Level of abstraction}
+	\pause Whether working with flowcharts or pseudocode, choose your \textbf{level of abstraction} carefully
+\end{frame}
+
+\begin{frame}{Level of abstraction: Good}
+	\begin{algorithmic}
+		\State Fill kettle
+		\State Turn kettle on
+		\State Put teabag in mug
+		\If{sugar wanted}
+			\State Add sugar
+		\EndIf
+		\State Wait for kettle to boil
+		\If{milk wanted}
+			\State Pour water to $\frac45$ full
+			\State Add milk
+		\Else
+			\State Fill mug with water
+		\EndIf
+		\State Stir
+	\end{algorithmic}
+\end{frame}
+
+\begin{frame}{Level of abstraction: Not so good}
+	\begin{algorithmic}
+		\State Position kettle beneath tap
+		\State Turn tap on
+		\While{water is below halfway point}
+			\State Wait
+		\EndWhile
+		\State Turn tap off
+		\State Place kettle on base
+		\State Press power button
+		\State ...
+	\end{algorithmic}
+\end{frame}
+
+\begin{frame}{Level of abstraction: Silly}
+	\begin{algorithmic}
+		\State Place right palm on kettle handle
+		\State Bend fingers on right hand
+		\State Lift arm upwards
+		\While{tap spout is not directly above kettle}
+			\State Move arm to the right
+		\EndWhile
+		\State Place left palm on tap handle
+		\State Bend fingers on left hand
+		\State Rotate left hand
+		\State ...
+	\end{algorithmic}
+\end{frame}
+
+\begin{frame}{Level of abstraction: also silly}
+	\begin{algorithmic}
+		\State Make a cup of tea
+	\end{algorithmic}
+\end{frame}
+
+\begin{frame}{Activity}
+	A number guessing game: The computer chooses a number between 1 and 20 at random.
+	The player guesses a number.
+	The computer says whether the guessed number is ``too high'', ``too low'' or ``correct''.
+	The game ends when the correct number is guessed, or after 5 incorrect guesses.
+
+	\begin{itemize}
+		\item In your \textbf{breakout groups}
+		\item \textbf{Write} pseudocode for the number guessing game
+		\item \textbf{Post} your pseudocode in chat
+		\item Tip: type \lstinline{```} (top left key on a UK keyboard) \textbf{before and after} your pseudocode to preserve indentation and line breaks!
+	\end{itemize}
+\end{frame}
+
+%\begin{frame}{Activity}
+	%\begin{itemize}
+		%\item In \textbf{groups of 2-3}
+		%\item \textbf{Choose} an algorithm from one of the following:
+			%\begin{itemize}
+				%\item Lego Robot Olympiad
+				%\item COMP120 Tinkering Graphics
+				%\item GAM110 Game of UR Project
+			%\end{itemize}
+		%\item \textbf{Express} the algorithm as a flowchart \textbf{and}
+		%\item \textbf{Express} the algorithm as pseudocode
+		%\item \textbf{Post} both your flowchart and your pseudocode on Slack
+	%\end{itemize}
+%\end{frame}
+
+\begin{frame}
+	\begin{center}
+		Session will resume at 17:25
+	\end{center}
+\end{frame}

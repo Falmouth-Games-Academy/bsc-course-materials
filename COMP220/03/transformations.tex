@@ -1,5 +1,17 @@
-\part{Transformations}
+\part{Transformations in GLM}
 \frame{\partpage}
+
+\begin{frame}{Right hand rule}
+	\pause OpenGL uses a \textbf{right-handed coordinate system}
+	\pause \begin{center}
+		\includegraphics[width=0.3\textwidth]{RightHandRule}
+	\end{center}
+	\begin{itemize}
+		\pause\item The \textbf{$x$-axis} points towards the \textbf{right-hand side} of the screen
+		\pause\item The \textbf{$y$-axis} points towards the \textbf{top} of the screen
+		\pause\item The \textbf{$z$-axis} points \textbf{out} of the screen
+	\end{itemize}
+\end{frame}
 
 \begin{frame}{Transformations and matrices}
 	\begin{itemize}
@@ -21,7 +33,8 @@
 			\begin{lstlisting}
 // transformLocation points to a uniform of type mat4
 glm::mat4 transform = ...;
-glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(transform));
+glUniformMatrix4fv(transformLocation, 1, GL_FALSE,
+				glm::value_ptr(transform));
 			\end{lstlisting}
 	\end{itemize}
 \end{frame}
@@ -29,7 +42,8 @@ glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(transform));
 \begin{frame}[fragile]{Identity}
 	\pause The identity transformation does not change anything
 	\pause \begin{lstlisting}
-// Default constructor for glm::mat4 creates an identity matrix
+// Default constructor for glm::mat4
+// creates an identity matrix
 glm::mat4 transform;
 	\end{lstlisting}
 \end{frame}
@@ -37,14 +51,16 @@ glm::mat4 transform;
 \begin{frame}[fragile]{Translation}
 	\pause Translation shifts all points by the same vector offset
 	\pause \begin{lstlisting}
-transform = glm::translate(transform, glm::vec3(0.3f, 0.5f, 0.0f));
+transform = glm::translate(transform,
+					glm::vec3(0.3f, 0.5f, 0.0f));
 	\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Scaling}
 	\pause Scaling moves all points closer or further from the origin by the same factor
 	\pause \begin{lstlisting}
-transform = glm::scale(transform, glm::vec3(1.2f, 0.5f, 1.0f));
+transform = glm::scale(transform,
+				glm::vec3(1.2f, 0.5f, 1.0f));
 	\end{lstlisting}
 \end{frame}
 
@@ -63,7 +79,8 @@ transform = glm::rotate(transform, angle, axis);
 
 \begin{frame}[fragile]{Combining transformations}
 	\pause \begin{lstlisting}
-transform = glm::translate(transform, glm::vec3(0.5f, 0.5f, 0.0f));
+transform = glm::translate(transform,
+					glm::vec3(0.5f, 0.5f, 0.0f));
 transform = glm::rotate(transform, angle, axis);
 	\end{lstlisting}
 	\begin{itemize}
@@ -73,30 +90,3 @@ transform = glm::rotate(transform, angle, axis);
 			i.e.\ the above rotates \textbf{then} translates
 	\end{itemize}
 \end{frame}
-
-\begin{frame}{Euler angles}
-	\begin{columns}
-		\begin{column}{0.48\textwidth}
-			\begin{itemize}
-				\pause\item Any orientation of an object in 3D space can be described by \textbf{three} rotations around:
-					\begin{itemize}
-						\pause\item The $x$-axis $(1, 0, 0)$
-						\pause\item The $y$-axis $(0, 1, 0)$
-						\pause\item The $z$-axis $(0, 0, 1)$
-					\end{itemize}
-				\pause\item These angles are sometimes called \textbf{roll}, \textbf{pitch} and \textbf{yaw}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\includegraphics[width=\textwidth]{euler_aeroplane}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Gimbal lock}
-	\begin{center}
-		\url{https://youtu.be/rrUCBOlJdt4?t=1m55s}
-	\end{center}
-\end{frame}
-
-

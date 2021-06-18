@@ -1,0 +1,45 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+\input{../listings_glsl}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Vertices, Transforms \& Projections}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\input{outcomes}
+
+\input{vertices}
+\input{mvp}
+\input{fps}
+
+\begin{frame}{Next steps}
+	\begin{itemize}
+		\item \textbf{Review} the additional asynchronous material for more background on representing mesh vertices and calculating the model, view and projection matrices.
+		\item \textbf{Attend} the workshop to see how to implement an Element Buffer in OpenGL and use GLM to create and apply transforms.
+	\end{itemize}
+\end{frame}
+
+\end{document}
+

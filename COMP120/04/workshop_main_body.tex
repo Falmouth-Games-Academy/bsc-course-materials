@@ -6,7 +6,7 @@
 
 % Default language for code listings
 \lstset{language=Python,
-        morekeywords={each,in,nullptr}
+        morekeywords={each,in,nullptr,string, Color, Bitmap, GetPixel, SetPixel}
 }
 
 % For strikethrough effect
@@ -18,8 +18,6 @@
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
-\input{sessioninfo}
-
 \setbeamertemplate{navigation symbols}{}
 
 \input{../../commands}
@@ -27,6 +25,7 @@
 \begin{document}
 \title{\sessionnumber: Tinkering Graphics III}
 \subtitle{\modulecode: \moduletitle}
+\author{Michael Scott and Matt Watkins}
 
 \frame{\titlepage} 
 
@@ -40,6 +39,8 @@
 	\end{itemize}
 \end{frame}
 
+\fullbleed{ada-mirror}
+
 \begin{frame}
 	\frametitle{Mirroring}
 	
@@ -48,27 +49,32 @@
 		\item A mirror will:
 		\begin{itemize}
 			\item Define a dimension of inflexion
-			\item Duplicate pixels from the one side of the inflextion to the other, in reverse order
+			\item Duplicate pixels from the one side of the inflexion to the other, in reverse order
 		\end{itemize}	
 	\end{itemize}
 \end{frame}
 
-\fullbleed{mirror}
+\fullbleed{ada-mirror2}
 
 \begin{frame}[fragile]
 	\frametitle{Source Code: Mirroring (1)}
 	
 \begin{lstlisting}
-def mirror_vertical(picture):
-  width = get_width(picture)
-  height = get_height(picture)
-  mirror_point = width / 2
-  for y in xrange(0, height):
-      for x in xrange(0, mirror_point):
-          left_pixel = get_pixel(picture, x, y)
-          right_pixel = get_pixel(picture, width - x - 1, y)
-          set_colour(right_pixel, get_colour(left_pixel))
+private static Bitmap mirrorVertical(string source) 	
+	Bitmap bmp = new Bitmap(source);
+	int width = bmp.Width;
+	int height = bmp.Height;		
+	for (int ty = 0, by = height-1; ty < height/2; ty++, 
+		by--) {
+		for (int x = 0; x < width; x++){
+			Color p = bmp.GetPixel(x, ty);
+			bmp.SetPixel(x, ty, p);
+			bmp.SetPixel(x, by, p);
+		}
+	}
+}
 \end{lstlisting}
+Note: When defining the initial value for bottom y (by) we minus 1 to avoid the creation of a gap in the mirror
 
 \end{frame}
 
@@ -76,15 +82,19 @@ def mirror_vertical(picture):
 	\frametitle{Source Code: Mirroring (2)}
 	
 \begin{lstlisting}
-def mirror_vertical(picture):
-  width = get_width(picture)
-  height = get_height(picture)
-  mirror_point = height / 2
-  for x in xrange(0, width):
-      for y in xrange(0, mirror_point):
-          top_pixel = get_pixel(picture, x, y)
-          bottom_pixel = get_pixel(picture, x, height - y - 1)
-          set_colour(bottom_pixel, get_colour(top_pixel))
+private static Bitmap mirrorHorizontal(string source) 	
+	Bitmap bmp = new Bitmap(source);
+	int width = bmp.Width;
+	int height = bmp.Height;		
+	for (int y = 0; y < height; y++) {
+		for (int lx = 0, rx = width-1; lx <
+		width/2+1; lx++, rx--) {
+			Color p = bmp.GetPixel(lx, y);
+			bmp.SetPixel(lx, y, p);
+			bmp.SetPixel(rx, y, p);
+		}
+	}
+}
 \end{lstlisting}
 
 \end{frame}
@@ -121,18 +131,26 @@ def mirror_vertical(picture):
 	\frametitle{Source Code: Edge Detection}
 	
 \begin{lstlisting}
-def drawEdges(picture):
-  for x in xrange(0, picture.length - 1):
-      for y in xrange(0, picture.height - 1):
-          pixelSum = getRed(pixel) + getGreen(pixel) + getBlue(pixel)
-          nextPixel = getPixel(picture, x+1, y+1)
-          nextPixelSum = getRed(nextPixel)+ getGreen(nextPixel) + getBlue(nextPixel)
-          diff = abs(nextPixelSum-pixelSum)
-          newColor = makeColor(diff,diff,diff)
-          setColor(pixel, newColor)
+private static Bitmap edgeDetection(string source) {  
+	Bitmap bmp = new Bitmap(source);
+	int width = bmp.Width; int height = bmp.Height;  
+	for (int y = 0; y < height; y++) {
+		for (int x = 0; x < width; x++) {
+			Color pixel = bmp.GetPixel(x, y);
+			Color nextPixel = bmp.GetPixel(x + 1, y + 1);
+			int pixelSum = pixel.R + pixel.G + pixel.B;
+			int nextPixelSum = nextPixel.R + nextPixel.G
+			+ nextPixel.B;
+			int diff = Math.Abs(nextPixelSum - pixelSum);
+			bmp.SetPixel(x, y, Color.FromArgb(255, diff, 
+			diff, diff));
+		}
+	}
+	return bmp;
+}
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
+\small Note: This will create an error due to tow seperate overflow exceptions. You will need to create a method to fix the error.
 
 \end{frame}
 
@@ -142,23 +160,23 @@ Note: This source code excerpt will not work in PyGame.
 	\frametitle{Source Code: Edge Detection (1)}
 	
 \begin{lstlisting}
-def drawBetterEdges(picture):
-  orig = makePicture(filename)
-  makeBw = makePicture(filename)
-  
-  for x in xrange(0,getWidth(picture)-1):
-    for y in xrange(0,getHeight(picture)-1):
-      here=getPixel(makeBw,x,y)
-      down=getPixel(orig,x,y+1)
-      right=getPixel(orig,x+1,y)
-      
-      hereL=(getRed(here)+getGreen(here)+getBlue(here))/3
-      downL=(getRed(down)+getGreen(down)+getBlue(down))/3
-      rightL=(getRed(right)+getGreen(right)+getBlue(right))/3
+private static Bitmap drawBetterEdges(string source) {  
+	Bitmap bmp = new Bitmap(source);
+	int width = bmp.Width;
+	int height = bmp.Height;
+	Bitmap ebmp = new Bitmap(bmp.Width, bmp.Height);
+	for (int y = 0; y < height; y++) {
+		for (int x = 0; x < width; x++)	{
+			Color here = ebmp.GetPixel(x, y);
+			Color right = bmp.GetPixel(x + 1, y)
+			Color down = bmp.GetPixel(x, y + 1);
+			int hereL = (here.R + here.G + here.B)/3;
+			int downL = (down.R + down.G + down.B)/3;
+			int rightL = (right.R + right.G + right.B)/3;
 ...
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
+Note: Once again this will create an error due to an overflow exception. You will need to create a method to fix the error.
 
 \end{frame}
 
@@ -167,14 +185,21 @@ Note: This source code excerpt will not work in PyGame.
 	
 \begin{lstlisting}
 ...
-      if abs(hereL-downL)>10 and abs(hereL-rightL)>10:
-        setColor(here,black)
-      if abs(hereL-downL)<=10 and abs(hereL-rightL)<=10:
-        setColor(here,white)
-  return makeBw
-\end{lstlisting}
+			if (Math.Abs(hereL - downL) > 20 && 
+			Math.Abs(hereL - rightL) > 20) {
+				ebmp.SetPixel(x, y, Color.FromArgb(255, 
+				255, 255, 255));
+			}
+			if (Math.Abs(hereL - downL) <= 20 && 
+			Math.Abs(hereL - rightL) <= 20) {
+				ebmp.SetPixel(x, y, Color.FromArgb(255, 
+				0, 0, 0));
+			}	
+		}	
+	}
+}
 
-Note: This source code excerpt will not work in PyGame.
+\end{lstlisting}
 
 \end{frame}
 
@@ -208,23 +233,48 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Source Code: Background Subtraction}
+	\frametitle{Source Code Part A: Background Subtraction}
 	
 \begin{lstlisting}
-def swapBackground(picture, back, newBack, tolerance):
-  for pixel in getPixels(picture):
-    x = getX(pixel)
-    y = getY(pixel)
-    backPixel = getPixel(back, x, y)
-    pixelColour = getColour(pixel)
-    backColour = getColour(backPixel)
-    if (distance(pixelColour,backColour) < tolerance):
-      newColour = getColour(getPixel(newBack, x, y))
-      setColor(pixel, newColour)
+ private static Bitmap swapBackground(string front, 
+ string back, string newBack, int tolerance)
+{
+	Bitmap bmp = new Bitmap(front);
+	Bitmap bbmp = new Bitmap(back);
+	Bitmap nbmp = new Bitmap(newBack);
+	int width = bmp.Width;
+	int height = bmp.Height;
+	Color p;
+	Color bp;
+	Color nbp;
+...
 \end{lstlisting}
 
 Note: This source code excerpt will not work in PyGame.
 
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code Part B: Background Subtraction}
+	
+	\begin{lstlisting}
+...		
+	for (int y = 0; y < height; y++) {
+		for (int x = 0; x < width; x++) {
+			p = bmp.GetPixel(x, y);
+			bp = bbmp.GetPixel(x, y);
+			if (GetDistance(p,bp) < tolerance) {
+				nbp = nbmp.GetPixel(x, y);
+				bmp.SetPixel(x, y, nbp);
+			}
+		}
+	}	
+	return bmp;
+}
+	\end{lstlisting}
+	
+	Note: This source code assumes that you have already created a function called 'GetDistance'.
+	
 \end{frame}
 
 \fullbleed{katie_nomoon}
@@ -253,47 +303,59 @@ Note: This source code excerpt will not work in PyGame.
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
-		\item Refer to the following documentation:
-		\begin{itemize}
-			\item \url{http://www.cs.utah.edu/~michael/chroma/}
-		\end{itemize}
+		\item Setup a forms project in Visual Basic
 		\item Implement chroma key as a form of background subtraction
+		\item Use your previous experience with isolating colour to implement this.
 		\item Test your solution
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Source Code: Collage}
+	\frametitle{Source Code - Part 1: Collage}
 	
 \begin{lstlisting}
-def copyBarb():
-  # Set up the source and target pictures
-  barbf=getMediaPath("barbara.jpg")
-  barb = makePicture(barbf)
-  canvasf = getMediaPath("7inX95in.jpg")
-  canvas = makePicture(canvasf)
-  # Now, do the actual copying
-  targetX = 0
-  for sourceX in range(0,getWidth(barb)):
-    targetY = 0
-    for sourceY in range(0,getHeight(barb)):
-      color = getColor(getPixel(barb,sourceX,sourceY))
-      setColor(getPixel(canvas,targetX,targetY), color)
-      targetY = targetY + 1
-    targetX = targetX + 1
-  show(barb)
-  show(canvas)
-  return canvas
+private static Bitmap swapBackground(string source, 
+string canvas, int targetX, int targetY)
+{
+	Bitmap bmp1 = new Bitmap(source);
+	Bitmap bmp2 = new Bitmap(canvas);
+	int width1 = bmp1.Width;
+	int height1 = bmp1.Height;
+	int width2 = bmp2.Width;
+	int height2 = bmp2.Height;
+...	
 \end{lstlisting}
+Note: \textbf{Source} represents the image to overlay and the \textbf{Canvas} is the background image. \textbf{targetX} and \textbf{targetY} are the offsets from the top left of the canvas.
 
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Source Code - Part 2: Collage}
+	
+	\begin{lstlisting}
+...	
+	for (int y = 0; y < height2; y++) {
+		for (int x = 0; x < width2; x++) {
+			if (x >= xpos && x < width1+xpos) {
+				if (y >= ypos && y < height1+ypos) {
+					bmp2.SetPixel(x, y, bmp1.GetPixel
+					(x-xpos, y-ypos));
+				}
+			}
+			bmp2.SetPixel(x, y, bmp2.GetPixel(x, y));
+		}
+	}
+	return bmp2;
+}
+	\end{lstlisting}
+	
 \end{frame}
 
 \fullbleed{copy_1}
 \fullbleed{copy_2}
 \fullbleed{copy_3}
 \fullbleed{copy_4}
-\fullbleed{copy_5}
+\fullbleed{road-tiles}
 
 \begin{frame}
 	\frametitle{Activity \#4: Collage}
@@ -304,17 +366,18 @@ def copyBarb():
 	
 	\begin{itemize}		
 		\item Find some smaller images online
-		\item Integrate the copy algorithm into your tinkering graphics project
-		\item Create a collage of the images you found
+		\item Integrate the collage algorithm into your tinkering graphics project
+		\item Create a routine that can layout a series of images in a defined sequence
+		\item Use this to create a collage of the images you found
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Sprite Sheets and Animations}
-	Review Al Swigart's pyganim python module: 
+	Review this article on Code Project by Sasha Djurovic which is a forms application for creating sprite animations 
 	
 	\vspace{2em}
 	
-	\url{http://inventwithpython.com/pyganim/}
+	\url{https://www.codeproject.com/Articles/1896/Sprite-manipulation-in-C}
 	
 \end{frame}
 
@@ -327,7 +390,7 @@ def copyBarb():
 	
 	\begin{itemize}		
 		\item Find a sprite sheet online
-		\item Integrate pyganim into your tinkering graphics project
+		\item Take the project code and see if you can manipulate it to create your own forms application
 		\item Animate something
 	\end{itemize}
 \end{frame}

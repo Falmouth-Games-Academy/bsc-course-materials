@@ -1,12 +1,99 @@
 
-01/COMP110_01_screen.tex 	Course introduction 	What was the first computer? 	What was the first computer game? 	What was the first games console? 	Basic computer architecture 	Programming languages and paradigms
-02/COMP110_02_screen.tex
-03/COMP110_03_screen.tex 	Algorithms 	Flowcharts 	Pseudocode
-04/COMP110_04_screen.tex 	Logic gates 	Binary notation 	Computer memory 	Arithmetic Logic Unit 	Worksheet B
-05/COMP110_05_screen.tex 	Computation time 	Search 	Algorithm strategies 	More on complexity 	Computability
-07/COMP110_07_screen.tex 	Algorithm strategies 	Recursion and induction 	Worksheet C
-08/COMP110_08_screen.tex 	Research Journal Peer Review 	Basic containers in Python 	Pass by reference
-09/COMP110_09_screen.tex 	Pass by reference 	Data representation
-10/COMP110_10_screen.tex 	How programs are executed 	The MIPS architecture 	Control flow in MIPS 	MIPS machine code 	Representing numbers
-11/COMP110_11_screen.tex 	Stacks and queues 	Linked lists 	Graphs 	Worksheet D
-12/COMP110_12_screen.tex 	Recursion and induction
+01/induction_handout.tex
+	Module introduction
+	What was the first computer?
+	Electronic computer technologies
+	What was the first computer game?
+	What was the first games console?
+
+02/lecture_main_body.tex
+	Worksheet 1
+	Binary notation
+	2's Complement
+	Worksheet 2
+	Algorithms
+
+02/workshop_main_body.tex
+	Programming languages and paradigms
+	Computing professionals
+
+03/2020-21-COMP110-03-lecture-materials.tex
+	Research journal
+	Data types
+	Numeric types
+	String types
+	Other types
+	Converting types
+
+03/2020-21-COMP110-03-workshop-materials.tex
+	Flowcharts
+	Pseudocode
+	Markdown
+
+04/2020-21-COMP110-04-lecture-materials.tex
+	Scholarly literature
+	Library resources
+	Referencing
+	Logic gates
+	Truth tables
+	Other logic gates
+	Arithmetic Logic Unit
+
+04/2020-21-COMP110-04-workshop-materials.tex
+	Worksheet 3
+	Converting types
+	Introducing LaTeX
+
+05/2020-21-COMP110-05-lecture-materials.tex
+	Research presentations
+	Search
+	More on complexity
+	Turing machines
+	Computability
+
+05/2020-21-COMP110-05-workshop-materials.tex
+	Accessing files
+	Computation time
+
+06/2020-21-COMP110-06-lecture-materials.tex
+
+06/2020-21-COMP110-06-workshop-materials.tex
+
+07/2020-21-COMP110-07-lecture-materials.tex
+	Turing machines
+	Computability
+	Arrays and lists
+	Stacks and queues
+	Pass by reference
+
+08/2020-21-COMP110-08-lecture-materials.tex
+[Errno 2] No such file or directory: '08/graphs.tex'
+[Errno 2] No such file or directory: '08/stacks_queues.tex'
+[Errno 2] No such file or directory: '08/graph_traversal.tex'
+
+08/2020-21-COMP110-08-workshop-materials.tex
+[Errno 2] No such file or directory: '08/graphs.tex'
+[Errno 2] No such file or directory: '08/stacks_queues.tex'
+[Errno 2] No such file or directory: '08/graph_traversal.tex'
+
+09/2020-21-COMP110-09-workshop-materials.tex
+	Generics in C\#
+	Basic data structures in C\#
+	Linked lists
+
+10/2020-21-COMP110-10-workshop-materials.tex
+	Recursion
+	Graphs and trees
+	Tree traversal
+	Algorithm strategies
+
+11/2020-21-COMP110-11-workshop-materials.tex
+	Scientific notation
+	Floating point numbers
+	Numerical precision
+
+12/2020-21-COMP110-12-workshop-materials.tex
+	Worksheets
+	How programs are executed
+	The 6502 CPU architecture
+	Workshop

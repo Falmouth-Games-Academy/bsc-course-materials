@@ -18,16 +18,16 @@
 \usepackage{pdfpages}
 
 % http://www.texample.net/tikz/examples/state-machine/
-\usetikzlibrary{arrows,automata}
-
-\input{sessioninfo}
+\usetikzlibrary{positioning, calc, shapes.geometric, shapes.multipart, 
+	shapes, arrows.meta, arrows, 
+	decorations.markings, external, trees, automata}
 
 \setbeamertemplate{navigation symbols}{}
 
 \input{../../commands}
 
 \begin{document}
-\title{\sessionnumber: Python Programming}
+\title{\sessionnumber: Tinkering Graphics II}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
@@ -37,12 +37,13 @@
 	\begin{itemize}
 		%\item \textbf{Analyse} the role of computing professionals in the games industry
 		%Comp110 - 02 Material and Tinkering Text
-		\item \textbf{Apply} pair programming practices to solve a simple problem
-		\item\textbf{Trace} some basic Python code
+%		\item \textbf{Apply} pair programming practices to solve a simple problem
+		\item\textbf{Explain and translate} technical notation for algorithms
+		\item\textbf{Trace} some code using debugging tools
 	\end{itemize}
 \end{frame}
 
-\input{pair_programming}
+\input{technical_notation}
 
 \input{code_tracing}
 

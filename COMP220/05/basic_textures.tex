@@ -1,17 +1,12 @@
 \part{Basic texture mapping}
 \frame{\partpage}
 
-\begin{frame}{Loading textures from a file}
+\begin{frame}{Shaders vs. textures}
 	\begin{itemize}
-		\item The \textbf{SDL\_Image library} lets us load images from JPG, PNG, BMP etc.
-		\pause\item Steps:
-			\begin{itemize}
-				\pause\item Load the image with \lstinline{IMG_Load}
-				\pause\item Create a texture with \lstinline{glGenTextures}
-				\pause\item Bind the texture with \lstinline{glBindTexture}
-				\pause\item Load the pixel data into the new texture with \lstinline{glTexImage2D}
-				\pause\item Set the texture filtering modes with \lstinline{glTexParameteri} (more on this later)
-			\end{itemize}
+		\pause\item \textbf{Shaders} determine surface appearance based on \textbf{interpolated per-vertex} properties.
+		\pause\item \textbf{Textures} are 2D images (or arrays of values) that allow properties to be \textbf{varied across the surface}.
+		\pause\item Values may represent colours, transparency, surface normals, surface displacements, light reflectance parameters etc.
+		\pause\item \textbf{But} we can still only pass values at vertices...
 	\end{itemize}
 \end{frame}
 
@@ -31,38 +26,55 @@
 	\end{center}
 \end{frame}
 
-\fullbleed{character_texture}
-
-\begin{frame}[fragile]{Textures in GLSL}
-	Fragment shader:
-	
-	\begin{lstlisting}[language=GLSL]
-in vec2 textureCoords;
-uniform sampler2D textureSampler;
-
-void main()
-{
-    fragmentColour = texture(textureSampler, textureCoords);
-}
-	\end{lstlisting}
+\begin{frame}{Character textures}
+	\begin{center}
+		\includegraphics[width=\textwidth]{character_texture}
+	\end{center}
 \end{frame}
 
-\begin{frame}[fragile]{Texture filtering}
-	\pause
-	\begin{lstlisting}
-glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	\end{lstlisting}
+\part{Texture parameters}
+\frame{\partpage}
+
+\begin{frame}{Texture wrapping}
+	What happens if we assign a coordinate outside the $uv$ range?
 	\begin{itemize}
-		\item \textbf{Linear interpolation} (\lstinline{GL_LINEAR})
-			smooths between pixels
-		\pause\item \textbf{Nearest neighbour} (\lstinline{GL_NEAREST})
-			is pixelated but may be slightly faster
-		\pause\item \textbf{Anisotropic filtering} improves the quality of linear interpolation
-			but is slower
-		\pause\item \textbf{Mip-mapping} pre-calculates scaled down versions of the texture ---
-			improves quality but costs memory
+		\pause\item The \textbf{wrapping} parameter determines what happens for texture coordinates < 0 or > 1
 	\end{itemize}
+	\begin{figure}[h!]
+		\pause\includegraphics[width=\textwidth]{texture_wrapping}
+		\caption*{Image source: \url{https://learnopengl.com/Getting-started/Textures}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Texture filtering}
+	How do we map a floating-point texture coordinate to the correct \textbf{texel} (texture element)?
+	\begin{itemize}
+		\pause\item \textbf{Nearest neighbour} selects the texel with the closest centre (Manhattan distance).
+		\pause\item \textbf{(Bi)linear} takes an interpolated value from neighbouring texels.
+		\pause\item Can specify different modes for scaling up and down.
+	\end{itemize}
+	\begin{center}
+		\begin{figure}[h!]
+			\pause\includegraphics[width=0.3\textwidth]{texture_filtering}
+			\caption*{Image source: \url{https://learnopengl.com/Getting-started/Textures}}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Mipmaps}
+	On faraway objects, a fragment may cover many texels...
+	\begin{itemize}	
+		\pause\item A \textbf{mipmap} is a set of textures with each scaled to half the size of the last.
+		\pause\item Chosen based on the distance to the camera.
+		\pause\item "Multum in parvo" = "much in a small space"
+		\pause\item Pregenerated (on request) by OpenGL: faster processing/better quality for more memory.
+	\end{itemize}
+	\begin{center}
+		\begin{figure}[h!]
+			\pause\includegraphics[width=0.3\textwidth]{mipmaps}
+			\caption*{Image source: \url{https://learnopengl.com/Getting-started/Textures}}
+		\end{figure}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Texture dimensions}
@@ -75,10 +87,4 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		\pause\item Still better to stick to powers of two as some things work better (e.g.\ mipmapping)
 		\pause\item NB: \textbf{rectangular} textures are fine, but \textbf{square} textures make UV coordinates saner
 	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		Texture Mapping Example
-	\end{center}
 \end{frame}

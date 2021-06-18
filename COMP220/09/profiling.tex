@@ -1,0 +1,11 @@
+\part{Profiling \& Optimisation}
+\frame{\partpage}
+
+\begin{frame}{Writing Efficient GPU Code}
+	\begin{itemize}
+		\pause\item Same key principles apply as for CPU code!
+		\pause\item Certain operations are optimised in GLSL, eg. swizzling, built-in functions for linear interpolation, dot product etc.
+		\pause\item Write as much as possible in the vertex shader - remember there are fewer vertices than pixels!
+		\pause\item As always: base your changes on profiling results...
+	\end{itemize}
+\end{frame}

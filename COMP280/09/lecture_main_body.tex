@@ -6,7 +6,7 @@
 
 % Default language for code listings
 \lstset{language=C++,
-        morekeywords={each,in,nullptr}
+	morekeywords={each,in,nullptr}
 }
 
 % For strikethrough effect
@@ -21,22 +21,33 @@
 \input{sessioninfo}
 
 \begin{document}
-\title{\sessionnumber: Intro to Computer Graphics}
-\subtitle{\modulecode: \moduletitle}
-
-\frame{\titlepage} 
+	\title{\sessionnumber: Optimisation Process}
+	\subtitle{\modulecode: \moduletitle}
+	
+	\frame{\titlepage} 
 
 \begin{frame}{Learning outcomes}
 \begin{itemize}
-	\item \textbf{Recall} the key stages of the graphics pipeline
-	\item \textbf{Explain} the differences between a CPU and a GPU
-	\item \textbf{Understand} how the graphics pipeline is implemented in UE4
+	\item \textbf{Explain} the optimisation process
+	\item \textbf{Explain} how a profiler is used
+	\item \textbf{Understand} some of the key tools used for optimisation
 \end{itemize}
 \end{frame}
 
-\input{hardware}
-\input{pipeline}
-\input{shaders}
-\input{materials}
+\begin{frame}{Intro}
+	Programmers waste enormous amounts of time thinking about or worrying
+	about, the speed of noncritical parts of their programs, and these attempts
+	at efficiency have a strong negative impact when debugging and
+	maintenance are considered. We should forget about small efficiencies, say
+	about 97\% of the time: premature optimisation is the root of all evil. Yet we
+	should not pass up our opportunities in that critical 3\%. \textit{--Donald Knuth}
+\end{frame}
+
+\input{Optimisation_process}
+\input{profiler}
+\input{tool}
+\input{Woksheet}
+
+\frame{\partpage}
 
 \end{document}

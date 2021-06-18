@@ -1,0 +1,46 @@
+\part{Introducing OpenGL}
+\frame{\partpage}
+
+\begin{frame}{What is OpenGL?}
+	\begin{itemize}
+		\pause\item A \textbf{cross-language, cross-platform} API \textbf{specification} for rendering 2D and 3D vector graphics.
+		\pause\item First released in 1992; current version: 4.6.
+		\pause\item Major design changes in version 3.3/4.0 (2010):
+		\begin{itemize}
+			\pause\item Previously used \textbf{fixed function pipeline} with functionality hidden/abstracted: easy to use but inefficient.
+			\pause\item Changed to \textbf{core-profile} mode: flexible and powerful, but more complex to learn.
+			\pause\item Requires a greater understanding of what's actually happening.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{OpenGL as a specification}
+	\begin{itemize}
+		\pause\item Defines what the output of each function should be.
+		\pause\item Libraries are (usually) implemented by the graphics card manufacturers:
+		\begin{itemize}
+			\pause\item \textbf{Core OpenGL (GL)}: functions prefixed with \lstinline{gl} to model an object view geometric primitives (point, line, polygon).
+			\pause\item \textbf{OpenGL Utility Library (GLU)}:  functions prefixed with \lstinline{glu} to extend the core library.
+			\pause\item \textbf{OpenGL Utilities Toolkit (GLUT)}: functions prefixed with \lstinline{glut} to interact with the operating system (e.g. handling input).
+			\pause\item \textbf{OpenGL Extension Wrangler Library (GLEW)}: cross-platform C/C++ extension loading library.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{OpenGL as a state machine}
+	\begin{itemize}
+		\pause\item OpenGL itself \textbf{does not} retain information about objects.
+		\pause\item Uses the \textbf{context}, which stores a collection of variables to define how to render triangles.	
+		\pause\item To change a portion of the image by default requires \textbf{clearing} and \textbf{redrawing} the whole screen.
+		\pause\item Change the state by \textbf{setting options} (e.g. draw mode) and \textbf{manipulating buffers}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{SDL and OpenGL}
+	\begin{itemize}
+		\pause\item OpenGL only handles rendering of graphics.
+		\pause\item We need something else to handle windows, events, audio etc.
+		\pause\item We will use \textbf{SDL} (which you have used before, including in COMP270).
+	\end{itemize}
+\end{frame}
+

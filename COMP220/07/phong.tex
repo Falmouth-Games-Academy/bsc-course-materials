@@ -8,10 +8,10 @@
 	11(2):192--198,
 	1977.
 	
-	\pause The Blinn-Phong model builds on the Phong shading model
-	\pause It breaks lighting down into three parts:
-		\textbf{ambient}, \textbf{diffuse}, and \textbf{specular}.
-		
+	\begin{itemize}
+		\pause\item The Blinn-Phong model builds on the Phong shading model
+		\pause\item It breaks lighting down into three parts: \textbf{ambient}, \textbf{diffuse}, and \textbf{specular}.
+	\end{itemize}
 	\pause\includegraphics[width=\textwidth]{phong}
 \end{frame}
 
@@ -22,7 +22,7 @@
 			\includegraphics[width=\textwidth]{diffuse_1}
 		\end{column}
 		\begin{column}{0.65\textwidth}
-			When light hits a ``''rough surface, it is \textbf{scattered equally in all directions}
+			When light hits a ``rough'' surface, it is \textbf{scattered equally in all directions}
 		\end{column}
 	\end{columns}
 	\pause
@@ -56,13 +56,14 @@
 
 \begin{frame}{Light direction and intensity}
 	\begin{itemize}
-		\pause\item For a \textbf{distant} light source (e.g.\ the sun),
-			direction and intensity are \textbf{constant}
+		\pause\item For a distant light source (e.g.\ the sun), direction and intensity are \textbf{constant}
+		\begin{itemize}
+			\pause\item These are known as \textbf{directional} lights
+		\end{itemize}
 		\pause\item For a \textbf{point} light source (e.g.\ a lightbulb):
 			\begin{itemize}
-				\pause\item Direction is calculated by subtracting the light position from the fragment position
-				\pause\item Intensity obeys an \textbf{inverse square law}: if the distance between the fragment and the light source is $d$,
-					then the light intensity is $\frac{1}{d^2}$
+				\pause\item Direction is calculated by subtracting the fragment position from the light position
+				\pause\item Intensity is usually \textbf{attenuated}, e.g. using an \textbf{inverse square law}: if the distance between the fragment and the light source is $d$, then the light intensity is proportional to $\frac{1}{d^2}$
 			\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -74,7 +75,10 @@
 			\includegraphics[width=\textwidth]{specular_1}
 		\end{column}
 		\begin{column}{0.65\textwidth}
-			When light hits a ``smooth'' surface, it is \textbf{reflected} across a narrow range of angles
+			\begin{itemize}
+				\pause\item When light hits a ``smooth'' surface, it is \textbf{reflected} across a narrow range of angles
+				\pause\item This creates a \textbf{specular highlight}, with intensity dependent on the \textbf{view direction} as well as the direction to the light source.
+			\end{itemize}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -86,8 +90,8 @@
 		\end{column}
 		\begin{column}{0.65\textwidth}
 			\begin{itemize}
-				\pause\item Let $h$ be the halfway vector, calculated by $i+v$
-				\pause\item $h$ can be thought of as the surface normal which leads to the maximum reflection in $v$
+				\pause\item Let $h$ be the ``halfway vector'', calculated by $i+v$
+				\pause\item The closer $h$ is to $n$, the higher the specular contribution.
 			\end{itemize}
 		\end{column}
 	\end{columns}
@@ -102,7 +106,7 @@
 	\begin{itemize}
 		\pause\item Currently, surfaces pointing away from the light are completely \textbf{black} (light intensity = 0)
 		\pause\item In the real world, light scattered from one surface illuminates others
-		\pause\item In the Phong model, we cheat and add a little \textbf{ambient} intensity to the lighting
+		\pause\item In the Phong model, we cheat and add a little \textbf{ambient} intensity to the lighting, which is just the light colour applied to the object colour with a constent ``ambient factor''.
 		\pause\item Another option would be to add more light sources...
 	\end{itemize}
 \end{frame}

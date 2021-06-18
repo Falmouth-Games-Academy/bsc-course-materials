@@ -1,0 +1,56 @@
+\part{Rule-based AI}
+\frame{\partpage}
+
+\begin{frame}{Rule-based AI}
+	\begin{itemize}
+		\pause\item Generally \textbf{reactive} to the state of the world
+		\pause\item Based on \textbf{if-then} triggers, basic \textbf{calculations}, etc.
+		\pause\item Generally hand-coded and only modifiable by a programmer
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Case study: Ghosts in Pac-Man}
+	\begin{itemize}
+		\pause\item Full details: \url{http://gameinternals.com/understanding-pac-man-ghost-behavior}
+		\pause\item Each ghost has 3 states
+			\begin{itemize}
+				\pause\item Chase: head for a specific position (see next slide)
+				\pause\item Scatter: head for a specific corner of the level
+				\pause\item Frightened: move randomly
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Ghost ``personalities''}
+	\begin{itemize}
+		\pause\item Red ghost: aim for Pac-Man
+		\pause\item Pink ghost: aim for 4 tiles ahead of Pac-Man (unless Pac-Man is moving upwards --- then aim for space 4 tiles above and 4 tiles to the left)
+		\pause\item Blue ghost: aim for position on the line between red ghost position and pink ghost target
+		\pause\item Orange ghost: aim for Pac-Man until 8 tiles away, then aim for corner
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Ghost movement}
+	\begin{itemize}
+		\pause\item No pathfinding --- greedily move towards target
+		\pause\item Can only change direction at an intersection
+		\pause\item Can't reverse or stay still
+		\pause\item Therefore can't get stuck, despite imperfect pathfinding
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Ghost behaviour}
+	\begin{itemize}
+		\pause\item Behaviour rules are very simple
+		\pause\item However, the combination of them leads to interesting gameplay and illusion of personality
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Design lessons}
+	\begin{itemize}
+		\pause\item AI doesn't have to be complicated
+		\pause\item Simple AI, when interacting with a player and each other, can give engaging results
+		\pause\item Bugs in AI don't always matter...
+	\end{itemize}
+\end{frame}
+

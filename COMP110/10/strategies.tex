@@ -5,7 +5,16 @@
 \newcommand{\val}{\operatorname{value}}
 \newcommand{\best}{{\text{best}}}
 
-\begin{frame}{The knapsack problem}
+\begin{frame}{The knapsack problem --- informally}
+	\begin{itemize}
+		\pause\item You are looting a dungeon in an RPG
+		\pause\item Every item you can pick up has a \textbf{weight} and a \textbf{value}
+		\pause\item You have a \textbf{maximum carry weight}
+		\pause\item Which items should you pick up to maximise the total value without exceeding your carry weight?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The knapsack problem --- formally}
 	\begin{itemize}
 		\pause\item There is a set $X$ of \textbf{items}
 		\pause\item Each item $x$ has a weight $\weight(x)$ and a value $\val(x)$
@@ -33,23 +42,26 @@
 	\end{itemize}
 	\pause
 	\begin{algorithmic}
-		\Procedure{Knapsack}{X, W}
-			\pause\State $S_\best \gets \{ \}$
-			\pause\State $v_\best \gets 0$
-			\pause\For{every subset $S \subseteq X$}
-				\pause\If{$\weight(S) \leq W$ and $\val(S) > v_\best$}
-					\pause\State $S_\best \gets S$
-					\pause\State $v_\best \gets \val(S)$
-				\pause\EndIf
-			\pause\EndFor
-			\pause\State \textbf{return} $S_\best$
-		\pause\EndProcedure
+		\Procedure{Knapsack}{X, W} \pause
+			\State $S_\best \gets \{ \}$
+			\State $v_\best \gets 0$ \pause
+			\For{every subset $S \subseteq X$} \pause
+				\If{$\weight(S) \leq W$ and $\val(S) > v_\best$} \pause
+					\State $S_\best \gets S$
+					\State $v_\best \gets \val(S)$
+				\EndIf \pause
+			\EndFor
+			\State \textbf{return} $S_\best$
+		\EndProcedure
 	\end{algorithmic}
 \end{frame}
 
 \begin{frame}{Socrative \texttt{FALCOMPED}}
 	\begin{itemize}
 		\pause\item If $X$ contains $n$ elements, how many subsets of $X$ are there?
+		\begin{itemize}
+			\item Hint: think about constructing a subset as a series of ``yes or no'' questions
+		\end{itemize}
 		\pause\item Therefore what is the time complexity of the brute force algorithm?
 		\pause\item If we add one element to $X$, what happens to the running time of the algorithm?
 	\end{itemize}
@@ -62,13 +74,13 @@
 	\pause
 	\begin{algorithmic}
 		\Procedure{Knapsack}{X, W}
-			\pause\State $S \gets \{ \}$
-			\pause\For{each $x \in X$, in descending order of $\val(x)$}
-				\pause\If{$\weight(S) + \weight(x) \leq W$}
-					\pause\State add $x$ to $S$
-				\pause\EndIf
-			\pause\EndFor
-			\pause\State \textbf{return} $S$
+			\State $S \gets \{ \}$ \pause
+			\For{each $x \in X$, in descending order of $\val(x)$} \pause
+				\If{$\weight(S) + \weight(x) \leq W$} \pause
+					\State add $x$ to $S$
+				\EndIf \pause
+			\EndFor
+			\State \textbf{return} $S$
 		\EndProcedure
 	\end{algorithmic}
 \end{frame}
@@ -83,14 +95,19 @@
 				\pause\item Huffman coding
 			\end{itemize}
 		\pause\item \textbf{However} the greedy solution to the knapsack problem may not be optimal!
+		\pause\item For example (maximum carry weight is $100$)
+		\begin{itemize}
+			\pause\item Greedy algorithm takes 1 set of horse armour (weight 100, value 500)
+			\pause\item ... instead of 100 silver coins (each weight 1, value 10)
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Divide and conquer}
+\begin{frame}{Divide and conquer strategies}
 	\begin{itemize}
 		\pause\item Break the problem into smaller, easier to solve \textbf{subproblems}
 		\pause\item Requires that the solution to the original problem is composed of the solutions to the smaller problem
-		\pause\item Example from last time: \textbf{binary search}
+		\pause\item Example from earlier in the module: \textbf{binary search}
 			\begin{itemize}
 				\pause\item Problem: find an element in a list
 				\pause\item Subproblem: find the element in a list of half the size
@@ -114,21 +131,37 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{In other words...}
+	\begin{itemize}
+		\pause\item Think about solving the knapsack problem based on the remaining loot and the remaining carry capacity
+		\pause\item Base case: if you have no carry capacity left, there is nothing to loot
+		\pause\item For each piece of loot, try:
+		\begin{itemize}
+			\pause\item Picking it up and solving the problem with the resulting (reduced) carry capacity
+			\pause\item Leaving it and solving the problem with the original carry capacity
+		\end{itemize}
+		\pause\item Whichever of those two gives the best result, go with it
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Divide and conquer for the knapsack problem}
 	\begin{algorithmic}
-		\pause\Procedure{Knapsack}{X, W, k}
-			\pause\If{$k < 0$}
-				\pause\State \textbf{return} $\{\}$
-			\pause\EndIf
-			
-			\pause\State $S \gets \Call{Knapsack}{X, W, k-1}$
-			\pause\If{$\weight(x_k) \leq W$}
-				\pause\State $S' \gets \Call{Knapsack}{X, W - \weight(x_k), k-1} \cup \{x_k\}$
-				\pause\State \textbf{return} whichever of $S,S'$ has the larger value
-			\pause\Else
-				\pause\State \textbf{return} $S$
-			\pause\EndIf
-		\pause\EndProcedure
+		\Procedure{Knapsack}{X, W} \pause
+			\If{$X = \{\}$ or $W \leq 0$}
+				\State \textbf{return} $\{\}$
+			\EndIf \pause
+
+			\State $x \gets \text{last element of $X$}$ \pause
+			\State $X' \gets X \text{ without } x$ \pause
+			\State $S \gets \Call{Knapsack}{X', W}$ \pause
+			\If{$\weight(x) \leq W$} \pause
+				\State $S' \gets \Call{Knapsack}{X', W - \weight(x)}$
+				\State add $x_k$ to $S'$ \pause
+				\State \textbf{return} whichever of $S,S'$ has the larger value \pause
+			\Else
+				\State \textbf{return} $S$
+			\EndIf
+		\EndProcedure
 	\end{algorithmic}
 \end{frame}
 
@@ -156,34 +189,64 @@
 \end{frame}
 
 \begin{frame}{Dynamic programming for the knapsack problem}
-    {\small
+    \footnotesize
 	\begin{algorithmic}
-		\pause\Procedure{Knapsack}{X, W, k}
-			\pause\If{\Call{Knapsack}{X, W, k} has already been computed}
-				\pause\State \textbf{return} previously computed result
-			\pause\EndIf
+		\Procedure{Knapsack}{X, W}
+			\If{\Call{Knapsack}{X, W} has already been computed} \pause
+				\State \textbf{return} previously computed result
+			\EndIf \pause
 			
-			\pause\If{$k < 0$}
-				\State \textbf{cache and return} $\{\}$
-			\EndIf
-			
-			\State $S \gets \Call{Knapsack}{X, W, k-1}$
-			\If{$\weight(x_k) \leq W$}
-				\State $S' \gets \Call{Knapsack}{X, W - \weight(x_k), k-1} \cup \{x_k\}$
+			\If{$X = \{\}$ or $W \leq 0$}
+				\State \textbf{return} $\{\}$
+			\EndIf 
+
+			\State $x \gets \text{last element of $X$}$ 
+			\State $X' \gets X \text{ without } x$ 
+			\State $S \gets \Call{Knapsack}{X', W}$ 
+			\If{$\weight(x) \leq W$} 
+				\State $S' \gets \Call{Knapsack}{X', W - \weight(x)}$
+				\State add $x_k$ to $S'$ 
 				\State \textbf{cache and return} whichever of $S,S'$ has the larger value
 			\Else
 				\State \textbf{cache and return} $S$
 			\EndIf
 		\EndProcedure
 	\end{algorithmic}
-	}
 \end{frame}
 
-\begin{frame}{Socrative \texttt{FALCOMPED}}
+\begin{frame}{Time complexity}
 	\begin{itemize}
-		\pause\item What is the maximum possible number of entries in the table of intermediate results?
+		\pause\item The running time of a dynamic programming algorithm is limited by the size of the result table --- once the table is filled, there is nothing left to do
+		\pause\item In this case, combinations of $X$ and $W$
+		\pause\item If we always remove the last element of $X$, then there are $n+1$ possibilities
+		\pause\item Remaining carry weight is an integer between 0 and $W$ --- so there are $W+1$ possibilities
+	\end{itemize}
+	\pause\begin{center}Socrative \texttt{FALCOMPED}\end{center}
+	\begin{itemize}
+		\item What is the maximum possible number of entries in the table of intermediate results?
 		\pause\item Therefore what is the time complexity of the dynamic programming algorithm?
 	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Another example of dynamic programming}
+    \begin{itemize}
+        \pause\item From the beginning of the lecture:
+    \end{itemize}
+    \begin{lstlisting}
+int fibonacci(int n)
+{
+    if (n <= 2)
+        return 1;
+    else
+        return fibonacci(n-1) + fibonacci(n-2);
+}
+    \end{lstlisting}
+    \begin{itemize}
+        \pause\item \lstinline{fibonacci(10)} calls \lstinline{fibonacci(9)} and \lstinline{fibonacci(8)}
+        \pause\item \lstinline{fibonacci(9)} calls \lstinline{fibonacci(8)} and \lstinline{fibonacci(7)}
+        \pause\item \lstinline{fibonacci(8)} calls \lstinline{fibonacci(7)} and \lstinline{fibonacci(6)}
+        \pause\item So if we memoize, we can vastly reduce the number of recursive calls
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Summary of algorithm strategies}

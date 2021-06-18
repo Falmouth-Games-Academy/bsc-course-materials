@@ -1,5 +1,45 @@
-\part{Model, View, Projection}
+\part{Transforms \& Projections}
 \frame{\partpage}
+
+\begin{frame}{Recap: Vectors}
+	\begin{itemize}
+		\pause\item A \textbf{vector} has a \textbf{direction} and a \textbf{magnitude}, represented by its \textbf{components}:
+	\end{itemize}
+	\pause\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\includegraphics[width=\textwidth]{vector_polar}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\includegraphics[width=\textwidth]{vector_components}
+		\end{column}
+	\end{columns}	
+	\begin{itemize}
+		\pause\item A vector can represent a position in space as an offset from the origin.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Recap: Matrices and Transforms}
+	\begin{itemize}
+		\pause\item A vector can be transformed (moved in space) by multiplying with a \textbf{matrix}:
+			\begin{itemize}
+				\pause\item \textbf{Translation} applies a linear offset to each component (equivalent to vector addition).
+				\pause\item \textbf{Rotation} applies an angular displacement around the origin.
+				\pause\item \textbf{Scale} multiplies each component by a constant (equivalent to scalar multiplication for uniform scale).
+			\end{itemize}
+		\pause\item Transforms can be combined by \textbf{multiplying} the matrices together.
+			\begin{itemize}
+				\pause\item Matrix multiplication is \textbf{NOT commutative}: the order matters.
+				\pause\item Standard order is \textbf{right to left}.
+				\pause\item It's generally best to apply scale first, then rotation, then finally translation - otherwise results can be unexpected...
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Recap: Coordinate Spaces}
+	\begin{center}
+		\includegraphics[width=\textwidth]{coordinate_spaces}
+	\end{center}
+\end{frame}
 
 \begin{frame}{Model, View, Projection}
 	\pause Drawing a 3D object on screen generally involves \textbf{three} transformations:
@@ -10,54 +50,6 @@
 	\end{itemize}
 	\pause The \textbf{model-view-projection (MVP) matrix}:
 		$$ M_{MVP} = M_{\text{projection}} \times M_{\text{view}} \times M_{\text{model}} $$
-	(remember, multiplication goes in reverse order)
-\end{frame}
-
-\begin{frame}{The model matrix}
-	\pause Exactly what we've been doing so far today...
-\end{frame}
-
-\begin{frame}[fragile]{The view matrix}
-	\pause Need to translate and rotate the scene so that the ``camera'' is at $(0,0,0)$ and looking in the negative $z$ direction
-	\pause\begin{lstlisting}
-glm::mat4 view = glm::lookAt(
-  glm::vec3(2, 0, 2),    // eye
-  glm::vec3(0, 0, 0),    // centre
-  glm::vec3 up(0, 1, 0)  // up
-);
-	\end{lstlisting}
-	\begin{itemize}
-		\pause\item \lstinline{eye} is the position of the camera
-		\pause\item \lstinline{centre} is a point for the camera to look at
-		\pause\item \lstinline{up} is which direction is ``up'' for the camera (usually the positive $y$-axis)
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Types of projection}
-	\pause\begin{center}
-		\includegraphics[width=\textwidth]{orthographic_perspective}
-	\end{center}
-	\begin{itemize}
-		\pause\item Generally use \textbf{perspective} for 3D graphics
-		\pause\item \textbf{Orthographic} is useful for 2D or pseudo-2D graphics (e.g.\ isometric perspective)
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{The projection matrix}
-	\pause\begin{lstlisting}
-glm::mat4 projection = glm::perspective(
-	glm::radians(45.0f), // field of view
-	4.0f / 3.0f,         // aspect ratio
-	0.1f,                // near clip plane
-	100.0f               // far clip plane
-);
-	\end{lstlisting}
-	\begin{itemize}
-		\pause\item \textbf{Field of view (FOV)}: how ``wide'' or ``narrow'' the view is
-		\pause\item \textbf{Aspect ratio}: should be \lstinline{screenWidth / screenHeight}
-		\pause\item \textbf{Near and far clip planes}: fragments that fall outside this range of distances from the camera are not drawn
-	\end{itemize}
-	\pause Also available: \lstinline{glm::ortho} for orthographic projection
 \end{frame}
 
 \begin{frame}{The view frustum}
@@ -67,5 +59,16 @@ glm::mat4 projection = glm::perspective(
 	\begin{itemize}
 		\pause\item Defined by the \textbf{near and far clipping planes} and the \textbf{edges of the screen}
 		\pause\item \textbf{Nothing outside} the view frustum is visible
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Types of projection}
+	\pause\begin{center}
+		\includegraphics[width=\textwidth]{orthographic_perspective}
+	\end{center}
+	\begin{itemize}
+		\pause\item Generally use \textbf{perspective} for 3D graphics
+		\pause\item \textbf{Orthographic} is useful for 2D or pseudo-2D graphics (e.g.\ isometric projection for engineering or technical drawings)
 	\end{itemize}
 \end{frame}

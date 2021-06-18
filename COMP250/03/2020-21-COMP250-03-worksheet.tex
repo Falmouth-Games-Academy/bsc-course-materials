@@ -1,0 +1,122 @@
+\documentclass{../../../bsc-assignment-briefs/fal_assignment}
+\graphicspath{ {../../../bsc-assignment-briefs/} }
+
+\usepackage{enumitem}
+\setlist{nosep} % Make enumerate / itemize lists more closely spaced
+\usepackage[T1]{fontenc} % http://tex.stackexchange.com/a/17858
+\usepackage{url}
+\usepackage{todonotes}
+
+\usepackage{algpseudocode}
+\usepackage{listings}
+\lstset{language=[Sharp]C,
+    basicstyle=\ttfamily
+}
+
+\title{COMP250 Week 3 Workshop Activity}
+\module{COMP250}
+\author{Ed Powley}
+\version{1.0}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+In this workshop, you will implement a solver for the classic puzzle game Sokoban.
+
+Begin by forking and cloning the base repository:
+
+https://gamesgit.falmouth.ac.uk/projects/COMP250/repos/comp250-workshop-sokoban/browse
+
+Open the sample project in Unity. The bulk of your work will take place in the \texttt{Solver} class, which is called from the main game to find a solution to the puzzle.
+
+\section*{Basic breadth first search}
+
+The following pseudocode illustrates a basic breadth first search (BFS) based planner.
+The planner uses a node class containing three pieces of information:
+the parent node,
+the action that led to this node,
+and the game state at this node.
+The BFS itself is based around a \textbf{queue} of nodes,
+i.e.\ a last-in, first-out data structure.
+Note that C\# provides a \lstinline{Queue} class in \lstinline{System.Collections.Generic}.
+Also note the importance of taking a copy of the state before descending the tree;
+otherwise you run the risk of changing states that are stored in existing nodes and hence breaking the algorithm.
+The provided \lstinline{GameState} class contains a \lstinline{Copy()} method as well as a copy constructor.
+
+\begin{algorithmic}
+    \Procedure{Solve}{state}
+        \State root $\gets$ new node (null, null, state)
+        \State q $\gets$ new queue
+        \State add root to q
+        \While{q is not empty}
+            \State node $\gets$ dequeue from q
+            \For{each available action from node.state}
+                \State nextState $\gets$ copy of node.state
+                \State apply action to nextState
+                \State child $\gets$ new node (node, action, nextState)
+                \If{nextState is solved}
+                    \State \textbf{return} \Call{ReconstructPlan}{child}
+                \Else
+                    \State add child to q
+                \EndIf
+            \EndFor
+        \EndWhile
+    \EndProcedure
+    \Procedure{ReconstructPlan}{node}
+        \State plan $\gets$ empty list
+        \While{node is not null}
+            \State insert node.action at the beginning of plan
+            \State node $\gets$ node.parent
+        \EndWhile
+        \State \textbf{return} plan
+    \EndProcedure
+\end{algorithmic}
+
+Notice that \Call{ReconstructPlan}{} iterates from the child node up to the root, hence it reconstructs the path in reverse.
+This is why it inserts at the beginning, rather than the end, of the list.
+
+\section*{Improving the algorithm}
+
+If you test your algorithm now, you will find it easily solves the first level
+as well as some other simple levels, but fails on moderately complex levels.
+One of the problems is that there is nothing to stop the algorithm revisiting a state it already visited,
+which makes it extremely inefficient.
+Luckily, it is relatively simple to modify the algorithm to keep track of states it has seen before, and avoid adding them to the tree again:
+
+\begin{algorithmic}
+    \Procedure{Solve}{state}
+        \State ...
+        \If{nextState is solved}
+            \State \textbf{return} \Call{ReconstructPlan}{child}
+        \ElsIf{nextState has not already been seen}
+            \State record nextState as seen
+            \State add child to q
+        \EndIf
+        \State ...
+    \EndProcedure
+\end{algorithmic}
+
+Make this modification to your algorithm.
+The \lstinline{HashSet} is an appropriate data structure for keeping track
+of seen states.
+
+\textbf{Discuss:} Why is \lstinline{HashSet} an appropriate choice?
+C\# imposes some requirements on what can be stored in a \lstinline{HashSet} ---
+find out what they are, and convince yourself that the provided \lstinline{GameState} class satisfies them.
+
+\section*{Further improvements}
+
+With this improvement properly implemented, your solver should manage to solve most levels.
+However there is still room for improvement.
+Here are some suggestions:
+\begin{itemize}
+    \item Detect states which are unsolvable (e.g.\ where a box has been pushed into a corner) and exclude them from the search
+    \item Move ordering --- when searching the available actions from a state, prioritise e.g.\ actions which push a box over actions which do not
+    \item Pathfinding --- combine BFS with A$^*$ search, for example to create a single ``action'' which walks the shortest path to a given box
+\end{itemize}
+Discuss potential improvements to the search with your peers, and if you have time, try to implement one.
+
+\end{document}
