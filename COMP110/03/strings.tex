@@ -60,7 +60,7 @@
 \begin{frame}{Unicode}
 	\begin{itemize}
 		\pause\item Standard character set developed from 1987 to present day
-		\pause\item Currently defines 137994 characters (Unicode 12.1)
+		\pause\item Currently defines 143859 characters (Unicode 13.0)
 		\pause\item First 128 characters are the same as ASCII
 		\pause\item Covers most of the world's writing systems
 		\pause\item Also covers mathematical symbols and emoji
@@ -80,16 +80,16 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{String representation}
-	\begin{itemize}
-		\pause\item \lstinline{"Hello world!"} in ASCII or UTF-8 encoding:
-	\end{itemize}
+% \begin{frame}{String representation}
+% 	\begin{itemize}
+% 		\pause\item \lstinline{"Hello world!"} in ASCII or UTF-8 encoding:
+% 	\end{itemize}
 	
-	{\footnotesize\pause\begin{tabular}{*{13}{|c}|}
-		\hline
-		72 & 101 & 108 & 108 & 111 & 32 & 119 & 111 & 114 & 108 & 100 & 33 & 0 \\\hline
-	\end{tabular}}
-\end{frame}
+% 	{\footnotesize\pause\begin{tabular}{*{13}{|c}|}
+% 		\hline
+% 		72 & 101 & 108 & 108 & 111 & 32 & 119 & 111 & 114 & 108 & 100 & 33 & 0 \\\hline
+% 	\end{tabular}}
+% \end{frame}
 
 \begin{frame}{UTF-8 representation}
 	\begin{itemize}
@@ -112,14 +112,14 @@
 	\end{tabular}}
 \end{frame}
 
-\begin{frame}{Strings in Python}
-    \begin{itemize}
-        \pause\item Python 2 had separate types for ASCII and Unicode strings: \lstinline{str} and \lstinline{unicode}
-        \pause\item Python 3 has just the \lstinline{str} type, which uses Unicode
-        \pause\item String literals are wrapped in \lstinline{'single quotes'} or \lstinline{"double quotes"}
-            (there is no difference)
-    \end{itemize}
-\end{frame}
+% \begin{frame}{Strings in Python}
+%     \begin{itemize}
+%         \pause\item Python 2 had separate types for ASCII and Unicode strings: \lstinline{str} and \lstinline{unicode}
+%         \pause\item Python 3 has just the \lstinline{str} type, which uses Unicode
+%         \pause\item String literals are wrapped in \lstinline{'single quotes'} or \lstinline{"double quotes"}
+%             (there is no difference)
+%     \end{itemize}
+% \end{frame}
 
 \begin{frame}[fragile]{Escape sequences}
     \begin{itemize}
@@ -131,13 +131,13 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{String literal tricks in Python}
-    \begin{itemize}
-        \pause\item Use triple quotes \lstinline{'''} or \lstinline{"""} for a multi-line string
-        \pause\item Use \lstinline{r" "} or \lstinline{r' '} to turn off escape characters
-            (useful for strings with lots of backslashes, e.g.\ Windows file paths, regular expressions)
-    \end{itemize}
-\end{frame}
+% \begin{frame}{String literal tricks in Python}
+%     \begin{itemize}
+%         \pause\item Use triple quotes \lstinline{'''} or \lstinline{"""} for a multi-line string
+%         \pause\item Use \lstinline{r" "} or \lstinline{r' '} to turn off escape characters
+%             (useful for strings with lots of backslashes, e.g.\ Windows file paths, regular expressions)
+%     \end{itemize}
+% \end{frame}
 
 \begin{frame}[fragile]{Text files}
     \begin{itemize}

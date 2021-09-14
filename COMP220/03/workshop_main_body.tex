@@ -1,0 +1,58 @@
+% Adjust these for the path of the theme and its graphics, relative to this file
+%\usepackage{beamerthemeFalmouthGamesAcademy}
+\usepackage{../../beamerthemeFalmouthGamesAcademy}
+\usepackage{multimedia}
+\graphicspath{ {../../} }
+
+% Default language for code listings
+\lstset{language=C++,
+        morekeywords={each,in,nullptr}
+}
+
+\input{../listings_glsl}
+
+% For strikethrough effect
+\usepackage[normalem]{ulem}
+\usepackage{wasysym}
+
+\usepackage{pdfpages}
+
+% http://www.texample.net/tikz/examples/state-machine/
+\usetikzlibrary{arrows,automata}
+
+\input{sessioninfo}
+
+\begin{document}
+\title{\sessionnumber: Vertices, Transforms \& Projections}
+\subtitle{\modulecode: \moduletitle}
+
+\frame{\titlepage} 
+
+\input{../worksheets}
+
+\input{outcomes}
+
+\begin{frame}{Schedule}
+	\begin{center}
+		\begin{tabular}{|c c|}
+			\hline
+			16:00-16:10 & Arrival, sign-in \& overview \\
+			\hline
+			16:10-16:30 & Demo \& Exercise: Element Buffers \\
+			\hline
+			16:30-16:40 & Introduction to GLM\\
+			16:40-17:10 & Demo \& Exercise: Transforms in GLM \\
+			\hline
+			17:10-17:30 & Demo \& Exercise: Model, View, Projection \\
+			\hline
+			17:30-18:00 & Demo \& Exercise: Camera Controller \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\input{transformations}
+\input{mvp_glm}
+\input{controls}
+
+\end{document}

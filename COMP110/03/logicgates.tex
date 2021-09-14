@@ -1,4 +1,4 @@
-\part{Logic gates}
+\part{Boolean Logic}
 \frame{\partpage}
 
 \newcommand{\TT}{\textsc{True}}
@@ -92,7 +92,7 @@
 	{$A \OPor B$ is \TT}{\textbf{either $A$ or $B$, or both,} are \TT}
 	{\begin{tabular}{|c|c||c|}
 		\hline
-		$A$ & $B$ & $A \OPand B$ \\\hline
+		$A$ & $B$ & $A \OPor B$ \\\hline
 		\FF & \FF & \FF \\
 		\FF & \TT & \TT \\
 		\TT & \FF & \TT \\
@@ -158,26 +158,26 @@
 	?
 \end{frame}
 
-\begin{frame}{Socrative \texttt{FALCOMPED}}
-	What expression is equivalent to this circuit?
-	\begin{center}
-		\begin{circuitikz} \draw[color=\circuitcolour]
-			(0,0) node[and port] (gateA) {}
-			(0,-2) node[or port] (gateB) {}
-			(1,0) node[not port] (gateC) {}
-			(3.5,-1) node[or port] (gateD) {}
-			(gateA.out) -- (gateC.in) {}
-			(gateC.out) -| (gateD.in 1) {}
-			(gateB.out) -| (gateD.in 2) {}
-			(gateD.out) node[anchor=west] {?}
-			(gateA.in 1) node[anchor=east] {$A$}
-			(gateA.in 2) node[anchor=east] {$B$}
-			(gateB.in 1) node[anchor=east] {$C$}
-			(gateB.in 2) node[anchor=east] {$D$}
-			;
-		\end{circuitikz}
-	\end{center}
-\end{frame}
+% \begin{frame}{Socrative \texttt{FALCOMPED}}
+% 	What expression is equivalent to this circuit?
+% 	\begin{center}
+% 		\begin{circuitikz} \draw[color=\circuitcolour]
+% 			(0,0) node[and port] (gateA) {}
+% 			(0,-2) node[or port] (gateB) {}
+% 			(1,0) node[not port] (gateC) {}
+% 			(3.5,-1) node[or port] (gateD) {}
+% 			(gateA.out) -- (gateC.in) {}
+% 			(gateC.out) -| (gateD.in 1) {}
+% 			(gateB.out) -| (gateD.in 2) {}
+% 			(gateD.out) node[anchor=west] {?}
+% 			(gateA.in 1) node[anchor=east] {$A$}
+% 			(gateA.in 2) node[anchor=east] {$B$}
+% 			(gateB.in 1) node[anchor=east] {$C$}
+% 			(gateB.in 2) node[anchor=east] {$D$}
+% 			;
+% 		\end{circuitikz}
+% 	\end{center}
+% \end{frame}
 
 \begin{frame}[fragile]{Writing logical operations}
 	\pause
@@ -212,7 +212,10 @@
 	\pause
 	$$ \OPnot (A \OPand B) = (\OPnot A) \OPor (\OPnot B) $$
 	\pause
-	Proof: Worksheet 4, questions 3a and 3b
+	\vspace{3ex}
+	\begin{center}
+		Proof: see this week's worksheet
+	\end{center}
 \end{frame}
 
 \part{Truth tables}
@@ -255,7 +258,7 @@
 	{$A \OPxor B$ is \TT}{\textbf{either $A$ or $B$, but not both,} are \TT}
 	{\begin{tabular}{|c|c||c|}
 		\hline
-		$A$ & $B$ & $A \OPand B$ \\\hline
+		$A$ & $B$ & $A \OPxor B$ \\\hline
 		\FF & \FF & \FF \\
 		\FF & \TT & \TT \\
 		\TT & \FF & \TT \\
@@ -271,11 +274,11 @@
 	How can $A \OPxor B$ be written using the operations $\OPand, \OPor, \OPnot$?
 \end{frame}
 
-\begin{frame}
-    \begin{center}
-        \includegraphics[width=0.8\textwidth]{boolean_hair_logic}
-    \end{center}
-\end{frame}
+% \begin{frame}
+%     \begin{center}
+%         \includegraphics[width=0.8\textwidth]{boolean_hair_logic}
+%     \end{center}
+% \end{frame}
 
 \begin{frame}{Negative gates}
 	\pause
@@ -354,9 +357,15 @@
     \begin{itemize}
         \pause\item All arithmetic and logic operations, as well as memory, can be built from NAND gates
         \pause\item So an entire computer can be built just from NAND gates!
-        \pause\item Play the game: \url{http://nandgame.com}
         \pause\item NAND gate circuits are \textbf{Turing complete}
         \pause\item The same is true of NOR gates
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Workshop activity}
+	\begin{itemize}
+		\item Split into your \textbf{breakout groups} (see Week 2 on LearningSpace, and find the breakout channels in the COMP110 team on Teams)
+		\item Play \url{http://nandgame.com}
+		\item Reconvene here at 17:30 and we'll see how far everyone got!
+	\end{itemize}
+\end{frame}

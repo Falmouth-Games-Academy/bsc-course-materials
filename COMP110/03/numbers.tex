@@ -11,52 +11,52 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Integers as bytes}
-	\begin{itemize}
-		\pause\item A \textbf{32-bit} integer is stored as a sequence of \textbf{4 bytes}
-		\pause\item Example: 314159 in decimal = $100\,11001011\,00101111$ in binary
-		\pause\item Stored as four bytes:
-		    $$
-		        00000000 \quad
-		        00000100 \quad
-		        11001011 \quad
-		        00101111
-            $$
-            or in hexadecimal:
-            $$
-		        00 \quad
-		        04 \quad
-		        CB \quad
-		        2F
-		    $$
-		\pause\item Similarly for other sizes of integer:
-		    an $n$-bit integer is stored as $n \div 8$ bytes
-		\pause\item You can think of this as a base-256 numbering system
-	\end{itemize}
-\end{frame}
+% \begin{frame}{Integers as bytes}
+% 	\begin{itemize}
+% 		\pause\item A \textbf{32-bit} integer is stored as a sequence of \textbf{4 bytes}
+% 		\pause\item Example: 314159 in decimal = $100\,11001011\,00101111$ in binary
+% 		\pause\item Stored as four bytes:
+% 		    $$
+% 		        00000000 \quad
+% 		        00000100 \quad
+% 		        11001011 \quad
+% 		        00101111
+%             $$
+%             or in hexadecimal:
+%             $$
+% 		        00 \quad
+% 		        04 \quad
+% 		        CB \quad
+% 		        2F
+% 		    $$
+% 		\pause\item Similarly for other sizes of integer:
+% 		    an $n$-bit integer is stored as $n \div 8$ bytes
+% 		\pause\item You can think of this as a base-256 numbering system
+% 	\end{itemize}
+% \end{frame}
 
-\begin{frame}{Endianness}
-	\begin{itemize}
-		\pause\item Integers are stored either \textbf{big endian} or \textbf{little endian}
-		\pause\item Big endian: the \textbf{most significant byte} comes first
-            $$
-		        00 \quad
-		        04 \quad
-		        CB \quad
-		        2F
-		    $$
-		\pause\item Little endian: the \textbf{least significant byte} comes first
-            $$
-		        2F \quad
-		        CB \quad
-		        04 \quad
-		        00
-		    $$
-		\pause\item Modern PCs (Intel x86 based) use little endian
-		\pause\item Little endian may seem unintuitive
-		\pause\item However it is more efficient when programs need to convert one size of integer to another
-	\end{itemize}
-\end{frame}
+% \begin{frame}{Endianness}
+% 	\begin{itemize}
+% 		\pause\item Integers are stored either \textbf{big endian} or \textbf{little endian}
+% 		\pause\item Big endian: the \textbf{most significant byte} comes first
+%             $$
+% 		        00 \quad
+% 		        04 \quad
+% 		        CB \quad
+% 		        2F
+% 		    $$
+% 		\pause\item Little endian: the \textbf{least significant byte} comes first
+%             $$
+% 		        2F \quad
+% 		        CB \quad
+% 		        04 \quad
+% 		        00
+% 		    $$
+% 		\pause\item Modern PCs (Intel x86 based) use little endian
+% 		\pause\item Little endian may seem unintuitive
+% 		\pause\item However it is more efficient when programs need to convert one size of integer to another
+% 	\end{itemize}
+% \end{frame}
 
 \begin{frame}{Floating point numbers}
 	\begin{itemize}
@@ -80,21 +80,21 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Other number formats}
-	\begin{itemize}
-		\pause\item \textbf{Fixed point}: alternative format for non-integer numbers
-            \begin{itemize}
-                \pause\item More on this later
-                \pause\item E.g.\ \lstinline{decimal} module in Python
-            \end{itemize}
-        \pause\item \textbf{Rational numbers}: store fractions as numerator and denominator
-            \begin{itemize}
-                \pause\item E.g.\ \lstinline{fractions} module in Python
-            \end{itemize}
-        \pause\item \textbf{Complex numbers}: stored as a pair of floating point numbers for real and imaginary parts
-            \begin{itemize}
-                \pause\item E.g.\ \lstinline{complex} type in Python
-            \end{itemize}
-	\end{itemize}
-\end{frame}
+% \begin{frame}{Other number formats}
+% 	\begin{itemize}
+% 		\pause\item \textbf{Fixed point}: alternative format for non-integer numbers
+%             \begin{itemize}
+%                 \pause\item More on this later
+%                 \pause\item E.g.\ \lstinline{decimal} module in Python
+%             \end{itemize}
+%         \pause\item \textbf{Rational numbers}: store fractions as numerator and denominator
+%             \begin{itemize}
+%                 \pause\item E.g.\ \lstinline{fractions} module in Python
+%             \end{itemize}
+%         \pause\item \textbf{Complex numbers}: stored as a pair of floating point numbers for real and imaginary parts
+%             \begin{itemize}
+%                 \pause\item E.g.\ \lstinline{complex} type in Python
+%             \end{itemize}
+% 	\end{itemize}
+% \end{frame}
 

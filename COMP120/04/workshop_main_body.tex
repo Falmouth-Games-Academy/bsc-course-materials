@@ -25,6 +25,7 @@
 \begin{document}
 \title{\sessionnumber: Tinkering Graphics III}
 \subtitle{\modulecode: \moduletitle}
+\author{Michael Scott and Matt Watkins}
 
 \frame{\titlepage} 
 
@@ -130,10 +131,9 @@ private static Bitmap mirrorHorizontal(string source)
 	\frametitle{Source Code: Edge Detection}
 	
 \begin{lstlisting}
-private static Bitmap mirrorHorizontal(string source) {  
+private static Bitmap edgeDetection(string source) {  
 	Bitmap bmp = new Bitmap(source);
-	int width = bmp.Width;
-	int height = bmp.Height;  
+	int width = bmp.Width; int height = bmp.Height;  
 	for (int y = 0; y < height; y++) {
 		for (int x = 0; x < width; x++) {
 			Color pixel = bmp.GetPixel(x, y);
@@ -142,13 +142,15 @@ private static Bitmap mirrorHorizontal(string source) {
 			int nextPixelSum = nextPixel.R + nextPixel.G
 			+ nextPixel.B;
 			int diff = Math.Abs(nextPixelSum - pixelSum);
+			bmp.SetPixel(x, y, Color.FromArgb(255, diff, 
+			diff, diff));
 		}
 	}
 	return bmp;
 }
 \end{lstlisting}
 
-\small Note: This will create an error due to an overflow exception. You will need to create a method to fix the error.
+\small Note: This will create an error due to tow seperate overflow exceptions. You will need to create a method to fix the error.
 
 \end{frame}
 

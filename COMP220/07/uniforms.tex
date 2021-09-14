@@ -1,0 +1,80 @@
+\part{More on uniforms}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Uniform structs}
+In GLSL:
+	\begin{lstlisting}
+struct Light {
+	vec3 dir;
+	vec3 colour;
+};
+uniform Light light;
+
+// ... //
+vec3 lightNorm = normalize(light.dir);	// etc.
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Uniform structs}
+In C++:
+	\begin{lstlisting}
+unsigned int lightDirLoc =
+		glGetUniformLocation(programID, "light.dir");
+unsigned int lightColourLoc =
+		glGetUniformLocation(programID, "light.colour");
+
+// ... //
+glUniform3f(lightDirLoc, 0.0f, 1.0f, 0.0f);
+glUniform3f(lightColourLoc, 1.0f, 1.0f, 1.0f);
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Uniform blocks}
+	\begin{itemize}
+		\pause\item Allow \textbf{uniform sharing} between shaders.
+		\pause\item Allow setting multiple values at once.
+		\pause\item Can specify a \textbf{storage mode} to determine how the memory is laid out (default is implementation-dependent).
+		\begin{itemize}
+			\pause\item Either \textbf{shared} or \textbf{packed} to remove unused variables (not shareable).
+			\pause\item May require \textbf{padding} to ensure alignment.
+		\end{itemize}
+		\pause\item Connected to OpenGL buffers via \textbf{binding points} that link the block and buffer indices.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Uniform blocks}
+In GLSL:
+	\begin{lstlisting}
+uniform LightBlock {
+	vec3 lightDir;
+	vec3 lightColour;
+};
+
+// ... //
+vec3 lightNorm = normalize(lightDir);	// etc.
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Uniform blocks}
+In C++:
+	\begin{lstlisting}
+float lightValues[] = {
+				-0.5, 0.7, 1.0,	// lightDir
+				0.0f,			// padding for alignment
+				0.2, 0.6, 0.0	// lightColour
+				};
+
+GLuint bindingPoint = 1, uniformBuffer, blockIndex;
+blockIndex = glGetUniformBlockIndex(programID, "LightBlock");
+glUniformBlockBinding(programID, blockIndex, bindingPoint);
+
+glGenBuffers(1, &uniformBuffer);
+glBindBuffer(GL_UNIFORM_BUFFER, uniformBuffer);
+glBufferData(GL_UNIFORM_BUFFER, sizeof(lightValues),
+			lightValues, GL_STATIC_DRAW);
+glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint,
+			uniformBuffer);
+	\end{lstlisting}
+\end{frame}
+
+

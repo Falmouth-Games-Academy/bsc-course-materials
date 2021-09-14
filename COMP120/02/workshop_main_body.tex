@@ -6,7 +6,7 @@
 
 % Default language for code listings
 \lstset{language=Python,
-        morekeywords={each,in,nullptr}
+	morekeywords={each,in,nullptr,Bitmap,SetPixel,Color,Save,FromArgb}
 }
 
 % For strikethrough effect
@@ -114,6 +114,10 @@ for (int hours = 0; hours < 24; hours++)
 		\textbf{Nested} \texttt{for} \textbf{Loops} - to iterate through all the positions in a two dimensional array. For example: all the pixels in an image which are arranged in rows and columns.
 	
 \end{frame}
+
+\fullbleed{nestedloops}
+\fullbleed{nestedloops2}
+\fullbleed{nestedloops3}
 
 \begin{frame}
 	\frametitle{Activity \#1b -- Setup}
@@ -407,7 +411,6 @@ for (int y = 0, ry = height/2; y < height/2; y++, ry++)
 
 \begin{frame}[fragile]
 	\frametitle{Challenge for next week -- Sunset}
-	
 	\begin{lstlisting}
 	def decreaseRed(picture, amount):
 	for p in getPixels(picture):
@@ -423,6 +426,7 @@ for (int y = 0, ry = height/2; y < height/2; y++, ry++)
 	decreaseBlue(picture, amount)
 	wait(50)
 	\end{lstlisting}
+	Note: This is Python code can you adapt it for C\#
 	
 \end{frame}
 
