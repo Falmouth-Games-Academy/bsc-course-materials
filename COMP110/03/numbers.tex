@@ -4,78 +4,31 @@
 \begin{frame}{Integers}
 	\begin{itemize}
 		\pause\item An \textbf{integer} is a whole number --- positive, negative or zero
-		\pause\item Python type: \lstinline{int}
-		\pause\item In most languages, \lstinline{int} is limited to 32 or 64 bits
-		\pause\item Python uses \textbf{big integers} --- number of bits expands automatically to fit the value to be stored
 		\pause\item Stored in memory using binary notation, with 2's complement for negative values
+		\pause\item In C\#: \csinline{int} is a 32-bit integer, \csinline{long} is a 64-bit integer
+		\pause\item In Python: \lstinline{int} is a ``big integer'' --- expands number of bits automatically to fit the value to be stored
 	\end{itemize}
 \end{frame}
-
-% \begin{frame}{Integers as bytes}
-% 	\begin{itemize}
-% 		\pause\item A \textbf{32-bit} integer is stored as a sequence of \textbf{4 bytes}
-% 		\pause\item Example: 314159 in decimal = $100\,11001011\,00101111$ in binary
-% 		\pause\item Stored as four bytes:
-% 		    $$
-% 		        00000000 \quad
-% 		        00000100 \quad
-% 		        11001011 \quad
-% 		        00101111
-%             $$
-%             or in hexadecimal:
-%             $$
-% 		        00 \quad
-% 		        04 \quad
-% 		        CB \quad
-% 		        2F
-% 		    $$
-% 		\pause\item Similarly for other sizes of integer:
-% 		    an $n$-bit integer is stored as $n \div 8$ bytes
-% 		\pause\item You can think of this as a base-256 numbering system
-% 	\end{itemize}
-% \end{frame}
-
-% \begin{frame}{Endianness}
-% 	\begin{itemize}
-% 		\pause\item Integers are stored either \textbf{big endian} or \textbf{little endian}
-% 		\pause\item Big endian: the \textbf{most significant byte} comes first
-%             $$
-% 		        00 \quad
-% 		        04 \quad
-% 		        CB \quad
-% 		        2F
-% 		    $$
-% 		\pause\item Little endian: the \textbf{least significant byte} comes first
-%             $$
-% 		        2F \quad
-% 		        CB \quad
-% 		        04 \quad
-% 		        00
-% 		    $$
-% 		\pause\item Modern PCs (Intel x86 based) use little endian
-% 		\pause\item Little endian may seem unintuitive
-% 		\pause\item However it is more efficient when programs need to convert one size of integer to another
-% 	\end{itemize}
-% \end{frame}
 
 \begin{frame}{Floating point numbers}
 	\begin{itemize}
 		\pause\item What about storing non-integer numbers?
 		\pause\item Usually we use \textbf{floating point} numbers
-		\pause\item Python type: \lstinline{float}
 		\pause\item Details on in-memory representation later in the module
-		\pause\item (Note: \lstinline{float} in Python 3 has the same precision as \lstinline{double} in C++/C\#/etc)
+		\pause\item In C\#: \csinline{float} or \csinline{double}
+		\pause\item \csinline{double} is more precise, but uses twice as much memory (8 bytes vs 4 bytes)
+		\pause\item Python type: \lstinline{float}, which has the same precision as C\# \lstinline{double}!
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Integers vs floating point numbers}
 	\begin{itemize}
-		\pause\item \lstinline{int} and \lstinline{float} are different types!
-		\pause\item \lstinline{42} and \lstinline{42.0} are technically different values
+		\pause\item Integers and floating point numbers are \textbf{different types}!
+		\pause\item \csinline{42} and \csinline{42.0} are technically different values
 			\begin{itemize}
-				\pause\item One is an \lstinline{int}, the other is a \lstinline{float}
+				\pause\item One is an \csinline{int}, the other is a \csinline{double}
 				\pause\item They are stored differently in memory (completely different sequences of bytes)
-				\pause\item However \lstinline{==} etc still know how to compare them sensibly
+				\pause\item However, \csinline{==} etc still know how to compare them sensibly
 			\end{itemize}
 	\end{itemize}
 \end{frame}

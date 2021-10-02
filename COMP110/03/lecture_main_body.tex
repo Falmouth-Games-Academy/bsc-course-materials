@@ -6,10 +6,13 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=Python,
+\lstset{language=[Sharp]C,
     keepspaces=true,
     breaklines=false
 }
+
+\newcommand{\pyinline}[1]{\lstinline[language=Python]{#1}}
+\newcommand{\csinline}[1]{\lstinline{#1}}
 
 % For strikethrough effect
 \usepackage[normalem]{ulem}
@@ -50,7 +53,6 @@ pdflang=en-GB
 \input{numbers}
 \input{strings}
 \input{other_types}
-%\input{typecasting}
 \input{logicgates}
 
 \end{document}

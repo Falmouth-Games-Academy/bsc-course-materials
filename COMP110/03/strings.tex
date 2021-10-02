@@ -5,7 +5,8 @@
 	\begin{itemize}
 		\pause\item A \textbf{string} represents a sequence of textual characters
 		\pause\item E.g.\ \lstinline{"Hello world!"}
-		\pause\item Python type: \lstinline{str}
+		\pause\item C\# type: \csinline{string}
+		\pause\item Python type: \pyinline{str}
 	\end{itemize}
 \end{frame}
 
@@ -21,7 +22,8 @@
 
 \begin{frame}{What is a character?}
 	\begin{itemize}
-		\pause\item Broadly speaking, a single \textbf{printable symbol}
+		\pause\item Broadly speaking, a single \textbf{printable symbol} or \textbf{glyph}
+		\pause\item (Actually a lot more complicated than this, but this will do for today)
 		\pause\item There are also some special \textbf{non-printable characters} e.g.\ line break
 	\end{itemize}
 \end{frame}
@@ -60,7 +62,7 @@
 \begin{frame}{Unicode}
 	\begin{itemize}
 		\pause\item Standard character set developed from 1987 to present day
-		\pause\item Currently defines 143859 characters (Unicode 13.0)
+		\pause\item Currently defines 144697 characters (Unicode 14.0)
 		\pause\item First 128 characters are the same as ASCII
 		\pause\item Covers most of the world's writing systems
 		\pause\item Also covers mathematical symbols and emoji
@@ -100,7 +102,7 @@
 		\pause\item Other characters are encoded as multi-byte sequences:
 			\begin{itemize}
 				\pause\item \"u $\to [195, 188]$
-				\pause\item \includegraphics[height=1.5ex]{chinese}\ $\to [228, 184, 178]$
+				\pause\item \includegraphics[height=1.5ex]{chinese}\ $\to [229, 150, 130]$
 				\pause\item \includegraphics[height=1.5ex]{emoji}\ $\to [240, 159, 152, 130]$
 			\end{itemize}
 		\pause\item \texttt{"Haha \includegraphics[height=1.5ex]{emoji}"} encoded in UTF-8:
