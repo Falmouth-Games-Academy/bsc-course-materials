@@ -76,7 +76,7 @@
 							\State \textbf{return} item \pause
 						\EndIf
 					\EndFor
-					\State \textbf{throw} ``Not found'' \pause
+					\State \textbf{raise error} ``Not found'' \pause
 				\EndProcedure
 			\end{algorithmic}
 \end{frame}
@@ -125,7 +125,7 @@
 	\begin{algorithmic}
 		\Procedure{Find}{name, list} \pause
 			\If{list is empty}
-				\State \textbf{throw} ``Not found''
+				\State \textbf{raise error} ``Not found''
 			\EndIf \pause
 			\State mid $\gets$ the ``middle'' item of the list \pause
 			\If{name $=$ mid.name}
@@ -326,13 +326,13 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Binary search done wrong}
-	\lstinputlisting[language=Python]{binary_search_bad.py}
-\end{frame}
+%\begin{frame}{Binary search done wrong}
+%	\lstinputlisting[language=Python]{binary_search_bad.py}
+%\end{frame}
 
-\begin{frame}{Binary search done right}
-	\lstinputlisting[language=Python]{binary_search_good.py}
-\end{frame}
+%\begin{frame}{Binary search done right}
+%	\lstinputlisting[language=Python]{binary_search_good.py}
+%\end{frame}
 
 \begin{frame}{Binary search vs linear search}
 	\begin{columns}
@@ -438,6 +438,7 @@ $\vdots$ & $\vdots$
 		\pause\item Hash tables in C\#:
 			\begin{itemize}
 				\pause\item \lstinline{Dictionary<TKey, TValue>}
+				\pause\item \lstinline{GetHashCode()} is used to specify hash function
 			\end{itemize}
 	\end{itemize}
 \end{frame}
