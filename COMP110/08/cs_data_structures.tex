@@ -1,0 +1,171 @@
+\part{Basic data structures in C\#}
+\frame{\partpage}
+
+\begin{frame}{Classes and interfaces}
+    \begin{itemize}
+        \pause\item A \textbf{class} in C\# defines constructors, destructor, methods, properties, fields, ...
+        \pause\item An \textbf{interface} defines methods and properties which a class can implement
+        \pause\item An interface is a little like a fully abstract class
+        \pause\item A class in C\# can only \textbf{inherit} from one \textbf{class},
+            but can \textbf{implement} several \textbf{interfaces}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{IEnumerable}
+    \begin{itemize}
+		\pause\item Most collection types in C\# implement the \lstinline{IEnumerable<ElementType>} interface
+		\pause\item This interface allows us to iterate through the elements in the collection, from beginning to end
+		\pause\item C\# provides the \lstinline{foreach} loop as a convenient way of using this
+		\pause\item $\implies$ any class which implements \lstinline{IEnumerable<ElementType>} can be used with a \lstinline{foreach} loop
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Arrays}
+    \begin{lstlisting}
+int[] myArray = new int[10];
+int[] anotherArray = new int[] { 123, 456, 789 };
+    \end{lstlisting}
+    \begin{itemize}
+		\pause\item \lstinline{int[]} is an array of \lstinline{int}s
+		\pause\item In general, \lstinline{ElementType[]} is an array of values of type \lstinline{ElementType}
+        \pause\item Size of the array is set on initialisation with \lstinline{new}
+        \pause\item Array \textbf{cannot change size} after initialisation
+        \pause\item Use \lstinline{myArray[i]} to get/set the \lstinline{i}th element (starting at 0)
+        \pause\item Use \lstinline{myArray.Length} to get the number of elements
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Multi-dimensional arrays}
+    \begin{lstlisting}
+int[,] myGrid = new int[20, 15];
+    \end{lstlisting}
+    \begin{itemize}
+        \pause\item \lstinline{int[,]} is a 2-dimensional array of \lstinline{int}s
+        \pause\item Use \lstinline{myArray[x, y]} to get/set elements
+        \pause\item Use \lstinline{myArray.GetLength(0)}, \lstinline{myArray.GetLength(1)} to get the ``width'' and ``height''
+        \pause\item Similarly \lstinline{int[,,]} is a 3-dimensional array, etc.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Lists}
+    \begin{lstlisting}
+using System.Collections.Generic;
+
+List<int> myList = new List<int>();
+List<int> anotherList = new List<int> { 1, 2, 3, 4 };
+    \end{lstlisting}
+	\begin{itemize}
+		\pause\item Like a list in Python, but can only store values of the specified type (here \lstinline{int})
+		\pause\item Append elements with \lstinline{myList.Add()}
+		\pause\item Get the number of elements with \lstinline{myList.Count}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Strings}
+    \begin{lstlisting}
+string myString = "Hello, world!";
+    \end{lstlisting}
+	\begin{itemize}
+		\pause\item \lstinline{string} can be thought of as a collection
+		\pause\item In particular, it implements \lstinline{IEnumerable<char>}
+		\pause\item So for example we can iterate over the characters in a string:
+	\end{itemize}
+    \begin{lstlisting}
+foreach (char c in myString)
+{
+	Console.WriteLine(c);
+}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Strings are immutable}
+	\begin{itemize}
+		\pause\item Strings are \textbf{immutable} in C\#
+		\pause\item This means that the contents of a string \textbf{cannot be changed} once it is created
+		\pause\item But wait... we change strings all the time, don't we?
+	\end{itemize}
+	\begin{lstlisting}
+string myString = "Hello ";
+myString += "world";
+	\end{lstlisting}
+	\begin{itemize}
+		\pause\item This isn't changing the string, it's creating a new one and throwing the old one away!
+		\pause\item Hence building a long string by appending can be slow (appending strings is $O(n)$)
+		\pause\item C\# has a \textbf{mutable} string type: \lstinline{StringBuilder}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dictionaries}
+	\begin{itemize}
+		\pause\item Dictionaries are \textbf{associative maps}
+		\pause\item A dictionary maps \textbf{keys} to \textbf{values}
+		\pause\item Takes two generic parameters: the \textbf{key type} and the \textbf{value type}
+		\pause\item A dictionary is implemented as a \textbf{hash table}
+	\end{itemize}		
+\end{frame}
+
+\begin{frame}[fragile]{Using dictionaries}
+	\begin{lstlisting}
+var age = new Dictionary<string, int> {
+    ["Alice"] = 23,
+    ["Bob"] = 36,
+    ["Charlie"] = 27
+};
+	\end{lstlisting}
+	\pause Access values using \lstinline{[]}:
+	\begin{lstlisting}
+Console.WriteLine(age["Alice"]);  // prints 23
+age["Bob"] = 40;      // overwriting an existing item
+age["Denise"] = 21;   // adding a new item
+age.Add("Emily", 29); // adding a new item -- will raise
+                      // an error if already present
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Iterating over dictionaries}
+	\begin{itemize}
+		\pause\item \lstinline{Dictionary<Key, Value>} implements \lstinline{IEnumerable<KeyValuePair<Key, Value>>}
+		\pause\item \lstinline{KeyValuePair<Key, Value>} stores \lstinline{Key} and \lstinline{Value}
+	\end{itemize}		
+	\pause
+	\begin{lstlisting}
+foreach (var keyValue in age)
+{
+	Console.WriteLine("{0} is {1} years old",
+					  kv.Key, kv.Value);
+}
+	\end{lstlisting}
+	\begin{itemize}
+	    \pause\item (C\# tip: the \lstinline{var} keyword lets the compiler automatically determine the appropriate type to use for a variable)
+		\pause\item Dictionaries are \textbf{unordered} --- avoid assuming that \lstinline{foreach}
+		    will see the elements in any particular order!
+	\end{itemize}		
+\end{frame}
+
+\begin{frame}{Hash sets}
+	\begin{itemize}
+		\pause\item Sets are \textbf{unordered} collections of \textbf{unique} elements
+            \begin{itemize}
+                \pause\item Sets \textbf{cannot} contain \textbf{duplicate} elements
+                \pause\item Attempting to \lstinline{Add} an element already present in the set does nothing
+            \end{itemize}
+		\pause\item \lstinline{HashSet}s are like \lstinline{Dictionary}s without the values, just the keys
+		\pause\item As discussed in Week 5, certain operations are much more efficient (constant time) on hash sets than on lists
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Using sets}
+	\begin{lstlisting}
+var numbers = new HashSet<int>{1, 4, 9, 16, 25};
+	\end{lstlisting}
+	\pause Add and remove members with \lstinline{Add} and \lstinline{Remove} methods
+	\begin{lstlisting}
+numbers.Add(36);
+numbers.Remove(4);
+	\end{lstlisting}
+	\pause Test membership with \lstinline{Contains}
+	\begin{lstlisting}
+if (numbers.Contains(9))
+    Console.WriteLine("Set contains 9");
+	\end{lstlisting}
+\end{frame}
