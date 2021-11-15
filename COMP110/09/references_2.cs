@@ -9,7 +9,7 @@ class Foo
 }
 
 Foo a = new Foo(10);
-Foo b = a
-a.value = 20
+Foo b = a;
+a.value = 20;
 Console.WriteLine($"a: {a.value}");
 Console.WriteLine($"b: {b.value}");

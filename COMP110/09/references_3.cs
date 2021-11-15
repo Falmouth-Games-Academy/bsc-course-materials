@@ -10,6 +10,6 @@ class Foo
 
 Foo a = new Foo(10);
 Foo b = new Foo(10);
-a.value = 20
+a.value = 20;
 Console.WriteLine($"a: {a.value}");
 Console.WriteLine($"b: {b.value}");

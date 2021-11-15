@@ -117,6 +117,14 @@
 	\lstinputlisting{references_3.cs}
 \end{frame}
 
+\begin{frame}{References and values --- an analogy}
+	\begin{itemize}
+		\pause\item Suppose you are sending someone a document
+		\pause\item Pass \textbf{by value} is like sending a .docx file --- the recipient gets their own copy
+		\pause\item Pass \textbf{by reference} is like sending a Google Docs link --- there is one copy, which the recipient can potentially edit
+	\end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{Pass by value}
 	\socrative
 	In \textbf{function parameters},
@@ -225,17 +233,18 @@ Console.WriteLine(a.value);
         \pause\item References in other languages (e.g.\ C\#, Python) are implemented using pointers
         \pause\item C++ also has something called references, which are similar but different
             (pointers can be \textbf{retargeted} whilst references cannot)
+		\pause\item Implementation-wise, a pointer is literally just a memory address (i.e.\ a number)
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Pointers}
-    \begin{itemize}
-        \pause\item Recall that memory is a series of 1-byte locations, each with a numeric \textbf{address}
-        \pause\item A \textbf{pointer} to something is simply the \textbf{address} at which it starts
-        \pause\item When allocating a block of memory, the OS returns a pointer to the start of the block
-        \pause\item When the memory is freed, any pointers into it are said to be \textbf{dangling}
-        \pause\item If the memory is subsequently reused for something else, those pointers could end up
-            pointing to random data
-        \pause\item Again this is not really possible in Python/C\#, but a common source of bugs in C/C++
-    \end{itemize}
-\end{frame}
+% \begin{frame}{Pointers}
+%     \begin{itemize}
+%         \pause\item Recall that memory is a series of 1-byte locations, each with a numeric \textbf{address}
+%         \pause\item A \textbf{pointer} to something is simply the \textbf{address} at which it starts
+%         \pause\item When allocating a block of memory, the OS returns a pointer to the start of the block
+%         \pause\item When the memory is freed, any pointers into it are said to be \textbf{dangling}
+%         \pause\item If the memory is subsequently reused for something else, those pointers could end up
+%             pointing to random data
+%         \pause\item Again this is not really possible in Python/C\#, but a common source of bugs in C/C++
+%     \end{itemize}
+% \end{frame}
