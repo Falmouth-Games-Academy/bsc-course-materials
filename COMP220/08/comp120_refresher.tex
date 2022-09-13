@@ -1,0 +1,25 @@
+\part{COMP120 Refresher}
+\frame{\partpage}
+
+\begin{frame}{Image Processing Techniques}
+	\begin{itemize}
+		\item\pause Some of the algorithms you learned in COMP120 can be applied in GLSL:
+		\begin{itemize}
+			\item Colour Replacement
+			\item Luminance calculation  
+			\item Colour Correction
+			\item Black \& White and Sepia Tone
+			\item Edge Detection
+		\end{itemize}
+		\pause\item Key difference: we access the data via \textbf{texture coordinates}, rather than array indices.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Modifying Textures}
+	\begin{itemize}
+		\item\pause A Texture Lookup uses the texture coordinates passed to the fragment shader
+		\item\pause Additionally, the fragment shader only processes a single fragment at a time
+		\item\pause If we want to access a pixel adjacent to the current one, we can offset the current texture coordinates - this is especially useful for edge detection
+		\item\pause GLSL has lots of inbuilt functions (e.g distance) which can aid in creating post-processing effects
+	\end{itemize}
+\end{frame}

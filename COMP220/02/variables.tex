@@ -18,12 +18,18 @@
 
 \begin{frame}[fragile]{Uniform variables}
 	\pause In GLSL (outside \lstinline{main()}):
-	\lstinline{uniform vec3 myVariable;}
+	\begin{lstlisting}
+uniform vec3 myVariable;
+	\end{lstlisting}
 	\pause In C++:
-	\lstinline{GLuint location
-  = glGetUniformLocation(programID, "myVariable");}
+	\begin{lstlisting}
+GLuint location =
+	glGetUniformLocation(programID, "myVariable");
+	\end{lstlisting}
 	\pause and then:
-	\lstinline{\glUniform3f(location, 1, 2, 3);}
+	\begin{lstlisting}
+glUniform3f(location, 1, 2, 3);
+	\end{lstlisting}
 \end{frame}
 
 \begin{frame}{Uniform variables}
@@ -43,19 +49,4 @@ out vec4 myVariable;
 	\pause \begin{lstlisting}
 in vec4 myVariable;
 	\end{lstlisting}
-\end{frame}
-
-\begin{frame}{Interpolation}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\pause\item The vertex shader sets a value for each vertex
-				\pause\item So what is the value in the middle of the triangle?
-				\pause\item The GPU \textbf{interpolates} the value across the triangle
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.45\textwidth}
-			\pause\includegraphics[width=\textwidth]{interpolation}
-		\end{column}
-	\end{columns}
 \end{frame}

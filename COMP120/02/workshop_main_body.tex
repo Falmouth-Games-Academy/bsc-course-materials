@@ -6,7 +6,7 @@
 
 % Default language for code listings
 \lstset{language=Python,
-        morekeywords={each,in,nullptr}
+	morekeywords={each,in,nullptr,Bitmap,SetPixel,Color,Save,FromArgb}
 }
 
 % For strikethrough effect
@@ -18,27 +18,30 @@
 % //www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
-\input{sessioninfo}
+\title{\sessionnumber: Tinkering Graphics I}
+\subtitle{\modulecode: \moduletitle}
+\author{Michael Scott and Matt Watkins}
 
 \setbeamertemplate{navigation symbols}{}
 
 \input{../../commands}
 
 \begin{document}
-\title{\sessionnumber: Tinkering Graphics I}
-\subtitle{\modulecode: \moduletitle}
 
-\frame{\titlepage} 
+\maketitle
 
 \begin{frame}
 	\frametitle{Learning Outcomes}
 	By the end of this workshop, you should be able to:	
 	\begin{itemize}
-		\item \textbf{Apply} knowledge of colour models to \textbf{write} code that manipulates pixels in a surface
+		\item \textbf{Apply} knowledge of colour models to \textbf{write} code that manipulates pixels in a Visual Studio Form App
 		\item \textbf{Use} functions, arguments, and basic data structures such as arrays
 	\end{itemize}
 \end{frame}
 
+\part{Painting with Pixels}
+\frame{\partpage}
+
 \begin{frame}
 	\frametitle{Activity \#1a -- Setup}
 	
@@ -47,41 +50,75 @@
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Launch a basic Python project in PyCharm
-		\item Import PyGame, setup a main window, and define a game-loop which renders a white background
-		\item Refer to the following documentation:
-		\begin{itemize}
-			\item \url{www.pygame.org/docs/tut/tom_games2.html}
-		\end{itemize}
+		\item Open Visual Basic 
+		\item Create a 'Windows Forms Application'
+		\item Refer to the following documentation for details:
 	\end{itemize}
+\scriptsize \url{https://docs.microsoft.com/en-us/visualstudio/ide/create-csharp-winform-visual-studio}
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Activity \#1a -- Setup}
 	
 \begin{lstlisting}
-import pygame
+int width = 640, height = 320;
+Bitmap bmp = new Bitmap(width, height);
 
-pygame.init()
-
-main_window = pygame.display.set_mode((800,600))
-
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    main_window.fill((255,255,255))
-    pygame.display.update()
-
-pygame.quit()
+for (int y = 0; y < height; y++)
+	{
+	for (int x = 0; x < width; x++)
+	{
+		bmp.SetPixel(x, y, Color.FromArgb(255, 0, 0, 0));
+	}
+}
+pictureBox1.Image = bmp;
+bmp.Save("D:\\images\blackImage.png");
 \end{lstlisting}
-
-Note: This is a PyGame example.
-
+Note: This is an example that is contained in the 'Form' class
 \end{frame}
+\begin{frame}[fragile]
+	\frametitle{Activity \#1a -- Setup}
 	
+Add a \textbf{Picturebox} from the \textbf{Toolbox} panel. Set the \textbf{Picturebox} to \textbf{Zoom}.
+\center\includegraphics[scale=0.51]{initial-form-layout}
+\end{frame}
+
+\begin{frame}
+		\frametitle{Key C\# Methods Used}
+			\begin{itemize}		
+			\item \texttt{Bitmap} - consists of the pixel data for a graphics image and its attributes.
+				\begin{itemize}	
+					\item \texttt{New} - Initializes a new instance of the Bitmap class with the specified size or from an existing file.
+					\item \texttt{Save} - Saves the Image to the specified file or stream.
+				\end{itemize}	
+			\item \texttt{SetPixel} - Sets the color of the specified pixel in a Bitmap.
+			\item \texttt{GetPixel} - Gets the color of the specified pixel in a Bitmap.
+			\item \texttt{Color.FromArgb} - Creates a colour structure from the four 8-bit ARGB components (alpha, red, green, and blue) values.	
+			\end{itemize}
+\end{frame}	
+
+\begin{frame}[fragile]
+	\frametitle{Key Concepts}
+	
+
+	
+	\begin{lstlisting}
+for (int hours = 0; hours < 24; hours++)
+{
+	for (int minutes = 0; minutes < 60; minutes++)
+	{
+		//do something for every minute in the day
+	}
+}
+	\end{lstlisting}
+		\textbf{Nested} \texttt{for} \textbf{Loops} - to iterate through all the positions in a two dimensional array. For example: all the pixels in an image which are arranged in rows and columns.
+	
+\end{frame}
+
+\fullbleed{nestedloops}
+\fullbleed{nestedloops2}
+\fullbleed{nestedloops3}
+
 \begin{frame}
 	\frametitle{Activity \#1b -- Setup}
 	
@@ -90,99 +127,117 @@ Note: This is a PyGame example.
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Render a green \texttt{Surface} in the top corner of the window
-		\item Define a function to manipulate a single pixel in the \texttt{Surface} using a \texttt{PixelArray}
+		\item Render a green \texttt{Bitmap} image
 		\item Refer to the following documentation:
 		\begin{itemize}
-			\item \url{www.pygame.org/docs/ref/surface.html}
-			\item \url{www.pygame.org/docs/ref/pixelarray.html}
+			\item \url{https://docs.microsoft.com/en-us/dotnet/api/system.drawing.color.fromargb}
+			\item \url{https://docs.microsoft.com/en-us/dotnet/api/system.drawing.bitmap.setpixel}
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Activity \#1b -- Setup}
+	\frametitle{Activity \#3 - Test Card}
 
-Firstly, create a new \texttt{Surface} and fill it with green:
+\begin{itemize}		
+	\item Create a \texttt{Bitmap} image that displays 3 equal vertical bars of red, green and blue
+	\item The image must be \textbf{640 x 480} in size.
+	\item Consider how you will allocate the painting of pixels to the different areas of the screen. 
+
+\end{itemize}
 	
-\begin{lstlisting}
-my_surface = pygame.Surface((200,200))
-my_surface.fill((0,255,0))
-\end{lstlisting}
-
-\vspace{0.5em}
-
-Then, blit the green \texttt{Surface} onto the main window at the origin:
-
-\begin{lstlisting}
-    main_window.fill((255,255,255))
-    main_window.blit(my_surface, (0,0))
-    pygame.display.update()
-\end{lstlisting}
-
-Note: This is a PyGame example.
+\center\includegraphics[scale=0.16]{testCard}
 
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Activity \#1b -- Setup}
+	\frametitle{Activity \#3 - Random Pixels}
 
-Finally, define a new function using the \texttt{def} keyword to manipulate a single pixel in the \texttt{Surface}:
+\begin{itemize}		
+	\item Create a \texttt{Bitmap} image that displays random pixel for every pixel in the image. Like snow on an old TV.
+	\item Consider how you will generate random values for ARGB
+	\item You will need to explore these methods associated with the \texttt{Random} class:
+	
+\end{itemize}
 	
 \begin{lstlisting}
-def set_pixel(surf, x_pos, y_pos, colour):
-    px_array = pygame.PixelArray(surf)
-    px_array[x_pos,y_pos] = colour
-    del px_array
-
-set_pixel(my_surface, 100, 100, (0,0,0))
+ new Random();
 \end{lstlisting}
-
-Note: This is a PyGame example.
+Initializes a new instance of the \texttt{Random} class.
+\begin{lstlisting}
+Next();
+\end{lstlisting}
+Returns a non-negative random integer.
 
 \end{frame}
 
+\begin{frame}[fragile]
+	\frametitle{Activity \#3 - Random Pixels}
+\begin{columns}
+	\column{0.48\textwidth}
+	\begin{lstlisting}
+Random rand = new Random();
+	\end{lstlisting}
+Create a variable to contain the \texttt{Random} class.
+	\begin{lstlisting}
+int a = rand.Next(256);
+	\end{lstlisting}
+Assign a variable for each colour channel and use \texttt{Next} with the new random variable to randomly choose a value.
+
+\column{0.48\textwidth}
+\includegraphics[scale=0.14]{videodrome}
+\end{columns}
+\end{frame}
+
+\part{Manipulating Bitmaps}
+\frame{\partpage}
+
 \begin{frame}
-	\frametitle{Activity \#2 -- Less Red}
+	\frametitle{Activity \#4 -- Less Red}
 	
 	In pairs:
 	
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Define a function to load an image file to a \texttt{Surface}
-		\item Then, define a function to reduce it's redness
+		\item Define a function to load an image file to the Windows \texttt{Form} UI
+		\item Then, define a function to reduce it's \textbf{redness}
 		\item Refer to the following documentation:
 		\begin{itemize}
-			\item \url{https://www.pygame.org/docs/ref/image.html}
+			\item \url{https://docs.microsoft.com/en-us/dotnet/api/system.drawing.bitmap}
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Activity \#2 -- Less Red}
+	\frametitle{Activity \#4-- Less Red}
 
 \begin{lstlisting}
-my_surface = pygame.image.load('test.jpg')
+string img = "C:\\Images\\myPic.jpg";
+Bitmap bmp = new Bitmap(img);
+int width = bmp.Width;
+int height = bmp.Height;
+Bitmap rbmp = new Bitmap(bmp);
+
+for (int y = 0; y < height; y++)
+{
+	for (int x = 0; x < width; x++)
+	{
+		Color p = bmp.GetPixel(x, y);
+		int a = p.A;
+		int r = p.R;
+		int g = p.G;
+		int b = p.B;
+		int rI = Convert.ToInt32(r*.5);	
+		rbmp.SetPixel(x, y, Color.FromArgb(a, rI, g, b));
+	}
+}
 \end{lstlisting}
-
-\vspace{0.5em}
-
-	
-\begin{lstlisting}
-def decreaseRed(pict):
-  pixelMatrix = getPixels(pict)
-  for pixel in pixelMatrix:
-    value = getRed(pixel)
-    setRedPixel(pixel, value * 0.5)
-\end{lstlisting}
-
-Note: Not all of this source code excerpt will work in PyGame.
 
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#3 -- Swap Channel}
+	\frametitle{Activity \#5 -- Swap Channel}
 	
 	In pairs:
 	
@@ -195,24 +250,31 @@ Note: Not all of this source code excerpt will work in PyGame.
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Activity \#3 -- Swap Channel}
+	\frametitle{Activity \#5 -- Swap Channel}
 	
 \begin{lstlisting}
-def swapRedBlueChannels(pict):
-  pixelMatrix = getPixels(pict)
-  for pixel in pixelMatrix:
-    red_value = getRed(pixel)
-    blue_value = getBlue(pixel)
-    setRedPixel(pixel, blue_value)
-    setBluePixel(pixel, red_value)
+//get pixel value
+Color p = bmp.GetPixel(x, y);
+
+//extract ARGB value from p
+int a = p.A;
+int r = p.R;
+int g = p.G;
+int b = p.B;
+
+//swap red for blue
+RtoBbmp.SetPixel(x, y, Color.FromArgb(a, r, g, r));
+
+//swap blue for red
+BtoRbmp.SetPixel(x, y, Color.FromArgb(a, b, g, b));
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
+Note: This code occurs inside the nested for loop and presumes you have setup 2 bitmap variables - RtoBbmp and BtoRbmp.
 
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#4 -- Greyscale}
+	\frametitle{Activity \#6 -- Greyscale}
 	
 	In pairs:
 	
@@ -228,29 +290,31 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Activity \#4 -- Greyscale}
+	\frametitle{Activity \#6 -- Greyscale}
 	
 \begin{lstlisting}
-def loadGrayscale(file):
-  pixelMatrix = getPixels(makePicture(file))
-  for pixel in pixelMatrix:
-    red = getRed(p)
-    green = getGreen(p)
-    blue = getBlue(p)
-    
-    pixelValue = (red+green+blue)/3
-    
-    setRedPixel(pixel,pixelValue)
-    setGreenPixel(pixel, pixelValue)
-    setBluePixel(pixel, pixelValue)
+//get pixel value
+p = bmp.GetPixel(x, y);
+
+//extract pixel component ARGB
+int a = p.A;
+int r = p.R;
+int g = p.G;
+int b = p.B;
+
+//find average
+int avg = (r + g + b) / 3;
+
+//set new pixel value
+bmp.SetPixel(x, y, Color.FromArgb(a, avg, avg, avg));
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
+Note: This code occurs inside the nested for loop and presumes you have setup a bitmap variable - bmp.
 
 \end{frame}
 
 \begin{frame}
-	\frametitle{Activity \#5 -- Negative}
+	\frametitle{Activity \#7 -- Negative}
 	
 	In pairs:
 	
@@ -266,61 +330,28 @@ Note: This source code excerpt will not work in PyGame.
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Activity \#5 -- Negative}
+	\frametitle{Activity \#7 -- Negative}
 	
 \begin{lstlisting}
-def neg(picture):
-  pixelMatrix = getPixels(makePicture(file))
-  for pixel in pixelMatrix:
-    red = getRed(p)
-    green = getGreen(p)
-    blue = getBlue(p)
-        
-    setRedPixel(pixel,255-red)
-    setGreenPixel(pixel, 255-green)
-    setBluePixel(pixel, 255-blue)
+ //get pixel value
+Color p = bmp.GetPixel(x, y);
+
+//extract ARGB value from p
+int a = p.A;
+int r = p.R;
+int g = p.G;
+int b = p.B;
+
+//find negative value
+r = 255 - r;
+g = 255 - g;
+b = 255 - b;
+
+//set new ARGB value in pixel
+bmp.SetPixel(x, y, Color.FromArgb(a, r, g, b));
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
-
-\end{frame}
-
-\begin{frame}
-	\frametitle{Activity \#6 -- Sunset}
-	
-	In pairs:
-	
-	\vspace{2em}
-	
-	\begin{itemize}
-		\item Define a function that loads an image and produces several images as output, descreasing luminance
-		\item Refer to the following documentation:
-		\begin{itemize}
-			\item \url{//www.pygame.org/docs/ref/time.html}
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Activity \#6 -- Sunset}
-
-\begin{lstlisting}
-def decreaseRed(picture, amount):
-  for p in getPixels(picture):
-    value=getRed(p)
-    setRed(p,value*amount)
-
-amount = 0.1 #tinker with this value
-wait_time = 50 #tinker with this value    
-    
-for i in range(10):
-  decreaseRed(picture, amount)
-  decreaseGreen(picture, amount)
-  decreaseBlue(picture, amount)
-  wait(50)
-\end{lstlisting}
-
-Note: This source code excerpt will not work in PyGame.
+Note: This code occurs inside the nested for loop and presumes you have setup a bitmap variable - bmp.
 
 \end{frame}
 
@@ -335,27 +366,68 @@ Note: This source code excerpt will not work in PyGame.
 		\item Define a function that copies the top half of a picture to its bottom half
 		\item Refer to the following documentation:
 		\begin{itemize}
-			\item \url{https://docs.python.org/3.7/tutorial/introduction.html\#lists}
+			\item Consider this example of multiple conditions in a for loop as a possible solution:
+			\item \url{http://www.java2s.com/Tutorial/Cpp/0060__Operators-statements/Usemultiplestatementsinforloops.htm}
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Activity \#7 -- Top-Copy}
+	
+	\begin{lstlisting}
+int width = oldImg.Width;
+int height = oldImg.Height;
 
-\begin{lstlisting}
-def copyHalf(picture):
- pixels = getPixels(picture)
- for index in range(0,len(pixels)/2):
-   sourcePixel = pixels[index]
-   sourceRGBValue = getColor(sourcePixel)
-   destinationPixel = pixels[index + len(pixels)/2]
-   setColor(destinationPixel,sourceRGBValue)
- repaint(picture)
-\end{lstlisting}
+Bitmap newImg = new Bitmap(width, height);
 
-Note: This source code excerpt will not work in PyGame.
+for (int y = 0, ry = height/2; y < height/2; y++, ry++)
+	{
+		for (int x = 0; x < width; x++ )
+		{
+		Color p = oldImg.GetPixel(x, y);
+		newImg.SetPixel(x, y, p);
+		newImg.SetPixel(x, ry, p);    
+	}
+}	
+	\end{lstlisting}
+	
+	Note: You still need to consider load and saving element of this code block.
+	
+\end{frame}
+% NEEDS REVISING FOR WEEK 3
+\begin{frame}
+	\frametitle{Challenge for next week -- Sunset}
+	
+	In pairs:
+	
+	\vspace{2em}
+	
+	\begin{itemize}
+		\item Define a function that loads an image and produces several images as output, descreasing luminance
+		\item You will need to think about how to reduce the luminance of the image iteratively producing a number of images and displaying them.
+	\end{itemize}
+\end{frame}
 
+\begin{frame}[fragile]
+	\frametitle{Challenge for next week -- Sunset}
+	\begin{lstlisting}
+	def decreaseRed(picture, amount):
+	for p in getPixels(picture):
+	value=getRed(p)
+	setRed(p,value*amount)
+	
+	amount = 0.1 #tinker with this value
+	wait_time = 50 #tinker with this value    
+	
+	for i in range(10):
+	decreaseRed(picture, amount)
+	decreaseGreen(picture, amount)
+	decreaseBlue(picture, amount)
+	wait(50)
+	\end{lstlisting}
+	Note: This is Python code can you adapt it for C\#
+	
 \end{frame}
 
 \end{document}

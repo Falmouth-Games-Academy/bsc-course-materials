@@ -1,4 +1,4 @@
-% !TeX root = ./2019-20-COMP250-05-session-materials_screen.tex
+% !TeX root = ./2020-21-COMP250-05-session-materials_screen.tex
 \part{Minimax search}
 \frame{\partpage}
 
@@ -33,20 +33,20 @@
 \begin{frame}{Minimax search pseudocode}
 	\footnotesize
 	\begin{algorithmic}
-		\Procedure{Minimax}{state, currentPlayer} \pause
+		\Procedure{Minimax}{state} \pause
 			\If{state is terminal} \pause
 				\State \textbf{return} value of state \pause
-			\ElsIf{currentPlayer $= 1$} \pause
+			\ElsIf{state.currentPlayer $= 1$} \pause
 				\State bestValue $= -\infty$ \pause
 				\For{\textbf{each} possible nextState} \pause
-					\State $v$ = \Call{Minimax}{nextState, $3 -$ currentPlayer} \pause
+					\State $v$ = \Call{Minimax}{nextState} \pause
 					\State bestValue = \Call{Max}{bestValue, $v$} \pause
 				\EndFor
 				\State \textbf{return} bestValue \pause
-			\ElsIf{currentPlayer $= 2$} \pause
+			\ElsIf{state.currentPlayer $= 2$} \pause
 				\State bestValue $= +\infty$
 				\For{\textbf{each} possible nextState}
-					\State $v$ = \Call{Minimax}{nextState, $3 -$ currentPlayer}
+					\State $v$ = \Call{Minimax}{nextState}
 					\State bestValue = \Call{Min}{bestValue, $v$}
 				\EndFor
 				\State \textbf{return} bestValue 
@@ -58,7 +58,7 @@
 \begin{frame}{Stopping early}
 	\begin{algorithmic}
 		\For{\textbf{each} possible nextState} 
-			\State $v$ = \Call{Minimax}{nextState, $3 -$ currentPlayer}
+			\State $v$ = \Call{Minimax}{nextState}
 			\State bestValue = \Call{Max}{bestValue, $v$} 
 		\EndFor
 	\end{algorithmic}

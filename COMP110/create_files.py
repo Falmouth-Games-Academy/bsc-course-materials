@@ -2,7 +2,7 @@
 
 for i in range(3, 12+1):
 	for session in ["lecture", "workshop"]:
-		filename_base = os.path.join("%02i" % i, "2019-20-COMP110-%02i-%s-materials" % (i, session))
+		filename_base = os.path.join("%02i" % i, "2020-21-COMP110-%02i-%s-materials" % (i, session))
 		
 		with open(filename_base + ".tex", "wt") as f:
 			f.writelines([
@@ -24,7 +24,7 @@ Type=TeXnicCenterProjectInformation
 Version=4
 
 [ProjectInfo]
-MainFile=2019-20-COMP110-%02i-%s-materials-screen.tex
+MainFile=2020-21-COMP110-%02i-%s-materials-screen.tex
 UseBibTeX=0
 UseMakeIndex=0
 ProjectLanguage=en

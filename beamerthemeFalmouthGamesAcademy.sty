@@ -2,16 +2,14 @@
 
 \usepackage{avant} % A font similar to Century Gothic
 \usepackage{courier} % Courier font for code listings
-
+\usepackage[tagpdf]{axessibility} % for accessible pdf
 \usepackage{graphicx}
 \usepackage{listings}
 \lstset{
 	basicstyle=\footnotesize\ttfamily,
 	frame=single,
 	tabsize=4,
-	showstringspaces=false,
-	breaklines=true,
-	prebreak={\space\hbox{\textcolor{Gray}{$\hookleftarrow$}}}
+	showstringspaces=false
 }
 
 \iftoggle{printable}{
@@ -33,7 +31,7 @@
 %\setbeamercovered{transparent}
 
 \definecolor{GamesAcademyPurple}{rgb}{0.25,0.19,0.32}
-\definecolor{SubtitleGrey}{rgb}{0.53,0.53,0.53}
+\definecolor{SubtitleGrey}{rgb}{0.9,0.9,0.9}
 
 \iftoggle{printable}{
 	\usecolortheme{default}
@@ -61,20 +59,30 @@
     \begin{tikzpicture}[remember picture,overlay]
     	\iftoggle{printable}{}{
 			\node[anchor=north, xshift=0cm, yshift=0.12cm] (banner) at (current page.north) {
+			          \tagstructbegin{tag=Figure, alttext={A decorative image of a girl}}\tagmcbegin{tag=Figure}
 				\includegraphics[width=\paperwidth]{template_girl}
+                                          \tagmcend \tagstructend
 			};
 			\node[anchor=south west, xshift=0.1cm, yshift=0.1cm] at (banner.south west) {
+			           \tagstructbegin{tag=Figure, alttext={Falmouth logo}}\tagmcbegin{tag=Figure}
 				\includegraphics[width=0.1\paperwidth]{template_falmouth_logo}
+				\tagmcend \tagstructend
 			};
 		}
         \node(Title)[anchor=south east, xshift=-0.025\paperwidth, yshift=40\PptPoint] at (current page.south east) {
+                                \tagstructbegin{tag=H1}\tagmcbegin{tag=H1}
 			\parbox[t]{0.8\paperwidth}{\raggedleft\usebeamerfont{title}\textbf{\inserttitle}}
+			\tagmcend \tagstructend
         };
         \node[anchor=south east, yshift=-0.1cm] at (Title.north east) {
-        	\parbox[t]{0.8\paperwidth}{\raggedleft\usebeamerfont{subtitle}\textcolor{SubtitleGrey}{\insertsubtitle}}
+           \tagstructbegin{tag=Subtitle}\tagmcbegin{tag=Subtitle}
+        	\parbox[t]{0.8\paperwidth}{\raggedleft\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}{\insertsubtitle}}
+        	\tagmcend \tagstructend
         };
         \node[anchor=south west, xshift=0.1cm, yshift=0.1cm] at (current page.south west) {
+             \tagstructbegin{tag=Figure, alttext={Please remember to register your attendance}}\tagmcbegin{tag=Figure}
 	  \includegraphics[width=0.125\paperwidth]{sign_in}
+	  \tagmcend \tagstructend
         };
     \end{tikzpicture}
 }
@@ -83,10 +91,14 @@
     \begin{tikzpicture}[remember picture,overlay]
     	\iftoggle{printable}{}{
 			\node[anchor=north, xshift=0cm, yshift=0.12cm] (head) at (current page.north) {
+			          \tagstructbegin{tag=Artifact}\tagmcbegin{tag=Background}
 				\includegraphics[width=\paperwidth]{template_head}
+				\tagmcend \tagstructend
 			};
 			\node[anchor=north west, xshift=0.1cm, yshift=-0.1cm] at (current page.north west) {
+			          \tagstructbegin{tag=Artifact}\tagmcbegin{tag=Background}
 				\includegraphics[width=0.1\paperwidth]{template_falmouth_logo}
+				\tagmcend \tagstructend
 			};
 		}
     \end{tikzpicture}
@@ -103,11 +115,19 @@
 				\includegraphics[width=0.1\paperwidth]{template_falmouth_logo}
 			};
 			\node[anchor=south east, xshift=0.2cm, yshift=0.2cm] at (current page.south east) {
+			          \tagstructbegin{tag=Figure, alttext={A decorative image of a boy}}
+			          \tagmcbegin{tag=Figure}
 				\includegraphics[height=\paperheight]{template_man}
+				\tagmcend \tagstructend
 			};
 		}
         \node[anchor=south west, xshift=0.05\paperwidth, yshift=80\PptPoint] at (current page.south west) {
+                               \tagstructbegin{tag=H1}\tagmcbegin{tag=H1}
 			\parbox[t]{0.9\paperwidth}{\raggedright\usebeamerfont{title}\textbf{\insertpart}}
+			\tagmcend \tagstructend
         };
     \end{tikzpicture}
 }
+
+\let\oldframetitle\frametitle
+\renewcommand{\frametitle}[1]{\oldframetitle{\tagstructbegin{tag=H2}\tagmcbegin{tag=H2} #1 \tagmcend \tagstructend}}

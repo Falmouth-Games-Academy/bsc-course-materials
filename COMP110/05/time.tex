@@ -1,47 +1,69 @@
-\part{Computation time}
+\part{Time benchmarking}
 \frame{\partpage}
 
 \begin{frame}{Resources}
-	\begin{itemize}
-		\pause\item All programs use \textbf{resources}
-			\begin{itemize}
-				\pause\item Time
-				\pause\item Memory
-				\pause\item Network bandwidth
-				\pause\item Power
-				\pause\item ...
-			\end{itemize}
-		\pause\item Often \textbf{time} is the resource we care about the most
-			\begin{itemize}
-				\pause\item Particularly in games:
-					want to maintain a good \textbf{frame rate}
-					free of \textbf{lag} or \textbf{stuttering}
-				\pause\item To run at 60 frames per second, we only have \textbf{16.666~milliseconds} to do everything that needs to be done on every frame
-			\end{itemize}
-	\end{itemize}
+    \begin{itemize}
+        \pause\item All programs use \textbf{resources}
+            \begin{itemize}
+                \pause\item Time
+                \pause\item Memory
+                \pause\item Network bandwidth
+                \pause\item Power
+                \pause\item ...
+            \end{itemize}
+        \pause\item Often \textbf{time} is the resource we care about the most
+            \begin{itemize}
+                \pause\item Particularly in games:
+                    want to maintain a good \textbf{frame rate}
+                    free of \textbf{lag} or \textbf{stuttering}
+                \pause\item To run at 60 frames per second, we only have \textbf{16.666~milliseconds} to do everything that needs to be done on every frame
+                \pause\item E.g.\ in Unity, all of your \lstinline{Update()} methods as well as physics, audio, rendering etc.
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Basic time measurement in Python}
-	\begin{lstlisting}
-import time
+\begin{frame}[fragile]{Basic time measurement in C\#}
+    \begin{lstlisting}
+// using System.Diagnostics;
+Stopwatch stopwatch = new Stopwatch();
 
-start_time = time.perf_counter()
+stopwatch.Restart();
+DoSomething();
+stopwatch.Stop();
 
-# ... do something here ...
+Console.WriteLine(stopwatch.Elapsed);
 
-end_time = time.perf_counter()
-print("Time:", end_time - start_time, "seconds")
-	\end{lstlisting}
-	
-	\begin{itemize}
-		\pause\item \lstinline{time.perf_counter()} gives the ``current time'' in seconds
-		\pause\item On Windows, this is the time since you first called \lstinline{time.perf_counter()}
-		\pause\item Means little by itself, but \textbf{comparing} two values tells us how much time has \textbf{elapsed}
-	\end{itemize}
+// Or for more accuracy
+Console.WriteLine(stopwatch.ElapsedTicks);
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{A benchmarking example}
+    \begin{lstlisting}
+Random random = new Random();
+Stopwatch stopwatch = new Stopwatch();
+
+using (StreamWriter writer 
+            = new StreamWriter("results.csv"))
+{
+    for (int n = 1000; n < 100000; n += 1000)
+    {
+        stopwatch.Restart();
+
+        List<int> list = new List<int>();
+        for (int i = 0; i < n; i++)
+            list.Append(random.Next(1000));
+
+        stopwatch.Stop();
+
+        writer.WriteLine("{0}, {1}", n, stopwatch.ElapsedTicks);
+    }
+}
+    \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Repeating for better accuracy}
-	\begin{lstlisting}
+    \begin{lstlisting}
 import time
 
 start_time = time.perf_counter()
@@ -54,63 +76,63 @@ for repetition in range(repetition_count):
 end_time = time.perf_counter()
 total_time = end_time - start_time
 print("Time:", total_time, "seconds")
-	\end{lstlisting}
-	
-	\begin{itemize}
-		\pause\item There is some \textbf{overhead} from the \lstinline{for} loop, but in practice it is negligible
-	\end{itemize}
+    \end{lstlisting}
+    
+    \begin{itemize}
+        \pause\item There is some \textbf{overhead} from the \lstinline{for} loop, but in practice it is negligible
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\lstinputlisting[basicstyle=\scriptsize\ttfamily]{timing/time_list_creation.py}
+    \lstinputlisting[basicstyle=\scriptsize\ttfamily]{timing/time_list_creation.py}
 \end{frame}
 
 \begin{frame}
-	\lstinputlisting[basicstyle=\scriptsize\ttfamily]{timing/time_list_append.py}
+    \lstinputlisting[basicstyle=\scriptsize\ttfamily]{timing/time_list_append.py}
 \end{frame}
 
 \begin{frame}{Workshop exercise}
-	\begin{itemize}
-		\pause\item Investigate various operations on Python lists, and how their running time varies with the size of the list
-		\pause\item For each of the operations listed on the next slide:
-			\begin{itemize}
-				\pause\item \textbf{Find out} how to do the operation
-				\pause\item \textbf{Write} code similar to the previous slides, to generate a list of size $n$ (for various values of $n$) and then time the operation on that list
-				\pause\item \textbf{Plot} graphs of the operations using Excel
-				\pause\item (Advanced mode: instead of using Excel, plot graphs directly from Python using the Matplotlib library)
-			\end{itemize}
-	\end{itemize}
+    \begin{itemize}
+        \pause\item Investigate various operations on Python lists, and how their running time varies with the size of the list
+        \pause\item For each of the operations listed on the next slide:
+            \begin{itemize}
+                \pause\item \textbf{Find out} how to do the operation
+                \pause\item \textbf{Write} code similar to the previous slides, to generate a list of size $n$ (for various values of $n$) and then time the operation on that list
+                \pause\item \textbf{Plot} graphs of the operations using Excel
+                \pause\item (Advanced mode: instead of using Excel, plot graphs directly from Python using the Matplotlib library)
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Operations to time}
-	\footnotesize
-	\begin{columns}
-		\begin{column}{0.45\textwidth}
-			\begin{itemize}
-				\item Append an element
-				\item Insert an element at the beginning
-				\item Insert an element at a random position
-				\item Delete the first element
-				\item Delete the last element
-				\item Delete a random element
-				\item Get the first element
-				\item Get the last element
-				\item Get a random element
-				\item Find if the list contains a specific element
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.45\textwidth}
-			\begin{itemize}
-				\item Get the smallest element
-				\item Get the largest element
-				\item Get the sum of all elements
-				\item Get the length of the list
-				\item Copy the list
-				\item Reverse the list
-				\item Sort the list
-				\item Randomly shuffle the list
-				\item Convert the list to string
-			\end{itemize}
-		\end{column}
-	\end{columns}
+    \footnotesize
+    \begin{columns}
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item Append an element
+                \item Insert an element at the beginning
+                \item Insert an element at a random position
+                \item Delete the first element
+                \item Delete the last element
+                \item Delete a random element
+                \item Get the first element
+                \item Get the last element
+                \item Get a random element
+                \item Find if the list contains a specific element
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item Get the smallest element
+                \item Get the largest element
+                \item Get the sum of all elements
+                \item Get the length of the list
+                \item Copy the list
+                \item Reverse the list
+                \item Sort the list
+                \item Randomly shuffle the list
+                \item Convert the list to string
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}

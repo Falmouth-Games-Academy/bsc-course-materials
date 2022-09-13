@@ -5,7 +5,7 @@
 \graphicspath{ {../../} }
 
 % Default language for code listings
-\lstset{language=Python
+\lstset{language=[Sharp]C
 }
 
 % For strikethrough effect
@@ -21,28 +21,41 @@
 
 \input{sessioninfo}
 
+
+\hypersetup{
+pdftex,
+pdftitle=\sessionnumber: Complexity,
+pdfauthor=Ed Powley,
+pdfdisplaydoctitle,
+pdflang=en-GB
+}
+ 
 \begin{document}
-\title{\sessionnumber: Computational Complexity}
+\title{\sessionnumber: Complexity}
 \subtitle{\modulecode: \moduletitle}
 
 \frame{\titlepage} 
 
-\begin{frame}{Worksheet 5}
-    \begin{center}
-        Due \textbf{Friday 8th November} (2 weeks tomorrow)
-    \end{center}
-\end{frame}
-
-\input{presentations}
-
-\input{search}
-
-%\input{strategies}
-
-\input{more_complexity}
+\input{research_journal}
 
 \input{turing_machines}
 
 \input{computability}
+
+\input{search}
+
+\input{more_complexity}
+
+% \input{time}
+
+\part{Open workshop}
+\frame{\partpage}
+
+\begin{frame}{Open workshop}
+    \begin{itemize}
+        \item Use the rest of this session to get on with your \textbf{research journal}
+        \item Post in the chat if you have questions or need help!
+    \end{itemize}
+\end{frame}
 
 \end{document}

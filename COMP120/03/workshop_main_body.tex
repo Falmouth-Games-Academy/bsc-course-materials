@@ -6,7 +6,7 @@
 
 % Default language for code listings
 \lstset{language=Python,
-        morekeywords={each,in,nullptr}
+	morekeywords={each,in,nullptr,Bitmap,SetPixel,Color,Save,FromArgb, double, Math, Sqrt,public,static,string,Console,WriteLine}
 }
 
 % For strikethrough effect
@@ -18,17 +18,17 @@
 % http://www.texample.net/tikz/examples/state-machine/
 \usetikzlibrary{arrows,automata}
 
-\input{sessioninfo}
+\title{\sessionnumber: Tinkering Graphics II}
+\subtitle{\modulecode: \moduletitle}
+\author{Michael Scott and Matt Watkins}
 
 \setbeamertemplate{navigation symbols}{}
 
 \input{../../commands}
-
+{\tiny }
 \begin{document}
-\title{\sessionnumber: Tinkering Graphics II}
-\subtitle{\modulecode: \moduletitle}
 
-\frame{\titlepage} 
+\maketitle
 
 \begin{frame}
 	\frametitle{Learning Outcomes}
@@ -37,6 +37,49 @@
 		\item \textbf{Apply} mathematical knowledge to \textbf{write} computer programs that manipulate pixels in a surface
 		\item \textbf{Trace} existing computer programs
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{House Keeping}
+	
+	This week we are going to focus on workflow. Less hacky more professional:
+	
+	\begin{itemize}		
+		\item Make sure in your pair you have a shared repo on \textbf{Bitbucket}
+		\item We will try to focus on portable code that uses \textbf{constants} over \textbf{literals}
+		\item Reuse \textbf{functions} to build an effective code base.
+		\item Link your functions to the Forms \textbf{UI} components
+	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Recap - Functions in C\#}
+	
+	\begin{lstlisting}
+public static string NameAndScore(string Name, int Score) 
+{
+	string combine = "Name: " + Name+" Score: " + Score;
+	return combine;
+}		
+string output = NameAndScore("Matt", 2345);	
+Console.WriteLine(output);
+
+	\end{lstlisting}
+Console Output:
+	\begin{lstlisting}
+Name: Matt Score: 2345		
+
+\end{lstlisting}
+Applied to a BMP specific function:
+	\begin{lstlisting}
+public static bitmap GreyScale(string Image) 
+{
+	//Code to tinker your graphic
+	return;
+}	
+\end{lstlisting}
+	
 \end{frame}
 
 \begin{frame}
@@ -52,6 +95,9 @@
 	\end{itemize}
 \end{frame}
 
+\fullbleed{distance-points}
+\fullbleed{distance-colour}
+
 \begin{frame}
 	\frametitle{Activity \#1: Color Distance}
 	
@@ -60,7 +106,7 @@
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
+		\item Setup a basic project in Visual Studio
 		\item Use the distance equation from the previous slide to write a function which accepts a two colours and returns the distance
 		\item Test your solution
 		\item Then, post your solution on Slack
@@ -71,28 +117,45 @@
 	\frametitle{Numeric Return Values}
 	
 \begin{lstlisting}
-def distance(colour_base, colour_comparitor):
-    return  sqrt( (colour_base.r - colour_comparitor.r)**2 + (colour_base.g - colour_comparitor.g)**2 + (colour_base.b - colour_comparitor.b)**2 )
+public static int GetDistance(Color first, Color second)
+{
+	int redDifference;
+	int greenDifference;
+	int blueDifference;
+	double sqrt;
+
+	redDifference = first.R - second.R;
+	greenDifference = first.G - second.G;
+	blueDifference = first.B - second.B;
+	sqrt = Math.Sqrt(redDifference * redDifference + 
+	greenDifference *  greenDifference +
+	blueDifference * blueDifference);
+
+	return sqrt;		
+}
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
 
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Expected Output: Color Distance}
-	
+ You can use predefined color names with this method:
 \begin{lstlisting}
->>> print distance(WHITE, BLACK)
-441.6729559300637
->>> print distance(WHITE, PINK)
-113.13708498984761
->>> print distance(BLACK, PINK)
-355.3519382246282
->>> print distance(MAGENTA, PINK)
-192.41881404893857
+Color Color1 = Color.FromKnownColor(KnownColor.Pink);	
 \end{lstlisting}
-
+Expected Values:	
+\begin{lstlisting}
+Console.WriteLine (GetDistance(WHITE, BLACK));
+OUTPUT - "441.6729"
+Console.WriteLine (GetDistance(WHITE, PINK));
+OUTPUT - "81.6884"
+Console.WriteLine (GetDistance(BLACK, PINK));
+OUTPUT - "378.2829"
+Console.WriteLine (GetDistance(MAGENTA DARKGOLDENROD));
+OUTPUT - "287.2855"
+\end{lstlisting}
+NOTE - You need to create the color objects and pass them into the function, don't just use a colour in capitals. just for illustration.  
 \end{frame}
 
 \begin{frame}
@@ -100,28 +163,41 @@ Note: This source code excerpt will not work in PyGame.
 	
 	In pairs:
 	
-	\vspace{2em}
+	\vspace{.5em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
-		\item Implement the function \texttt{closeEnough((colour, colour), tolerance)} that returns a boolean value
+		\item Setup a Windows forms project in Visual Studio
+		\item Implement the function \texttt{closeEnough((colour1, colour2), tolerance)} that returns a boolean value
 		\item Test your solution
 		\item Then, post your solution on Slack
 	\end{itemize}
+	\vspace{.5em}
+\includegraphics[scale=0.5]{GoingRed}
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Boolean Return Values}
 	
 \begin{lstlisting}
-def close_enough(colour_base, colour_comparitor):
-    if distance(colour_base, colour_comparitor) < 50.0:
-        return True
-    else:
-        return False
+public static bool closeEnough(Color first, Color second,
+int tolerance) {
+	int redDifference;
+	int greenDifference;
+	int blueDifference;
+	redDifference = first.R - second.R;
+	greenDifference = first.G - second.G;
+	blueDifference = first.B - second.B;	
+	if ((redDifference * redDifference + greenDifference
+	* greenDifference + blueDifference * blueDifference)
+	< tolerance)	{
+		return true;
+	} else {
+		return false;
+	}
+}
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
+Note: This source code should be used in conjunction with a function call to activate it.
 
 \end{frame}
 
@@ -129,24 +205,52 @@ Note: This source code excerpt will not work in PyGame.
 	\frametitle{Tolerance-based Pixel Manipulation}
 	
 \begin{lstlisting}
-def turnRed():
-  brown = makeColor(42,25,15)
-  file="/Users/guzdial/Desktop/mediasources/katieFancy.jpg"
-  picture=loadPicture(file)
-  for pixel in getPixels(picture):
-    color = getColor(pixel)
-    if distance(color, BROWN) < 50.0:
-      red=getRed(pixel)*2
-      green=getGreen(pixel)
-      blue=getBlue(pixel)
-      setColor(pixel,makeColor(red,green,blue))
-  return picture
+public static bool turnRed(Color newColour) {
+	Color brown = Color.FromKnownColor(KnownColor.Brown);
+	int redDifference;
+	int greenDifference;
+	int blueDifference;
+	double sqrt;
+	redDifference = newColour.R - brown.R;
+	greenDifference = newColour.G - brown.G;
+	blueDifference = newColour.B - brown.B;
+	sqrt = Math.Sqrt(redDifference * redDifference + 
+	greenDifference * greenDifference + blueDifference * 
+	blueDifference);
+	
+	if (sqrt < 80) {
+		return true;
+	} else {
+		return false;
+	}	
+}
 
 \end{lstlisting}
 
-Note: This source code excerpt will not work in PyGame.
 
 \end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Tolerance-based Pixel Manipulation}
+	
+	\begin{lstlisting}
+Color p;
+
+for (int y = 0; y < height; y++) {
+	for (int x = 0; x < width; x++) {
+		p = bmp.GetPixel(x, y);
+		if (turnRed(p))	{
+			bmp.SetPixel(x, y, Color.FromKnownColor
+			(KnownColor.Red));
+		}
+	}
+}
+		
+	\end{lstlisting}
+Note: This uses the function from the previous screen. To achieve the outcome that you want you may need to tinker with the tolerance level to quite a high number.	
+	
+\end{frame}
+		
 
 \begin{frame}
 	\frametitle{Red Eye}
@@ -161,31 +265,41 @@ Note: This source code excerpt will not work in PyGame.
 
 \fullbleed{jenny}
 
-\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Activity \#3: Red Eye}
 	
 	In pairs:
 	
-	\vspace{2em}
+	\vspace{1em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
-		\item Refer to the following documentation
-		\begin{itemize}
-			\item \url{http://www.pygame.org/docs/ref/rect.html}
+		\item Setup a Windows form project in Visual Studio
+		\item You will need to create a method to sample a specific area of the image. I suggest you sample the mouse position.
 		\end{itemize}
+	\begin{lstlisting}
+private void pictureBox1_MouseUp(object sender,
+MouseEventArgs e)
+{
+	mouseX = e.X;
+	mouseY = e.Y;
+}
+\end{lstlisting}
+	\begin{itemize}	
 		\item Implement the function: \texttt{removeRedEye(picture, area, colour)}
 		\item Test your solution
-		\item Then, post your solution on Slack
+		\item Then, post your solution on Teams
 	\end{itemize}
+
+
 \end{frame}
 
+\fullbleed{sample_area}
 \fullbleed{jenny_nored}
 
 \begin{frame}
 	\frametitle{Posterization}
 	
-	\begin{itemize}		
+	\begin{itemize}			
 		\item Posterization is simply reducing the number of colours in an image
 		\item We look for a range of colours, then map them to a single colour, e.g:
 		\begin{itemize}
@@ -223,7 +337,7 @@ Note: This source code excerpt will not work in PyGame.
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
+		\item Setup a Windows form project in Visual Studio
 		\item Refer to the following documentation
 		\item Implement the function: \texttt{makeGreyscale(picture, colourCount)}
 		\item Test your solution
@@ -235,19 +349,25 @@ Note: This source code excerpt will not work in PyGame.
 	\frametitle{Source Code: Black and White}
 	
 \begin{lstlisting}
-def blackAndWhitePosterize(picture):
-  for pixel in getPixels(picture):
-    red = getRed(pixel)
-    green = getGreen(pixel)
-    blue = getBlue(pixel)
-    luminance = (red + green + blue) / 3
-    if luminance < 64:
-      setColor(pixel, BLACK)
-    else:
-      setColor(pixel, WHITE)
+for (int y = 0; y < height; y++) {
+	for (int x = 0; x < width; x++)	{
+		p = bmp.GetPixel(x, y);
+		int r = p.R;
+		int g = p.G;
+		int b = p.B;
+		int luminance = (r + g + b) / 3;
+		// start at 64 to see the difference
+		if (luminance < 104)	{
+			bmp.SetPixel(x, y, Color.FromArgb(255, 0, 0,
+			 0));
+		}
+		if (luminance >= 104)	{
+		 	bmp.SetPixel(x, y, Color.FromArgb(255, 255, 
+		 	255, 255));
+		}
+	}
+}
 \end{lstlisting}
-
-Note: This source code excerpt will not work in PyGame.
 
 \end{frame}
 
@@ -290,23 +410,26 @@ Note: This source code excerpt will not work in PyGame.
 	\frametitle{Source Code: Sepia (1)}
 	
 \begin{lstlisting}
-def sepiaTint(picture):
-  #Convert image to greyscale
-  makeGreyscale(picture)
+public void sepiaTint(picture) {
+	//Convert image to greyscale
+  	makeGreyscale(picture);  
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
+		{
+			p = picture.GetPixel(x, y);
+			
+			int r = p.R;
+			int g = p.G;
+			int b = p.B;
 
-  #loop through picture to tint pixels
-  for p in getPixels(picture):
-    red = getRed(p)
-    blue = getBlue(p)
-
-    #tint shadows
-    if (red < 63):
-      red = red*1.1
-      blue = blue*0.9
+			if (r < 63)
+			{
+				r = r*1.1;
+				b = b*0.9;
+			}			
 ...
 \end{lstlisting}
-
-Note: This source code excerpt will not work in PyGame.
 
 \end{frame}
 
@@ -315,27 +438,24 @@ Note: This source code excerpt will not work in PyGame.
 	
 \begin{lstlisting}
 ...
-   #tint midtones
-    if (red > 62 and red < 192):
-      red = red*1.15
-      blue = blue*0.85
+			if (r > 62 and r < 192) {
+				bmp.SetPixel(x, y, Color.FromArgb(
+				255, 255, 255, 255));
+			}
+			if (r > 191) {
+				r = r*1.08;
+				if (r > 255) {
+					r = 255; 	
+				}
+				b = b*0.93;
+			}
 
-    #tint highlights
-    if (red > 191):
-      red = red*1.08
-      if (red > 255):
-        red = 255
-
-      blue = blue*0.93
-
-    #set the new color values
-    setBlue(p, blue)
-    setRed(p, red)
-
+		}
+	}	
+}
 
 \end{lstlisting}
-
-Note: This source code excerpt will not work in PyGame.
+Note: This requires that you incorporate a greyscale function as well.
 
 \end{frame}
 
@@ -347,11 +467,11 @@ Note: This source code excerpt will not work in PyGame.
 	\vspace{2em}
 	
 	\begin{itemize}		
-		\item Setup a basic project in PyGame
+		\item Setup a Windows form project in Visual Studio
 		\item Refer to the following documentation
 		\item Refactor the function: \texttt{sepiaTint(picture) to use constants rather than literals}
 		\item Tinker with the values of the constants to test your solution
-		\item Then, post your solution on Slack
+		\item Then, post your solution on Teams
 	\end{itemize}
 \end{frame}
 
